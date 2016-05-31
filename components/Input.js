@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Dropzone from 'react-dropzone';
 import InputMenu from './InputMenu.js';
 import { getExtention } from '../utils/monkey-utils.js'
+import styles from '../styles/animate.min.css' // from ReactToastr
 
 var ReactToastr = require("react-toastr");
 var {ToastContainer} = ReactToastr; // This is a React Element.
@@ -75,6 +76,7 @@ class Input extends Component {
 		this.audioMessageOldId;
 		this.ffmpegRunning = false;
 		this.ffmpegWorker;
+		this.audioInputClass = '';
 	}
 
     componentWillReceiveProps(nextProps){
@@ -84,7 +86,13 @@ class Input extends Component {
         });
 */
     }
-
+    
+    componentWillMount() {
+	    if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)){
+            this.audioInputClass = 'mky-disabled';
+        }
+    }
+    
 	render() {
     	return (
 			<div id='mky-chat-input'>
@@ -111,7 +119,7 @@ class Input extends Component {
 				<div className={'mky-button-input '+this.state.classSendButton}>
 					<i id='mky-button-send-message'  className="demo-icon mky-send-empty" onClick={this.handleSendMessage}>&#xe80b;</i>
 				</div>
-				<div className={'mky-button-input mky-disabledd '+this.state.classAudioButton}>
+				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
 				{ this.state.creatingAudio
 					? (
 						<div className="mky-spinner-input-audio">

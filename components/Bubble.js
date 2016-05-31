@@ -76,10 +76,10 @@ const Bubble = Component => class extends Component {
 	defineStyles() {
 		if(this.props.layerClass == 'text' && this.props.styles != null){
 			if(this.props.userSessionId === this.props.message.senderId && this.props.styles.colorOut != null){
-				return {background: this.props.styles.colorOut, borderColor: this.props.styles.colorOut};
+				return {background: this.props.styles.colorOut};
 			}
 			else if(this.props.userSessionId != this.props.message.senderId && this.props.styles.colorIn != null){
-				return {background: this.props.styles.colorIn, borderColor: this.props.styles.colorIn};
+				return {background: this.props.styles.colorIn};
 			}
 		}
 		else{

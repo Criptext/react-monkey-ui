@@ -13,11 +13,10 @@ class MyForm extends Component {
 
 	render() {
 		return (
-			<div className='monkey-login'>
-				<img className='monkey-logo' src={this.defineLogo()}></img>
-					<form className='chat-login-container'>
+			<div className='mky-monkey-login'>
+				<img className='mky-monkey-logo' src={this.defineLogo()}></img>
+					<form className='mky-chat-login-container'>
 						<div className='field-login-text'>
-							
 							<p className='title'> <b>Welcome to our secure live-chat</b>  </p>
 							<p className='subtittle'>Please enter the information I need</p>
 						</div>
@@ -29,7 +28,7 @@ class MyForm extends Component {
 							<input type='submit' value='SUBMIT' id='submitChat' onClick={this.login}></input>
 						</div>
 					</form>
-				<div className='monkey_footer_sign'>Powered by <a href='http://criptext.com/'>Criptext</a></div>
+				<div className='mky-monkey_footer_sign'>Powered by <a href='http://criptext.com/'>Criptext</a></div>
 			</div>
 		)
 	}
