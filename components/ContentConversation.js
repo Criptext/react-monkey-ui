@@ -29,11 +29,11 @@ class ContentConversation extends Component {
 	}
 
 	render() {
-		
+		console.log(this.props.isPartialized);
 		return (
 	    	<div className='mky-content-conversation'>
 				<header id='mky-conversation-selected-header'>
-					{ this.props.isMobile
+					{ this.props.isMobile && (this.props.isPartialized.indexOf('partialsize')>-1)
 						? <div className="mky-conversation-burger" onClick={this.showAside}> <button className="burger-menu-btn"></button> </div>
 						: null
 					}

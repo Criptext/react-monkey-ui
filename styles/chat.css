@@ -21,6 +21,10 @@ TABLE OF CONTENTS
 9.- SPINNERS
 
 ***/
+body{
+  margin: 0;
+  padding: 0;
+}
 
 /* 0.- FONT
    ----------------------------- */
@@ -290,6 +294,7 @@ TABLE OF CONTENTS
   margin: 0;
   float: left;
   border-right: 1px solid #c2c2c2;
+  min-width: 240px;
 }
 
   /* 3.2.- ASIDE: Header
@@ -504,6 +509,9 @@ TABLE OF CONTENTS
   background-color: #e9f8ff;
   cursor: pointer;
 }
+.mky-delete-conv{
+  display: none;
+}
 
 .mky-conversation-unselected:hover .mky-delete-conv{
     min-width: 13px;
@@ -517,7 +525,7 @@ TABLE OF CONTENTS
     /*top: 5px;*/
     z-index: 1000;
     cursor: pointer;
-    /*float: right;*/
+    float: right;
     display: inline-block;
     vertical-align: top;
 
@@ -527,19 +535,22 @@ TABLE OF CONTENTS
     min-width: 13px;
     position: relative;
     /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/
-    width: 5%;
-    height: 20%;
+    /*width: 5%;*/
+    /*height: 20%;*/
     background-repeat: no-repeat;
     background-size: contain;
     /*right: 0px;*/
     /*top: 5px;*/
     z-index: 1000;
     cursor: pointer;
-    /*float: right;*/
+    float: right;
     display: inline-block;
     vertical-align: top;
 }
 
+.demo-icon.mky-close{
+  font-size: 19px;
+}
 
 .mky-conversation-image{
   width: 48px;
@@ -617,9 +628,9 @@ TABLE OF CONTENTS
 }
 .mnk-conversation-opts{
   position: absolute;
-    right: 10px;
-    bottom: 10px;
-    /*float: right;*/
+  right: 10px;
+  bottom: 10px;
+  /*float: right;*/
 }
 
 .mky-notification-amount{
@@ -802,9 +813,9 @@ TABLE OF CONTENTS
     width: calc(100% - 40px);
     height: auto;
     margin: 10px auto;
-    padding: 0 20px 0 20px;
+    padding: 10px 0px;
     clear: both;
-    display: inline-block;
+    /*display: inline-block;*/
     max-width: 850px;
 }
 
@@ -915,6 +926,18 @@ TABLE OF CONTENTS
   width: 60px;
   background-position: 50%;
   background-size: 100%;
+}
+.mky-bubble-audio-play-button-green{
+  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');
+      background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+.mky-bubble-audio-pause-button-green{
+  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');
+      background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
 }
 
 /* file bubble */
@@ -1129,7 +1152,7 @@ TABLE OF CONTENTS
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #42a5f5;
+  background-color: #00BFA5;
   opacity: 0.7;
   position: absolute;
   top: 0;
@@ -1172,6 +1195,7 @@ TABLE OF CONTENTS
 .mky-content-image{
   height: auto;
   max-height: 250px;
+  min-height: 200px;
   align-items: center;
   display: flex;
   -webkit-border-radius: 14px;
@@ -1507,6 +1531,10 @@ TABLE OF CONTENTS
   text-align: center;
   line-height: 20px;
   position: relative;
+}
+.mky-inner-chat-input{
+  max-width: 850px;
+  margin: 0 auto;
 }
 
 .mky-fullsize #mky-chat-input{
@@ -2221,6 +2249,15 @@ input:focus{
 
   /* ----- Minimun Size On Web ----- */
 
+@media only screen and  (min-width: 415px) and (max-width: 900px){
+  .mky-wrapper-out section{
+    width: calc(100% - 242px);
+  }
+  .mky-fullsize .mky-wrapper-in{
+    min-width: 615px;
+  }
+}
+
 @media only screen and (max-width: 600px){
 
 /* Disappear description user session */
@@ -2245,6 +2282,9 @@ input:focus{
   /* Disappear description conversation */
   .mky-conversation-description{
     display: none;
+  }
+  .mky-wrapper-out aside{
+        min-width: 130px;
   }
 }
 
@@ -2334,7 +2374,7 @@ input:focus{
     display: inline-block;
   }
   .mky-conversation-image{
-    margin: 7px;
+        margin: 0px -6px;
     float: left;
   }
   .mky-message-line{
