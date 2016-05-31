@@ -507,31 +507,39 @@ TABLE OF CONTENTS
 
 .mky-conversation-unselected:hover .mky-delete-conv{
     min-width: 13px;
-    position: absolute;
-    background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);
-    width: 5%;
-    height: 20%;
+    position: relative;
+    /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/
+    /*width: 5%;*/
+    /*height: 20%;*/
     background-repeat: no-repeat;
     background-size: contain;
-    right: 0px;
-    top: 5px;
+    /*right: 0px;*/
+    /*top: 5px;*/
     z-index: 1000;
     cursor: pointer;
+    /*float: right;*/
+    display: inline-block;
+    vertical-align: top;
+
 }
 
 .mky-conversation-selected:hover .mky-delete-conv{
     min-width: 13px;
-    position: absolute;
-    background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);
+    position: relative;
+    /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/
     width: 5%;
     height: 20%;
     background-repeat: no-repeat;
     background-size: contain;
-    right: 0px;
-    top: 5px;
+    /*right: 0px;*/
+    /*top: 5px;*/
     z-index: 1000;
     cursor: pointer;
+    /*float: right;*/
+    display: inline-block;
+    vertical-align: top;
 }
+
 
 .mky-conversation-image{
   width: 48px;
@@ -600,9 +608,18 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-notification{
+  position: relative;
+  /*right: 15px;*/
+  /*bottom: 12px;*/
+  /*float: right;*/
+  display: inline-block;
+  vertical-align: top;
+}
+.mnk-conversation-opts{
   position: absolute;
-  right: 15px;
-  bottom: 12px;
+    right: 10px;
+    bottom: 10px;
+    /*float: right;*/
 }
 
 .mky-notification-amount{
