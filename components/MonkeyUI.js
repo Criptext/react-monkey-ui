@@ -13,7 +13,6 @@ import BubbleLocation from './BubbleLocation.js'
 import ContentViewer from './ContentViewer.js'
 import ReceivedLocation from './ReceivedLocation.js'
 
-// import styles from '../styles/animate.css'
 import MyForm from './MyForm.js'
 import styles from '../styles/chat.css';
 
@@ -48,6 +47,7 @@ class MonkeyUI extends Component {
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
 			isLoading: false,
+			wrapperInClass: ''
 		}
 		this.openTab = this.openTab.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
@@ -90,7 +90,10 @@ class MonkeyUI extends Component {
 				width: this.props.view.data.width,
 				height: this.props.tabHeight
 			}
-			this.setState({tabStyle: style});
+			this.setState({
+				tabStyle: style,
+				wrapperInClass: 'mky-disappear'
+			});
 		}
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
 
@@ -135,7 +138,7 @@ class MonkeyUI extends Component {
 					)
 					: null
 				}
-				<div className='mky-wrapper-in'>
+				<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
 					{ this.state.isLoading
 						? (
 							<div id='mky-content-connection' className='mky-appear'>
@@ -169,7 +172,8 @@ class MonkeyUI extends Component {
 		if(this.state.idTabButton === 'mky-w-max'){
 			this.setState({
 				tabStyle: this.props.view.data,
-				idTabButton: 'mky-w-min'
+				idTabButton: 'mky-w-min',
+				wrapperInClass: ''
 			});
 		}else{
 			let style = {
@@ -178,7 +182,8 @@ class MonkeyUI extends Component {
 			}
 			this.setState({
 				tabStyle: style,
-				idTabButton: 'mky-w-max'
+				idTabButton: 'mky-w-max',
+				wrapperInClass: 'mky-disappear'
 			});
 		}
 	}
@@ -273,21 +278,9 @@ if (typeof module !== 'undefined') {
 }
 */
 export default MonkeyUI;
-/*
 
 var e = document.createElement('link');
 e.href = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css', e.type = 'text/css', e.rel = 'stylesheet', document.getElementsByTagName('head')[0].appendChild(e)
 
 var ec = document.createElement('script');
 ec.src = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', ec.type = 'text/javascript', document.getElementsByTagName('head')[0].appendChild(ec)
-
-var ed = document.createElement('link');
-ed.href = 'https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css', ed.type = 'text/css', ed.rel = 'stylesheet', document.getElementsByTagName('head')[0].appendChild(ed)
-
-var ef = document.createElement('link');
-ef.href = 'https://cdn.criptext.com/MonkeyUI/styles/chatq.css', ef.type = 'text/css', ef.rel = 'stylesheet', document.getElementsByTagName('head')[0].appendChild(ef)
-
-var ef = document.createElement('link');
-ef.href = 'styles/test.css', ef.type = 'text/css', ef.rel = 'stylesheet', document.getElementsByTagName('head')[0].appendChild(ef)
-*/
-

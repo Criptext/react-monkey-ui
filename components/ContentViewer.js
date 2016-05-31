@@ -23,7 +23,7 @@ class ContentViewer extends Component {
 		return(
 			<div className="mky-viewer-image-container">
 				<div className="mky-viewer-toolbar">
-					<a href={this.props.message.data} download="file" >
+					<a href={this.props.message.data} download={this.props.message.filename} >
 						<button className="mky-button-download" title="Download">Download</button>
 					</a>
 				</div>
