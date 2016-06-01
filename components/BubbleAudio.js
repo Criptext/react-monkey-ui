@@ -31,8 +31,8 @@ class BubbleAudio extends Component {
                 { this.props.message.data
 	                ? (
                     	<div className={'mky-content-audio-data'}>
-	                        <img id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button'} onClick={this.playAudioBubble} src='https://cdn.criptext.com/MonkeyUI/images/green-play-button.png'></img>
-	                        <img id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button'} onClick={this.pauseAudioBubble} src='https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png'></img>
+	                        <div id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-green'} onClick={this.playAudioBubble} ></div>
+	                        <div id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green'} onClick={this.pauseAudioBubble} ></div>
 	                        <input id={'bubble-audio-player-'+this.messageId} className='knob second'></input>
 	                        <div className='mky-bubble-audio-timer'>
 	                            <span>{this.state.minutes}</span><span>:</span><span>{this.state.seconds}</span>
@@ -80,7 +80,7 @@ class BubbleAudio extends Component {
             'height': 90,
             'displayInput':false,
             'skin':'tron',
-            'fgColor': '#0276a9',
+            'fgColor': '#00BFA5',
             'thickness': 0.7,
             change : function (value) {
             }

@@ -47,5 +47,6 @@ export const defineTimeByToday = (time) => {
 export const getExtention = (filename) => {
     let arr = filename.split('.');
     let extension = arr[arr.length-1];
+    extension = extension.toLowerCase();
     return extension;
 }

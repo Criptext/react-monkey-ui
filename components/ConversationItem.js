@@ -50,13 +50,16 @@ class ConversationItem extends Component {
 						</div>
 					</div>
 				</div>
-				<div className="mky-delete-convv" onClick={this.deleteConversation}></div>
-				<Badge value={this.props.conversation.unreadMessageCounter} />
-				{
-					this.props.conversation.unreadMessageCounter > 0 ?
-						this.showNotification(this.props.conversation.name , this.props.conversation.messages[this.props.conversation.lastMessage].preview, this.props.conversation.urlAvatar )
-					:null
-				}
+
+				<div className="mnk-conversation-opts">
+					<div className="mky-delete-conv" onClick={this.deleteConversation}><i className="demo-icon mky-close">&#xe824;</i> </div>
+					<Badge value={this.props.conversation.unreadMessageCounter} />
+					{
+						this.props.conversation.unreadMessageCounter > 0 ?
+							this.showNotification(this.props.conversation.name , this.props.conversation.messages[this.props.conversation.lastMessage].preview, this.props.conversation.urlAvatar )
+						:null
+					}
+				</div>
 			</li>
 		);
 	}
