@@ -7,6 +7,7 @@ class ContentWindow extends Component {
 		super(props);
 		this.classExpand = 'mky-content-window-with';
 		this.classStateWindow = 'mky-disabled';
+		this.classWithBanner = this.props.showBanner ? 'content-window-with-divided' : '';
 	}
 
 	componentWillMount() {
@@ -21,9 +22,9 @@ class ContentWindow extends Component {
 		}
 
     	return (
-	    	<section className={this.classExpand+' '+this.classStateWindow}>
+	    	<section className={this.classExpand+' '+this.classStateWindow + ' '+this.classWithBanner}>
 	    	{ this.props.conversationSelected
-		    	? <ContentConversation loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageCreated={this.props.messageCreated} isMobile={this.props.isMobile} isPartialized={this.props.isPartialized} expandAside={this.props.expandAside} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName}/>
+		    	? <ContentConversation loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageCreated={this.props.messageCreated} isMobile={this.props.isMobile} isPartialized={this.props.isPartialized} expandAside={this.props.expandAside} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName} showBanner={this.props.showBanner} />
 		    	: <ContentIntro />
 	    	}
 			</section>

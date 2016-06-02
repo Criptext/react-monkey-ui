@@ -9,7 +9,7 @@ class ContentAside extends Component {
 	}
 	render() {
     	return (
-			<aside>
+			<aside className={ this.props.showBanner ? 'aside-divided' : ''} >
 				<header id='mky-session-header'>
 					<div id='mky-session-image'>
 						<img src={this.context.userSession.urlAvatar}/>
