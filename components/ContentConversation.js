@@ -32,7 +32,7 @@ class ContentConversation extends Component {
 	render() {
 
 		return (
-			<div className="mky-content-conversation">
+
 	    	<div className={'mky-content-conversation ' + this.state.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
 						{ this.props.isMobile && (this.props.isPartialized.indexOf('partialsize')>-1)
@@ -69,13 +69,7 @@ class ContentConversation extends Component {
 						)
 					}
 				</div>
-				{
-					this.props.showBanner ?
-						<div className='mky-banner-section'>
-						</div>
-						:null
-				}
-			</div>
+				
 		)
 	}
 

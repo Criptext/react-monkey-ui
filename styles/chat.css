@@ -2134,7 +2134,7 @@ body{
 }
 .mky-banner-section img{
   width: 100%;
-  height: 100%;
+  /*height: 100%;*/
 }
 .mnk-converstion-divided{
   width: calc(100% - 401px);
@@ -2144,6 +2144,11 @@ body{
 
 aside.aside-divided{
   width: calc(22% - 1px);
+}
+.mky-app-intro-divided{
+  display: inline-block;
+  position: relative !important;
+  width: calc(100% - 401px) !important;
 }
 
 .mky-content-window-with.content-window-with-divided{

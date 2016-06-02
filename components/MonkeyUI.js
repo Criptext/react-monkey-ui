@@ -46,7 +46,7 @@ class MonkeyUI extends Component {
 			idTabButton: 'mky-w-max',
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
-      showBanner:false,
+      showBanner:true,
 			isLoading: false,
 			wrapperInClass: ''
 		}
@@ -93,7 +93,7 @@ class MonkeyUI extends Component {
       if(this.props.showBanner === true){
         this.setState({showBanner: this.props.showBanner});
       }
-      
+
 		}else{
 			screenMode = 'partialsize';
 			let style = {
