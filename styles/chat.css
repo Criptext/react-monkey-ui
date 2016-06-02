@@ -141,6 +141,18 @@ body{
   height: calc(100% - 30px);
 }
 
+#mky-chat-login{
+    position: relative;
+    margin: 0 auto;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 17px;
+    color: #333;
+    width: 90%;
+    height: calc(100% - 20px);
+    padding-top: 20px;
+}
 
 /* 2.- CONTENT CONNECTION
    ----------------------------- */
@@ -2206,23 +2218,6 @@ body{
 /* 5.- GLOBAL SETTINGS
    ----------------------------- */
 
-/***
-
-COLOR PALETTE
-
-#2979ff - blue bubble
-#f4f8f9 - gray bubble
-
-#e9f8ff - sky blue
-#b3d4e3 - blue
-
-
-#f1f1f1 - light gray (background aside)
-#e0e0e0 - medium gray (separate lines)
-#a0a0a0 - medium strong gray (color text state conversation)
-
-***/
-
 .mky-wrapper-out button:focus {
   outline:0;
 }
@@ -2249,14 +2244,16 @@ input:focus{
 
   /* ----- Minimun Size On Web ----- */
 
-@media only screen and  (min-width: 415px) and (max-width: 900px){
+/*
+@media only screen and (max-width: 900px){
   .mky-wrapper-out section{
     width: calc(100% - 242px);
   }
   .mky-fullsize .mky-wrapper-in{
-    min-width: 615px;
+    min-width: 400px;
   }
 }
+*/
 
 @media only screen and (max-width: 600px){
 
@@ -2270,8 +2267,14 @@ input:focus{
   /* Expand width */
   .mky-wrapper-in{
     width: 100%;
+/*     min-width: 400px; */
   }
-
+  
+  /* strech search */
+  .mky-search-input{
+  	padding: 10px 5px;
+  }
+  
   /* Center image conversation*/ 
   .mky-conversation-image{
     display: inherit;
@@ -2283,13 +2286,15 @@ input:focus{
   .mky-conversation-description{
     display: none;
   }
+/*
   .mky-wrapper-out aside{
         min-width: 130px;
   }
+*/
 }
 
 @media only screen and (max-width: 300px) {
-  /* Disappear list oonversation*/
+  /* Disappear list conversation*/
   .mky-content-window-with{
     width: 100%;
   }
@@ -2317,7 +2322,7 @@ input:focus{
 		margin: 0 auto;
 	}
   
-	/* Disappear list oonversation */
+	/* Disappear list conversation */
 	.mky-content-window-with{
     	width: 100%;
 	}
@@ -2374,7 +2379,7 @@ input:focus{
     display: inline-block;
   }
   .mky-conversation-image{
-        margin: 0px -6px;
+    margin: 0px -6px;
     float: left;
   }
   .mky-message-line{

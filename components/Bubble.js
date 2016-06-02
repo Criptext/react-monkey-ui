@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { defineTime } from '../utils/monkey-utils.js'
+import { defineTime, isConversationGroup } from '../utils/monkey-utils.js'
 
 const Bubble = Component => class extends Component {
 	constructor(props){
@@ -10,7 +10,9 @@ const Bubble = Component => class extends Component {
 	}
 
 	componentWillMount() {
-        this.username = this.props.getUserName(this.props.message.senderId);
+		if(isConversationGroup(this.props.message.recipientId) && (this.props.userSessionId != this.props.message.senderId)){
+			this.username = this.props.getUserName(this.props.message.senderId);
+		}
 	}
 
 	render() {
@@ -74,17 +76,26 @@ const Bubble = Component => class extends Component {
 	}
 
 	defineStyles() {
+		let style = {};
 		if(this.props.layerClass == 'text' && this.props.styles != null){
-			if(this.props.userSessionId === this.props.message.senderId && this.props.styles.colorOut != null){
-				return {background: this.props.styles.colorOut};
-			}
-			else if(this.props.userSessionId != this.props.message.senderId && this.props.styles.colorIn != null){
-				return {background: this.props.styles.colorIn};
+			if(this.props.userSessionId === this.props.message.senderId){
+				if(this.props.styles.bubbleColorOut){
+					style.background = this.props.styles.bubbleColorOut;
+				}
+				if(this.props.styles.bubbleTextColorOut){
+					style.color = this.props.styles.bubbleTextColorOut;
+				}
+			}else{
+				if(this.props.styles.bubbleColorIn){
+					style.background = this.props.styles.bubbleColorIn;
+				}
+				if(this.props.styles.bubbleTextColorIn){
+					style.color = this.props.styles.bubbleTextColorIn;
+				}
 			}
 		}
-		else{
-			return {};
-		}
+		
+		return style;
 	}
 	resendMessage(){
 		console.log('resend function');
