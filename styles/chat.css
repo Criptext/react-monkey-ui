@@ -2218,23 +2218,6 @@ body{
 /* 5.- GLOBAL SETTINGS
    ----------------------------- */
 
-/***
-
-COLOR PALETTE
-
-#2979ff - blue bubble
-#f4f8f9 - gray bubble
-
-#e9f8ff - sky blue
-#b3d4e3 - blue
-
-
-#f1f1f1 - light gray (background aside)
-#e0e0e0 - medium gray (separate lines)
-#a0a0a0 - medium strong gray (color text state conversation)
-
-***/
-
 .mky-wrapper-out button:focus {
   outline:0;
 }

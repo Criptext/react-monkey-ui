@@ -76,17 +76,26 @@ const Bubble = Component => class extends Component {
 	}
 
 	defineStyles() {
+		let style = {};
 		if(this.props.layerClass == 'text' && this.props.styles != null){
-			if(this.props.userSessionId === this.props.message.senderId && this.props.styles.colorOut != null){
-				return {background: this.props.styles.colorOut};
-			}
-			else if(this.props.userSessionId != this.props.message.senderId && this.props.styles.colorIn != null){
-				return {background: this.props.styles.colorIn};
+			if(this.props.userSessionId === this.props.message.senderId){
+				if(this.props.styles.bubbleColorOut){
+					style.background = this.props.styles.bubbleColorOut;
+				}
+				if(this.props.styles.bubbleTextColorOut){
+					style.color = this.props.styles.bubbleTextColorOut;
+				}
+			}else{
+				if(this.props.styles.bubbleColorIn){
+					style.background = this.props.styles.bubbleColorIn;
+				}
+				if(this.props.styles.bubbleTextColorIn){
+					style.color = this.props.styles.bubbleTextColorIn;
+				}
 			}
 		}
-		else{
-			return {};
-		}
+		
+		return style;
 	}
 	resendMessage(){
 		console.log('resend function');
