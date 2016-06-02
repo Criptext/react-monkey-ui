@@ -12,12 +12,12 @@ class ContentConversation extends Component {
 		super(props, context);
 		this.state = {
 			showLocationInput: false,
-			messageSelected: undefined,
-			conversationBannerClass: this.props.showBanner? 'mnk-converstion-divided':''
+			messageSelected: undefined
 		}
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.showAside = this.showAside.bind(this);
+		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -33,9 +33,9 @@ class ContentConversation extends Component {
 
 		return (
 
-	    	<div className={'mky-content-conversation ' + this.state.conversationBannerClass}>
+	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
-						{ this.props.isMobile && (this.props.isPartialized.indexOf('partialsize')>-1)
+						{ this.props.isMobile
 							? <div className="mky-conversation-burger" onClick={this.showAside}> <button className="burger-menu-btn"></button> </div>
 							: null
 						}
@@ -69,7 +69,7 @@ class ContentConversation extends Component {
 						)
 					}
 				</div>
-				
+
 		)
 	}
 

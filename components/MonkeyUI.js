@@ -83,6 +83,7 @@ class MonkeyUI extends Component {
 		this.setState({conversation: this.props.conversation});
 
 		let screenMode;
+    //screen mode for webchat and privatechat
 		if(this.props.view.type === 'fullscreen'){
 			screenMode = 'fullsize';
 			if(this.props.showConversations === false){
@@ -112,6 +113,11 @@ class MonkeyUI extends Component {
 			this.setState({showConversations:false});
 			this.expandWindow = true;
 		}
+
+    if (this.props.view.type === 'rightside') {
+      this.setState({isMobile:true});
+    }
+
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {

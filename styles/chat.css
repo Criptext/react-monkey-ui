@@ -765,7 +765,7 @@ body{
 }
 
 #mky-conversation-selected-description{
-    width: calc(100% - 106px);
+    width: calc(100% - 125px);
     height: calc(100% - 18px);
     float: left;
     padding-top: 18px;
@@ -2448,6 +2448,9 @@ input:focus{
   }
   #mky-conversation-selected-description{
     width: calc(100% - 165px);
+  }
+  #mky-conversation-selected-image{
+    margin-left: 5px;
   }
 }
 
