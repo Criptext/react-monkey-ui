@@ -84,6 +84,10 @@ class MonkeyUI extends Component {
 		let screenMode;
 		if(this.props.view.type === 'fullscreen'){
 			screenMode = 'fullsize';
+			if(this.props.showConversations === false){
+				this.setState({showConversations: this.props.showConversations});
+				this.expandWindow = true;
+			}
 		}else{
 			screenMode = 'partialsize';
 			let style = {
@@ -116,7 +120,6 @@ class MonkeyUI extends Component {
 	componentWillReceiveProps(nextProps) {
 
 		this.setState({conversation: nextProps.conversation});
-
 		this.setState({conversations: nextProps.conversations});
 
 		if(nextProps.userSession && (nextProps.userSession.id && this.state.isLoading)){
