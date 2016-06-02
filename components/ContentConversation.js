@@ -30,8 +30,6 @@ class ContentConversation extends Component {
 	}
 
 	render() {
-		console.log('-========= showBanner ==========');
-		console.log(this.props.showBanner);
 
 		return (
 			<div className="mky-content-conversation">
@@ -74,7 +72,6 @@ class ContentConversation extends Component {
 				{
 					this.props.showBanner ?
 						<div className='mky-banner-section'>
-							<img src="http://orig05.deviantart.net/b5da/f/2012/163/6/0/6009ceacc0394f7c0d80de4144c1f5eb-d539bni.png" alt="banner image"></img>
 						</div>
 						:null
 				}
