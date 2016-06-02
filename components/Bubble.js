@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { defineTime } from '../utils/monkey-utils.js'
+import { defineTime, isConversationGroup } from '../utils/monkey-utils.js'
 
 const Bubble = Component => class extends Component {
 	constructor(props){
@@ -10,7 +10,9 @@ const Bubble = Component => class extends Component {
 	}
 
 	componentWillMount() {
-        this.username = this.props.getUserName(this.props.message.senderId);
+		if(isConversationGroup(this.props.message.recipientId) && (this.props.userSessionId != this.props.message.senderId)){
+			this.username = this.props.getUserName(this.props.message.senderId);
+		}
 	}
 
 	render() {
