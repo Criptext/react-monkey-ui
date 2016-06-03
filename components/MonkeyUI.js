@@ -75,7 +75,8 @@ class MonkeyUI extends Component {
 			    image: ContentViewer,
 			    location: ReceivedLocation
 		    },
-		    styles: this.props.styles != null ? this.props.styles : {}
+		    styles: this.props.styles != null ? this.props.styles : {},
+		    extraChat: this.props.extraChat
 		}
 	}
 
@@ -284,7 +285,8 @@ MonkeyUI.childContextTypes = {
 	userSession: React.PropTypes.object,
 	bubbles: React.PropTypes.object,
 	bubblePreviews: React.PropTypes.object,
-	styles: React.PropTypes.object
+	styles: React.PropTypes.object,
+	extraChat: React.PropTypes.object
 }
 
 /*
