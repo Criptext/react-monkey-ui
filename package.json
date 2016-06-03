@@ -45,7 +45,6 @@
     "react": "^0.14.0 || ^15.0.0"
   },
   "dependencies": {
-    "react-google-maps": "^4.10.1",
-    "react-ladda": "^4.0.3"
+    
   }
 }
