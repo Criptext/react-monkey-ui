@@ -1112,18 +1112,17 @@ body{
   right: 0;
 }
 
+.mky-check{
+  font-size: 10px;
+  font-weight: bold;
+}
+
 .mky-status-sent{
   color: #bbbbbb;
 }
 
-.mky-status-sent .mky-check {
-  font-size: 10px;
-  font-weight: bold;
-  color: #00bfa5;
-}
-
 .mky-status-read{
-  color: #0178FF;
+  color: #00bfa5;
 }
 
 .mky-message-line .mky-bubble-private{
