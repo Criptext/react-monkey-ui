@@ -22,12 +22,9 @@ require('fileapi/dist/FileAPI.min.js');
 require('jquery-knob/dist/jquery.knob.min.js');
 var $ = require('jquery');
 
-window.jQuery = $;
-window.$ = $;
-
 class Input extends Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.state = {
 			classSendButton: 'mky-disappear',
 			classAudioButton: '',
@@ -37,7 +34,6 @@ class Input extends Component {
 			classTextArea: '',
 			minutes: '00',
 			seconds: '00',
-// 			files: null,
 			text: '',
             menuVisibility: 0,
             creatingAudio: false
@@ -80,11 +76,7 @@ class Input extends Component {
 	}
 
     componentWillReceiveProps(nextProps){
-/*
-        this.setState({
-            option: 0
-        });
-*/
+		
     }
     
     componentWillMount() {
@@ -94,14 +86,15 @@ class Input extends Component {
     }
     
 	render() {
+		let styleInput = this.defineStyles();
     	return (
 			<div id='mky-chat-input'>
                 <div className="mky-inner-chat-input">
     				<div id='mky-divider-chat-input'></div>
     				<div className={'mky-button-input '+this.state.classAttachButton}>
-    					<i id="mky-button-attach" className="mky-button-icon demo-icon mky-attach" onClick={this.handleMenuVisibility}>&#xe825;</i>
+    					<i id="mky-button-attach" className="mky-button-icon demo-icon mky-attach" style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}>&#xe825;</i>
     				</div>
-                    <InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach}/>
+                    <InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} colorButton={styleInput.inputRightButton}/>
     				<div className={'mky-button-input '+this.state.classCancelAudioButton}>
 
     					<i id="mky-button-cancel-audio" className=" mky-button-icon demo-icon mky-trashcan-empty"  onClick={this.handleCancelAudio}>&#xe809;</i>
@@ -130,7 +123,7 @@ class Input extends Component {
     							<div className="mky-rect4"></div>
     						</div>
     					)
-    					: <i  id="mky-button-record-audio" className=" mky-button-icon demo-icon mky-mic-empty" onClick={this.handleRecordAudio}>&#xe823;</i>
+    					: <i  id="mky-button-record-audio" className=" mky-button-icon demo-icon mky-mic-empty" style={styleInput.inputRightButton} onClick={this.handleRecordAudio}>&#xe823;</i>
 
     				}
     				</div>
@@ -146,8 +139,25 @@ class Input extends Component {
 	componentDidMount() {
 		this.ffmpegWorker = this.getFFMPEGWorker();
 	}
-
-    handleMenuVisibility(){
+	
+	defineStyles() {
+		let style = {
+			inputLeftButton: {},
+			inputRightButton: {}
+		};
+		if(this.context.styles){
+			if(this.context.styles.inputLeftButtonColor){
+				style.inputLeftButton.color = this.context.styles.inputLeftButtonColor
+			}
+			if(this.context.styles.inputRightButtonColor){
+				style.inputRightButton.color = this.context.styles.inputRightButtonColor
+			}
+		}
+		
+		return style;
+	}
+	
+    handleMenuVisibility() {
         this.setState({menuVisibility : !this.state.menuVisibility});
     }
 
@@ -476,6 +486,10 @@ class Input extends Component {
 
         return ft;
     }
+}
+
+Input.contextTypes = {
+    styles: React.PropTypes.object.isRequired
 }
 
 export default Input;

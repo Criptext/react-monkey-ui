@@ -30,9 +30,7 @@ class ContentConversation extends Component {
 	}
 
 	render() {
-
 		return (
-
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
 						{ this.props.isMobile

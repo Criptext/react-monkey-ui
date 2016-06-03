@@ -41,6 +41,10 @@ var config = {
 		        jQuery: "jquery",
 		        'window.jQuery': 'jquery',
 		        "React": "react",
+		    }),
+		    new webpack.optimize.UglifyJsPlugin({
+		    	sourceMap: false,
+				mangle: false
 		    })
 		]
   	},

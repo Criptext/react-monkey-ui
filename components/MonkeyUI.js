@@ -46,7 +46,7 @@ class MonkeyUI extends Component {
 			idTabButton: 'mky-w-max',
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
-      showBanner:true,
+			showBanner: false,
 			isLoading: false,
 			wrapperInClass: ''
 		}
@@ -55,7 +55,6 @@ class MonkeyUI extends Component {
 		this.handleConversationSelected = this.handleConversationSelected.bind(this);
 		this.handleMessageCreated = this.handleMessageCreated.bind(this);
 		this.classContent;
-		// this.showConversations = true;
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
 		this.isLoading = false;
@@ -75,7 +74,8 @@ class MonkeyUI extends Component {
 			    image: ContentViewer,
 			    location: ReceivedLocation
 		    },
-		    styles: this.props.styles != null ? this.props.styles : {}
+		    styles: this.props.styles != null ? this.props.styles : {},
+		    extraChat: this.props.extraChat
 		}
 	}
 
@@ -83,41 +83,41 @@ class MonkeyUI extends Component {
 		this.setState({conversation: this.props.conversation});
 
 		let screenMode;
-    //screen mode for webchat and privatechat
+		let style = {};
+		//screen mode for webchat and privatechat
 		if(this.props.view.type === 'fullscreen'){
 			screenMode = 'fullsize';
 			if(this.props.showConversations === false){
 				this.setState({showConversations: this.props.showConversations});
 				this.expandWindow = true;
 			}
-
-      if(this.props.showBanner === true){
-        this.setState({showBanner: this.props.showBanner});
-      }
-
+		    if(this.props.showBanner === true){
+		        this.setState({showBanner: this.props.showBanner});
+		    }
 		}else{
 			screenMode = 'partialsize';
-			let style = {
-				width: this.props.view.data.width,
-				height: this.props.tabHeight
-			}
-			this.setState({
-				tabStyle: style,
-				wrapperInClass: 'mky-disappear'
-			});
+			style.width = this.props.view.data.width;
+			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : '100%'
 		}
+		
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
 
 		if(this.props.view.type === 'classic'){
-			// this.showConversations = false;
-			this.setState({showConversations:false});
+			this.setState({
+				showConversations: false,
+				tabStyle: style,
+				wrapperInClass: 'mky-disappear'
+			});
 			this.expandWindow = true;
 		}
 
-    if (this.props.view.type === 'rightside') {
-      this.setState({isMobile:true});
-    }
-
+	    if (this.props.view.type === 'rightside') {
+	    	this.setState({
+		    	isMobile: true,
+		    	tabStyle: style
+		    });
+	    }
+		
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
@@ -170,7 +170,7 @@ class MonkeyUI extends Component {
 						? (
 							<div id='mky-content-app' className=''>
 								{ this.state.showConversations
-									? <ContentAside deleteConversation={this.props.deleteConversation} userSessionLogout={this.props.userSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation}/>
+									? <ContentAside deleteConversation={this.props.deleteConversation} userSessionLogout={this.props.userSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile}/>
 									: null
 								}
 								<ContentWindow loadMessages={this.props.loadMessages} conversationSelected={this.state.conversation} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName}/>
@@ -284,7 +284,8 @@ MonkeyUI.childContextTypes = {
 	userSession: React.PropTypes.object,
 	bubbles: React.PropTypes.object,
 	bubblePreviews: React.PropTypes.object,
-	styles: React.PropTypes.object
+	styles: React.PropTypes.object,
+	extraChat: React.PropTypes.object
 }
 
 /*

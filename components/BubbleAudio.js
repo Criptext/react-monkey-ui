@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 
+// ======================
+// jquery.knob.js
+require('jquery-knob/dist/jquery.knob.min.js');
+var $ = require('jquery');
+
 var playIntervalBubble;
 var $bubblePlayer;
 
@@ -33,7 +38,7 @@ class BubbleAudio extends Component {
                     	<div className={'mky-content-audio-data'}>
 	                        <div id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-green'} onClick={this.playAudioBubble} ></div>
 	                        <div id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green'} onClick={this.pauseAudioBubble} ></div>
-	                        <input id={'bubble-audio-player-'+this.messageId} className='knob second'></input>
+	                        <input id={'mky-bubble-audio-player-'+this.messageId} className='knob second'></input>
 	                        <div className='mky-bubble-audio-timer'>
 	                            <span>{this.state.minutes}</span><span>:</span><span>{this.state.seconds}</span>
 	                        </div>
@@ -71,7 +76,7 @@ class BubbleAudio extends Component {
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
-		$("#bubble-audio-player-"+timestamp).knob({
+		$("#mky-bubble-audio-player-"+timestamp).knob({
             'min': 0,
             'max': duration,
             'angleOffset': -133,
@@ -98,7 +103,7 @@ class BubbleAudio extends Component {
     
     playAudioBubble() {
 	    this.pauseAllAudio();
-        window.$bubblePlayer = $("#bubble-audio-player-"+this.messageId); //handles the circle
+        window.$bubblePlayer = $("#mky-bubble-audio-player-"+this.messageId); //handles the circle
         $('#mky-bubble-audio-play-button-'+this.messageId).hide();
         $('#mky-bubble-audio-pause-button-'+this.messageId).show();
         let audiobuble = document.getElementById("audio_"+this.messageId);
