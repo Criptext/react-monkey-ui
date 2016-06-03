@@ -112,12 +112,21 @@ body{
 }
 
 .mky-partialsize{
-  bottom: 0;
-  right: 10px;
+  
 }
 
 .mky-fullsize{
   position: relative;
+}
+
+.mky-classic{
+  bottom: 0;
+  right: 10px;
+}
+
+.mky-rightside{
+  bottom: 0;
+  right: 0;
 }
 
 .mky-wrapper-in{
@@ -307,7 +316,7 @@ body{
   margin: 0;
   float: left;
   border-right: 1px solid #c2c2c2;
-  min-width: 240px;
+/*   min-width: 240px; */
 }
 
   /* 3.2.- ASIDE: Header
@@ -322,6 +331,14 @@ body{
 
 #mky-session-header{
 
+}
+
+#mky-expand-each-screen{
+	width: 100%;
+}
+
+.mky-expand-each-screen{
+	width: 100%;
 }
 
 #mky-session-image{

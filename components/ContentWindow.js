@@ -6,7 +6,7 @@ import ContentConversation from './ContentConversation.js';
 class ContentWindow extends Component {
 	constructor(props){
 		super(props);
-		this.classExpand = 'mky-content-window-with';
+		this.classExpand = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-content-window-with';
 		this.classStateWindow = 'mky-disabled';
 		this.classWithBanner = this.props.showBanner && !this.props.isMobile ? 'content-window-with-divided' : '';
 	}
