@@ -22,9 +22,6 @@ require('fileapi/dist/FileAPI.min.js');
 require('jquery-knob/dist/jquery.knob.min.js');
 var $ = require('jquery');
 
-window.jQuery = $;
-window.$ = $;
-
 class Input extends Component {
 	constructor(props, context) {
 		super(props, context);
