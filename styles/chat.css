@@ -22,6 +22,7 @@ TABLE OF CONTENTS
 9.- SPINNERS
 
 ***/
+
 body{
   margin: 0;
   padding: 0;
@@ -63,39 +64,39 @@ body{
      ----------------------------- */
 
 .demo-icon{
-      font-family: "mky";
-      font-style: normal;
-      font-weight: normal;
-      font-size: 22px;
-      speak: none;
+  font-family: "mky";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 22px;
+  speak: none;
 
-      display: inline-block;
-      text-decoration: inherit;
-      width: 1em;
-      margin-right: .2em;
-      text-align: center;
-      /* opacity: .8; */
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */
 
-      /* For safety - reset parent styles, that can break glyph codes*/
-      font-variant: normal;
-      text-transform: none;
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none;
 
-      /* fix buttons height, for twitter bootstrap */
-      line-height: 1em;
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em;
 
-      /* Animation center compensation - margins should be symmetric */
-      /* remove if not needed */
-      margin-left: .2em;
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em;
 
-      /* You can be more comfortable with increased icons size */
-      /* font-size: 120%; */
+  /* You can be more comfortable with increased icons size */
+  /* font-size: 120%; */
 
-      /* Font smoothing. That was taken from TWBS */
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
-      /* Uncomment for 3D effect */
-      /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
 /* 1.- CONTENT
@@ -117,6 +118,10 @@ body{
 
 .mky-fullsize{
   position: relative;
+}
+
+.mky-classic, .mky-rightside{
+  z-index: 100;
 }
 
 .mky-classic{
@@ -279,7 +284,6 @@ body{
   top: 5px;
 }
 
-
 #mky-w-max,
 #mky-w-close,
 #mky-w-min, #mky-w-min-in{
@@ -304,6 +308,24 @@ body{
 
 #mky-w-max, #mky-w-min{
   right: 10px;
+}
+
+.mky-button{
+  background-color: #FBA920;
+  border-radius: 50%;
+  margin-top: 12px;
+  text-align: center;
+  width: 48px;
+  height: 48px;
+  background-size: 48px 48px;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.mky-button i{
+	color: white;
+	margin-top: 12px;
 }
 
 /* 3.2.- ASIDE
@@ -371,17 +393,23 @@ body{
   cursor: pointer;
 }
 
-.mky-logout{
+.mky-logout, .mky-cancel{
   color: #6e8191;
   font-size: 19px;
 }
 
-#mky-session-name {
-  text-align: left;
-  font-size: 14px;
-  display: block;
+#mky-session-name{
   margin-top: 25px;
   float: left;
+  display: flex;
+  white-space: nowrap;
+  width: calc(100% - 50px);
+}
+
+#mky-session-name span{
+  text-align: left;
+  font-size: 14px;
+  color: black;
 }
 
   /* 3.2.- ASIDE: Search Panel
@@ -578,9 +606,10 @@ body{
     vertical-align: top;
 }
 
-.demo-icon.mky-close{
+.mky-close{
   font-size: 19px;
   margin-left: 0.1em;
+  color: #6e8191;
 }
 
 .mky-conversation-image{
@@ -613,6 +642,10 @@ body{
 .mky-conversation-title{
 	width: 99%;
 	display: flex;
+}
+
+.mky-conversation-title span{
+	color: black;
 }
 
 .mky-conversation-name{
@@ -748,23 +781,14 @@ body{
 }
 
 .mky-conversation-burger{
-  display: inline-block;
-  vertical-align: top;
   float: left;
-  width: 40px;
+  margin: 24px 0 0 12px;
+  width: auto;
 }
 
-.burger-menu-btn{
-  position: relative;
-  background-color: none;
-  border: none;
-  width: 45px;
-  height: 45px;
-  background: url('https://cdn4.iconfinder.com/data/icons/flat-black/128/menu.png');
-  background-size: 98%;
-  background-position: 50%;
-  margin-top: 11px;
-  cursor: pointer;
+.mky-menu-options{
+	color: #6e8191;
+    font-size: 19px;
 }
 
 #mky-conversation-selected-image{
@@ -848,7 +872,7 @@ body{
     margin: 10px auto;
     padding: 10px 0px;
     clear: both;
-    /*display: inline-block;*/
+    display: table;
     max-width: 840px;
 }
 
@@ -1617,7 +1641,7 @@ body{
   background-position: center;
 }
 
-#mky-button-attach{
+#mky-button-add{
   background: none;
   color: #8660a9;
   font-size: 28px;
@@ -2408,7 +2432,7 @@ input:focus{
 	}
 
 	/* Icons bigger */
-	#mky-button-attach, #mky-button-record-audio{
+	#mky-button-add, #mky-button-record-audio{
 	    height: 26px;
 	    width: 18px;
 	}
@@ -2424,11 +2448,6 @@ input:focus{
 	}
 
 	/* Messages */
-	.mky-message-detail{
-	    width: auto;
-	    top: -20px;
-	}
-
 	.mky-bubble-text-out{
 	    min-width: 47px;
 	}
@@ -2455,7 +2474,7 @@ input:focus{
     display: inline-block;
   }
   .mky-conversation-image{
-    margin: 0px -6px;
+    margin: 0;
     float: left;
   }
   .mky-message-line{
@@ -2578,11 +2597,6 @@ input:focus{
 /* 8.- REACT CONTAINER
    ----------------------------- */
 
-#my-chat{
-  height: 100vh;
-  overflow: hidden;
-}
-
 .mky-full{
 	width: 100%;
 	height: 100%;
@@ -2594,6 +2608,7 @@ input:focus{
 /*
    Animation example, for spinners
 */
+
 .animate-spin {
   -moz-animation: spin 2s infinite linear;
   -o-animation: spin 2s infinite linear;
@@ -2676,3 +2691,15 @@ input:focus{
     transform: rotate(359deg);
   }
 }
+
+/*------------------------------
+  NEW DESIGN FOR "HABLA"
+------------------------------*/
+
+/*
+.mky-chat-inner-timeline, .mky-chat-inner-input{
+  max-width: 890px;
+  margin: 0 auto;
+}
+*/
+

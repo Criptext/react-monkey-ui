@@ -43,8 +43,7 @@ var config = {
 		        "React": "react",
 		    }),
 		    new webpack.optimize.UglifyJsPlugin({
-		    	sourceMap: false,
-				mangle: false
+		    	compress: { warnings: false }
 		    })
 		]
   	},

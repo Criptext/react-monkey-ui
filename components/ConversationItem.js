@@ -40,7 +40,7 @@ class ConversationItem extends Component {
 							</div>
 						</div>
 						<div className="mky-conversation-state">
-							{ this.props.conversation.messages
+							{ Object.keys(this.props.conversation.messages).length
 								? ( this.state.unreadMessages
 									? <span className="mky-ellipsify mky-bold-text">{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
 									: <span className="mky-ellipsify">{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
@@ -52,12 +52,14 @@ class ConversationItem extends Component {
 				</div>
 
 				<div className="mnk-conversation-opts">
-					<div className="mky-delete-conv" onClick={this.deleteConversation}><i className="demo-icon mky-close">&#xe824;</i> </div>
+					<div className="mky-delete-conv" onClick={this.deleteConversation}><i className="demo-icon mky-close">&#xe823;</i> </div>
 					<Badge value={this.props.conversation.unreadMessageCounter} />
 					{
+/*
 						this.props.conversation.unreadMessageCounter > 0 ?
 							this.showNotification(this.props.conversation.name , this.props.conversation.messages[this.props.conversation.lastMessage].preview, this.props.conversation.urlAvatar )
 						:null
+*/
 					}
 				</div>
 			</li>

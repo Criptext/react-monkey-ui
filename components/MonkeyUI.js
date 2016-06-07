@@ -42,7 +42,7 @@ class MonkeyUI extends Component {
 		super(props);
 		this.state = {
 			conversation: {},
-			tabStyle: undefined,
+			contentStyle: undefined,
 			idTabButton: 'mky-w-max',
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
@@ -51,6 +51,7 @@ class MonkeyUI extends Component {
 			wrapperInClass: ''
 		}
 		this.openTab = this.openTab.bind(this);
+		this.openSide = this.openSide.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
 		this.handleConversationSelected = this.handleConversationSelected.bind(this);
 		this.handleMessageCreated = this.handleMessageCreated.bind(this);
@@ -96,8 +97,8 @@ class MonkeyUI extends Component {
 		    }
 		}else{
 			screenMode = 'partialsize';
-			style.width = this.props.view.data.width;
-			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : '100%'
+			style.width = this.props.view.type === 'rightside' ? this.props.sideWidth : this.props.view.data.width;
+			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height
 		}
 		
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
@@ -105,7 +106,7 @@ class MonkeyUI extends Component {
 		if(this.props.view.type === 'classic'){
 			this.setState({
 				showConversations: false,
-				tabStyle: style,
+				contentStyle: style,
 				wrapperInClass: 'mky-disappear'
 			});
 			this.expandWindow = true;
@@ -114,7 +115,8 @@ class MonkeyUI extends Component {
 	    if (this.props.view.type === 'rightside') {
 	    	this.setState({
 		    	isMobile: true,
-		    	tabStyle: style
+		    	contentStyle: style,
+		    	wrapperInClass: 'mky-disappear'
 		    });
 	    }
 		
@@ -143,15 +145,17 @@ class MonkeyUI extends Component {
 	render() {
 		const Form_ = ContentLogin(this.props.form);
     	return (
-			<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.tabStyle}>
+			<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
 				{ this.props.view.type === 'classic'
-					? (
-						<div className='mky-tab' style={this.defineTabStyle()}>
+					? ( <div className='mky-tab' style={this.defineTabStyle()}>
                             <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
                             <div id={this.state.idTabButton} onClick={this.openTab}></div>
                         </div>
 					)
-					: null
+					: ( this.props.view.type === 'rightside'
+						? <div className='mky-button' onClick={this.openSide}><i className="demo-icon mky-chat-empty">&#xe831;</i></div>
+						: null
+					)
 				}
 				<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
 					{ this.state.isLoading
@@ -167,10 +171,9 @@ class MonkeyUI extends Component {
 						: null
 					}
 					{ this.props.userSession
-						? (
-							<div id='mky-content-app' className=''>
+						? ( <div id='mky-content-app' className=''>
 								{ this.state.showConversations
-									? <ContentAside deleteConversation={this.props.deleteConversation} userSessionLogout={this.props.userSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile}/>
+									? <ContentAside deleteConversation={this.props.deleteConversation} userSessionLogout={this.props.userSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
 									: null
 								}
 								<ContentWindow loadMessages={this.props.loadMessages} conversationSelected={this.state.conversation} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName}/>
@@ -186,7 +189,7 @@ class MonkeyUI extends Component {
 	openTab() {
 		if(this.state.idTabButton === 'mky-w-max'){
 			this.setState({
-				tabStyle: this.props.view.data,
+				contentStyle: this.props.view.data,
 				idTabButton: 'mky-w-min',
 				wrapperInClass: ''
 			});
@@ -196,8 +199,26 @@ class MonkeyUI extends Component {
 				height: this.props.tabHeight
 			}
 			this.setState({
-				tabStyle: style,
+				contentStyle: style,
 				idTabButton: 'mky-w-max',
+				wrapperInClass: 'mky-disappear'
+			});
+		}
+	}
+	
+	openSide() {
+		if(this.state.contentStyle.width === 0){
+			this.setState({
+				contentStyle: this.props.view.data,
+				wrapperInClass: ''
+			});
+		}else{
+			let style = {
+				width: this.props.sideWidth,
+				height: this.props.view.data.height
+			}
+			this.setState({
+				contentStyle: style,
 				wrapperInClass: 'mky-disappear'
 			});
 		}
@@ -234,7 +255,6 @@ class MonkeyUI extends Component {
 	}
 
 	handleMessageCreated(message){
-		var timestamp = new Date().getTime();
 		message.senderId = this.props.userSession.id;
 		message.recipientId = this.state.conversation.id;
 		message.status = 0;
@@ -277,6 +297,7 @@ MonkeyUI.defaultProps = {
 		type: 'fullscreen'
 	},
 	tabHeight: '30px',
+	sideWidth: 0,
 	form: MyForm
 }
 
