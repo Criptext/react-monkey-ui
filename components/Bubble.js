@@ -106,7 +106,7 @@ const Status = ({value, classStatus, resendFunction}) => (
 	<div className={"mky-message-status "+classStatus} onClick={resendFunction}>
 		{
 			value !== 0 ? (
-				value == -1 ? <i className="demo-icon mky-check">!</i> : <i className="demo-icon mky-check">&#xe814;</i>
+				value == -1 ? <i className="demo-icon mky-check">!</i> : <i className="demo-icon mky-check">&#xe813;</i>
 			)
 			: null
 		}

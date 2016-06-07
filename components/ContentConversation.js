@@ -34,7 +34,7 @@ class ContentConversation extends Component {
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
 						{ this.props.isMobile
-							? <div className="mky-conversation-burger" onClick={this.showAside}> <button className="burger-menu-btn"></button> </div>
+							? <div className="mky-conversation-burger" onClick={this.showAside}><i className="demo-icon mky-menu-options">&#xe830;</i></div>
 							: null
 						}
 						<div id='mky-conversation-selected-image'><img src={this.props.conversationSelected.urlAvatar}/></div>
