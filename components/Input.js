@@ -92,12 +92,12 @@ class Input extends Component {
                 <div className="mky-inner-chat-input">
     				<div id='mky-divider-chat-input'></div>
     				<div className={'mky-button-input '+this.state.classAttachButton}>
-    					<i id="mky-button-attach" className="mky-button-icon demo-icon mky-attach" style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}>&#xe825;</i>
+    					<i id="mky-button-add" className="mky-button-icon demo-icon mky-dot" style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}>&#xe824;</i>
     				</div>
                     <InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} colorButton={styleInput.inputRightButton}/>
     				<div className={'mky-button-input '+this.state.classCancelAudioButton}>
 
-    					<i id="mky-button-cancel-audio" className=" mky-button-icon demo-icon mky-trashcan-empty"  onClick={this.handleCancelAudio}>&#xe809;</i>
+    					<i id="mky-button-cancel-audio" className=" mky-button-icon demo-icon mky-trashcan-empty"  onClick={this.handleCancelAudio}>&#xe808;</i>
     				</div>
     				<textarea ref='textareaInput' id="mky-message-text-input" className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder="Write a secure message" onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></textarea>
     				<div id='mky-record-area' className={this.state.classAudioArea}>
@@ -111,7 +111,7 @@ class Input extends Component {
     					</div>
     				</div>
     				<div className={'mky-button-input '+this.state.classSendButton}>
-    					<i id='mky-button-send-message'  className="demo-icon mky-send-empty" onClick={this.handleSendMessage}>&#xe80b;</i>
+    					<i id='mky-button-send-message'  className="demo-icon mky-send-empty" onClick={this.handleSendMessage}>&#xe80a;</i>
     				</div>
     				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
     				{ this.state.creatingAudio
@@ -123,7 +123,7 @@ class Input extends Component {
     							<div className="mky-rect4"></div>
     						</div>
     					)
-    					: <i  id="mky-button-record-audio" className=" mky-button-icon demo-icon mky-mic-empty" style={styleInput.inputRightButton} onClick={this.handleRecordAudio}>&#xe823;</i>
+    					: <i  id="mky-button-record-audio" className=" mky-button-icon demo-icon mky-mic-empty" style={styleInput.inputRightButton} onClick={this.handleRecordAudio}>&#xe80c;</i>
 
     				}
     				</div>
