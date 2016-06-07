@@ -5,6 +5,7 @@ class ContentAside extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.logout = this.logout.bind(this);
+		this.closeSide = this.closeSide.bind(this);
 		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : '';
 	}
 	
@@ -16,8 +17,13 @@ class ContentAside extends Component {
 						<img src={this.context.userSession.urlAvatar}/>
 					</div>
 					<div id='mky-session-description'>
-						<span id='mky-session-name'>{this.context.userSession.name}</span>
-						<div className="mky-header-exit" onClick={this.logout}><i className="demo-icon mky-logout">&#xe82c;</i></div>
+						<div id='mky-session-name'>
+							<span className="mky-ellipsify">{this.context.userSession.name}</span>
+						</div>
+						{ this.props.isMobile
+							? <div className="mky-header-exit" onClick={this.closeSide}><i className="demo-icon mky-cancel">&#xe828;</i></div>
+							: <div className="mky-header-exit" onClick={this.logout}><i className="demo-icon mky-logout">&#xe82c;</i></div>
+						}
 					</div>
 				</header>
 				<ConversationList deleteConversation={this.props.deleteConversation} conversations={this.props.conversations} conversationSelected={this.props.conversationSelected}/>
@@ -25,8 +31,12 @@ class ContentAside extends Component {
 		)
 	}
 
-	logout(){
+	logout() {
 		this.props.userSessionLogout();
+	}
+	
+	closeSide() {
+		this.props.closeSide();
 	}
 }
 
