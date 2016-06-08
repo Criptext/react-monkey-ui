@@ -25,8 +25,8 @@ class ContentWindow extends Component {
     	return (
 	    	<section className={this.classExpand+' '+this.classStateWindow + ' '+this.classWithBanner}>
 	    	{ this.props.conversationSelected
-		    	? <ContentConversation loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageCreated={this.props.messageCreated} isMobile={this.props.isMobile} isPartialized={this.props.isPartialized} expandAside={this.props.expandAside} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName} showBanner={this.props.showBanner} />
-		    	: <ContentIntro isMobile={this.props.isMobile} showBanner={this.props.showBanner} />
+		    	? <ContentConversation loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageCreated={this.props.messageCreated} isMobile={this.props.isMobile} isPartialized={this.props.isPartialized} expandAside={this.props.expandAside} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName} showBanner={this.props.showBanner} haveConversations={this.props.haveConversations}/>
+		    	: <ContentIntro isMobile={this.props.isMobile} showBanner={this.props.showBanner}/>
 	    	}
 				{
 					this.props.showBanner && !this.props.isMobile ?
