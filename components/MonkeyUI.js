@@ -59,6 +59,7 @@ class MonkeyUI extends Component {
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
 		this.isLoading = false;
+		this.haveConversations = true;
 	}
 
 	getChildContext() {
@@ -89,6 +90,7 @@ class MonkeyUI extends Component {
 		if(this.props.view.type === 'fullscreen'){
 			screenMode = 'fullsize';
 			if(this.props.showConversations === false){
+				this.haveConversations = false;
 				this.setState({showConversations: this.props.showConversations});
 				this.expandWindow = true;
 			}
@@ -104,6 +106,7 @@ class MonkeyUI extends Component {
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
 
 		if(this.props.view.type === 'classic'){
+			this.haveConversations = false;
 			this.setState({
 				showConversations: false,
 				contentStyle: style,
@@ -114,6 +117,7 @@ class MonkeyUI extends Component {
 
 	    if (this.props.view.type === 'rightside') {
 	    	this.setState({
+		    	showConversations: true,
 		    	isMobile: true,
 		    	contentStyle: style,
 		    	wrapperInClass: 'mky-disappear'
@@ -172,11 +176,11 @@ class MonkeyUI extends Component {
 					}
 					{ this.props.userSession
 						? ( <div id='mky-content-app' className=''>
-								{ this.state.showConversations
+								{ this.state.showConversations & this.haveConversations
 									? <ContentAside deleteConversation={this.props.deleteConversation} userSessionLogout={this.props.userSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
 									: null
 								}
-								<ContentWindow loadMessages={this.props.loadMessages} conversationSelected={this.state.conversation} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName}/>
+								<ContentWindow loadMessages={this.props.loadMessages} conversationSelected={this.state.conversation} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName} haveConversations={this.haveConversations}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>

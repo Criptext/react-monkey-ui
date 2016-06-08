@@ -33,7 +33,7 @@ class ContentConversation extends Component {
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
-						{ this.props.isMobile
+						{ this.props.isMobile & this.props.haveConversations
 							? <div className="mky-conversation-burger" onClick={this.showAside}><i className="demo-icon mky-menu-options">&#xe830;</i></div>
 							: null
 						}
