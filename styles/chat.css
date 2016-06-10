@@ -782,7 +782,7 @@ body{
 
 .mky-conversation-burger{
   float: left;
-  margin: 24px 0 0 12px;
+  margin: 24px 5px 0 12px;
   width: auto;
 }
 
@@ -797,6 +797,10 @@ body{
     margin: 13px;
     float: left;
     margin-left: 25px;
+}
+
+.mky-partialsize #mky-conversation-selected-image{
+	margin-left: 5px;
 }
 
 #mky-conversation-selected-image img{
@@ -945,7 +949,7 @@ body{
 .mky-bubble-image{
   	width: auto;
   	height: auto;
-  	max-width: 300px;
+  	max-width: 260px;
   	padding: 0;
   	background: #fff;
   	border: 1px solid #bbb;
@@ -1001,8 +1005,10 @@ body{
 
 .mky-bubble-file{
   background: #fff;
-  color: #606060;
   border: 1px solid #bbb;
+  color: #606060;
+  max-width: 180px;
+  padding: 10px;
   width: 200px;
 }
 
@@ -1238,6 +1244,38 @@ body{
   }
 }
 
+.mky-content-audio-to-download{
+  height: 100%;
+  align-items: center;
+  display: flex;
+  position: relative;
+  border: 1px solid #bbb;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+}
+
+/*
+.mky-content-audio-to-download::before{
+  content: '';
+  opacity: 0.5;
+  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);
+  background-size: 70%;
+  background-repeat: no-repeat;
+  background-position: center 25px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;  
+}
+*/
+
+.mky-content-audio-to-download i{
+  margin: 0 auto;
+  color: #6e8191;
+}
+
 .mky-bubble-audio-out .mky-content-audio{
 	float: right;
 }
@@ -1263,13 +1301,18 @@ body{
 .mky-content-image-loading{
   width: 40px;
   height: 40px;
-  margin: 0 70px;
+  margin: 0 80px;
   position: relative;
 }
 
-.mky-content-image img{
-  width: 100%;
-  cursor: pointer;
+.mky-content-image-to-download{
+  margin: 0 auto;
+  text-align: center;
+  width: 200px;
+}
+
+.mky-content-image-to-download i{
+  color: #6e8191;
 }
 
 .mky-content-image-data {
@@ -1286,6 +1329,7 @@ body{
 .mky-content-image-data img{
 	height: 100%;
 	width: auto;
+	cursor: pointer;
 }
 
 /*content file bubble */
@@ -1301,20 +1345,28 @@ body{
   position: relative;
 }
 
+.mky-content-file-to-download{
+  align-items: center;
+  display: flex;
+  height: 45px;
+  margin: 0 auto;
+  text-align: center;
+  height: 45px;
+}
+
 .mky-file-link{
-    width: 100%;
-    height: 100%;
-    float: left;
-    margin-right: 10px;
+  width: 100%;
+  height: 100%;
+  float: left;
 }
 
 .mky-file-icon{
-    width: 38px;
-    height: 50px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-    vertical-align: top;
-    float: left;
+  width: 38px;
+  height: 50px;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  vertical-align: top;
+  float: left;
 }
 
 .mky-file-pdf-icon{
@@ -2483,9 +2535,6 @@ input:focus{
   }
   #mky-conversation-selected-description{
     width: calc(100% - 165px);
-  }
-  #mky-conversation-selected-image{
-    margin-left: 5px;
   }
 }
 
