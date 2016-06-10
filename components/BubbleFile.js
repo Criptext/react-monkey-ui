@@ -4,23 +4,25 @@ import { getExtention } from '../utils/monkey-utils.js'
 class BubbleFile extends Component {
 	constructor(props) {
 		super(props);
-
+		this.state = {
+			isDownloading: false
+		}
+		this.eventBubble = this.eventBubble.bind(this);
 		this.downloadData = this.downloadData.bind(this);
 	}
 
 	componentWillMount() {
-        if(this.props.message.data == null && !this.props.message.isDownloading){
+        if(this.props.message.data == null && !this.state.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
-            this.props.message.isDownloading = true;
+            this.setState({isDownloading: true});
         }
 	}
 
 	render() {
 		return (
-			<div>
+			<div className='mky-content-file'>
 			{ this.props.message.data
-				? (
-					<div className='mky-content-file'>
+				? ( <div className='mky-content-file-data'>
 						<a className='mky-file-link' href={this.props.message.data} download={this.props.message.filename}>
 							<Fileicon classFileType={this.defineFileType(this.props.message.filename)} />
 							<div className='mky-file-detail'>
@@ -34,21 +36,27 @@ class BubbleFile extends Component {
 						</a>
 					</div>
 				)
-				: (
-					<div className='mky-content-file-loading'>
-                        <div className='mky-double-bounce1'></div>
-                        <div className='mky-double-bounce2'></div>
-                    </div>
+				: ( this.state.isDownloading
+					? ( <div className='mky-content-file-loading'>
+                        	<div className='mky-double-bounce1'></div>
+							<div className='mky-double-bounce2'></div>
+						</div>
+					) : <div className='mky-content-file-to-download' onClick={this.downloadData}><i className='demo-icon mky-menu-down'>&#xe815;</i></div>
 				)
 			}
 			</div>
 		)
 	}
 
-	downloadData() {
+	eventBubble() {
 		this.props.onClickMessage(this.props.message);
 	}
-
+	
+	downloadData() {
+		this.props.dataDownloadRequest(this.props.message.mokMessage);
+        this.setState({isDownloading: true});
+	}
+	
 	humanFileSize(bytes, si) {
 	    var thresh = si ? 1000 : 1024;
 	    if(Math.abs(bytes) < thresh) {
