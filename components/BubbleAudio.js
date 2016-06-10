@@ -13,29 +13,30 @@ class BubbleAudio extends Component {
 		super(props);
 		this.messageId = (this.props.message.id[0] == '-' ? (this.props.message.datetimeCreation) : this.props.message.id);
 		this.state = {
+			isDownloading: false,
 			disabledClass: 'mky-disabled',
-			minutes: ("0" + parseInt(this.props.message.length/60)).slice(-2),
-			seconds: ("0" + this.props.message.length%60).slice(-2)
+			minutes: ('0' + parseInt(this.props.message.length/60)).slice(-2),
+			seconds: ('0' + this.props.message.length%60).slice(-2)
 		}
 		this.playAudioBubble = this.playAudioBubble.bind(this);
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.updateAnimationBuble = this.updateAnimationBuble.bind(this);
+		this.downloadData = this.downloadData.bind(this);
 	}
 	
 	componentWillMount() {		
-        if(this.props.message.data == null && !this.props.message.isDownloading){
+        if(this.props.message.data == null && !this.props.message.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
-            this.props.message.isDownloading = true;
+            this.setState({isDownloading: true});
         }
 	}
 	
 	render() {
 		return (
-            <div className={'mky-content-audio'}>
+            <div className='mky-content-audio'>
                 { this.props.message.data
-	                ? (
-                    	<div className={'mky-content-audio-data'}>
+	                ? ( <div className={'mky-content-audio-data'}>
 	                        <div id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-green'} onClick={this.playAudioBubble} ></div>
 	                        <div id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green'} onClick={this.pauseAudioBubble} ></div>
 	                        <input id={'mky-bubble-audio-player-'+this.messageId} className='knob second'></input>
@@ -45,11 +46,13 @@ class BubbleAudio extends Component {
 	                        <audio id={'audio_'+this.messageId} preload='auto' controls='' src={this.props.message.data}></audio>
 						</div>
                     )
-                    : (
-                        <div className='mky-content-audio-loading'>
-                            <div className='mky-double-bounce1'></div>
-                            <div className='mky-double-bounce2'></div>
-                        </div>
+                    : ( this.state.isDownloading
+                    	? ( <div className='mky-content-audio-loading'>
+	                            <div className='mky-double-bounce1'></div>
+	                            <div className='mky-double-bounce2'></div>
+	                        </div>
+                    	)
+                        : <div className='mky-content-audio-to-download' onClick={this.downloadData}><i className='demo-icon mky-menu-down'>&#xe815;</i></div>
                     )
                 }
             </div>
@@ -63,7 +66,7 @@ class BubbleAudio extends Component {
 		this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.length ? this.props.message.length : 1));
 		//this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.duration));
 
-        let mkyAudioBubble = document.getElementById("audio_"+this.messageId);
+        let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
         var that = this;
         
         if(mkyAudioBubble){
@@ -73,6 +76,11 @@ class BubbleAudio extends Component {
 //                     that.setState({disabledClass: ''});
             }
         }
+	}
+	
+	downloadData() {
+		this.props.dataDownloadRequest(this.props.message.mokMessage);
+        this.setState({isDownloading: true});
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
