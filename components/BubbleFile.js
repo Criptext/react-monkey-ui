@@ -41,7 +41,7 @@ class BubbleFile extends Component {
                         	<div className='mky-double-bounce1'></div>
 							<div className='mky-double-bounce2'></div>
 						</div>
-					) : <div className='mky-content-file-to-download' onClick={this.downloadData}><i className='demo-icon mky-menu-down'>&#xe815;</i></div>
+					) : <div className='mky-content-file-to-download' onClick={this.downloadData}><i className='icon mky-icon-download'></i></div>
 				)
 			}
 			</div>

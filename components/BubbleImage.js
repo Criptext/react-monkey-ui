@@ -32,7 +32,7 @@ class BubbleImage extends Component {
 								<div className='mky-double-bounce2'></div>
 							</div>
 						)
-						: <div className='mky-content-image-to-download' onClick={this.downloadData}><i className='demo-icon mky-menu-down'>&#xe815;</i></div>
+						: <div className='mky-content-image-to-download' onClick={this.downloadData}><i className='icon mky-icon-download'></i></div>
                     )
                 }
 			</div>
