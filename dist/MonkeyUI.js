@@ -74,43 +74,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ContentWindow2 = _interopRequireDefault(_ContentWindow);
 
-	var _ContentLogin = __webpack_require__(353);
+	var _ContentLogin = __webpack_require__(304);
 
 	var _ContentLogin2 = _interopRequireDefault(_ContentLogin);
 
-	var _BubbleText = __webpack_require__(354);
+	var _BubbleText = __webpack_require__(305);
 
 	var _BubbleText2 = _interopRequireDefault(_BubbleText);
 
-	var _BubbleImage = __webpack_require__(355);
+	var _BubbleImage = __webpack_require__(306);
 
 	var _BubbleImage2 = _interopRequireDefault(_BubbleImage);
 
-	var _BubbleFile = __webpack_require__(356);
+	var _BubbleFile = __webpack_require__(307);
 
 	var _BubbleFile2 = _interopRequireDefault(_BubbleFile);
 
-	var _BubbleAudio = __webpack_require__(357);
+	var _BubbleAudio = __webpack_require__(308);
 
 	var _BubbleAudio2 = _interopRequireDefault(_BubbleAudio);
 
-	var _BubbleLocation = __webpack_require__(358);
-
-	var _BubbleLocation2 = _interopRequireDefault(_BubbleLocation);
-
-	var _ContentViewer = __webpack_require__(359);
+	var _ContentViewer = __webpack_require__(309);
 
 	var _ContentViewer2 = _interopRequireDefault(_ContentViewer);
 
-	var _ReceivedLocation = __webpack_require__(360);
-
-	var _ReceivedLocation2 = _interopRequireDefault(_ReceivedLocation);
-
-	var _MyForm = __webpack_require__(361);
+	var _MyForm = __webpack_require__(310);
 
 	var _MyForm2 = _interopRequireDefault(_MyForm);
 
-	var _chat = __webpack_require__(364);
+	var _chat = __webpack_require__(313);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
@@ -154,7 +146,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.state = {
 				conversation: {},
 				contentStyle: undefined,
-				idTabButton: 'mky-w-max',
+				classTabIcon: 'mky-icon-arrow-up-big',
 				isMobile: isMobile.any() ? true : false,
 				showConversations: true,
 				showBanner: false,
@@ -183,12 +175,10 @@ return /******/ (function(modules) { // webpackBootstrap
 						text: _BubbleText2.default,
 						image: _BubbleImage2.default,
 						file: _BubbleFile2.default,
-						audio: _BubbleAudio2.default,
-						location: _BubbleLocation2.default
+						audio: _BubbleAudio2.default
 					},
 					bubblePreviews: {
-						image: _ContentViewer2.default,
-						location: _ReceivedLocation2.default
+						image: _ContentViewer2.default
 					},
 					styles: this.props.styles != null ? this.props.styles : {},
 					extraChat: this.props.extraChat
@@ -278,15 +268,15 @@ return /******/ (function(modules) { // webpackBootstrap
 							this.defineTabText(),
 							' '
 						),
-						_react2.default.createElement('div', { id: this.state.idTabButton, onClick: this.openTab })
+						_react2.default.createElement(
+							'div',
+							{ onClick: this.openTab },
+							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon })
+						)
 					) : this.props.view.type === 'rightside' ? _react2.default.createElement(
 						'div',
 						{ className: 'mky-button', onClick: this.openSide },
-						_react2.default.createElement(
-							'i',
-							{ className: 'demo-icon mky-chat-empty' },
-							''
-						)
+						_react2.default.createElement('i', { className: 'icon mky-icon-add-regular' })
 					) : null,
 					_react2.default.createElement(
 						'div',
@@ -314,10 +304,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'openTab',
 			value: function openTab() {
-				if (this.state.idTabButton === 'mky-w-max') {
+				if (this.state.classTabIcon === 'mky-icon-arrow-up-big') {
 					this.setState({
 						contentStyle: this.props.view.data,
-						idTabButton: 'mky-w-min',
+						classTabIcon: 'mky-icon-arrow-down-big',
 						wrapperInClass: ''
 					});
 				} else {
@@ -327,7 +317,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					};
 					this.setState({
 						contentStyle: style,
-						idTabButton: 'mky-w-max',
+						classTabIcon: 'mky-icon-arrow-up-big',
 						wrapperInClass: 'mky-disappear'
 					});
 				}
@@ -534,19 +524,11 @@ return /******/ (function(modules) { // webpackBootstrap
 							this.props.isMobile ? _react2.default.createElement(
 								'div',
 								{ className: 'mky-header-exit', onClick: this.closeSide },
-								_react2.default.createElement(
-									'i',
-									{ className: 'demo-icon mky-cancel' },
-									''
-								)
+								_react2.default.createElement('i', { className: 'icon mky-icon-close-strong' })
 							) : _react2.default.createElement(
 								'div',
 								{ className: 'mky-header-exit', onClick: this.logout },
-								_react2.default.createElement(
-									'i',
-									{ className: 'demo-icon mky-logout' },
-									''
-								)
+								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right' })
 							)
 						)
 					),
@@ -899,12 +881,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						_react2.default.createElement(
 							'div',
 							{ className: 'mky-delete-conv', onClick: this.deleteConversation },
-							_react2.default.createElement(
-								'i',
-								{ className: 'demo-icon mky-close' },
-								''
-							),
-							' '
+							_react2.default.createElement('i', { className: 'icon mky-icon-close' })
 						),
 						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter })
 					)
@@ -16020,6 +15997,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	// shim for using process in browser
 
 	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it don't break things.
+	var cachedSetTimeout = setTimeout;
+	var cachedClearTimeout = clearTimeout;
+
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -16044,7 +16026,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = cachedSetTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -16061,7 +16043,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    cachedClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -16073,7 +16055,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        cachedSetTimeout(drainQueue, 0);
 	    }
 	};
 
@@ -35755,11 +35737,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Input2 = _interopRequireDefault(_Input);
 
-	var _LocationInput = __webpack_require__(303);
-
-	var _LocationInput2 = _interopRequireDefault(_LocationInput);
-
-	var _Modal = __webpack_require__(352);
+	var _Modal = __webpack_require__(303);
 
 	var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -35772,6 +35750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	// import LocationInput from './LocationInput.js'
 
 	var ContentConversation = function (_Component) {
 		_inherits(ContentConversation, _Component);
@@ -35816,11 +35795,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						this.props.isMobile & this.props.haveConversations ? _react2.default.createElement(
 							'div',
 							{ className: 'mky-conversation-burger', onClick: this.showAside },
-							_react2.default.createElement(
-								'i',
-								{ className: 'demo-icon mky-menu-options' },
-								''
-							)
+							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer' })
 						) : null,
 						_react2.default.createElement(
 							'div',
@@ -35862,7 +35837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							)
 						)
 					),
-					this.state.showLocationInput ? _react2.default.createElement(_LocationInput2.default, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this) }) : _react2.default.createElement(
+					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this) }) : _react2.default.createElement(
 						'div',
 						{ className: 'mky-chat-area' },
 						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUserName: this.props.getUserName }),
@@ -36268,11 +36243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				'i',
 				{ className: 'demo-icon mky-check' },
 				'!'
-			) : _react2.default.createElement(
-				'i',
-				{ className: 'demo-icon mky-check' },
-				''
-			) : null
+			) : _react2.default.createElement('i', { className: 'icon mky-icon-check' }) : null
 		);
 	};
 
@@ -36420,21 +36391,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'mky-button-input ' + this.state.classAttachButton },
-	                        _react2.default.createElement(
-	                            'i',
-	                            { id: 'mky-button-add', className: 'mky-button-icon demo-icon mky-dot', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility },
-	                            ''
-	                        )
+	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility })
 	                    ),
 	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton }),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton },
-	                        _react2.default.createElement(
-	                            'i',
-	                            { id: 'mky-button-cancel-audio', className: ' mky-button-icon demo-icon mky-trashcan-empty', onClick: this.handleCancelAudio },
-	                            ''
-	                        )
+	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio })
 	                    ),
 	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea }),
 	                    _react2.default.createElement(
@@ -36472,11 +36435,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    _react2.default.createElement(
 	                        'div',
 	                        { className: 'mky-button-input ' + this.state.classSendButton },
-	                        _react2.default.createElement(
-	                            'i',
-	                            { id: 'mky-button-send-message', className: 'demo-icon mky-send-empty', onClick: this.handleSendMessage },
-	                            ''
-	                        )
+	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
@@ -36488,11 +36447,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                            _react2.default.createElement('div', { className: 'mky-rect2' }),
 	                            _react2.default.createElement('div', { className: 'mky-rect3' }),
 	                            _react2.default.createElement('div', { className: 'mky-rect4' })
-	                        ) : _react2.default.createElement(
-	                            'i',
-	                            { id: 'mky-button-record-audio', className: ' mky-button-icon demo-icon mky-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio },
-	                            ''
-	                        )
+	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio })
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactDropzone2.default,
@@ -36981,7 +36936,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		
 		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 		
-		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint prefer-template: 0 */
 		
 		var supportMultiple = typeof document !== 'undefined' && document && document.createElement ? 'multiple' in document.createElement('input') : true;
 		
@@ -36994,6 +36949,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dropzone).call(this, props, context));
 		
 		    _this.onClick = _this.onClick.bind(_this);
+		    _this.onDragStart = _this.onDragStart.bind(_this);
 		    _this.onDragEnter = _this.onDragEnter.bind(_this);
 		    _this.onDragLeave = _this.onDragLeave.bind(_this);
 		    _this.onDragOver = _this.onDragOver.bind(_this);
@@ -37009,6 +36965,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		    key: 'componentDidMount',
 		    value: function componentDidMount() {
 		      this.enterCounter = 0;
+		    }
+		  }, {
+		    key: 'onDragStart',
+		    value: function onDragStart(e) {
+		      if (this.props.onDragStart) {
+		        this.props.onDragStart.call(this, e);
+		      }
 		    }
 		  }, {
 		    key: 'onDragEnter',
@@ -37194,7 +37157,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		        multiple: supportMultiple && multiple,
 		        ref: function ref(el) {
 		          return _this3.fileInputEl = el;
-		        },
+		        }, // eslint-disable-line
 		        onChange: this.onDrop
 		      };
 		
@@ -37209,6 +37172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		          style: appliedStyle
 		        }, props /* expand user provided props first so event handlers are never overridden */, {
 		          onClick: this.onClick,
+		          onDragStart: this.onDragStart,
 		          onDragEnter: this.onDragEnter,
 		          onDragOver: this.onDragOver,
 		          onDragLeave: this.onDragLeave,
@@ -37230,27 +37194,31 @@ return /******/ (function(modules) { // webpackBootstrap
 		};
 		
 		Dropzone.propTypes = {
+		  // Overriding drop behavior
 		  onDrop: _react2.default.PropTypes.func,
 		  onDropAccepted: _react2.default.PropTypes.func,
 		  onDropRejected: _react2.default.PropTypes.func,
+		
+		  // Overriding drag behavior
+		  onDragStart: _react2.default.PropTypes.func,
 		  onDragEnter: _react2.default.PropTypes.func,
 		  onDragLeave: _react2.default.PropTypes.func,
 		
-		  children: _react2.default.PropTypes.node,
-		  style: _react2.default.PropTypes.object,
-		  activeStyle: _react2.default.PropTypes.object,
-		  rejectStyle: _react2.default.PropTypes.object,
-		  className: _react2.default.PropTypes.string,
-		  activeClassName: _react2.default.PropTypes.string,
-		  rejectClassName: _react2.default.PropTypes.string,
+		  children: _react2.default.PropTypes.node, // Contents of the dropzone
+		  style: _react2.default.PropTypes.object, // CSS styles to apply
+		  activeStyle: _react2.default.PropTypes.object, // CSS styles to apply when drop will be accepted
+		  rejectStyle: _react2.default.PropTypes.object, // CSS styles to apply when drop will be rejected
+		  className: _react2.default.PropTypes.string, // Optional className
+		  activeClassName: _react2.default.PropTypes.string, // className for accepted state
+		  rejectClassName: _react2.default.PropTypes.string, // className for rejected state
 		
-		  disablePreview: _react2.default.PropTypes.bool,
-		  disableClick: _react2.default.PropTypes.bool,
+		  disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
+		  disableClick: _react2.default.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
 		
-		  inputProps: _react2.default.PropTypes.object,
-		  multiple: _react2.default.PropTypes.bool,
-		  accept: _react2.default.PropTypes.string,
-		  name: _react2.default.PropTypes.string
+		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <file type="input"/> tag
+		  multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
+		  accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
+		  name: _react2.default.PropTypes.string // name attribute for the input tag
 		};
 		
 		exports.default = Dropzone;
@@ -49906,4609 +49874,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _Gmap = __webpack_require__(304);
-
-	var _Gmap2 = _interopRequireDefault(_Gmap);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var LocationInput = function (_Component) {
-		_inherits(LocationInput, _Component);
-
-		function LocationInput(props) {
-			_classCallCheck(this, LocationInput);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(LocationInput).call(this, props));
-
-			_this.state = {
-				opacity: 0,
-				lat: 0,
-				lng: 0,
-				address: ""
-			};
-			return _this;
-		}
-
-		_createClass(LocationInput, [{
-			key: 'getLocation',
-			value: function getLocation() {
-				var _this2 = this;
-
-				if (navigator.geolocation) {
-					navigator.geolocation.getCurrentPosition(function (position) {
-						_this2.refs.googleMap.setMarker(position.coords.latitude, position.coords.longitude);
-						_this2.refs.googleMap.setMapCenter(position.coords.latitude, position.coords.longitude);
-					}, function (error) {
-						var errors = {
-							1: 'Permission denied',
-							2: 'Position unavailable',
-							3: 'Request timeout'
-						};
-						alert("Error: " + errors[error.code]);
-					});
-				} else {
-					console.log("Geolocation is not supported by this browser.");
-				}
-			}
-		}, {
-			key: 'setOpacity',
-			value: function setOpacity(value) {
-				this.setState({ opacity: value });
-			}
-		}, {
-			key: 'locationMessageInput',
-			value: function locationMessageInput(lat) {
-				var message = {
-					bubbleType: 5,
-					text: this.state.address,
-					preview: 'Location',
-					lat: this.state.lat,
-					lng: this.state.lng
-				};
-				this.props.messageCreated(message);
-				this.props.disableGeoInput();
-			}
-		}, {
-			key: 'updateGeoLocation',
-			value: function updateGeoLocation(lat, lng, address) {
-				this.setState({
-					lat: lat,
-					lng: lng,
-					address: address
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ style: { height: 'calc(100% - 86px)', width: '100%', zIndex: 1000 } },
-					_react2.default.createElement(_Gmap2.default, { updateGeoLocation: this.updateGeoLocation.bind(this), fireChangeEvent: this.setOpacity.bind(this), ref: 'googleMap' }),
-					_react2.default.createElement('div', { className: 'testing-location', onClick: this.getLocation.bind(this) }),
-					_react2.default.createElement(
-						'div',
-						{ className: 'quit-location', onClick: this.props.disableGeoInput },
-						_react2.default.createElement(
-							'i',
-							{ className: 'demo-icon mky-trashcan-empty' },
-							''
-						),
-						'   '
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'send-location', onClick: this.locationMessageInput.bind(this) },
-						_react2.default.createElement(
-							'i',
-							{ className: 'demo-icon mky-send-empty' },
-							''
-						)
-					),
-					_react2.default.createElement('div', { className: 'pin-location', style: { display: this.state.opacity ? "block" : "none" } })
-				);
-			}
-		}]);
-
-		return LocationInput;
-	}(_react.Component);
-
-	exports.default = LocationInput;
-
-/***/ },
-/* 304 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactGoogleMaps = __webpack_require__(305);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var SimpleMapPage = function (_Component) {
-		_inherits(SimpleMapPage, _Component);
-
-		function SimpleMapPage(props) {
-			_classCallCheck(this, SimpleMapPage);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(SimpleMapPage).call(this, props));
-
-			_this.state = {
-				lat: -2.1667,
-				lng: -79.9000,
-				animation: 1,
-				opacity: 1,
-				mapLat: -2.1667,
-				mapLng: -79.9000
-			};
-			return _this;
-		}
-
-		_createClass(SimpleMapPage, [{
-			key: 'setMarker',
-			value: function setMarker(lat, lng) {
-				this.setState({
-					lat: lat,
-					lng: lng
-				});
-			}
-		}, {
-			key: 'setMapCenter',
-			value: function setMapCenter(lat, lng) {
-				this.setState({
-					mapLat: lat,
-					mapLng: lng
-				});
-			}
-		}, {
-			key: 'handleCenterChanged',
-			value: function handleCenterChanged() {
-				var coords = this.refs.map.getCenter();
-				this.setMarker(coords.lat(), coords.lng());
-				this.setMapCenter(coords.lat(), coords.lng());
-				this.setState({
-					animation: 0,
-					opacity: 0
-				});
-				this.props.fireChangeEvent(1);
-			}
-		}, {
-			key: 'handleIdle',
-			value: function handleIdle() {
-				var _this2 = this;
-
-				this.setState({
-					animation: 1,
-					opacity: 1
-				});
-				this.props.fireChangeEvent(0);
-				var geocoder = new google.maps.Geocoder();
-				var lat = this.state.lat;
-				var lng = this.state.lng;
-				var latlng = new google.maps.LatLng(lat, lng);
-				geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-					if (status == google.maps.GeocoderStatus.OK) {
-						if (results[0]) {
-							_this2.props.updateGeoLocation(_this2.state.lat, _this2.state.lng, results[0].formatted_address);
-						} else {
-							_this2.props.updateGeoLocation(_this2.state.lat, _this2.state.lng, "Location");
-						}
-					} else {
-						_this2.props.updateGeoLocation(_this2.state.lat, _this2.state.lng, "Location");
-					}
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(_reactGoogleMaps.GoogleMapLoader, { ref: 'maploader', containerElement: _react2.default.createElement('div', _extends({}, this.props, {
-						style: {
-							height: '100%',
-							width: '100%',
-							zIndex: 1000,
-							overflow: 'visible !important'
-						},
-
-						id: 'map-id' })),
-					googleMapElement: _react2.default.createElement(
-						_reactGoogleMaps.GoogleMap,
-						{ ref: 'map', onCenterChanged: this.handleCenterChanged.bind(this),
-							onIdle: this.handleIdle.bind(this),
-							defaultZoom: 17,
-							center: { lat: this.state.mapLat, lng: this.state.mapLng },
-							defaultOptions: { streetViewControl: false, mapTypeControl: false, zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_TOP } }
-						},
-						_react2.default.createElement(_reactGoogleMaps.Marker, { position: { lat: this.state.lat, lng: this.state.lng }, ref: 'myMarker', animation: this.state.animation, opacity: this.state.opacity })
-					) });
-			}
-		}]);
-
-		return SimpleMapPage;
-	}(_react.Component);
-
-	exports.default = SimpleMapPage;
-
-/***/ },
-/* 305 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _interopRequire(obj) { return obj && obj.__esModule ? obj["default"] : obj; }
-
-	var _GoogleMapLoader = __webpack_require__(306);
-
-	exports.GoogleMapLoader = _interopRequire(_GoogleMapLoader);
-
-	var _GoogleMap = __webpack_require__(316);
-
-	exports.GoogleMap = _interopRequire(_GoogleMap);
-
-	var _Circle = __webpack_require__(317);
-
-	exports.Circle = _interopRequire(_Circle);
-
-	var _DirectionsRenderer = __webpack_require__(321);
-
-	exports.DirectionsRenderer = _interopRequire(_DirectionsRenderer);
-
-	var _DrawingManager = __webpack_require__(324);
-
-	exports.DrawingManager = _interopRequire(_DrawingManager);
-
-	var _InfoWindow = __webpack_require__(327);
-
-	exports.InfoWindow = _interopRequire(_InfoWindow);
-
-	var _KmlLayer = __webpack_require__(331);
-
-	exports.KmlLayer = _interopRequire(_KmlLayer);
-
-	var _Marker = __webpack_require__(334);
-
-	exports.Marker = _interopRequire(_Marker);
-
-	var _OverlayView = __webpack_require__(337);
-
-	exports.OverlayView = _interopRequire(_OverlayView);
-
-	var _Polygon = __webpack_require__(340);
-
-	exports.Polygon = _interopRequire(_Polygon);
-
-	var _Polyline = __webpack_require__(343);
-
-	exports.Polyline = _interopRequire(_Polyline);
-
-	var _Rectangle = __webpack_require__(346);
-
-	exports.Rectangle = _interopRequire(_Rectangle);
-
-	var _SearchBox = __webpack_require__(349);
-
-	exports.SearchBox = _interopRequire(_SearchBox);
-
-/***/ },
-/* 306 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _creatorsGoogleMapHolder = __webpack_require__(307);
-
-	var _creatorsGoogleMapHolder2 = _interopRequireDefault(_creatorsGoogleMapHolder);
-
-	var USE_NEW_BEHAVIOR_TAG_NAME = "__new_behavior__"; /* CIRCULAR_DEPENDENCY */
-
-	var GoogleMapLoader = (function (_Component) {
-	  _inherits(GoogleMapLoader, _Component);
-
-	  function GoogleMapLoader() {
-	    _classCallCheck(this, GoogleMapLoader);
-
-	    _get(Object.getPrototypeOf(GoogleMapLoader.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {
-	      map: null
-	    };
-	  }
-
-	  _createClass(GoogleMapLoader, [{
-	    key: "mountGoogleMap",
-	    value: function mountGoogleMap(domEl) {
-	      if (this.state.map || domEl === null) {
-	        return;
-	      }
-	      var _props$googleMapElement$props = this.props.googleMapElement.props;
-	      var children = _props$googleMapElement$props.children;
-
-	      var mapProps = _objectWithoutProperties(_props$googleMapElement$props, ["children"]);
-
-	      //
-	      // Create google.maps.Map instance so that dom is initialized before
-	      // React's children creators.
-	      //
-	      var map = _creatorsGoogleMapHolder2["default"]._createMap(domEl, mapProps);
-	      this.setState({ map: map });
-	    }
-	  }, {
-	    key: "renderChild",
-	    value: function renderChild() {
-	      if (this.state.map) {
-	        // Notice: implementation details
-	        //
-	        // In this state, the DOM of google.maps.Map is already initialized in
-	        // my innerHTML. Adding extra React components will not clean it
-	        // in current version*. It will use prepend to add DOM of
-	        // GoogleMapHolder and become a sibling of the DOM of google.maps.Map
-	        // Not sure this is subject to change
-	        //
-	        // *current version: 0.13.3, 0.14.2
-	        //
-	        return _react2["default"].cloneElement(this.props.googleMapElement, {
-	          map: this.state.map,
-	          // ------------ Deprecated ------------
-	          containerTagName: USE_NEW_BEHAVIOR_TAG_NAME
-	        });
-	      }
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].cloneElement(this.props.containerElement, {
-	        ref: this.mountGoogleMap.bind(this)
-	      }, this.renderChild());
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: {
-	      containerElement: _react.PropTypes.node.isRequired,
-	      googleMapElement: _react.PropTypes.element.isRequired },
-	    enumerable: true
-	  }, {
-	    key: "defaultProps",
-	    /* CIRCULAR_DEPENDENCY. Uncomment when 5.0.0 comes: propTypesElementOfType(GoogleMap).isRequired, */
-	    value: {
-	      containerElement: _react2["default"].createElement("div", null)
-	    },
-	    enumerable: true
-	  }]);
-
-	  return GoogleMapLoader;
-	})(_react.Component);
-
-	exports["default"] = GoogleMapLoader;
-	module.exports = exports["default"];
-
-/***/ },
-/* 307 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _warning = __webpack_require__(308);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	var _eventListsGoogleMapEventList = __webpack_require__(309);
-
-	var _eventListsGoogleMapEventList2 = _interopRequireDefault(_eventListsGoogleMapEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var mapControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-	  center: _react.PropTypes.object,
-	  heading: _react.PropTypes.number,
-	  mapTypeId: _react.PropTypes.any,
-	  options: _react.PropTypes.object,
-	  streetView: _react.PropTypes.any,
-	  tilt: _react.PropTypes.number,
-	  zoom: _react.PropTypes.number
-	};
-
-	exports.mapControlledPropTypes = mapControlledPropTypes;
-	var mapDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(mapControlledPropTypes);
-
-	exports.mapDefaultPropTypes = mapDefaultPropTypes;
-	var mapUpdaters = {
-	  center: function center(_center, component) {
-	    component.getMap().setCenter(_center);
-	  },
-	  heading: function heading(_heading, component) {
-	    component.getMap().setHeading(_heading);
-	  },
-	  mapTypeId: function mapTypeId(_mapTypeId, component) {
-	    component.getMap().setMapTypeId(_mapTypeId);
-	  },
-	  options: function options(_options, component) {
-	    component.getMap().setOptions(_options);
-	  },
-	  streetView: function streetView(_streetView, component) {
-	    component.getMap().setStreetView(_streetView);
-	  },
-	  tilt: function tilt(_tilt, component) {
-	    component.getMap().setTilt(_tilt);
-	  },
-	  zoom: function zoom(_zoom, component) {
-	    component.getMap().setZoom(_zoom);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsGoogleMapEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var mapEventPropTypes = eventPropTypes;
-
-	exports.mapEventPropTypes = mapEventPropTypes;
-
-	var GoogleMapHolder = (function (_Component) {
-	  _inherits(GoogleMapHolder, _Component);
-
-	  function GoogleMapHolder() {
-	    _classCallCheck(this, _GoogleMapHolder);
-
-	    _get(Object.getPrototypeOf(_GoogleMapHolder.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(GoogleMapHolder, [{
-	    key: "getMap",
-	    value: function getMap() {
-	      return this.props.map;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var _this = this;
-
-	      return _react2["default"].createElement(
-	        "div",
-	        null,
-	        _react.Children.map(this.props.children, function (childElement) {
-	          if (_react2["default"].isValidElement(childElement)) {
-	            return _react2["default"].cloneElement(childElement, {
-	              mapHolderRef: _this
-	            });
-	          } else {
-	            return childElement;
-	          }
-	        })
-	      );
-	    }
-	  }], [{
-	    key: "_createMap",
-	    value: function _createMap(domEl, mapProps) {
-	      (0, _warning2["default"])("undefined" !== typeof google, "Make sure you've put a <script> tag in your <head> element to load Google Maps JavaScript API v3.\n If you're looking for built-in support to load it for you, use the \"async/ScriptjsLoader\" instead.\n See https://github.com/tomchentw/react-google-maps/pull/168");
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-	      return new google.maps.Map(domEl, (0, _utilsComposeOptions2["default"])(mapProps, mapControlledPropTypes));
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      map: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _GoogleMapHolder = GoogleMapHolder;
-	  GoogleMapHolder = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getMap",
-	    updaters: mapUpdaters
-	  })(GoogleMapHolder) || GoogleMapHolder;
-	  return GoogleMapHolder;
-	})(_react.Component);
-
-	exports["default"] = GoogleMapHolder;
-
-/***/ },
-/* 308 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2014-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-
-	'use strict';
-
-	/**
-	 * Similar to invariant but only logs a warning if the condition is not met.
-	 * This can be used to log issues in development environments in critical
-	 * paths. Removing the logging code for production environments will keep the
-	 * same logic and follow the same code paths.
-	 */
-
-	var warning = function() {};
-
-	if (process.env.NODE_ENV !== 'production') {
-	  warning = function(condition, format, args) {
-	    var len = arguments.length;
-	    args = new Array(len > 2 ? len - 2 : 0);
-	    for (var key = 2; key < len; key++) {
-	      args[key - 2] = arguments[key];
-	    }
-	    if (format === undefined) {
-	      throw new Error(
-	        '`warning(condition, format, ...args)` requires a warning ' +
-	        'message argument'
-	      );
-	    }
-
-	    if (format.length < 10 || (/^[s\W]*$/).test(format)) {
-	      throw new Error(
-	        'The warning format should be able to uniquely identify this ' +
-	        'warning. Please, use a more descriptive format than: ' + format
-	      );
-	    }
-
-	    if (!condition) {
-	      var argIndex = 0;
-	      var message = 'Warning: ' +
-	        format.replace(/%s/g, function() {
-	          return args[argIndex++];
-	        });
-	      if (typeof console !== 'undefined') {
-	        console.error(message);
-	      }
-	      try {
-	        // This error was thrown as a convenience so that you can use this stack
-	        // to find the callsite that caused this warning to fire.
-	        throw new Error(message);
-	      } catch(x) {}
-	    }
-	  };
-	}
-
-	module.exports = warning;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(115)))
-
-/***/ },
-/* 309 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["bounds_changed", "center_changed", "click", "dblclick", "drag", "dragend", "dragstart", "heading_changed", "idle", "maptypeid_changed", "mousemove", "mouseout", "mouseover", "projection_changed", "resize", "rightclick", "tilesloaded", "tilt_changed", "zoom_changed"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 310 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = eventHandlerCreator;
-
-	var _react = __webpack_require__(1);
-
-	function groupToUpperCase(match, group) {
-	  return group.toUpperCase();
-	}
-
-	function toOnEventName(rawName) {
-	  return "on" + rawName.replace(/^(.)/, groupToUpperCase).replace(/_(.)/g, groupToUpperCase);
-	}
-
-	function eventHandlerCreator(rawNameList) {
-	  var eventPropTypes = {};
-	  var onEventNameByRawName = {};
-
-	  rawNameList.forEach(function (rawName) {
-	    var onEventName = toOnEventName(rawName);
-	    eventPropTypes[onEventName] = _react.PropTypes.func;
-	    onEventNameByRawName[rawName] = onEventName;
-	  });
-
-	  function registerEvents(event, props, googleMapInstance) {
-	    var registered = rawNameList.reduce(function (acc, rawName) {
-	      var onEventName = onEventNameByRawName[rawName];
-
-	      if (Object.prototype.hasOwnProperty.call(props, onEventName)) {
-	        acc.push(event.addListener(googleMapInstance, rawName, props[onEventName]));
-	      }
-	      return acc;
-	    }, []);
-
-	    return registered.forEach.bind(registered, event.removeListener, event);
-	  }
-
-	  return {
-	    eventPropTypes: eventPropTypes,
-	    registerEvents: registerEvents
-	  };
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 311 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = defaultPropsCreator;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	var _addDefaultPrefix = __webpack_require__(312);
-
-	var _addDefaultPrefix2 = _interopRequireDefault(_addDefaultPrefix);
-
-	function defaultPropsCreator(propTypes) {
-	  return Object.keys(propTypes).reduce(function (acc, name) {
-	    acc[(0, _addDefaultPrefix2["default"])(name)] = propTypes[name];
-	    return acc;
-	  }, {});
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 312 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = addDefaultPrefix;
-
-	function addDefaultPrefix(name) {
-	  return "default" + (name[0].toUpperCase() + name.slice(1));
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 313 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	exports["default"] = composeOptions;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	var _controlledOrDefault = __webpack_require__(314);
-
-	var _controlledOrDefault2 = _interopRequireDefault(_controlledOrDefault);
-
-	function composeOptions(props, controlledPropTypes) {
-	  var optionNameList = Object.keys(controlledPropTypes);
-	  var getter = (0, _controlledOrDefault2["default"])(props);
-
-	  // props from arguments may contain unknow props.
-	  // We only interested those in optionNameList
-	  return optionNameList.reduce(function (acc, optionName) {
-	    if ("options" !== optionName) {
-	      var value = getter(optionName);
-	      if ("undefined" !== typeof value) {
-	        acc[optionName] = value;
-	      }
-	    }
-	    return acc;
-	  }, _extends({}, getter("options")));
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 314 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = controlledOrDefault;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	var _addDefaultPrefix = __webpack_require__(312);
-
-	var _addDefaultPrefix2 = _interopRequireDefault(_addDefaultPrefix);
-
-	function controlledOrDefault(props) {
-	  return function (name) {
-	    if (Object.prototype.hasOwnProperty.call(props, name)) {
-	      return props[name];
-	    } else {
-	      return props[(0, _addDefaultPrefix2["default"])(name)];
-	    }
-	  };
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 315 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = componentLifecycleDecorator;
-
-	function componentLifecycleDecorator(_ref) {
-	  var registerEvents = _ref.registerEvents;
-	  var instanceMethodName = _ref.instanceMethodName;
-	  var updaters = _ref.updaters;
-
-	  // This modify the Component.prototype directly
-	  return function (Component) {
-	    function register() {
-	      this._unregisterEvents = registerEvents(google.maps.event, this.props, this[instanceMethodName]());
-	    }
-
-	    function unregister() {
-	      if (this._unregisterEvents) {
-	        this._unregisterEvents();
-	        this._unregisterEvents = null;
-	      }
-	    }
-
-	    function noop() {}
-
-	    // Stash component's own lifecycle methods to be invoked later
-	    var componentDidMount = Component.prototype.hasOwnProperty("componentDidMount") ? Component.prototype.componentDidMount : noop;
-	    var componentDidUpdate = Component.prototype.hasOwnProperty("componentDidUpdate") ? Component.prototype.componentDidUpdate : noop;
-	    var componentWillUnmount = Component.prototype.hasOwnProperty("componentWillUnmount") ? Component.prototype.componentWillUnmount : noop;
-
-	    Object.defineProperty(Component.prototype, "componentDidMount", {
-	      enumerable: false,
-	      configurable: true,
-	      writable: true,
-	      value: function value() {
-	        // Hook into client's implementation, if it has any
-	        componentDidMount.call(this);
-
-	        register.call(this);
-	      }
-	    });
-
-	    Object.defineProperty(Component.prototype, "componentDidUpdate", {
-	      enumerable: false,
-	      configurable: true,
-	      writable: true,
-	      value: function value(prevProps) {
-	        unregister.call(this);
-
-	        for (var _name in updaters) {
-	          if (Object.prototype.hasOwnProperty.call(this.props, _name)) {
-	            updaters[_name](this.props[_name], this);
-	          }
-	        }
-
-	        // Hook into client's implementation, if it has any
-	        componentDidUpdate.call(this, prevProps);
-
-	        register.call(this);
-	      }
-	    });
-
-	    Object.defineProperty(Component.prototype, "componentWillUnmount", {
-	      enumerable: false,
-	      configurable: true,
-	      writable: true,
-	      value: function value() {
-	        // Hook into client's implementation, if it has any
-	        componentWillUnmount.call(this);
-
-	        unregister.call(this);
-	        var instance = this[instanceMethodName]();
-	        if ("setMap" in instance) {
-	          instance.setMap(null);
-	        }
-	      }
-	    });
-
-	    return Component;
-	  };
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 316 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _warning = __webpack_require__(308);
-
-	var _warning2 = _interopRequireDefault(_warning);
-
-	var _creatorsGoogleMapHolder = __webpack_require__(307);
-
-	var _creatorsGoogleMapHolder2 = _interopRequireDefault(_creatorsGoogleMapHolder);
-
-	var _GoogleMapLoader = __webpack_require__(306);
-
-	var _GoogleMapLoader2 = _interopRequireDefault(_GoogleMapLoader);
-
-	var USE_NEW_BEHAVIOR_TAG_NAME = "__new_behavior__";
-
-	var GoogleMap = (function (_Component) {
-	  _inherits(GoogleMap, _Component);
-
-	  function GoogleMap() {
-	    _classCallCheck(this, GoogleMap);
-
-	    _get(Object.getPrototypeOf(GoogleMap.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(GoogleMap, [{
-	    key: "getBounds",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/Map$/); })
-	    value: function getBounds() {
-	      return (this.props.map || this.refs.delegate).getBounds();
-	    }
-	  }, {
-	    key: "getCenter",
-	    value: function getCenter() {
-	      return (this.props.map || this.refs.delegate).getCenter();
-	    }
-	  }, {
-	    key: "getDiv",
-	    value: function getDiv() {
-	      return (this.props.map || this.refs.delegate).getDiv();
-	    }
-	  }, {
-	    key: "getHeading",
-	    value: function getHeading() {
-	      return (this.props.map || this.refs.delegate).getHeading();
-	    }
-	  }, {
-	    key: "getMapTypeId",
-	    value: function getMapTypeId() {
-	      return (this.props.map || this.refs.delegate).getMapTypeId();
-	    }
-	  }, {
-	    key: "getProjection",
-	    value: function getProjection() {
-	      return (this.props.map || this.refs.delegate).getProjection();
-	    }
-	  }, {
-	    key: "getStreetView",
-	    value: function getStreetView() {
-	      return (this.props.map || this.refs.delegate).getStreetView();
-	    }
-	  }, {
-	    key: "getTilt",
-	    value: function getTilt() {
-	      return (this.props.map || this.refs.delegate).getTilt();
-	    }
-	  }, {
-	    key: "getZoom",
-	    value: function getZoom() {
-	      return (this.props.map || this.refs.delegate).getZoom();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-	    //
-	    // Public APIs - Use this carefully
-	    // See discussion in https://github.com/tomchentw/react-google-maps/issues/62
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return !it.match(/^get/) && !it.match(/^set/) && !it.match(/Map$/); })
-	  }, {
-	    key: "fitBounds",
-	    value: function fitBounds(bounds) {
-	      return (this.props.map || this.refs.delegate).fitBounds(bounds);
-	    }
-	  }, {
-	    key: "panBy",
-	    value: function panBy(x, y) {
-	      return (this.props.map || this.refs.delegate).panBy(x, y);
-	    }
-	  }, {
-	    key: "panTo",
-	    value: function panTo(latLng) {
-	      return (this.props.map || this.refs.delegate).panTo(latLng);
-	    }
-	  }, {
-	    key: "panToBounds",
-	    value: function panToBounds(latLngBounds) {
-	      return (this.props.map || this.refs.delegate).panToBounds(latLngBounds);
-	    }
-
-	    // END - Public APIs - Use this carefully
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Map
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      var containerTagName = this.props.containerTagName;
-
-	      var isUsingNewBehavior = USE_NEW_BEHAVIOR_TAG_NAME === containerTagName;
-
-	      (0, _warning2["default"])(isUsingNewBehavior, "\"GoogleMap\" with containerTagName is deprecated now and will be removed in next major release (5.0.0).\nUse \"GoogleMapLoader\" instead. See https://github.com/tomchentw/react-google-maps/pull/157 for more details.");
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var _props = this.props;
-	      var containerTagName = _props.containerTagName;
-	      var _props$containerProps = _props.containerProps;
-	      var containerProps = _props$containerProps === undefined ? {} : _props$containerProps;
-	      var children = _props.children;
-
-	      var mapProps = _objectWithoutProperties(_props, ["containerTagName", "containerProps", "children"]);
-
-	      var isUsingNewBehavior = USE_NEW_BEHAVIOR_TAG_NAME === containerTagName;
-
-	      if (isUsingNewBehavior) {
-	        return _react2["default"].createElement(
-	          _creatorsGoogleMapHolder2["default"],
-	          mapProps,
-	          children
-	        );
-	      } else {
-	        // ------------ Deprecated ------------
-	        var realContainerTagName = containerTagName === undefined || containerTagName === null ? "div" : containerTagName;
-
-	        return _react2["default"].createElement(_GoogleMapLoader2["default"], {
-	          ref: "loader",
-	          containerElement: _react2["default"].createElement(realContainerTagName, containerProps),
-	          googleMapElement: _react2["default"].createElement(
-	            GoogleMap,
-	            _extends({ ref: "delegate", containerTagName: USE_NEW_BEHAVIOR_TAG_NAME }, mapProps),
-	            children
-	          )
-	        });
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({
-	      containerTagName: _react.PropTypes.string,
-	      containerProps: _react.PropTypes.object,
-	      map: _react.PropTypes.object
-	    }, _creatorsGoogleMapHolder.mapDefaultPropTypes, _creatorsGoogleMapHolder.mapControlledPropTypes, _creatorsGoogleMapHolder.mapEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return GoogleMap;
-	})(_react.Component);
-
-	exports["default"] = GoogleMap;
-	module.exports = exports["default"];
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 317 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsCircleCreator = __webpack_require__(319);
-
-	var _creatorsCircleCreator2 = _interopRequireDefault(_creatorsCircleCreator);
-
-	var Circle = (function (_Component) {
-	  _inherits(Circle, _Component);
-
-	  function Circle() {
-	    _classCallCheck(this, Circle);
-
-	    _get(Object.getPrototypeOf(Circle.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(Circle, [{
-	    key: "getBounds",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Circle
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getBounds() {
-	      return this.state.circle.getBounds();
-	    }
-	  }, {
-	    key: "getCenter",
-	    value: function getCenter() {
-	      return this.state.circle.getCenter();
-	    }
-	  }, {
-	    key: "getDraggable",
-	    value: function getDraggable() {
-	      return this.state.circle.getDraggable();
-	    }
-	  }, {
-	    key: "getEditable",
-	    value: function getEditable() {
-	      return this.state.circle.getEditable();
-	    }
-	  }, {
-	    key: "getMap",
-	    value: function getMap() {
-	      return this.state.circle.getMap();
-	    }
-	  }, {
-	    key: "getRadius",
-	    value: function getRadius() {
-	      return this.state.circle.getRadius();
-	    }
-	  }, {
-	    key: "getVisible",
-	    value: function getVisible() {
-	      return this.state.circle.getVisible();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Circle
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var circle = _creatorsCircleCreator2["default"]._createCircle(this.props);
-
-	      this.setState({ circle: circle });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.circle) {
-	        return _react2["default"].createElement(
-	          _creatorsCircleCreator2["default"],
-	          _extends({ circle: this.state.circle }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsCircleCreator.circleDefaultPropTypes, _creatorsCircleCreator.circleControlledPropTypes, _creatorsCircleCreator.circleEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return Circle;
-	})(_react.Component);
-
-	exports["default"] = Circle;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 318 */
-/***/ function(module, exports) {
-
-	var canUseDOM = !!(
-	  typeof window !== 'undefined' &&
-	  window.document &&
-	  window.document.createElement
-	);
-
-	module.exports = canUseDOM;
-
-/***/ },
-/* 319 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsCircleEventList = __webpack_require__(320);
-
-	var _eventListsCircleEventList2 = _interopRequireDefault(_eventListsCircleEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var circleControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Circle
-	  center: _react.PropTypes.any,
-	  draggable: _react.PropTypes.bool,
-	  editable: _react.PropTypes.bool,
-	  options: _react.PropTypes.object,
-	  radius: _react.PropTypes.number,
-	  visible: _react.PropTypes.bool
-	};
-
-	exports.circleControlledPropTypes = circleControlledPropTypes;
-	var circleDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(circleControlledPropTypes);
-
-	exports.circleDefaultPropTypes = circleDefaultPropTypes;
-	var circleUpdaters = {
-	  center: function center(_center, component) {
-	    component.getCircle().setCenter(_center);
-	  },
-	  draggable: function draggable(_draggable, component) {
-	    component.getCircle().setDraggable(_draggable);
-	  },
-	  editable: function editable(_editable, component) {
-	    component.getCircle().setEditable(_editable);
-	  },
-	  options: function options(_options, component) {
-	    component.getCircle().setOptions(_options);
-	  },
-	  radius: function radius(_radius, component) {
-	    component.getCircle().setRadius(_radius);
-	  },
-	  visible: function visible(_visible, component) {
-	    component.getCircle().setVisible(_visible);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsCircleEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var circleEventPropTypes = eventPropTypes;
-
-	exports.circleEventPropTypes = circleEventPropTypes;
-
-	var CircleCreator = (function (_Component) {
-	  _inherits(CircleCreator, _Component);
-
-	  function CircleCreator() {
-	    _classCallCheck(this, _CircleCreator);
-
-	    _get(Object.getPrototypeOf(_CircleCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(CircleCreator, [{
-	    key: "getCircle",
-	    value: function getCircle() {
-	      return this.props.circle;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createCircle",
-	    value: function _createCircle(circleProps) {
-	      var mapHolderRef = circleProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Circle
-	      var circle = new google.maps.Circle((0, _utilsComposeOptions2["default"])(circleProps, circleControlledPropTypes));
-
-	      circle.setMap(mapHolderRef.getMap());
-
-	      return circle;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      circle: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _CircleCreator = CircleCreator;
-	  CircleCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getCircle",
-	    updaters: circleUpdaters
-	  })(CircleCreator) || CircleCreator;
-	  return CircleCreator;
-	})(_react.Component);
-
-	exports["default"] = CircleCreator;
-
-/***/ },
-/* 320 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#Circle
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["center_changed", "click", "dblclick", "drag", "dragend", "dragstart", "mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "radius_changed", "rightclick"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 321 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsDirectionsRendererCreator = __webpack_require__(322);
-
-	var _creatorsDirectionsRendererCreator2 = _interopRequireDefault(_creatorsDirectionsRendererCreator);
-
-	/*
-	 * Original author: @alexishevia
-	 * Original PR: https://github.com/tomchentw/react-google-maps/pull/22
-	 */
-
-	var DirectionsRenderer = (function (_Component) {
-	  _inherits(DirectionsRenderer, _Component);
-
-	  function DirectionsRenderer() {
-	    _classCallCheck(this, DirectionsRenderer);
-
-	    _get(Object.getPrototypeOf(DirectionsRenderer.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(DirectionsRenderer, [{
-	    key: "getDirections",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DirectionsRenderer
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getDirections() {
-	      return this.state.directionsRenderer.getDirections();
-	    }
-	  }, {
-	    key: "getPanel",
-	    value: function getPanel() {
-	      return this.state.directionsRenderer.getPanel();
-	    }
-	  }, {
-	    key: "getRouteIndex",
-	    value: function getRouteIndex() {
-	      return this.state.directionsRenderer.getRouteIndex();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DirectionsRenderer
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var directionsRenderer = _creatorsDirectionsRendererCreator2["default"]._createDirectionsRenderer(this.props);
-
-	      this.setState({ directionsRenderer: directionsRenderer });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.directionsRenderer) {
-	        return _react2["default"].createElement(
-	          _creatorsDirectionsRendererCreator2["default"],
-	          _extends({ directionsRenderer: this.state.directionsRenderer }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsDirectionsRendererCreator.directionsRendererDefaultPropTypes, _creatorsDirectionsRendererCreator.directionsRendererControlledPropTypes, _creatorsDirectionsRendererCreator.directionsRendererEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return DirectionsRenderer;
-	})(_react.Component);
-
-	exports["default"] = DirectionsRenderer;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 322 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsDirectionsRendererEventList = __webpack_require__(323);
-
-	var _eventListsDirectionsRendererEventList2 = _interopRequireDefault(_eventListsDirectionsRendererEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var directionsRendererControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DirectionsRenderer
-	  directions: _react.PropTypes.any,
-	  options: _react.PropTypes.object,
-	  panel: _react.PropTypes.object,
-	  routeIndex: _react.PropTypes.number
-	};
-
-	exports.directionsRendererControlledPropTypes = directionsRendererControlledPropTypes;
-	var directionsRendererDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(directionsRendererControlledPropTypes);
-
-	exports.directionsRendererDefaultPropTypes = directionsRendererDefaultPropTypes;
-	var directionsRendererUpdaters = {
-	  directions: function directions(_directions, component) {
-	    component.getDirectionsRenderer().setDirections(_directions);
-	  },
-	  options: function options(_options, component) {
-	    component.getDirectionsRenderer().setOptions(_options);
-	  },
-	  panel: function panel(_panel, component) {
-	    component.getDirectionsRenderer().setPanel(_panel);
-	  },
-	  routeIndex: function routeIndex(_routeIndex, component) {
-	    component.getDirectionsRenderer().setRouteIndex(_routeIndex);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsDirectionsRendererEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var directionsRendererEventPropTypes = eventPropTypes;
-
-	exports.directionsRendererEventPropTypes = directionsRendererEventPropTypes;
-
-	var DirectionsRendererCreator = (function (_Component) {
-	  _inherits(DirectionsRendererCreator, _Component);
-
-	  function DirectionsRendererCreator() {
-	    _classCallCheck(this, _DirectionsRendererCreator);
-
-	    _get(Object.getPrototypeOf(_DirectionsRendererCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(DirectionsRendererCreator, [{
-	    key: "getDirectionsRenderer",
-	    value: function getDirectionsRenderer() {
-	      return this.props.directionsRenderer;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var children = this.props.children;
-
-	      if (_react.Children.count(children) > 0) {
-	        // TODO: take a look at DirectionsRendererOptions#infoWindow and DirectionsRendererOptions#markerOptions ?
-	        return _react2["default"].createElement(
-	          "div",
-	          null,
-	          children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "_createDirectionsRenderer",
-	    value: function _createDirectionsRenderer(directionsRendererProps) {
-	      var mapHolderRef = directionsRendererProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DirectionsRenderer
-	      var directionsRenderer = new google.maps.DirectionsRenderer((0, _utilsComposeOptions2["default"])(directionsRendererProps, directionsRendererControlledPropTypes));
-
-	      directionsRenderer.setMap(mapHolderRef.getMap());
-
-	      return directionsRenderer;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      directionsRenderer: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _DirectionsRendererCreator = DirectionsRendererCreator;
-	  DirectionsRendererCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getDirectionsRenderer",
-	    updaters: directionsRendererUpdaters
-	  })(DirectionsRendererCreator) || DirectionsRendererCreator;
-	  return DirectionsRendererCreator;
-	})(_react.Component);
-
-	exports["default"] = DirectionsRendererCreator;
-
-/***/ },
-/* 323 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#DirectionsRenderer
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["directions_changed"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 324 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsDrawingManagerCreator = __webpack_require__(325);
-
-	var _creatorsDrawingManagerCreator2 = _interopRequireDefault(_creatorsDrawingManagerCreator);
-
-	/*
-	 * Original author: @idolize
-	 * Original PR: https://github.com/tomchentw/react-google-maps/pull/46
-	 */
-
-	var DrawingManager = (function (_Component) {
-	  _inherits(DrawingManager, _Component);
-
-	  function DrawingManager() {
-	    _classCallCheck(this, DrawingManager);
-
-	    _get(Object.getPrototypeOf(DrawingManager.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(DrawingManager, [{
-	    key: "getDrawingMode",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getDrawingMode() {
-	      return this.state.drawingManager.getDrawingMode();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var drawingManager = _creatorsDrawingManagerCreator2["default"]._createDrawingManager(this.props);
-
-	      this.setState({ drawingManager: drawingManager });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.drawingManager) {
-	        return _react2["default"].createElement(
-	          _creatorsDrawingManagerCreator2["default"],
-	          _extends({ drawingManager: this.state.drawingManager }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsDrawingManagerCreator.drawingManagerDefaultPropTypes, _creatorsDrawingManagerCreator.drawingManagerControlledPropTypes, _creatorsDrawingManagerCreator.drawingManagerEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return DrawingManager;
-	})(_react.Component);
-
-	exports["default"] = DrawingManager;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 325 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsDrawingManagerEventList = __webpack_require__(326);
-
-	var _eventListsDrawingManagerEventList2 = _interopRequireDefault(_eventListsDrawingManagerEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var drawingManagerControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
-	  drawingMode: _react.PropTypes.any,
-	  options: _react.PropTypes.object
-	};
-
-	exports.drawingManagerControlledPropTypes = drawingManagerControlledPropTypes;
-	var drawingManagerDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(drawingManagerControlledPropTypes);
-
-	exports.drawingManagerDefaultPropTypes = drawingManagerDefaultPropTypes;
-	var drawingManagerUpdaters = {
-	  drawingMode: function drawingMode(_drawingMode, component) {
-	    component.getDrawingManager().setDrawingMode(_drawingMode);
-	  },
-	  options: function options(_options, component) {
-	    component.getDrawingManager().setOptions(_options);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsDrawingManagerEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var drawingManagerEventPropTypes = eventPropTypes;
-
-	exports.drawingManagerEventPropTypes = drawingManagerEventPropTypes;
-
-	var DrawingManagerCreator = (function (_Component) {
-	  _inherits(DrawingManagerCreator, _Component);
-
-	  function DrawingManagerCreator() {
-	    _classCallCheck(this, _DrawingManagerCreator);
-
-	    _get(Object.getPrototypeOf(_DrawingManagerCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(DrawingManagerCreator, [{
-	    key: "getDrawingManager",
-	    value: function getDrawingManager() {
-	      return this.props.drawingManager;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createDrawingManager",
-	    value: function _createDrawingManager(drawingManagerProps) {
-	      var mapHolderRef = drawingManagerProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
-	      var drawingManager = new google.maps.drawing.DrawingManager((0, _utilsComposeOptions2["default"])(drawingManagerProps, drawingManagerControlledPropTypes));
-
-	      drawingManager.setMap(mapHolderRef.getMap());
-
-	      return drawingManager;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      drawingManager: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _DrawingManagerCreator = DrawingManagerCreator;
-	  DrawingManagerCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getDrawingManager",
-	    updaters: drawingManagerUpdaters
-	  })(DrawingManagerCreator) || DrawingManagerCreator;
-	  return DrawingManagerCreator;
-	})(_react.Component);
-
-	exports["default"] = DrawingManagerCreator;
-
-/***/ },
-/* 326 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#DrawingManager
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["circlecomplete", "markercomplete", "overlaycomplete", "polygoncomplete", "polylinecomplete", "rectanglecomplete"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 327 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsInfoWindowCreator = __webpack_require__(328);
-
-	var _creatorsInfoWindowCreator2 = _interopRequireDefault(_creatorsInfoWindowCreator);
-
-	var InfoWindow = (function (_Component) {
-	  _inherits(InfoWindow, _Component);
-
-	  function InfoWindow() {
-	    _classCallCheck(this, InfoWindow);
-
-	    _get(Object.getPrototypeOf(InfoWindow.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(InfoWindow, [{
-	    key: "getContent",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getContent() {/* TODO: children */}
-	  }, {
-	    key: "getPosition",
-	    value: function getPosition() {
-	      return this.state.infoWindow.getPosition();
-	    }
-	  }, {
-	    key: "getZIndex",
-	    value: function getZIndex() {
-	      return this.state.infoWindow.getZIndex();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var infoWindow = _creatorsInfoWindowCreator2["default"]._createInfoWindow(this.props);
-
-	      this.setState({ infoWindow: infoWindow });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.infoWindow) {
-	        return _react2["default"].createElement(
-	          _creatorsInfoWindowCreator2["default"],
-	          _extends({ infoWindow: this.state.infoWindow }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsInfoWindowCreator.infoWindowDefaultPropTypes, _creatorsInfoWindowCreator.infoWindowControlledPropTypes, _creatorsInfoWindowCreator.infoWindowEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return InfoWindow;
-	})(_react.Component);
-
-	exports["default"] = InfoWindow;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 328 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsInfoWindowEventList = __webpack_require__(329);
-
-	var _eventListsInfoWindowEventList2 = _interopRequireDefault(_eventListsInfoWindowEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsSetContentForOptionalReactElement = __webpack_require__(330);
-
-	var _utilsSetContentForOptionalReactElement2 = _interopRequireDefault(_utilsSetContentForOptionalReactElement);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var infoWindowControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
-	  content: _react.PropTypes.any,
-	  options: _react.PropTypes.object,
-	  position: _react.PropTypes.any,
-	  zIndex: _react.PropTypes.number
-	};
-
-	exports.infoWindowControlledPropTypes = infoWindowControlledPropTypes;
-	var infoWindowDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(infoWindowControlledPropTypes);
-
-	exports.infoWindowDefaultPropTypes = infoWindowDefaultPropTypes;
-	var infoWindowUpdaters = {
-	  children: function children(_children, component) {
-	    (0, _utilsSetContentForOptionalReactElement2["default"])(_children, component.getInfoWindow());
-	  },
-	  content: function content(_content, component) {
-	    component.getInfoWindow().setContent(_content);
-	  },
-	  options: function options(_options, component) {
-	    component.getInfoWindow().setOptions(_options);
-	  },
-	  position: function position(_position, component) {
-	    component.getInfoWindow().setPosition(_position);
-	  },
-	  zIndex: function zIndex(_zIndex, component) {
-	    component.getInfoWindow().setZIndex(_zIndex);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsInfoWindowEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var infoWindowEventPropTypes = eventPropTypes;
-
-	exports.infoWindowEventPropTypes = infoWindowEventPropTypes;
-
-	var InfoWindowCreator = (function (_Component) {
-	  _inherits(InfoWindowCreator, _Component);
-
-	  function InfoWindowCreator() {
-	    _classCallCheck(this, _InfoWindowCreator);
-
-	    _get(Object.getPrototypeOf(_InfoWindowCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(InfoWindowCreator, [{
-	    key: "getInfoWindow",
-	    value: function getInfoWindow() {
-	      return this.props.infoWindow;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createInfoWindow",
-	    value: function _createInfoWindow(infoWindowProps) {
-	      var mapHolderRef = infoWindowProps.mapHolderRef;
-	      var anchorHolderRef = infoWindowProps.anchorHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
-	      var infoWindow = new google.maps.InfoWindow((0, _utilsComposeOptions2["default"])(infoWindowProps, infoWindowControlledPropTypes));
-
-	      if (infoWindowProps.children) {
-	        (0, _utilsSetContentForOptionalReactElement2["default"])(infoWindowProps.children, infoWindow);
-	      }
-
-	      if (anchorHolderRef) {
-	        infoWindow.open(mapHolderRef.getMap(), anchorHolderRef.getAnchor());
-	      } else {
-	        infoWindow.setMap(mapHolderRef.getMap());
-	      }
-
-	      return infoWindow;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      infoWindow: _react.PropTypes.object.isRequired,
-	      anchorHolderRef: _react.PropTypes.object
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _InfoWindowCreator = InfoWindowCreator;
-	  InfoWindowCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getInfoWindow",
-	    updaters: infoWindowUpdaters
-	  })(InfoWindowCreator) || InfoWindowCreator;
-	  return InfoWindowCreator;
-	})(_react.Component);
-
-	exports["default"] = InfoWindowCreator;
-
-/***/ },
-/* 329 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindow
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["closeclick", "content_changed", "domready", "position_changed", "zindex_changed"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 330 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = setContentForOptionalReactElement;
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(113);
-
-	function renderElement(contentElement, possiblePrevContent) {
-	  var prevContent = possiblePrevContent;
-	  if ("[object HTMLDivElement]" !== Object.prototype.toString.call(prevContent)) {
-	    prevContent = document.createElement("div");
-	  }
-
-	  (0, _reactDom.render)(contentElement, prevContent);
-	  return prevContent;
-	}
-
-	function setContentForOptionalReactElement(contentOptionalReactElement, infoWindowLikeInstance) {
-	  if (_react2["default"].isValidElement(contentOptionalReactElement)) {
-	    var contentElement = _react.Children.only(contentOptionalReactElement);
-	    var prevContent = infoWindowLikeInstance.getContent();
-
-	    var domEl = renderElement(contentElement, prevContent);
-	    infoWindowLikeInstance.setContent(domEl);
-	  } else {
-	    infoWindowLikeInstance.setContent(contentOptionalReactElement);
-	  }
-	}
-
-	module.exports = exports["default"];
-
-/***/ },
-/* 331 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsKmlLayerCreator = __webpack_require__(332);
-
-	var _creatorsKmlLayerCreator2 = _interopRequireDefault(_creatorsKmlLayerCreator);
-
-	var KmlLayer = (function (_Component) {
-	  _inherits(KmlLayer, _Component);
-
-	  function KmlLayer() {
-	    _classCallCheck(this, KmlLayer);
-
-	    _get(Object.getPrototypeOf(KmlLayer.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(KmlLayer, [{
-	    key: "getDefaultViewport",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#KmlLayer
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/Map$/); })
-	    value: function getDefaultViewport() {
-	      return this.state.kmlLayer.getDefaultViewport();
-	    }
-	  }, {
-	    key: "getMetadata",
-	    value: function getMetadata() {
-	      return this.state.kmlLayer.getMetadata();
-	    }
-	  }, {
-	    key: "getStatus",
-	    value: function getStatus() {
-	      return this.state.kmlLayer.getStatus();
-	    }
-	  }, {
-	    key: "getUrl",
-	    value: function getUrl() {
-	      return this.state.kmlLayer.getUrl();
-	    }
-	  }, {
-	    key: "getZIndex",
-	    value: function getZIndex() {
-	      return this.state.marker.getZIndex();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#KmlLayer
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var kmlLayer = _creatorsKmlLayerCreator2["default"]._createKmlLayer(this.props);
-
-	      this.setState({ kmlLayer: kmlLayer });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.kmlLayer) {
-	        return _react2["default"].createElement(
-	          _creatorsKmlLayerCreator2["default"],
-	          _extends({ kmlLayer: this.state.kmlLayer }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsKmlLayerCreator.kmlLayerDefaultPropTypes, _creatorsKmlLayerCreator.kmlLayerControlledPropTypes, _creatorsKmlLayerCreator.kmlLayerEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return KmlLayer;
-	})(_react.Component);
-
-	exports["default"] = KmlLayer;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 332 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsKmlLayerEventList = __webpack_require__(333);
-
-	var _eventListsKmlLayerEventList2 = _interopRequireDefault(_eventListsKmlLayerEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var kmlLayerControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code", function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#KmlLayer
-	  defaultViewport: _react.PropTypes.any,
-	  metadata: _react.PropTypes.any,
-	  status: _react.PropTypes.any,
-	  url: _react.PropTypes.string,
-	  zIndex: _react.PropTypes.number
-	};
-
-	exports.kmlLayerControlledPropTypes = kmlLayerControlledPropTypes;
-	var kmlLayerDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(kmlLayerControlledPropTypes);
-
-	exports.kmlLayerDefaultPropTypes = kmlLayerDefaultPropTypes;
-	var kmlLayerUpdaters = {
-	  defaultViewport: function defaultViewport(_defaultViewport, component) {
-	    component.getKmlLayer().setDefaultViewport(_defaultViewport);
-	  },
-	  metadata: function metadata(_metadata, component) {
-	    component.getKmlLayer().setMetadata(_metadata);
-	  },
-	  status: function status(_status, component) {
-	    component.getKmlLayer().setStatus(_status);
-	  },
-	  url: function url(_url, component) {
-	    component.getKmlLayer().setUrl(_url);
-	  },
-	  zIndex: function zIndex(_zIndex, component) {
-	    component.getKmlLayer().setZIndex(_zIndex);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsKmlLayerEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var kmlLayerEventPropTypes = eventPropTypes;
-
-	exports.kmlLayerEventPropTypes = kmlLayerEventPropTypes;
-
-	var KmlLayerCreator = (function (_Component) {
-	  _inherits(KmlLayerCreator, _Component);
-
-	  function KmlLayerCreator() {
-	    _classCallCheck(this, _KmlLayerCreator);
-
-	    _get(Object.getPrototypeOf(_KmlLayerCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(KmlLayerCreator, [{
-	    key: "getKmlLayer",
-	    value: function getKmlLayer() {
-	      return this.props.kmlLayer;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var _props = this.props;
-	      var mapHolderRef = _props.mapHolderRef;
-	      var children = _props.children;
-
-	      if (_react.Children.count(children) > 0) {
-	        return _react2["default"].createElement(
-	          "div",
-	          null,
-	          _react.Children.map(children, function (childElement) {
-	            return childElement && _react2["default"].cloneElement(childElement, {
-	              mapHolderRef: mapHolderRef
-	            });
-	          })
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "_createKmlLayer",
-	    value: function _createKmlLayer(kmlLayerProps) {
-	      var mapHolderRef = kmlLayerProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#KmlLayer
-	      var kmlLayer = new google.maps.KmlLayer((0, _utilsComposeOptions2["default"])(kmlLayerProps, kmlLayerControlledPropTypes));
-
-	      kmlLayer.setMap(mapHolderRef.getMap());
-
-	      return kmlLayer;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      kmlLayer: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _KmlLayerCreator = KmlLayerCreator;
-	  KmlLayerCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getKmlLayer",
-	    updaters: kmlLayerUpdaters
-	  })(KmlLayerCreator) || KmlLayerCreator;
-	  return KmlLayerCreator;
-	})(_react.Component);
-
-	exports["default"] = KmlLayerCreator;
-
-/***/ },
-/* 333 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#KmlLayer
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["click", "defaultviewport_changed", "status_changed"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 334 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsMarkerCreator = __webpack_require__(335);
-
-	var _creatorsMarkerCreator2 = _interopRequireDefault(_creatorsMarkerCreator);
-
-	var Marker = (function (_Component) {
-	  _inherits(Marker, _Component);
-
-	  function Marker() {
-	    _classCallCheck(this, Marker);
-
-	    _get(Object.getPrototypeOf(Marker.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(Marker, [{
-	    key: "getAnimation",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/Map$/); })
-	    value: function getAnimation() {
-	      return this.state.marker.getAnimation();
-	    }
-	  }, {
-	    key: "getAttribution",
-	    value: function getAttribution() {
-	      return this.state.marker.getAttribution();
-	    }
-	  }, {
-	    key: "getClickable",
-	    value: function getClickable() {
-	      return this.state.marker.getClickable();
-	    }
-	  }, {
-	    key: "getCursor",
-	    value: function getCursor() {
-	      return this.state.marker.getCursor();
-	    }
-	  }, {
-	    key: "getDraggable",
-	    value: function getDraggable() {
-	      return this.state.marker.getDraggable();
-	    }
-	  }, {
-	    key: "getIcon",
-	    value: function getIcon() {
-	      return this.state.marker.getIcon();
-	    }
-	  }, {
-	    key: "getLabel",
-	    value: function getLabel() {
-	      return this.state.marker.getLabel();
-	    }
-	  }, {
-	    key: "getOpacity",
-	    value: function getOpacity() {
-	      return this.state.marker.getOpacity();
-	    }
-	  }, {
-	    key: "getPlace",
-	    value: function getPlace() {
-	      return this.state.marker.getPlace();
-	    }
-	  }, {
-	    key: "getPosition",
-	    value: function getPosition() {
-	      return this.state.marker.getPosition();
-	    }
-	  }, {
-	    key: "getShape",
-	    value: function getShape() {
-	      return this.state.marker.getShape();
-	    }
-	  }, {
-	    key: "getTitle",
-	    value: function getTitle() {
-	      return this.state.marker.getTitle();
-	    }
-	  }, {
-	    key: "getVisible",
-	    value: function getVisible() {
-	      return this.state.marker.getVisible();
-	    }
-	  }, {
-	    key: "getZIndex",
-	    value: function getZIndex() {
-	      return this.state.marker.getZIndex();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var marker = _creatorsMarkerCreator2["default"]._createMarker(this.props);
-
-	      this.setState({ marker: marker });
-	    }
-	  }, {
-	    key: "componentWillUnmount",
-	    value: function componentWillUnmount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-
-	      var anchorHolderRef = this.props.anchorHolderRef;
-	      var marker = this.state.marker;
-
-	      if (anchorHolderRef) {
-	        if ("MarkerClusterer" === anchorHolderRef.getAnchorType()) {
-	          anchorHolderRef.getAnchor().removeMarker(marker);
-	        }
-	      }
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.marker) {
-	        return _react2["default"].createElement(
-	          _creatorsMarkerCreator2["default"],
-	          _extends({ marker: this.state.marker }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsMarkerCreator.markerDefaultPropTypes, _creatorsMarkerCreator.markerControlledPropTypes, _creatorsMarkerCreator.markerEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return Marker;
-	})(_react.Component);
-
-	exports["default"] = Marker;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 335 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsMarkerEventList = __webpack_require__(336);
-
-	var _eventListsMarkerEventList2 = _interopRequireDefault(_eventListsMarkerEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var markerControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code", function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-	  animation: _react.PropTypes.any,
-	  attribution: _react.PropTypes.any,
-	  clickable: _react.PropTypes.bool,
-	  cursor: _react.PropTypes.string,
-	  draggable: _react.PropTypes.bool,
-	  icon: _react.PropTypes.any,
-	  label: _react.PropTypes.any,
-	  opacity: _react.PropTypes.number,
-	  options: _react.PropTypes.object,
-	  place: _react.PropTypes.any,
-	  position: _react.PropTypes.any,
-	  shape: _react.PropTypes.any,
-	  title: _react.PropTypes.string,
-	  visible: _react.PropTypes.bool,
-	  zIndex: _react.PropTypes.number
-	};
-
-	exports.markerControlledPropTypes = markerControlledPropTypes;
-	var markerDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(markerControlledPropTypes);
-
-	exports.markerDefaultPropTypes = markerDefaultPropTypes;
-	var markerUpdaters = {
-	  animation: function animation(_animation, component) {
-	    component.getMarker().setAnimation(_animation);
-	  },
-	  attribution: function attribution(_attribution, component) {
-	    component.getMarker().setAttribution(_attribution);
-	  },
-	  clickable: function clickable(_clickable, component) {
-	    component.getMarker().setClickable(_clickable);
-	  },
-	  cursor: function cursor(_cursor, component) {
-	    component.getMarker().setCursor(_cursor);
-	  },
-	  draggable: function draggable(_draggable, component) {
-	    component.getMarker().setDraggable(_draggable);
-	  },
-	  icon: function icon(_icon, component) {
-	    component.getMarker().setIcon(_icon);
-	  },
-	  label: function label(_label, component) {
-	    component.getMarker().setLabel(_label);
-	  },
-	  opacity: function opacity(_opacity, component) {
-	    component.getMarker().setOpacity(_opacity);
-	  },
-	  options: function options(_options, component) {
-	    component.getMarker().setOptions(_options);
-	  },
-	  place: function place(_place, component) {
-	    component.getMarker().setPlace(_place);
-	  },
-	  position: function position(_position, component) {
-	    component.getMarker().setPosition(_position);
-	  },
-	  shape: function shape(_shape, component) {
-	    component.getMarker().setShape(_shape);
-	  },
-	  title: function title(_title, component) {
-	    component.getMarker().setTitle(_title);
-	  },
-	  visible: function visible(_visible, component) {
-	    component.getMarker().setVisible(_visible);
-	  },
-	  zIndex: function zIndex(_zIndex, component) {
-	    component.getMarker().setZIndex(_zIndex);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsMarkerEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var markerEventPropTypes = eventPropTypes;
-
-	exports.markerEventPropTypes = markerEventPropTypes;
-
-	var MarkerCreator = (function (_Component) {
-	  _inherits(MarkerCreator, _Component);
-
-	  function MarkerCreator() {
-	    _classCallCheck(this, _MarkerCreator);
-
-	    _get(Object.getPrototypeOf(_MarkerCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(MarkerCreator, [{
-	    key: "getMarker",
-	    value: function getMarker() {
-	      return this.props.marker;
-	    }
-
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#InfoWindowOptions
-	    // In the core API, the only anchor is the Marker class.
-	  }, {
-	    key: "getAnchor",
-	    value: function getAnchor() {
-	      return this.props.marker;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var _this = this;
-
-	      var _props = this.props;
-	      var mapHolderRef = _props.mapHolderRef;
-	      var children = _props.children;
-
-	      if (_react.Children.count(children) > 0) {
-	        return _react2["default"].createElement(
-	          "div",
-	          null,
-	          _react.Children.map(children, function (childElement) {
-	            return childElement && _react2["default"].cloneElement(childElement, {
-	              mapHolderRef: mapHolderRef,
-	              anchorHolderRef: _this
-	            });
-	          })
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "_createMarker",
-	    value: function _createMarker(markerProps) {
-	      var mapHolderRef = markerProps.mapHolderRef;
-	      var anchorHolderRef = markerProps.anchorHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-	      var marker = new google.maps.Marker((0, _utilsComposeOptions2["default"])(markerProps, markerControlledPropTypes));
-
-	      if (anchorHolderRef) {
-	        if ("MarkerClusterer" === anchorHolderRef.getAnchorType()) {
-	          anchorHolderRef.getAnchor().addMarker(marker);
-	        }
-	      } else {
-	        marker.setMap(mapHolderRef.getMap());
-	      }
-
-	      return marker;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      marker: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _MarkerCreator = MarkerCreator;
-	  MarkerCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getMarker",
-	    updaters: markerUpdaters
-	  })(MarkerCreator) || MarkerCreator;
-	  return MarkerCreator;
-	})(_react.Component);
-
-	exports["default"] = MarkerCreator;
-
-/***/ },
-/* 336 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#Marker
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["animation_changed", "click", "clickable_changed", "cursor_changed", "dblclick", "drag", "dragend", "draggable_changed", "dragstart", "flat_changed", "icon_changed", "mousedown", "mouseout", "mouseover", "mouseup", "position_changed", "rightclick", "shape_changed", "title_changed", "visible_changed", "zindex_changed"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 337 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsOverlayViewCreator = __webpack_require__(338);
-
-	var _creatorsOverlayViewCreator2 = _interopRequireDefault(_creatorsOverlayViewCreator);
-
-	/*
-	 * Original author: @petebrowne
-	 * Original PR: https://github.com/tomchentw/react-google-maps/pull/63
-	 */
-
-	var OverlayView = (function (_Component) {
-	  _inherits(OverlayView, _Component);
-
-	  function OverlayView() {
-	    _classCallCheck(this, OverlayView);
-
-	    _get(Object.getPrototypeOf(OverlayView.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(OverlayView, [{
-	    key: "getPanes",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getPanes() {
-	      return this.state.overlayView.getPanes();
-	    }
-	  }, {
-	    key: "getProjection",
-	    value: function getProjection() {
-	      return this.state.overlayView.getProjection();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var overlayView = _creatorsOverlayViewCreator2["default"]._createOverlayView(this.props);
-
-	      this.setState({ overlayView: overlayView });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.overlayView) {
-	        return _react2["default"].createElement(
-	          _creatorsOverlayViewCreator2["default"],
-	          _extends({ overlayView: this.state.overlayView }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "FLOAT_PANE",
-	    value: "floatPane",
-	    enumerable: true
-	  }, {
-	    key: "MAP_PANE",
-	    value: "mapPane",
-	    enumerable: true
-	  }, {
-	    key: "MARKER_LAYER",
-	    value: "markerLayer",
-	    enumerable: true
-	  }, {
-	    key: "OVERLAY_LAYER",
-	    value: "overlayLayer",
-	    enumerable: true
-	  }, {
-	    key: "OVERLAY_MOUSE_TARGET",
-	    value: "overlayMouseTarget",
-	    enumerable: true
-	  }, {
-	    key: "propTypes",
-	    value: _extends({}, _creatorsOverlayViewCreator.overlayViewDefaultPropTypes, _creatorsOverlayViewCreator.overlayViewControlledPropTypes),
-	    enumerable: true
-	  }, {
-	    key: "defaultProps",
-	    value: {
-	      mapPaneName: OverlayView.OVERLAY_LAYER
-	    },
-	    enumerable: true
-	  }]);
-
-	  return OverlayView;
-	})(_react.Component);
-
-	exports["default"] = OverlayView;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-/***/ },
-/* 338 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactDom = __webpack_require__(113);
-
-	var _invariant = __webpack_require__(339);
-
-	var _invariant2 = _interopRequireDefault(_invariant);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var overlayViewControlledPropTypes = {
-	  // CustomProps
-	  mapPaneName: _react.PropTypes.string,
-	  getPixelPositionOffset: _react.PropTypes.func,
-	  position: _react.PropTypes.object,
-	  children: _react.PropTypes.node,
-	  bounds: _react.PropTypes.object
-	};
-
-	exports.overlayViewControlledPropTypes = overlayViewControlledPropTypes;
-	// NOTICE!!!!!!
-	//
-	// Only expose those with getters & setters in the table as controlled props.
-	//
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	//
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference
-	var overlayViewDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(overlayViewControlledPropTypes);
-
-	exports.overlayViewDefaultPropTypes = overlayViewDefaultPropTypes;
-
-	var OverlayViewCreator = (function (_Component) {
-	  _inherits(OverlayViewCreator, _Component);
-
-	  function OverlayViewCreator() {
-	    _classCallCheck(this, OverlayViewCreator);
-
-	    _get(Object.getPrototypeOf(OverlayViewCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(OverlayViewCreator, [{
-	    key: "getOverlayView",
-	    value: function getOverlayView() {
-	      return this.props.overlayView;
-	    }
-	  }, {
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      this.getOverlayView().setMap(this.props.mapHolderRef.getMap());
-	    }
-	  }, {
-	    key: "componentDidUpdate",
-	    value: function componentDidUpdate(prevProps) {
-	      this.getOverlayView().setValues(this.props);
-	      this.getOverlayView()._redraw(this.props.mapPaneName !== prevProps.mapPaneName);
-	    }
-	  }, {
-	    key: "componentWillUnmount",
-	    value: function componentWillUnmount() {
-	      this.getOverlayView().setMap(null);
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createOverlayView",
-	    value: function _createOverlayView(overlayViewProps) {
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#OverlayView
-	      var overlayView = new google.maps.OverlayView();
-	      overlayView.setValues((0, _utilsComposeOptions2["default"])(overlayViewProps, overlayViewControlledPropTypes));
-
-	      overlayView.onAdd = function onAdd() {
-	        this._containerElement = document.createElement("div");
-	        this._containerElement.style.position = "absolute";
-	      };
-
-	      overlayView.draw = function draw() {
-	        this._mountContainerToPane();
-	        this._renderContent();
-	      };
-
-	      overlayView.onRemove = function onRemove() {
-	        (0, _reactDom.unmountComponentAtNode)(this._containerElement);
-	        this._unmountContainerFromPane();
-	        this._containerElement = null;
-	      };
-
-	      overlayView._redraw = function _redraw(mapPaneNameChanged) {
-	        if (mapPaneNameChanged) {
-	          this._unmountContainerFromPane();
-	          this._mountContainerToPane();
-	        }
-	        this._renderContent();
-	      };
-
-	      overlayView._renderContent = function _renderContent() {
-	        if (this._containerElement) {
-	          (0, _reactDom.render)(_react.Children.only(this.get("children")), this._containerElement, this._positionContainerElement.bind(this));
-	        }
-	      };
-
-	      overlayView._mountContainerToPane = function _mountContainerToPane() {
-	        var mapPaneName = this.get("mapPaneName");
-	        (0, _invariant2["default"])(!!mapPaneName, "OverlayView requires a mapPaneName/defaultMapPaneName in your props instead of %s", mapPaneName);
-
-	        this.getPanes()[mapPaneName].appendChild(this._containerElement);
-	      };
-
-	      overlayView._unmountContainerFromPane = function _unmountContainerFromPane() {
-	        this._containerElement.parentNode.removeChild(this._containerElement);
-	      };
-
-	      overlayView._positionContainerElement = function _positionContainerElement() {
-	        var left = undefined;
-	        var top = undefined;
-	        var offset = this._getOffset();
-	        if (this.get("bounds")) {
-	          var bounds = this._getPixelBounds();
-	          if (bounds) {
-	            var sw = bounds.sw;
-	            var ne = bounds.ne;
-
-	            if (offset) {
-	              sw.x += offset.x;
-	              ne.y += offset.y;
-	            }
-	            left = sw.x + "px";
-	            top = ne.y + "px";
-	            this._containerElement.style.width = ne.x - sw.x + "px";
-	            this._containerElement.style.height = sw.y - ne.y + "px";
-	          }
-	        } else {
-	          var position = this._getPixelPosition();
-	          if (position) {
-	            var x = position.x;
-	            var y = position.y;
-
-	            if (offset) {
-	              x += offset.x;
-	              y += offset.y;
-	            }
-	            left = x + "px";
-	            top = y + "px";
-	          }
-	        }
-
-	        this._containerElement.style.left = left;
-	        this._containerElement.style.top = top;
-	      };
-
-	      overlayView._getPixelPosition = function _getPixelPosition() {
-	        var projection = this.getProjection();
-	        var position = this.get("position");
-	        (0, _invariant2["default"])(!!position, "OverlayView requires a position/defaultPosition in your props instead of %s", position);
-	        if (projection && position) {
-	          if (!(position instanceof google.maps.LatLng)) {
-	            position = new google.maps.LatLng(position.lat, position.lng);
-	          }
-	          return projection.fromLatLngToDivPixel(position);
-	        }
-	      };
-
-	      overlayView._getPixelBounds = function _getPixelBounds() {
-	        var projection = this.getProjection();
-	        var bounds = this.get("bounds");
-	        (0, _invariant2["default"])(!!bounds, "OverlayView requires a bounds in your props instead of %s", bounds);
-	        if (projection && bounds) {
-	          if (!(bounds instanceof google.maps.LatLngBounds)) {
-	            bounds = new google.maps.LatLngBounds(new google.maps.LatLng(bounds.ne.lat, bounds.ne.lng), new google.maps.LatLng(bounds.sw.lat, bounds.sw.lng));
-	          }
-	          return {
-	            sw: projection.fromLatLngToDivPixel(this.bounds.getSouthWest()),
-	            ne: projection.fromLatLngToDivPixel(this.bounds.getNorthEast())
-	          };
-	        }
-	      };
-
-	      overlayView._getOffset = function _getOffset() {
-	        // Allows the component to control the visual position of the OverlayView
-	        // relative to the LatLng pixel position.
-	        var getPixelPositionOffset = this.get("getPixelPositionOffset");
-	        if (getPixelPositionOffset) {
-	          return getPixelPositionOffset(this._containerElement.offsetWidth, this._containerElement.offsetHeight);
-	        }
-	      };
-
-	      // If we're inside a MarkerClusterer, allow ourselves to be clustered
-	      if (overlayViewProps.anchorHolderRef) {
-	        if ("MarkerClusterer" === overlayViewProps.anchorHolderRef.getAnchorType()) {
-	          overlayView.getDraggable = function getDraggable() {
-	            return !!overlayViewProps.draggable;
-	          };
-
-	          overlayView.getPosition = function getPosition() {
-	            return new google.maps.LatLng(this.position);
-	          };
-
-	          overlayViewProps.anchorHolderRef.getAnchor().addMarker(overlayView);
-	        }
-	      }
-
-	      return overlayView;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      mapPaneName: _react.PropTypes.string,
-	      overlayView: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  return OverlayViewCreator;
-	})(_react.Component);
-
-	exports["default"] = OverlayViewCreator;
-
-/***/ },
-/* 339 */
-/***/ function(module, exports, __webpack_require__) {
-
-	/* WEBPACK VAR INJECTION */(function(process) {/**
-	 * Copyright 2013-2015, Facebook, Inc.
-	 * All rights reserved.
-	 *
-	 * This source code is licensed under the BSD-style license found in the
-	 * LICENSE file in the root directory of this source tree. An additional grant
-	 * of patent rights can be found in the PATENTS file in the same directory.
-	 */
-
-	'use strict';
-
-	/**
-	 * Use invariant() to assert state which your program assumes to be true.
-	 *
-	 * Provide sprintf-style format (only %s is supported) and arguments
-	 * to provide information about what broke and what you were
-	 * expecting.
-	 *
-	 * The invariant message will be stripped in production, but the invariant
-	 * will remain to ensure logic does not differ in production.
-	 */
-
-	var invariant = function(condition, format, a, b, c, d, e, f) {
-	  if (process.env.NODE_ENV !== 'production') {
-	    if (format === undefined) {
-	      throw new Error('invariant requires an error message argument');
-	    }
-	  }
-
-	  if (!condition) {
-	    var error;
-	    if (format === undefined) {
-	      error = new Error(
-	        'Minified exception occurred; use the non-minified dev environment ' +
-	        'for the full error message and additional helpful warnings.'
-	      );
-	    } else {
-	      var args = [a, b, c, d, e, f];
-	      var argIndex = 0;
-	      error = new Error(
-	        format.replace(/%s/g, function() { return args[argIndex++]; })
-	      );
-	      error.name = 'Invariant Violation';
-	    }
-
-	    error.framesToPop = 1; // we don't care about invariant's own frame
-	    throw error;
-	  }
-	};
-
-	module.exports = invariant;
-
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(115)))
-
-/***/ },
-/* 340 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsPolygonCreator = __webpack_require__(341);
-
-	var _creatorsPolygonCreator2 = _interopRequireDefault(_creatorsPolygonCreator);
-
-	var Polygon = (function (_Component) {
-	  _inherits(Polygon, _Component);
-
-	  function Polygon() {
-	    _classCallCheck(this, Polygon);
-
-	    _get(Object.getPrototypeOf(Polygon.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(Polygon, [{
-	    key: "getDraggable",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polygon
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getDraggable() {
-	      return this.state.polygon.getDraggable();
-	    }
-	  }, {
-	    key: "getEditable",
-	    value: function getEditable() {
-	      return this.state.polygon.getEditable();
-	    }
-	  }, {
-	    key: "getPath",
-	    value: function getPath() {
-	      return this.state.polygon.getPath();
-	    }
-	  }, {
-	    key: "getPaths",
-	    value: function getPaths() {
-	      return this.state.polygon.getPaths();
-	    }
-	  }, {
-	    key: "getVisible",
-	    value: function getVisible() {
-	      return this.state.polygon.getVisible();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polygon
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var polygon = _creatorsPolygonCreator2["default"]._createPolygon(this.props);
-
-	      this.setState({ polygon: polygon });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.polygon) {
-	        return _react2["default"].createElement(
-	          _creatorsPolygonCreator2["default"],
-	          _extends({ polygon: this.state.polygon }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsPolygonCreator.polygonDefaultPropTypes, _creatorsPolygonCreator.polygonControlledPropTypes, _creatorsPolygonCreator.polygonEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return Polygon;
-	})(_react.Component);
-
-	exports["default"] = Polygon;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 341 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsPolygonEventList = __webpack_require__(342);
-
-	var _eventListsPolygonEventList2 = _interopRequireDefault(_eventListsPolygonEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var polygonControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polygon
-	  draggable: _react.PropTypes.bool,
-	  editable: _react.PropTypes.bool,
-	  options: _react.PropTypes.object,
-	  path: _react.PropTypes.any,
-	  paths: _react.PropTypes.any,
-	  visible: _react.PropTypes.bool
-	};
-
-	exports.polygonControlledPropTypes = polygonControlledPropTypes;
-	var polygonDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(polygonControlledPropTypes);
-
-	exports.polygonDefaultPropTypes = polygonDefaultPropTypes;
-	var polygonUpdaters = {
-	  draggable: function draggable(_draggable, component) {
-	    component.getPolygon().setDraggable(_draggable);
-	  },
-	  editable: function editable(_editable, component) {
-	    component.getPolygon().setEditable(_editable);
-	  },
-	  options: function options(_options, component) {
-	    component.getPolygon().setOptions(_options);
-	  },
-	  path: function path(_path, component) {
-	    component.getPolygon().setPath(_path);
-	  },
-	  paths: function paths(_paths, component) {
-	    component.getPolygon().setPaths(_paths);
-	  },
-	  visible: function visible(_visible, component) {
-	    component.getPolygon().setVisible(_visible);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsPolygonEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var polygonEventPropTypes = eventPropTypes;
-
-	exports.polygonEventPropTypes = polygonEventPropTypes;
-
-	var PolygonCreator = (function (_Component) {
-	  _inherits(PolygonCreator, _Component);
-
-	  function PolygonCreator() {
-	    _classCallCheck(this, _PolygonCreator);
-
-	    _get(Object.getPrototypeOf(_PolygonCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(PolygonCreator, [{
-	    key: "getPolygon",
-	    value: function getPolygon() {
-	      return this.props.polygon;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createPolygon",
-	    value: function _createPolygon(polygonProps) {
-	      var mapHolderRef = polygonProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polygon
-	      var polygon = new google.maps.Polygon((0, _utilsComposeOptions2["default"])(polygonProps, polygonControlledPropTypes));
-
-	      polygon.setMap(mapHolderRef.getMap());
-
-	      return polygon;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      polygon: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _PolygonCreator = PolygonCreator;
-	  PolygonCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getPolygon",
-	    updaters: polygonUpdaters
-	  })(PolygonCreator) || PolygonCreator;
-	  return PolygonCreator;
-	})(_react.Component);
-
-	exports["default"] = PolygonCreator;
-
-/***/ },
-/* 342 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polygon
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["click", "dblclick", "drag", "dragend", "dragstart", "mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "rightclick"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 343 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsPolylineCreator = __webpack_require__(344);
-
-	var _creatorsPolylineCreator2 = _interopRequireDefault(_creatorsPolylineCreator);
-
-	var Polyline = (function (_Component) {
-	  _inherits(Polyline, _Component);
-
-	  function Polyline() {
-	    _classCallCheck(this, Polyline);
-
-	    _get(Object.getPrototypeOf(Polyline.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(Polyline, [{
-	    key: "getDraggable",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getDraggable() {
-	      return this.state.polyline.getDraggable();
-	    }
-	  }, {
-	    key: "getEditable",
-	    value: function getEditable() {
-	      return this.state.polyline.getEditable();
-	    }
-	  }, {
-	    key: "getPath",
-	    value: function getPath() {
-	      return this.state.polyline.getPath();
-	    }
-	  }, {
-	    key: "getVisible",
-	    value: function getVisible() {
-	      return this.state.polyline.getVisible();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var polyline = _creatorsPolylineCreator2["default"]._createPolyline(this.props);
-
-	      this.setState({ polyline: polyline });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.polyline) {
-	        return _react2["default"].createElement(
-	          _creatorsPolylineCreator2["default"],
-	          _extends({ polyline: this.state.polyline }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsPolylineCreator.polylineDefaultPropTypes, _creatorsPolylineCreator.polylineControlledPropTypes, _creatorsPolylineCreator.polylineEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return Polyline;
-	})(_react.Component);
-
-	exports["default"] = Polyline;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 344 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsPolylineEventList = __webpack_require__(345);
-
-	var _eventListsPolylineEventList2 = _interopRequireDefault(_eventListsPolylineEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var polylineControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
-	  draggable: _react.PropTypes.bool,
-	  editable: _react.PropTypes.bool,
-	  options: _react.PropTypes.object,
-	  path: _react.PropTypes.any,
-	  visible: _react.PropTypes.bool
-	};
-
-	exports.polylineControlledPropTypes = polylineControlledPropTypes;
-	var polylineDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(polylineControlledPropTypes);
-
-	exports.polylineDefaultPropTypes = polylineDefaultPropTypes;
-	var polylineUpdaters = {
-	  draggable: function draggable(_draggable, component) {
-	    component.getPolyline().setDraggable(_draggable);
-	  },
-	  editable: function editable(_editable, component) {
-	    component.getPolyline().setEditable(_editable);
-	  },
-	  options: function options(_options, component) {
-	    component.getPolyline().setOptions(_options);
-	  },
-	  path: function path(_path, component) {
-	    component.getPolyline().setPath(_path);
-	  },
-	  visible: function visible(_visible, component) {
-	    component.getPolyline().setVisible(_visible);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsPolylineEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var polylineEventPropTypes = eventPropTypes;
-
-	exports.polylineEventPropTypes = polylineEventPropTypes;
-
-	var PolylineCreator = (function (_Component) {
-	  _inherits(PolylineCreator, _Component);
-
-	  function PolylineCreator() {
-	    _classCallCheck(this, _PolylineCreator);
-
-	    _get(Object.getPrototypeOf(_PolylineCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(PolylineCreator, [{
-	    key: "getPolyline",
-	    value: function getPolyline() {
-	      return this.props.polyline;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createPolyline",
-	    value: function _createPolyline(polylineProps) {
-	      var mapHolderRef = polylineProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
-	      var polyline = new google.maps.Polyline((0, _utilsComposeOptions2["default"])(polylineProps, polylineControlledPropTypes));
-
-	      polyline.setMap(mapHolderRef.getMap());
-
-	      return polyline;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      polyline: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _PolylineCreator = PolylineCreator;
-	  PolylineCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getPolyline",
-	    updaters: polylineUpdaters
-	  })(PolylineCreator) || PolylineCreator;
-	  return PolylineCreator;
-	})(_react.Component);
-
-	exports["default"] = PolylineCreator;
-
-/***/ },
-/* 345 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#Polyline
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["click", "dblclick", "drag", "dragend", "dragstart", "mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "rightclick"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 346 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsRectangleCreator = __webpack_require__(347);
-
-	var _creatorsRectangleCreator2 = _interopRequireDefault(_creatorsRectangleCreator);
-
-	/*
-	 * Original author: @alistairjcbrown
-	 * Original PR: https://github.com/tomchentw/react-google-maps/pull/80
-	 */
-
-	var Rectangle = (function (_Component) {
-	  _inherits(Rectangle, _Component);
-
-	  function Rectangle() {
-	    _classCallCheck(this, Rectangle);
-
-	    _get(Object.getPrototypeOf(Rectangle.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(Rectangle, [{
-	    key: "getBounds",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/^getMap/); })
-	    value: function getBounds() {
-	      return this.state.rectangle.getBounds();
-	    }
-	  }, {
-	    key: "getDraggable",
-	    value: function getDraggable() {
-	      return this.state.rectangle.getDraggable();
-	    }
-	  }, {
-	    key: "getEditable",
-	    value: function getEditable() {
-	      return this.state.rectangle.getEditable();
-	    }
-	  }, {
-	    key: "getVisible",
-	    value: function getVisible() {
-	      return this.state.rectangle.getVisible();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var rectangle = _creatorsRectangleCreator2["default"]._createRectangle(this.props);
-
-	      this.setState({ rectangle: rectangle });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      if (this.state.rectangle) {
-	        return _react2["default"].createElement(
-	          _creatorsRectangleCreator2["default"],
-	          _extends({ rectangle: this.state.rectangle }, this.props),
-	          this.props.children
-	        );
-	      } else {
-	        return _react2["default"].createElement("noscript", null);
-	      }
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsRectangleCreator.rectangleDefaultPropTypes, _creatorsRectangleCreator.rectangleControlledPropTypes, _creatorsRectangleCreator.rectangleEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return Rectangle;
-	})(_react.Component);
-
-	exports["default"] = Rectangle;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 347 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsRectangleEventList = __webpack_require__(348);
-
-	var _eventListsRectangleEventList2 = _interopRequireDefault(_eventListsRectangleEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var rectangleControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^set/) && !it.match(/^setMap/); })
-	  //
-	  // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
-	  bounds: _react.PropTypes.any,
-	  draggable: _react.PropTypes.bool,
-	  editable: _react.PropTypes.bool,
-	  options: _react.PropTypes.object,
-	  visible: _react.PropTypes.bool
-	};
-
-	exports.rectangleControlledPropTypes = rectangleControlledPropTypes;
-	var rectangleDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(rectangleControlledPropTypes);
-
-	exports.rectangleDefaultPropTypes = rectangleDefaultPropTypes;
-	var rectangleUpdaters = {
-	  bounds: function bounds(_bounds, component) {
-	    component.getRectangle().setBounds(_bounds);
-	  },
-	  draggable: function draggable(_draggable, component) {
-	    component.getRectangle().setDraggable(_draggable);
-	  },
-	  editable: function editable(_editable, component) {
-	    component.getRectangle().setEditable(_editable);
-	  },
-	  options: function options(_options, component) {
-	    component.getRectangle().setOptions(_options);
-	  },
-	  visible: function visible(_visible, component) {
-	    component.getRectangle().setVisible(_visible);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsRectangleEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var rectangleEventPropTypes = eventPropTypes;
-
-	exports.rectangleEventPropTypes = rectangleEventPropTypes;
-
-	var RectangleCreator = (function (_Component) {
-	  _inherits(RectangleCreator, _Component);
-
-	  function RectangleCreator() {
-	    _classCallCheck(this, _RectangleCreator);
-
-	    _get(Object.getPrototypeOf(_RectangleCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(RectangleCreator, [{
-	    key: "getRectangle",
-	    value: function getRectangle() {
-	      return this.props.rectangle;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createRectangle",
-	    value: function _createRectangle(rectangleProps) {
-	      var mapHolderRef = rectangleProps.mapHolderRef;
-
-	      // https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
-	      var rectangle = new google.maps.Rectangle((0, _utilsComposeOptions2["default"])(rectangleProps, rectangleControlledPropTypes));
-
-	      rectangle.setMap(mapHolderRef.getMap());
-
-	      return rectangle;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      rectangle: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _RectangleCreator = RectangleCreator;
-	  RectangleCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getRectangle",
-	    updaters: rectangleUpdaters
-	  })(RectangleCreator) || RectangleCreator;
-	  return RectangleCreator;
-	})(_react.Component);
-
-	exports["default"] = RectangleCreator;
-
-/***/ },
-/* 348 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#Rectangle
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["bounds_changed", "click", "dblclick", "drag", "dragend", "dragstart", "mousedown", "mousemove", "mouseout", "mouseover", "mouseup", "rightclick"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 349 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _canUseDom = __webpack_require__(318);
-
-	var _canUseDom2 = _interopRequireDefault(_canUseDom);
-
-	var _creatorsSearchBoxCreator = __webpack_require__(350);
-
-	var _creatorsSearchBoxCreator2 = _interopRequireDefault(_creatorsSearchBoxCreator);
-
-	/*
-	 * Original author: @eyebraus
-	 * Original PR: https://github.com/tomchentw/react-google-maps/pull/110
-	 */
-
-	var SearchBox = (function (_Component) {
-	  _inherits(SearchBox, _Component);
-
-	  function SearchBox() {
-	    _classCallCheck(this, SearchBox);
-
-	    _get(Object.getPrototypeOf(SearchBox.prototype), "constructor", this).apply(this, arguments);
-
-	    this.state = {};
-	  }
-
-	  _createClass(SearchBox, [{
-	    key: "getBounds",
-
-	    // Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
-	    //
-	    // [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; }).filter(function(it){ return it.match(/^get/) && !it.match(/Map$/); })
-	    value: function getBounds() {
-	      return this.state.searchBox.getBounds();
-	    }
-	  }, {
-	    key: "getPlaces",
-	    value: function getPlaces() {
-	      return this.state.searchBox.getPlaces();
-	    }
-
-	    // END - Public APIs
-	    //
-	    // https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
-
-	  }, {
-	    key: "componentWillMount",
-	    value: function componentWillMount() {
-	      if (!_canUseDom2["default"]) {
-	        return;
-	      }
-	      var _props = this.props;
-	      var mapHolderRef = _props.mapHolderRef;
-	      var classes = _props.classes;
-	      var style = _props.style;
-	      var placeholder = _props.placeholder;
-
-	      var searchBoxProps = _objectWithoutProperties(_props, ["mapHolderRef", "classes", "style", "placeholder"]);
-
-	      // Cannot create input via component - Google Maps will mess with React's internal state by detaching/attaching.
-	      // Allow developers to style the "hidden element" via inputClasses.
-	      var domEl = document.createElement("input");
-	      domEl.className = classes;
-	      domEl.type = "text";
-	      domEl.placeholder = placeholder;
-
-	      for (var propKey in style) {
-	        if (style.hasOwnProperty(propKey)) {
-	          domEl.style[propKey] = style[propKey];
-	        }
-	      }
-
-	      var searchBox = _creatorsSearchBoxCreator2["default"]._createSearchBox(domEl, searchBoxProps);
-
-	      this.setState({
-	        inputElement: domEl,
-	        searchBox: searchBox
-	      });
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      var _props2 = this.props;
-	      var mapHolderRef = _props2.mapHolderRef;
-	      var controlPosition = _props2.controlPosition;
-
-	      return this.state.searchBox ? _react2["default"].createElement(
-	        _creatorsSearchBoxCreator2["default"],
-	        _extends({ controlPosition: controlPosition, inputElement: this.state.inputElement, mapHolderRef: mapHolderRef, searchBox: this.state.searchBox }, this.props),
-	        this.props.children
-	      ) : _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "propTypes",
-	    value: _extends({}, _creatorsSearchBoxCreator.searchBoxDefaultPropTypes, _creatorsSearchBoxCreator.searchBoxControlledPropTypes, _creatorsSearchBoxCreator.searchBoxEventPropTypes),
-	    enumerable: true
-	  }]);
-
-	  return SearchBox;
-	})(_react.Component);
-
-	exports["default"] = SearchBox;
-	module.exports = exports["default"];
-
-	// Uncontrolled default[props] - used only in componentDidMount
-
-	// Controlled [props] - used in componentDidMount/componentDidUpdate
-
-	// Event [onEventName]
-
-/***/ },
-/* 350 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
-
-	var _get = function get(_x, _x2, _x3) { var _again = true; _function: while (_again) { var object = _x, property = _x2, receiver = _x3; _again = false; if (object === null) object = Function.prototype; var desc = Object.getOwnPropertyDescriptor(object, property); if (desc === undefined) { var parent = Object.getPrototypeOf(object); if (parent === null) { return undefined; } else { _x = parent; _x2 = property; _x3 = receiver; _again = true; desc = parent = undefined; continue _function; } } else if ("value" in desc) { return desc.value; } else { var getter = desc.get; if (getter === undefined) { return undefined; } return getter.call(receiver); } } };
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _eventListsSearchBoxEventList = __webpack_require__(351);
-
-	var _eventListsSearchBoxEventList2 = _interopRequireDefault(_eventListsSearchBoxEventList);
-
-	var _utilsEventHandlerCreator = __webpack_require__(310);
-
-	var _utilsEventHandlerCreator2 = _interopRequireDefault(_utilsEventHandlerCreator);
-
-	var _utilsDefaultPropsCreator = __webpack_require__(311);
-
-	var _utilsDefaultPropsCreator2 = _interopRequireDefault(_utilsDefaultPropsCreator);
-
-	var _utilsComposeOptions = __webpack_require__(313);
-
-	var _utilsComposeOptions2 = _interopRequireDefault(_utilsComposeOptions);
-
-	var _utilsComponentLifecycleDecorator = __webpack_require__(315);
-
-	var _utilsComponentLifecycleDecorator2 = _interopRequireDefault(_utilsComponentLifecycleDecorator);
-
-	var _GoogleMapHolder = __webpack_require__(307);
-
-	var _GoogleMapHolder2 = _interopRequireDefault(_GoogleMapHolder);
-
-	var searchBoxControlledPropTypes = {
-	  // NOTICE!!!!!!
-	  //
-	  // Only expose those with getters & setters in the table as controlled props.
-	  //
-	  bounds: _react.PropTypes.any
-	};
-
-	exports.searchBoxControlledPropTypes = searchBoxControlledPropTypes;
-	var searchBoxDefaultPropTypes = (0, _utilsDefaultPropsCreator2["default"])(searchBoxControlledPropTypes);
-
-	exports.searchBoxDefaultPropTypes = searchBoxDefaultPropTypes;
-	var searchBoxUpdaters = {
-	  bounds: function bounds(_bounds, component) {
-	    component.getSearchBox().setBounds(_bounds);
-	  }
-	};
-
-	var _eventHandlerCreator = (0, _utilsEventHandlerCreator2["default"])(_eventListsSearchBoxEventList2["default"]);
-
-	var eventPropTypes = _eventHandlerCreator.eventPropTypes;
-	var registerEvents = _eventHandlerCreator.registerEvents;
-	var searchBoxEventPropTypes = eventPropTypes;
-
-	exports.searchBoxEventPropTypes = searchBoxEventPropTypes;
-
-	var SearchBoxCreator = (function (_Component) {
-	  _inherits(SearchBoxCreator, _Component);
-
-	  function SearchBoxCreator() {
-	    _classCallCheck(this, _SearchBoxCreator);
-
-	    _get(Object.getPrototypeOf(_SearchBoxCreator.prototype), "constructor", this).apply(this, arguments);
-	  }
-
-	  _createClass(SearchBoxCreator, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      this._mountComponentToMap(this.props.controlPosition);
-	    }
-	  }, {
-	    key: "componentDidUpdate",
-	    value: function componentDidUpdate(prevProps) {
-	      if (this.props.controlPosition !== prevProps.controlPosition) {
-	        this._unmountComponentFromMap(prevProps.controlPosition);
-	        this._mountComponentToMap(this.props.controlPosition);
-	      }
-	    }
-	  }, {
-	    key: "componentWillUnmount",
-	    value: function componentWillUnmount() {
-	      this._unmountComponentFromMap(this.props.controlPosition);
-	    }
-	  }, {
-	    key: "_mountComponentToMap",
-	    value: function _mountComponentToMap(controlPosition) {
-	      var _props = this.props;
-	      var mapHolderRef = _props.mapHolderRef;
-	      var inputElement = _props.inputElement;
-
-	      mapHolderRef.getMap().controls[controlPosition].push(inputElement);
-	    }
-	  }, {
-	    key: "_unmountComponentFromMap",
-	    value: function _unmountComponentFromMap(controlPosition) {
-	      var _props2 = this.props;
-	      var mapHolderRef = _props2.mapHolderRef;
-	      var inputElement = _props2.inputElement;
-
-	      var index = mapHolderRef.getMap().controls[controlPosition].getArray().indexOf(inputElement);
-	      mapHolderRef.getMap().controls[controlPosition].removeAt(index);
-	    }
-	  }, {
-	    key: "getSearchBox",
-	    value: function getSearchBox() {
-	      return this.props.searchBox;
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      return _react2["default"].createElement("noscript", null);
-	    }
-	  }], [{
-	    key: "_createSearchBox",
-	    value: function _createSearchBox(inputElement, searchBoxProps) {
-	      var searchBox = new google.maps.places.SearchBox(inputElement, (0, _utilsComposeOptions2["default"])(searchBoxProps, searchBoxControlledPropTypes));
-
-	      return searchBox;
-	    }
-	  }, {
-	    key: "propTypes",
-	    value: {
-	      mapHolderRef: _react.PropTypes.instanceOf(_GoogleMapHolder2["default"]).isRequired,
-	      searchBox: _react.PropTypes.object.isRequired
-	    },
-	    enumerable: true
-	  }]);
-
-	  var _SearchBoxCreator = SearchBoxCreator;
-	  SearchBoxCreator = (0, _utilsComponentLifecycleDecorator2["default"])({
-	    registerEvents: registerEvents,
-	    instanceMethodName: "getSearchBox",
-	    updaters: searchBoxUpdaters
-	  })(SearchBoxCreator) || SearchBoxCreator;
-	  return SearchBoxCreator;
-	})(_react.Component);
-
-	exports["default"] = SearchBoxCreator;
-
-/***/ },
-/* 351 */
-/***/ function(module, exports) {
-
-	// https://developers.google.com/maps/documentation/javascript/3.exp/reference#SearchBox
-	// [].map.call($0.querySelectorAll("tr>td>code"), function(it){ return it.textContent; })
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports["default"] = ["places_changed"];
-	module.exports = exports["default"];
-
-/***/ },
-/* 352 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -54558,7 +49923,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Modal;
 
 /***/ },
-/* 353 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54609,7 +49974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentLogin;
 
 /***/ },
-/* 354 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54658,10 +50023,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleText;
 
 /***/ },
-/* 355 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -54689,47 +50054,64 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BubbleImage).call(this, props));
 
+			_this.state = {
+				isDownloading: false
+			};
+			_this.eventBubble = _this.eventBubble.bind(_this);
 			_this.openImage = _this.openImage.bind(_this);
 			_this.downloadData = _this.downloadData.bind(_this);
 			return _this;
 		}
 
 		_createClass(BubbleImage, [{
-			key: "componentWillMount",
+			key: 'componentWillMount',
 			value: function componentWillMount() {
-				if (this.props.message.data == null && !this.props.message.isDownloading) {
+				if (this.props.message.data == null && !this.state.isDownloading && !this.props.message.error) {
 					this.props.dataDownloadRequest(this.props.message.mokMessage);
-					this.props.message.isDownloading = true;
+					this.setState({ isDownloading: true });
 				}
 			}
 		}, {
-			key: "render",
+			key: 'render',
 			value: function render() {
-				// console.log(this.props.message);
 				return _react2.default.createElement(
-					"div",
-					{ className: "mky-content-image" },
+					'div',
+					{ className: 'mky-content-image' },
 					this.props.message.data ? _react2.default.createElement(
-						"div",
-						{ className: "mky-content-image-data" },
-						_react2.default.createElement("img", { src: this.props.message.data, onClick: this.openImage })
+						'div',
+						{ className: 'mky-content-image-data' },
+						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage })
+					) : this.state.isDownloading ? _react2.default.createElement(
+						'div',
+						{ className: 'mky-content-image-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
-						"div",
-						{ className: "mky-content-image-loading" },
-						_react2.default.createElement("div", { className: "mky-double-bounce1" }),
-						_react2.default.createElement("div", { className: "mky-double-bounce2" })
+						'div',
+						{ className: 'mky-content-image-to-download', onClick: this.downloadData },
+						_react2.default.createElement(
+							'i',
+							{ className: 'demo-icon mky-menu-down' },
+							''
+						)
 					)
 				);
 			}
 		}, {
-			key: "openImage",
+			key: 'openImage',
 			value: function openImage() {
 				this.props.messageSelected(this.props.message);
 			}
 		}, {
-			key: "downloadData",
-			value: function downloadData() {
+			key: 'eventBubble',
+			value: function eventBubble() {
 				this.props.onClickMessage(this.props.message.mokMessage);
+			}
+		}, {
+			key: 'downloadData',
+			value: function downloadData() {
+				this.props.dataDownloadRequest(this.props.message.mokMessage);
+				this.setState({ isDownloading: true });
 			}
 		}]);
 
@@ -54739,7 +50121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleImage;
 
 /***/ },
-/* 356 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54772,6 +50154,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BubbleFile).call(this, props));
 
+			_this.state = {
+				isDownloading: false
+			};
+			_this.eventBubble = _this.eventBubble.bind(_this);
 			_this.downloadData = _this.downloadData.bind(_this);
 			return _this;
 		}
@@ -54779,9 +50165,9 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(BubbleFile, [{
 			key: 'componentWillMount',
 			value: function componentWillMount() {
-				if (this.props.message.data == null && !this.props.message.isDownloading) {
+				if (this.props.message.data == null && !this.state.isDownloading && !this.props.message.error) {
 					this.props.dataDownloadRequest(this.props.message.mokMessage);
-					this.props.message.isDownloading = true;
+					this.setState({ isDownloading: true });
 				}
 			}
 		}, {
@@ -54789,10 +50175,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					null,
+					{ className: 'mky-content-file' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file' },
+						{ className: 'mky-content-file-data' },
 						_react2.default.createElement(
 							'a',
 							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename },
@@ -54820,18 +50206,32 @@ return /******/ (function(modules) { // webpackBootstrap
 								)
 							)
 						)
-					) : _react2.default.createElement(
+					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
 						{ className: 'mky-content-file-loading' },
 						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
 						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
+					) : _react2.default.createElement(
+						'div',
+						{ className: 'mky-content-file-to-download', onClick: this.downloadData },
+						_react2.default.createElement(
+							'i',
+							{ className: 'demo-icon mky-menu-down' },
+							''
+						)
 					)
 				);
 			}
 		}, {
+			key: 'eventBubble',
+			value: function eventBubble() {
+				this.props.onClickMessage(this.props.message);
+			}
+		}, {
 			key: 'downloadData',
 			value: function downloadData() {
-				this.props.onClickMessage(this.props.message);
+				this.props.dataDownloadRequest(this.props.message.mokMessage);
+				this.setState({ isDownloading: true });
 			}
 		}, {
 			key: 'humanFileSize',
@@ -54886,7 +50286,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleFile;
 
 /***/ },
-/* 357 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54928,8 +50328,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this.messageId = _this.props.message.id[0] == '-' ? _this.props.message.datetimeCreation : _this.props.message.id;
 	        _this.state = {
 	            disabledClass: 'mky-disabled',
-	            minutes: ("0" + parseInt(_this.props.message.length / 60)).slice(-2),
-	            seconds: ("0" + _this.props.message.length % 60).slice(-2)
+	            minutes: ('0' + parseInt(_this.props.message.length / 60)).slice(-2),
+	            seconds: ('0' + _this.props.message.length % 60).slice(-2)
 	        };
 	        _this.playAudioBubble = _this.playAudioBubble.bind(_this);
 	        _this.pauseAudioBubble = _this.pauseAudioBubble.bind(_this);
@@ -54995,7 +50395,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.createAudioHandlerBubble(this.messageId, Math.round(this.props.message.length ? this.props.message.length : 1));
 	            //this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.duration));
 
-	            var mkyAudioBubble = document.getElementById("audio_" + this.messageId);
+	            var mkyAudioBubble = document.getElementById('audio_' + this.messageId);
 	            var that = this;
 
 	            if (mkyAudioBubble) {
@@ -55009,7 +50409,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'createAudioHandlerBubble',
 	        value: function createAudioHandlerBubble(timestamp, duration) {
-	            $("#mky-bubble-audio-player-" + timestamp).knob({
+	            $('#mky-bubble-audio-player-' + timestamp).knob({
 	                'min': 0,
 	                'max': duration,
 	                'angleOffset': -133,
@@ -55026,27 +50426,27 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'setDurationTime',
 	        value: function setDurationTime(timestamp) {
-	            var mkyAudioBubble = document.getElementById("audio_" + timestamp);
+	            var mkyAudioBubble = document.getElementById('audio_' + timestamp);
 	            var durationTime = Math.round(mkyAudioBubble.duration);
-	            var seconds = ("0" + durationTime % 60).slice(-2);
+	            var seconds = ('0' + durationTime % 60).slice(-2);
 	            this.setState({ seconds: seconds });
-	            var minutes = ("0" + parseInt(durationTime / 60)).slice(-2);
+	            var minutes = ('0' + parseInt(durationTime / 60)).slice(-2);
 	            this.setState({ minutes: minutes });
 	        }
 	    }, {
 	        key: 'playAudioBubble',
 	        value: function playAudioBubble() {
 	            this.pauseAllAudio();
-	            window.$bubblePlayer = $("#mky-bubble-audio-player-" + this.messageId); //handles the circle
+	            window.$bubblePlayer = $('#mky-bubble-audio-player-' + this.messageId); //handles the circle
 	            $('#mky-bubble-audio-play-button-' + this.messageId).hide();
 	            $('#mky-bubble-audio-pause-button-' + this.messageId).show();
-	            var audiobuble = document.getElementById("audio_" + this.messageId);
+	            var audiobuble = document.getElementById('audio_' + this.messageId);
 	            audiobuble.play();
 	            window.playIntervalBubble = setInterval(this.updateAnimationBuble, 1000);
 	            var that = this;
-	            audiobuble.addEventListener("ended", function () {
+	            audiobuble.addEventListener('ended', function () {
 	                that.setDurationTime(that.messageId);
-	                window.$bubblePlayer.val(0).trigger("change");
+	                window.$bubblePlayer.val(0).trigger('change');
 	                $('#mky-bubble-audio-play-button-' + that.messageId).show();
 	                $('#mky-bubble-audio-pause-button-' + that.messageId).hide();
 	                clearInterval(window.playIntervalBubble);
@@ -55057,7 +50457,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function pauseAudioBubble() {
 	            $('#mky-bubble-audio-play-button-' + this.messageId).show();
 	            $('#mky-bubble-audio-pause-button-' + this.messageId).hide();
-	            var audiobuble = document.getElementById("audio_" + this.messageId);
+	            var audiobuble = document.getElementById('audio_' + this.messageId);
 	            audiobuble.pause();
 	            clearInterval(window.playIntervalBubble);
 	        }
@@ -55082,12 +50482,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'updateAnimationBuble',
 	        value: function updateAnimationBuble() {
-	            var audiobuble = document.getElementById("audio_" + this.messageId);
+	            var audiobuble = document.getElementById('audio_' + this.messageId);
 	            var currentTime = Math.round(audiobuble.currentTime);
-	            window.$bubblePlayer.val(currentTime).trigger("change");
-	            var seconds = ("0" + currentTime % 60).slice(-2);
+	            window.$bubblePlayer.val(currentTime).trigger('change');
+	            var seconds = ('0' + currentTime % 60).slice(-2);
 	            this.setState({ seconds: seconds });
-	            var minutes = ("0" + parseInt(currentTime / 60)).slice(-2);
+	            var minutes = ('0' + parseInt(currentTime / 60)).slice(-2);
 	            this.setState({ minutes: minutes });
 	        }
 	    }]);
@@ -55098,81 +50498,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleAudio;
 
 /***/ },
-/* 358 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-		value: true
-	});
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var BubbleLocation = function (_React$Component) {
-		_inherits(BubbleLocation, _React$Component);
-
-		function BubbleLocation(props) {
-			_classCallCheck(this, BubbleLocation);
-
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BubbleLocation).call(this, props));
-
-			_this.openMap = _this.openMap.bind(_this);
-			return _this;
-		}
-
-		_createClass(BubbleLocation, [{
-			key: 'render',
-			value: function render() {
-				return _react2.default.createElement(
-					'div',
-					{ className: 'mky-content-location' },
-					_react2.default.createElement(
-						'a',
-						{ target: '_blank', onClick: this.openMap },
-						_react2.default.createElement('img', { src: 'images/gmap_default.png' }),
-						_react2.default.createElement(
-							'div',
-							{ className: 'mky-location-detail' },
-							_react2.default.createElement(
-								'div',
-								{ className: 'mky-location-name' },
-								_react2.default.createElement(
-									'span',
-									{ className: 'mky-ellipsify' },
-									'Ver Mapa'
-								)
-							)
-						)
-					)
-				);
-			}
-		}, {
-			key: 'openMap',
-			value: function openMap() {
-				this.props.messageSelected(this.props.message);
-			}
-		}]);
-
-		return BubbleLocation;
-	}(_react2.default.Component);
-
-	exports.default = BubbleLocation;
-
-/***/ },
-/* 359 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55257,139 +50583,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentViewer;
 
 /***/ },
-/* 360 */
-/***/ function(module, exports, __webpack_require__) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	var _reactGoogleMaps = __webpack_require__(305);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var ReceivedLocation = function (_Component) {
-	  _inherits(ReceivedLocation, _Component);
-
-	  function ReceivedLocation(props) {
-	    _classCallCheck(this, ReceivedLocation);
-
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReceivedLocation).call(this, props));
-
-	    _this.state = {
-	      lat: -2.1667,
-	      lng: -79.9000,
-	      markers: [{
-	        position: { lat: props.message.lat, lng: props.message.lng },
-	        content: props.message.text,
-	        animation: 0
-	      }]
-	    };
-	    return _this;
-	  }
-
-	  _createClass(ReceivedLocation, [{
-	    key: "componentDidMount",
-	    value: function componentDidMount() {
-	      var _this2 = this;
-
-	      var bounds = new google.maps.LatLngBounds();
-	      this.state.markers.map(function (marker, index) {
-	        var marker = new google.maps.Marker({
-	          position: new google.maps.LatLng(marker.position.lat, marker.position.lng)
-	        });
-
-	        bounds.extend(marker.position);
-	      });
-	      if (navigator.geolocation) {
-	        navigator.geolocation.getCurrentPosition(function (position) {
-	          var marker = new google.maps.Marker({
-	            position: new google.maps.LatLng(position.coords.latitude, position.coords.longitude)
-	          });
-	          bounds.extend(marker.position);
-	          var newMarker = { position: { lat: position.coords.latitude, lng: position.coords.longitude }, content: "You are here!", animation: 0 };
-	          var newMarkers = _this2.state.markers;
-	          newMarkers.push(newMarker);
-	          _this2.setState({
-	            bounds: bounds,
-	            markers: newMarkers
-	          });
-	        }, function (error) {
-	          _this2.setState({
-	            bounds: bounds
-	          });
-	        });
-	      } else {
-	        this.setState({
-	          bounds: bounds
-	        });
-	        console.log("Geolocation is not supported by this browser.");
-	      }
-	    }
-	  }, {
-	    key: "componentDidUpdate",
-	    value: function componentDidUpdate() {
-	      console.log('the map: ' + this.refs.map);
-	      this.refs.map.fitBounds(this.state.bounds);
-	    }
-	  }, {
-	    key: "render",
-	    value: function render() {
-	      console.log("gg");
-	      var icon_color = 'http://i.stack.imgur.com/orZ4x.png';
-
-	      return _react2.default.createElement(_reactGoogleMaps.GoogleMapLoader, { ref: "maploader",
-	        containerElement: _react2.default.createElement("div", _extends({}, this.props, {
-	          style: {
-	            height: "100%",
-	            width: "100%",
-	            zIndex: 1000,
-	            overflow: "visible !important"
-	          },
-
-	          id: "map-id"
-	        })),
-	        googleMapElement: _react2.default.createElement(
-	          _reactGoogleMaps.GoogleMap,
-	          {
-	            ref: "map",
-	            center: { lat: this.state.lat, lng: this.state.lng },
-	            defaultZoom: 15,
-	            defaultOptions: { streetViewControl: false, mapTypeControl: false, zoomControlOptions: { position: google.maps.ControlPosition.RIGHT_BOTTOM } }
-	          },
-	          this.state.markers.map(function (marker, index) {
-	            return _react2.default.createElement(_reactGoogleMaps.Marker, {
-	              key: index, position: marker.position, ref: "myMarker", animation: marker.animation, icon: index == 1 ? icon_color : ""
-	            });
-	          })
-	        )
-	      });
-	    }
-	  }]);
-
-	  return ReceivedLocation;
-	}(_react.Component);
-
-	exports.default = ReceivedLocation;
-
-/***/ },
-/* 361 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -55404,7 +50598,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _myform = __webpack_require__(362);
+	var _myform = __webpack_require__(311);
 
 	var _myform2 = _interopRequireDefault(_myform);
 
@@ -55524,13 +50718,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = MyForm;
 
 /***/ },
-/* 362 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(363);
+	var content = __webpack_require__(312);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(287)(content, {});
@@ -55550,7 +50744,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 363 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(286)();
@@ -55564,13 +50758,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 364 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(365);
+	var content = __webpack_require__(314);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(287)(content, {});
@@ -55590,7 +50784,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 365 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(286)();
@@ -55598,7 +50792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n/***\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTELLO\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- GLOBAL SETTINGS\n6.- MEDIA QUERIES\n7.- GLOBAL SETTINGS\n8.- REACT CONTAINER\n9.- SPINNERS\n\n***/\n\nbody{\n  margin: 0;\n  padding: 0;\n}\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'mky';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/mky.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/mky.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/mky.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/mky.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/mky.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n  /* 0.1.- FONT: Fontello\n     ----------------------------- */\n\n.demo-icon{\n  font-family: \"mky\";\n  font-style: normal;\n  font-weight: normal;\n  font-size: 22px;\n  speak: none;\n\n  display: inline-block;\n  text-decoration: inherit;\n  width: 1em;\n  margin-right: .2em;\n  text-align: center;\n  /* opacity: .8; */\n\n  /* For safety - reset parent styles, that can break glyph codes*/\n  font-variant: normal;\n  text-transform: none;\n\n  /* fix buttons height, for twitter bootstrap */\n  line-height: 1em;\n\n  /* Animation center compensation - margins should be symmetric */\n  /* remove if not needed */\n  margin-left: .2em;\n\n  /* You can be more comfortable with increased icons size */\n  /* font-size: 120%; */\n\n  /* Font smoothing. That was taken from TWBS */\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n\n  /* Uncomment for 3D effect */\n  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  padding-top: 1px;\n  position: fixed;\n  -webkit-font-smoothing: antialiased;\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n  \n}\n\n.mky-fullsize{\n  position: relative;\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 100;\n}\n\n.mky-classic{\n  bottom: 0;\n  right: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n#mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n#mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  width: 100%;\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  box-shadow: 0 0 10px rgba(0,0,0,0.3);\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, #mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n#mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n\tcolor: white;\n\tmargin-top: 12px;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-wrapper-out aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid #c2c2c2;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n\twidth: 100%;\n\theight: 64px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #e1e1e1;\n}\n\n#mky-session-header{\n\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n#mky-session-image{\n\twidth: 40px;\n\theight: 40px;\n\tmargin: 10px 20px;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n#mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n#mky-session-description{\n\twidth: calc(100% - 80px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 22px;\n  margin-right: 9px;\n  cursor: pointer;\n}\n\n.mky-logout, .mky-cancel{\n  color: #6e8191;\n  font-size: 19px;\n}\n\n#mky-session-name{\n  margin-top: 25px;\n  float: left;\n  display: flex;\n  white-space: nowrap;\n  width: calc(100% - 50px);\n}\n\n#mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #EFEFEF;\n}\n\n.mky-search-input > input {\n    width: 100%;\n    padding: 8px 10px 8px 40px;\n    border-radius: 10px;\n    border: 1px solid #EFF0F2;\n    position: relative;\n    outline: 0;\n    text-align: left;\n    font-size: 12px;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n    background-repeat: no-repeat;\n    background-position: 5%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-unselected{\n  background-color: #fff;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n\n#mky-conversation-list {\n    width: 100%;\n    height: calc(100% - 51px);\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    overflow: auto;\n    background: #f6f7f9;\n}\n\n#mky-conversation-list li{\n  width: 100%;\n  height: 68px;\n  position: relative;\n  border-bottom: 1px solid #efefef;\n}\n\n.mky-conversation-selected{\n  background-color: #eaf0f9;\n}\n\n#mky-conversation-list .mky-conversation-unselected{\n  background-color: transparent;\n}\n\n.mky-conversation-unselected:hover{\n  background-color: #e9f8ff;\n  cursor: pointer;\n}\n.mky-delete-conv{\n  display: none;\n}\n\n.mky-conversation-unselected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/\n    /*width: 5%;*/\n    /*height: 20%;*/\n    background-repeat: no-repeat;\n    background-size: contain;\n    /*right: 0px;*/\n    /*top: 5px;*/\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n\n}\n\n.mky-conversation-selected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/\n    /*width: 5%;*/\n    /*height: 20%;*/\n    background-repeat: no-repeat;\n    background-size: contain;\n    /*right: 0px;*/\n    /*top: 5px;*/\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-close{\n  font-size: 19px;\n  margin-left: 0.1em;\n  color: #6e8191;\n}\n\n.mky-conversation-image{\n  width: 48px;\n  height: 48px;\n  margin: 0px;\n  width: 48px;\n  padding: 10px 15px 10px 20px;\n  border-bottom: 1px solid #F6F7F9;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 100px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 13px;\n  margin-right: 0;\n  margin-left:8px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n\tcolor: black;\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-time{\n\twidth: 65px;\n\tfloat: right;\n\tmargin-left: 5px;\n\ttext-align: right;\n}\n\n.mky-conversation-time span{\n\tfont-size: 11px;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-conversation-state{\n  color: #8a8a8a;\n  margin-top: 8px;\n  display: flex;\n  width:88%;\n}\n\n.mky-conversation-notification{\n  position: relative;\n  /*right: 15px;*/\n  /*bottom: 12px;*/\n  /*float: right;*/\n  display: inline-block;\n  vertical-align: top;\n}\n.mnk-conversation-opts{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n  /*float: right;*/\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border-radius: 50%;\n  background: #8ec549;\n  color: #fff;\n  font-size: 9px;\n  font-weight: bold;\n  padding: 4px;\n  text-align: center;\n}\n\n.mky-bold-text{\n    font-family: Verdana Pro W01 SemiBold;\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n    height: 100%;\n    margin: 0;\n    vertical-align: top;\n    float: left;\n    position: relative;\n    background-color: #ffffff;\n}\n\n.mky-content-window-only{\n    width: 100%;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n\twidth: 100%;\n\theight: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n#mky-conversation-selected-header{\n    background: #fff;\n    position: relative;\n    z-index: 1;\n}\n\n#mky-conversation-selected-header div{\n    display: inline-table;\n    vertical-align: top;\n}\n\n.mky-conversation-burger{\n  float: left;\n  margin: 24px 0 0 12px;\n  width: auto;\n}\n\n.mky-menu-options{\n\tcolor: #6e8191;\n    font-size: 19px;\n}\n\n#mky-conversation-selected-image{\n    width: 40px;\n    height: 40px;\n    margin: 13px;\n    float: left;\n    margin-left: 25px;\n}\n\n#mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n#mky-conversation-selected-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n#mky-conversation-selected-description span{\n    display: block;\n    text-align: left;\n    font-weigth: normal;\n    color:#a2a2a2;\n    max-width: 550px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    line-height: 16px;\n}\n\n#mky-conversation-selected-name{\n    font-size: 14px;\n    color: #353535 !important;\n}\n\n#mky-conversation-selected-status{\n    font-size: 12px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n\twidth: 100%;\n\theight: calc(100% - 65px);\n\tposition: relative;\n}\n\n#mky-chat-timeline {\n    width: 100%;\n    height: calc(100% - 66px);\n    background-color: #fff;\n    position: relative;\n    overflow: auto;\n    overflow-x: hidden;\n    padding-bottom:10px;\n}\n\n.mky-partialsize #mky-chat-timeline {\n    height: calc(100% - 62px);\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 40px);\n    height: auto;\n    margin: 10px auto;\n    padding: 10px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n}\n\n/* base bubble */\n\n.mky-bubble{\n  \tbox-sizing: content-box;\n  \tmax-width: 60%;\n  \tmargin: 0 auto;\n  \twidth: auto;\n  \tmin-width: 42px;\n  \tmin-height: 16px;\n  \tpadding: 6px 10px 8px 14px;\n  \t-webkit-border-radius: 15px;\n  \t-moz-border-radius: 15px;\n  \tborder-radius: 15px;\n  \tmargin-top: 15px;\n  \tposition: relative;\n  \tline-height: 19px;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #829be2;\n    border-bottom-right-radius: 1px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: #fff;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #fff;\n  \tmin-width: 112px;\n  \tbackground: #00bfa5;\n  \tborder-bottom-left-radius: 1px;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #42a5f5;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 300px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #bbb;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n  width: 200px;\n}\n\n.mky-bubble-file-out {\n    text-align: right;\n}\n\n.mky-bubble-file-in {\n    text-align: left;\n}\n\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 15px;\n    position: absolute;\n    top: -15px;\n}\n\n.mky-message-detail span{\n    font-size: 10px;\n    color: #8c8c8c;\n    line-height: 10px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 9px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-bubble-out .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-button-message-unsend{\n    position: absolute;\n    color: blue;\n    font-size: 12px;\n    top: 1px;\n    font-weight: bold;\n    right: 6px;\n    z-index: 1;\n    width: 15px;\n    height: 15px;\n    opacity: 0;\n    cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #00bfa5;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/*content text bubble */\n\n.mky-content-text{\n  /*vertical-align: top;*/\n  font-size: 14px;\n}\n\n/*content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #00BFA5;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: auto;\n  max-height: 250px;\n  min-height: 200px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 70px;\n  position: relative;\n}\n\n.mky-content-image img{\n  width: 100%;\n  cursor: pointer;\n}\n\n.mky-content-image-data {\n    height: 100%;\n    align-items: center;\n    display: flex;\n    -webkit-border-radius: 14px;\n    -moz-border-radius: 14px;\n    border-radius: 14px;\n    overflow: hidden;\n    justify-content: center;\n}\n\n.mky-content-image-data img{\n\theight: 100%;\n\twidth: auto;\n}\n\n/*content file bubble */\n\n.mky-content-file{\n    text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-file-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n    margin-right: 10px;\n}\n\n.mky-file-icon{\n    width: 38px;\n    height: 50px;\n    background-repeat: no-repeat;\n    background-size: 100%;\n    vertical-align: top;\n    float: left;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-word-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/word-icon.png);\n}\n\n.mky-file-exel-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n\n\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 1;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.4.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  width: 100%;\n  box-sizing: content-box;\n  border-top: 1px solid #ccc;\n  height: auto;\n  margin: 0 auto;\n  background-color: #fff;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n}\n.mky-inner-chat-input{\n  max-width: 887px;\n  margin: 0 auto;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  border: 1px solid #E0E0E0;\n  width: calc(100% - 30px);\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: auto;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n  top: 50%;\n  transform: translateY(50%);\n  -webkit-transform: translateY(50%);\n  -moz-transform: translateY(50%);\n}\n\n.mky-button-icon{\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: contain;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n#mky-button-add{\n  background: none;\n  color: #8660a9;\n  font-size: 28px;\n}\n\n#mky-button-cancel-audio{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n#mky-button-send-message{\n  background: none;\n  color: #00bfa5;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n#mky-button-record-audio{\n  background: none;\n  color: #00BFA5;\n  font-size: 22px;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n#mky-button-cancel-audio:hover,\n#mky-button-record-audio:hover,\n#mky-button-send-message:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n#mky-message-text-input{\n  box-sizing: content-box;\n  width: calc(100% - 124px);\n  height: 24px;\n  margin: 8px 10px;\n  padding: 10px 10px 0px 10px;\n  resize: none;\n  border: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  top: initial;\n}\n\n.mky-chat-input-file #mky-message-text-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n#mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 100px);\n  height: 38px;\n  padding: 5px;\n  margin: 1px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  width: 97%;\n  text-align: center;\n  margin-top: 10px;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat:no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n\tcolor: #42A5F5;\n\ttext-decoration-line: dotted;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 50px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #00bfa5;\n  opacity: 0.8;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 100%;\n  bottom: 55px;\n  border: none;\n  background: #F0f4fc;\n  border-radius: 0;\n  height: 120px;\n  color: #8a8a8a;\n  box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -moz-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  left: 0;\n  top: initial;\n  opacity: 1;\n  z-index: 1;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: center;\n  cursor: pointer;\n  width: 49%;\n}\n\n.mky-menu-bubble-item:first-child{\n  border-right: 1px solid #ccc;\n}\n\n.mky-menu-bubble-item:hover{\n  background: #F0f4fc;\n  color: #8a8a8a;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #2979ff;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n/*3.4.- BANNER and dependent clases*/\n\n.mky-banner-section{\n  width: 400px;\n  /*border: 1px solid #ccc;*/\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n.mky-banner-section img{\n  width: 100%;\n  /*height: 100%;*/\n}\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n\n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n/* 5.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n/* 6.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 600px){\n\n/* Disappear description user session */\n  #mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n/*\n  .mky-wrapper-out aside{\n        min-width: 130px;\n  }\n*/\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-wrapper-out aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-wrapper-out aside{\n    \tdisplay: none;\n\t}\n\n\t/* Icons bigger */\n\t#mky-button-add, #mky-button-record-audio{\n\t    height: 26px;\n\t    width: 18px;\n\t}\n\n\t#mky-button-send-message, #mky-button-cancel-audio{\n\t    height: 19px;\n\t    width: 24px;\n\t}\n\n\t#mky-button-action-record button{\n\t    height: 16px;\n\t    width: 16px;\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Input */\n\t#mky-record-area{\n\t  \tmargin-top: 7px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-wrapper-out aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  #mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n  #mky-conversation-selected-image{\n    margin-left: 5px;\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n/* 7.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n.mky-inner-modal{\n    width: 400px;\n    height: 200px;\n    background: white;\n    margin: auto;\n    top: 38%;\n    position: relative;\n    z-index: 200;\n}\n\n.mky-question{\n    height: 20%;\n    text-align: center;\n    padding-top: 15%;\n    margin-bottom: 5%;\n    position: relative;\n}\n\n.mky-button-left{\n    float: left;\n    height: 15%;\n    width: 30%;\n    margin-left: 15%;\n}\n\n.mky-button-right{\n    float: right;\n    height: 15%;\n    width: 30%;\n    margin-right: 15%;\n}\n\n\n/* 8.- REACT CONTAINER\n   ----------------------------- */\n\n.mky-full{\n\twidth: 100%;\n\theight: 100%;\n}\n\n/* 9.- SPINNERS\n   ----------------------------- */\n\n/*\n   Animation example, for spinners\n*/\n\n.animate-spin {\n  -moz-animation: spin 2s infinite linear;\n  -o-animation: spin 2s infinite linear;\n  -webkit-animation: spin 2s infinite linear;\n  animation: spin 2s infinite linear;\n  display: inline-block;\n}\n@-moz-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -moz-transform: rotate(359deg);\n    -o-transform: rotate(359deg);\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n@-webkit-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -moz-transform: rotate(359deg);\n    -o-transform: rotate(359deg);\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n@-o-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -moz-transform: rotate(359deg);\n    -o-transform: rotate(359deg);\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n@-ms-keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -moz-transform: rotate(359deg);\n    -o-transform: rotate(359deg);\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n@keyframes spin {\n  0% {\n    -moz-transform: rotate(0deg);\n    -o-transform: rotate(0deg);\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n\n  100% {\n    -moz-transform: rotate(359deg);\n    -o-transform: rotate(359deg);\n    -webkit-transform: rotate(359deg);\n    transform: rotate(359deg);\n  }\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/\n\n", ""]);
+	exports.push([module.id, "\n/***\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- GLOBAL SETTINGS\n6.- MEDIA QUERIES\n7.- GLOBAL SETTINGS\n8.- REACT CONTAINER\n9.- SPINNERS\n\n***/\n\nbody{\n  margin: 0;\n  padding: 0;\n}\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'monkey';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix') format('embedded-opentype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.woff') format('woff'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.ttf') format('truetype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"monkey\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"monkey\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-add-filled:before {\n  content: \"a\";\n}\n.mky-icon-add-regular:before {\n  content: \"b\";\n}\n.mky-icon-arrowback:before {\n  content: \"c\";\n}\n.mky-icon-attach-tilt:before {\n  content: \"d\";\n}\n.mky-icon-attach-regular:before {\n  content: \"e\";\n}\n.mky-icon-audio-ephemeral:before {\n  content: \"f\";\n}\n.mky-icon-back:before {\n  content: \"g\";\n}\n.mky-icon-chats:before {\n  content: \"h\";\n}\n.mky-icon-check:before {\n  content: \"i\";\n}\n.mky-icon-close-strong:before {\n  content: \"j\";\n}\n.mky-icon-download:before {\n  content: \"k\";\n}\n.mky-icon-edit:before {\n  content: \"l\";\n}\n.mky-icon-copy:before {\n  content: \"m\";\n}\n.mky-icon-share:before {\n  content: \"n\";\n}\n.mky-icon-align-center:before {\n  content: \"o\";\n}\n.mky-icon-align-left:before {\n  content: \"p\";\n}\n.mky-icon-align-right:before {\n  content: \"q\";\n}\n.mky-icon-arrow-down-light:before {\n  content: \"r\";\n}\n.mky-icon-arrow-down-strong:before {\n  content: \"s\";\n}\n.mky-icon-arrow-up-light:before {\n  content: \"t\";\n}\n.mky-icon-arrow-up-strong:before {\n  content: \"u\";\n}\n.mky-icon-bold:before {\n  content: \"v\";\n}\n.mky-icon-bulletlist:before {\n  content: \"w\";\n}\n.mky-icon-close:before {\n  content: \"x\";\n}\n.mky-icon-document:before {\n  content: \"y\";\n}\n.mky-icon-image-regular:before {\n  content: \"z\";\n}\n.mky-icon-icon-indentlees:before {\n  content: \"A\";\n}\n.mky-icon-indent-more:before {\n  content: \"B\";\n}\n.mky-icon-italic:before {\n  content: \"C\";\n}\n.mky-icon-location-regular:before {\n  content: \"D\";\n}\n.mky-icon-numberlist:before {\n  content: \"G\";\n}\n.mky-icon-remove-formating:before {\n  content: \"H\";\n}\n.mky-icon-icon-size:before {\n  content: \"I\";\n}\n.mky-icon-textcolor:before {\n  content: \"J\";\n}\n.mky-icon-underline:before {\n  content: \"K\";\n}\n.mky-icon-info:before {\n  content: \"L\";\n}\n.mky-icon-key:before {\n  content: \"M\";\n}\n.mky-icon-location-filled:before {\n  content: \"N\";\n}\n.mky-icon-lock:before {\n  content: \"O\";\n}\n.mky-icon-logout-left:before {\n  content: \"P\";\n}\n.mky-icon-logout-right:before {\n  content: \"Q\";\n}\n.mky-icon-mail:before {\n  content: \"R\";\n}\n.mky-icon-menu-hamburguer:before {\n  content: \"S\";\n}\n.mky-icon-arrow-down-big:before {\n  content: \"T\";\n}\n.mky-icon-arrow-up-big:before {\n  content: \"U\";\n}\n.mky-icon-mic-empty:before {\n  content: \"V\";\n}\n.mky-icon-mic-filled:before {\n  content: \"W\";\n}\n.mky-icon-minimize:before {\n  content: \"X\";\n}\n.mky-icon-photo:before {\n  content: \"Y\";\n}\n.mky-icon-image-square:before {\n  content: \"Z\";\n}\n.mky-icon-image-ephemeral:before {\n  content: \"0\";\n}\n.mky-icon-push:before {\n  content: \"1\";\n}\n.mky-icon-search:before {\n  content: \"2\";\n}\n.mky-icon-send-regular:before {\n  content: \"3\";\n}\n.mky-icon-send-filled:before {\n  content: \"4\";\n}\n.mky-icon-text-ephemeral:before {\n  content: \"5\";\n}\n.mky-icon-timer-regular:before {\n  content: \"6\";\n}\n.mky-icon-timer-regular-1:before {\n  content: \"7\";\n}\n.mky-icon-timer-filled:before {\n  content: \"8\";\n}\n.mky-icon-trashcan-regular:before {\n  content: \"9\";\n}\n.mky-icon-trashcan-filled:before {\n  content: \"!\";\n}\n.mky-icon-webhook:before {\n  content: \"\\\"\";\n}\n.mky-icon-menu-dots-strong:before {\n  content: \"E\";\n}\n.mky-icon-menu-dots:before {\n  content: \"F\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  padding-top: 1px;\n  position: fixed;\n  -webkit-font-smoothing: antialiased;\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n  \n}\n\n.mky-fullsize{\n  position: relative;\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 100;\n}\n\n.mky-classic{\n  bottom: 0;\n  right: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n#mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n#mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  width: 100%;\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  box-shadow: 0 0 10px rgba(0,0,0,0.3);\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, #mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n#mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button .mky-icon-add-regular{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-wrapper-out aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid #c2c2c2;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n\twidth: 100%;\n\theight: 64px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #e1e1e1;\n}\n\n#mky-session-header{\n\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n#mky-session-image{\n\twidth: 40px;\n\theight: 40px;\n\tmargin: 10px 20px;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n#mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n#mky-session-description{\n\twidth: calc(100% - 80px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 22px;\n  margin-right: 9px;\n  cursor: pointer;\n}\n\n.mky-header-exit i{\n  color: #6e8191;\n  font-size: 19px;\n}\n\n#mky-session-name{\n  margin-top: 25px;\n  float: left;\n  display: flex;\n  white-space: nowrap;\n  width: calc(100% - 50px);\n}\n\n#mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #EFEFEF;\n}\n\n.mky-search-input > input {\n    width: 100%;\n    padding: 8px 10px 8px 40px;\n    border-radius: 10px;\n    border: 1px solid #EFF0F2;\n    position: relative;\n    outline: 0;\n    text-align: left;\n    font-size: 12px;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n    background-repeat: no-repeat;\n    background-position: 5%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-unselected{\n  background-color: #fff;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n\n#mky-conversation-list {\n    width: 100%;\n    height: calc(100% - 51px);\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    overflow: auto;\n    background: #f6f7f9;\n}\n\n#mky-conversation-list li{\n  width: 100%;\n  height: 68px;\n  position: relative;\n  border-bottom: 1px solid #efefef;\n}\n\n.mky-conversation-selected{\n  background-color: #eaf0f9;\n}\n\n#mky-conversation-list .mky-conversation-unselected{\n  background-color: transparent;\n}\n\n.mky-conversation-unselected:hover{\n  background-color: #e9f8ff;\n  cursor: pointer;\n}\n.mky-delete-conv{\n  display: none;\n}\n\n.mky-conversation-unselected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/\n    /*width: 5%;*/\n    /*height: 20%;*/\n    background-repeat: no-repeat;\n    background-size: contain;\n    /*right: 0px;*/\n    /*top: 5px;*/\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n\n}\n\n.mky-conversation-selected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    /*background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);*/\n    /*width: 5%;*/\n    /*height: 20%;*/\n    background-repeat: no-repeat;\n    background-size: contain;\n    /*right: 0px;*/\n    /*top: 5px;*/\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-delete-conv i{\n  font-size: 19px;\n  margin-left: 0.1em;\n  color: #6e8191;\n}\n\n.mky-conversation-image{\n  width: 48px;\n  height: 48px;\n  margin: 0px;\n  width: 48px;\n  padding: 10px 15px 10px 20px;\n  border-bottom: 1px solid #F6F7F9;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 100px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 13px;\n  margin-right: 0;\n  margin-left:8px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n\tcolor: black;\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-time{\n\twidth: 65px;\n\tfloat: right;\n\tmargin-left: 5px;\n\ttext-align: right;\n}\n\n.mky-conversation-time span{\n\tfont-size: 11px;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-conversation-state{\n  color: #8a8a8a;\n  margin-top: 8px;\n  display: flex;\n  width:88%;\n}\n\n.mky-conversation-notification{\n  position: relative;\n  /*right: 15px;*/\n  /*bottom: 12px;*/\n  /*float: right;*/\n  display: inline-block;\n  vertical-align: top;\n}\n.mnk-conversation-opts{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n  /*float: right;*/\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border-radius: 50%;\n  background: #8ec549;\n  color: #fff;\n  font-size: 9px;\n  font-weight: bold;\n  padding: 4px;\n  text-align: center;\n}\n\n.mky-bold-text{\n    font-family: Verdana Pro W01 SemiBold;\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n    height: 100%;\n    margin: 0;\n    vertical-align: top;\n    float: left;\n    position: relative;\n    background-color: #ffffff;\n}\n\n.mky-content-window-only{\n    width: 100%;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n\twidth: 100%;\n\theight: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n#mky-conversation-selected-header{\n    background: #fff;\n    position: relative;\n    z-index: 1;\n}\n\n#mky-conversation-selected-header div{\n    display: inline-table;\n    vertical-align: top;\n}\n\n.mky-conversation-burger{\n  float: left;\n  margin: 24px 5px 0 12px;\n  width: auto;\n}\n\n.mky-conversation-burger i{\n\tcolor: #6e8191;\n    font-size: 19px;\n}\n\n#mky-conversation-selected-image{\n    width: 40px;\n    height: 40px;\n    margin: 13px;\n    float: left;\n    margin-left: 25px;\n}\n\n/*\n.mky-partialsize #mky-conversation-selected-image{\n\tmargin-left: 5px;\n}\n*/\n\n#mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n#mky-conversation-selected-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n#mky-conversation-selected-description span{\n    display: block;\n    text-align: left;\n    font-weigth: normal;\n    color:#a2a2a2;\n    max-width: 550px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    line-height: 16px;\n}\n\n#mky-conversation-selected-name{\n    font-size: 14px;\n    color: #353535 !important;\n}\n\n#mky-conversation-selected-status{\n    font-size: 12px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n\twidth: 100%;\n\theight: calc(100% - 65px);\n\tposition: relative;\n}\n\n#mky-chat-timeline {\n    width: 100%;\n    height: calc(100% - 66px);\n    background-color: #fff;\n    position: relative;\n    overflow: auto;\n    overflow-x: hidden;\n    padding-bottom:10px;\n}\n\n.mky-partialsize #mky-chat-timeline {\n    height: calc(100% - 62px);\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 40px);\n    height: auto;\n    margin: 10px auto;\n    padding: 10px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n}\n\n/* base bubble */\n\n.mky-bubble{\n  \tbox-sizing: content-box;\n  \tmax-width: 60%;\n  \tmargin: 0 auto;\n  \twidth: auto;\n  \tmin-width: 42px;\n  \tmin-height: 16px;\n  \tpadding: 6px 10px 8px 14px;\n  \t-webkit-border-radius: 15px;\n  \t-moz-border-radius: 15px;\n  \tborder-radius: 15px;\n  \tmargin-top: 15px;\n  \tposition: relative;\n  \tline-height: 19px;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #829be2;\n    border-bottom-right-radius: 1px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: #fff;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #fff;\n  \tmin-width: 112px;\n  \tbackground: #00bfa5;\n  \tborder-bottom-left-radius: 1px;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #42a5f5;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #bbb;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #bbb;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-file-out {\n    text-align: right;\n}\n\n.mky-bubble-file-in {\n    text-align: left;\n}\n\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 15px;\n    position: absolute;\n    top: -15px;\n}\n\n.mky-message-detail span{\n    font-size: 10px;\n    color: #8c8c8c;\n    line-height: 10px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 9px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-bubble-out .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-button-message-unsend{\n    position: absolute;\n    color: blue;\n    font-size: 12px;\n    top: 1px;\n    font-weight: bold;\n    right: 6px;\n    z-index: 1;\n    width: 15px;\n    height: 15px;\n    opacity: 0;\n    cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #00bfa5;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/*content text bubble */\n\n.mky-content-text{\n  /*vertical-align: top;*/\n  font-size: 14px;\n}\n\n/*content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #00BFA5;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;  \n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: auto;\n  max-height: 250px;\n  min-height: 200px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n    height: 100%;\n    align-items: center;\n    display: flex;\n    -webkit-border-radius: 14px;\n    -moz-border-radius: 14px;\n    border-radius: 14px;\n    overflow: hidden;\n    justify-content: center;\n}\n\n.mky-content-image-data img{\n\theight: 100%;\n\twidth: auto;\n\tcursor: pointer;\n}\n\n/*content file bubble */\n\n.mky-content-file{\n    text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 50px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-word-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/word-icon.png);\n}\n\n.mky-file-exel-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n\n\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 1;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.4.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  width: 100%;\n  box-sizing: content-box;\n  border-top: 1px solid #ccc;\n  height: auto;\n  margin: 0 auto;\n  background-color: #fff;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n}\n.mky-inner-chat-input{\n  max-width: 887px;\n  margin: 0 auto;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  border: 1px solid #E0E0E0;\n  width: calc(100% - 30px);\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: auto;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n  top: 50%;\n  transform: translateY(50%);\n  -webkit-transform: translateY(50%);\n  -moz-transform: translateY(50%);\n}\n\n.mky-button-icon{\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: contain;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n#mky-button-add{\n  background: none;\n  color: #8660a9;\n  font-size: 28px;\n}\n\n#mky-button-cancel-audio{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n#mky-button-send-message{\n  background: none;\n  color: #00bfa5;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n#mky-button-record-audio{\n  background: none;\n  color: #00BFA5;\n  font-size: 22px;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n#mky-button-cancel-audio:hover,\n#mky-button-record-audio:hover,\n#mky-button-send-message:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n#mky-message-text-input{\n  box-sizing: content-box;\n  width: calc(100% - 124px);\n  height: 24px;\n  margin: 8px 10px;\n  padding: 10px 10px 0px 10px;\n  resize: none;\n  border: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  top: initial;\n}\n\n.mky-chat-input-file #mky-message-text-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n#mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 100px);\n  height: 38px;\n  padding: 5px;\n  margin: 1px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  width: 97%;\n  text-align: center;\n  margin-top: 10px;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat:no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n\tcolor: #42A5F5;\n\ttext-decoration-line: dotted;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 50px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #00bfa5;\n  opacity: 0.8;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 100%;\n  bottom: 55px;\n  border: none;\n  background: #F0f4fc;\n  border-radius: 0;\n  height: 120px;\n  color: #8a8a8a;\n  box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -moz-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  left: 0;\n  top: initial;\n  opacity: 1;\n  z-index: 1;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: center;\n  cursor: pointer;\n  width: 49%;\n}\n\n.mky-menu-bubble-item:first-child{\n  border-right: 1px solid #ccc;\n}\n\n.mky-menu-bubble-item:hover{\n  background: #F0f4fc;\n  color: #8a8a8a;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #2979ff;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n/*3.4.- BANNER and dependent clases*/\n\n.mky-banner-section{\n  width: 400px;\n  /*border: 1px solid #ccc;*/\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n.mky-banner-section img{\n  width: 100%;\n  /*height: 100%;*/\n}\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n\n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n/* 5.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n/* 6.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 600px){\n\n/* Disappear description user session */\n  #mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n/*\n  .mky-wrapper-out aside{\n        min-width: 130px;\n  }\n*/\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-wrapper-out aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-wrapper-out aside{\n    \tdisplay: none;\n\t}\n\n\t/* Icons bigger */\n\t#mky-button-add, #mky-button-record-audio{\n\t    height: 26px;\n\t    width: 18px;\n\t}\n\n\t#mky-button-send-message, #mky-button-cancel-audio{\n\t    height: 19px;\n\t    width: 24px;\n\t}\n\n\t#mky-button-action-record button{\n\t    height: 16px;\n\t    width: 16px;\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Input */\n\t#mky-record-area{\n\t  \tmargin-top: 7px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-wrapper-out aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  #mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n/* 7.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n.mky-inner-modal{\n    width: 400px;\n    height: 200px;\n    background: white;\n    margin: auto;\n    top: 38%;\n    position: relative;\n    z-index: 200;\n}\n\n.mky-question{\n    height: 20%;\n    text-align: center;\n    padding-top: 15%;\n    margin-bottom: 5%;\n    position: relative;\n}\n\n.mky-button-left{\n    float: left;\n    height: 15%;\n    width: 30%;\n    margin-left: 15%;\n}\n\n.mky-button-right{\n    float: right;\n    height: 15%;\n    width: 30%;\n    margin-right: 15%;\n}\n\n\n/* 8.- REACT CONTAINER\n   ----------------------------- */\n\n.mky-full{\n\twidth: 100%;\n\theight: 100%;\n}\n\n/* 9.- SPINNERS\n   ----------------------------- */\n\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/\n\n", ""]);
 
 	// exports
 
