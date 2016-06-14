@@ -4,7 +4,7 @@
 TABLE OF CONTENTS
 
 0.- FONT
-  0.2.- FONTELLO
+  0.2.- FONTASTIC
 1.- CONTENT - wrappers
 2.- CONTENT CONNECTION - animation mky-spinner
 3.- CONTENT APP
@@ -39,12 +39,12 @@ body{
 }
 
 @font-face {
-  font-family: 'mky';
-  src: url('https://cdn.criptext.com/MonkeyUI/font/mky.eot?89861472');
-  src: url('https://cdn.criptext.com/MonkeyUI/font/mky.eot?89861472#iefix') format('embedded-opentype'),
-       url('https://cdn.criptext.com/MonkeyUI/font/mky.woff?89861472') format('woff'),
-       url('https://cdn.criptext.com/MonkeyUI/font/mky.ttf?89861472') format('truetype'),
-       url('https://cdn.criptext.com/MonkeyUI/font/mky.svg?89861472#mky') format('svg');
+  font-family: 'monkey';
+  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot');
+  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix') format('embedded-opentype'),
+  	   url('https://cdn.criptext.com/MonkeyUI/font/monkey.woff') format('woff'),
+  	   url('https://cdn.criptext.com/MonkeyUI/font/monkey.ttf') format('truetype'),
+  	   url('https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey') format('svg');
   font-weight: normal;
   font-style: normal;
 }
@@ -60,43 +60,226 @@ body{
   font-style: normal;
 }
 
-  /* 0.1.- FONT: Fontello
+  /* 0.1.- FONT: Fontastic
      ----------------------------- */
 
-.demo-icon{
-  font-family: "mky";
-  font-style: normal;
-  font-weight: normal;
-  font-size: 22px;
+[data-icon]:before {
+  font-family: "monkey" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
   speak: none;
-
-  display: inline-block;
-  text-decoration: inherit;
-  width: 1em;
-  margin-right: .2em;
-  text-align: center;
-  /* opacity: .8; */
-
-  /* For safety - reset parent styles, that can break glyph codes*/
-  font-variant: normal;
-  text-transform: none;
-
-  /* fix buttons height, for twitter bootstrap */
-  line-height: 1em;
-
-  /* Animation center compensation - margins should be symmetric */
-  /* remove if not needed */
-  margin-left: .2em;
-
-  /* You can be more comfortable with increased icons size */
-  /* font-size: 120%; */
-
-  /* Font smoothing. That was taken from TWBS */
+  line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
 
-  /* Uncomment for 3D effect */
-  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+[class^="mky-icon-"]:before,
+[class*=" mky-icon-"]:before {
+  font-family: "monkey" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mky-icon-add-filled:before {
+  content: "\61";
+}
+.mky-icon-add-regular:before {
+  content: "\62";
+}
+.mky-icon-arrowback:before {
+  content: "\63";
+}
+.mky-icon-attach-tilt:before {
+  content: "\64";
+}
+.mky-icon-attach-regular:before {
+  content: "\65";
+}
+.mky-icon-audio-ephemeral:before {
+  content: "\66";
+}
+.mky-icon-back:before {
+  content: "\67";
+}
+.mky-icon-chats:before {
+  content: "\68";
+}
+.mky-icon-check:before {
+  content: "\69";
+}
+.mky-icon-close-strong:before {
+  content: "\6a";
+}
+.mky-icon-download:before {
+  content: "\6b";
+}
+.mky-icon-edit:before {
+  content: "\6c";
+}
+.mky-icon-copy:before {
+  content: "\6d";
+}
+.mky-icon-share:before {
+  content: "\6e";
+}
+.mky-icon-align-center:before {
+  content: "\6f";
+}
+.mky-icon-align-left:before {
+  content: "\70";
+}
+.mky-icon-align-right:before {
+  content: "\71";
+}
+.mky-icon-arrow-down-light:before {
+  content: "\72";
+}
+.mky-icon-arrow-down-strong:before {
+  content: "\73";
+}
+.mky-icon-arrow-up-light:before {
+  content: "\74";
+}
+.mky-icon-arrow-up-strong:before {
+  content: "\75";
+}
+.mky-icon-bold:before {
+  content: "\76";
+}
+.mky-icon-bulletlist:before {
+  content: "\77";
+}
+.mky-icon-close:before {
+  content: "\78";
+}
+.mky-icon-document:before {
+  content: "\79";
+}
+.mky-icon-image-regular:before {
+  content: "\7a";
+}
+.mky-icon-icon-indentlees:before {
+  content: "\41";
+}
+.mky-icon-indent-more:before {
+  content: "\42";
+}
+.mky-icon-italic:before {
+  content: "\43";
+}
+.mky-icon-location-regular:before {
+  content: "\44";
+}
+.mky-icon-numberlist:before {
+  content: "\47";
+}
+.mky-icon-remove-formating:before {
+  content: "\48";
+}
+.mky-icon-icon-size:before {
+  content: "\49";
+}
+.mky-icon-textcolor:before {
+  content: "\4a";
+}
+.mky-icon-underline:before {
+  content: "\4b";
+}
+.mky-icon-info:before {
+  content: "\4c";
+}
+.mky-icon-key:before {
+  content: "\4d";
+}
+.mky-icon-location-filled:before {
+  content: "\4e";
+}
+.mky-icon-lock:before {
+  content: "\4f";
+}
+.mky-icon-logout-left:before {
+  content: "\50";
+}
+.mky-icon-logout-right:before {
+  content: "\51";
+}
+.mky-icon-mail:before {
+  content: "\52";
+}
+.mky-icon-menu-hamburguer:before {
+  content: "\53";
+}
+.mky-icon-arrow-down-big:before {
+  content: "\54";
+}
+.mky-icon-arrow-up-big:before {
+  content: "\55";
+}
+.mky-icon-mic-empty:before {
+  content: "\56";
+}
+.mky-icon-mic-filled:before {
+  content: "\57";
+}
+.mky-icon-minimize:before {
+  content: "\58";
+}
+.mky-icon-photo:before {
+  content: "\59";
+}
+.mky-icon-image-square:before {
+  content: "\5a";
+}
+.mky-icon-image-ephemeral:before {
+  content: "\30";
+}
+.mky-icon-push:before {
+  content: "\31";
+}
+.mky-icon-search:before {
+  content: "\32";
+}
+.mky-icon-send-regular:before {
+  content: "\33";
+}
+.mky-icon-send-filled:before {
+  content: "\34";
+}
+.mky-icon-text-ephemeral:before {
+  content: "\35";
+}
+.mky-icon-timer-regular:before {
+  content: "\36";
+}
+.mky-icon-timer-regular-1:before {
+  content: "\37";
+}
+.mky-icon-timer-filled:before {
+  content: "\38";
+}
+.mky-icon-trashcan-regular:before {
+  content: "\39";
+}
+.mky-icon-trashcan-filled:before {
+  content: "\21";
+}
+.mky-icon-webhook:before {
+  content: "\22";
+}
+.mky-icon-menu-dots-strong:before {
+  content: "\45";
+}
+.mky-icon-menu-dots:before {
+  content: "\46";
 }
 
 /* 1.- CONTENT
@@ -275,6 +458,11 @@ body{
   transform: translateY(-50%);
 }
 
+.mky-tab div{
+	right: 10px;
+	color: white;
+}
+
 #mky-conversation-selected-header .mky-content-options{
   display: block;
   position: absolute;
@@ -323,9 +511,11 @@ body{
   right: 20px;
 }
 
-.mky-button i{
-	color: white;
-	margin-top: 12px;
+.mky-button .mky-icon-add-regular{
+  color: white;
+  margin-top: 11px;
+  font-size: 24px;
+  display: block;
 }
 
 /* 3.2.- ASIDE
@@ -393,7 +583,7 @@ body{
   cursor: pointer;
 }
 
-.mky-logout, .mky-cancel{
+.mky-header-exit i{
   color: #6e8191;
   font-size: 19px;
 }
@@ -606,7 +796,7 @@ body{
     vertical-align: top;
 }
 
-.mky-close{
+.mky-delete-conv i{
   font-size: 19px;
   margin-left: 0.1em;
   color: #6e8191;
@@ -786,7 +976,7 @@ body{
   width: auto;
 }
 
-.mky-menu-options{
+.mky-conversation-burger i{
 	color: #6e8191;
     font-size: 19px;
 }
@@ -799,9 +989,11 @@ body{
     margin-left: 25px;
 }
 
+/*
 .mky-partialsize #mky-conversation-selected-image{
 	margin-left: 5px;
 }
+*/
 
 #mky-conversation-selected-image img{
     width: 100%;
@@ -2654,92 +2846,6 @@ input:focus{
 /* 9.- SPINNERS
    ----------------------------- */
 
-/*
-   Animation example, for spinners
-*/
-
-.animate-spin {
-  -moz-animation: spin 2s infinite linear;
-  -o-animation: spin 2s infinite linear;
-  -webkit-animation: spin 2s infinite linear;
-  animation: spin 2s infinite linear;
-  display: inline-block;
-}
-@-moz-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@-webkit-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@-o-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@-ms-keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
-@keyframes spin {
-  0% {
-    -moz-transform: rotate(0deg);
-    -o-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-  }
-
-  100% {
-    -moz-transform: rotate(359deg);
-    -o-transform: rotate(359deg);
-    -webkit-transform: rotate(359deg);
-    transform: rotate(359deg);
-  }
-}
 
 /*------------------------------
   NEW DESIGN FOR "HABLA"
