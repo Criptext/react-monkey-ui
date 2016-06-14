@@ -110,9 +110,6 @@ body{
 .mky-icon-back:before {
   content: "\67";
 }
-.mky-icon-chats:before {
-  content: "\68";
-}
 .mky-icon-check:before {
   content: "\69";
 }
@@ -140,18 +137,6 @@ body{
 .mky-icon-align-right:before {
   content: "\71";
 }
-.mky-icon-arrow-down-light:before {
-  content: "\72";
-}
-.mky-icon-arrow-down-strong:before {
-  content: "\73";
-}
-.mky-icon-arrow-up-light:before {
-  content: "\74";
-}
-.mky-icon-arrow-up-strong:before {
-  content: "\75";
-}
 .mky-icon-bold:before {
   content: "\76";
 }
@@ -161,12 +146,6 @@ body{
 .mky-icon-close:before {
   content: "\78";
 }
-.mky-icon-document:before {
-  content: "\79";
-}
-.mky-icon-image-regular:before {
-  content: "\7a";
-}
 .mky-icon-icon-indentlees:before {
   content: "\41";
 }
@@ -175,9 +154,6 @@ body{
 }
 .mky-icon-italic:before {
   content: "\43";
-}
-.mky-icon-location-regular:before {
-  content: "\44";
 }
 .mky-icon-numberlist:before {
   content: "\47";
@@ -218,10 +194,10 @@ body{
 .mky-icon-menu-hamburguer:before {
   content: "\53";
 }
-.mky-icon-arrow-down-big:before {
+.mky-icon-arrow-down-regular:before {
   content: "\54";
 }
-.mky-icon-arrow-up-big:before {
+.mky-icon-arrow-up-regular:before {
   content: "\55";
 }
 .mky-icon-mic-empty:before {
@@ -280,6 +256,30 @@ body{
 }
 .mky-icon-menu-dots:before {
   content: "\46";
+}
+.mky-icon-localization-regular:before {
+  content: "\79";
+}
+.mky-icon-doc-regular:before {
+  content: "\7a";
+}
+.mky-icon-image-regular:before {
+  content: "\44";
+}
+.mky-icon-chats:before {
+  content: "\68";
+}
+.mky-icon-arrow-up-light:before {
+  content: "\72";
+}
+.mky-icon-arrow-up-bold:before {
+  content: "\73";
+}
+.mky-icon-arrow-down-bold:before {
+  content: "\23";
+}
+.mky-icon-arrow-down-light:before {
+  content: "\24";
 }
 
 /* 1.- CONTENT
@@ -987,6 +987,10 @@ body{
     margin: 13px;
     float: left;
     margin-left: 25px;
+}
+
+.mky-rightside #mky-conversation-selected-image{
+	margin-left: 8px;
 }
 
 /*
@@ -1888,7 +1892,7 @@ body{
 #mky-button-add{
   background: none;
   color: #8660a9;
-  font-size: 28px;
+  font-size: 26px;
 }
 
 #mky-button-cancel-audio{
@@ -2319,6 +2323,10 @@ body{
   width: 49%;
 }
 
+.mky-menu-bubble-item i{
+  display: inline-block;
+}
+
 .mky-menu-bubble-item:first-child{
   border-right: 1px solid #ccc;
 }
@@ -2676,10 +2684,6 @@ input:focus{
 	}
 
 	/* Icons bigger */
-	#mky-button-add, #mky-button-record-audio{
-	    height: 26px;
-	    width: 18px;
-	}
 
 	#mky-button-send-message, #mky-button-cancel-audio{
 	    height: 19px;

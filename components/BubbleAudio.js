@@ -13,10 +13,12 @@ class BubbleAudio extends Component {
 		super(props);
 		this.messageId = (this.props.message.id[0] == '-' ? (this.props.message.datetimeCreation) : this.props.message.id);
 		this.state = {
+			isDownloading: false,
 			disabledClass: 'mky-disabled',
 			minutes: ('0' + parseInt(this.props.message.length/60)).slice(-2),
 			seconds: ('0' + this.props.message.length%60).slice(-2)
 		}
+		this.downloadData = this.downloadData.bind(this);
 		this.playAudioBubble = this.playAudioBubble.bind(this);
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
@@ -24,9 +26,9 @@ class BubbleAudio extends Component {
 	}
 	
 	componentWillMount() {		
-        if(this.props.message.data == null && !this.props.message.isDownloading){
+        if(this.props.message.data == null && !this.state.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
-            this.props.message.isDownloading = true;
+            this.setState({isDownloading: true});
         }
 	}
 	
@@ -45,12 +47,13 @@ class BubbleAudio extends Component {
 	                        <audio id={'audio_'+this.messageId} preload='auto' controls='' src={this.props.message.data}></audio>
 						</div>
                     )
-                    : (
-                        <div className='mky-content-audio-loading'>
-                            <div className='mky-double-bounce1'></div>
-                            <div className='mky-double-bounce2'></div>
-                        </div>
-                    )
+                    : ( this.state.isDownloading
+						? ( <div className='mky-content-audio-loading'>
+	                        	<div className='mky-double-bounce1'></div>
+								<div className='mky-double-bounce2'></div>
+							</div>
+						) : <div className='mky-content-audio-to-download' onClick={this.downloadData}><i className='icon mky-icon-download'></i></div>
+					)
                 }
             </div>
 		)
@@ -73,6 +76,11 @@ class BubbleAudio extends Component {
 //                     that.setState({disabledClass: ''});
             }
         }
+	}
+	
+	downloadData() {
+		this.props.dataDownloadRequest(this.props.message.mokMessage);
+        this.setState({isDownloading: true});
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
