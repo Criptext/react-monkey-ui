@@ -14,8 +14,8 @@ class BubbleAudio extends Component {
 		this.messageId = (this.props.message.id[0] == '-' ? (this.props.message.datetimeCreation) : this.props.message.id);
 		this.state = {
 			disabledClass: 'mky-disabled',
-			minutes: ("0" + parseInt(this.props.message.length/60)).slice(-2),
-			seconds: ("0" + this.props.message.length%60).slice(-2)
+			minutes: ('0' + parseInt(this.props.message.length/60)).slice(-2),
+			seconds: ('0' + this.props.message.length%60).slice(-2)
 		}
 		this.playAudioBubble = this.playAudioBubble.bind(this);
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
@@ -63,7 +63,7 @@ class BubbleAudio extends Component {
 		this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.length ? this.props.message.length : 1));
 		//this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.duration));
 
-        let mkyAudioBubble = document.getElementById("audio_"+this.messageId);
+        let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
         var that = this;
         
         if(mkyAudioBubble){
@@ -76,7 +76,7 @@ class BubbleAudio extends Component {
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
-		$("#mky-bubble-audio-player-"+timestamp).knob({
+		$('#mky-bubble-audio-player-'+timestamp).knob({
             'min': 0,
             'max': duration,
             'angleOffset': -133,
@@ -93,26 +93,26 @@ class BubbleAudio extends Component {
 	}
 	
 	setDurationTime(timestamp) {
-        let mkyAudioBubble = document.getElementById("audio_"+timestamp);
+        let mkyAudioBubble = document.getElementById('audio_'+timestamp);
         let durationTime= Math.round(mkyAudioBubble.duration);
-        let seconds = ("0" + durationTime%60).slice(-2);
+        let seconds = ('0' + durationTime%60).slice(-2);
         this.setState({seconds: seconds});
-        let minutes = ("0" + parseInt(durationTime/60)).slice(-2);
+        let minutes = ('0' + parseInt(durationTime/60)).slice(-2);
         this.setState({minutes: minutes});
     }
     
     playAudioBubble() {
 	    this.pauseAllAudio();
-        window.$bubblePlayer = $("#mky-bubble-audio-player-"+this.messageId); //handles the circle
+        window.$bubblePlayer = $('#mky-bubble-audio-player-'+this.messageId); //handles the circle
         $('#mky-bubble-audio-play-button-'+this.messageId).hide();
         $('#mky-bubble-audio-pause-button-'+this.messageId).show();
-        let audiobuble = document.getElementById("audio_"+this.messageId);
+        let audiobuble = document.getElementById('audio_'+this.messageId);
         audiobuble.play();
         window.playIntervalBubble = setInterval(this.updateAnimationBuble,1000);
         var that = this;
-        audiobuble.addEventListener("ended",function() {
+        audiobuble.addEventListener('ended',function() {
             that.setDurationTime(that.messageId);
-            window.$bubblePlayer.val(0).trigger("change");
+            window.$bubblePlayer.val(0).trigger('change');
 			$('#mky-bubble-audio-play-button-'+that.messageId).show();
 			$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
             clearInterval(window.playIntervalBubble);
@@ -122,7 +122,7 @@ class BubbleAudio extends Component {
     pauseAudioBubble() {
 		$('#mky-bubble-audio-play-button-'+this.messageId).show();
 		$('#mky-bubble-audio-pause-button-'+this.messageId).hide();
-		let audiobuble = document.getElementById("audio_"+this.messageId);
+		let audiobuble = document.getElementById('audio_'+this.messageId);
         audiobuble.pause();
         clearInterval(window.playIntervalBubble);
     }
@@ -145,12 +145,12 @@ class BubbleAudio extends Component {
     }
     
     updateAnimationBuble() {
-	    let audiobuble = document.getElementById("audio_"+this.messageId);
+	    let audiobuble = document.getElementById('audio_'+this.messageId);
         var currentTime = Math.round(audiobuble.currentTime);
-        window.$bubblePlayer.val(currentTime).trigger("change");
-        let seconds = ("0" + currentTime%60).slice(-2);
+        window.$bubblePlayer.val(currentTime).trigger('change');
+        let seconds = ('0' + currentTime%60).slice(-2);
         this.setState({seconds: seconds});
-        let minutes = ("0" + parseInt(currentTime/60)).slice(-2);
+        let minutes = ('0' + parseInt(currentTime/60)).slice(-2);
         this.setState({minutes: minutes});
     }
 }

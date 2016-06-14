@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import TimelineChat from './TimelineChat.js'
 import Input from './Input.js'
-import LocationInput from './LocationInput.js'
+// import LocationInput from './LocationInput.js'
 
 import Modal from './Modal.js'
 
@@ -34,7 +34,7 @@ class ContentConversation extends Component {
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
 						{ this.props.isMobile & this.props.haveConversations
-							? <div className="mky-conversation-burger" onClick={this.showAside}><i className="demo-icon mky-menu-options">&#xe830;</i></div>
+							? <div className="mky-conversation-burger" onClick={this.showAside}><i className="icon mky-icon-menu-hamburguer"></i></div>
 							: null
 						}
 						<div id='mky-conversation-selected-image'><img src={this.props.conversationSelected.urlAvatar}/></div>

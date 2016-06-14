@@ -8,10 +8,8 @@ import BubbleText from './BubbleText.js'
 import BubbleImage from './BubbleImage.js'
 import BubbleFile from './BubbleFile.js'
 import BubbleAudio from './BubbleAudio.js'
-import BubbleLocation from './BubbleLocation.js'
 
 import ContentViewer from './ContentViewer.js'
-import ReceivedLocation from './ReceivedLocation.js'
 
 import MyForm from './MyForm.js'
 import styles from '../styles/chat.css';
@@ -43,7 +41,7 @@ class MonkeyUI extends Component {
 		this.state = {
 			conversation: {},
 			contentStyle: undefined,
-			idTabButton: 'mky-w-max',
+			classTabIcon: 'mky-icon-arrow-up-big',
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
 			showBanner: false,
@@ -69,12 +67,10 @@ class MonkeyUI extends Component {
 			    text: BubbleText,
 			    image: BubbleImage,
 			    file: BubbleFile,
-			    audio: BubbleAudio,
-			    location: BubbleLocation
+			    audio: BubbleAudio
 		    },
 		    bubblePreviews: {
-			    image: ContentViewer,
-			    location: ReceivedLocation
+			    image: ContentViewer
 		    },
 		    styles: this.props.styles != null ? this.props.styles : {},
 		    extraChat: this.props.extraChat
@@ -153,11 +149,11 @@ class MonkeyUI extends Component {
 				{ this.props.view.type === 'classic'
 					? ( <div className='mky-tab' style={this.defineTabStyle()}>
                             <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
-                            <div id={this.state.idTabButton} onClick={this.openTab}></div>
+                            <div onClick={this.openTab}><i className={'icon '+this.state.classTabIcon}></i></div>
                         </div>
 					)
 					: ( this.props.view.type === 'rightside'
-						? <div className='mky-button' onClick={this.openSide}><i className="demo-icon mky-chat-empty">&#xe831;</i></div>
+						? <div className='mky-button' onClick={this.openSide}><i className='icon mky-icon-add-regular'></i></div>
 						: null
 					)
 				}
@@ -191,10 +187,10 @@ class MonkeyUI extends Component {
 	}
 
 	openTab() {
-		if(this.state.idTabButton === 'mky-w-max'){
+		if(this.state.classTabIcon === 'mky-icon-arrow-up-big'){
 			this.setState({
 				contentStyle: this.props.view.data,
-				idTabButton: 'mky-w-min',
+				classTabIcon: 'mky-icon-arrow-down-big',
 				wrapperInClass: ''
 			});
 		}else{
@@ -204,7 +200,7 @@ class MonkeyUI extends Component {
 			}
 			this.setState({
 				contentStyle: style,
-				idTabButton: 'mky-w-max',
+				classTabIcon: 'mky-icon-arrow-up-big',
 				wrapperInClass: 'mky-disappear'
 			});
 		}
