@@ -18,11 +18,11 @@ class ContentAside extends Component {
 					</div>
 					<div id='mky-session-description'>
 						<div id='mky-session-name'>
-							<span className="mky-ellipsify">{this.context.userSession.name}</span>
+							<span className='mky-ellipsify'>{this.context.userSession.name}</span>
 						</div>
 						{ this.props.isMobile
-							? <div className="mky-header-exit" onClick={this.closeSide}><i className="icon mky-icon-close-strong"></i></div>
-							: <div className="mky-header-exit" onClick={this.logout}><i className="icon mky-icon-logout-right"></i></div>
+							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-close-light'></i></div>
+							: <div className='mky-header-exit' onClick={this.logout}><i className='icon mky-icon-logout-right'></i></div>
 						}
 					</div>
 				</header>
