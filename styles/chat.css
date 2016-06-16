@@ -23,11 +23,6 @@ TABLE OF CONTENTS
 
 ***/
 
-body{
-  margin: 0;
-  padding: 0;
-}
-
 /* 0.- FONT
    ----------------------------- */
 
@@ -113,9 +108,6 @@ body{
 .mky-icon-check:before {
   content: "\69";
 }
-.mky-icon-close-strong:before {
-  content: "\6a";
-}
 .mky-icon-download:before {
   content: "\6b";
 }
@@ -142,9 +134,6 @@ body{
 }
 .mky-icon-bulletlist:before {
   content: "\77";
-}
-.mky-icon-close:before {
-  content: "\78";
 }
 .mky-icon-icon-indentlees:before {
   content: "\41";
@@ -281,6 +270,12 @@ body{
 .mky-icon-arrow-down-light:before {
   content: "\24";
 }
+.mky-icon-close-light:before {
+  content: "\6a";
+}
+.mky-icon-close:before {
+  content: "\74";
+}
 
 /* 1.- CONTENT
    ----------------------------- */
@@ -300,7 +295,7 @@ body{
 }
 
 .mky-fullsize{
-  position: relative;
+
 }
 
 .mky-classic, .mky-rightside{
@@ -511,7 +506,7 @@ body{
   right: 20px;
 }
 
-.mky-button .mky-icon-add-regular{
+.mky-button i{
   color: white;
   margin-top: 11px;
   font-size: 24px;
@@ -797,7 +792,7 @@ body{
 }
 
 .mky-delete-conv i{
-  font-size: 19px;
+  font-size: 10px;
   margin-left: 0.1em;
   color: #6e8191;
 }
@@ -1047,12 +1042,11 @@ body{
 
 #mky-chat-timeline {
     width: 100%;
-    height: calc(100% - 66px);
+    height: calc(100% - 57px);
     background-color: #fff;
     position: relative;
     overflow: auto;
     overflow-x: hidden;
-    padding-bottom:10px;
 }
 
 .mky-partialsize #mky-chat-timeline {
@@ -1828,7 +1822,7 @@ body{
   width: 100%;
   box-sizing: content-box;
   border-top: 1px solid #ccc;
-  height: auto;
+  height: 55px;
   margin: 0 auto;
   background-color: #fff;
   bottom: 0;
@@ -1836,7 +1830,9 @@ body{
   line-height: 20px;
   position: relative;
 }
+
 .mky-inner-chat-input{
+  height: 100%;
   max-width: 887px;
   margin: 0 auto;
 }

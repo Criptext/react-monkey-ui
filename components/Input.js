@@ -61,7 +61,7 @@ class Input extends Component {
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
 		this.mediaRecorder;
-		this.micActivated;
+		this.micActivated = false;
 		this.mediaConstraints = {
 		    audio: true
 		};
@@ -89,7 +89,7 @@ class Input extends Component {
 		let styleInput = this.defineStyles();
     	return (
 			<div id='mky-chat-input'>
-                <div className="mky-inner-chat-input">
+                <div className='mky-inner-chat-input'>
     				<div id='mky-divider-chat-input'></div>
     				<div className={'mky-button-input '+this.state.classAttachButton}>
     					<i id='mky-button-add' className='mky-button-icon icon mky-icon-menu-dots-strong' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
@@ -99,7 +99,7 @@ class Input extends Component {
 
     					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
     				</div>
-    				<textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder="Write a secure message" onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></textarea>
+    				<textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></textarea>
     				<div id='mky-record-area' className={this.state.classAudioArea}>
     					<div className='mky-record-preview-area'>
     						<div id='mky-button-action-record'>
@@ -116,11 +116,11 @@ class Input extends Component {
     				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
     				{ this.state.creatingAudio
     					? (
-    						<div className="mky-spinner-input-audio">
-    							<div className="mky-rect1"></div>
-    							<div className="mky-rect2"></div>
-    							<div className="mky-rect3"></div>
-    							<div className="mky-rect4"></div>
+    						<div className='mky-spinner-input-audio'>
+    							<div className='mky-rect1'></div>
+    							<div className='mky-rect2'></div>
+    							<div className='mky-rect3'></div>
+    							<div className='mky-rect4'></div>
     						</div>
     					)
     					: <i  id='mky-button-record-audio' className='mky-button-icon icon mky-icon-mic-empty' style={styleInput.inputRightButton} onClick={this.handleRecordAudio}></i>
@@ -161,15 +161,6 @@ class Input extends Component {
         this.setState({menuVisibility : !this.state.menuVisibility});
     }
 
-	textMessageInput(text) {
-		let message = {
-			bubbleType: 'text',
-			text: text,
-			preview: text
-		}
-		this.props.messageCreated(message);
-	}
-
 	handleOnKeyDownTextArea(event) {
 		this.typeMessageToSend = 0;
 		if(event.keyCode === 13 && !event.shiftKey) {
@@ -185,7 +176,16 @@ class Input extends Component {
 	handleOnChangeTextArea(event, value){
 		this.setState({text: event.target.value});
 	}
-
+	
+	textMessageInput(text) {
+		let message = {
+			bubbleType: 'text',
+			text: text,
+			preview: text
+		}
+		this.props.messageCreated(message);
+	}
+	
 	handleRecordAudio() {
 		this.setState({
 			classAudioArea: 'mky-appear',
@@ -203,17 +203,17 @@ class Input extends Component {
 
         if (this.mediaRecorder == null) {
             if (!this.micActivated) {
-                window.navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-                this.micActivated=!this.micActivated;
+                navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
             }else{
                 this.onMediaSuccess(this.mediaConstraints);
-                this.pauseAllAudio ('');
+                this.pauseAllAudio('');
             }
         }
     }
 
     onMediaSuccess(stream) {
         //default settings to record
+        this.micActivated = true;
         this.mediaRecorder = new MediaStreamRecorder(stream);
         this.mediaRecorder.mimeType = 'audio/wav';
         this.mediaRecorder.audioChannels = 1;
@@ -230,6 +230,7 @@ class Input extends Component {
     }
 
     onMediaError(e) {
+	    console.log(e);
         console.error('media error', e);
     }
 
@@ -296,7 +297,6 @@ class Input extends Component {
         // if (globalAudioPreview != null) pauseAudioPrev();
 
         this.audioMessageOldId = Math.round(new Date().getTime() / 1000 * -1);
-        // drawAudioMessageBubbleTemporal(this.audioCaptured.src, { id: this.audioMessageOldId, timestamp: Math.round(new Date().getTime() / 1000) }, this.audioCaptured.duration);
         // disabledAudioButton(true);
         var that = this;
         FileAPI.readAsArrayBuffer(this.audioCaptured.blob, function (evt) {
