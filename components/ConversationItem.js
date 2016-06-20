@@ -11,6 +11,7 @@ class ConversationItem extends Component {
 		this.openConversation = this.openConversation.bind(this);
 		this.deleteConversation = this.deleteConversation.bind(this);
 		this.showNotification = this.showNotification.bind(this);
+		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -26,7 +27,7 @@ class ConversationItem extends Component {
     	return (
 			<li className={classContent + ' animated slideInLeft'}>
 				<div className="mky-full" onClick={this.openConversation}>
-					<div className='mky-conversation-image'><img src={this.props.conversation.urlAvatar} onerror='imgError(this);'/></div>
+					<div className='mky-conversation-image'><img src={this.defineUrlAvatar} onerror='imgError(this);'/></div>
 					<div className='mky-conversation-description'>
 						<div className='mky-conversation-title'>
 							<div className='mky-conversation-name'>
@@ -77,7 +78,11 @@ class ConversationItem extends Component {
 			this.props.deleteConversation(this.props.conversation, this.props.index, false)
 		}
 	}
-
+	
+	defineUrlAvatar(){
+		return this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'http://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+	}
+	
 	showNotification(name, message, user_image ) {
       var title = name;
       var desc = message;
@@ -110,7 +115,7 @@ class ConversationItem extends Component {
               console.log('Notification closed');
           };
       }
-  }
+	}
 }
 
 const Badge = (props , showNotification) => (

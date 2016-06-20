@@ -238,10 +238,7 @@ class MonkeyUI extends Component {
 	}
 
 	handleConversationSelected(conversation) {
-
-		this.setState({
-			conversation: conversation,
-		});
+		this.setState({conversation: conversation});
 
 		if (this.state.isMobile) {
 			this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
@@ -264,24 +261,21 @@ class MonkeyUI extends Component {
 	defineTabStyle(){
 		if(this.props.styles != null && this.props.styles.tabColor != null){
 			return {background: this.props.styles.tabColor};
-		}
-		else
+		}else
 			return {};
 	}
 
 	defineTabTextColor(){
 		if(this.props.styles != null && this.props.styles.tabTextColor != null){
 			return {color: this.props.styles.tabTextColor};
-		}
-		else
+		}else
 			return {};
 	}
 
 	defineTabText(){
 		if(this.props.styles != null && this.props.styles.tabText != null){
 			return this.props.styles.tabText;
-		}
-		else
+		}else
 			return 'Want to know more?';
 	}
 }
