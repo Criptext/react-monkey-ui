@@ -18,6 +18,7 @@ class ContentConversation extends Component {
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.showAside = this.showAside.bind(this);
 		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
+		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps){
@@ -37,7 +38,7 @@ class ContentConversation extends Component {
 							? <div className="mky-conversation-burger" onClick={this.showAside}><i className="icon mky-icon-menu-hamburguer"></i></div>
 							: null
 						}
-						<div id='mky-conversation-selected-image'><img src={this.props.conversationSelected.urlAvatar}/></div>
+						<div id='mky-conversation-selected-image'><img src={this.defineUrlAvatar()}/></div>
 						<div id='mky-conversation-selected-description'>
 							<span id='mky-conversation-selected-name'>{this.props.conversationSelected.name}</span>
 							{ !isConversationGroup(this.props.conversationSelected.id)
@@ -67,7 +68,6 @@ class ContentConversation extends Component {
 						)
 					}
 				</div>
-
 		)
 	}
 
@@ -82,6 +82,7 @@ class ContentConversation extends Component {
 	showAside(){
 		if (this.props.isMobile) {
 			this.props.expandAside(true);
+			this.props.conversationClosed();
 		}
 	}
 
@@ -91,6 +92,10 @@ class ContentConversation extends Component {
 
 	disableGeoInput(){
 		this.setState({showLocationInput: false});
+	}
+	
+	defineUrlAvatar(){
+		return this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'http://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
 }
 

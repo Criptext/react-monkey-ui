@@ -10,7 +10,7 @@ class ConversationItem extends Component {
 		}
 		this.openConversation = this.openConversation.bind(this);
 		this.deleteConversation = this.deleteConversation.bind(this);
-		this.showNotification = this.showNotification.bind(this);
+		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -25,8 +25,8 @@ class ConversationItem extends Component {
 			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
 			<li className={classContent + ' animated slideInLeft'}>
-				<div className="mky-full" onClick={this.openConversation}>
-					<div className='mky-conversation-image'><img src={this.props.conversation.urlAvatar} onerror='imgError(this);'/></div>
+				<div className='mky-full' onClick={this.openConversation}>
+					<div className='mky-conversation-image'><img src={this.defineUrlAvatar()} onerror='imgError(this);'/></div>
 					<div className='mky-conversation-description'>
 						<div className='mky-conversation-title'>
 							<div className='mky-conversation-name'>
@@ -39,11 +39,11 @@ class ConversationItem extends Component {
 								<span className=''>{this.props.conversation.messages[this.props.conversation.lastMessage] ? defineTimeByToday(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''}</span>
 							</div>
 						</div>
-						<div className="mky-conversation-state">
+						<div className='mky-conversation-state'>
 							{ Object.keys(this.props.conversation.messages).length
 								? ( this.state.unreadMessages
-									? <span className="mky-ellipsify mky-bold-text">{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
-									: <span className="mky-ellipsify">{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
+									? <span className='mky-ellipsify mky-bold-text'>{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
+									: <span className='mky-ellipsify'>{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
 								)
 								: <span className="mky-ellipsify">Click to open conversation</span>
 							}
@@ -51,16 +51,9 @@ class ConversationItem extends Component {
 					</div>
 				</div>
 
-				<div className="mnk-conversation-opts">
-					<div className="mky-delete-conv" onClick={this.deleteConversation}><i className="icon mky-icon-close"></i></div>
+				<div className='mnk-conversation-opts'>
+					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close'></i></div>
 					<Badge value={this.props.conversation.unreadMessageCounter} />
-					{
-/*
-						this.props.conversation.unreadMessageCounter > 0 ?
-							this.showNotification(this.props.conversation.name , this.props.conversation.messages[this.props.conversation.lastMessage].preview, this.props.conversation.urlAvatar )
-						:null
-*/
-					}
 				</div>
 			</li>
 		);
@@ -77,47 +70,17 @@ class ConversationItem extends Component {
 			this.props.deleteConversation(this.props.conversation, this.props.index, false)
 		}
 	}
-
-	showNotification(name, message, user_image ) {
-      var title = name;
-      var desc = message;
-      var url = 'http://criptext.com/';
-      var imageURL = user_image;
-      if (imageURL == '') {
-          imageURL = "http://cdn.criptext.com/MonkeyUI/images/userdefault.png";
-      }
-      // NOTIFICATION
-      if (!Notification) {
-          console.log('Desktop notifications not available in your browser..');
-          return;
-      }
-      if (Notification.permission !== "granted") {
-					console.log('requestPermission');
-          Notification.requestPermission();
-      } else {
-					console.log('crear notification');
-          // Create Notification
-          var notification = new Notification(title, {
-              icon: imageURL,
-              body: desc,
-          });
-          // Remove the notification from Notification Center when clicked.
-          notification.onclick = function() {
-              window.open(url);
-          };
-          // Callback function when the notification is closed.
-          notification.onclose = function() {
-              console.log('Notification closed');
-          };
-      }
-  }
+	
+	defineUrlAvatar(){
+		return this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'http://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+	}
+	
 }
 
 const Badge = (props , showNotification) => (
-	<div className="mky-conversation-notification">
-	{
-		props.value > 0
-		? <div className="mky-notification-amount animated pulse">{props.value}</div>
+	<div className='mky-conversation-notification'>
+	{ props.value > 0
+		? <div className='mky-notification-amount animated pulse'>{props.value}</div>
 		: null
 	}
 	</div>
