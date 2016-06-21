@@ -574,7 +574,7 @@ TABLE OF CONTENTS
 .mky-header-exit{
   float: right;
   margin-top: 22px;
-  margin-right: 9px;
+  margin-right: 15px;
   cursor: pointer;
 }
 
@@ -1835,6 +1835,8 @@ TABLE OF CONTENTS
   height: 100%;
   max-width: 887px;
   margin: 0 auto;
+  display: inline-table;
+  width: 100%;
 }
 
 .mky-fullsize #mky-chat-input{

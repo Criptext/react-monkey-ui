@@ -73,7 +73,7 @@ class MonkeyUI extends Component {
 			    image: ContentViewer
 		    },
 		    styles: this.props.styles != null ? this.props.styles : {},
-		    extraChat: this.props.extraChat
+		    extraChat: this.props.chatExtraData
 		}
 	}
 
@@ -119,14 +119,13 @@ class MonkeyUI extends Component {
 		    	wrapperInClass: 'mky-disappear'
 		    });
 	    }
-		
 	}
 
 	shouldComponentUpdate(nextProps, nextState) {
 		if(nextState.conversation && this.state.conversation && this.state.conversation.id != nextState.conversation.id){
-			this.props.conversationOpened(nextState.conversation);
+			this.props.onConversationOpened(nextState.conversation);
 		}else if(!this.state.conversation && nextState.conversation){
-			this.props.conversationOpened(nextState.conversation);
+			this.props.onConversationOpened(nextState.conversation);
 		}
 		return true;
 	}
@@ -173,10 +172,10 @@ class MonkeyUI extends Component {
 					{ this.props.userSession
 						? ( <div id='mky-content-app' className=''>
 								{ this.state.showConversations & this.haveConversations
-									? <ContentAside deleteConversation={this.props.deleteConversation} userSessionLogout={this.props.userSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
+									? <ContentAside deleteConversation={this.props.onConversationDelete} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
 									: null
 								}
-								<ContentWindow loadMessages={this.props.loadMessages} conversationSelected={this.state.conversation} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUserName={this.props.getUserName} haveConversations={this.haveConversations}/>
+								<ContentWindow loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUserName={this.props.onMessageGetUsername} haveConversations={this.haveConversations}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -226,7 +225,7 @@ class MonkeyUI extends Component {
 
 	handleLoginSession(user) {
 		this.setLoading(true);
-		this.props.userSessionToSet(user);
+		this.props.onUserSession(user);
 	}
 
 	setLoading(value) {
@@ -255,7 +254,7 @@ class MonkeyUI extends Component {
 		message.senderId = this.props.userSession.id;
 		message.recipientId = this.state.conversation.id;
 		message.status = 0;
-		this.props.messageToSet(message);
+		this.props.onMessage(message);
 	}
 
 	defineTabStyle(){
