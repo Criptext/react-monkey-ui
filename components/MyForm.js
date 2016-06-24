@@ -49,7 +49,7 @@ class MyForm extends Component {
 		this.setState({text: ''});
 	}
 
-	defineLogo(){
+	defineLogo() {
 		if(this.props.styles != null && this.props.styles.logo != null){
 			return this.props.styles.logo
 		}
