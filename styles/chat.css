@@ -2575,12 +2575,16 @@ aside.aside-divided{
   position: relative;
 }
 
+.mky-popup-buttons{
+  margin-top: 30px;
+  text-align: center;
+}
+
 .mky-popup-button{
   cursor: pointer;
-  float: right;
   height: 25px;
   width: auto;
-  margin-right: 20px;
+  margin: 0 10px;
   background: white;
   border-style: none;
   color: #2196f3;

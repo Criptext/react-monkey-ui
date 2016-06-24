@@ -7,16 +7,16 @@ class DeleteConversation extends Component {
 	
 	render() {
 		return(
-			<div className='mky-generic-modal'>
+			<div className='mky-generic-modal' onClick={this.props.handleClosePopup}>
 				<div className='mky-inner-modal'>
-					<div className='mky-popup-message'>Are you sure you want to delete the conversation</div>
+					<div className='mky-popup-message'>What do you want to do whit this conversation?</div>
 					<div className='mky-popup-buttons'>
-						{ this.context.options.deleteConversation.permission.delete
-							? <button className='mky-popup-button' onClick={this.props.handleDeleteConversation}>DELETE</button>
-							: null
-						}
 						{ this.context.options.deleteConversation.permission.exitGroup
 							? <button className='mky-popup-button' onClick={this.props.handleExitGroup}>EXIT GROUP</button>
+							: null
+						}
+						{ this.context.options.deleteConversation.permission.delete
+							? <button className='mky-popup-button' onClick={this.props.handleDeleteConversation}>DELETE</button>
 							: null
 						}
 						<button className='mky-popup-button' onClick={this.props.handleClosePopup}>CANCEL</button>

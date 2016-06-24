@@ -32,11 +32,11 @@ class MyForm extends Component {
 			</div>
 		)
 	}
-
+	
 	handleOnChangeInput(event, value) {
 		this.setState({text: event.target.value});
 	}
-
+	
 	login(event) {
 		event.preventDefault();
 		let text = this.state.text.trim();
