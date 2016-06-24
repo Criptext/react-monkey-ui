@@ -32,11 +32,11 @@ class MyForm extends Component {
 			</div>
 		)
 	}
-
+	
 	handleOnChangeInput(event, value) {
 		this.setState({text: event.target.value});
 	}
-
+	
 	login(event) {
 		event.preventDefault();
 		let text = this.state.text.trim();
@@ -49,7 +49,7 @@ class MyForm extends Component {
 		this.setState({text: ''});
 	}
 
-	defineLogo(){
+	defineLogo() {
 		if(this.props.styles != null && this.props.styles.logo != null){
 			return this.props.styles.logo
 		}

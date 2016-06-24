@@ -95,7 +95,7 @@ class ContentConversation extends Component {
 	}
 	
 	defineUrlAvatar(){
-		return this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'http://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+		return this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
 }
 

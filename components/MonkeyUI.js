@@ -36,7 +36,7 @@ const isMobile = {
 }
 
 class MonkeyUI extends Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {
 			conversation: {},
@@ -45,7 +45,6 @@ class MonkeyUI extends Component {
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
 			showBanner: false,
-			isLoading: false,
 			wrapperInClass: ''
 		}
 		this.openTab = this.openTab.bind(this);
@@ -56,7 +55,6 @@ class MonkeyUI extends Component {
 		this.classContent;
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
-		this.isLoading = false;
 		this.haveConversations = true;
 	}
 
@@ -73,6 +71,7 @@ class MonkeyUI extends Component {
 			    image: ContentViewer
 		    },
 		    styles: this.props.styles != null ? this.props.styles : {},
+		    options: this.props.options,
 		    extraChat: this.props.chatExtraData
 		}
 	}
@@ -83,14 +82,14 @@ class MonkeyUI extends Component {
 		let screenMode;
 		let style = {};
 		//screen mode for webchat and privatechat
-		if(this.props.view.type === 'fullscreen'){
+		if(this.props.view.type === 'fullscreen') {
 			screenMode = 'fullsize';
 			if(this.props.showConversations === false){
 				this.haveConversations = false;
 				this.setState({showConversations: this.props.showConversations});
 				this.expandWindow = true;
 			}
-		    if(this.props.showBanner === true){
+		    if(this.props.showBanner === true) {
 		        this.setState({showBanner: this.props.showBanner});
 		    }
 		}else{
@@ -131,14 +130,8 @@ class MonkeyUI extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-
 		this.setState({conversation: nextProps.conversation});
 		this.setState({conversations: nextProps.conversations});
-
-		if(nextProps.userSession && (nextProps.userSession.id && this.state.isLoading)){
-			this.setState({isLoading: false});
-			console.log('App - login ok');
-		}
 	}
 
 	render() {
@@ -157,7 +150,7 @@ class MonkeyUI extends Component {
 					)
 				}
 				<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
-					{ this.state.isLoading
+					{ this.props.viewLoading
 						? (
 							<div id='mky-content-connection' className='mky-appear'>
 								<div className='mky-spinner'>
@@ -172,7 +165,7 @@ class MonkeyUI extends Component {
 					{ this.props.userSession
 						? ( <div id='mky-content-app' className=''>
 								{ this.state.showConversations & this.haveConversations
-									? <ContentAside deleteConversation={this.props.onConversationDelete} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} conversationSelected={this.handleConversationSelected} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
+									? <ContentAside deleteConversation={this.props.onConversationDelete} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
 									: null
 								}
 								<ContentWindow loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUserName={this.props.onMessageGetUsername} haveConversations={this.haveConversations}/>
@@ -224,12 +217,7 @@ class MonkeyUI extends Component {
 	}
 
 	handleLoginSession(user) {
-		this.setLoading(true);
 		this.props.onUserSession(user);
-	}
-
-	setLoading(value) {
-		this.setState({isLoading: value});
 	}
 
 	handleConversationAdd(conversation) {
@@ -291,7 +279,16 @@ MonkeyUI.defaultProps = {
 	},
 	tabHeight: '30px',
 	sideWidth: 0,
-	form: MyForm
+	form: MyForm,
+	viewLoading: true,
+	options: {
+		deleteConversation: {
+			permission: {
+				exitGroup: true,
+				delete: true
+			}
+		}
+	}
 }
 
 MonkeyUI.childContextTypes = {
@@ -299,6 +296,7 @@ MonkeyUI.childContextTypes = {
 	bubbles: React.PropTypes.object,
 	bubblePreviews: React.PropTypes.object,
 	styles: React.PropTypes.object,
+	options: React.PropTypes.object,
 	extraChat: React.PropTypes.object
 }
 

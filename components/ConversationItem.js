@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import ModalGeneric from './ModalGeneric.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
 class ConversationItem extends Component {
@@ -50,31 +49,29 @@ class ConversationItem extends Component {
 						</div>
 					</div>
 				</div>
-
 				<div className='mnk-conversation-opts'>
 					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close'></i></div>
 					<Badge value={this.props.conversation.unreadMessageCounter} />
 				</div>
 			</li>
-		);
+		)
 	}
 
-	openConversation(){
+	openConversation() {
 		this.props.conversationIdSelected(this.props.conversation.id);
 	}
 
-	deleteConversation(){
-		if(this.props.selected){
+	deleteConversation() {
+		if(this.props.selected) {
 			this.props.deleteConversation(this.props.conversation, this.props.index, true)
 		}else{
 			this.props.deleteConversation(this.props.conversation, this.props.index, false)
 		}
 	}
 	
-	defineUrlAvatar(){
-		return this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'http://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+	defineUrlAvatar() {
+		return this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
-	
 }
 
 const Badge = (props , showNotification) => (
