@@ -145,13 +145,13 @@ class MonkeyUI extends Component {
     	return (
 			<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
 				{ this.props.view.type === 'classic'
-					? ( <div className='mky-tab' style={this.defineTabStyle()} onClick={this.toggleTab}>
+					? ( <div className='mky-tab' style={this.defineToggleStyle()} onClick={this.toggleTab}>
                             <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
                             <div><i className={'icon '+this.state.classTabIcon}></i></div>
                         </div>
 					)
 					: ( this.props.view.type === 'rightside'
-						? <div className='mky-button' onClick={this.openSide}><i className='icon mky-icon-chats'></i></div>
+						? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.openSide}><i className='icon mky-icon-chats'></i></div>
 						: null
 					)
 				}
@@ -265,9 +265,9 @@ class MonkeyUI extends Component {
 		this.props.onMessage(message);
 	}
 
-	defineTabStyle(){
-		if(this.props.styles != null && this.props.styles.tabColor != null){
-			return {background: this.props.styles.tabColor};
+	defineToggleStyle(){
+		if(this.props.styles != null && this.props.styles.toggleColor != null){
+			return {background: this.props.styles.toggleColor};
 		}else
 			return {};
 	}
