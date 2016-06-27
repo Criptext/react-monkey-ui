@@ -52,6 +52,7 @@ class MonkeyUI extends Component {
 		this.handleLoginSession = this.handleLoginSession.bind(this);
 		this.handleConversationSelected = this.handleConversationSelected.bind(this);
 		this.handleMessageCreated = this.handleMessageCreated.bind(this);
+		this.handleUserSessionLogout = this.handleUserSessionLogout.bind(this);
 		this.classContent;
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
@@ -165,7 +166,7 @@ class MonkeyUI extends Component {
 					{ this.props.userSession
 						? ( <div id='mky-content-app' className=''>
 								{ this.state.showConversations & this.haveConversations
-									? <ContentAside deleteConversation={this.props.onConversationDelete} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
+									? <ContentAside handleConversationDelete={this.props.onConversationDelete} handleConversationExit={this.props.onConversationExit} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
 									: null
 								}
 								<ContentWindow loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUserName={this.props.onMessageGetUsername} haveConversations={this.haveConversations}/>
@@ -252,18 +253,22 @@ class MonkeyUI extends Component {
 			return {};
 	}
 
-	defineTabTextColor(){
+	defineTabTextColor() {
 		if(this.props.styles != null && this.props.styles.tabTextColor != null){
 			return {color: this.props.styles.tabTextColor};
 		}else
 			return {};
 	}
 
-	defineTabText(){
+	defineTabText() {
 		if(this.props.styles != null && this.props.styles.tabText != null){
 			return this.props.styles.tabText;
 		}else
 			return 'Want to know more?';
+	}
+	
+	handleUserSessionLogout() {
+		
 	}
 }
 
