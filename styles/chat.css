@@ -1817,6 +1817,7 @@ TABLE OF CONTENTS
   text-align: center;
   line-height: 20px;
   position: relative;
+  display: table;
 }
 
 .mky-inner-chat-input{
