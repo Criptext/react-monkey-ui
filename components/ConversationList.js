@@ -129,11 +129,16 @@ class ConversationList extends Component {
 		if(!nextConversation) {
 			nextConversation = conversationNameFiltered[this.state.deletingIndex - 1];
 		}
-		this.props.deleteConversation(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
+		this.props.handleConversationDelete(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
 	}
 	
 	handleExitGroup() {
-		
+		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
+		var nextConversation = conversationNameFiltered[this.state.deletingIndex + 1];
+		if(!nextConversation) {
+			nextConversation = conversationNameFiltered[this.state.deletingIndex - 1];
+		}
+		this.props.handleConversationExit(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
 	}
 	
 	handleClosePopup() {

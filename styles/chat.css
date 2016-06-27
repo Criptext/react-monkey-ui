@@ -2557,7 +2557,7 @@ aside.aside-divided{
    ----------------------------- */
 
 .mky-inner-modal{
-  width: 400px;
+  max-width: 400px;
   height: 200px;
   background: white;
   margin: auto;
@@ -2567,14 +2567,16 @@ aside.aside-divided{
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
+  width: 90%;
 }
 
 .mky-popup-message{
   height: 20%;
   text-align: center;
-  padding-top: 15%;
-  margin-bottom: 5%;
+  padding-top: 45px;
+  margin: 0 5%;
   position: relative;
+  width: 90%;
 }
 
 .mky-popup-buttons{
