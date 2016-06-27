@@ -32,7 +32,7 @@ class ContentAside extends Component {
 	}
 
 	logout() {
-		this.props.userSessionLogout();
+		this.props.togglePopup();
 	}
 	
 	closeSide() {

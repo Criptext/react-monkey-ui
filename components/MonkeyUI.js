@@ -11,7 +11,9 @@ import BubbleAudio from './BubbleAudio.js'
 
 import ContentViewer from './ContentViewer.js'
 
-import MyForm from './MyForm.js'
+import MyForm from './MyForm.js';
+import PopUp from './PopUp.js'
+import ContentLogOut from './ContentLogOut.js'
 import styles from '../styles/chat.css';
 
 const isMobile = {
@@ -45,7 +47,8 @@ class MonkeyUI extends Component {
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
 			showBanner: false,
-			wrapperInClass: ''
+			wrapperInClass: '',
+			showPopUp : false
 		}
 		this.toggleTab = this.toggleTab.bind(this);
 		this.openSide = this.openSide.bind(this);
@@ -57,6 +60,7 @@ class MonkeyUI extends Component {
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
 		this.haveConversations = true;
+		this.togglePopup = this.togglePopup.bind(this);
 	}
 
 	getChildContext() {
@@ -137,6 +141,7 @@ class MonkeyUI extends Component {
 
 	render() {
 		const Form_ = ContentLogin(this.props.form);
+		const LogOut_ = PopUp(ContentLogOut);
     	return (
 			<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
 				{ this.props.view.type === 'classic'
@@ -166,7 +171,7 @@ class MonkeyUI extends Component {
 					{ this.props.userSession
 						? ( <div id='mky-content-app' className=''>
 								{ this.state.showConversations & this.haveConversations
-									? <ContentAside handleConversationDelete={this.props.onConversationDelete} handleConversationExit={this.props.onConversationExit} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
+									? <ContentAside handleConversationDelete={this.props.onConversationDelete} togglePopup={this.togglePopup} handleConversationExit={this.props.onConversationExit} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide}/>
 									: null
 								}
 								<ContentWindow loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUserName={this.props.onMessageGetUsername} haveConversations={this.haveConversations}/>
@@ -174,9 +179,19 @@ class MonkeyUI extends Component {
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 					}
+					{ this.state.showPopUp
+						? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.props.onUserSessionLogout} />
+						: null
+					}
 				</div>
 			</div>
 		)
+	}
+
+	togglePopup() {
+		this.setState({
+			showPopUp : !this.state.showPopUp
+		});
 	}
 
 	toggleTab() {
@@ -266,9 +281,17 @@ class MonkeyUI extends Component {
 		}else
 			return 'Want to know more?';
 	}
+<<<<<<< HEAD
 	
 	handleUserSessionLogout() {
 		
+=======
+
+	handleShowLogOut(){
+		if (this.state.isMobile) {
+			this.setState({showConversations:true}); //mostrando el aside solo cuando esta en mobile
+		}
+>>>>>>> logout modal
 	}
 }
 
