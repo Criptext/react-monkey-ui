@@ -313,23 +313,16 @@ return /******/ (function(modules) { // webpackBootstrap
 						) : null,
 						this.props.userSession ? _react2.default.createElement(
 							'div',
-<<<<<<< HEAD
-							{ id: 'mky-content-app', className: '' },
-							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide }) : null,
-							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUserName: this.props.onMessageGetUsername, haveConversations: this.haveConversations })
-						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles })
-=======
 							{ id: 'mky-content-app', className: '', __self: this
 							},
-							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { deleteConversation: this.props.onConversationDelete, togglePopup: this.togglePopup, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, __self: this
+							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, __self: this
 							}) : null,
 							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUserName: this.props.onMessageGetUsername, haveConversations: this.haveConversations, __self: this
 							})
 						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles, __self: this
 						}),
-						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.props.onUserSessionLogout, __self: this
+						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout, __self: this
 						}) : null
->>>>>>> logout modal
 					)
 				);
 			}
@@ -386,6 +379,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.props.onUserSession(user);
 			}
 		}, {
+			key: 'handleUserSessionLogout',
+			value: function handleUserSessionLogout() {
+				this.props.onUserSessionLogout();
+			}
+		}, {
 			key: 'handleConversationAdd',
 			value: function handleConversationAdd(conversation) {
 				this.setState({ conversations: this.state.conversations.concat(conversation) });
@@ -435,18 +433,6 @@ return /******/ (function(modules) { // webpackBootstrap
 					return this.props.styles.tabText;
 				} else return 'Want to know more?';
 			}
-		}, {
-<<<<<<< HEAD
-			key: 'handleUserSessionLogout',
-			value: function handleUserSessionLogout() {}
-=======
-			key: 'handleShowLogOut',
-			value: function handleShowLogOut() {
-				if (this.state.isMobile) {
-					this.setState({ showConversations: true }); //mostrando el aside solo cuando esta en mobile
-				}
-			}
->>>>>>> logout modal
 		}]);
 
 		return MonkeyUI;
@@ -595,12 +581,8 @@ return /******/ (function(modules) { // webpackBootstrap
 							)
 						)
 					),
-<<<<<<< HEAD
-					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected })
-=======
-					_react2.default.createElement(_ConversationList2.default, { deleteConversation: this.props.deleteConversation, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, __self: this
+					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, __self: this
 					})
->>>>>>> logout modal
 				);
 			}
 		}, {

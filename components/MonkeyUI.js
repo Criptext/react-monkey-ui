@@ -180,7 +180,7 @@ class MonkeyUI extends Component {
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 					}
 					{ this.state.showPopUp
-						? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.props.onUserSessionLogout} />
+						? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.handleUserSessionLogout} />
 						: null
 					}
 				</div>
@@ -236,6 +236,10 @@ class MonkeyUI extends Component {
 		this.props.onUserSession(user);
 	}
 
+	handleUserSessionLogout() {
+		this.props.onUserSessionLogout();
+	}
+
 	handleConversationAdd(conversation) {
 	  	this.setState({conversations: this.state.conversations.concat(conversation)})
 	}
@@ -281,18 +285,7 @@ class MonkeyUI extends Component {
 		}else
 			return 'Want to know more?';
 	}
-<<<<<<< HEAD
 	
-	handleUserSessionLogout() {
-		
-=======
-
-	handleShowLogOut(){
-		if (this.state.isMobile) {
-			this.setState({showConversations:true}); //mostrando el aside solo cuando esta en mobile
-		}
->>>>>>> logout modal
-	}
 }
 
 MonkeyUI.propTypes = {
