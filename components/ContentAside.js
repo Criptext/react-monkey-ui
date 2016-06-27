@@ -7,6 +7,7 @@ class ContentAside extends Component {
 		this.logout = this.logout.bind(this);
 		this.closeSide = this.closeSide.bind(this);
 		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : '';
+		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 	}
 	
 	render() {
@@ -14,7 +15,7 @@ class ContentAside extends Component {
 			<aside id={this.classContent} className={ this.props.showBanner ? 'aside-divided' : ''} >
 				<header id='mky-session-header'>
 					<div id='mky-session-image'>
-						<img src={this.context.userSession.urlAvatar}/>
+						<img src={this.defineUrlAvatar()}/>
 					</div>
 					<div id='mky-session-description'>
 						<div id='mky-session-name'>
@@ -37,6 +38,10 @@ class ContentAside extends Component {
 	
 	closeSide() {
 		this.props.closeSide();
+	}
+	
+	defineUrlAvatar() {
+		return this.context.userSession.urlAvatar ? this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
 }
 

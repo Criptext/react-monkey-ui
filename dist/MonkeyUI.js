@@ -262,67 +262,48 @@ return /******/ (function(modules) { // webpackBootstrap
 				var LogOut_ = (0, _PopUp2.default)(_ContentLogOut2.default);
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-wrapper-out ' + this.classContent + ' animated pulse', style: this.state.contentStyle, __self: this
-					},
+					{ className: 'mky-wrapper-out ' + this.classContent + ' animated pulse', style: this.state.contentStyle },
 					this.props.view.type === 'classic' ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-tab', style: this.defineTabStyle(), onClick: this.toggleTab, __self: this
-						},
+						{ className: 'mky-tab', style: this.defineToggleStyle(), onClick: this.toggleTab },
 						_react2.default.createElement(
 							'span',
-							{ className: 'mky-tablabel', style: this.defineTabTextColor(), __self: this
-							},
+							{ className: 'mky-tablabel', style: this.defineTabTextColor() },
 							' ',
 							this.defineTabText(),
 							' '
 						),
 						_react2.default.createElement(
 							'div',
-							{
-								__self: this
-							},
-							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon, __self: this
-							})
+							null,
+							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon })
 						)
 					) : this.props.view.type === 'rightside' ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-button', onClick: this.openSide, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-chats', __self: this
-						})
+						{ className: 'mky-button', style: this.defineToggleStyle(), onClick: this.openSide },
+						_react2.default.createElement('i', { className: 'icon mky-icon-chats' })
 					) : null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-wrapper-in ' + this.state.wrapperInClass, __self: this
-						},
+						{ className: 'mky-wrapper-in ' + this.state.wrapperInClass },
 						this.props.viewLoading ? _react2.default.createElement(
 							'div',
-							{ id: 'mky-content-connection', className: 'mky-appear', __self: this
-							},
+							{ id: 'mky-content-connection', className: 'mky-appear' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-spinner', __self: this
-								},
-								_react2.default.createElement('div', { className: 'mky-bounce1', __self: this
-								}),
-								_react2.default.createElement('div', { className: 'mky-bounce2', __self: this
-								}),
-								_react2.default.createElement('div', { className: 'mky-bounce3', __self: this
-								})
+								{ className: 'mky-spinner' },
+								_react2.default.createElement('div', { className: 'mky-bounce1' }),
+								_react2.default.createElement('div', { className: 'mky-bounce2' }),
+								_react2.default.createElement('div', { className: 'mky-bounce3' })
 							)
 						) : null,
 						this.props.userSession ? _react2.default.createElement(
 							'div',
-							{ id: 'mky-content-app', className: '', __self: this
-							},
-							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, __self: this
-							}) : null,
-							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUserName: this.props.onMessageGetUsername, haveConversations: this.haveConversations, __self: this
-							})
-						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles, __self: this
-						}),
-						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout, __self: this
-						}) : null
+							{ id: 'mky-content-app', className: '' },
+							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide }) : null,
+							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUserName: this.props.onMessageGetUsername, haveConversations: this.haveConversations })
+						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
+						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout }) : null
 					)
 				);
 			}
@@ -413,10 +394,10 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.props.onMessage(message);
 			}
 		}, {
-			key: 'defineTabStyle',
-			value: function defineTabStyle() {
-				if (this.props.styles != null && this.props.styles.tabColor != null) {
-					return { background: this.props.styles.tabColor };
+			key: 'defineToggleStyle',
+			value: function defineToggleStyle() {
+				if (this.props.styles != null && this.props.styles.toggleColor != null) {
+					return { background: this.props.styles.toggleColor };
 				} else return {};
 			}
 		}, {
@@ -530,6 +511,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.logout = _this.logout.bind(_this);
 			_this.closeSide = _this.closeSide.bind(_this);
 			_this.classContent = _this.props.isMobile ? 'mky-expand-each-screen' : '';
+			_this.defineUrlAvatar = _this.defineUrlAvatar.bind(_this);
 			return _this;
 		}
 
@@ -538,51 +520,39 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'aside',
-					{ id: this.classContent, className: this.props.showBanner ? 'aside-divided' : '', __self: this
-					},
+					{ id: this.classContent, className: this.props.showBanner ? 'aside-divided' : '' },
 					_react2.default.createElement(
 						'header',
-						{ id: 'mky-session-header', __self: this
-						},
+						{ id: 'mky-session-header' },
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-session-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.context.userSession.urlAvatar, __self: this
-							})
+							{ id: 'mky-session-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
 						),
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-session-description', __self: this
-							},
+							{ id: 'mky-session-description' },
 							_react2.default.createElement(
 								'div',
-								{ id: 'mky-session-name', __self: this
-								},
+								{ id: 'mky-session-name' },
 								_react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									this.context.userSession.name
 								)
 							),
 							this.props.isMobile ? _react2.default.createElement(
 								'div',
-								{ className: 'mky-header-exit', onClick: this.closeSide, __self: this
-								},
-								_react2.default.createElement('i', { className: 'icon mky-icon-close-light', __self: this
-								})
+								{ className: 'mky-header-exit', onClick: this.closeSide },
+								_react2.default.createElement('i', { className: 'icon mky-icon-close-light' })
 							) : _react2.default.createElement(
 								'div',
-								{ className: 'mky-header-exit', onClick: this.logout, __self: this
-								},
-								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right', __self: this
-								})
+								{ className: 'mky-header-exit', onClick: this.logout },
+								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right' })
 							)
 						)
 					),
-					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, __self: this
-					})
+					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected })
 				);
 			}
 		}, {
@@ -594,6 +564,11 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'closeSide',
 			value: function closeSide() {
 				this.props.closeSide();
+			}
+		}, {
+			key: 'defineUrlAvatar',
+			value: function defineUrlAvatar() {
+				return this.context.userSession.urlAvatar ? this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 			}
 		}]);
 
@@ -696,19 +671,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				var conversationNameFiltered = this.state.conversationArray.filter((0, _reactSearchInput.createFilter)(this.state.searchTerm, KEYS_TO_FILTERS));
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-session-conversations', __self: this
-					},
-					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, __self: this
-					}) : null,
-					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated, __self: this
-					}),
+					{ className: 'mky-session-conversations' },
+					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup }) : null,
+					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated }),
 					_react2.default.createElement(
 						'ul',
-						{ ref: 'conversationList', id: 'mky-conversation-list', __self: this
-						},
+						{ ref: 'conversationList', id: 'mky-conversation-list' },
 						conversationNameFiltered.map(function (conversation, index) {
-							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id), __self: _this2
-							});
+							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id) });
 						})
 					)
 				);
@@ -875,73 +845,58 @@ return /******/ (function(modules) { // webpackBootstrap
 				var classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
 				return _react2.default.createElement(
 					'li',
-					{ className: classContent + ' animated slideInLeft', __self: this
-					},
+					{ className: classContent + ' animated slideInLeft' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-full', onClick: this.openConversation, __self: this
-						},
+						{ className: 'mky-full', onClick: this.openConversation },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), onerror: 'imgError(this);', __self: this
-							})
+							{ className: 'mky-conversation-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar(), onerror: 'imgError(this);' })
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-description', __self: this
-							},
+							{ className: 'mky-conversation-description' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-conversation-title', __self: this
-								},
+								{ className: 'mky-conversation-title' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-conversation-name', __self: this
-									},
+									{ className: 'mky-conversation-name' },
 									this.state.unreadMessages ? _react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify mky-bold-text', __self: this
-										},
+										{ className: 'mky-ellipsify mky-bold-text' },
 										this.props.conversation.name
 									) : _react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.props.conversation.name
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-conversation-time', __self: this
-									},
+									{ className: 'mky-conversation-time' },
 									_react2.default.createElement(
 										'span',
-										{ className: '', __self: this
-										},
+										{ className: '' },
 										this.props.conversation.messages[this.props.conversation.lastMessage] ? (0, _monkeyUtils.defineTimeByToday)(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''
 									)
 								)
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-conversation-state', __self: this
-								},
+								{ className: 'mky-conversation-state' },
 								Object.keys(this.props.conversation.messages).length ? this.state.unreadMessages ? _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify mky-bold-text', __self: this
-									},
+									{ className: 'mky-ellipsify mky-bold-text' },
 									this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''
 								) : _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''
 								) : _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									'Click to open conversation'
 								)
 							)
@@ -949,17 +904,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'mnk-conversation-opts', __self: this
-						},
+						{ className: 'mnk-conversation-opts' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-delete-conv', onClick: this.deleteConversation, __self: this
-							},
-							_react2.default.createElement('i', { className: 'icon mky-icon-close', __self: this
-							})
+							{ className: 'mky-delete-conv', onClick: this.deleteConversation },
+							_react2.default.createElement('i', { className: 'icon mky-icon-close' })
 						),
-						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter, __self: this
-						})
+						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter })
 					)
 				);
 			}
@@ -990,12 +941,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Badge = function Badge(props, showNotification) {
 		return _react2.default.createElement(
 			'div',
-			{ className: 'mky-conversation-notification', __self: undefined
-			},
+			{ className: 'mky-conversation-notification' },
 			props.value > 0 ? _react2.default.createElement(
 				'div',
-				{ className: 'mky-notification-amount animated pulse', __self: undefined
-				},
+				{ className: 'mky-notification-amount animated pulse' },
 				props.value
 			) : null
 		);
@@ -15996,30 +15945,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var process = module.exports = {};
 
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
+	// cached from whatever global is present so that test runners that stub it don't break things.
+	var cachedSetTimeout = setTimeout;
+	var cachedClearTimeout = clearTimeout;
 
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-
-	(function () {
-	  try {
-	    cachedSetTimeout = setTimeout;
-	  } catch (e) {
-	    cachedSetTimeout = function () {
-	      throw new Error('setTimeout is not defined');
-	    }
-	  }
-	  try {
-	    cachedClearTimeout = clearTimeout;
-	  } catch (e) {
-	    cachedClearTimeout = function () {
-	      throw new Error('clearTimeout is not defined');
-	    }
-	  }
-	} ())
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -35535,38 +35464,31 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-generic-modal', onClick: this.props.handleClosePopup, __self: this
-					},
+					{ className: 'mky-generic-modal', onClick: this.props.handleClosePopup },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-inner-modal', __self: this
-						},
+						{ className: 'mky-inner-modal' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-popup-message', __self: this
-							},
+							{ className: 'mky-popup-message' },
 							'What do you want to do whit this conversation?'
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-popup-buttons', __self: this
-							},
+							{ className: 'mky-popup-buttons' },
 							this.context.options.deleteConversation.permission.exitGroup ? _react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup },
 								'EXIT GROUP'
 							) : null,
 							this.context.options.deleteConversation.permission.delete ? _react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation },
 								'DELETE'
 							) : null,
 							_react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleClosePopup, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleClosePopup },
 								'CANCEL'
 							)
 						)
@@ -35650,14 +35572,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'section',
-					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner, __self: this
-					},
-					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUserName: this.props.getUserName, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations, __self: this
-					}) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner, __self: this
-					}),
-					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, {
-						__self: this
-					}) : null
+					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner },
+					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUserName: this.props.getUserName, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
+					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, null) : null
 				);
 			}
 		}]);
@@ -35706,8 +35623,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ContentIntro, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { id: 'mky-app-intro', className: this.bannerClass, __self: this
-				});
+				return _react2.default.createElement('div', { id: 'mky-app-intro', className: this.bannerClass });
 			}
 		}]);
 
@@ -35752,8 +35668,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ContentBanner, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { className: 'mky-banner-section', __self: this
-				});
+				return _react2.default.createElement('div', { className: 'mky-banner-section' });
 			}
 		}]);
 
@@ -35838,82 +35753,64 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-conversation ' + this.conversationBannerClass, __self: this
-					},
+					{ className: 'mky-content-conversation ' + this.conversationBannerClass },
 					_react2.default.createElement(
 						'header',
-						{ id: 'mky-conversation-selected-header', __self: this
-						},
+						{ id: 'mky-conversation-selected-header' },
 						this.props.isMobile & this.props.haveConversations ? _react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-burger', onClick: this.showAside, __self: this
-							},
-							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer', __self: this
-							})
+							{ className: 'mky-conversation-burger', onClick: this.showAside },
+							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer' })
 						) : null,
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-conversation-selected-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), __self: this
-							})
+							{ id: 'mky-conversation-selected-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
 						),
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-conversation-selected-description', __self: this
-							},
+							{ id: 'mky-conversation-selected-description' },
 							_react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-name', __self: this
-								},
+								{ id: 'mky-conversation-selected-name' },
 								this.props.conversationSelected.name
 							),
 							!(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? this.props.conversationSelected.online == 0 ? _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' ',
 								'Last seen ' + (0, _monkeyUtils.defineTime)(this.props.conversationSelected.lastOpenApp)
 							) : _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' Online '
 							) : _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' ',
 								this.props.conversationSelected.description
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-signature', __self: this
-							},
+							{ className: 'mky-signature' },
 							'Powered by ',
 							_react2.default.createElement(
 								'a',
-								{ className: 'mky-signature-link', target: '_blank', href: 'http://criptext.com/', __self: this
-								},
+								{ className: 'mky-signature-link', target: '_blank', href: 'http://criptext.com/' },
 								'Criptext'
 							)
 						)
 					),
-					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this), __self: this
-					}) : _react2.default.createElement(
+					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this) }) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-chat-area', __self: this
-						},
-						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUserName: this.props.getUserName, __self: this
-						}),
+						{ className: 'mky-chat-area' },
+						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUserName: this.props.getUserName }),
 						this.state.messageSelected ? function () {
 							var Modal_ = (0, _Modal2.default)(_this2.context.bubblePreviews[_this2.state.messageSelected.bubbleType]);
-							return _react2.default.createElement(Modal_, { message: _this2.state.messageSelected, closeModal: _this2.handleCloseModal, __self: _this2
-							});
+							return _react2.default.createElement(Modal_, { message: _this2.state.messageSelected, closeModal: _this2.handleCloseModal });
 						}() : null,
-						_react2.default.createElement(_Input2.default, { enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated, __self: this
-						})
+						_react2.default.createElement(_Input2.default, { enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated })
 					)
 				);
 			}
@@ -36060,13 +35957,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'div',
-					{ ref: 'timelineChat', id: 'mky-chat-timeline', __self: this
-					},
+					{ ref: 'timelineChat', id: 'mky-chat-timeline' },
 					Object.keys(this.props.conversationSelected).length ? this.orderedConversations.map(function (item) {
 						var message = _this2.props.conversationSelected.messages[item.key];
 						var Bubble_ = (0, _Bubble2.default)(_this2.context.bubbles[message.bubbleType]);
-						return _react2.default.createElement(Bubble_, { key: message.id, message: message, userSessionId: _this2.context.userSession.id, layerClass: message.bubbleType, messageSelected: _this2.props.messageSelected, onClickMessage: _this2.props.onClickMessage, dataDownloadRequest: _this2.props.dataDownloadRequest, getUserName: _this2.props.getUserName, styles: _this2.context.styles, __self: _this2
-						});
+						return _react2.default.createElement(Bubble_, { key: message.id, message: message, userSessionId: _this2.context.userSession.id, layerClass: message.bubbleType, messageSelected: _this2.props.messageSelected, onClickMessage: _this2.props.onClickMessage, dataDownloadRequest: _this2.props.dataDownloadRequest, getUserName: _this2.props.getUserName, styles: _this2.context.styles });
 					}) : null
 				);
 			}
@@ -36112,9 +36007,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.goBottom = false;
 					// 			this.domNode.lastChild.scrollIntoView();
 				} else if (this.domNode.scrollTop === 0 && this.scrollTop != 0) {
-					this.scrollHeight = this.domNode.scrollHeight;
-					this.getMoreMessages();
-				}
+						this.scrollHeight = this.domNode.scrollHeight;
+						this.getMoreMessages();
+					}
 				this.scrollTop = this.domNode.scrollTop;
 			}
 		}, {
@@ -36166,8 +36061,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -36217,33 +36110,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-message-line', __self: this
-						},
+						{ className: 'mky-message-line' },
 						_react2.default.createElement(
 							'div',
-							{ id: this.props.message.id, className: classBubble, style: styleBubble, __self: this
-							},
+							{ id: this.props.message.id, className: classBubble, style: styleBubble },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-message-detail', __self: this
-								},
-								this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(Status, { value: this.props.message.status, classStatus: this.defineStatusClass(this.props.message.status), resendFunction: this.resendMessage, __self: this
-								}) : this.username ? _react2.default.createElement(
+								{ className: 'mky-message-detail' },
+								this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(Status, { value: this.props.message.status, classStatus: this.defineStatusClass(this.props.message.status), resendFunction: this.resendMessage }) : this.username ? _react2.default.createElement(
 									'span',
-									{ className: 'mky-message-user-name', __self: this
-									},
+									{ className: 'mky-message-user-name' },
 									this.username
 								) : null,
 								_react2.default.createElement(
 									'span',
-									{ className: 'mky-message-hour', __self: this
-									},
+									{ className: 'mky-message-hour' },
 									(0, _monkeyUtils.defineTime)(this.props.message.datetimeCreation)
 								)
 							),
-							_react2.default.createElement(Component, _extends({}, this.props, {
-								__self: this
-							}))
+							_react2.default.createElement(Component, this.props)
 						)
 					);
 				}
@@ -36324,15 +36209,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		var resendFunction = _ref.resendFunction;
 		return _react2.default.createElement(
 			'div',
-			{ className: "mky-message-status " + classStatus, onClick: resendFunction, __self: undefined
-			},
+			{ className: "mky-message-status " + classStatus, onClick: resendFunction },
 			value !== 0 ? value == -1 ? _react2.default.createElement(
 				'i',
-				{ className: 'demo-icon mky-check', __self: undefined
-				},
+				{ className: 'demo-icon mky-check' },
 				'!'
-			) : _react2.default.createElement('i', { className: 'icon mky-icon-check', __self: undefined
-			}) : null
+			) : _react2.default.createElement('i', { className: 'icon mky-icon-check' }) : null
 		);
 	};
 
@@ -36472,68 +36354,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var styleInput = this.defineStyles();
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'mky-chat-input', __self: this
-	                },
+	                { id: 'mky-chat-input' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-inner-chat-input', __self: this
-	                    },
-	                    _react2.default.createElement('div', { id: 'mky-divider-chat-input', __self: this
-	                    }),
+	                    { className: 'mky-inner-chat-input' },
+	                    _react2.default.createElement('div', { id: 'mky-divider-chat-input' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classAttachButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classAttachButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility })
 	                    ),
-	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton, __self: this
-	                    }),
+	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio })
 	                    ),
-	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea, __self: this
-	                    }),
+	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: 'mky-record-area', className: this.state.classAudioArea, __self: this
-	                        },
+	                        { id: 'mky-record-area', className: this.state.classAudioArea },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'mky-record-preview-area', __self: this
-	                            },
+	                            { className: 'mky-record-preview-area' },
 	                            _react2.default.createElement(
 	                                'div',
-	                                { id: 'mky-button-action-record', __self: this
-	                                },
-	                                _react2.default.createElement('button', { id: 'mky-button-start-record', className: 'mky-blink', __self: this
-	                                })
+	                                { id: 'mky-button-action-record' },
+	                                _react2.default.createElement('button', { id: 'mky-button-start-record', className: 'mky-blink' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',
-	                                { id: 'mky-time-recorder', __self: this
-	                                },
+	                                { id: 'mky-time-recorder' },
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    { id: 'mky-minutes', __self: this
-	                                    },
+	                                    { id: 'mky-minutes' },
 	                                    this.state.minutes
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    {
-	                                        __self: this
-	                                    },
+	                                    null,
 	                                    ':'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    { id: 'mky-seconds', __self: this
-	                                    },
+	                                    { id: 'mky-seconds' },
 	                                    this.state.seconds
 	                                )
 	                            )
@@ -36541,44 +36405,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classSendButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classSendButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.audioInputClass + ' ' + this.state.classAudioButton, __self: this
-	                        },
+	                        { className: 'mky-button-input ' + this.audioInputClass + ' ' + this.state.classAudioButton },
 	                        this.state.creatingAudio ? _react2.default.createElement(
 	                            'div',
-	                            { className: 'mky-spinner-input-audio', __self: this
-	                            },
-	                            _react2.default.createElement('div', { className: 'mky-rect1', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect2', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect3', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect4', __self: this
-	                            })
-	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio, __self: this
-	                        })
+	                            { className: 'mky-spinner-input-audio' },
+	                            _react2.default.createElement('div', { className: 'mky-rect1' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect2' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect3' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect4' })
+	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio })
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactDropzone2.default,
-	                        { ref: 'dropzone', className: 'mky-disappear', onDrop: this.onDrop, __self: this
-	                        },
+	                        { ref: 'dropzone', className: 'mky-disappear', onDrop: this.onDrop },
 	                        _react2.default.createElement(
 	                            'div',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            'Try dropping some files here, or click to select files to upload.'
 	                        )
 	                    ),
-	                    _react2.default.createElement(ToastContainer, { ref: 'container', toastMessageFactory: ToastMessageFactory, className: 'toast-bottom-center', __self: this
-	                    })
+	                    _react2.default.createElement(ToastContainer, { ref: 'container', toastMessageFactory: ToastMessageFactory, className: 'toast-bottom-center' })
 	                )
 	            );
 	        }
@@ -36824,20 +36675,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
-	                    var code = message.data.code;
-	                    var outFileNames = Object.keys(message.data.outputFiles);
+	                        var code = message.data.code;
+	                        var outFileNames = Object.keys(message.data.outputFiles);
 
-	                    if (code == 0 && outFileNames.length) {
+	                        if (code == 0 && outFileNames.length) {
 
-	                        var outFileName = outFileNames[0];
-	                        var outFileBuffer = message.data.outputFiles[outFileName];
-	                        var mp3Blob = new Blob([outFileBuffer]);
-	                        // var src = window.URL.createObjectURL(mp3Blob);
-	                        that.readData(mp3Blob);
-	                    } else {
-	                        console.log('hubo un error');
+	                            var outFileName = outFileNames[0];
+	                            var outFileBuffer = message.data.outputFiles[outFileName];
+	                            var mp3Blob = new Blob([outFileBuffer]);
+	                            // var src = window.URL.createObjectURL(mp3Blob);
+	                            that.readData(mp3Blob);
+	                        } else {
+	                            console.log('hubo un error');
+	                        }
 	                    }
-	                }
 	            };
 	            return ffmpegWorker;
 	        }
@@ -37169,11 +37020,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		        files.push(file);
 		      }
 		
-		      if (this.allFilesAccepted(files)) {
-		        if (this.props.onDrop) {
-		          this.props.onDrop.call(this, files, e);
-		        }
+		      if (this.props.onDrop) {
+		        this.props.onDrop.call(this, files, e);
+		      }
 		
+		      if (this.allFilesAccepted(files)) {
 		        if (this.props.onDropAccepted) {
 		          this.props.onDropAccepted.call(this, files, e);
 		        }
@@ -37335,7 +37186,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
 		  disableClick: _react2.default.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
 		
-		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
+		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <file type="input"/> tag
 		  multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
 		  accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
 		  name: _react2.default.PropTypes.string // name attribute for the input tag
@@ -37400,39 +37251,29 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
-					{ id: "mky-menu-bubble", className: "mky-menu-bubble", style: { display: this.props.visible ? "block" : "none" }, __self: this
-					},
+					{ id: "mky-menu-bubble", className: "mky-menu-bubble", style: { display: this.props.visible ? "block" : "none" } },
 					_react2.default.createElement(
 						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach, __self: this
-						},
-						_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icon mky-icon-image-regular", style: this.props.colorButton, __self: this
-						}),
+						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icon mky-icon-image-regular", style: this.props.colorButton }),
 						" ",
 						_react2.default.createElement(
 							"div",
-							{
-								__self: this
-							},
+							null,
 							"Image"
 						)
 					),
 					_react2.default.createElement(
 						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach, __self: this
-						},
-						_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-doc-regular", style: this.props.colorButton, __self: this
-						}),
+						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-doc-regular", style: this.props.colorButton }),
 						_react2.default.createElement(
 							"div",
-							{
-								__self: this
-							},
+							null,
 							"File"
 						)
 					),
-					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility, __self: this
-					})
+					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility })
 				);
 			}
 		}]);
@@ -37954,9 +37795,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function _handle_toast_remove(toastId) {
 	      var _this4 = this;
 
-	      if (this.props.preventDuplicates) {
-	        this.state.previousMessage = "";
-	      }
 	      var operationName = "" + (this.props.newestOnTop ? "reduceRight" : "reduce");
 	      this.state.toasts[operationName](function (found, toast, index) {
 	        if (found || toast.toastId !== toastId) {
@@ -38007,8 +37845,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    warning: "warning"
 	  },
 	  id: "toast-container",
-	  toastMessageFactory: _react2.default.createFactory(_ToastMessage2.default.animation),
-	  preventDuplicates: true,
+	  toastMessageFactory: _react2.default.createFactory(_ToastMessage2.default),
+	  preventDuplicates: false,
 	  newestOnTop: true,
 	  onClick: function onClick() {}
 	};
@@ -39496,12 +39334,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (!doNotCheckNext && maxPixCount - matchPixCount <= maxPixCount * frameTolerance) {
 	                // console.log('removed black frame : ' + f + ' ; frame duration ' + _frames[f].duration);
 	            } else {
-	                // console.log('frame is passed : ' + f);
-	                if (checkUntilNotBlack) {
-	                    doNotCheckNext = true;
+	                    // console.log('frame is passed : ' + f);
+	                    if (checkUntilNotBlack) {
+	                        doNotCheckNext = true;
+	                    }
+	                    resultFrames.push(_frames[f]);
 	                }
-	                resultFrames.push(_frames[f]);
-	            }
 	        }
 
 	        resultFrames = resultFrames.concat(_frames.slice(endCheckFrame));
@@ -49993,8 +49831,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -50027,17 +49863,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-viewer-content' + ' animated zoomIn', __self: this
-						},
+						{ className: 'mky-viewer-content' + ' animated zoomIn' },
 						_react2.default.createElement(
 							'button',
-							{ id: 'mky-button-exit', onClick: this.close, __self: this
-							},
+							{ id: 'mky-button-exit', onClick: this.close },
 							' X '
 						),
-						_react2.default.createElement(Component, _extends({}, this.props, {
-							__self: this
-						}))
+						_react2.default.createElement(Component, this.props)
 					);
 				}
 			}, {
@@ -50062,8 +49894,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -50094,11 +49924,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ id: 'mky-chat-login', __self: this
-						},
-						_react2.default.createElement(Component, _extends({}, this.props, {
-							__self: this
-						}))
+						{ id: 'mky-chat-login' },
+						_react2.default.createElement(Component, this.props)
 					);
 				}
 			}]);
@@ -50147,8 +49974,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					"span",
-					{ className: "mky-content-text", __self: this
-					},
+					{ className: "mky-content-text" },
 					this.props.message.text
 				);
 			}
@@ -50213,28 +50039,20 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-image', __self: this
-					},
+					{ className: 'mky-content-image' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-data', __self: this
-						},
-						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage, __self: this
-						})
+						{ className: 'mky-content-image-data' },
+						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage })
 					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-loading', __self: this
-						},
-						_react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-						}),
-						_react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-						})
+						{ className: 'mky-content-image-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-to-download', onClick: this.downloadData, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-						})
+						{ className: 'mky-content-image-to-download', onClick: this.downloadData },
+						_react2.default.createElement('i', { className: 'icon mky-icon-download' })
 					)
 				);
 			}
@@ -50316,41 +50134,32 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-file', __self: this
-					},
+					{ className: 'mky-content-file' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-data', __self: this
-						},
+						{ className: 'mky-content-file-data' },
 						_react2.default.createElement(
 							'a',
-							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename, __self: this
-							},
-							_react2.default.createElement(Fileicon, { classFileType: this.defineFileType(this.props.message.filename), __self: this
-							}),
+							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename },
+							_react2.default.createElement(Fileicon, { classFileType: this.defineFileType(this.props.message.filename) }),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-file-detail', __self: this
-								},
+								{ className: 'mky-file-detail' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-file-name', __self: this
-									},
+									{ className: 'mky-file-name' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.props.message.filename
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-file-size', __self: this
-									},
+									{ className: 'mky-file-size' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.humanFileSize(this.props.message.filesize, true)
 									)
 								)
@@ -50358,18 +50167,13 @@ return /******/ (function(modules) { // webpackBootstrap
 						)
 					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-loading', __self: this
-						},
-						_react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-						}),
-						_react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-						})
+						{ className: 'mky-content-file-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-to-download', onClick: this.downloadData, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-						})
+						{ className: 'mky-content-file-to-download', onClick: this.downloadData },
+						_react2.default.createElement('i', { className: 'icon mky-icon-download' })
 					)
 				);
 			}
@@ -50431,8 +50235,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Fileicon = function Fileicon(_ref) {
 		var classFileType = _ref.classFileType;
-		return _react2.default.createElement('div', { className: 'mky-file-icon ' + classFileType, __self: undefined
-		});
+		return _react2.default.createElement('div', { className: 'mky-file-icon ' + classFileType });
 	};
 
 	exports.default = BubbleFile;
@@ -50505,60 +50308,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'mky-content-audio', __self: this
-	                },
+	                { className: 'mky-content-audio' },
 	                this.props.message.data ? _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-data', __self: this
-	                    },
-	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-play-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-play-button mky-bubble-audio-play-button-green', onClick: this.playAudioBubble, __self: this
-	                    }),
-	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-pause-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green', onClick: this.pauseAudioBubble, __self: this
-	                    }),
-	                    _react2.default.createElement('input', { id: 'mky-bubble-audio-player-' + this.messageId, className: 'knob second', __self: this
-	                    }),
+	                    { className: 'mky-content-audio-data' },
+	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-play-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-play-button mky-bubble-audio-play-button-green', onClick: this.playAudioBubble }),
+	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-pause-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green', onClick: this.pauseAudioBubble }),
+	                    _react2.default.createElement('input', { id: 'mky-bubble-audio-player-' + this.messageId, className: 'knob second' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-bubble-audio-timer', __self: this
-	                        },
+	                        { className: 'mky-bubble-audio-timer' },
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            this.state.minutes
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            ':'
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            this.state.seconds
 	                        )
 	                    ),
-	                    _react2.default.createElement('audio', { id: 'audio_' + this.messageId, preload: 'auto', controls: '', src: this.props.message.data, __self: this
-	                    })
+	                    _react2.default.createElement('audio', { id: 'audio_' + this.messageId, preload: 'auto', controls: '', src: this.props.message.data })
 	                ) : this.state.isDownloading ? _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-loading', __self: this
-	                    },
-	                    _react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-	                    }),
-	                    _react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-	                    })
+	                    { className: 'mky-content-audio-loading' },
+	                    _react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+	                    _react2.default.createElement('div', { className: 'mky-double-bounce2' })
 	                ) : _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-to-download', onClick: this.downloadData, __self: this
-	                    },
-	                    _react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-	                    })
+	                    { className: 'mky-content-audio-to-download', onClick: this.downloadData },
+	                    _react2.default.createElement('i', { className: 'icon mky-icon-download' })
 	                )
 	            );
 	        }
@@ -50736,30 +50521,24 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-viewer-image-container', __self: this
-					},
+					{ className: 'mky-viewer-image-container' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-viewer-toolbar', __self: this
-						},
+						{ className: 'mky-viewer-toolbar' },
 						_react2.default.createElement(
 							'a',
-							{ href: this.props.message.data, download: this.props.message.filename, __self: this
-							},
+							{ href: this.props.message.data, download: this.props.message.filename },
 							_react2.default.createElement(
 								'button',
-								{ className: 'mky-button-download', title: 'Download', __self: this
-								},
+								{ className: 'mky-button-download', title: 'Download' },
 								'Download'
 							)
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ id: 'file_viewer_image', className: 'mky-viewer-image', __self: this
-						},
-						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize, __self: this
-						})
+						{ id: 'file_viewer_image', className: 'mky-viewer-image' },
+						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize })
 					)
 				);
 			}
@@ -50819,69 +50598,54 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-monkey-login', __self: this
-					},
-					_react2.default.createElement('img', { className: 'mky-monkey-logo', src: this.defineLogo(), __self: this
-					}),
+					{ className: 'mky-monkey-login' },
+					_react2.default.createElement('img', { className: 'mky-monkey-logo', src: this.defineLogo() }),
 					_react2.default.createElement(
 						'form',
-						{ className: 'mky-chat-login-container', __self: this
-						},
+						{ className: 'mky-chat-login-container' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'field-login-text', __self: this
-							},
+							{ className: 'field-login-text' },
 							_react2.default.createElement(
 								'p',
-								{ className: 'title', __self: this
-								},
+								{ className: 'title' },
 								' ',
 								_react2.default.createElement(
 									'b',
-									{
-										__self: this
-									},
+									null,
 									'Welcome to our secure live-chat'
 								),
 								'  '
 							),
 							_react2.default.createElement(
 								'p',
-								{ className: 'subtittle', __self: this
-								},
+								{ className: 'subtittle' },
 								'Please enter the information I need'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'field field-input-name', __self: this
-							},
-							_react2.default.createElement('input', { type: 'text', id: 'user_name', placeholder: 'Name', value: this.state.text, onChange: this.handleOnChangeInput, __self: this
-							}),
+							{ className: 'field field-input-name' },
+							_react2.default.createElement('input', { type: 'text', id: 'user_name', placeholder: 'Name', value: this.state.text, onChange: this.handleOnChangeInput }),
 							_react2.default.createElement(
 								'div',
-								{ className: 'error', __self: this
-								},
+								{ className: 'error' },
 								'Name must contain at least 2 character.'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'field field-input-submit', __self: this
-							},
-							_react2.default.createElement('input', { type: 'submit', value: 'SUBMIT', id: 'submitChat', onClick: this.login, __self: this
-							})
+							{ className: 'field field-input-submit' },
+							_react2.default.createElement('input', { type: 'submit', value: 'SUBMIT', id: 'submitChat', onClick: this.login })
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-monkey_footer_sign', __self: this
-						},
+						{ className: 'mky-monkey_footer_sign' },
 						'Powered by ',
 						_react2.default.createElement(
 							'a',
-							{ href: 'http://criptext.com/', __self: this
-							},
+							{ href: 'http://criptext.com/' },
 							'Criptext'
 						)
 					)
@@ -50970,8 +50734,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -51001,29 +50763,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-generic-modal', onClick: this.props.togglePopup, __self: this
-						},
+						{ className: 'mky-generic-modal', onClick: this.props.togglePopup },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-inner-modal', __self: this
-							},
+							{ className: 'mky-inner-modal' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-popup-message', __self: this
-								},
+								{ className: 'mky-popup-message' },
 								this.props.popUpMessage
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-popup-buttons', __self: this
-								},
-								_react2.default.createElement(Component, _extends({}, this.props, {
-									__self: this
-								})),
+								{ className: 'mky-popup-buttons' },
+								_react2.default.createElement(Component, this.props),
 								_react2.default.createElement(
 									'button',
-									{ className: 'mky-popup-button', onClick: this.props.togglePopup, __self: this
-									},
+									{ className: 'mky-popup-button', onClick: this.props.togglePopup },
 									'CANCEL'
 								)
 							)
@@ -51076,8 +50831,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'button',
-					{ className: 'mky-popup-button', onClick: this.props.userSessionLogout, __self: this
-					},
+					{ className: 'mky-popup-button', onClick: this.props.userSessionLogout },
 					'YES'
 				);
 			}
@@ -51123,7 +50877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n/***\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- POP UP\n6.- GLOBAL SETTINGS\n7.- MEDIA QUERIES\n8.- REACT CONTAINER\n\n***/\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'monkey';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix') format('embedded-opentype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.woff') format('woff'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.ttf') format('truetype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"monkey\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"monkey\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-add-filled:before {\n  content: \"a\";\n}\n.mky-icon-add-regular:before {\n  content: \"b\";\n}\n.mky-icon-arrowback:before {\n  content: \"c\";\n}\n.mky-icon-attach-tilt:before {\n  content: \"d\";\n}\n.mky-icon-attach-regular:before {\n  content: \"e\";\n}\n.mky-icon-audio-ephemeral:before {\n  content: \"f\";\n}\n.mky-icon-back:before {\n  content: \"g\";\n}\n.mky-icon-check:before {\n  content: \"i\";\n}\n.mky-icon-download:before {\n  content: \"k\";\n}\n.mky-icon-edit:before {\n  content: \"l\";\n}\n.mky-icon-copy:before {\n  content: \"m\";\n}\n.mky-icon-share:before {\n  content: \"n\";\n}\n.mky-icon-align-center:before {\n  content: \"o\";\n}\n.mky-icon-align-left:before {\n  content: \"p\";\n}\n.mky-icon-align-right:before {\n  content: \"q\";\n}\n.mky-icon-bold:before {\n  content: \"v\";\n}\n.mky-icon-bulletlist:before {\n  content: \"w\";\n}\n.mky-icon-icon-indentlees:before {\n  content: \"A\";\n}\n.mky-icon-indent-more:before {\n  content: \"B\";\n}\n.mky-icon-italic:before {\n  content: \"C\";\n}\n.mky-icon-numberlist:before {\n  content: \"G\";\n}\n.mky-icon-remove-formating:before {\n  content: \"H\";\n}\n.mky-icon-icon-size:before {\n  content: \"I\";\n}\n.mky-icon-textcolor:before {\n  content: \"J\";\n}\n.mky-icon-underline:before {\n  content: \"K\";\n}\n.mky-icon-info:before {\n  content: \"L\";\n}\n.mky-icon-key:before {\n  content: \"M\";\n}\n.mky-icon-location-filled:before {\n  content: \"N\";\n}\n.mky-icon-lock:before {\n  content: \"O\";\n}\n.mky-icon-logout-left:before {\n  content: \"P\";\n}\n.mky-icon-logout-right:before {\n  content: \"Q\";\n}\n.mky-icon-mail:before {\n  content: \"R\";\n}\n.mky-icon-menu-hamburguer:before {\n  content: \"S\";\n}\n.mky-icon-arrow-down-regular:before {\n  content: \"T\";\n}\n.mky-icon-arrow-up-regular:before {\n  content: \"U\";\n}\n.mky-icon-mic-empty:before {\n  content: \"V\";\n}\n.mky-icon-mic-filled:before {\n  content: \"W\";\n}\n.mky-icon-minimize:before {\n  content: \"X\";\n}\n.mky-icon-photo:before {\n  content: \"Y\";\n}\n.mky-icon-image-square:before {\n  content: \"Z\";\n}\n.mky-icon-image-ephemeral:before {\n  content: \"0\";\n}\n.mky-icon-push:before {\n  content: \"1\";\n}\n.mky-icon-search:before {\n  content: \"2\";\n}\n.mky-icon-send-regular:before {\n  content: \"3\";\n}\n.mky-icon-send-filled:before {\n  content: \"4\";\n}\n.mky-icon-text-ephemeral:before {\n  content: \"5\";\n}\n.mky-icon-timer-regular:before {\n  content: \"6\";\n}\n.mky-icon-timer-regular-1:before {\n  content: \"7\";\n}\n.mky-icon-timer-filled:before {\n  content: \"8\";\n}\n.mky-icon-trashcan-regular:before {\n  content: \"9\";\n}\n.mky-icon-trashcan-filled:before {\n  content: \"!\";\n}\n.mky-icon-webhook:before {\n  content: \"\\\"\";\n}\n.mky-icon-menu-dots-strong:before {\n  content: \"E\";\n}\n.mky-icon-menu-dots:before {\n  content: \"F\";\n}\n.mky-icon-localization-regular:before {\n  content: \"y\";\n}\n.mky-icon-doc-regular:before {\n  content: \"z\";\n}\n.mky-icon-image-regular:before {\n  content: \"D\";\n}\n.mky-icon-chats:before {\n  content: \"h\";\n}\n.mky-icon-arrow-up-light:before {\n  content: \"r\";\n}\n.mky-icon-arrow-up-bold:before {\n  content: \"s\";\n}\n.mky-icon-arrow-down-bold:before {\n  content: \"#\";\n}\n.mky-icon-arrow-down-light:before {\n  content: \"$\";\n}\n.mky-icon-close-light:before {\n  content: \"j\";\n}\n.mky-icon-close:before {\n  content: \"t\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  padding-top: 1px;\n  position: fixed;\n  -webkit-font-smoothing: antialiased;\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n  \n}\n\n.mky-fullsize{\n\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 100;\n}\n\n.mky-classic{\n  bottom: 0;\n  right: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n#mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n#mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  width: 100%;\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  box-shadow: 0 0 10px rgba(0,0,0,0.3);\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, #mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n#mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-wrapper-out aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid #c2c2c2;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n\twidth: 100%;\n\theight: 64px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #e1e1e1;\n}\n\n#mky-session-header{\n\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n#mky-session-image{\n\twidth: 40px;\n\theight: 40px;\n\tmargin: 10px 20px;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n#mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n#mky-session-description{\n\twidth: calc(100% - 80px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 22px;\n  margin-right: 9px;\n  cursor: pointer;\n}\n\n.mky-header-exit i{\n  color: #6e8191;\n  font-size: 19px;\n}\n\n#mky-session-name{\n  margin-top: 25px;\n  float: left;\n  display: flex;\n  white-space: nowrap;\n  width: calc(100% - 50px);\n}\n\n#mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #EFEFEF;\n}\n\n.mky-search-input > input {\n    width: 100%;\n    padding: 8px 10px 8px 40px;\n    border-radius: 10px;\n    border: 1px solid #EFF0F2;\n    position: relative;\n    outline: 0;\n    text-align: left;\n    font-size: 12px;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n    background-repeat: no-repeat;\n    background-position: 5%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-unselected{\n  background-color: #fff;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n\n#mky-conversation-list {\n    width: 100%;\n    height: calc(100% - 51px);\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    overflow: auto;\n    background: #f6f7f9;\n}\n\n#mky-conversation-list li{\n  width: 100%;\n  height: 68px;\n  position: relative;\n  border-bottom: 1px solid #efefef;\n}\n\n.mky-conversation-selected{\n  background-color: #eaf0f9;\n}\n\n#mky-conversation-list .mky-conversation-unselected{\n  background-color: transparent;\n}\n\n.mky-conversation-unselected:hover{\n  background-color: #e9f8ff;\n  cursor: pointer;\n}\n.mky-delete-conv{\n  display: none;\n}\n\n.mky-conversation-unselected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-conversation-selected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-delete-conv i{\n  font-size: 10px;\n  margin-left: 10px;\n  color: #6e8191;\n}\n\n.mky-conversation-image{\n  width: 48px;\n  height: 48px;\n  margin: 0px;\n  width: 48px;\n  padding: 10px 15px 10px 20px;\n  border-bottom: 1px solid #F6F7F9;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 100px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 13px;\n  margin-right: 0;\n  margin-left:8px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n\tcolor: black;\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-time{\n\twidth: 65px;\n\tfloat: right;\n\tmargin-left: 5px;\n\ttext-align: right;\n}\n\n.mky-conversation-time span{\n\tfont-size: 11px;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-conversation-state{\n  color: #8a8a8a;\n  margin-top: 8px;\n  display: flex;\n  width:88%;\n}\n\n.mky-conversation-notification{\n  position: relative;\n  /*right: 15px;*/\n  /*bottom: 12px;*/\n  /*float: right;*/\n  display: inline-block;\n  vertical-align: top;\n}\n.mnk-conversation-opts{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n  /*float: right;*/\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border-radius: 50%;\n  background: #8ec549;\n  color: #fff;\n  font-size: 9px;\n  font-weight: bold;\n  padding: 4px;\n  text-align: center;\n}\n\n.mky-bold-text{\n    font-family: Verdana Pro W01 SemiBold;\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n    height: 100%;\n    margin: 0;\n    vertical-align: top;\n    float: left;\n    position: relative;\n    background-color: #ffffff;\n}\n\n.mky-content-window-only{\n    width: 100%;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n\twidth: 100%;\n\theight: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n#mky-conversation-selected-header{\n    background: #fff;\n    position: relative;\n    z-index: 1;\n}\n\n#mky-conversation-selected-header div{\n    display: inline-table;\n    vertical-align: top;\n}\n\n.mky-conversation-burger{\n  float: left;\n  margin: 24px 5px 0 12px;\n  width: auto;\n}\n\n.mky-conversation-burger i{\n\tcolor: #6e8191;\n    font-size: 19px;\n}\n\n#mky-conversation-selected-image{\n    width: 40px;\n    height: 40px;\n    margin: 13px;\n    float: left;\n    margin-left: 25px;\n}\n\n.mky-rightside #mky-conversation-selected-image{\n\tmargin-left: 8px;\n}\n\n/*\n.mky-partialsize #mky-conversation-selected-image{\n\tmargin-left: 5px;\n}\n*/\n\n#mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n#mky-conversation-selected-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n#mky-conversation-selected-description span{\n    display: block;\n    text-align: left;\n    font-weigth: normal;\n    color:#a2a2a2;\n    max-width: 550px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    line-height: 16px;\n}\n\n#mky-conversation-selected-name{\n    font-size: 14px;\n    color: #353535 !important;\n}\n\n#mky-conversation-selected-status{\n    font-size: 12px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n\twidth: 100%;\n\theight: calc(100% - 65px);\n\tposition: relative;\n}\n\n#mky-chat-timeline {\n    width: 100%;\n    height: calc(100% - 57px);\n    background-color: #fff;\n    position: relative;\n    overflow: auto;\n    overflow-x: hidden;\n}\n\n.mky-partialsize #mky-chat-timeline {\n    height: calc(100% - 62px);\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 40px);\n    height: auto;\n    margin: 10px auto;\n    padding: 10px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n}\n\n/* base bubble */\n\n.mky-bubble{\n  \tbox-sizing: content-box;\n  \tmax-width: 60%;\n  \tmargin: 0 auto;\n  \twidth: auto;\n  \tmin-width: 42px;\n  \tmin-height: 16px;\n  \tpadding: 6px 10px 8px 14px;\n  \t-webkit-border-radius: 15px;\n  \t-moz-border-radius: 15px;\n  \tborder-radius: 15px;\n  \tmargin-top: 15px;\n  \tposition: relative;\n  \tline-height: 19px;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #829be2;\n    border-bottom-right-radius: 1px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: #fff;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #fff;\n  \tmin-width: 112px;\n  \tbackground: #00bfa5;\n  \tborder-bottom-left-radius: 1px;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #42a5f5;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #bbb;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #bbb;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-file-out {\n    text-align: right;\n}\n\n.mky-bubble-file-in {\n    text-align: left;\n}\n\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 15px;\n    position: absolute;\n    top: -15px;\n}\n\n.mky-message-detail span{\n    font-size: 10px;\n    color: #8c8c8c;\n    line-height: 10px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 9px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-bubble-out .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-button-message-unsend{\n    position: absolute;\n    color: blue;\n    font-size: 12px;\n    top: 1px;\n    font-weight: bold;\n    right: 6px;\n    z-index: 1;\n    width: 15px;\n    height: 15px;\n    opacity: 0;\n    cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #00bfa5;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/*content text bubble */\n\n.mky-content-text{\n  /*vertical-align: top;*/\n  font-size: 14px;\n}\n\n/*content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #00BFA5;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;  \n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: auto;\n  max-height: 250px;\n  min-height: 200px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n    height: 100%;\n    align-items: center;\n    display: flex;\n    -webkit-border-radius: 14px;\n    -moz-border-radius: 14px;\n    border-radius: 14px;\n    overflow: hidden;\n    justify-content: center;\n}\n\n.mky-content-image-data img{\n\theight: 100%;\n\twidth: auto;\n\tcursor: pointer;\n}\n\n/*content file bubble */\n\n.mky-content-file{\n    text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 50px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-word-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/word-icon.png);\n}\n\n.mky-file-exel-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n\n\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 1;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.4.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  width: 100%;\n  box-sizing: content-box;\n  border-top: 1px solid #ccc;\n  height: 55px;\n  margin: 0 auto;\n  background-color: #fff;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n  display: table;\n}\n\n.mky-inner-chat-input{\n  height: 100%;\n  max-width: 887px;\n  margin: 0 auto;\n  display: inline;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  border: 1px solid #E0E0E0;\n  width: calc(100% - 30px);\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: auto;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n  top: 50%;\n  transform: translateY(50%);\n  -webkit-transform: translateY(50%);\n  -moz-transform: translateY(50%);\n}\n\n.mky-button-icon{\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: contain;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n#mky-button-add{\n  background: none;\n  color: #8660a9;\n  font-size: 26px;\n}\n\n#mky-button-cancel-audio{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n#mky-button-send-message{\n  background: none;\n  color: #00bfa5;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n#mky-button-record-audio{\n  background: none;\n  color: #00BFA5;\n  font-size: 22px;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n#mky-button-cancel-audio:hover,\n#mky-button-record-audio:hover,\n#mky-button-send-message:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n#mky-message-text-input{\n  box-sizing: content-box;\n  width: calc(100% - 124px);\n  height: 24px;\n  margin: 8px 10px;\n  padding: 10px 10px 0px 10px;\n  resize: none;\n  border: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  top: initial;\n}\n\n.mky-chat-input-file #mky-message-text-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n#mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 100px);\n  height: 38px;\n  padding: 5px;\n  margin: 1px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  width: 97%;\n  text-align: center;\n  margin-top: 10px;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat:no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n\tcolor: #42A5F5;\n\ttext-decoration-line: dotted;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 50px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #00bfa5;\n  opacity: 0.8;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 100%;\n  bottom: 55px;\n  border: none;\n  background: #F0f4fc;\n  border-radius: 0;\n  height: 120px;\n  color: #8a8a8a;\n  box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -moz-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  left: 0;\n  top: initial;\n  opacity: 1;\n  z-index: 1;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: center;\n  cursor: pointer;\n  width: 49%;\n}\n\n.mky-menu-bubble-item i{\n  display: inline-block;\n}\n\n.mky-menu-bubble-item:first-child{\n  border-right: 1px solid #ccc;\n}\n\n.mky-menu-bubble-item:hover{\n  background: #F0f4fc;\n  color: #8a8a8a;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #2979ff;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n/*3.4.- BANNER and dependent clases*/\n\n.mky-banner-section{\n  width: 400px;\n  /*border: 1px solid #ccc;*/\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n.mky-banner-section img{\n  width: 100%;\n  /*height: 100%;*/\n}\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n\n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n/* 5.- POP UP\n   ----------------------------- */\n\n.mky-inner-modal{\n  max-width: 400px;\n  height: 200px;\n  background: white;\n  margin: auto;\n  top: 38%;\n  position: relative;\n  z-index: 200;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  width: 90%;\n}\n\n.mky-popup-message{\n  height: 20%;\n  text-align: center;\n  padding-top: 45px;\n  margin: 0 5%;\n  position: relative;\n  width: 90%;\n}\n\n.mky-popup-buttons{\n  margin-top: 30px;\n  text-align: center;\n}\n\n.mky-popup-button{\n  cursor: pointer;\n  height: 25px;\n  width: auto;\n  margin: 0 10px;\n  background: white;\n  border-style: none;\n  color: #2196f3;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n/* 6.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n/* 7.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 600px){\n\n/* Disappear description user session */\n  #mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n/*\n  .mky-wrapper-out aside{\n        min-width: 130px;\n  }\n*/\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-wrapper-out aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-wrapper-out aside{\n    \tdisplay: none;\n\t}\n\n\t/* Icons bigger */\n\n\t#mky-button-send-message, #mky-button-cancel-audio{\n\t    height: 19px;\n\t    width: 24px;\n\t}\n\n\t#mky-button-action-record button{\n\t    height: 16px;\n\t    width: 16px;\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Input */\n\t#mky-record-area{\n\t  \tmargin-top: 7px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-wrapper-out aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  #mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n\n/* 8.- REACT CONTAINER\n   ----------------------------- */\n\n.mky-full{\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/\n\n", ""]);
+	exports.push([module.id, "\n/***\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- POP UP\n6.- GLOBAL SETTINGS\n7.- MEDIA QUERIES\n8.- REACT CONTAINER\n\n***/\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'monkey';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix') format('embedded-opentype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.woff') format('woff'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.ttf') format('truetype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"monkey\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"monkey\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-add-filled:before {\n  content: \"a\";\n}\n.mky-icon-add-regular:before {\n  content: \"b\";\n}\n.mky-icon-arrowback:before {\n  content: \"c\";\n}\n.mky-icon-attach-tilt:before {\n  content: \"d\";\n}\n.mky-icon-attach-regular:before {\n  content: \"e\";\n}\n.mky-icon-audio-ephemeral:before {\n  content: \"f\";\n}\n.mky-icon-back:before {\n  content: \"g\";\n}\n.mky-icon-check:before {\n  content: \"i\";\n}\n.mky-icon-download:before {\n  content: \"k\";\n}\n.mky-icon-edit:before {\n  content: \"l\";\n}\n.mky-icon-copy:before {\n  content: \"m\";\n}\n.mky-icon-share:before {\n  content: \"n\";\n}\n.mky-icon-align-center:before {\n  content: \"o\";\n}\n.mky-icon-align-left:before {\n  content: \"p\";\n}\n.mky-icon-align-right:before {\n  content: \"q\";\n}\n.mky-icon-bold:before {\n  content: \"v\";\n}\n.mky-icon-bulletlist:before {\n  content: \"w\";\n}\n.mky-icon-icon-indentlees:before {\n  content: \"A\";\n}\n.mky-icon-indent-more:before {\n  content: \"B\";\n}\n.mky-icon-italic:before {\n  content: \"C\";\n}\n.mky-icon-numberlist:before {\n  content: \"G\";\n}\n.mky-icon-remove-formating:before {\n  content: \"H\";\n}\n.mky-icon-icon-size:before {\n  content: \"I\";\n}\n.mky-icon-textcolor:before {\n  content: \"J\";\n}\n.mky-icon-underline:before {\n  content: \"K\";\n}\n.mky-icon-info:before {\n  content: \"L\";\n}\n.mky-icon-key:before {\n  content: \"M\";\n}\n.mky-icon-location-filled:before {\n  content: \"N\";\n}\n.mky-icon-lock:before {\n  content: \"O\";\n}\n.mky-icon-logout-left:before {\n  content: \"P\";\n}\n.mky-icon-logout-right:before {\n  content: \"Q\";\n}\n.mky-icon-mail:before {\n  content: \"R\";\n}\n.mky-icon-menu-hamburguer:before {\n  content: \"S\";\n}\n.mky-icon-arrow-down-regular:before {\n  content: \"T\";\n}\n.mky-icon-arrow-up-regular:before {\n  content: \"U\";\n}\n.mky-icon-mic-empty:before {\n  content: \"V\";\n}\n.mky-icon-mic-filled:before {\n  content: \"W\";\n}\n.mky-icon-minimize:before {\n  content: \"X\";\n}\n.mky-icon-photo:before {\n  content: \"Y\";\n}\n.mky-icon-image-square:before {\n  content: \"Z\";\n}\n.mky-icon-image-ephemeral:before {\n  content: \"0\";\n}\n.mky-icon-push:before {\n  content: \"1\";\n}\n.mky-icon-search:before {\n  content: \"2\";\n}\n.mky-icon-send-regular:before {\n  content: \"3\";\n}\n.mky-icon-send-filled:before {\n  content: \"4\";\n}\n.mky-icon-text-ephemeral:before {\n  content: \"5\";\n}\n.mky-icon-timer-regular:before {\n  content: \"6\";\n}\n.mky-icon-timer-regular-1:before {\n  content: \"7\";\n}\n.mky-icon-timer-filled:before {\n  content: \"8\";\n}\n.mky-icon-trashcan-regular:before {\n  content: \"9\";\n}\n.mky-icon-trashcan-filled:before {\n  content: \"!\";\n}\n.mky-icon-webhook:before {\n  content: \"\\\"\";\n}\n.mky-icon-menu-dots-strong:before {\n  content: \"E\";\n}\n.mky-icon-menu-dots:before {\n  content: \"F\";\n}\n.mky-icon-localization-regular:before {\n  content: \"y\";\n}\n.mky-icon-doc-regular:before {\n  content: \"z\";\n}\n.mky-icon-image-regular:before {\n  content: \"D\";\n}\n.mky-icon-chats:before {\n  content: \"h\";\n}\n.mky-icon-arrow-up-light:before {\n  content: \"r\";\n}\n.mky-icon-arrow-up-bold:before {\n  content: \"s\";\n}\n.mky-icon-arrow-down-bold:before {\n  content: \"#\";\n}\n.mky-icon-arrow-down-light:before {\n  content: \"$\";\n}\n.mky-icon-close-light:before {\n  content: \"j\";\n}\n.mky-icon-close:before {\n  content: \"t\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  padding-top: 1px;\n  position: fixed;\n  -webkit-font-smoothing: antialiased;\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n  \n}\n\n.mky-fullsize{\n\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 100;\n}\n\n.mky-classic{\n  bottom: 0;\n  right: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n#mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n#mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  width: 100%;\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  box-shadow: 0 0 10px rgba(0,0,0,0.3);\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, #mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n#mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-wrapper-out aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid #c2c2c2;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n\twidth: 100%;\n\theight: 64px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #e1e1e1;\n}\n\n#mky-session-header{\n\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n#mky-session-image{\n\twidth: 40px;\n\theight: 40px;\n\tmargin: 10px 20px;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n#mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n#mky-session-description{\n\twidth: calc(100% - 80px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 22px;\n  margin-right: 9px;\n  cursor: pointer;\n}\n\n.mky-header-exit i{\n  color: #6e8191;\n  font-size: 19px;\n}\n\n#mky-session-name{\n  margin-top: 25px;\n  float: left;\n  display: flex;\n  white-space: nowrap;\n  width: calc(100% - 50px);\n}\n\n#mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #EFEFEF;\n}\n\n.mky-search-input > input {\n    width: 100%;\n    padding: 8px 10px 8px 40px;\n    border-radius: 10px;\n    border: 1px solid #EFF0F2;\n    position: relative;\n    outline: 0;\n    text-align: left;\n    font-size: 12px;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n    background-repeat: no-repeat;\n    background-position: 5%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-unselected{\n  background-color: #fff;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n\n#mky-conversation-list {\n    width: 100%;\n    height: calc(100% - 51px);\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    overflow: auto;\n    background: #f6f7f9;\n}\n\n#mky-conversation-list li{\n  width: 100%;\n  height: 68px;\n  position: relative;\n  border-bottom: 1px solid #efefef;\n}\n\n.mky-conversation-selected{\n  background-color: #eaf0f9;\n}\n\n#mky-conversation-list .mky-conversation-unselected{\n  background-color: transparent;\n}\n\n.mky-conversation-unselected:hover{\n  background-color: #e9f8ff;\n  cursor: pointer;\n}\n.mky-delete-conv{\n  display: none;\n}\n\n.mky-conversation-unselected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-conversation-selected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-delete-conv i{\n  font-size: 10px;\n  margin-left: 10px;\n  color: #6e8191;\n}\n\n.mky-conversation-image{\n  width: 48px;\n  height: 48px;\n  margin: 0px;\n  width: 48px;\n  padding: 10px 15px 10px 20px;\n  border-bottom: 1px solid #F6F7F9;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 100px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 13px;\n  margin-right: 0;\n  margin-left:8px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n\tcolor: black;\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-time{\n\twidth: 65px;\n\tfloat: right;\n\tmargin-left: 5px;\n\ttext-align: right;\n}\n\n.mky-conversation-time span{\n\tfont-size: 11px;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-conversation-state{\n  color: #8a8a8a;\n  margin-top: 8px;\n  display: flex;\n  width:88%;\n}\n\n.mky-conversation-notification{\n  position: relative;\n  /*right: 15px;*/\n  /*bottom: 12px;*/\n  /*float: right;*/\n  display: inline-block;\n  vertical-align: top;\n}\n.mnk-conversation-opts{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n  /*float: right;*/\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border-radius: 50%;\n  background: #8ec549;\n  color: #fff;\n  font-size: 9px;\n  font-weight: bold;\n  padding: 4px;\n  text-align: center;\n}\n\n.mky-bold-text{\n    font-family: Verdana Pro W01 SemiBold;\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n    height: 100%;\n    margin: 0;\n    vertical-align: top;\n    float: left;\n    position: relative;\n    background-color: #ffffff;\n}\n\n.mky-content-window-only{\n    width: 100%;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n\twidth: 100%;\n\theight: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n#mky-conversation-selected-header{\n    background: #fff;\n    position: relative;\n    z-index: 1;\n}\n\n#mky-conversation-selected-header div{\n    display: inline-table;\n    vertical-align: top;\n}\n\n.mky-conversation-burger{\n  float: left;\n  margin: 24px 5px 0 12px;\n  width: auto;\n}\n\n.mky-conversation-burger i{\n\tcolor: #6e8191;\n    font-size: 19px;\n}\n\n#mky-conversation-selected-image{\n    width: 40px;\n    height: 40px;\n    margin: 13px;\n    float: left;\n    margin-left: 25px;\n}\n\n.mky-rightside #mky-conversation-selected-image{\n\tmargin-left: 8px;\n}\n\n/*\n.mky-partialsize #mky-conversation-selected-image{\n\tmargin-left: 5px;\n}\n*/\n\n#mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n#mky-conversation-selected-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n#mky-conversation-selected-description span{\n    display: block;\n    text-align: left;\n    font-weigth: normal;\n    color:#a2a2a2;\n    max-width: 550px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    line-height: 16px;\n}\n\n#mky-conversation-selected-name{\n    font-size: 14px;\n    color: #353535 !important;\n}\n\n#mky-conversation-selected-status{\n    font-size: 12px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n\twidth: 100%;\n\theight: calc(100% - 65px);\n\tposition: relative;\n}\n\n#mky-chat-timeline {\n    width: 100%;\n    height: calc(100% - 57px);\n    background-color: #fff;\n    position: relative;\n    overflow: auto;\n    overflow-x: hidden;\n}\n\n.mky-partialsize #mky-chat-timeline {\n    height: calc(100% - 62px);\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 40px);\n    height: auto;\n    margin: 10px auto;\n    padding: 10px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n}\n\n/* base bubble */\n\n.mky-bubble{\n  \tbox-sizing: content-box;\n  \tmax-width: 60%;\n  \tmargin: 0 auto;\n  \twidth: auto;\n  \tmin-width: 42px;\n  \tmin-height: 16px;\n  \tpadding: 6px 10px 8px 14px;\n  \t-webkit-border-radius: 15px;\n  \t-moz-border-radius: 15px;\n  \tborder-radius: 15px;\n  \tmargin-top: 15px;\n  \tposition: relative;\n  \tline-height: 19px;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #829be2;\n    border-bottom-right-radius: 1px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: #fff;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #fff;\n  \tmin-width: 112px;\n  \tbackground: #00bfa5;\n  \tborder-bottom-left-radius: 1px;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #42a5f5;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #bbb;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #bbb;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-file-out {\n    text-align: right;\n}\n\n.mky-bubble-file-in {\n    text-align: left;\n}\n\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 15px;\n    position: absolute;\n    top: -15px;\n}\n\n.mky-message-detail span{\n    font-size: 10px;\n    color: #8c8c8c;\n    line-height: 10px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 9px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-bubble-out .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-button-message-unsend{\n    position: absolute;\n    color: blue;\n    font-size: 12px;\n    top: 1px;\n    font-weight: bold;\n    right: 6px;\n    z-index: 1;\n    width: 15px;\n    height: 15px;\n    opacity: 0;\n    cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #00bfa5;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/*content text bubble */\n\n.mky-content-text{\n  /*vertical-align: top;*/\n  font-size: 14px;\n}\n\n/*content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #00BFA5;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;  \n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: auto;\n  max-height: 250px;\n  min-height: 200px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n    height: 100%;\n    align-items: center;\n    display: flex;\n    -webkit-border-radius: 14px;\n    -moz-border-radius: 14px;\n    border-radius: 14px;\n    overflow: hidden;\n    justify-content: center;\n}\n\n.mky-content-image-data img{\n\theight: 100%;\n\twidth: auto;\n\tcursor: pointer;\n}\n\n/*content file bubble */\n\n.mky-content-file{\n    text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 50px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-word-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/word-icon.png);\n}\n\n.mky-file-exel-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n\n\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 1;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.4.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  width: 100%;\n  box-sizing: content-box;\n  border-top: 1px solid #ccc;\n  height: 55px;\n  margin: 0 auto;\n  background-color: #fff;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n  display: table;\n}\n\n.mky-inner-chat-input{\n  height: 100%;\n  max-width: 887px;\n  margin: 0 auto;\n  display: inline;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  border: 1px solid #E0E0E0;\n  width: calc(100% - 30px);\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: auto;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n  top: 50%;\n  transform: translateY(50%);\n  -webkit-transform: translateY(50%);\n  -moz-transform: translateY(50%);\n}\n\n.mky-button-icon{\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: contain;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n#mky-button-add{\n  background: none;\n  color: #8660a9;\n  font-size: 26px;\n}\n\n#mky-button-cancel-audio{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n#mky-button-send-message{\n  background: none;\n  color: #00bfa5;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n#mky-button-record-audio{\n  background: none;\n  color: #00BFA5;\n  font-size: 22px;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n#mky-button-cancel-audio:hover,\n#mky-button-record-audio:hover,\n#mky-button-send-message:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n#mky-message-text-input{\n  box-sizing: content-box;\n  width: calc(100% - 124px);\n  height: 24px;\n  margin: 8px 10px;\n  padding: 10px 10px 0px 10px;\n  resize: none;\n  border: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  top: initial;\n}\n\n.mky-chat-input-file #mky-message-text-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n#mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 100px);\n  height: 38px;\n  padding: 5px;\n  margin: 1px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  width: 97%;\n  text-align: center;\n  margin-top: 10px;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat:no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n\tcolor: #42A5F5;\n\ttext-decoration-line: dotted;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 50px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #00bfa5;\n  opacity: 0.8;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 100%;\n  bottom: 55px;\n  border: none;\n  background: #F0f4fc;\n  border-radius: 0;\n  height: 120px;\n  color: #8a8a8a;\n  box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -moz-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  left: 0;\n  top: initial;\n  opacity: 1;\n  z-index: 1;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: center;\n  cursor: pointer;\n  width: 49%;\n}\n\n.mky-menu-bubble-item i{\n  display: inline-block;\n}\n\n.mky-menu-bubble-item:first-child{\n  border-right: 1px solid #ccc;\n}\n\n.mky-menu-bubble-item:hover{\n  background: #F0f4fc;\n  color: #8a8a8a;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #2979ff;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n/*3.4.- BANNER and dependent clases*/\n\n.mky-banner-section{\n  width: 400px;\n  /*border: 1px solid #ccc;*/\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n.mky-banner-section img{\n  width: 100%;\n  /*height: 100%;*/\n}\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n\n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n/* 5.- POP UP\n   ----------------------------- */\n\n.mky-inner-modal{\n  max-width: 400px;\n  height: 200px;\n  background: white;\n  margin: auto;\n  top: 38%;\n  position: relative;\n  z-index: 200;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  width: 90%;\n}\n\n.mky-popup-message{\n  color: black;\n  height: 20%;\n  text-align: center;\n  padding-top: 45px;\n  margin: 0 5%;\n  position: relative;\n  width: 90%;\n}\n\n.mky-popup-buttons{\n  margin-top: 30px;\n  text-align: center;\n}\n\n.mky-popup-button{\n  cursor: pointer;\n  height: 25px;\n  width: auto;\n  margin: 0 10px;\n  background: white;\n  border-style: none;\n  color: #2196f3;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n/* 6.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n/* 7.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 600px){\n\n/* Disappear description user session */\n  #mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n/*\n  .mky-wrapper-out aside{\n        min-width: 130px;\n  }\n*/\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-wrapper-out aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-wrapper-out aside{\n    \tdisplay: none;\n\t}\n\n\t/* Icons bigger */\n\n\t#mky-button-send-message, #mky-button-cancel-audio{\n\t    height: 19px;\n\t    width: 24px;\n\t}\n\n\t#mky-button-action-record button{\n\t    height: 16px;\n\t    width: 16px;\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Input */\n\t#mky-record-area{\n\t  \tmargin-top: 7px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-wrapper-out aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  #mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n\n/* 8.- REACT CONTAINER\n   ----------------------------- */\n\n.mky-full{\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/\n\n", ""]);
 
 	// exports
 
