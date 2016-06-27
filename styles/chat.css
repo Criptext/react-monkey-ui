@@ -1823,6 +1823,7 @@ TABLE OF CONTENTS
   height: 100%;
   max-width: 887px;
   margin: 0 auto;
+  display: inline;
 }
 
 .mky-fullsize #mky-chat-input{
