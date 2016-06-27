@@ -41,13 +41,13 @@ class MonkeyUI extends Component {
 		this.state = {
 			conversation: {},
 			contentStyle: undefined,
-			classTabIcon: 'mky-icon-arrow-up-big',
+			classTabIcon: 'mky-icon-arrow-up-light',
 			isMobile: isMobile.any() ? true : false,
 			showConversations: true,
 			showBanner: false,
 			wrapperInClass: ''
 		}
-		this.openTab = this.openTab.bind(this);
+		this.toggleTab = this.toggleTab.bind(this);
 		this.openSide = this.openSide.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
 		this.handleConversationSelected = this.handleConversationSelected.bind(this);
@@ -139,9 +139,9 @@ class MonkeyUI extends Component {
     	return (
 			<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
 				{ this.props.view.type === 'classic'
-					? ( <div className='mky-tab' style={this.defineTabStyle()}>
+					? ( <div className='mky-tab' style={this.defineTabStyle()} onClick={this.toggleTab}>
                             <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
-                            <div onClick={this.openTab}><i className={'icon '+this.state.classTabIcon}></i></div>
+                            <div><i className={'icon '+this.state.classTabIcon}></i></div>
                         </div>
 					)
 					: ( this.props.view.type === 'rightside'
@@ -178,11 +178,11 @@ class MonkeyUI extends Component {
 		)
 	}
 
-	openTab() {
-		if(this.state.classTabIcon === 'mky-icon-arrow-up-big'){
+	toggleTab() {
+		if(this.state.classTabIcon === 'mky-icon-arrow-up-light'){
 			this.setState({
 				contentStyle: this.props.view.data,
-				classTabIcon: 'mky-icon-arrow-down-big',
+				classTabIcon: 'mky-icon-arrow-down-light',
 				wrapperInClass: ''
 			});
 		}else{
@@ -192,7 +192,7 @@ class MonkeyUI extends Component {
 			}
 			this.setState({
 				contentStyle: style,
-				classTabIcon: 'mky-icon-arrow-up-big',
+				classTabIcon: 'mky-icon-arrow-up-light',
 				wrapperInClass: 'mky-disappear'
 			});
 		}
