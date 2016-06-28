@@ -4,7 +4,6 @@ import Input from './Input.js'
 // import LocationInput from './LocationInput.js'
 
 import Modal from './Modal.js'
-
 import { defineTime, isConversationGroup } from '../utils/monkey-utils.js'
 
 class ContentConversation extends Component {
