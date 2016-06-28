@@ -4,6 +4,8 @@ import SearchInput, {createFilter} from 'react-search-input';
 import ReactDOM from 'react-dom';
 import DeleteConversation from './DeleteConversation.js'
 
+import { isConversationGroup } from './../utils/monkey-utils.js'
+
 const KEYS_TO_FILTERS = ['name']
 
 class ConversationList extends Component {
@@ -18,6 +20,7 @@ class ConversationList extends Component {
 			deletingIndex: undefined,
 			deletingActive: undefined
 		}
+		this.conversationToDeleteIsGroup;
 	    this.searchUpdated = this.searchUpdated.bind(this);
 	    this.conversationIdSelected = this.conversationIdSelected.bind(this);
 	    this.isSelected = this.isSelected.bind(this);
@@ -44,7 +47,7 @@ class ConversationList extends Component {
     	return (
     		<div className='mky-session-conversations'>
     			{ this.state.isDeleting
-	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation} handleExitGroup={this.handleExitGroup} handleClosePopup={this.handleClosePopup} />
+	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation} handleExitGroup={this.handleExitGroup} handleClosePopup={this.handleClosePopup} isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null }
 	    		<SearchInput className='mky-search-input' onChange={this.searchUpdated} />
 	    		<ul ref='conversationList' id='mky-conversation-list'>
@@ -65,6 +68,7 @@ class ConversationList extends Component {
 			deletingActive: active,
 			isDeleting: true
 		});
+		this.conversationToDeleteIsGroup = isConversationGroup(conversation.id);
 	}
 
 	componentDidUpdate() {
