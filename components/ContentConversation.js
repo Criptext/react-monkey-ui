@@ -22,7 +22,7 @@ class ContentConversation extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		if(this.props.conversationSelected != nextProps.conversationSelected){
+		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
 			this.setState({
 				showLocationInput: false,
 				messageSelected: undefined
@@ -31,6 +31,7 @@ class ContentConversation extends Component {
 	}
 
 	render() {
+		console.log(this.state.messageSelected);
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 					<header id='mky-conversation-selected-header'>
