@@ -8,7 +8,7 @@ const Modal = Component => class extends Component {
 
 	render() {
 		return(
-			<div className={'mky-viewer-content' + ' animated zoomIn'}> 
+			<div className={'mky-viewer-content'}> 
 				<button id="mky-button-exit" onClick={this.close}> X </button>
 				<Component {...this.props}/>
 			</div>
