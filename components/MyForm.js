@@ -59,7 +59,7 @@ class MyForm extends Component {
 	}
 }
 
-FormPrivateChat.contextTypes = {
+MyForm.contextTypes = {
     extraChat: React.PropTypes.object.isRequired
 }
 

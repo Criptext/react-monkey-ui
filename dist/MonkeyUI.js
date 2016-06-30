@@ -50701,7 +50701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		return MyForm;
 	}(_react.Component);
 
-	FormPrivateChat.contextTypes = {
+	MyForm.contextTypes = {
 		extraChat: _react2.default.PropTypes.object.isRequired
 	};
 
