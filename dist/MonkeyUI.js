@@ -678,7 +678,6 @@ return /******/ (function(modules) { // webpackBootstrap
 					{ className: 'mky-session-conversations' },
 					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, isGroupConversation: this.conversationToDeleteIsGroup }) : null,
 					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated }),
-					console.log(this.props.conversations),
 					this.props.conversationsLoading ? _react2.default.createElement(
 						'div',
 						null,
@@ -50596,10 +50595,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var MyForm = function (_Component) {
 		_inherits(MyForm, _Component);
 
-		function MyForm(props) {
+		function MyForm(props, context) {
 			_classCallCheck(this, MyForm);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MyForm).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MyForm).call(this, props, context));
 
 			_this.state = {
 				text: ''
@@ -50615,7 +50614,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				return _react2.default.createElement(
 					'div',
 					{ className: 'mky-monkey-login' },
-					_react2.default.createElement('img', { className: 'mky-monkey-logo', src: this.defineLogo() }),
+					_react2.default.createElement(
+						'div',
+						{ className: 'mky-monkey-logo' },
+						_react2.default.createElement('img', { src: this.defineLogo() })
+					),
 					_react2.default.createElement(
 						'form',
 						{ className: 'mky-chat-login-container' },
@@ -50698,6 +50701,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		return MyForm;
 	}(_react.Component);
 
+	FormPrivateChat.contextTypes = {
+		extraChat: _react2.default.PropTypes.object.isRequired
+	};
+
 	exports.default = MyForm;
 
 /***/ },
@@ -50735,7 +50742,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-	exports.push([module.id, "\n.mky-monkey-login{\n\twidth: 100%;\n\theight: 100%;\n}\n\n.mky-monkey-logo{\n    height: 30px;\n}\n\n.mky-chat-login-container{\n    position: relative;\n    top: 50%;\n    transform: translateY(-70%);\n    -moz-transform: translateY(-70%);\n    -webkit-transform: translateY(-70%);\n    -ms-transform: translateY(-70%);\n    text-align: center;\n}\n\n.mky-monkey_footer_sign{\n    position: absolute;\n    bottom: 5px;\n    right: 10px;\n    font-size: 12px;\n    color: #ccc;\n}\n\n.mky-monkey_footer_sign a, .mky-monkey_footer_sign a:visited{\n    text-decoration: none;\n    color: #1087FF;\n}\n\n#chat-login p{\n\ttext-align: center;\n\tline-height: 6px;\n}\n\n\n  \n\n\n.field input[type=\"submit\"]{\n\tbackground: #666;\n\tborder: 0;\n\tpadding: 9px 15px;\n\tfont-size: 18px;\n\tcursor: pointer;\n\tcolor: #fff;\n\tborder-radius: 2px;\n\tborder: 1px solid transparent;\n\t-webkit-appearance: none;\n\t-webkit-font-smoothing: antialiased;\n\t-webkit-tap-highlight-color: transparent;\n\tmin-width: 130px;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tbackground: #1088ff;\n\tborder-radius: 5px;\n\tfont-family: 'Lane', 'laneN', sans-serif;\n\tcolor: #fff;\n\tmargin-top: 20px;\n\tfont-size: 15px;\n\tborder: none;\n\tfont-weight: bold;\n}\n\n#monkey_widget{\n    position: absolute;\n    bottom: 0px;\n    right: 10px;\n    padding: 5px 20px;\n    background: #FBA920;\n    border-top-right-radius:10px; \n    border-top-left-radius:10px; \n    cursor: pointer;\n    width: 260px;\n    text-align: center;\n    font-size: 17px;\n}\n\n#monkey_widget a{\n    text-decoration: none;\n    color: #fff;\n}\n\n#monkey_widget img{\n    height: 25px;\n}\n\n.monkey_widget_button{\n    position: relative;\n}\n\n.monkey_widget_login{\n    background: #fff;\n    height: 380px;\n    width: 320px;\n    bottom: 65px;\n    padding: 0px 0px;\n    box-shadow: 0px 0px 10px #777;\n    left: 0px;\n    position:absolute;\n    border-radius: 5px;\n}\n\n.monkey_widget_login:after {\n    content: \"\";\n    position: absolute;\n    top: 100%;\n    right: 30px;\n    border-top: 20px solid white;\n    border-top-color: inherit;\n    border-left: 20px solid transparent;\n    border-right: 20px solid transparent;\n    color: #fff; \n}\n\n.minisize.content-options{\n    top: 10px;\n    right: 2px;\n    height: 25px;\n}\n\n.widget_minimized{\n    height: 0px;\n}\n\n.widget_minimized:after{\n    display: none;\n}\n\n.widget_minimized .minisize.content-options{\n    top: 40px;\n}\n\n.minisize{\n    right: 0px;\n}\n\n.subtittle{\n    font-size: 14px;\n    color:#ccc;\n}\n\n#chat-login .field{\n    position: relative;\n    margin: 0px auto;\n    /*margin-top:30px; */\n    width: 100%;\n    max-width: 300px;\n    text-align:center;\n}\n\n#chat-login .field-input-name{\n    margin-top: 35px;\n}\n\n#chat-login .field-input-email{\n    margin-top: 10px;\n}\n\n#user_name{\n    background: none;\n    background-position: left;\n    background-repeat: no-repeat;\n    background-size: 20px;\n    background-position-x: 15px;\n    border: 1px solid #ddd;\n  padding: 10px 15px;\n  border-radius: 5px;\n  min-width: 200px;\n  font-size: 14px;\n}\n\n#user_email{\n    background: url('/images/input_icon_mail.png');\n    background-position: left;\n    background-repeat: no-repeat;\n    background-size: 20px;\n    background-position-x: 15px;\n}\n\n#chat-login input[type=\"text\"]{\n    padding: 8px 5px 8px 45px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n    font-size: 13px; \n    width: 200px;\n}\n\n.error{\n    color: red;\n    font-size: 12px;\n    /*position: absolute;*/\n    margin-left:20px;\n    display: none;\n    text-align: left;\n}\n\n\n", ""]);
+	exports.push([module.id, "\n.mky-monkey-login{\n\twidth: 100%;\n\theight: 100%;\n\tposition: relative;\n    display: inline-table;\n}\n\n.mky-monkey-logo{\n    width: 210px;\n    height: 60px;\n}\n\n.mky-monkey-logo img{\n    width: 100%;\n}\n\n.mky-chat-login-container{\n    position: absolute;\n    top: 50%;\n    transform: translateY(-50%);\n    -moz-transform: translateY(-50%);\n    -webkit-transform: translateY(-50%);\n    -ms-transform: translateY(-50%);\n    text-align: center;\n    width: 100%;\n}\n\n.mky-monkey_footer_sign{\n    position: absolute;\n    bottom: 5px;\n    right: 10px;\n    font-size: 12px;\n    color: #ccc;\n}\n\n.mky-monkey_footer_sign a, .mky-monkey_footer_sign a:visited{\n    text-decoration: none;\n    color: #1087FF;\n}\n\n#chat-login p{\n\ttext-align: center;\n\tline-height: 6px;\n}\n\n\n  \n\n\n.field input[type=\"submit\"]{\n\tbackground: #666;\n\tborder: 0;\n\tpadding: 9px 15px;\n\tfont-size: 18px;\n\tcursor: pointer;\n\tcolor: #fff;\n\tborder-radius: 2px;\n\tborder: 1px solid transparent;\n\t-webkit-appearance: none;\n\t-webkit-font-smoothing: antialiased;\n\t-webkit-tap-highlight-color: transparent;\n\tmin-width: 130px;\n\tmargin: 0 auto;\n\ttext-align: center;\n\tbackground: #1088ff;\n\tborder-radius: 5px;\n\tfont-family: 'Lane', 'laneN', sans-serif;\n\tcolor: #fff;\n\tmargin-top: 20px;\n\tfont-size: 15px;\n\tborder: none;\n\tfont-weight: bold;\n}\n\n#monkey_widget{\n    position: absolute;\n    bottom: 0px;\n    right: 10px;\n    padding: 5px 20px;\n    background: #FBA920;\n    border-top-right-radius:10px; \n    border-top-left-radius:10px; \n    cursor: pointer;\n    width: 260px;\n    text-align: center;\n    font-size: 17px;\n}\n\n#monkey_widget a{\n    text-decoration: none;\n    color: #fff;\n}\n\n#monkey_widget img{\n    height: 25px;\n}\n\n.monkey_widget_button{\n    position: relative;\n}\n\n.monkey_widget_login{\n    background: #fff;\n    height: 380px;\n    width: 320px;\n    bottom: 65px;\n    padding: 0px 0px;\n    box-shadow: 0px 0px 10px #777;\n    left: 0px;\n    position:absolute;\n    border-radius: 5px;\n}\n\n.monkey_widget_login:after {\n    content: \"\";\n    position: absolute;\n    top: 100%;\n    right: 30px;\n    border-top: 20px solid white;\n    border-top-color: inherit;\n    border-left: 20px solid transparent;\n    border-right: 20px solid transparent;\n    color: #fff; \n}\n\n.minisize.content-options{\n    top: 10px;\n    right: 2px;\n    height: 25px;\n}\n\n.widget_minimized{\n    height: 0px;\n}\n\n.widget_minimized:after{\n    display: none;\n}\n\n.widget_minimized .minisize.content-options{\n    top: 40px;\n}\n\n.minisize{\n    right: 0px;\n}\n\n.subtittle{\n    font-size: 14px;\n    color:#ccc;\n}\n\n#chat-login .field{\n    position: relative;\n    margin: 0px auto;\n    /*margin-top:30px; */\n    width: 100%;\n    max-width: 300px;\n    text-align:center;\n}\n\n#chat-login .field-input-name{\n    margin-top: 35px;\n}\n\n#chat-login .field-input-email{\n    margin-top: 10px;\n}\n\n#user_name{\n    background: none;\n    background-position: left;\n    background-repeat: no-repeat;\n    background-size: 20px;\n    background-position-x: 15px;\n    border: 1px solid #ddd;\n  padding: 10px 15px;\n  border-radius: 5px;\n  min-width: 200px;\n  font-size: 14px;\n}\n\n#user_email{\n    background: url('/images/input_icon_mail.png');\n    background-position: left;\n    background-repeat: no-repeat;\n    background-size: 20px;\n    background-position-x: 15px;\n}\n\n#chat-login input[type=\"text\"]{\n    padding: 8px 5px 8px 45px;\n    border: 1px solid #ccc;\n    border-radius: 5px;\n    font-size: 13px; \n    width: 200px;\n}\n\n.error{\n    color: red;\n    font-size: 12px;\n    /*position: absolute;*/\n    margin-left:20px;\n    display: none;\n    text-align: left;\n}\n\n\n", ""]);
 
 	// exports
 
