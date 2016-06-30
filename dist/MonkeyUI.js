@@ -300,7 +300,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						this.props.userSession ? _react2.default.createElement(
 							'div',
 							{ id: 'mky-content-app', className: '' },
-							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide }) : null,
+							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, conversationsLoading: this.props.conversationsLoading }) : null,
 							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUserName: this.props.onMessageGetUsername, haveConversations: this.haveConversations })
 						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
 						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout }) : null
@@ -433,6 +433,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		sideWidth: 0,
 		form: _MyForm2.default,
 		viewLoading: true,
+		conversationsLoading: false,
 		options: {
 			deleteConversation: {
 				permission: {
@@ -552,7 +553,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							)
 						)
 					),
-					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected })
+					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, conversationsLoading: this.props.conversationsLoading })
 				);
 			}
 		}, {
@@ -677,9 +678,20 @@ return /******/ (function(modules) { // webpackBootstrap
 					{ className: 'mky-session-conversations' },
 					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, isGroupConversation: this.conversationToDeleteIsGroup }) : null,
 					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated }),
-					_react2.default.createElement(
+					console.log(this.props.conversations),
+					this.props.conversationsLoading ? _react2.default.createElement(
+						'div',
+						null,
+						_react2.default.createElement(
+							'div',
+							{ className: 'mky-spinner' },
+							_react2.default.createElement('div', { className: 'mky-bounce1' }),
+							_react2.default.createElement('div', { className: 'mky-bounce2' }),
+							_react2.default.createElement('div', { className: 'mky-bounce3' })
+						)
+					) : _react2.default.createElement(
 						'ul',
-						{ ref: 'conversationList', id: 'mky-conversation-list' },
+						{ ref: 'conversationList', id: 'mky-conversation-list', className: 'animated slideInLeft' },
 						conversationNameFiltered.map(function (conversation, index) {
 							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id) });
 						})
@@ -849,7 +861,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				var classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
 				return _react2.default.createElement(
 					'li',
-					{ className: classContent + ' animated slideInLeft' },
+					{ className: classContent },
 					_react2.default.createElement(
 						'div',
 						{ className: 'mky-full', onClick: this.openConversation },
@@ -35755,7 +35767,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				var _this2 = this;
 
-				console.log(this.state.messageSelected);
 				return _react2.default.createElement(
 					'div',
 					{ className: 'mky-content-conversation ' + this.conversationBannerClass },
