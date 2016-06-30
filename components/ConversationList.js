@@ -50,13 +50,24 @@ class ConversationList extends Component {
 	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation} handleExitGroup={this.handleExitGroup} handleClosePopup={this.handleClosePopup} isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null }
 	    		<SearchInput className='mky-search-input' onChange={this.searchUpdated} />
-	    		<ul ref='conversationList' id='mky-conversation-list'>
-				{ conversationNameFiltered.map( (conversation, index) => {
-	    			return (
-						<ConversationItem index={index} deleteConversation={this.handleAskDeleteConversation} key={conversation.id} conversation={conversation} conversationIdSelected={this.conversationIdSelected} selected={this.isSelected(conversation.id)}/>
-					)
-				})}
-				</ul>
+	    		{ this.props.conversationsLoading
+		    		? ( <div>
+		    				<div className='mky-spinner'>
+								<div className='mky-bounce1'></div>
+								<div className='mky-bounce2'></div>
+								<div className='mky-bounce3'></div>
+							</div>
+		    			</div>
+		    		)
+		    		: ( <ul ref='conversationList' id='mky-conversation-list' className='animated slideInLeft'>
+						{ conversationNameFiltered.map( (conversation, index) => {
+			    			return (
+								<ConversationItem index={index} deleteConversation={this.handleAskDeleteConversation} key={conversation.id} conversation={conversation} conversationIdSelected={this.conversationIdSelected} selected={this.isSelected(conversation.id)}/>
+							)
+						})}
+						</ul>
+		    		)
+	    		}
 			</div>
 		)
 	}

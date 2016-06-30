@@ -23,7 +23,7 @@ class ConversationItem extends Component {
 	render() {
 			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
-			<li className={classContent + ' animated slideInLeft'}>
+			<li className={classContent}>
 				<div className='mky-full' onClick={this.openConversation}>
 					<div className='mky-conversation-image'><img src={this.defineUrlAvatar()} onerror='imgError(this);'/></div>
 					<div className='mky-conversation-description'>
