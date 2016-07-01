@@ -19,7 +19,7 @@ class MyForm extends Component {
 				</div>
 				<form className='mky-chat-login-container'>
 					<div className='field-login-text'>
-						<p className='title'> <b>Welcome to our secure live-chat</b>  </p>
+						<p className='title'> <b>{this.defineLoginTitle()}</b>  </p>
 						<p className='subtittle'>Please enter the information I need</p>
 					</div>
 					<div className='field field-input-name'>
@@ -56,6 +56,13 @@ class MyForm extends Component {
 			return this.props.styles.logo
 		}
 		return 'https://cdn.criptext.com/MonkeyUI/images/monkey_widget_logo.png';
+	}
+
+	defineLoginTitle(){
+		if(this.props.styles && this.props.styles.loginTitle){
+			return this.props.styles.loginTitle;
+		}
+		return 'Welcome to our secure live-chat';
 	}
 }
 
