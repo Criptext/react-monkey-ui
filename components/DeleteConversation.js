@@ -11,7 +11,7 @@ class DeleteConversation extends Component {
 				<div className='mky-inner-modal'>
 					<div className='mky-popup-message'>What do you want to do whit this conversation?</div>
 					<div className='mky-popup-buttons'>
-						{ this.context.options.deleteConversation.permission.exitGroup
+						{ this.context.options.deleteConversation.permission.exitGroup  && this.props.isGroupConversation
 							? <button className='mky-popup-button' onClick={this.props.handleExitGroup}>EXIT</button>
 							: null
 						}
