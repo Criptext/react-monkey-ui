@@ -35493,8 +35493,14 @@ return /******/ (function(modules) { // webpackBootstrap
 							{ className: 'mky-popup-buttons' },
 							this.context.options.deleteConversation.permission.exitGroup && this.props.isGroupConversation ? _react2.default.createElement(
 								'button',
+<<<<<<< HEAD
 								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup },
 								'EXIT GROUP'
+=======
+								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup, __self: this
+								},
+								'EXIT'
+>>>>>>> exit group to exit
 							) : null,
 							this.context.options.deleteConversation.permission.delete ? _react2.default.createElement(
 								'button',
@@ -50631,8 +50637,15 @@ return /******/ (function(modules) { // webpackBootstrap
 								' ',
 								_react2.default.createElement(
 									'b',
+<<<<<<< HEAD
 									null,
 									'Welcome to our secure live-chat'
+=======
+									{
+										__self: this
+									},
+									this.defineLoginTitle()
+>>>>>>> exit group to exit
 								),
 								'  '
 							),
@@ -50695,6 +50708,14 @@ return /******/ (function(modules) { // webpackBootstrap
 					return this.props.styles.logo;
 				}
 				return 'https://cdn.criptext.com/MonkeyUI/images/monkey_widget_logo.png';
+			}
+		}, {
+			key: 'defineLoginTitle',
+			value: function defineLoginTitle() {
+				if (this.props.styles && this.props.styles.loginTitle) {
+					return this.props.styles.loginTitle;
+				}
+				return 'Welcome to our secure live-chat';
 			}
 		}]);
 
