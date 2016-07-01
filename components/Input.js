@@ -12,6 +12,7 @@ var ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation
 // MediaStreamRecorder.js
 var MediaStreamRecorder = require('../src/MediaStreamRecorder.js').MediaStreamRecorder;
 window.StereoRecorder = require('../src/MediaStreamRecorder.js').StereoRecorder;
+window.MediaRecorderWrapper = require('../src/MediaStreamRecorder.js').MediaRecorderWrapper;
 
 // ======================
 // FileAPI.js

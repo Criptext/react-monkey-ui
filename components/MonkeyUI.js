@@ -310,7 +310,8 @@ MonkeyUI.defaultProps = {
 				delete: true
 			}
 		}
-	}
+	},
+	chatExtraData: {}
 }
 
 MonkeyUI.childContextTypes = {

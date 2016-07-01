@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import styles from '../styles/myform.css';
 
 class MyForm extends Component {
-	constructor(props, context) {
-		super(props, context);
+	constructor(props) {
+		super(props);
 		this.state = {
 			text: ''
 		};
@@ -64,10 +64,6 @@ class MyForm extends Component {
 		}
 		return 'Welcome to our secure live-chat';
 	}
-}
-
-MyForm.contextTypes = {
-    extraChat: React.PropTypes.object.isRequired
 }
 
 export default MyForm;
