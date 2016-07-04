@@ -4,24 +4,23 @@ import { defineTime, isConversationGroup } from '../utils/monkey-utils.js'
 const Bubble = Component => class extends Component {
 	constructor(props){
 		super(props);
-		this.styleName;
 		this.username;
+		this.userColor;
 		this.resendMessage = this.resendMessage.bind(this);
 	}
 
 	componentWillMount() {
 		if(isConversationGroup(this.props.message.recipientId) && (this.props.userSessionId != this.props.message.senderId)){
-			this.username = this.props.getUserName(this.props.message.senderId);
+			var user = this.props.getUser(this.props.message.senderId);
+			this.username = user.name;
+			this.userColor = user.color;
 		}
 	}
 
 	render() {
 		let classBubble = this.defineClass();
 		let styleBubble = this.defineStyles();
-		if(this.props.message.nameColor){
-			this.styleName = { color: this.props.message.nameColor };
-		}
-
+		let customStyle = {color : this.userColor};
     	return (
 			<div className='mky-message-line'>
 				<div id={this.props.message.id} className={classBubble} style={styleBubble}>
@@ -29,7 +28,7 @@ const Bubble = Component => class extends Component {
 					{ this.props.userSessionId === this.props.message.senderId
 						? <Status value={this.props.message.status} classStatus={this.defineStatusClass(this.props.message.status) } resendFunction={this.resendMessage}/>
 						: ( this.username
-							? <span className="mky-message-user-name">{this.username}</span>
+							? <span className="mky-message-user-name" style={customStyle}>{this.username}</span>
 							: null
 						)
 					}
