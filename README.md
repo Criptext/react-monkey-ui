@@ -113,12 +113,12 @@ handleDownloadData(mokMessage){
 }
 ```
 
-#### getUserName (method)
-To receive a user's id that the UI need to know the name; it is used from bubble. 
+#### getUser (method)
+To receive a user's id that the UI needs to know the name and the color; it is used from bubble. 
 ```
-<MonkeyUI getUserName={handleGetUserName}>
+<MonkeyUI getUser={handleGetUser}>
 ...
-handleGetUserName(userId){
+handleGetUser(userId){
 }
 ```
 
