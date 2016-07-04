@@ -36504,9 +36504,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 
 	            //could not find a better way for now
+	            var minus = 0;
+	            if ($('.dw-content').length() > 0) {
+	                minus = 93;
+	            } else {
+	                minus = 15;
+	            }
 	            var footerHeight = $('#mky-chat-input').height();
-	            var container = $('.mky-chat-area').height();
-	            $('.mky-partialsize #mky-chat-timeline').height(container - footerHeight);
+	            var container = $('.mky-chat-area').height() - minus;
+	            $('#mky-chat-timeline').height(container - footerHeight);
 	        }
 	    }, {
 	        key: 'handleOnChangeTextArea',
