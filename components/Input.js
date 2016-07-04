@@ -169,6 +169,18 @@ class Input extends Component {
 
 	handleOnKeyDownTextArea(event) {
 		this.typeMessageToSend = 0;
+        //could not find a better way for now
+        let minus = 0;
+        if ( $('.dw-content').length > 0 ) {
+            minus = 93;
+        } else {
+            minus = 15;
+        }
+        let footerHeight = $('#mky-chat-input').height();
+        let container = $('.mky-chat-area').height() - minus;
+        $('#mky-chat-timeline').height(container - footerHeight);
+
+
 		if(event.keyCode === 13 && !event.shiftKey) {
 			event.preventDefault()
 			let text = this.state.text.trim();
@@ -179,16 +191,7 @@ class Input extends Component {
 		}
 
         
-        //could not find a better way for now
-        let minus = 0;
-        if ($('.dw-content').length > 0 ) {
-            minus = 93;
-        } else {
-            minus = 15;
-        }
-        let footerHeight = $('#mky-chat-input').height();
-        let container = $('.mky-chat-area').height() - minus;
-        $('#mky-chat-timeline'). height(container - footerHeight);
+        
 	}
 
 	handleOnChangeTextArea(event, value){
