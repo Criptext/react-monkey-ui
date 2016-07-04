@@ -36494,6 +36494,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'handleOnKeyDownTextArea',
 	        value: function handleOnKeyDownTextArea(event) {
 	            this.typeMessageToSend = 0;
+	            //could not find a better way for now
+	            var minus = 0;
+	            if ($('.dw-content').length > 0) {
+	                minus = 93;
+	            } else {
+	                minus = 15;
+	            }
+	            var footerHeight = $('#mky-chat-input').height();
+	            var container = $('.mky-chat-area').height() - minus;
+	            $('#mky-chat-timeline').height(container - footerHeight);
+
 	            if (event.keyCode === 13 && !event.shiftKey) {
 	                event.preventDefault();
 	                var text = this.state.text.trim();
@@ -36502,17 +36513,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	                this.setState({ text: '' });
 	            }
-
-	            //could not find a better way for now
-	            var minus = 0;
-	            if ($('.dw-content').length() > 0) {
-	                minus = 93;
-	            } else {
-	                minus = 15;
-	            }
-	            var footerHeight = $('#mky-chat-input').height();
-	            var container = $('.mky-chat-area').height() - minus;
-	            $('#mky-chat-timeline').height(container - footerHeight);
 	        }
 	    }, {
 	        key: 'handleOnChangeTextArea',
