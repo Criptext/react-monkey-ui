@@ -72,13 +72,15 @@ class TimelineChat extends Component {
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 		//this.domNode.lastChild.scrollIntoView();
 	    this.domNode.addEventListener('scroll', this.handleScroll);
-	    if(Object.keys(this.props.conversationSelected.messages).length === 1){
+	    let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
+	    if( amountMessages === 1 || (amountMessages > 0 && amountMessages < 10) ){
 			this.getMoreMessages();
 		}
 	}
 
 	componentDidUpdate() {
-		if(Object.keys(this.props.conversationSelected.messages).length === 1){
+		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
+	    if( amountMessages === 1 || (amountMessages > 0 && amountMessages < 10) ){
 			this.getMoreMessages();
 		}
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);

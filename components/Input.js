@@ -10,9 +10,7 @@ var ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation
 
 // ======================
 // MediaStreamRecorder.js
-var MediaStreamRecorder = require('../src/MediaStreamRecorder.js').MediaStreamRecorder;
-window.StereoRecorder = require('../src/MediaStreamRecorder.js').StereoRecorder;
-window.MediaRecorderWrapper = require('../src/MediaStreamRecorder.js').MediaRecorderWrapper;
+var MediaStreamRecorder = require('msr');
 
 // ======================
 // FileAPI.js
@@ -202,16 +200,11 @@ class Input extends Component {
 	startRecordAudio() {
 		this.typeMessageToSend = 1;
 
-        if (this.mediaRecorder == null) {
-            if (!this.micActivated) {
-                navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-            }else{
-                this.onMediaSuccess(this.mediaConstraints);
-                this.pauseAllAudio('');
-            }
+        if (!this.mediaRecorder) {
+            navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
         }
     }
-
+            
     onMediaSuccess(stream) {
         //default settings to record
         this.micActivated = true;
@@ -231,15 +224,16 @@ class Input extends Component {
     }
 
     onMediaError(e) {
+	    this.handleCancelAudio();
 	    console.log(e);
         console.error('media error', e);
     }
 
     setTime() {
 	    ++this.secondsRecording;
-	    let seconds = ("0" + this.secondsRecording%60).slice(-2);
+	    let seconds = ('0' + this.secondsRecording%60).slice(-2);
         this.setState({seconds: seconds});
-        let minutes = ("0" + parseInt(this.secondsRecording/60)).slice(-2);
+        let minutes = ('0' + parseInt(this.secondsRecording/60)).slice(-2);
         this.setState({minutes: minutes});
     }
 
@@ -262,7 +256,7 @@ class Input extends Component {
      			this.textMessageInput(e.target.value);
      			break;
             case 1:
-            	if (this.mediaRecorder != null) {
+            	if (this.mediaRecorder) {
                     this.mediaRecorder.stop(); //detiene la grabacion del audio
                 }
                 this.audioCaptured.duration = this.secondsRecording;
@@ -303,9 +297,11 @@ class Input extends Component {
         FileAPI.readAsArrayBuffer(this.audioCaptured.blob, function (evt) {
             if (evt.type == 'load') {
                 that.buildMP3('audio_.wav', evt.result);
-            } else if (evt.type == 'progress') {
+            }else if (evt.type == 'progress') {
                 var pr = evt.loaded / evt.total * 100;
-            } else {/* Error*/}
+            }else{
+            	console.log(evt);
+            }
         });
     }
 
