@@ -10,8 +10,8 @@ const KEYS_TO_FILTERS = ['name']
 
 class ConversationList extends Component {
 
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 	    this.state = {
 		    searchTerm: '',
 			conversationArray: undefined,
@@ -118,14 +118,9 @@ class ConversationList extends Component {
 		  conversationarray.push(conversations[x]);
 		}
 
-		conversationarray.sort(function(a, b) {
-	        if(a.messages[a.lastMessage] == null || a.messages.length == 0)
-	        	return 1;
-	        if(b.messages[b.lastMessage] == null || b.messages.length == 0)
-	        	return -1;
-	        return b.messages[b.lastMessage].datetimeCreation - a.messages[a.lastMessage].datetimeCreation;
-	    });
-
+		if(typeof this.context.options.conversationSort == "function"){
+			conversationarray.sort(this.context.options.conversationSort);
+		}
 		return conversationarray;
   	}
 
@@ -160,6 +155,10 @@ class ConversationList extends Component {
 		this.setState({isDeleting: false});
 	}
 	
+}
+
+ConversationList.contextTypes = {
+    options: React.PropTypes.object.isRequired,
 }
 
 export default ConversationList;
