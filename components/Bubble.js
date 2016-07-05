@@ -12,8 +12,8 @@ const Bubble = Component => class extends Component {
 	componentWillMount() {
 		if(isConversationGroup(this.props.message.recipientId) && (this.props.userSessionId != this.props.message.senderId)){
 			var user = this.props.getUser(this.props.message.senderId);
-			this.username = user.name;
-			this.userColor = user.color;
+			this.username = user.name ? user.name : 'Uknown';
+			this.userColor = user.color ? user.color : '#8c8c8c';
 		}
 	}
 

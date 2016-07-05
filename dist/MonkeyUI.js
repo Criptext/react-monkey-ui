@@ -601,7 +601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'defineUrlAvatar',
 			value: function defineUrlAvatar() {
-				return this.context.userSession.urlAvatar ? this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+				return this.context.userSession.avatar ? this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 			}
 		}]);
 
@@ -35585,7 +35585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								},
 								'EXIT'
 							) : null,
-							this.context.options.deleteConversation.permission.delete ? _react2.default.createElement(
+							this.context.options.deleteConversation.permission.delete || !this.props.isGroupConversation ? _react2.default.createElement(
 								'button',
 								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation, __self: this
 								},
@@ -36232,8 +36232,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function componentWillMount() {
 					if ((0, _monkeyUtils.isConversationGroup)(this.props.message.recipientId) && this.props.userSessionId != this.props.message.senderId) {
 						var user = this.props.getUser(this.props.message.senderId);
-						this.username = user.name;
-						this.userColor = user.color;
+						this.username = user.name ? user.name : 'Uknown';
+						this.userColor = user.color ? user.color : '#8c8c8c';
 					}
 				}
 			}, {

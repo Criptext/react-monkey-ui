@@ -41,7 +41,7 @@ class ContentAside extends Component {
 	}
 	
 	defineUrlAvatar() {
-		return this.context.userSession.urlAvatar ? this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+		return this.context.userSession.avatar ? this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
 }
 
