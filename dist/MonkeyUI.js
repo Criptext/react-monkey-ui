@@ -661,10 +661,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var ConversationList = function (_Component) {
 		_inherits(ConversationList, _Component);
 
-		function ConversationList(props) {
+		function ConversationList(props, context) {
 			_classCallCheck(this, ConversationList);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ConversationList).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ConversationList).call(this, props, context));
 
 			_this.state = {
 				searchTerm: '',
@@ -795,12 +795,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					conversationarray.push(conversations[x]);
 				}
 
-				conversationarray.sort(function (a, b) {
-					if (a.messages[a.lastMessage] == null || a.messages.length == 0) return 1;
-					if (b.messages[b.lastMessage] == null || b.messages.length == 0) return -1;
-					return b.messages[b.lastMessage].datetimeCreation - a.messages[a.lastMessage].datetimeCreation;
-				});
-
+				if (typeof this.context.options.conversationSort == "function") {
+					conversationarray.sort(this.context.options.conversationSort);
+				}
 				return conversationarray;
 			}
 		}, {
@@ -842,6 +839,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		return ConversationList;
 	}(_react.Component);
+
+	ConversationList.contextTypes = {
+		options: _react2.default.PropTypes.object.isRequired
+	};
 
 	exports.default = ConversationList;
 
