@@ -262,67 +262,48 @@ return /******/ (function(modules) { // webpackBootstrap
 				var LogOut_ = (0, _PopUp2.default)(_ContentLogOut2.default);
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-wrapper-out ' + this.classContent + ' animated pulse', style: this.state.contentStyle, __self: this
-					},
+					{ className: 'mky-wrapper-out ' + this.classContent + ' animated pulse', style: this.state.contentStyle },
 					this.props.view.type === 'classic' ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-tab', style: this.defineToggleStyle(), onClick: this.toggleTab, __self: this
-						},
+						{ className: 'mky-tab', style: this.defineToggleStyle(), onClick: this.toggleTab },
 						_react2.default.createElement(
 							'span',
-							{ className: 'mky-tablabel', style: this.defineTabTextColor(), __self: this
-							},
+							{ className: 'mky-tablabel', style: this.defineTabTextColor() },
 							' ',
 							this.defineTabText(),
 							' '
 						),
 						_react2.default.createElement(
 							'div',
-							{
-								__self: this
-							},
-							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon, __self: this
-							})
+							null,
+							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon })
 						)
 					) : this.props.view.type === 'rightside' ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-button', style: this.defineToggleStyle(), onClick: this.openSide, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-chats', __self: this
-						})
+						{ className: 'mky-button', style: this.defineToggleStyle(), onClick: this.openSide },
+						_react2.default.createElement('i', { className: 'icon mky-icon-chats' })
 					) : null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-wrapper-in ' + this.state.wrapperInClass, __self: this
-						},
+						{ className: 'mky-wrapper-in ' + this.state.wrapperInClass },
 						this.props.viewLoading ? _react2.default.createElement(
 							'div',
-							{ id: 'mky-content-connection', className: 'mky-appear', __self: this
-							},
+							{ id: 'mky-content-connection', className: 'mky-appear' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-spinner', __self: this
-								},
-								_react2.default.createElement('div', { className: 'mky-bounce1', __self: this
-								}),
-								_react2.default.createElement('div', { className: 'mky-bounce2', __self: this
-								}),
-								_react2.default.createElement('div', { className: 'mky-bounce3', __self: this
-								})
+								{ className: 'mky-spinner' },
+								_react2.default.createElement('div', { className: 'mky-bounce1' }),
+								_react2.default.createElement('div', { className: 'mky-bounce2' }),
+								_react2.default.createElement('div', { className: 'mky-bounce3' })
 							)
 						) : null,
 						this.props.userSession ? _react2.default.createElement(
 							'div',
-							{ id: 'mky-content-app', className: '', __self: this
-							},
-							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, conversationsLoading: this.props.conversationsLoading, __self: this
-							}) : null,
-							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUser: this.props.onMessageGetUser, haveConversations: this.haveConversations, __self: this
-							})
-						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles, __self: this
-						}),
-						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout, __self: this
-						}) : null
+							{ id: 'mky-content-app', className: '' },
+							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, conversationsLoading: this.props.conversationsLoading }) : null,
+							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUser: this.props.onMessageGetUser, haveConversations: this.haveConversations })
+						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
+						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout }) : null
 					)
 				);
 			}
@@ -541,51 +522,39 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'aside',
-					{ id: this.classContent, className: this.props.showBanner ? 'aside-divided' : '', __self: this
-					},
+					{ id: this.classContent, className: this.props.showBanner ? 'aside-divided' : '' },
 					_react2.default.createElement(
 						'header',
-						{ id: 'mky-session-header', __self: this
-						},
+						{ id: 'mky-session-header' },
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-session-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), __self: this
-							})
+							{ id: 'mky-session-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
 						),
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-session-description', __self: this
-							},
+							{ id: 'mky-session-description' },
 							_react2.default.createElement(
 								'div',
-								{ id: 'mky-session-name', __self: this
-								},
+								{ id: 'mky-session-name' },
 								_react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									this.context.userSession.name
 								)
 							),
 							this.props.isMobile ? _react2.default.createElement(
 								'div',
-								{ className: 'mky-header-exit', onClick: this.closeSide, __self: this
-								},
-								_react2.default.createElement('i', { className: 'icon mky-icon-close-light', __self: this
-								})
+								{ className: 'mky-header-exit', onClick: this.closeSide },
+								_react2.default.createElement('i', { className: 'icon mky-icon-close-light' })
 							) : _react2.default.createElement(
 								'div',
-								{ className: 'mky-header-exit', onClick: this.logout, __self: this
-								},
-								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right', __self: this
-								})
+								{ className: 'mky-header-exit', onClick: this.logout },
+								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right' })
 							)
 						)
 					),
-					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, conversationsLoading: this.props.conversationsLoading, __self: this
-					})
+					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, conversationsLoading: this.props.conversationsLoading })
 				);
 			}
 		}, {
@@ -707,35 +676,24 @@ return /******/ (function(modules) { // webpackBootstrap
 				var conversationNameFiltered = this.state.conversationArray.filter((0, _reactSearchInput.createFilter)(this.state.searchTerm, KEYS_TO_FILTERS));
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-session-conversations', __self: this
-					},
-					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, isGroupConversation: this.conversationToDeleteIsGroup, __self: this
-					}) : null,
-					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated, __self: this
-					}),
+					{ className: 'mky-session-conversations' },
+					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, isGroupConversation: this.conversationToDeleteIsGroup }) : null,
+					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated }),
 					this.props.conversationsLoading ? _react2.default.createElement(
 						'div',
-						{
-							__self: this
-						},
+						null,
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-spinner', __self: this
-							},
-							_react2.default.createElement('div', { className: 'mky-bounce1', __self: this
-							}),
-							_react2.default.createElement('div', { className: 'mky-bounce2', __self: this
-							}),
-							_react2.default.createElement('div', { className: 'mky-bounce3', __self: this
-							})
+							{ className: 'mky-spinner' },
+							_react2.default.createElement('div', { className: 'mky-bounce1' }),
+							_react2.default.createElement('div', { className: 'mky-bounce2' }),
+							_react2.default.createElement('div', { className: 'mky-bounce3' })
 						)
 					) : _react2.default.createElement(
 						'ul',
-						{ ref: 'conversationList', id: 'mky-conversation-list', className: 'animated slideInLeft', __self: this
-						},
+						{ ref: 'conversationList', id: 'mky-conversation-list', className: 'animated slideInLeft' },
 						conversationNameFiltered.map(function (conversation, index) {
-							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id), __self: _this2
-							});
+							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id) });
 						})
 					)
 				);
@@ -904,73 +862,58 @@ return /******/ (function(modules) { // webpackBootstrap
 				var classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
 				return _react2.default.createElement(
 					'li',
-					{ className: classContent, __self: this
-					},
+					{ className: classContent },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-full', onClick: this.openConversation, __self: this
-						},
+						{ className: 'mky-full', onClick: this.openConversation },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), onerror: 'imgError(this);', __self: this
-							})
+							{ className: 'mky-conversation-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar(), onerror: 'imgError(this);' })
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-description', __self: this
-							},
+							{ className: 'mky-conversation-description' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-conversation-title', __self: this
-								},
+								{ className: 'mky-conversation-title' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-conversation-name', __self: this
-									},
+									{ className: 'mky-conversation-name' },
 									this.state.unreadMessages ? _react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify mky-bold-text', __self: this
-										},
+										{ className: 'mky-ellipsify mky-bold-text' },
 										this.props.conversation.name
 									) : _react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.props.conversation.name
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-conversation-time', __self: this
-									},
+									{ className: 'mky-conversation-time' },
 									_react2.default.createElement(
 										'span',
-										{ className: '', __self: this
-										},
+										{ className: '' },
 										this.props.conversation.messages[this.props.conversation.lastMessage] ? (0, _monkeyUtils.defineTimeByToday)(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''
 									)
 								)
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-conversation-state', __self: this
-								},
+								{ className: 'mky-conversation-state' },
 								Object.keys(this.props.conversation.messages).length ? this.state.unreadMessages ? _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify mky-bold-text', __self: this
-									},
+									{ className: 'mky-ellipsify mky-bold-text' },
 									this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''
 								) : _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''
 								) : _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									'Click to open conversation'
 								)
 							)
@@ -978,17 +921,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'mnk-conversation-opts', __self: this
-						},
+						{ className: 'mnk-conversation-opts' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-delete-conv', onClick: this.deleteConversation, __self: this
-							},
-							_react2.default.createElement('i', { className: 'icon mky-icon-close', __self: this
-							})
+							{ className: 'mky-delete-conv', onClick: this.deleteConversation },
+							_react2.default.createElement('i', { className: 'icon mky-icon-close' })
 						),
-						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter, __self: this
-						})
+						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter })
 					)
 				);
 			}
@@ -1019,12 +958,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Badge = function Badge(props, showNotification) {
 		return _react2.default.createElement(
 			'div',
-			{ className: 'mky-conversation-notification', __self: undefined
-			},
+			{ className: 'mky-conversation-notification' },
 			props.value > 0 ? _react2.default.createElement(
 				'div',
-				{ className: 'mky-notification-amount animated pulse', __self: undefined
-				},
+				{ className: 'mky-notification-amount animated pulse' },
 				props.value
 			) : null
 		);
@@ -16025,30 +15962,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var process = module.exports = {};
 
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
+	// cached from whatever global is present so that test runners that stub it don't break things.
+	var cachedSetTimeout = setTimeout;
+	var cachedClearTimeout = clearTimeout;
 
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-
-	(function () {
-	  try {
-	    cachedSetTimeout = setTimeout;
-	  } catch (e) {
-	    cachedSetTimeout = function () {
-	      throw new Error('setTimeout is not defined');
-	    }
-	  }
-	  try {
-	    cachedClearTimeout = clearTimeout;
-	  } catch (e) {
-	    cachedClearTimeout = function () {
-	      throw new Error('clearTimeout is not defined');
-	    }
-	  }
-	} ())
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -35564,42 +35481,31 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-generic-modal', onClick: this.props.handleClosePopup, __self: this
-					},
+					{ className: 'mky-generic-modal', onClick: this.props.handleClosePopup },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-inner-modal', __self: this
-						},
+						{ className: 'mky-inner-modal' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-popup-message', __self: this
-							},
+							{ className: 'mky-popup-message' },
 							'What do you want to do whit this conversation?'
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-popup-buttons', __self: this
-							},
+							{ className: 'mky-popup-buttons' },
 							this.context.options.deleteConversation.permission.exitGroup && this.props.isGroupConversation ? _react2.default.createElement(
 								'button',
-<<<<<<< 894ec49b27c17f4f6abdb76e277e90ac43a99017
-								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup, __self: this
-								},
-=======
 								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup },
->>>>>>> Update MediaStreamRecorder
 								'EXIT'
 							) : null,
 							this.context.options.deleteConversation.permission.delete || !this.props.isGroupConversation ? _react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation },
 								'DELETE'
 							) : null,
 							_react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleClosePopup, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleClosePopup },
 								'CANCEL'
 							)
 						)
@@ -35683,14 +35589,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'section',
-					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner, __self: this
-					},
-					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations, __self: this
-					}) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner, __self: this
-					}),
-					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, {
-						__self: this
-					}) : null
+					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner },
+					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
+					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, null) : null
 				);
 			}
 		}]);
@@ -35739,8 +35640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ContentIntro, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { id: 'mky-app-intro', className: this.bannerClass, __self: this
-				});
+				return _react2.default.createElement('div', { id: 'mky-app-intro', className: this.bannerClass });
 			}
 		}]);
 
@@ -35785,8 +35685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ContentBanner, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { className: 'mky-banner-section', __self: this
-				});
+				return _react2.default.createElement('div', { className: 'mky-banner-section' });
 			}
 		}]);
 
@@ -35871,82 +35770,64 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-conversation ' + this.conversationBannerClass, __self: this
-					},
+					{ className: 'mky-content-conversation ' + this.conversationBannerClass },
 					_react2.default.createElement(
 						'header',
-						{ id: 'mky-conversation-selected-header', __self: this
-						},
+						{ id: 'mky-conversation-selected-header' },
 						this.props.isMobile & this.props.haveConversations ? _react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-burger', onClick: this.showAside, __self: this
-							},
-							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer', __self: this
-							})
+							{ className: 'mky-conversation-burger', onClick: this.showAside },
+							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer' })
 						) : null,
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-conversation-selected-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), __self: this
-							})
+							{ id: 'mky-conversation-selected-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
 						),
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-conversation-selected-description', __self: this
-							},
+							{ id: 'mky-conversation-selected-description' },
 							_react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-name', __self: this
-								},
+								{ id: 'mky-conversation-selected-name' },
 								this.props.conversationSelected.name
 							),
 							!(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? this.props.conversationSelected.online == 0 ? _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' ',
 								'Last seen ' + (0, _monkeyUtils.defineTime)(this.props.conversationSelected.lastOpenApp)
 							) : _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' Online '
 							) : _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' ',
 								this.props.conversationSelected.description
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-signature', __self: this
-							},
+							{ className: 'mky-signature' },
 							'Powered by ',
 							_react2.default.createElement(
 								'a',
-								{ className: 'mky-signature-link', target: '_blank', href: 'http://criptext.com/', __self: this
-								},
+								{ className: 'mky-signature-link', target: '_blank', href: 'http://criptext.com/' },
 								'Criptext'
 							)
 						)
 					),
-					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this), __self: this
-					}) : _react2.default.createElement(
+					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this) }) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-chat-area', __self: this
-						},
-						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, __self: this
-						}),
+						{ className: 'mky-chat-area' },
+						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser }),
 						this.state.messageSelected ? function () {
 							var Modal_ = (0, _Modal2.default)(_this2.context.bubblePreviews[_this2.state.messageSelected.bubbleType]);
-							return _react2.default.createElement(Modal_, { message: _this2.state.messageSelected, closeModal: _this2.handleCloseModal, __self: _this2
-							});
+							return _react2.default.createElement(Modal_, { message: _this2.state.messageSelected, closeModal: _this2.handleCloseModal });
 						}() : null,
-						_react2.default.createElement(_Input2.default, { enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated, __self: this
-						})
+						_react2.default.createElement(_Input2.default, { enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated })
 					)
 				);
 			}
@@ -36093,13 +35974,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'div',
-					{ ref: 'timelineChat', id: 'mky-chat-timeline', __self: this
-					},
+					{ ref: 'timelineChat', id: 'mky-chat-timeline' },
 					Object.keys(this.props.conversationSelected).length ? this.orderedConversations.map(function (item) {
 						var message = _this2.props.conversationSelected.messages[item.key];
 						var Bubble_ = (0, _Bubble2.default)(_this2.context.bubbles[message.bubbleType]);
-						return _react2.default.createElement(Bubble_, { key: message.id, message: message, userSessionId: _this2.context.userSession.id, layerClass: message.bubbleType, messageSelected: _this2.props.messageSelected, onClickMessage: _this2.props.onClickMessage, dataDownloadRequest: _this2.props.dataDownloadRequest, getUser: _this2.props.getUser, styles: _this2.context.styles, __self: _this2
-						});
+						return _react2.default.createElement(Bubble_, { key: message.id, message: message, userSessionId: _this2.context.userSession.id, layerClass: message.bubbleType, messageSelected: _this2.props.messageSelected, onClickMessage: _this2.props.onClickMessage, dataDownloadRequest: _this2.props.dataDownloadRequest, getUser: _this2.props.getUser, styles: _this2.context.styles });
 					}) : null
 				);
 			}
@@ -36147,9 +36026,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.goBottom = false;
 					// 			this.domNode.lastChild.scrollIntoView();
 				} else if (this.domNode.scrollTop === 0 && this.scrollTop != 0) {
-					this.scrollHeight = this.domNode.scrollHeight;
-					this.getMoreMessages();
-				}
+						this.scrollHeight = this.domNode.scrollHeight;
+						this.getMoreMessages();
+					}
 				this.scrollTop = this.domNode.scrollTop;
 			}
 		}, {
@@ -36201,8 +36080,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -36251,33 +36128,25 @@ return /******/ (function(modules) { // webpackBootstrap
 					var customStyle = { color: this.userColor };
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-message-line', __self: this
-						},
+						{ className: 'mky-message-line' },
 						_react2.default.createElement(
 							'div',
-							{ id: this.props.message.id, className: classBubble, style: styleBubble, __self: this
-							},
+							{ id: this.props.message.id, className: classBubble, style: styleBubble },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-message-detail', __self: this
-								},
-								this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(Status, { value: this.props.message.status, classStatus: this.defineStatusClass(this.props.message.status), resendFunction: this.resendMessage, __self: this
-								}) : this.username ? _react2.default.createElement(
+								{ className: 'mky-message-detail' },
+								this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(Status, { value: this.props.message.status, classStatus: this.defineStatusClass(this.props.message.status), resendFunction: this.resendMessage }) : this.username ? _react2.default.createElement(
 									'span',
-									{ className: 'mky-message-user-name', style: customStyle, __self: this
-									},
+									{ className: 'mky-message-user-name', style: customStyle },
 									this.username
 								) : null,
 								_react2.default.createElement(
 									'span',
-									{ className: 'mky-message-hour', __self: this
-									},
+									{ className: 'mky-message-hour' },
 									(0, _monkeyUtils.defineTime)(this.props.message.datetimeCreation)
 								)
 							),
-							_react2.default.createElement(Component, _extends({}, this.props, {
-								__self: this
-							}))
+							_react2.default.createElement(Component, this.props)
 						)
 					);
 				}
@@ -36358,15 +36227,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		var resendFunction = _ref.resendFunction;
 		return _react2.default.createElement(
 			'div',
-			{ className: "mky-message-status " + classStatus, onClick: resendFunction, __self: undefined
-			},
+			{ className: "mky-message-status " + classStatus, onClick: resendFunction },
 			value !== 0 ? value == -1 ? _react2.default.createElement(
 				'i',
-				{ className: 'demo-icon mky-check', __self: undefined
-				},
+				{ className: 'demo-icon mky-check' },
 				'!'
-			) : _react2.default.createElement('i', { className: 'icon mky-icon-check', __self: undefined
-			}) : null
+			) : _react2.default.createElement('i', { className: 'icon mky-icon-check' }) : null
 		);
 	};
 
@@ -36419,15 +36285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// ======================
 	// MediaStreamRecorder.js
-	// var MediaStreamRecorder = require('../src/MediaStreamRecorder.js').MediaStreamRecorder;
-	/*
-	window.StereoRecorder = require('../src/MediaStreamRecorder.js').StereoRecorder;
-	window.MediaRecorderWrapper = require('../src/MediaStreamRecorder.js').MediaRecorderWrapper;
-	*/
-
 	var MediaStreamRecorder = __webpack_require__(297);
-	var recorder = new MediaStreamRecorder({});
-	var multiStreamRecorder = new MediaStreamRecorder.MultiStreamRecorder({});
 
 	// ======================
 	// FileAPI.js
@@ -36504,7 +36362,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
 	            if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-	                //             this.audioInputClass = 'mky-disabled';
+	                this.audioInputClass = 'mky-disabled';
 	            }
 	        }
 	    }, {
@@ -36513,68 +36371,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var styleInput = this.defineStyles();
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'mky-chat-input', __self: this
-	                },
+	                { id: 'mky-chat-input' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-inner-chat-input', __self: this
-	                    },
-	                    _react2.default.createElement('div', { id: 'mky-divider-chat-input', __self: this
-	                    }),
+	                    { className: 'mky-inner-chat-input' },
+	                    _react2.default.createElement('div', { id: 'mky-divider-chat-input' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classAttachButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classAttachButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility })
 	                    ),
-	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton, __self: this
-	                    }),
+	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio })
 	                    ),
-	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea, __self: this
-	                    }),
+	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: 'mky-record-area', className: this.state.classAudioArea, __self: this
-	                        },
+	                        { id: 'mky-record-area', className: this.state.classAudioArea },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'mky-record-preview-area', __self: this
-	                            },
+	                            { className: 'mky-record-preview-area' },
 	                            _react2.default.createElement(
 	                                'div',
-	                                { id: 'mky-button-action-record', __self: this
-	                                },
-	                                _react2.default.createElement('button', { id: 'mky-button-start-record', className: 'mky-blink', __self: this
-	                                })
+	                                { id: 'mky-button-action-record' },
+	                                _react2.default.createElement('button', { id: 'mky-button-start-record', className: 'mky-blink' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',
-	                                { id: 'mky-time-recorder', __self: this
-	                                },
+	                                { id: 'mky-time-recorder' },
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    { id: 'mky-minutes', __self: this
-	                                    },
+	                                    { id: 'mky-minutes' },
 	                                    this.state.minutes
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    {
-	                                        __self: this
-	                                    },
+	                                    null,
 	                                    ':'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    { id: 'mky-seconds', __self: this
-	                                    },
+	                                    { id: 'mky-seconds' },
 	                                    this.state.seconds
 	                                )
 	                            )
@@ -36582,44 +36422,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classSendButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classSendButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.audioInputClass + ' ' + this.state.classAudioButton, __self: this
-	                        },
+	                        { className: 'mky-button-input ' + this.audioInputClass + ' ' + this.state.classAudioButton },
 	                        this.state.creatingAudio ? _react2.default.createElement(
 	                            'div',
-	                            { className: 'mky-spinner-input-audio', __self: this
-	                            },
-	                            _react2.default.createElement('div', { className: 'mky-rect1', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect2', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect3', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect4', __self: this
-	                            })
-	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio, __self: this
-	                        })
+	                            { className: 'mky-spinner-input-audio' },
+	                            _react2.default.createElement('div', { className: 'mky-rect1' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect2' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect3' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect4' })
+	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio })
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactDropzone2.default,
-	                        { ref: 'dropzone', className: 'mky-disappear', onDrop: this.onDrop, __self: this
-	                        },
+	                        { ref: 'dropzone', className: 'mky-disappear', onDrop: this.onDrop },
 	                        _react2.default.createElement(
 	                            'div',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            'Try dropping some files here, or click to select files to upload.'
 	                        )
 	                    ),
-	                    _react2.default.createElement(ToastContainer, { ref: 'container', toastMessageFactory: ToastMessageFactory, className: 'toast-bottom-center', __self: this
-	                    })
+	                    _react2.default.createElement(ToastContainer, { ref: 'container', toastMessageFactory: ToastMessageFactory, className: 'toast-bottom-center' })
 	                )
 	            );
 	        }
@@ -36698,24 +36525,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.typeMessageToSend = 1;
 
 	            if (!this.mediaRecorder) {
-	                // 	        this.captureUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-
-	                //             if (!this.micActivated) {
 	                navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-
-	                //                 this.onMediaSuccess(this.mediaConstraints);
-	                //                 this.pauseAllAudio();
 	            }
-	        }
-	    }, {
-	        key: 'captureUserMedia',
-	        value: function captureUserMedia(mediaConstraints, successCallback, errorCallback) {
-	            navigator.mediaDevices.getUserMedia(mediaConstraints).then(successCallback).catch(errorCallback);
 	        }
 	    }, {
 	        key: 'onMediaSuccess',
 	        value: function onMediaSuccess(stream) {
-	            console.log(stream);
 	            //default settings to record
 	            this.micActivated = true;
 	            this.mediaRecorder = new MediaStreamRecorder(stream);
@@ -36743,9 +36558,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'setTime',
 	        value: function setTime() {
 	            ++this.secondsRecording;
-	            var seconds = ("0" + this.secondsRecording % 60).slice(-2);
+	            var seconds = ('0' + this.secondsRecording % 60).slice(-2);
 	            this.setState({ seconds: seconds });
-	            var minutes = ("0" + parseInt(this.secondsRecording / 60)).slice(-2);
+	            var minutes = ('0' + parseInt(this.secondsRecording / 60)).slice(-2);
 	            this.setState({ minutes: minutes });
 	        }
 	    }, {
@@ -36809,7 +36624,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	            this.audioMessageOldId = Math.round(new Date().getTime() / 1000 * -1);
 	            // disabledAudioButton(true);
-	            console.log(this.audioCaptured.blob);
 	            var that = this;
 	            FileAPI.readAsArrayBuffer(this.audioCaptured.blob, function (evt) {
 	                if (evt.type == 'load') {
@@ -36818,7 +36632,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    var pr = evt.loaded / evt.total * 100;
 	                } else {
 	                    console.log(evt);
-	                    this.setState({ creatingAudio: false });
 	                }
 	            });
 	        }
@@ -36877,20 +36690,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
-	                    var code = message.data.code;
-	                    var outFileNames = Object.keys(message.data.outputFiles);
+	                        var code = message.data.code;
+	                        var outFileNames = Object.keys(message.data.outputFiles);
 
-	                    if (code == 0 && outFileNames.length) {
+	                        if (code == 0 && outFileNames.length) {
 
-	                        var outFileName = outFileNames[0];
-	                        var outFileBuffer = message.data.outputFiles[outFileName];
-	                        var mp3Blob = new Blob([outFileBuffer]);
-	                        // var src = window.URL.createObjectURL(mp3Blob);
-	                        that.readData(mp3Blob);
-	                    } else {
-	                        console.log('hubo un error');
+	                            var outFileName = outFileNames[0];
+	                            var outFileBuffer = message.data.outputFiles[outFileName];
+	                            var mp3Blob = new Blob([outFileBuffer]);
+	                            // var src = window.URL.createObjectURL(mp3Blob);
+	                            that.readData(mp3Blob);
+	                        } else {
+	                            console.log('hubo un error');
+	                        }
 	                    }
-	                }
 	            };
 	            return ffmpegWorker;
 	        }
@@ -37222,11 +37035,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		        files.push(file);
 		      }
 		
-		      if (this.allFilesAccepted(files)) {
-		        if (this.props.onDrop) {
-		          this.props.onDrop.call(this, files, e);
-		        }
+		      if (this.props.onDrop) {
+		        this.props.onDrop.call(this, files, e);
+		      }
 		
+		      if (this.allFilesAccepted(files)) {
 		        if (this.props.onDropAccepted) {
 		          this.props.onDropAccepted.call(this, files, e);
 		        }
@@ -37388,7 +37201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
 		  disableClick: _react2.default.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
 		
-		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
+		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <file type="input"/> tag
 		  multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
 		  accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
 		  name: _react2.default.PropTypes.string // name attribute for the input tag
@@ -37453,39 +37266,29 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
-					{ id: "mky-menu-bubble", className: "mky-menu-bubble", style: { display: this.props.visible ? "block" : "none" }, __self: this
-					},
+					{ id: "mky-menu-bubble", className: "mky-menu-bubble", style: { display: this.props.visible ? "block" : "none" } },
 					_react2.default.createElement(
 						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach, __self: this
-						},
-						_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icon mky-icon-image-regular", style: this.props.colorButton, __self: this
-						}),
+						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icon mky-icon-image-regular", style: this.props.colorButton }),
 						" ",
 						_react2.default.createElement(
 							"div",
-							{
-								__self: this
-							},
+							null,
 							"Image"
 						)
 					),
 					_react2.default.createElement(
 						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach, __self: this
-						},
-						_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-doc-regular", style: this.props.colorButton, __self: this
-						}),
+						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-doc-regular", style: this.props.colorButton }),
 						_react2.default.createElement(
 							"div",
-							{
-								__self: this
-							},
+							null,
 							"File"
 						)
 					),
-					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility, __self: this
-					})
+					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility })
 				);
 			}
 		}]);
@@ -38007,9 +37810,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function _handle_toast_remove(toastId) {
 	      var _this4 = this;
 
-	      if (this.props.preventDuplicates) {
-	        this.state.previousMessage = "";
-	      }
 	      var operationName = "" + (this.props.newestOnTop ? "reduceRight" : "reduce");
 	      this.state.toasts[operationName](function (found, toast, index) {
 	        if (found || toast.toastId !== toastId) {
@@ -38060,8 +37860,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    warning: "warning"
 	  },
 	  id: "toast-container",
-	  toastMessageFactory: _react2.default.createFactory(_ToastMessage2.default.animation),
-	  preventDuplicates: true,
+	  toastMessageFactory: _react2.default.createFactory(_ToastMessage2.default),
+	  preventDuplicates: false,
 	  newestOnTop: true,
 	  onClick: function onClick() {}
 	};
@@ -40388,370 +40188,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    doNotCheckNext = true;
 	                }
 	                resultFrames.push(_frames[f]);
-<<<<<<< 894ec49b27c17f4f6abdb76e277e90ac43a99017
-	            }
-	        }
-
-	        resultFrames = resultFrames.concat(_frames.slice(endCheckFrame));
-
-	        if (resultFrames.length <= 0) {
-	            // at least one last frame should be available for next manipulation
-	            // if total duration of all frames will be < 1000 than ffmpeg doesn't work well...
-	            resultFrames.push(_frames[_frames.length - 1]);
-	        }
-
-	        return resultFrames;
-	    }
-	}
-
-	// =================
-	// WhammyRecorder.js
-
-	function WhammyRecorder(mediaStream) {
-	    // void start(optional long timeSlice)
-	    // timestamp to fire "ondataavailable"
-	    this.start = function (timeSlice) {
-	        timeSlice = timeSlice || 1000;
-
-	        mediaRecorder = new WhammyRecorderHelper(mediaStream, this);
-
-	        for (var prop in this) {
-	            if (typeof this[prop] !== 'function') {
-	                mediaRecorder[prop] = this[prop];
-	            }
-	        }
-
-	        mediaRecorder.record();
-
-	        timeout = setInterval(function () {
-	            mediaRecorder.requestData();
-	        }, timeSlice);
-	    };
-
-	    this.stop = function () {
-	        if (mediaRecorder) {
-	            mediaRecorder.stop();
-	            clearTimeout(timeout);
-	        }
-	    };
-
-	    this.clearOldRecordedFrames = function () {
-	        if (mediaRecorder) {
-	            mediaRecorder.clearOldRecordedFrames();
-	        }
-	    };
-
-	    this.ondataavailable = function () {};
-
-	    // Reference to "WhammyRecorder" object
-	    var mediaRecorder;
-	    var timeout;
-	}
-
-	// Muaz Khan     - https://github.com/muaz-khan
-	// neizerth      - https://github.com/neizerth
-	// MIT License   - https://www.webrtc-experiment.com/licence/
-	// Documentation - https://github.com/streamproc/MediaStreamRecorder
-
-	// Note:
-	// ==========================================================
-	// whammy.js is an "external library"
-	// and has its own copyrights. Taken from "Whammy" project.
-
-	// https://github.com/antimatter15/whammy/blob/master/LICENSE
-	// =========
-	// Whammy.js
-
-	// todo: Firefox now supports webp for webm containers!
-	// their MediaRecorder implementation works well!
-	// should we provide an option to record via Whammy.js or MediaRecorder API is a better solution?
-
-	var Whammy = function () {
-
-	    function toWebM(frames) {
-	        var info = checkFrames(frames);
-
-	        var CLUSTER_MAX_DURATION = 30000;
-
-	        var EBML = [{
-	            "id": 0x1a45dfa3, // EBML
-	            "data": [{
-	                "data": 1,
-	                "id": 0x4286 // EBMLVersion
-	            }, {
-	                "data": 1,
-	                "id": 0x42f7 // EBMLReadVersion
-	            }, {
-	                "data": 4,
-	                "id": 0x42f2 // EBMLMaxIDLength
-	            }, {
-	                "data": 8,
-	                "id": 0x42f3 // EBMLMaxSizeLength
-	            }, {
-	                "data": "webm",
-	                "id": 0x4282 // DocType
-	            }, {
-	                "data": 2,
-	                "id": 0x4287 // DocTypeVersion
-	            }, {
-	                "data": 2,
-	                "id": 0x4285 // DocTypeReadVersion
-	            }]
-	        }, {
-	            "id": 0x18538067, // Segment
-	            "data": [{
-	                "id": 0x1549a966, // Info
-	                "data": [{
-	                    "data": 1e6, //do things in millisecs (num of nanosecs for duration scale)
-	                    "id": 0x2ad7b1 // TimecodeScale
-	                }, {
-	                    "data": "whammy",
-	                    "id": 0x4d80 // MuxingApp
-	                }, {
-	                    "data": "whammy",
-	                    "id": 0x5741 // WritingApp
-	                }, {
-	                    "data": doubleToString(info.duration),
-	                    "id": 0x4489 // Duration
-	                }]
-	            }, {
-	                "id": 0x1654ae6b, // Tracks
-	                "data": [{
-	                    "id": 0xae, // TrackEntry
-	                    "data": [{
-	                        "data": 1,
-	                        "id": 0xd7 // TrackNumber
-	                    }, {
-	                        "data": 1,
-	                        "id": 0x63c5 // TrackUID
-	                    }, {
-	                        "data": 0,
-	                        "id": 0x9c // FlagLacing
-	                    }, {
-	                        "data": "und",
-	                        "id": 0x22b59c // Language
-	                    }, {
-	                        "data": "V_VP8",
-	                        "id": 0x86 // CodecID
-	                    }, {
-	                        "data": "VP8",
-	                        "id": 0x258688 // CodecName
-	                    }, {
-	                        "data": 1,
-	                        "id": 0x83 // TrackType
-	                    }, {
-	                        "id": 0xe0, // Video
-	                        "data": [{
-	                            "data": info.width,
-	                            "id": 0xb0 // PixelWidth
-	                        }, {
-	                            "data": info.height,
-	                            "id": 0xba // PixelHeight
-	                        }]
-	                    }]
-	                }]
-	            }]
-	        }];
-
-	        //Generate clusters (max duration)
-	        var frameNumber = 0;
-	        var clusterTimecode = 0;
-	        while (frameNumber < frames.length) {
-
-	            var clusterFrames = [];
-	            var clusterDuration = 0;
-	            do {
-	                clusterFrames.push(frames[frameNumber]);
-	                clusterDuration += frames[frameNumber].duration;
-	                frameNumber++;
-	            } while (frameNumber < frames.length && clusterDuration < CLUSTER_MAX_DURATION);
-
-	            var clusterCounter = 0;
-	            var cluster = {
-	                "id": 0x1f43b675, // Cluster
-	                "data": [{
-	                    "data": clusterTimecode,
-	                    "id": 0xe7 // Timecode
-	                }].concat(clusterFrames.map(function (webp) {
-	                    var block = makeSimpleBlock({
-	                        discardable: 0,
-	                        frame: webp.data.slice(4),
-	                        invisible: 0,
-	                        keyframe: 1,
-	                        lacing: 0,
-	                        trackNum: 1,
-	                        timecode: Math.round(clusterCounter)
-	                    });
-	                    clusterCounter += webp.duration;
-	                    return {
-	                        data: block,
-	                        id: 0xa3
-	                    };
-	                }))
-	            }; //Add cluster to segment
-	            EBML[1].data.push(cluster);
-	            clusterTimecode += clusterDuration;
-	        }
-
-	        return generateEBML(EBML);
-	    }
-
-	    // sums the lengths of all the frames and gets the duration
-
-	    function checkFrames(frames) {
-	        if (!frames[0]) {
-	            console.warn('Something went wrong. Maybe WebP format is not supported in the current browser.');
-	            return;
-	        }
-
-	        var width = frames[0].width,
-	            height = frames[0].height,
-	            duration = frames[0].duration;
-
-	        for (var i = 1; i < frames.length; i++) {
-	            duration += frames[i].duration;
-	        }
-	        return {
-	            duration: duration,
-	            width: width,
-	            height: height
-	        };
-	    }
-
-	    function numToBuffer(num) {
-	        var parts = [];
-	        while (num > 0) {
-	            parts.push(num & 0xff);
-	            num = num >> 8;
-	        }
-	        return new Uint8Array(parts.reverse());
-	    }
-
-	    function strToBuffer(str) {
-	        return new Uint8Array(str.split('').map(function (e) {
-	            return e.charCodeAt(0);
-	        }));
-	    }
-
-	    function bitsToBuffer(bits) {
-	        var data = [];
-	        var pad = bits.length % 8 ? new Array(1 + 8 - bits.length % 8).join('0') : '';
-	        bits = pad + bits;
-	        for (var i = 0; i < bits.length; i += 8) {
-	            data.push(parseInt(bits.substr(i, 8), 2));
-	        }
-	        return new Uint8Array(data);
-	    }
-
-	    function generateEBML(json) {
-	        var ebml = [];
-	        for (var i = 0; i < json.length; i++) {
-	            var data = json[i].data;
-	            if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) == 'object') data = generateEBML(data);
-	            if (typeof data == 'number') data = bitsToBuffer(data.toString(2));
-	            if (typeof data == 'string') data = strToBuffer(data);
-
-	            var len = data.size || data.byteLength || data.length;
-	            var zeroes = Math.ceil(Math.ceil(Math.log(len) / Math.log(2)) / 8);
-	            var size_str = len.toString(2);
-	            var padded = new Array(zeroes * 7 + 7 + 1 - size_str.length).join('0') + size_str;
-	            var size = new Array(zeroes).join('0') + '1' + padded;
-
-	            ebml.push(numToBuffer(json[i].id));
-	            ebml.push(bitsToBuffer(size));
-	            ebml.push(data);
-	        }
-
-	        return new Blob(ebml, {
-	            type: "video/webm"
-	        });
-	    }
-
-	    function toBinStr_old(bits) {
-	        var data = '';
-	        var pad = bits.length % 8 ? new Array(1 + 8 - bits.length % 8).join('0') : '';
-	        bits = pad + bits;
-	        for (var i = 0; i < bits.length; i += 8) {
-	            data += String.fromCharCode(parseInt(bits.substr(i, 8), 2));
-	        }
-	        return data;
-	    }
-
-	    function generateEBML_old(json) {
-	        var ebml = '';
-	        for (var i = 0; i < json.length; i++) {
-	            var data = json[i].data;
-	            if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) == 'object') data = generateEBML_old(data);
-	            if (typeof data == 'number') data = toBinStr_old(data.toString(2));
-
-	            var len = data.length;
-	            var zeroes = Math.ceil(Math.ceil(Math.log(len) / Math.log(2)) / 8);
-	            var size_str = len.toString(2);
-	            var padded = new Array(zeroes * 7 + 7 + 1 - size_str.length).join('0') + size_str;
-	            var size = new Array(zeroes).join('0') + '1' + padded;
-
-	            ebml += toBinStr_old(json[i].id.toString(2)) + toBinStr_old(size) + data;
-	        }
-	        return ebml;
-	    }
-
-	    function makeSimpleBlock(data) {
-	        var flags = 0;
-	        if (data.keyframe) flags |= 128;
-	        if (data.invisible) flags |= 8;
-	        if (data.lacing) flags |= data.lacing << 1;
-	        if (data.discardable) flags |= 1;
-	        if (data.trackNum > 127) {
-	            throw "TrackNumber > 127 not supported";
-	        }
-	        var out = [data.trackNum | 0x80, data.timecode >> 8, data.timecode & 0xff, flags].map(function (e) {
-	            return String.fromCharCode(e);
-	        }).join('') + data.frame;
-
-	        return out;
-	    }
-
-	    function parseWebP(riff) {
-	        var VP8 = riff.RIFF[0].WEBP[0];
-
-	        var frame_start = VP8.indexOf('\x9d\x01\x2a'); // A VP8 keyframe starts with the 0x9d012a header
-	        for (var i = 0, c = []; i < 4; i++) {
-	            c[i] = VP8.charCodeAt(frame_start + 3 + i);
-	        }var width, height, tmp;
-
-	        //the code below is literally copied verbatim from the bitstream spec
-	        tmp = c[1] << 8 | c[0];
-	        width = tmp & 0x3FFF;
-	        tmp = c[3] << 8 | c[2];
-	        height = tmp & 0x3FFF;
-	        return {
-	            width: width,
-	            height: height,
-	            data: VP8,
-	            riff: riff
-	        };
-	    }
-
-	    function parseRIFF(string) {
-	        var offset = 0;
-	        var chunks = {};
-
-	        while (offset < string.length) {
-	            var id = string.substr(offset, 4);
-	            var len = parseInt(string.substr(offset + 4, 4).split('').map(function (i) {
-	                var unpadded = i.charCodeAt(0).toString(2);
-	                return new Array(8 - unpadded.length + 1).join('0') + unpadded;
-	            }).join(''), 2);
-	            var data = string.substr(offset + 4 + 4, len);
-	            offset += 4 + 4 + len;
-	            chunks[id] = chunks[id] || [];
-
-	            if (id == 'RIFF' || id == 'LIST') {
-	                chunks[id].push(parseRIFF(data));
-	            } else {
-	                chunks[id].push(data);
-=======
->>>>>>> Update MediaStreamRecorder
 	            }
 	        }
 
@@ -51287,8 +50723,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -51321,17 +50755,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-viewer-content', __self: this
-						},
+						{ className: 'mky-viewer-content' },
 						_react2.default.createElement(
 							'button',
-							{ id: 'mky-button-exit', onClick: this.close, __self: this
-							},
+							{ id: 'mky-button-exit', onClick: this.close },
 							' X '
 						),
-						_react2.default.createElement(Component, _extends({}, this.props, {
-							__self: this
-						}))
+						_react2.default.createElement(Component, this.props)
 					);
 				}
 			}, {
@@ -51356,8 +50786,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -51388,11 +50816,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ id: 'mky-chat-login', __self: this
-						},
-						_react2.default.createElement(Component, _extends({}, this.props, {
-							__self: this
-						}))
+						{ id: 'mky-chat-login' },
+						_react2.default.createElement(Component, this.props)
 					);
 				}
 			}]);
@@ -51441,8 +50866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					"span",
-					{ className: "mky-content-text", __self: this
-					},
+					{ className: "mky-content-text" },
 					this.props.message.text
 				);
 			}
@@ -51507,28 +50931,20 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-image', __self: this
-					},
+					{ className: 'mky-content-image' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-data', __self: this
-						},
-						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage, __self: this
-						})
+						{ className: 'mky-content-image-data' },
+						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage })
 					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-loading', __self: this
-						},
-						_react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-						}),
-						_react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-						})
+						{ className: 'mky-content-image-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-to-download', onClick: this.downloadData, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-						})
+						{ className: 'mky-content-image-to-download', onClick: this.downloadData },
+						_react2.default.createElement('i', { className: 'icon mky-icon-download' })
 					)
 				);
 			}
@@ -51610,41 +51026,32 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-file', __self: this
-					},
+					{ className: 'mky-content-file' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-data', __self: this
-						},
+						{ className: 'mky-content-file-data' },
 						_react2.default.createElement(
 							'a',
-							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename, __self: this
-							},
-							_react2.default.createElement(Fileicon, { classFileType: this.defineFileType(this.props.message.filename), __self: this
-							}),
+							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename },
+							_react2.default.createElement(Fileicon, { classFileType: this.defineFileType(this.props.message.filename) }),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-file-detail', __self: this
-								},
+								{ className: 'mky-file-detail' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-file-name', __self: this
-									},
+									{ className: 'mky-file-name' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.props.message.filename
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-file-size', __self: this
-									},
+									{ className: 'mky-file-size' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.humanFileSize(this.props.message.filesize, true)
 									)
 								)
@@ -51652,18 +51059,13 @@ return /******/ (function(modules) { // webpackBootstrap
 						)
 					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-loading', __self: this
-						},
-						_react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-						}),
-						_react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-						})
+						{ className: 'mky-content-file-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-to-download', onClick: this.downloadData, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-						})
+						{ className: 'mky-content-file-to-download', onClick: this.downloadData },
+						_react2.default.createElement('i', { className: 'icon mky-icon-download' })
 					)
 				);
 			}
@@ -51725,8 +51127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Fileicon = function Fileicon(_ref) {
 		var classFileType = _ref.classFileType;
-		return _react2.default.createElement('div', { className: 'mky-file-icon ' + classFileType, __self: undefined
-		});
+		return _react2.default.createElement('div', { className: 'mky-file-icon ' + classFileType });
 	};
 
 	exports.default = BubbleFile;
@@ -51800,60 +51201,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'mky-content-audio', __self: this
-	                },
+	                { className: 'mky-content-audio' },
 	                this.props.message.data ? _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-data', __self: this
-	                    },
-	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-play-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-play-button mky-bubble-audio-play-button-green', onClick: this.playAudioBubble, __self: this
-	                    }),
-	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-pause-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green', onClick: this.pauseAudioBubble, __self: this
-	                    }),
-	                    _react2.default.createElement('input', { id: 'mky-bubble-audio-player-' + this.messageId, className: 'knob second', __self: this
-	                    }),
+	                    { className: 'mky-content-audio-data' },
+	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-play-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-play-button mky-bubble-audio-play-button-green', onClick: this.playAudioBubble }),
+	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-pause-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green', onClick: this.pauseAudioBubble }),
+	                    _react2.default.createElement('input', { id: 'mky-bubble-audio-player-' + this.messageId, className: 'knob second' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-bubble-audio-timer', __self: this
-	                        },
+	                        { className: 'mky-bubble-audio-timer' },
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            this.state.minutes
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            ':'
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            this.state.seconds
 	                        )
 	                    ),
-	                    _react2.default.createElement('audio', { id: 'audio_' + this.messageId, preload: 'auto', controls: '', src: this.props.message.data, __self: this
-	                    })
+	                    _react2.default.createElement('audio', { id: 'audio_' + this.messageId, preload: 'auto', controls: '', src: this.props.message.data })
 	                ) : this.state.isDownloading ? _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-loading', __self: this
-	                    },
-	                    _react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-	                    }),
-	                    _react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-	                    })
+	                    { className: 'mky-content-audio-loading' },
+	                    _react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+	                    _react2.default.createElement('div', { className: 'mky-double-bounce2' })
 	                ) : _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-to-download', onClick: this.downloadData, __self: this
-	                    },
-	                    _react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-	                    })
+	                    { className: 'mky-content-audio-to-download', onClick: this.downloadData },
+	                    _react2.default.createElement('i', { className: 'icon mky-icon-download' })
 	                )
 	            );
 	        }
@@ -52040,30 +51423,24 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-viewer-image-container', __self: this
-					},
+					{ className: 'mky-viewer-image-container' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-viewer-toolbar', __self: this
-						},
+						{ className: 'mky-viewer-toolbar' },
 						_react2.default.createElement(
 							'a',
-							{ href: this.props.message.data, download: this.props.message.filename, __self: this
-							},
+							{ href: this.props.message.data, download: this.props.message.filename },
 							_react2.default.createElement(
 								'button',
-								{ className: 'mky-button-download', title: 'Download', __self: this
-								},
+								{ className: 'mky-button-download', title: 'Download' },
 								'Download'
 							)
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ id: 'file_viewer_image', className: 'mky-viewer-image', __self: this
-						},
-						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize, __self: this
-						})
+						{ id: 'file_viewer_image', className: 'mky-viewer-image' },
+						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize })
 					)
 				);
 			}
@@ -52123,78 +51500,58 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-monkey-login', __self: this
-					},
+					{ className: 'mky-monkey-login' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-monkey-logo', __self: this
-						},
-						_react2.default.createElement('img', { src: this.defineLogo(), __self: this
-						})
+						{ className: 'mky-monkey-logo' },
+						_react2.default.createElement('img', { src: this.defineLogo() })
 					),
 					_react2.default.createElement(
 						'form',
-						{ className: 'mky-chat-login-container', __self: this
-						},
+						{ className: 'mky-chat-login-container' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'field-login-text', __self: this
-							},
+							{ className: 'field-login-text' },
 							_react2.default.createElement(
 								'p',
-								{ className: 'title', __self: this
-								},
+								{ className: 'title' },
 								' ',
 								_react2.default.createElement(
 									'b',
-<<<<<<< 894ec49b27c17f4f6abdb76e277e90ac43a99017
-									{
-										__self: this
-									},
-=======
 									null,
->>>>>>> Update MediaStreamRecorder
 									this.defineLoginTitle()
 								),
 								'  '
 							),
 							_react2.default.createElement(
 								'p',
-								{ className: 'subtittle', __self: this
-								},
+								{ className: 'subtittle' },
 								'Please enter the information I need'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'field field-input-name', __self: this
-							},
-							_react2.default.createElement('input', { type: 'text', id: 'user_name', placeholder: 'Name', value: this.state.text, onChange: this.handleOnChangeInput, __self: this
-							}),
+							{ className: 'field field-input-name' },
+							_react2.default.createElement('input', { type: 'text', id: 'user_name', placeholder: 'Name', value: this.state.text, onChange: this.handleOnChangeInput }),
 							_react2.default.createElement(
 								'div',
-								{ className: 'error', __self: this
-								},
+								{ className: 'error' },
 								'Name must contain at least 2 character.'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'field field-input-submit', __self: this
-							},
-							_react2.default.createElement('input', { type: 'submit', value: 'SUBMIT', id: 'submitChat', onClick: this.login, __self: this
-							})
+							{ className: 'field field-input-submit' },
+							_react2.default.createElement('input', { type: 'submit', value: 'SUBMIT', id: 'submitChat', onClick: this.login })
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-monkey_footer_sign', __self: this
-						},
+						{ className: 'mky-monkey_footer_sign' },
 						'Powered by ',
 						_react2.default.createElement(
 							'a',
-							{ href: 'http://criptext.com/', __self: this
-							},
+							{ href: 'http://criptext.com/' },
 							'Criptext'
 						)
 					)
@@ -52291,8 +51648,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -52322,29 +51677,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-generic-modal', onClick: this.props.togglePopup, __self: this
-						},
+						{ className: 'mky-generic-modal', onClick: this.props.togglePopup },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-inner-modal', __self: this
-							},
+							{ className: 'mky-inner-modal' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-popup-message', __self: this
-								},
+								{ className: 'mky-popup-message' },
 								this.props.popUpMessage
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-popup-buttons', __self: this
-								},
-								_react2.default.createElement(Component, _extends({}, this.props, {
-									__self: this
-								})),
+								{ className: 'mky-popup-buttons' },
+								_react2.default.createElement(Component, this.props),
 								_react2.default.createElement(
 									'button',
-									{ className: 'mky-popup-button', onClick: this.props.togglePopup, __self: this
-									},
+									{ className: 'mky-popup-button', onClick: this.props.togglePopup },
 									'CANCEL'
 								)
 							)
@@ -52397,8 +51745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'button',
-					{ className: 'mky-popup-button', onClick: this.props.userSessionLogout, __self: this
-					},
+					{ className: 'mky-popup-button', onClick: this.props.userSessionLogout },
 					'YES'
 				);
 			}
