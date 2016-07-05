@@ -262,67 +262,48 @@ return /******/ (function(modules) { // webpackBootstrap
 				var LogOut_ = (0, _PopUp2.default)(_ContentLogOut2.default);
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-wrapper-out ' + this.classContent + ' animated pulse', style: this.state.contentStyle, __self: this
-					},
+					{ className: 'mky-wrapper-out ' + this.classContent + ' animated pulse', style: this.state.contentStyle },
 					this.props.view.type === 'classic' ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-tab', style: this.defineToggleStyle(), onClick: this.toggleTab, __self: this
-						},
+						{ className: 'mky-tab', style: this.defineToggleStyle(), onClick: this.toggleTab },
 						_react2.default.createElement(
 							'span',
-							{ className: 'mky-tablabel', style: this.defineTabTextColor(), __self: this
-							},
+							{ className: 'mky-tablabel', style: this.defineTabTextColor() },
 							' ',
 							this.defineTabText(),
 							' '
 						),
 						_react2.default.createElement(
 							'div',
-							{
-								__self: this
-							},
-							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon, __self: this
-							})
+							null,
+							_react2.default.createElement('i', { className: 'icon ' + this.state.classTabIcon })
 						)
 					) : this.props.view.type === 'rightside' ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-button', style: this.defineToggleStyle(), onClick: this.openSide, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-chats', __self: this
-						})
+						{ className: 'mky-button', style: this.defineToggleStyle(), onClick: this.openSide },
+						_react2.default.createElement('i', { className: 'icon mky-icon-chats' })
 					) : null,
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-wrapper-in ' + this.state.wrapperInClass, __self: this
-						},
+						{ className: 'mky-wrapper-in ' + this.state.wrapperInClass },
 						this.props.viewLoading ? _react2.default.createElement(
 							'div',
-							{ id: 'mky-content-connection', className: 'mky-appear', __self: this
-							},
+							{ id: 'mky-content-connection', className: 'mky-appear' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-spinner', __self: this
-								},
-								_react2.default.createElement('div', { className: 'mky-bounce1', __self: this
-								}),
-								_react2.default.createElement('div', { className: 'mky-bounce2', __self: this
-								}),
-								_react2.default.createElement('div', { className: 'mky-bounce3', __self: this
-								})
+								{ className: 'mky-spinner' },
+								_react2.default.createElement('div', { className: 'mky-bounce1' }),
+								_react2.default.createElement('div', { className: 'mky-bounce2' }),
+								_react2.default.createElement('div', { className: 'mky-bounce3' })
 							)
 						) : null,
 						this.props.userSession ? _react2.default.createElement(
 							'div',
-							{ id: 'mky-content-app', className: '', __self: this
-							},
-							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, conversationsLoading: this.props.conversationsLoading, __self: this
-							}) : null,
-							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUser: this.props.onMessageGetUser, haveConversations: this.haveConversations, __self: this
-							})
-						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles, __self: this
-						}),
-						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout, __self: this
-						}) : null
+							{ id: 'mky-content-app', className: '' },
+							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, conversationsLoading: this.props.conversationsLoading }) : null,
+							_react2.default.createElement(_ContentWindow2.default, { loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUser: this.props.onMessageGetUser, haveConversations: this.haveConversations })
+						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
+						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout }) : null
 					)
 				);
 			}
@@ -541,51 +522,39 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'aside',
-					{ id: this.classContent, className: this.props.showBanner ? 'aside-divided' : '', __self: this
-					},
+					{ id: this.classContent, className: this.props.showBanner ? 'aside-divided' : '' },
 					_react2.default.createElement(
 						'header',
-						{ id: 'mky-session-header', __self: this
-						},
+						{ id: 'mky-session-header' },
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-session-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), __self: this
-							})
+							{ id: 'mky-session-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
 						),
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-session-description', __self: this
-							},
+							{ id: 'mky-session-description' },
 							_react2.default.createElement(
 								'div',
-								{ id: 'mky-session-name', __self: this
-								},
+								{ id: 'mky-session-name' },
 								_react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									this.context.userSession.name
 								)
 							),
 							this.props.isMobile ? _react2.default.createElement(
 								'div',
-								{ className: 'mky-header-exit', onClick: this.closeSide, __self: this
-								},
-								_react2.default.createElement('i', { className: 'icon mky-icon-close-light', __self: this
-								})
+								{ className: 'mky-header-exit', onClick: this.closeSide },
+								_react2.default.createElement('i', { className: 'icon mky-icon-close-light' })
 							) : _react2.default.createElement(
 								'div',
-								{ className: 'mky-header-exit', onClick: this.logout, __self: this
-								},
-								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right', __self: this
-								})
+								{ className: 'mky-header-exit', onClick: this.logout },
+								_react2.default.createElement('i', { className: 'icon mky-icon-logout-right' })
 							)
 						)
 					),
-					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, conversationsLoading: this.props.conversationsLoading, __self: this
-					})
+					_react2.default.createElement(_ConversationList2.default, { handleConversationDelete: this.props.handleConversationDelete, handleConversationExit: this.props.handleConversationExit, conversations: this.props.conversations, handleConversationSelected: this.props.handleConversationSelected, conversationSelected: this.props.conversationSelected, conversationsLoading: this.props.conversationsLoading })
 				);
 			}
 		}, {
@@ -707,35 +676,24 @@ return /******/ (function(modules) { // webpackBootstrap
 				var conversationNameFiltered = this.state.conversationArray.filter((0, _reactSearchInput.createFilter)(this.state.searchTerm, KEYS_TO_FILTERS));
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-session-conversations', __self: this
-					},
-					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, isGroupConversation: this.conversationToDeleteIsGroup, __self: this
-					}) : null,
-					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated, __self: this
-					}),
+					{ className: 'mky-session-conversations' },
+					this.state.isDeleting ? _react2.default.createElement(_DeleteConversation2.default, { handleDeleteConversation: this.handleDeleteConversation, handleExitGroup: this.handleExitGroup, handleClosePopup: this.handleClosePopup, isGroupConversation: this.conversationToDeleteIsGroup }) : null,
+					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', onChange: this.searchUpdated }),
 					this.props.conversationsLoading ? _react2.default.createElement(
 						'div',
-						{
-							__self: this
-						},
+						null,
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-spinner', __self: this
-							},
-							_react2.default.createElement('div', { className: 'mky-bounce1', __self: this
-							}),
-							_react2.default.createElement('div', { className: 'mky-bounce2', __self: this
-							}),
-							_react2.default.createElement('div', { className: 'mky-bounce3', __self: this
-							})
+							{ className: 'mky-spinner' },
+							_react2.default.createElement('div', { className: 'mky-bounce1' }),
+							_react2.default.createElement('div', { className: 'mky-bounce2' }),
+							_react2.default.createElement('div', { className: 'mky-bounce3' })
 						)
 					) : _react2.default.createElement(
 						'ul',
-						{ ref: 'conversationList', id: 'mky-conversation-list', className: 'animated slideInLeft', __self: this
-						},
+						{ ref: 'conversationList', id: 'mky-conversation-list', className: 'animated slideInLeft' },
 						conversationNameFiltered.map(function (conversation, index) {
-							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id), __self: _this2
-							});
+							return _react2.default.createElement(_ConversationItem2.default, { index: index, deleteConversation: _this2.handleAskDeleteConversation, key: conversation.id, conversation: conversation, conversationIdSelected: _this2.conversationIdSelected, selected: _this2.isSelected(conversation.id) });
 						})
 					)
 				);
@@ -904,73 +862,58 @@ return /******/ (function(modules) { // webpackBootstrap
 				var classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
 				return _react2.default.createElement(
 					'li',
-					{ className: classContent, __self: this
-					},
+					{ className: classContent },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-full', onClick: this.openConversation, __self: this
-						},
+						{ className: 'mky-full', onClick: this.openConversation },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), onerror: 'imgError(this);', __self: this
-							})
+							{ className: 'mky-conversation-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar(), onerror: 'imgError(this);' })
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-description', __self: this
-							},
+							{ className: 'mky-conversation-description' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-conversation-title', __self: this
-								},
+								{ className: 'mky-conversation-title' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-conversation-name', __self: this
-									},
+									{ className: 'mky-conversation-name' },
 									this.state.unreadMessages ? _react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify mky-bold-text', __self: this
-										},
+										{ className: 'mky-ellipsify mky-bold-text' },
 										this.props.conversation.name
 									) : _react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.props.conversation.name
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-conversation-time', __self: this
-									},
+									{ className: 'mky-conversation-time' },
 									_react2.default.createElement(
 										'span',
-										{ className: '', __self: this
-										},
+										{ className: '' },
 										this.props.conversation.messages[this.props.conversation.lastMessage] ? (0, _monkeyUtils.defineTimeByToday)(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''
 									)
 								)
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-conversation-state', __self: this
-								},
+								{ className: 'mky-conversation-state' },
 								Object.keys(this.props.conversation.messages).length ? this.state.unreadMessages ? _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify mky-bold-text', __self: this
-									},
+									{ className: 'mky-ellipsify mky-bold-text' },
 									this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''
 								) : _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''
 								) : _react2.default.createElement(
 									'span',
-									{ className: 'mky-ellipsify', __self: this
-									},
+									{ className: 'mky-ellipsify' },
 									'Click to open conversation'
 								)
 							)
@@ -978,17 +921,13 @@ return /******/ (function(modules) { // webpackBootstrap
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'mnk-conversation-opts', __self: this
-						},
+						{ className: 'mnk-conversation-opts' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-delete-conv', onClick: this.deleteConversation, __self: this
-							},
-							_react2.default.createElement('i', { className: 'icon mky-icon-close', __self: this
-							})
+							{ className: 'mky-delete-conv', onClick: this.deleteConversation },
+							_react2.default.createElement('i', { className: 'icon mky-icon-close' })
 						),
-						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter, __self: this
-						})
+						_react2.default.createElement(Badge, { value: this.props.conversation.unreadMessageCounter })
 					)
 				);
 			}
@@ -1019,12 +958,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Badge = function Badge(props, showNotification) {
 		return _react2.default.createElement(
 			'div',
-			{ className: 'mky-conversation-notification', __self: undefined
-			},
+			{ className: 'mky-conversation-notification' },
 			props.value > 0 ? _react2.default.createElement(
 				'div',
-				{ className: 'mky-notification-amount animated pulse', __self: undefined
-				},
+				{ className: 'mky-notification-amount animated pulse' },
 				props.value
 			) : null
 		);
@@ -16025,30 +15962,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var process = module.exports = {};
 
-	// cached from whatever global is present so that test runners that stub it
-	// don't break things.  But we need to wrap it in a try catch in case it is
-	// wrapped in strict mode code which doesn't define any globals.  It's inside a
-	// function because try/catches deoptimize in certain engines.
+	// cached from whatever global is present so that test runners that stub it don't break things.
+	var cachedSetTimeout = setTimeout;
+	var cachedClearTimeout = clearTimeout;
 
-	var cachedSetTimeout;
-	var cachedClearTimeout;
-
-	(function () {
-	  try {
-	    cachedSetTimeout = setTimeout;
-	  } catch (e) {
-	    cachedSetTimeout = function () {
-	      throw new Error('setTimeout is not defined');
-	    }
-	  }
-	  try {
-	    cachedClearTimeout = clearTimeout;
-	  } catch (e) {
-	    cachedClearTimeout = function () {
-	      throw new Error('clearTimeout is not defined');
-	    }
-	  }
-	} ())
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -35564,38 +35481,31 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-generic-modal', onClick: this.props.handleClosePopup, __self: this
-					},
+					{ className: 'mky-generic-modal', onClick: this.props.handleClosePopup },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-inner-modal', __self: this
-						},
+						{ className: 'mky-inner-modal' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-popup-message', __self: this
-							},
+							{ className: 'mky-popup-message' },
 							'What do you want to do whit this conversation?'
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-popup-buttons', __self: this
-							},
+							{ className: 'mky-popup-buttons' },
 							this.context.options.deleteConversation.permission.exitGroup && this.props.isGroupConversation ? _react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleExitGroup },
 								'EXIT'
 							) : null,
 							this.context.options.deleteConversation.permission.delete || !this.props.isGroupConversation ? _react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleDeleteConversation },
 								'DELETE'
 							) : null,
 							_react2.default.createElement(
 								'button',
-								{ className: 'mky-popup-button', onClick: this.props.handleClosePopup, __self: this
-								},
+								{ className: 'mky-popup-button', onClick: this.props.handleClosePopup },
 								'CANCEL'
 							)
 						)
@@ -35679,14 +35589,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'section',
-					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner, __self: this
-					},
-					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations, __self: this
-					}) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner, __self: this
-					}),
-					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, {
-						__self: this
-					}) : null
+					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner },
+					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
+					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, null) : null
 				);
 			}
 		}]);
@@ -35735,8 +35640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ContentIntro, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { id: 'mky-app-intro', className: this.bannerClass, __self: this
-				});
+				return _react2.default.createElement('div', { id: 'mky-app-intro', className: this.bannerClass });
 			}
 		}]);
 
@@ -35781,8 +35685,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		_createClass(ContentBanner, [{
 			key: 'render',
 			value: function render() {
-				return _react2.default.createElement('div', { className: 'mky-banner-section', __self: this
-				});
+				return _react2.default.createElement('div', { className: 'mky-banner-section' });
 			}
 		}]);
 
@@ -35867,82 +35770,64 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-conversation ' + this.conversationBannerClass, __self: this
-					},
+					{ className: 'mky-content-conversation ' + this.conversationBannerClass },
 					_react2.default.createElement(
 						'header',
-						{ id: 'mky-conversation-selected-header', __self: this
-						},
+						{ id: 'mky-conversation-selected-header' },
 						this.props.isMobile & this.props.haveConversations ? _react2.default.createElement(
 							'div',
-							{ className: 'mky-conversation-burger', onClick: this.showAside, __self: this
-							},
-							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer', __self: this
-							})
+							{ className: 'mky-conversation-burger', onClick: this.showAside },
+							_react2.default.createElement('i', { className: 'icon mky-icon-menu-hamburguer' })
 						) : null,
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-conversation-selected-image', __self: this
-							},
-							_react2.default.createElement('img', { src: this.defineUrlAvatar(), __self: this
-							})
+							{ id: 'mky-conversation-selected-image' },
+							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
 						),
 						_react2.default.createElement(
 							'div',
-							{ id: 'mky-conversation-selected-description', __self: this
-							},
+							{ id: 'mky-conversation-selected-description' },
 							_react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-name', __self: this
-								},
+								{ id: 'mky-conversation-selected-name' },
 								this.props.conversationSelected.name
 							),
 							!(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? this.props.conversationSelected.online == 0 ? _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' ',
 								'Last seen ' + (0, _monkeyUtils.defineTime)(this.props.conversationSelected.lastOpenApp)
 							) : _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' Online '
 							) : _react2.default.createElement(
 								'span',
-								{ id: 'mky-conversation-selected-status', __self: this
-								},
+								{ id: 'mky-conversation-selected-status' },
 								' ',
 								this.props.conversationSelected.description
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-signature', __self: this
-							},
+							{ className: 'mky-signature' },
 							'Powered by ',
 							_react2.default.createElement(
 								'a',
-								{ className: 'mky-signature-link', target: '_blank', href: 'http://criptext.com/', __self: this
-								},
+								{ className: 'mky-signature-link', target: '_blank', href: 'http://criptext.com/' },
 								'Criptext'
 							)
 						)
 					),
-					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this), __self: this
-					}) : _react2.default.createElement(
+					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this) }) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-chat-area', __self: this
-						},
-						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, __self: this
-						}),
+						{ className: 'mky-chat-area' },
+						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser }),
 						this.state.messageSelected ? function () {
 							var Modal_ = (0, _Modal2.default)(_this2.context.bubblePreviews[_this2.state.messageSelected.bubbleType]);
-							return _react2.default.createElement(Modal_, { message: _this2.state.messageSelected, closeModal: _this2.handleCloseModal, __self: _this2
-							});
+							return _react2.default.createElement(Modal_, { message: _this2.state.messageSelected, closeModal: _this2.handleCloseModal });
 						}() : null,
-						_react2.default.createElement(_Input2.default, { enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated, __self: this
-						})
+						_react2.default.createElement(_Input2.default, { enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated })
 					)
 				);
 			}
@@ -36089,13 +35974,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				return _react2.default.createElement(
 					'div',
-					{ ref: 'timelineChat', id: 'mky-chat-timeline', __self: this
-					},
+					{ ref: 'timelineChat', id: 'mky-chat-timeline' },
 					Object.keys(this.props.conversationSelected).length ? this.orderedConversations.map(function (item) {
 						var message = _this2.props.conversationSelected.messages[item.key];
 						var Bubble_ = (0, _Bubble2.default)(_this2.context.bubbles[message.bubbleType]);
-						return _react2.default.createElement(Bubble_, { key: message.id, message: message, userSessionId: _this2.context.userSession.id, layerClass: message.bubbleType, messageSelected: _this2.props.messageSelected, onClickMessage: _this2.props.onClickMessage, dataDownloadRequest: _this2.props.dataDownloadRequest, getUser: _this2.props.getUser, styles: _this2.context.styles, __self: _this2
-						});
+						return _react2.default.createElement(Bubble_, { key: message.id, message: message, userSessionId: _this2.context.userSession.id, layerClass: message.bubbleType, messageSelected: _this2.props.messageSelected, onClickMessage: _this2.props.onClickMessage, dataDownloadRequest: _this2.props.dataDownloadRequest, getUser: _this2.props.getUser, styles: _this2.context.styles });
 					}) : null
 				);
 			}
@@ -36105,14 +35988,16 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.domNode = _reactDom2.default.findDOMNode(this.refs.timelineChat);
 				//this.domNode.lastChild.scrollIntoView();
 				this.domNode.addEventListener('scroll', this.handleScroll);
-				if (Object.keys(this.props.conversationSelected.messages).length === 1) {
+				var amountMessages = Object.keys(this.props.conversationSelected.messages).length;
+				if (amountMessages === 1 || amountMessages > 0 && amountMessages < 10) {
 					this.getMoreMessages();
 				}
 			}
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
-				if (Object.keys(this.props.conversationSelected.messages).length === 1) {
+				var amountMessages = Object.keys(this.props.conversationSelected.messages).length;
+				if (amountMessages === 1 || amountMessages > 0 && amountMessages < 10) {
 					this.getMoreMessages();
 				}
 				this.domNode = _reactDom2.default.findDOMNode(this.refs.timelineChat);
@@ -36141,9 +36026,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.goBottom = false;
 					// 			this.domNode.lastChild.scrollIntoView();
 				} else if (this.domNode.scrollTop === 0 && this.scrollTop != 0) {
-					this.scrollHeight = this.domNode.scrollHeight;
-					this.getMoreMessages();
-				}
+						this.scrollHeight = this.domNode.scrollHeight;
+						this.getMoreMessages();
+					}
 				this.scrollTop = this.domNode.scrollTop;
 			}
 		}, {
@@ -36195,8 +36080,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -36245,33 +36128,25 @@ return /******/ (function(modules) { // webpackBootstrap
 					var customStyle = { color: this.userColor };
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-message-line', __self: this
-						},
+						{ className: 'mky-message-line' },
 						_react2.default.createElement(
 							'div',
-							{ id: this.props.message.id, className: classBubble, style: styleBubble, __self: this
-							},
+							{ id: this.props.message.id, className: classBubble, style: styleBubble },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-message-detail', __self: this
-								},
-								this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(Status, { value: this.props.message.status, classStatus: this.defineStatusClass(this.props.message.status), resendFunction: this.resendMessage, __self: this
-								}) : this.username ? _react2.default.createElement(
+								{ className: 'mky-message-detail' },
+								this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(Status, { value: this.props.message.status, classStatus: this.defineStatusClass(this.props.message.status), resendFunction: this.resendMessage }) : this.username ? _react2.default.createElement(
 									'span',
-									{ className: 'mky-message-user-name', style: customStyle, __self: this
-									},
+									{ className: 'mky-message-user-name', style: customStyle },
 									this.username
 								) : null,
 								_react2.default.createElement(
 									'span',
-									{ className: 'mky-message-hour', __self: this
-									},
+									{ className: 'mky-message-hour' },
 									(0, _monkeyUtils.defineTime)(this.props.message.datetimeCreation)
 								)
 							),
-							_react2.default.createElement(Component, _extends({}, this.props, {
-								__self: this
-							}))
+							_react2.default.createElement(Component, this.props)
 						)
 					);
 				}
@@ -36352,15 +36227,12 @@ return /******/ (function(modules) { // webpackBootstrap
 		var resendFunction = _ref.resendFunction;
 		return _react2.default.createElement(
 			'div',
-			{ className: "mky-message-status " + classStatus, onClick: resendFunction, __self: undefined
-			},
+			{ className: "mky-message-status " + classStatus, onClick: resendFunction },
 			value !== 0 ? value == -1 ? _react2.default.createElement(
 				'i',
-				{ className: 'demo-icon mky-check', __self: undefined
-				},
+				{ className: 'demo-icon mky-check' },
 				'!'
-			) : _react2.default.createElement('i', { className: 'icon mky-icon-check', __self: undefined
-			}) : null
+			) : _react2.default.createElement('i', { className: 'icon mky-icon-check' }) : null
 		);
 	};
 
@@ -36413,9 +36285,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// ======================
 	// MediaStreamRecorder.js
-	var MediaStreamRecorder = __webpack_require__(297).MediaStreamRecorder;
-	window.StereoRecorder = __webpack_require__(297).StereoRecorder;
-	window.MediaRecorderWrapper = __webpack_require__(297).MediaRecorderWrapper;
+	var MediaStreamRecorder = __webpack_require__(297);
 
 	// ======================
 	// FileAPI.js
@@ -36501,68 +36371,50 @@ return /******/ (function(modules) { // webpackBootstrap
 	            var styleInput = this.defineStyles();
 	            return _react2.default.createElement(
 	                'div',
-	                { id: 'mky-chat-input', __self: this
-	                },
+	                { id: 'mky-chat-input' },
 	                _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-inner-chat-input', __self: this
-	                    },
-	                    _react2.default.createElement('div', { id: 'mky-divider-chat-input', __self: this
-	                    }),
+	                    { className: 'mky-inner-chat-input' },
+	                    _react2.default.createElement('div', { id: 'mky-divider-chat-input' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classAttachButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classAttachButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-add', className: 'mky-button-icon icon mky-icon-menu-dots-strong', style: styleInput.inputLeftButton, onClick: this.handleMenuVisibility })
 	                    ),
-	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton, __self: this
-	                    }),
+	                    _react2.default.createElement(_InputMenu2.default, { toggleVisibility: this.handleMenuVisibility, visible: this.state.menuVisibility, enableGeoInput: this.props.enableGeoInput, handleAttach: this.handleAttach, colorButton: styleInput.inputRightButton }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio })
 	                    ),
-	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea, __self: this
-	                    }),
+	                    _react2.default.createElement('textarea', { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { id: 'mky-record-area', className: this.state.classAudioArea, __self: this
-	                        },
+	                        { id: 'mky-record-area', className: this.state.classAudioArea },
 	                        _react2.default.createElement(
 	                            'div',
-	                            { className: 'mky-record-preview-area', __self: this
-	                            },
+	                            { className: 'mky-record-preview-area' },
 	                            _react2.default.createElement(
 	                                'div',
-	                                { id: 'mky-button-action-record', __self: this
-	                                },
-	                                _react2.default.createElement('button', { id: 'mky-button-start-record', className: 'mky-blink', __self: this
-	                                })
+	                                { id: 'mky-button-action-record' },
+	                                _react2.default.createElement('button', { id: 'mky-button-start-record', className: 'mky-blink' })
 	                            ),
 	                            _react2.default.createElement(
 	                                'div',
-	                                { id: 'mky-time-recorder', __self: this
-	                                },
+	                                { id: 'mky-time-recorder' },
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    { id: 'mky-minutes', __self: this
-	                                    },
+	                                    { id: 'mky-minutes' },
 	                                    this.state.minutes
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    {
-	                                        __self: this
-	                                    },
+	                                    null,
 	                                    ':'
 	                                ),
 	                                _react2.default.createElement(
 	                                    'span',
-	                                    { id: 'mky-seconds', __self: this
-	                                    },
+	                                    { id: 'mky-seconds' },
 	                                    this.state.seconds
 	                                )
 	                            )
@@ -36570,44 +36422,31 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.state.classSendButton, __self: this
-	                        },
-	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage, __self: this
-	                        })
+	                        { className: 'mky-button-input ' + this.state.classSendButton },
+	                        _react2.default.createElement('i', { id: 'mky-button-send-message', className: 'mky-button-icon icon mky-icon-send-regular', onClick: this.handleSendMessage })
 	                    ),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-button-input ' + this.audioInputClass + ' ' + this.state.classAudioButton, __self: this
-	                        },
+	                        { className: 'mky-button-input ' + this.audioInputClass + ' ' + this.state.classAudioButton },
 	                        this.state.creatingAudio ? _react2.default.createElement(
 	                            'div',
-	                            { className: 'mky-spinner-input-audio', __self: this
-	                            },
-	                            _react2.default.createElement('div', { className: 'mky-rect1', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect2', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect3', __self: this
-	                            }),
-	                            _react2.default.createElement('div', { className: 'mky-rect4', __self: this
-	                            })
-	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio, __self: this
-	                        })
+	                            { className: 'mky-spinner-input-audio' },
+	                            _react2.default.createElement('div', { className: 'mky-rect1' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect2' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect3' }),
+	                            _react2.default.createElement('div', { className: 'mky-rect4' })
+	                        ) : _react2.default.createElement('i', { id: 'mky-button-record-audio', className: 'mky-button-icon icon mky-icon-mic-empty', style: styleInput.inputRightButton, onClick: this.handleRecordAudio })
 	                    ),
 	                    _react2.default.createElement(
 	                        _reactDropzone2.default,
-	                        { ref: 'dropzone', className: 'mky-disappear', onDrop: this.onDrop, __self: this
-	                        },
+	                        { ref: 'dropzone', className: 'mky-disappear', onDrop: this.onDrop },
 	                        _react2.default.createElement(
 	                            'div',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            'Try dropping some files here, or click to select files to upload.'
 	                        )
 	                    ),
-	                    _react2.default.createElement(ToastContainer, { ref: 'container', toastMessageFactory: ToastMessageFactory, className: 'toast-bottom-center', __self: this
-	                    })
+	                    _react2.default.createElement(ToastContainer, { ref: 'container', toastMessageFactory: ToastMessageFactory, className: 'toast-bottom-center' })
 	                )
 	            );
 	        }
@@ -36685,13 +36524,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function startRecordAudio() {
 	            this.typeMessageToSend = 1;
 
-	            if (this.mediaRecorder == null) {
-	                if (!this.micActivated) {
-	                    navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-	                } else {
-	                    this.onMediaSuccess(this.mediaConstraints);
-	                    this.pauseAllAudio('');
-	                }
+	            if (!this.mediaRecorder) {
+	                navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
 	            }
 	        }
 	    }, {
@@ -36716,6 +36550,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }, {
 	        key: 'onMediaError',
 	        value: function onMediaError(e) {
+	            this.handleCancelAudio();
 	            console.log(e);
 	            console.error('media error', e);
 	        }
@@ -36723,9 +36558,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'setTime',
 	        value: function setTime() {
 	            ++this.secondsRecording;
-	            var seconds = ("0" + this.secondsRecording % 60).slice(-2);
+	            var seconds = ('0' + this.secondsRecording % 60).slice(-2);
 	            this.setState({ seconds: seconds });
-	            var minutes = ("0" + parseInt(this.secondsRecording / 60)).slice(-2);
+	            var minutes = ('0' + parseInt(this.secondsRecording / 60)).slice(-2);
 	            this.setState({ minutes: minutes });
 	        }
 	    }, {
@@ -36750,7 +36585,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    this.textMessageInput(e.target.value);
 	                    break;
 	                case 1:
-	                    if (this.mediaRecorder != null) {
+	                    if (this.mediaRecorder) {
 	                        this.mediaRecorder.stop(); //detiene la grabacion del audio
 	                    }
 	                    this.audioCaptured.duration = this.secondsRecording;
@@ -36795,7 +36630,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    that.buildMP3('audio_.wav', evt.result);
 	                } else if (evt.type == 'progress') {
 	                    var pr = evt.loaded / evt.total * 100;
-	                } else {/* Error*/}
+	                } else {
+	                    console.log(evt);
+	                }
 	            });
 	        }
 	    }, {
@@ -36853,20 +36690,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
-	                    var code = message.data.code;
-	                    var outFileNames = Object.keys(message.data.outputFiles);
+	                        var code = message.data.code;
+	                        var outFileNames = Object.keys(message.data.outputFiles);
 
-	                    if (code == 0 && outFileNames.length) {
+	                        if (code == 0 && outFileNames.length) {
 
-	                        var outFileName = outFileNames[0];
-	                        var outFileBuffer = message.data.outputFiles[outFileName];
-	                        var mp3Blob = new Blob([outFileBuffer]);
-	                        // var src = window.URL.createObjectURL(mp3Blob);
-	                        that.readData(mp3Blob);
-	                    } else {
-	                        console.log('hubo un error');
+	                            var outFileName = outFileNames[0];
+	                            var outFileBuffer = message.data.outputFiles[outFileName];
+	                            var mp3Blob = new Blob([outFileBuffer]);
+	                            // var src = window.URL.createObjectURL(mp3Blob);
+	                            that.readData(mp3Blob);
+	                        } else {
+	                            console.log('hubo un error');
+	                        }
 	                    }
-	                }
 	            };
 	            return ffmpegWorker;
 	        }
@@ -37198,11 +37035,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		        files.push(file);
 		      }
 		
-		      if (this.allFilesAccepted(files)) {
-		        if (this.props.onDrop) {
-		          this.props.onDrop.call(this, files, e);
-		        }
+		      if (this.props.onDrop) {
+		        this.props.onDrop.call(this, files, e);
+		      }
 		
+		      if (this.allFilesAccepted(files)) {
 		        if (this.props.onDropAccepted) {
 		          this.props.onDropAccepted.call(this, files, e);
 		        }
@@ -37364,7 +37201,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		  disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
 		  disableClick: _react2.default.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
 		
-		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <input type="file"/> tag
+		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <file type="input"/> tag
 		  multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
 		  accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
 		  name: _react2.default.PropTypes.string // name attribute for the input tag
@@ -37429,39 +37266,29 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					"div",
-					{ id: "mky-menu-bubble", className: "mky-menu-bubble", style: { display: this.props.visible ? "block" : "none" }, __self: this
-					},
+					{ id: "mky-menu-bubble", className: "mky-menu-bubble", style: { display: this.props.visible ? "block" : "none" } },
 					_react2.default.createElement(
 						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach, __self: this
-						},
-						_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icon mky-icon-image-regular", style: this.props.colorButton, __self: this
-						}),
+						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icon mky-icon-image-regular", style: this.props.colorButton }),
 						" ",
 						_react2.default.createElement(
 							"div",
-							{
-								__self: this
-							},
+							null,
 							"Image"
 						)
 					),
 					_react2.default.createElement(
 						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach, __self: this
-						},
-						_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-doc-regular", style: this.props.colorButton, __self: this
-						}),
+						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-doc-regular", style: this.props.colorButton }),
 						_react2.default.createElement(
 							"div",
-							{
-								__self: this
-							},
+							null,
 							"File"
 						)
 					),
-					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility, __self: this
-					})
+					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility })
 				);
 			}
 		}]);
@@ -37983,9 +37810,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	    value: function _handle_toast_remove(toastId) {
 	      var _this4 = this;
 
-	      if (this.props.preventDuplicates) {
-	        this.state.previousMessage = "";
-	      }
 	      var operationName = "" + (this.props.newestOnTop ? "reduceRight" : "reduce");
 	      this.state.toasts[operationName](function (found, toast, index) {
 	        if (found || toast.toastId !== toastId) {
@@ -38036,8 +37860,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	    warning: "warning"
 	  },
 	  id: "toast-container",
-	  toastMessageFactory: _react2.default.createFactory(_ToastMessage2.default.animation),
-	  preventDuplicates: true,
+	  toastMessageFactory: _react2.default.createFactory(_ToastMessage2.default),
+	  preventDuplicates: false,
 	  newestOnTop: true,
 	  onClick: function onClick() {}
 	};
@@ -38797,41 +38621,79 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 297 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	'use strict';
+	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {// Last time updated: 2016-07-03 8:51:35 AM UTC
 
-	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
+	// links:
+	// Open-Sourced: https://github.com/streamproc/MediaStreamRecorder
+	// https://cdn.WebRTC-Experiment.com/MediaStreamRecorder.js
+	// https://www.WebRTC-Experiment.com/MediaStreamRecorder.js
+	// npm install msr
 
+	//------------------------------------
+
+	// Browsers Support::
+	// Chrome (all versions) [ audio/video separately ]
+	// Firefox ( >= 29 ) [ audio/video in single webm/mp4 container or only audio in ogg ]
+	// Opera (all versions) [ same as chrome ]
+	// Android (Chrome) [ only video ]
+	// Android (Opera) [ only video ]
+	// Android (Firefox) [ only video ]
+	// Microsoft Edge (Only Audio & Gif)
+
+	//------------------------------------
 	// Muaz Khan     - www.MuazKhan.com
-	// MIT License   - www.webrtc-experiment.com/licence
-	// Documentation - github.com/streamproc/MediaStreamRecorder
+	// MIT License   - www.WebRTC-Experiment.com/licence
+	//------------------------------------
 
 	// ______________________
 	// MediaStreamRecorder.js
 
-	var IsChrome;
-
 	function MediaStreamRecorder(mediaStream) {
-	    if (!mediaStream) throw 'MediaStream is mandatory.';
+	    if (!mediaStream) {
+	        throw 'MediaStream is mandatory.';
+	    }
 
 	    // void start(optional long timeSlice)
 	    // timestamp to fire "ondataavailable"
-	    this.start = function (timeSlice) {
-	        // Media Stream Recording API has not been implemented in chrome yet;
-	        // That's why using WebAudio API to record stereo audio in WAV format
-	        var Recorder = IsChrome ? window.StereoRecorder : window.MediaRecorderWrapper;
+	    this.start = function(timeSlice) {
+	        var Recorder;
 
-	        // video recorder (in WebM format)
-	        if (this.mimeType.indexOf('video') != -1) {
-	            Recorder = IsChrome ? window.WhammyRecorder : window.MediaRecorderWrapper;
+	        if (typeof MediaRecorder !== 'undefined') {
+	            Recorder = MediaRecorderWrapper;
+	        } else if (IsChrome || IsOpera || IsEdge) {
+	            if (this.mimeType.indexOf('video') !== -1) {
+	                Recorder = WhammyRecorder;
+	            } else if (this.mimeType.indexOf('audio') !== -1) {
+	                Recorder = StereoAudioRecorder;
+	            }
 	        }
 
 	        // video recorder (in GIF format)
-	        if (this.mimeType === 'image/gif') Recorder = window.GifRecorder;
+	        if (this.mimeType === 'image/gif') {
+	            Recorder = GifRecorder;
+	        }
+
+	        // audio/wav is supported only via StereoAudioRecorder
+	        // audio/pcm (int16) is supported only via StereoAudioRecorder
+	        if (this.mimeType === 'audio/wav' || this.mimeType === 'audio/pcm') {
+	            Recorder = StereoAudioRecorder;
+	        }
+
+	        // allows forcing StereoAudioRecorder.js on Edge/Firefox
+	        if (this.recorderType) {
+	            Recorder = this.recorderType;
+	        }
 
 	        mediaRecorder = new Recorder(mediaStream);
-	        mediaRecorder.ondataavailable = this.ondataavailable;
+	        mediaRecorder.blobs = [];
+
+	        var self = this;
+	        mediaRecorder.ondataavailable = function(data) {
+	            mediaRecorder.blobs.push(data);
+	            self.ondataavailable(data);
+	        };
 	        mediaRecorder.onstop = this.onstop;
 	        mediaRecorder.onStartedDrawingNonBlankFrames = this.onStartedDrawingNonBlankFrames;
 
@@ -38841,71 +38703,379 @@ return /******/ (function(modules) { // webpackBootstrap
 	        mediaRecorder.start(timeSlice);
 	    };
 
-	    this.onStartedDrawingNonBlankFrames = function () {};
-	    this.clearOldRecordedFrames = function () {
-	        if (!mediaRecorder) return;
+	    this.onStartedDrawingNonBlankFrames = function() {};
+	    this.clearOldRecordedFrames = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
 	        mediaRecorder.clearOldRecordedFrames();
 	    };
 
-	    this.stop = function () {
-	        if (mediaRecorder) mediaRecorder.stop();
+	    this.stop = function() {
+	        if (mediaRecorder) {
+	            mediaRecorder.stop();
+	        }
 	    };
 
-	    this.ondataavailable = function (blob) {
+	    this.ondataavailable = function(blob) {
 	        console.log('ondataavailable..', blob);
 	    };
 
-	    this.onstop = function (error) {
+	    this.onstop = function(error) {
 	        console.warn('stopped..', error);
 	    };
+
+	    this.save = function(file, fileName) {
+	        if (!file) {
+	            if (!mediaRecorder) {
+	                return;
+	            }
+
+	            ConcatenateBlobs(mediaRecorder.blobs, mediaRecorder.blobs[0].type, function(concatenatedBlob) {
+	                invokeSaveAsDialog(concatenatedBlob);
+	            });
+	            return;
+	        }
+	        invokeSaveAsDialog(file, fileName);
+	    };
+
+	    this.pause = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+	        mediaRecorder.pause();
+	        console.log('Paused recording.', this.mimeType || mediaRecorder.mimeType);
+	    };
+
+	    this.resume = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+	        mediaRecorder.resume();
+	        console.log('Resumed recording.', this.mimeType || mediaRecorder.mimeType);
+	    };
+
+	    // StereoAudioRecorder || WhammyRecorder || MediaRecorderWrapper || GifRecorder
+	    this.recorderType = null;
+
+	    // video/webm or audio/webm or audio/ogg or audio/wav
+	    this.mimeType = 'video/webm';
+
+	    // logs are enabled by default
+	    this.disableLogs = false;
 
 	    // Reference to "MediaRecorder.js"
 	    var mediaRecorder;
 	}
-	module.exports.MediaStreamRecorder = MediaStreamRecorder;
-	// below scripts are used to auto-load required files.
 
-	function loadScript(src, onload) {
-	    var root = window.MediaStreamRecorderScriptsDir;
+	// ______________________
+	// MultiStreamRecorder.js
 
-	    var script = document.createElement('script');
-	    script.src = root + src;
-	    script.onload = onload || function () {};
-	    document.documentElement.appendChild(script);
+	function MultiStreamRecorder(mediaStream) {
+	    if (!mediaStream) {
+	        throw 'MediaStream is mandatory.';
+	    }
+
+	    var self = this;
+	    var isMediaRecorder = isMediaRecorderCompatible();
+
+	    this.stream = mediaStream;
+
+	    // void start(optional long timeSlice)
+	    // timestamp to fire "ondataavailable"
+	    this.start = function(timeSlice) {
+	        audioRecorder = new MediaStreamRecorder(mediaStream);
+	        videoRecorder = new MediaStreamRecorder(mediaStream);
+
+	        audioRecorder.mimeType = 'audio/ogg';
+	        videoRecorder.mimeType = 'video/webm';
+
+	        for (var prop in this) {
+	            if (typeof this[prop] !== 'function') {
+	                audioRecorder[prop] = videoRecorder[prop] = this[prop];
+	            }
+	        }
+
+	        audioRecorder.ondataavailable = function(blob) {
+	            if (!audioVideoBlobs[recordingInterval]) {
+	                audioVideoBlobs[recordingInterval] = {};
+	            }
+
+	            audioVideoBlobs[recordingInterval].audio = blob;
+
+	            if (audioVideoBlobs[recordingInterval].video && !audioVideoBlobs[recordingInterval].onDataAvailableEventFired) {
+	                audioVideoBlobs[recordingInterval].onDataAvailableEventFired = true;
+	                fireOnDataAvailableEvent(audioVideoBlobs[recordingInterval]);
+	            }
+	        };
+
+	        videoRecorder.ondataavailable = function(blob) {
+	            if (isMediaRecorder) {
+	                return self.ondataavailable({
+	                    video: blob,
+	                    audio: blob
+	                });
+	            }
+
+	            if (!audioVideoBlobs[recordingInterval]) {
+	                audioVideoBlobs[recordingInterval] = {};
+	            }
+
+	            audioVideoBlobs[recordingInterval].video = blob;
+
+	            if (audioVideoBlobs[recordingInterval].audio && !audioVideoBlobs[recordingInterval].onDataAvailableEventFired) {
+	                audioVideoBlobs[recordingInterval].onDataAvailableEventFired = true;
+	                fireOnDataAvailableEvent(audioVideoBlobs[recordingInterval]);
+	            }
+	        };
+
+	        function fireOnDataAvailableEvent(blobs) {
+	            recordingInterval++;
+	            self.ondataavailable(blobs);
+	        }
+
+	        videoRecorder.onstop = audioRecorder.onstop = function(error) {
+	            self.onstop(error);
+	        };
+
+	        if (!isMediaRecorder) {
+	            // to make sure both audio/video are synced.
+	            videoRecorder.onStartedDrawingNonBlankFrames = function() {
+	                videoRecorder.clearOldRecordedFrames();
+	                audioRecorder.start(timeSlice);
+	            };
+	            videoRecorder.start(timeSlice);
+	        } else {
+	            videoRecorder.start(timeSlice);
+	        }
+	    };
+
+	    this.stop = function() {
+	        if (audioRecorder) {
+	            audioRecorder.stop();
+	        }
+	        if (videoRecorder) {
+	            videoRecorder.stop();
+	        }
+	    };
+
+	    this.ondataavailable = function(blob) {
+	        console.log('ondataavailable..', blob);
+	    };
+
+	    this.onstop = function(error) {
+	        console.warn('stopped..', error);
+	    };
+
+	    this.pause = function() {
+	        if (audioRecorder) {
+	            audioRecorder.pause();
+	        }
+	        if (videoRecorder) {
+	            videoRecorder.pause();
+	        }
+	    };
+
+	    this.resume = function() {
+	        if (audioRecorder) {
+	            audioRecorder.resume();
+	        }
+	        if (videoRecorder) {
+	            videoRecorder.resume();
+	        }
+	    };
+
+	    var audioRecorder;
+	    var videoRecorder;
+
+	    var audioVideoBlobs = {};
+	    var recordingInterval = 0;
 	}
 
-	// Muaz Khan     - www.MuazKhan.com
-	// MIT License   - www.webrtc-experiment.com/licence
-	// Documentation - github.com/streamproc/MediaStreamRecorder
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.MultiStreamRecorder = MultiStreamRecorder;
+	}
 
 	// _____________________________
 	// Cross-Browser-Declarations.js
 
-	// animation-frame used in WebM recording
-	if (!window.requestAnimationFrame) {
-	    requestAnimationFrame = window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame;
+	var browserFakeUserAgent = 'Fake/5.0 (FakeOS) AppleWebKit/123 (KHTML, like Gecko) Fake/12.3.4567.89 Fake/123.45';
+
+	(function(that) {
+	    if (typeof window !== 'undefined') {
+	        return;
+	    }
+
+	    if (typeof window === 'undefined' && typeof global !== 'undefined') {
+	        global.navigator = {
+	            userAgent: browserFakeUserAgent,
+	            getUserMedia: function() {}
+	        };
+
+	        /*global window:true */
+	        that.window = global;
+	    } else if (typeof window === 'undefined') {
+	        // window = this;
+	    }
+
+	    if (typeof document === 'undefined') {
+	        /*global document:true */
+	        that.document = {};
+
+	        document.createElement = document.captureStream = document.mozCaptureStream = function() {
+	            return {};
+	        };
+	    }
+
+	    if (typeof location === 'undefined') {
+	        /*global location:true */
+	        that.location = {
+	            protocol: 'file:',
+	            href: '',
+	            hash: ''
+	        };
+	    }
+
+	    if (typeof screen === 'undefined') {
+	        /*global screen:true */
+	        that.screen = {
+	            width: 0,
+	            height: 0
+	        };
+	    }
+	})(typeof global !== 'undefined' ? global : window);
+
+	// WebAudio API representer
+	var AudioContext = window.AudioContext;
+
+	if (typeof AudioContext === 'undefined') {
+	    if (typeof webkitAudioContext !== 'undefined') {
+	        /*global AudioContext:true */
+	        AudioContext = webkitAudioContext;
+	    }
+
+	    if (typeof mozAudioContext !== 'undefined') {
+	        /*global AudioContext:true */
+	        AudioContext = mozAudioContext;
+	    }
 	}
 
-	if (!window.cancelAnimationFrame) {
-	    cancelAnimationFrame = window.webkitCancelAnimationFrame || window.mozCancelAnimationFrame;
+	if (typeof window === 'undefined') {
+	    /*jshint -W020 */
+	    window = {};
 	}
 
 	// WebAudio API representer
-	if (!window.AudioContext) {
-	    window.AudioContext = window.webkitAudioContext || window.mozAudioContext;
+	var AudioContext = window.AudioContext;
+
+	if (typeof AudioContext === 'undefined') {
+	    if (typeof webkitAudioContext !== 'undefined') {
+	        /*global AudioContext:true */
+	        AudioContext = webkitAudioContext;
+	    }
+
+	    if (typeof mozAudioContext !== 'undefined') {
+	        /*global AudioContext:true */
+	        AudioContext = mozAudioContext;
+	    }
 	}
 
-	URL = window.URL || window.webkitURL;
-	navigator.getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+	/*jshint -W079 */
+	var URL = window.URL;
 
-	if (window.webkitMediaStream) window.MediaStream = window.webkitMediaStream;
+	if (typeof URL === 'undefined' && typeof webkitURL !== 'undefined') {
+	    /*global URL:true */
+	    URL = webkitURL;
+	}
 
-	IsChrome = !!navigator.webkitGetUserMedia;
+	if (typeof navigator !== 'undefined') {
+	    if (typeof navigator.webkitGetUserMedia !== 'undefined') {
+	        navigator.getUserMedia = navigator.webkitGetUserMedia;
+	    }
+
+	    if (typeof navigator.mozGetUserMedia !== 'undefined') {
+	        navigator.getUserMedia = navigator.mozGetUserMedia;
+	    }
+	} else {
+	    navigator = {
+	        getUserMedia: function() {},
+	        userAgent: browserFakeUserAgent
+	    };
+	}
+
+	var IsEdge = navigator.userAgent.indexOf('Edge') !== -1 && (!!navigator.msSaveBlob || !!navigator.msSaveOrOpenBlob);
+
+	var IsOpera = false;
+	if (typeof opera !== 'undefined' && navigator.userAgent && navigator.userAgent.indexOf('OPR/') !== -1) {
+	    IsOpera = true;
+	}
+	var IsChrome = !IsEdge && !IsEdge && !!navigator.webkitGetUserMedia;
+
+	var MediaStream = window.MediaStream;
+
+	if (typeof MediaStream === 'undefined' && typeof webkitMediaStream !== 'undefined') {
+	    MediaStream = webkitMediaStream;
+	}
+
+	/*global MediaStream:true */
+	if (typeof MediaStream !== 'undefined') {
+	    if (!('getVideoTracks' in MediaStream.prototype)) {
+	        MediaStream.prototype.getVideoTracks = function() {
+	            if (!this.getTracks) {
+	                return [];
+	            }
+
+	            var tracks = [];
+	            this.getTracks.forEach(function(track) {
+	                if (track.kind.toString().indexOf('video') !== -1) {
+	                    tracks.push(track);
+	                }
+	            });
+	            return tracks;
+	        };
+
+	        MediaStream.prototype.getAudioTracks = function() {
+	            if (!this.getTracks) {
+	                return [];
+	            }
+
+	            var tracks = [];
+	            this.getTracks.forEach(function(track) {
+	                if (track.kind.toString().indexOf('audio') !== -1) {
+	                    tracks.push(track);
+	                }
+	            });
+	            return tracks;
+	        };
+	    }
+
+	    if (!('stop' in MediaStream.prototype)) {
+	        MediaStream.prototype.stop = function() {
+	            this.getAudioTracks().forEach(function(track) {
+	                if (!!track.stop) {
+	                    track.stop();
+	                }
+	            });
+
+	            this.getVideoTracks().forEach(function(track) {
+	                if (!!track.stop) {
+	                    track.stop();
+	                }
+	            });
+	        };
+	    }
+	}
+
+	if (typeof location !== 'undefined') {
+	    if (location.href.indexOf('file:') === 0) {
+	        console.error('Please load this HTML file on HTTP or HTTPS.');
+	    }
+	}
 
 	// Merge all other data-types except "function"
 
 	function mergeProps(mergein, mergeto) {
-	    mergeto = reformatProps(mergeto);
 	    for (var t in mergeto) {
 	        if (typeof mergeto[t] !== 'function') {
 	            mergein[t] = mergeto[t];
@@ -38914,16 +39084,130 @@ return /******/ (function(modules) { // webpackBootstrap
 	    return mergein;
 	}
 
-	function reformatProps(obj) {
-	    var output = {};
-	    for (var o in obj) {
-	        if (o.indexOf('-') != -1) {
-	            var splitted = o.split('-');
-	            var name = splitted[0] + splitted[1].split('')[0].toUpperCase() + splitted[1].substr(1);
-	            output[name] = obj[o];
-	        } else output[o] = obj[o];
+	// "dropFirstFrame" has been added by Graham Roth
+	// https://github.com/gsroth
+
+	function dropFirstFrame(arr) {
+	    arr.shift();
+	    return arr;
+	}
+
+	/**
+	 * @param {Blob} file - File or Blob object. This parameter is required.
+	 * @param {string} fileName - Optional file name e.g. "Recorded-Video.webm"
+	 * @example
+	 * invokeSaveAsDialog(blob or file, [optional] fileName);
+	 * @see {@link https://github.com/muaz-khan/RecordRTC|RecordRTC Source Code}
+	 */
+	function invokeSaveAsDialog(file, fileName) {
+	    if (!file) {
+	        throw 'Blob object is required.';
 	    }
-	    return output;
+
+	    if (!file.type) {
+	        try {
+	            file.type = 'video/webm';
+	        } catch (e) {}
+	    }
+
+	    var fileExtension = (file.type || 'video/webm').split('/')[1];
+
+	    if (fileName && fileName.indexOf('.') !== -1) {
+	        var splitted = fileName.split('.');
+	        fileName = splitted[0];
+	        fileExtension = splitted[1];
+	    }
+
+	    var fileFullName = (fileName || (Math.round(Math.random() * 9999999999) + 888888888)) + '.' + fileExtension;
+
+	    if (typeof navigator.msSaveOrOpenBlob !== 'undefined') {
+	        return navigator.msSaveOrOpenBlob(file, fileFullName);
+	    } else if (typeof navigator.msSaveBlob !== 'undefined') {
+	        return navigator.msSaveBlob(file, fileFullName);
+	    }
+
+	    var hyperlink = document.createElement('a');
+	    hyperlink.href = URL.createObjectURL(file);
+	    hyperlink.target = '_blank';
+	    hyperlink.download = fileFullName;
+
+	    if (!!navigator.mozGetUserMedia) {
+	        hyperlink.onclick = function() {
+	            (document.body || document.documentElement).removeChild(hyperlink);
+	        };
+	        (document.body || document.documentElement).appendChild(hyperlink);
+	    }
+
+	    var evt = new MouseEvent('click', {
+	        view: window,
+	        bubbles: true,
+	        cancelable: true
+	    });
+
+	    hyperlink.dispatchEvent(evt);
+
+	    if (!navigator.mozGetUserMedia) {
+	        URL.revokeObjectURL(hyperlink.href);
+	    }
+	}
+
+	function bytesToSize(bytes) {
+	    var k = 1000;
+	    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+	    if (bytes === 0) {
+	        return '0 Bytes';
+	    }
+	    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
+	    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+	}
+
+	// ______________ (used to handle stuff like http://goo.gl/xmE5eg) issue #129
+	// ObjectStore.js
+	var ObjectStore = {
+	    AudioContext: AudioContext
+	};
+
+	function isMediaRecorderCompatible() {
+	    var isOpera = !!window.opera || navigator.userAgent.indexOf(' OPR/') >= 0;
+	    var isChrome = !!window.chrome && !isOpera;
+	    var isFirefox = typeof window.InstallTrigger !== 'undefined';
+
+	    if (isFirefox) {
+	        return true;
+	    }
+
+	    if (!isChrome) {
+	        return false;
+	    }
+
+	    var nVer = navigator.appVersion;
+	    var nAgt = navigator.userAgent;
+	    var fullVersion = '' + parseFloat(navigator.appVersion);
+	    var majorVersion = parseInt(navigator.appVersion, 10);
+	    var nameOffset, verOffset, ix;
+
+	    if (isChrome) {
+	        verOffset = nAgt.indexOf('Chrome');
+	        fullVersion = nAgt.substring(verOffset + 7);
+	    }
+
+	    // trim the fullVersion string at semicolon/space if present
+	    if ((ix = fullVersion.indexOf(';')) !== -1) {
+	        fullVersion = fullVersion.substring(0, ix);
+	    }
+
+	    if ((ix = fullVersion.indexOf(' ')) !== -1) {
+	        fullVersion = fullVersion.substring(0, ix);
+	    }
+
+	    majorVersion = parseInt('' + fullVersion, 10);
+
+	    if (isNaN(majorVersion)) {
+	        fullVersion = '' + parseFloat(navigator.appVersion);
+	        majorVersion = parseInt(navigator.appVersion, 10);
+	    }
+
+	    return majorVersion >= 49;
 	}
 
 	// ______________ (used to handle stuff like http://goo.gl/xmE5eg) issue #129
@@ -38932,7 +39216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    AudioContext: window.AudioContext || window.webkitAudioContext
 	};
 
-	// ================
+	// ==================
 	// MediaRecorder.js
 
 	/**
@@ -38947,164 +39231,381 @@ return /******/ (function(modules) { // webpackBootstrap
 	 */
 
 	function MediaRecorderWrapper(mediaStream) {
-	    // if user chosen only audio option; and he tried to pass MediaStream with
-	    // both audio and video tracks;
-	    // using a dirty workaround to generate audio-only stream so that we can get audio/ogg output.
-	    if (this.type == 'audio' && mediaStream.getVideoTracks && mediaStream.getVideoTracks().length && !navigator.mozGetUserMedia) {
-	        var context = new AudioContext();
-	        var mediaStreamSource = context.createMediaStreamSource(mediaStream);
-
-	        var destination = context.createMediaStreamDestination();
-	        mediaStreamSource.connect(destination);
-
-	        mediaStream = destination.stream;
-	    }
-
-	    // void start(optional long timeSlice)
-	    // timestamp to fire "ondataavailable"
-
-	    // starting a recording session; which will initiate "Reading Thread"
-	    // "Reading Thread" are used to prevent main-thread blocking scenarios
-	    this.start = function (mTimeSlice) {
-	        mTimeSlice = mTimeSlice || 1000;
-	        isStopRecording = false;
-
-	        function startRecording() {
-	            if (isStopRecording) return;
-
-	            mediaRecorder = new MediaRecorder(mediaStream);
-
-	            mediaRecorder.ondataavailable = function (e) {
-	                console.log('ondataavailable', e.data.type, e.data.size, e.data);
-	                // mediaRecorder.state == 'recording' means that media recorder is associated with "session"
-	                // mediaRecorder.state == 'stopped' means that media recorder is detached from the "session" ... in this case; "session" will also be deleted.
-
-	                if (!e.data.size) {
-	                    console.warn('Recording of', e.data.type, 'failed.');
-	                    return;
-	                }
-
-	                // at this stage, Firefox MediaRecorder API doesn't allow to choose the output mimeType format!
-	                var blob = new window.Blob([e.data], {
-	                    type: e.data.type || self.mimeType || 'audio/ogg' // It specifies the container format as well as the audio and video capture formats.
-	                });
-
-	                // Dispatching OnDataAvailable Handler
-	                self.ondataavailable(blob);
-	            };
-
-	            mediaRecorder.onstop = function (error) {
-	                // for video recording on Firefox, it will be fired quickly.
-	                // because work on VideoFrameContainer is still in progress
-	                // https://wiki.mozilla.org/Gecko:MediaRecorder
-
-	                // self.onstop(error);
-	            };
-
-	            // http://www.w3.org/TR/2012/WD-dom-20121206/#error-names-table
-	            // showBrowserSpecificIndicator: got neither video nor audio access
-	            // "VideoFrameContainer" can't be accessed directly; unable to find any wrapper using it.
-	            // that's why there is no video recording support on firefox
-
-	            // video recording fails because there is no encoder available there
-	            // http://dxr.mozilla.org/mozilla-central/source/content/media/MediaRecorder.cpp#317
-
-	            // Maybe "Read Thread" doesn't fire video-track read notification;
-	            // that's why shutdown notification is received; and "Read Thread" is stopped.
-
-	            // https://dvcs.w3.org/hg/dap/raw-file/default/media-stream-capture/MediaRecorder.html#error-handling
-	            mediaRecorder.onerror = function (error) {
-	                console.error(error);
-	                self.start(mTimeSlice);
-	            };
-
-	            mediaRecorder.onwarning = function (warning) {
-	                console.warn(warning);
-	            };
-
-	            // void start(optional long mTimeSlice)
-	            // The interval of passing encoded data from EncodedBufferCache to onDataAvailable
-	            // handler. "mTimeSlice < 0" means Session object does not push encoded data to
-	            // onDataAvailable, instead, it passive wait the client side pull encoded data
-	            // by calling requestData API.
-	            mediaRecorder.start(0);
-
-	            // Start recording. If timeSlice has been provided, mediaRecorder will
-	            // raise a dataavailable event containing the Blob of collected data on every timeSlice milliseconds.
-	            // If timeSlice isn't provided, UA should call the RequestData to obtain the Blob data, also set the mTimeSlice to zero.
-
-	            setTimeout(function () {
-	                mediaRecorder.stop();
-	                startRecording();
-	            }, mTimeSlice);
-	        }
-
-	        // dirty workaround to fix Firefox 2nd+ intervals
-	        startRecording();
-	    };
-
-	    var isStopRecording = false;
-
-	    this.stop = function () {
-	        isStopRecording = true;
-
-	        if (self.onstop) {
-	            self.onstop({});
-	        }
-	    };
-
-	    this.ondataavailable = this.onstop = function () {};
-
-	    // Reference to itself
 	    var self = this;
 
-	    if (!self.mimeType && !!mediaStream.getAudioTracks) {
-	        self.mimeType = mediaStream.getAudioTracks().length && mediaStream.getVideoTracks().length ? 'video/webm' : 'audio/ogg';
+	    /**
+	     * This method records MediaStream.
+	     * @method
+	     * @memberof MediaStreamRecorder
+	     * @example
+	     * recorder.record();
+	     */
+	    this.start = function(timeSlice, __disableLogs) {
+	        if (!self.mimeType) {
+	            self.mimeType = 'video/webm';
+	        }
+
+	        if (self.mimeType.indexOf('audio') !== -1) {
+	            if (mediaStream.getVideoTracks().length && mediaStream.getAudioTracks().length) {
+	                var stream;
+	                if (!!navigator.mozGetUserMedia) {
+	                    stream = new MediaStream();
+	                    stream.addTrack(mediaStream.getAudioTracks()[0]);
+	                } else {
+	                    // webkitMediaStream
+	                    stream = new MediaStream(mediaStream.getAudioTracks());
+	                }
+	                mediaStream = stream;
+	            }
+	        }
+
+	        if (self.mimeType.indexOf('audio') !== -1) {
+	            self.mimeType = IsChrome ? 'audio/webm' : 'audio/ogg';
+	        }
+
+	        self.dontFireOnDataAvailableEvent = false;
+
+	        var recorderHints = {
+	            mimeType: self.mimeType
+	        };
+
+	        if (!self.disableLogs && !__disableLogs) {
+	            console.log('Passing following params over MediaRecorder API.', recorderHints);
+	        }
+
+	        if (mediaRecorder) {
+	            // mandatory to make sure Firefox doesn't fails to record streams 3-4 times without reloading the page.
+	            mediaRecorder = null;
+	        }
+
+	        if (IsChrome && !isMediaRecorderCompatible()) {
+	            // to support video-only recording on stable
+	            recorderHints = 'video/vp8';
+	        }
+
+	        // http://dxr.mozilla.org/mozilla-central/source/content/media/MediaRecorder.cpp
+	        // https://wiki.mozilla.org/Gecko:MediaRecorder
+	        // https://dvcs.w3.org/hg/dap/raw-file/default/media-stream-capture/MediaRecorder.html
+
+	        // starting a recording session; which will initiate "Reading Thread"
+	        // "Reading Thread" are used to prevent main-thread blocking scenarios
+	        try {
+	            mediaRecorder = new MediaRecorder(mediaStream, recorderHints);
+	        } catch (e) {
+	            // if someone passed NON_supported mimeType
+	            // or if Firefox on Android
+	            mediaRecorder = new MediaRecorder(mediaStream);
+	        }
+
+	        if ('canRecordMimeType' in mediaRecorder && mediaRecorder.canRecordMimeType(self.mimeType) === false) {
+	            if (!self.disableLogs) {
+	                console.warn('MediaRecorder API seems unable to record mimeType:', self.mimeType);
+	            }
+	        }
+
+	        // i.e. stop recording when <video> is paused by the user; and auto restart recording 
+	        // when video is resumed. E.g. yourStream.getVideoTracks()[0].muted = true; // it will auto-stop recording.
+	        mediaRecorder.ignoreMutedMedia = self.ignoreMutedMedia || false;
+
+	        var firedOnDataAvailableOnce = false;
+
+	        // Dispatching OnDataAvailable Handler
+	        mediaRecorder.ondataavailable = function(e) {
+	            if (self.dontFireOnDataAvailableEvent) {
+	                return;
+	            }
+
+	            // how to fix FF-corrupt-webm issues?
+	            // should we leave this?          e.data.size < 26800
+	            if (!e.data || !e.data.size || e.data.size < 26800 || firedOnDataAvailableOnce) {
+	                return;
+	            }
+
+	            firedOnDataAvailableOnce = true;
+
+	            var blob = self.getNativeBlob ? e.data : new Blob([e.data], {
+	                type: self.mimeType || 'video/webm'
+	            });
+
+	            self.ondataavailable(blob);
+
+	            self.dontFireOnDataAvailableEvent = true;
+
+	            if (!!mediaRecorder) {
+	                mediaRecorder.stop();
+	                mediaRecorder = null;
+	            }
+
+	            // record next interval
+	            self.start(timeSlice, '__disableLogs');
+	        };
+
+	        mediaRecorder.onerror = function(error) {
+	            if (!self.disableLogs) {
+	                if (error.name === 'InvalidState') {
+	                    console.error('The MediaRecorder is not in a state in which the proposed operation is allowed to be executed.');
+	                } else if (error.name === 'OutOfMemory') {
+	                    console.error('The UA has exhaused the available memory. User agents SHOULD provide as much additional information as possible in the message attribute.');
+	                } else if (error.name === 'IllegalStreamModification') {
+	                    console.error('A modification to the stream has occurred that makes it impossible to continue recording. An example would be the addition of a Track while recording is occurring. User agents SHOULD provide as much additional information as possible in the message attribute.');
+	                } else if (error.name === 'OtherRecordingError') {
+	                    console.error('Used for an fatal error other than those listed above. User agents SHOULD provide as much additional information as possible in the message attribute.');
+	                } else if (error.name === 'GenericError') {
+	                    console.error('The UA cannot provide the codec or recording option that has been requested.', error);
+	                } else {
+	                    console.error('MediaRecorder Error', error);
+	                }
+	            }
+
+	            // When the stream is "ended" set recording to 'inactive' 
+	            // and stop gathering data. Callers should not rely on 
+	            // exactness of the timeSlice value, especially 
+	            // if the timeSlice value is small. Callers should 
+	            // consider timeSlice as a minimum value
+
+	            if (!!mediaRecorder && mediaRecorder.state !== 'inactive' && mediaRecorder.state !== 'stopped') {
+	                mediaRecorder.stop();
+	            }
+	        };
+
+	        // void start(optional long mTimeSlice)
+	        // The interval of passing encoded data from EncodedBufferCache to onDataAvailable
+	        // handler. "mTimeSlice < 0" means Session object does not push encoded data to
+	        // onDataAvailable, instead, it passive wait the client side pull encoded data
+	        // by calling requestData API.
+	        try {
+	            mediaRecorder.start(3.6e+6);
+	        } catch (e) {
+	            mediaRecorder = null;
+	        }
+
+	        setTimeout(function() {
+	            if (!mediaRecorder) {
+	                return;
+	            }
+
+	            if (mediaRecorder.state === 'recording') {
+	                // "stop" method auto invokes "requestData"!
+	                mediaRecorder.requestData();
+	                // mediaRecorder.stop();
+	            }
+	        }, timeSlice);
+
+	        // Start recording. If timeSlice has been provided, mediaRecorder will
+	        // raise a dataavailable event containing the Blob of collected data on every timeSlice milliseconds.
+	        // If timeSlice isn't provided, UA should call the RequestData to obtain the Blob data, also set the mTimeSlice to zero.
+	    };
+
+	    /**
+	     * This method stops recording MediaStream.
+	     * @param {function} callback - Callback function, that is used to pass recorded blob back to the callee.
+	     * @method
+	     * @memberof MediaStreamRecorder
+	     * @example
+	     * recorder.stop(function(blob) {
+	     *     video.src = URL.createObjectURL(blob);
+	     * });
+	     */
+	    this.stop = function(callback) {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        // mediaRecorder.state === 'recording' means that media recorder is associated with "session"
+	        // mediaRecorder.state === 'stopped' means that media recorder is detached from the "session" ... in this case; "session" will also be deleted.
+
+	        if (mediaRecorder.state === 'recording') {
+	            // "stop" method auto invokes "requestData"!
+	            mediaRecorder.requestData();
+
+	            setTimeout(function() {
+	                self.dontFireOnDataAvailableEvent = true;
+	                if (!!mediaRecorder && mediaRecorder.state === 'recording') {
+	                    mediaRecorder.stop();
+	                }
+	                mediaRecorder = null;
+	            }, 2000);
+	        }
+	    };
+
+	    /**
+	     * This method pauses the recording process.
+	     * @method
+	     * @memberof MediaStreamRecorder
+	     * @example
+	     * recorder.pause();
+	     */
+	    this.pause = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        if (mediaRecorder.state === 'recording') {
+	            mediaRecorder.pause();
+	        }
+	    };
+
+	    /**
+	     * The recorded blobs are passed over this event.
+	     * @event
+	     * @memberof MediaStreamRecorder
+	     * @example
+	     * recorder.ondataavailable = function(data) {};
+	     */
+	    this.ondataavailable = function(blob) {
+	        console.log('recorded-blob', blob);
+	    };
+
+	    /**
+	     * This method resumes the recording process.
+	     * @method
+	     * @memberof MediaStreamRecorder
+	     * @example
+	     * recorder.resume();
+	     */
+	    this.resume = function() {
+	        if (this.dontFireOnDataAvailableEvent) {
+	            this.dontFireOnDataAvailableEvent = false;
+
+	            var disableLogs = self.disableLogs;
+	            self.disableLogs = true;
+	            this.record();
+	            self.disableLogs = disableLogs;
+	            return;
+	        }
+
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        if (mediaRecorder.state === 'paused') {
+	            mediaRecorder.resume();
+	        }
+	    };
+
+	    /**
+	     * This method resets currently recorded data.
+	     * @method
+	     * @memberof MediaStreamRecorder
+	     * @example
+	     * recorder.clearRecordedData();
+	     */
+	    this.clearRecordedData = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        this.pause();
+
+	        this.dontFireOnDataAvailableEvent = true;
+	        this.stop();
+	    };
+
+	    // Reference to "MediaRecorder" object
+	    var mediaRecorder;
+
+	    function isMediaStreamActive() {
+	        if ('active' in mediaStream) {
+	            if (!mediaStream.active) {
+	                return false;
+	            }
+	        } else if ('ended' in mediaStream) { // old hack
+	            if (mediaStream.ended) {
+	                return false;
+	            }
+	        }
+	        return true;
 	    }
 
-	    // Reference to "MediaRecorderWrapper" object
-	    var mediaRecorder;
-	}
-	module.exports.MediaRecorderWrapper = MediaRecorderWrapper;
-	// =================
-	// StereoRecorder.js
+	    // this method checks if media stream is stopped
+	    // or any track is ended.
+	    (function looper() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
 
-	function StereoRecorder(mediaStream) {
+	        if (isMediaStreamActive() === false) {
+	            self.stop();
+	            return;
+	        }
+
+	        setTimeout(looper, 1000); // check every second
+	    })();
+	}
+
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.MediaRecorderWrapper = MediaRecorderWrapper;
+	}
+
+	// ======================
+	// StereoAudioRecorder.js
+
+	function StereoAudioRecorder(mediaStream) {
 	    // void start(optional long timeSlice)
 	    // timestamp to fire "ondataavailable"
-	    this.start = function (timeSlice) {
+	    this.start = function(timeSlice) {
 	        timeSlice = timeSlice || 1000;
 
-	        mediaRecorder = new StereoAudioRecorder(mediaStream, this);
+	        mediaRecorder = new StereoAudioRecorderHelper(mediaStream, this);
 
 	        mediaRecorder.record();
 
-	        timeout = setInterval(function () {
+	        timeout = setInterval(function() {
 	            mediaRecorder.requestData();
 	        }, timeSlice);
 	    };
 
-	    this.stop = function () {
+	    this.stop = function() {
 	        if (mediaRecorder) {
 	            mediaRecorder.stop();
 	            clearTimeout(timeout);
 	        }
 	    };
 
-	    this.ondataavailable = function () {};
+	    this.pause = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        mediaRecorder.pause();
+	    };
+
+	    this.resume = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        mediaRecorder.resume();
+	    };
+
+	    this.ondataavailable = function() {};
 
 	    // Reference to "StereoAudioRecorder" object
 	    var mediaRecorder;
 	    var timeout;
 	}
-	module.exports.StereoRecorder = StereoRecorder;
-	// ======================
-	// StereoAudioRecorder.js
+
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.StereoAudioRecorder = StereoAudioRecorder;
+	}
+
+	// ============================
+	// StereoAudioRecorderHelper.js
 
 	// source code from: http://typedarray.org/wp-content/projects/WebAudioRecorder/script.js
 
-	function StereoAudioRecorder(mediaStream, root) {
-	    // variables
+	function StereoAudioRecorderHelper(mediaStream, root) {
+
+	    // variables    
+	    var deviceSampleRate = 44100; // range: 22050 to 96000
+
+	    if (!ObjectStore.AudioContextConstructor) {
+	        ObjectStore.AudioContextConstructor = new ObjectStore.AudioContext();
+	    }
+
+	    // check device sample rate
+	    deviceSampleRate = ObjectStore.AudioContextConstructor.sampleRate;
+
 	    var leftchannel = [];
 	    var rightchannel = [];
 	    var scriptprocessornode;
@@ -39112,30 +39613,37 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var recordingLength = 0;
 	    var volume;
 	    var audioInput;
-	    var sampleRate = root.sampleRate || 44100; // range: 22050 to 96000
-	    var audioContext;
+	    var sampleRate = root.sampleRate || deviceSampleRate;
+
+	    var mimeType = root.mimeType || 'audio/wav';
+	    var isPCM = mimeType.indexOf('audio/pcm') > -1;
+
 	    var context;
 
 	    var numChannels = root.audioChannels || 2;
 
-	    this.record = function () {
+	    this.record = function() {
 	        recording = true;
 	        // reset the buffers for the new recording
 	        leftchannel.length = rightchannel.length = 0;
 	        recordingLength = 0;
 	    };
 
-	    this.requestData = function () {
-	        if (recordingLength == 0) {
+	    this.requestData = function() {
+	        if (isPaused) {
+	            return;
+	        }
+
+	        if (recordingLength === 0) {
 	            requestDataInvoked = false;
 	            return;
 	        }
 
 	        requestDataInvoked = true;
 	        // clone stuff
-	        var internal_leftchannel = leftchannel.slice(0);
-	        var internal_rightchannel = rightchannel.slice(0);
-	        var internal_recordingLength = recordingLength;
+	        var internalLeftChannel = leftchannel.slice(0);
+	        var internalRightChannel = rightchannel.slice(0);
+	        var internalRecordingLength = recordingLength;
 
 	        // reset the buffers for the new recording
 	        leftchannel.length = rightchannel.length = [];
@@ -39143,14 +39651,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        requestDataInvoked = false;
 
 	        // we flat the left and right channels down
-	        var leftBuffer = mergeBuffers(internal_leftchannel, internal_recordingLength);
-	        var rightBuffer = mergeBuffers(internal_leftchannel, internal_recordingLength);
+	        var leftBuffer = mergeBuffers(internalLeftChannel, internalRecordingLength);
+
+	        var interleaved = leftBuffer;
 
 	        // we interleave both channels together
 	        if (numChannels === 2) {
-	            var interleaved = interleave(leftBuffer, rightBuffer);
-	        } else {
-	            var interleaved = leftBuffer;
+	            var rightBuffer = mergeBuffers(internalRightChannel, internalRecordingLength); // bug fixed via #70,#71
+	            interleaved = interleave(leftBuffer, rightBuffer);
+	        }
+
+	        if (isPCM) {
+	            // our final binary blob
+	            var blob = new Blob([convertoFloat32ToInt16(interleaved)], {
+	                type: 'audio/pcm'
+	            });
+
+	            console.debug('audio recorded blob size:', bytesToSize(blob.size));
+	            root.ondataavailable(blob);
+	            return;
 	        }
 
 	        // we create our wav file
@@ -39159,7 +39678,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // RIFF chunk descriptor
 	        writeUTFBytes(view, 0, 'RIFF');
-	        view.setUint32(4, 44 + interleaved.length * 2, true);
+
+	        // -8 (via #97)
+	        view.setUint32(4, 44 + interleaved.length * 2 - 8, true);
+
 	        writeUTFBytes(view, 8, 'WAVE');
 	        // FMT sub-chunk
 	        writeUTFBytes(view, 12, 'fmt ');
@@ -39168,7 +39690,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // stereo (2 channels)
 	        view.setUint16(22, numChannels, true);
 	        view.setUint32(24, sampleRate, true);
-	        view.setUint32(28, sampleRate * 4, true);
+	        view.setUint32(28, sampleRate * numChannels * 2, true); // numChannels * 2 (via #71)
 	        view.setUint16(32, numChannels * 2, true);
 	        view.setUint16(34, 16, true);
 	        // data sub-chunk
@@ -39194,10 +39716,12 @@ return /******/ (function(modules) { // webpackBootstrap
 	        root.ondataavailable(blob);
 	    };
 
-	    this.stop = function () {
+	    this.stop = function() {
 	        // we stop recording
 	        recording = false;
 	        this.requestData();
+
+	        audioInput.disconnect();
 	    };
 
 	    function interleave(leftChannel, rightChannel) {
@@ -39233,22 +39757,26 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    }
 
-	    // creates the audio context
+	    function convertoFloat32ToInt16(buffer) {
+	        var l = buffer.length;
+	        var buf = new Int16Array(l)
+
+	        while (l--) {
+	            buf[l] = buffer[l] * 0xFFFF; //convert to 16 bit
+	        }
+	        return buf.buffer
+	    }
 
 	    // creates the audio context
-	    var audioContext = ObjectStore.AudioContext;
-
-	    if (!ObjectStore.AudioContextConstructor) ObjectStore.AudioContextConstructor = new audioContext();
-
 	    var context = ObjectStore.AudioContextConstructor;
 
 	    // creates a gain node
-	    if (!ObjectStore.VolumeGainNode) ObjectStore.VolumeGainNode = context.createGain();
+	    ObjectStore.VolumeGainNode = context.createGain();
 
 	    var volume = ObjectStore.VolumeGainNode;
 
 	    // creates an audio node from the microphone incoming stream
-	    if (!ObjectStore.AudioInput) ObjectStore.AudioInput = context.createMediaStreamSource(mediaStream);
+	    ObjectStore.AudioInput = context.createMediaStreamSource(mediaStream);
 
 	    // creates an audio node from the microphone incoming stream
 	    var audioInput = ObjectStore.AudioInput;
@@ -39262,7 +39790,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	    Higher values will be necessary to avoid audio breakup and glitches 
 	    Legal values are 256, 512, 1024, 2048, 4096, 8192, and 16384.*/
 	    var bufferSize = root.bufferSize || 2048;
-	    if (root.bufferSize == 0) bufferSize = 0;
+	    if (root.bufferSize === 0) {
+	        bufferSize = 0;
+	    }
 
 	    if (context.createJavaScriptNode) {
 	        scriptprocessornode = context.createJavaScriptNode(bufferSize, numChannels, numChannels);
@@ -39284,18 +39814,30 @@ return /******/ (function(modules) { // webpackBootstrap
 	    // below global-scope variable is added to debug such unexpected but "rare" cases.
 	    window.scriptprocessornode = scriptprocessornode;
 
-	    if (numChannels == 1) {
+	    if (numChannels === 1) {
 	        console.debug('All right-channels are skipped.');
 	    }
 
+	    var isPaused = false;
+
+	    this.pause = function() {
+	        isPaused = true;
+	    };
+
+	    this.resume = function() {
+	        isPaused = false;
+	    };
+
 	    // http://webaudio.github.io/web-audio-api/#the-scriptprocessornode-interface
-	    scriptprocessornode.onaudioprocess = function (e) {
-	        if (!recording || requestDataInvoked) return;
+	    scriptprocessornode.onaudioprocess = function(e) {
+	        if (!recording || requestDataInvoked || isPaused) {
+	            return;
+	        }
 
 	        var left = e.inputBuffer.getChannelData(0);
 	        leftchannel.push(new Float32Array(left));
 
-	        if (numChannels == 2) {
+	        if (numChannels === 2) {
 	            var right = e.inputBuffer.getChannelData(1);
 	            rightchannel.push(new Float32Array(right));
 	        }
@@ -39306,17 +39848,93 @@ return /******/ (function(modules) { // webpackBootstrap
 	    scriptprocessornode.connect(context.destination);
 	}
 
-	// =======================
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.StereoAudioRecorderHelper = StereoAudioRecorderHelper;
+	}
+
+	// ===================
+	// WhammyRecorder.js
+
+	function WhammyRecorder(mediaStream) {
+	    // void start(optional long timeSlice)
+	    // timestamp to fire "ondataavailable"
+	    this.start = function(timeSlice) {
+	        timeSlice = timeSlice || 1000;
+
+	        mediaRecorder = new WhammyRecorderHelper(mediaStream, this);
+
+	        for (var prop in this) {
+	            if (typeof this[prop] !== 'function') {
+	                mediaRecorder[prop] = this[prop];
+	            }
+	        }
+
+	        mediaRecorder.record();
+
+	        timeout = setInterval(function() {
+	            mediaRecorder.requestData();
+	        }, timeSlice);
+	    };
+
+	    this.stop = function() {
+	        if (mediaRecorder) {
+	            mediaRecorder.stop();
+	            clearTimeout(timeout);
+	        }
+	    };
+
+	    this.clearOldRecordedFrames = function() {
+	        if (mediaRecorder) {
+	            mediaRecorder.clearOldRecordedFrames();
+	        }
+	    };
+
+	    this.pause = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        mediaRecorder.pause();
+	    };
+
+	    this.resume = function() {
+	        if (!mediaRecorder) {
+	            return;
+	        }
+
+	        mediaRecorder.resume();
+	    };
+
+	    this.ondataavailable = function() {};
+
+	    // Reference to "WhammyRecorder" object
+	    var mediaRecorder;
+	    var timeout;
+	}
+
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.WhammyRecorder = WhammyRecorder;
+	}
+
+	// ==========================
 	// WhammyRecorderHelper.js
 
 	function WhammyRecorderHelper(mediaStream, root) {
-	    this.record = function (timeSlice) {
-	        if (!this.width) this.width = 320;
-	        if (!this.height) this.height = 240;
+	    this.record = function(timeSlice) {
+	        if (!this.width) {
+	            this.width = 320;
+	        }
+	        if (!this.height) {
+	            this.height = 240;
+	        }
 
 	        if (this.video && this.video instanceof HTMLVideoElement) {
-	            if (!this.width) this.width = video.videoWidth || video.clientWidth || 320;
-	            if (!this.height) this.height = video.videoHeight || video.clientHeight || 240;
+	            if (!this.width) {
+	                this.width = video.videoWidth || video.clientWidth || 320;
+	            }
+	            if (!this.height) {
+	                this.height = video.videoHeight || video.clientHeight || 240;
+	            }
 	        }
 
 	        if (!this.video) {
@@ -39338,6 +39956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // setting defaults
 	        if (this.video && this.video instanceof HTMLVideoElement) {
+	            this.isHTMLObject = true;
 	            video = this.video.cloneNode();
 	        } else {
 	            video = document.createElement('video');
@@ -39351,7 +39970,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        video.play();
 
 	        lastTime = new Date().getTime();
-	        whammy = new Whammy.Video();
+	        whammy = new Whammy.Video(root.speed, root.quality);
 
 	        console.log('canvas resolutions', canvas.width, '*', canvas.height);
 	        console.log('video width/height', video.width || canvas.width, '*', video.height || canvas.height);
@@ -39359,56 +39978,78 @@ return /******/ (function(modules) { // webpackBootstrap
 	        drawFrames();
 	    };
 
-	    this.clearOldRecordedFrames = function () {
-	        frames = [];
+	    this.clearOldRecordedFrames = function() {
+	        whammy.frames = [];
 	    };
 
 	    var requestDataInvoked = false;
-	    this.requestData = function () {
-	        if (!frames.length) {
+	    this.requestData = function() {
+	        if (isPaused) {
+	            return;
+	        }
+
+	        if (!whammy.frames.length) {
 	            requestDataInvoked = false;
 	            return;
 	        }
 
 	        requestDataInvoked = true;
 	        // clone stuff
-	        var internal_frames = frames.slice(0);
+	        var internalFrames = whammy.frames.slice(0);
 
 	        // reset the frames for the new recording
-	        frames = [];
 
-	        whammy.frames = dropBlackFrames(internal_frames, -1);
+	        whammy.frames = dropBlackFrames(internalFrames, -1);
 
-	        var WebM_Blob = whammy.compile();
-	        root.ondataavailable(WebM_Blob);
+	        whammy.compile(function(whammyBlob) {
+	            root.ondataavailable(whammyBlob);
+	            console.debug('video recorded blob size:', bytesToSize(whammyBlob.size));
+	        });
 
-	        console.debug('video recorded blob size:', bytesToSize(WebM_Blob.size));
+	        whammy.frames = [];
 
 	        requestDataInvoked = false;
 	    };
 
-	    var frames = [];
-
 	    var isOnStartedDrawingNonBlankFramesInvoked = false;
 
 	    function drawFrames() {
-	        if (isStopDrawing) return;
+	        if (isPaused) {
+	            lastTime = new Date().getTime();
+	            setTimeout(drawFrames, 500);
+	            return;
+	        }
 
-	        if (requestDataInvoked) return setTimeout(drawFrames, 100);
+	        if (isStopDrawing) {
+	            return;
+	        }
+
+	        if (requestDataInvoked) {
+	            return setTimeout(drawFrames, 100);
+	        }
 
 	        var duration = new Date().getTime() - lastTime;
-	        if (!duration) return drawFrames();
+	        if (!duration) {
+	            return drawFrames();
+	        }
 
 	        // via webrtc-experiment#206, by Jack i.e. @Seymourr
 	        lastTime = new Date().getTime();
 
-	        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-	        !isStopDrawing && frames.push({
-	            duration: duration,
-	            image: canvas.toDataURL('image/webp')
-	        });
+	        if (!self.isHTMLObject && video.paused) {
+	            video.play(); // Android
+	        }
 
-	        if (!isOnStartedDrawingNonBlankFramesInvoked && !isBlankFrame(frames[frames.length - 1])) {
+	        context.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+	        if (!isStopDrawing) {
+	            whammy.frames.push({
+	                duration: duration,
+	                image: canvas.toDataURL('image/webp')
+	            });
+	        }
+
+	        if (!isOnStartedDrawingNonBlankFramesInvoked && !isBlankFrame(whammy.frames[whammy.frames.length - 1])) {
 	            isOnStartedDrawingNonBlankFramesInvoked = true;
 	            root.onStartedDrawingNonBlankFrames();
 	        }
@@ -39418,7 +40059,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var isStopDrawing = false;
 
-	    this.stop = function () {
+	    this.stop = function() {
 	        isStopDrawing = true;
 	        this.requestData();
 	    };
@@ -39443,7 +40084,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	            g: 0,
 	            b: 0
 	        };
-	        var maxColorDifference = Math.sqrt(Math.pow(255, 2) + Math.pow(255, 2) + Math.pow(255, 2));
+	        var maxColorDifference = Math.sqrt(
+	            Math.pow(255, 2) +
+	            Math.pow(255, 2) +
+	            Math.pow(255, 2)
+	        );
 	        var pixTolerance = _pixTolerance && _pixTolerance >= 0 && _pixTolerance <= 1 ? _pixTolerance : 0;
 	        var frameTolerance = _frameTolerance && _frameTolerance >= 0 && _frameTolerance <= 1 ? _frameTolerance : 0;
 
@@ -39463,7 +40108,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                g: imageData.data[pix + 1],
 	                b: imageData.data[pix + 2]
 	            };
-	            var colorDifference = Math.sqrt(Math.pow(currentColor.r - sampleColor.r, 2) + Math.pow(currentColor.g - sampleColor.g, 2) + Math.pow(currentColor.b - sampleColor.b, 2));
+	            var colorDifference = Math.sqrt(
+	                Math.pow(currentColor.r - sampleColor.r, 2) +
+	                Math.pow(currentColor.g - sampleColor.g, 2) +
+	                Math.pow(currentColor.b - sampleColor.b, 2)
+	            );
 	            // difference in color it is difference in color vectors (r1,g1,b1) <=> (r2,g2,b2)
 	            if (colorDifference <= maxColorDifference * pixTolerance) {
 	                matchPixCount++;
@@ -39485,13 +40134,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var resultFrames = [];
 
 	        var checkUntilNotBlack = _framesToCheck === -1;
-	        var endCheckFrame = _framesToCheck && _framesToCheck > 0 && _framesToCheck <= _frames.length ? _framesToCheck : _frames.length;
+	        var endCheckFrame = (_framesToCheck && _framesToCheck > 0 && _framesToCheck <= _frames.length) ?
+	            _framesToCheck : _frames.length;
 	        var sampleColor = {
 	            r: 0,
 	            g: 0,
 	            b: 0
 	        };
-	        var maxColorDifference = Math.sqrt(Math.pow(255, 2) + Math.pow(255, 2) + Math.pow(255, 2));
+	        var maxColorDifference = Math.sqrt(
+	            Math.pow(255, 2) +
+	            Math.pow(255, 2) +
+	            Math.pow(255, 2)
+	        );
 	        var pixTolerance = _pixTolerance && _pixTolerance >= 0 && _pixTolerance <= 1 ? _pixTolerance : 0;
 	        var frameTolerance = _frameTolerance && _frameTolerance >= 0 && _frameTolerance <= 1 ? _frameTolerance : 0;
 	        var doNotCheckNext = false;
@@ -39514,7 +40168,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        g: imageData.data[pix + 1],
 	                        b: imageData.data[pix + 2]
 	                    };
-	                    var colorDifference = Math.sqrt(Math.pow(currentColor.r - sampleColor.r, 2) + Math.pow(currentColor.g - sampleColor.g, 2) + Math.pow(currentColor.b - sampleColor.b, 2));
+	                    var colorDifference = Math.sqrt(
+	                        Math.pow(currentColor.r - sampleColor.r, 2) +
+	                        Math.pow(currentColor.g - sampleColor.g, 2) +
+	                        Math.pow(currentColor.b - sampleColor.b, 2)
+	                    );
 	                    // difference in color it is difference in color vectors (r1,g1,b1) <=> (r2,g2,b2)
 	                    if (colorDifference <= maxColorDifference * pixTolerance) {
 	                        matchPixCount++;
@@ -39543,419 +40201,33 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        return resultFrames;
 	    }
+
+	    var isPaused = false;
+
+	    this.pause = function() {
+	        isPaused = true;
+	    };
+
+	    this.resume = function() {
+	        isPaused = false;
+	    };
 	}
 
-	// =================
-	// WhammyRecorder.js
-
-	function WhammyRecorder(mediaStream) {
-	    // void start(optional long timeSlice)
-	    // timestamp to fire "ondataavailable"
-	    this.start = function (timeSlice) {
-	        timeSlice = timeSlice || 1000;
-
-	        mediaRecorder = new WhammyRecorderHelper(mediaStream, this);
-
-	        for (var prop in this) {
-	            if (typeof this[prop] !== 'function') {
-	                mediaRecorder[prop] = this[prop];
-	            }
-	        }
-
-	        mediaRecorder.record();
-
-	        timeout = setInterval(function () {
-	            mediaRecorder.requestData();
-	        }, timeSlice);
-	    };
-
-	    this.stop = function () {
-	        if (mediaRecorder) {
-	            mediaRecorder.stop();
-	            clearTimeout(timeout);
-	        }
-	    };
-
-	    this.clearOldRecordedFrames = function () {
-	        if (mediaRecorder) {
-	            mediaRecorder.clearOldRecordedFrames();
-	        }
-	    };
-
-	    this.ondataavailable = function () {};
-
-	    // Reference to "WhammyRecorder" object
-	    var mediaRecorder;
-	    var timeout;
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.WhammyRecorderHelper = WhammyRecorderHelper;
 	}
 
-	// Muaz Khan     - https://github.com/muaz-khan
-	// neizerth      - https://github.com/neizerth
-	// MIT License   - https://www.webrtc-experiment.com/licence/
-	// Documentation - https://github.com/streamproc/MediaStreamRecorder
-
-	// Note:
-	// ==========================================================
-	// whammy.js is an "external library"
-	// and has its own copyrights. Taken from "Whammy" project.
-
-	// https://github.com/antimatter15/whammy/blob/master/LICENSE
-	// =========
-	// Whammy.js
-
-	// todo: Firefox now supports webp for webm containers!
-	// their MediaRecorder implementation works well!
-	// should we provide an option to record via Whammy.js or MediaRecorder API is a better solution?
-
-	var Whammy = function () {
-
-	    function toWebM(frames) {
-	        var info = checkFrames(frames);
-
-	        var CLUSTER_MAX_DURATION = 30000;
-
-	        var EBML = [{
-	            "id": 0x1a45dfa3, // EBML
-	            "data": [{
-	                "data": 1,
-	                "id": 0x4286 // EBMLVersion
-	            }, {
-	                "data": 1,
-	                "id": 0x42f7 // EBMLReadVersion
-	            }, {
-	                "data": 4,
-	                "id": 0x42f2 // EBMLMaxIDLength
-	            }, {
-	                "data": 8,
-	                "id": 0x42f3 // EBMLMaxSizeLength
-	            }, {
-	                "data": "webm",
-	                "id": 0x4282 // DocType
-	            }, {
-	                "data": 2,
-	                "id": 0x4287 // DocTypeVersion
-	            }, {
-	                "data": 2,
-	                "id": 0x4285 // DocTypeReadVersion
-	            }]
-	        }, {
-	            "id": 0x18538067, // Segment
-	            "data": [{
-	                "id": 0x1549a966, // Info
-	                "data": [{
-	                    "data": 1e6, //do things in millisecs (num of nanosecs for duration scale)
-	                    "id": 0x2ad7b1 // TimecodeScale
-	                }, {
-	                    "data": "whammy",
-	                    "id": 0x4d80 // MuxingApp
-	                }, {
-	                    "data": "whammy",
-	                    "id": 0x5741 // WritingApp
-	                }, {
-	                    "data": doubleToString(info.duration),
-	                    "id": 0x4489 // Duration
-	                }]
-	            }, {
-	                "id": 0x1654ae6b, // Tracks
-	                "data": [{
-	                    "id": 0xae, // TrackEntry
-	                    "data": [{
-	                        "data": 1,
-	                        "id": 0xd7 // TrackNumber
-	                    }, {
-	                        "data": 1,
-	                        "id": 0x63c5 // TrackUID
-	                    }, {
-	                        "data": 0,
-	                        "id": 0x9c // FlagLacing
-	                    }, {
-	                        "data": "und",
-	                        "id": 0x22b59c // Language
-	                    }, {
-	                        "data": "V_VP8",
-	                        "id": 0x86 // CodecID
-	                    }, {
-	                        "data": "VP8",
-	                        "id": 0x258688 // CodecName
-	                    }, {
-	                        "data": 1,
-	                        "id": 0x83 // TrackType
-	                    }, {
-	                        "id": 0xe0, // Video
-	                        "data": [{
-	                            "data": info.width,
-	                            "id": 0xb0 // PixelWidth
-	                        }, {
-	                            "data": info.height,
-	                            "id": 0xba // PixelHeight
-	                        }]
-	                    }]
-	                }]
-	            }]
-	        }];
-
-	        //Generate clusters (max duration)
-	        var frameNumber = 0;
-	        var clusterTimecode = 0;
-	        while (frameNumber < frames.length) {
-
-	            var clusterFrames = [];
-	            var clusterDuration = 0;
-	            do {
-	                clusterFrames.push(frames[frameNumber]);
-	                clusterDuration += frames[frameNumber].duration;
-	                frameNumber++;
-	            } while (frameNumber < frames.length && clusterDuration < CLUSTER_MAX_DURATION);
-
-	            var clusterCounter = 0;
-	            var cluster = {
-	                "id": 0x1f43b675, // Cluster
-	                "data": [{
-	                    "data": clusterTimecode,
-	                    "id": 0xe7 // Timecode
-	                }].concat(clusterFrames.map(function (webp) {
-	                    var block = makeSimpleBlock({
-	                        discardable: 0,
-	                        frame: webp.data.slice(4),
-	                        invisible: 0,
-	                        keyframe: 1,
-	                        lacing: 0,
-	                        trackNum: 1,
-	                        timecode: Math.round(clusterCounter)
-	                    });
-	                    clusterCounter += webp.duration;
-	                    return {
-	                        data: block,
-	                        id: 0xa3
-	                    };
-	                }))
-	            }; //Add cluster to segment
-	            EBML[1].data.push(cluster);
-	            clusterTimecode += clusterDuration;
-	        }
-
-	        return generateEBML(EBML);
-	    }
-
-	    // sums the lengths of all the frames and gets the duration
-
-	    function checkFrames(frames) {
-	        if (!frames[0]) {
-	            console.warn('Something went wrong. Maybe WebP format is not supported in the current browser.');
-	            return;
-	        }
-
-	        var width = frames[0].width,
-	            height = frames[0].height,
-	            duration = frames[0].duration;
-
-	        for (var i = 1; i < frames.length; i++) {
-	            duration += frames[i].duration;
-	        }
-	        return {
-	            duration: duration,
-	            width: width,
-	            height: height
-	        };
-	    }
-
-	    function numToBuffer(num) {
-	        var parts = [];
-	        while (num > 0) {
-	            parts.push(num & 0xff);
-	            num = num >> 8;
-	        }
-	        return new Uint8Array(parts.reverse());
-	    }
-
-	    function strToBuffer(str) {
-	        return new Uint8Array(str.split('').map(function (e) {
-	            return e.charCodeAt(0);
-	        }));
-	    }
-
-	    function bitsToBuffer(bits) {
-	        var data = [];
-	        var pad = bits.length % 8 ? new Array(1 + 8 - bits.length % 8).join('0') : '';
-	        bits = pad + bits;
-	        for (var i = 0; i < bits.length; i += 8) {
-	            data.push(parseInt(bits.substr(i, 8), 2));
-	        }
-	        return new Uint8Array(data);
-	    }
-
-	    function generateEBML(json) {
-	        var ebml = [];
-	        for (var i = 0; i < json.length; i++) {
-	            var data = json[i].data;
-	            if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) == 'object') data = generateEBML(data);
-	            if (typeof data == 'number') data = bitsToBuffer(data.toString(2));
-	            if (typeof data == 'string') data = strToBuffer(data);
-
-	            var len = data.size || data.byteLength || data.length;
-	            var zeroes = Math.ceil(Math.ceil(Math.log(len) / Math.log(2)) / 8);
-	            var size_str = len.toString(2);
-	            var padded = new Array(zeroes * 7 + 7 + 1 - size_str.length).join('0') + size_str;
-	            var size = new Array(zeroes).join('0') + '1' + padded;
-
-	            ebml.push(numToBuffer(json[i].id));
-	            ebml.push(bitsToBuffer(size));
-	            ebml.push(data);
-	        }
-
-	        return new Blob(ebml, {
-	            type: "video/webm"
-	        });
-	    }
-
-	    function toBinStr_old(bits) {
-	        var data = '';
-	        var pad = bits.length % 8 ? new Array(1 + 8 - bits.length % 8).join('0') : '';
-	        bits = pad + bits;
-	        for (var i = 0; i < bits.length; i += 8) {
-	            data += String.fromCharCode(parseInt(bits.substr(i, 8), 2));
-	        }
-	        return data;
-	    }
-
-	    function generateEBML_old(json) {
-	        var ebml = '';
-	        for (var i = 0; i < json.length; i++) {
-	            var data = json[i].data;
-	            if ((typeof data === 'undefined' ? 'undefined' : _typeof(data)) == 'object') data = generateEBML_old(data);
-	            if (typeof data == 'number') data = toBinStr_old(data.toString(2));
-
-	            var len = data.length;
-	            var zeroes = Math.ceil(Math.ceil(Math.log(len) / Math.log(2)) / 8);
-	            var size_str = len.toString(2);
-	            var padded = new Array(zeroes * 7 + 7 + 1 - size_str.length).join('0') + size_str;
-	            var size = new Array(zeroes).join('0') + '1' + padded;
-
-	            ebml += toBinStr_old(json[i].id.toString(2)) + toBinStr_old(size) + data;
-	        }
-	        return ebml;
-	    }
-
-	    function makeSimpleBlock(data) {
-	        var flags = 0;
-	        if (data.keyframe) flags |= 128;
-	        if (data.invisible) flags |= 8;
-	        if (data.lacing) flags |= data.lacing << 1;
-	        if (data.discardable) flags |= 1;
-	        if (data.trackNum > 127) {
-	            throw "TrackNumber > 127 not supported";
-	        }
-	        var out = [data.trackNum | 0x80, data.timecode >> 8, data.timecode & 0xff, flags].map(function (e) {
-	            return String.fromCharCode(e);
-	        }).join('') + data.frame;
-
-	        return out;
-	    }
-
-	    function parseWebP(riff) {
-	        var VP8 = riff.RIFF[0].WEBP[0];
-
-	        var frame_start = VP8.indexOf('\x9d\x01\x2a'); // A VP8 keyframe starts with the 0x9d012a header
-	        for (var i = 0, c = []; i < 4; i++) {
-	            c[i] = VP8.charCodeAt(frame_start + 3 + i);
-	        }var width, height, tmp;
-
-	        //the code below is literally copied verbatim from the bitstream spec
-	        tmp = c[1] << 8 | c[0];
-	        width = tmp & 0x3FFF;
-	        tmp = c[3] << 8 | c[2];
-	        height = tmp & 0x3FFF;
-	        return {
-	            width: width,
-	            height: height,
-	            data: VP8,
-	            riff: riff
-	        };
-	    }
-
-	    function parseRIFF(string) {
-	        var offset = 0;
-	        var chunks = {};
-
-	        while (offset < string.length) {
-	            var id = string.substr(offset, 4);
-	            var len = parseInt(string.substr(offset + 4, 4).split('').map(function (i) {
-	                var unpadded = i.charCodeAt(0).toString(2);
-	                return new Array(8 - unpadded.length + 1).join('0') + unpadded;
-	            }).join(''), 2);
-	            var data = string.substr(offset + 4 + 4, len);
-	            offset += 4 + 4 + len;
-	            chunks[id] = chunks[id] || [];
-
-	            if (id == 'RIFF' || id == 'LIST') {
-	                chunks[id].push(parseRIFF(data));
-	            } else {
-	                chunks[id].push(data);
-	            }
-	        }
-	        return chunks;
-	    }
-
-	    function doubleToString(num) {
-	        return [].slice.call(new Uint8Array(new Float64Array([num]).buffer), 0).map(function (e) {
-	            return String.fromCharCode(e);
-	        }).reverse().join('');
-	    }
-
-	    // a more abstract-ish API
-
-	    function WhammyVideo(duration) {
-	        this.frames = [];
-	        this.duration = duration || 1;
-	        this.quality = 100;
-	    }
-
-	    WhammyVideo.prototype.add = function (frame, duration) {
-	        if ('canvas' in frame) {
-	            //CanvasRenderingContext2D
-	            frame = frame.canvas;
-	        }
-
-	        if ('toDataURL' in frame) {
-	            frame = frame.toDataURL('image/webp', this.quality);
-	        }
-
-	        if (!/^data:image\/webp;base64,/ig.test(frame)) {
-	            throw "Input must be formatted properly as a base64 encoded DataURI of type image/webp";
-	        }
-	        this.frames.push({
-	            image: frame,
-	            duration: duration || this.duration
-	        });
-	    };
-	    WhammyVideo.prototype.compile = function () {
-	        return new toWebM(this.frames.map(function (frame) {
-	            var webp = parseWebP(parseRIFF(atob(frame.image.slice(23))));
-	            webp.duration = frame.duration;
-	            return webp;
-	        }));
-	    };
-	    return {
-	        Video: WhammyVideo,
-	        toWebM: toWebM
-	    };
-	}();
-
-	// Muaz Khan     - https://github.com/muaz-khan
-	// neizerth      - https://github.com/neizerth
-	// MIT License   - https://www.webrtc-experiment.com/licence/
-	// Documentation - https://github.com/streamproc/MediaStreamRecorder
-	// ==========================================================
+	// --------------
 	// GifRecorder.js
 
 	function GifRecorder(mediaStream) {
-	    if (!window.GIFEncoder) {
+	    if (typeof GIFEncoder === 'undefined') {
 	        throw 'Please link: https://cdn.webrtc-experiment.com/gif-recorder.js';
 	    }
 
 	    // void start(optional long timeSlice)
 	    // timestamp to fire "ondataavailable"
-	    this.start = function (timeSlice) {
+	    this.start = function(timeSlice) {
 	        timeSlice = timeSlice || 1000;
 
 	        var imageWidth = this.videoWidth || 320;
@@ -39976,7 +40248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        // Sets frame rate in frames per second.
 	        // Equivalent to setDelay(1000/fps).
 	        // Using "setDelay" instead of "setFrameRate"
-	        gifEncoder.setDelay(this.frameRate || 200);
+	        gifEncoder.setDelay(this.frameRate || this.speed || 200);
 
 	        // void setQuality(int quality)
 	        // Sets quality of color quantization (conversion of images to the
@@ -39994,14 +40266,25 @@ return /******/ (function(modules) { // webpackBootstrap
 	        startTime = Date.now();
 
 	        function drawVideoFrame(time) {
+	            if (isPaused) {
+	                setTimeout(drawVideoFrame, 500, time);
+	                return;
+	            }
+
 	            lastAnimationFrame = requestAnimationFrame(drawVideoFrame);
 
-	            if ((typeof lastFrameTime === 'undefined' ? 'undefined' : _typeof(lastFrameTime)) === undefined) {
+	            if (typeof lastFrameTime === undefined) {
 	                lastFrameTime = time;
 	            }
 
 	            // ~10 fps
-	            if (time - lastFrameTime < 90) return;
+	            if (time - lastFrameTime < 90) {
+	                return;
+	            }
+
+	            if (video.paused) {
+	                video.play(); // Android
+	            }
 
 	            context.drawImage(video, 0, 0, imageWidth, imageHeight);
 
@@ -40028,9 +40311,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	        // todo: find a way to clear old recorded blobs
 	        gifEncoder.stream().bin = [];
-	    };
+	    }
 
-	    this.stop = function () {
+	    this.stop = function() {
 	        if (lastAnimationFrame) {
 	            cancelAnimationFrame(lastAnimationFrame);
 	            clearTimeout(timeout);
@@ -40038,8 +40321,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        }
 	    };
 
-	    this.ondataavailable = function () {};
-	    this.onstop = function () {};
+	    var isPaused = false;
+
+	    this.pause = function() {
+	        isPaused = true;
+	    };
+
+	    this.resume = function() {
+	        isPaused = false;
+	    };
+
+	    this.ondataavailable = function() {};
+	    this.onstop = function() {};
 
 	    // Reference to itself
 	    var self = this;
@@ -40060,115 +40353,523 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var timeout;
 	}
 
-	// ______________________
-	// MultiStreamRecorder.js
-
-	function MultiStreamRecorder(mediaStream) {
-	    if (!mediaStream) throw 'MediaStream is mandatory.';
-
-	    var self = this;
-	    var isFirefox = !!navigator.mozGetUserMedia;
-
-	    this.stream = mediaStream;
-
-	    // void start(optional long timeSlice)
-	    // timestamp to fire "ondataavailable"
-	    this.start = function (timeSlice) {
-	        audioRecorder = new MediaStreamRecorder(mediaStream);
-	        videoRecorder = new MediaStreamRecorder(mediaStream);
-
-	        audioRecorder.mimeType = 'audio/ogg';
-	        videoRecorder.mimeType = 'video/webm';
-
-	        for (var prop in this) {
-	            if (typeof this[prop] !== 'function') {
-	                audioRecorder[prop] = videoRecorder[prop] = this[prop];
-	            }
-	        }
-
-	        audioRecorder.ondataavailable = function (blob) {
-	            if (!audioVideoBlobs[recordingInterval]) {
-	                audioVideoBlobs[recordingInterval] = {};
-	            }
-
-	            audioVideoBlobs[recordingInterval].audio = blob;
-
-	            if (audioVideoBlobs[recordingInterval].video && !audioVideoBlobs[recordingInterval].onDataAvailableEventFired) {
-	                audioVideoBlobs[recordingInterval].onDataAvailableEventFired = true;
-	                fireOnDataAvailableEvent(audioVideoBlobs[recordingInterval]);
-	            }
-	        };
-
-	        videoRecorder.ondataavailable = function (blob) {
-	            if (isFirefox) {
-	                return self.ondataavailable({
-	                    video: blob,
-	                    audio: blob
-	                });
-	            }
-
-	            if (!audioVideoBlobs[recordingInterval]) {
-	                audioVideoBlobs[recordingInterval] = {};
-	            }
-
-	            audioVideoBlobs[recordingInterval].video = blob;
-
-	            if (audioVideoBlobs[recordingInterval].audio && !audioVideoBlobs[recordingInterval].onDataAvailableEventFired) {
-	                audioVideoBlobs[recordingInterval].onDataAvailableEventFired = true;
-	                fireOnDataAvailableEvent(audioVideoBlobs[recordingInterval]);
-	            }
-	        };
-
-	        function fireOnDataAvailableEvent(blobs) {
-	            recordingInterval++;
-	            self.ondataavailable(blobs);
-	        }
-
-	        videoRecorder.onstop = audioRecorder.onstop = function (error) {
-	            self.onstop(error);
-	        };
-
-	        if (!isFirefox) {
-	            // to make sure both audio/video are synced.
-	            videoRecorder.onStartedDrawingNonBlankFrames = function () {
-	                videoRecorder.clearOldRecordedFrames();
-	                audioRecorder.start(timeSlice);
-	            };
-	            videoRecorder.start(timeSlice);
-	        } else {
-	            videoRecorder.start(timeSlice);
-	        }
-	    };
-
-	    this.stop = function () {
-	        if (audioRecorder) audioRecorder.stop();
-	        if (videoRecorder) videoRecorder.stop();
-	    };
-
-	    this.ondataavailable = function (blob) {
-	        console.log('ondataavailable..', blob);
-	    };
-
-	    this.onstop = function (error) {
-	        console.warn('stopped..', error);
-	    };
-
-	    var audioRecorder;
-	    var videoRecorder;
-
-	    var audioVideoBlobs = {};
-	    var recordingInterval = 0;
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.GifRecorder = GifRecorder;
 	}
 
-	function bytesToSize(bytes) {
-	    var k = 1000;
-	    var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
-	    if (bytes === 0) {
-	        return '0 Bytes';
+	// https://github.com/antimatter15/whammy/blob/master/LICENSE
+	// _________
+	// Whammy.js
+
+	// todo: Firefox now supports webp for webm containers!
+	// their MediaRecorder implementation works well!
+	// should we provide an option to record via Whammy.js or MediaRecorder API is a better solution?
+
+	/**
+	 * Whammy is a standalone class used by {@link RecordRTC} to bring video recording in Chrome. It is written by {@link https://github.com/antimatter15|antimatter15}
+	 * @summary A real time javascript webm encoder based on a canvas hack.
+	 * @typedef Whammy
+	 * @class
+	 * @example
+	 * var recorder = new Whammy().Video(15);
+	 * recorder.add(context || canvas || dataURL);
+	 * var output = recorder.compile();
+	 */
+
+	var Whammy = (function() {
+	    // a more abstract-ish API
+
+	    function WhammyVideo(duration, quality) {
+	        this.frames = [];
+	        if (!duration) {
+	            duration = 1;
+	        }
+	        this.duration = 1000 / duration;
+	        this.quality = quality || 0.8;
 	    }
-	    var i = parseInt(Math.floor(Math.log(bytes) / Math.log(k)), 10);
-	    return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+
+	    /**
+	     * Pass Canvas or Context or image/webp(string) to {@link Whammy} encoder.
+	     * @method
+	     * @memberof Whammy
+	     * @example
+	     * recorder = new Whammy().Video(0.8, 100);
+	     * recorder.add(canvas || context || 'image/webp');
+	     * @param {string} frame - Canvas || Context || image/webp
+	     * @param {number} duration - Stick a duration (in milliseconds)
+	     */
+	    WhammyVideo.prototype.add = function(frame, duration) {
+	        if ('canvas' in frame) { //CanvasRenderingContext2D
+	            frame = frame.canvas;
+	        }
+
+	        if ('toDataURL' in frame) {
+	            frame = frame.toDataURL('image/webp', this.quality);
+	        }
+
+	        if (!(/^data:image\/webp;base64,/ig).test(frame)) {
+	            throw 'Input must be formatted properly as a base64 encoded DataURI of type image/webp';
+	        }
+	        this.frames.push({
+	            image: frame,
+	            duration: duration || this.duration
+	        });
+	    };
+
+	    function processInWebWorker(_function) {
+	        var blob = URL.createObjectURL(new Blob([_function.toString(),
+	            'this.onmessage =  function (e) {' + _function.name + '(e.data);}'
+	        ], {
+	            type: 'application/javascript'
+	        }));
+
+	        var worker = new Worker(blob);
+	        URL.revokeObjectURL(blob);
+	        return worker;
+	    }
+
+	    function whammyInWebWorker(frames) {
+	        function ArrayToWebM(frames) {
+	            var info = checkFrames(frames);
+	            if (!info) {
+	                return [];
+	            }
+
+	            var clusterMaxDuration = 30000;
+
+	            var EBML = [{
+	                'id': 0x1a45dfa3, // EBML
+	                'data': [{
+	                    'data': 1,
+	                    'id': 0x4286 // EBMLVersion
+	                }, {
+	                    'data': 1,
+	                    'id': 0x42f7 // EBMLReadVersion
+	                }, {
+	                    'data': 4,
+	                    'id': 0x42f2 // EBMLMaxIDLength
+	                }, {
+	                    'data': 8,
+	                    'id': 0x42f3 // EBMLMaxSizeLength
+	                }, {
+	                    'data': 'webm',
+	                    'id': 0x4282 // DocType
+	                }, {
+	                    'data': 2,
+	                    'id': 0x4287 // DocTypeVersion
+	                }, {
+	                    'data': 2,
+	                    'id': 0x4285 // DocTypeReadVersion
+	                }]
+	            }, {
+	                'id': 0x18538067, // Segment
+	                'data': [{
+	                    'id': 0x1549a966, // Info
+	                    'data': [{
+	                        'data': 1e6, //do things in millisecs (num of nanosecs for duration scale)
+	                        'id': 0x2ad7b1 // TimecodeScale
+	                    }, {
+	                        'data': 'whammy',
+	                        'id': 0x4d80 // MuxingApp
+	                    }, {
+	                        'data': 'whammy',
+	                        'id': 0x5741 // WritingApp
+	                    }, {
+	                        'data': doubleToString(info.duration),
+	                        'id': 0x4489 // Duration
+	                    }]
+	                }, {
+	                    'id': 0x1654ae6b, // Tracks
+	                    'data': [{
+	                        'id': 0xae, // TrackEntry
+	                        'data': [{
+	                            'data': 1,
+	                            'id': 0xd7 // TrackNumber
+	                        }, {
+	                            'data': 1,
+	                            'id': 0x73c5 // TrackUID
+	                        }, {
+	                            'data': 0,
+	                            'id': 0x9c // FlagLacing
+	                        }, {
+	                            'data': 'und',
+	                            'id': 0x22b59c // Language
+	                        }, {
+	                            'data': 'V_VP8',
+	                            'id': 0x86 // CodecID
+	                        }, {
+	                            'data': 'VP8',
+	                            'id': 0x258688 // CodecName
+	                        }, {
+	                            'data': 1,
+	                            'id': 0x83 // TrackType
+	                        }, {
+	                            'id': 0xe0, // Video
+	                            'data': [{
+	                                'data': info.width,
+	                                'id': 0xb0 // PixelWidth
+	                            }, {
+	                                'data': info.height,
+	                                'id': 0xba // PixelHeight
+	                            }]
+	                        }]
+	                    }]
+	                }]
+	            }];
+
+	            //Generate clusters (max duration)
+	            var frameNumber = 0;
+	            var clusterTimecode = 0;
+	            while (frameNumber < frames.length) {
+
+	                var clusterFrames = [];
+	                var clusterDuration = 0;
+	                do {
+	                    clusterFrames.push(frames[frameNumber]);
+	                    clusterDuration += frames[frameNumber].duration;
+	                    frameNumber++;
+	                } while (frameNumber < frames.length && clusterDuration < clusterMaxDuration);
+
+	                var clusterCounter = 0;
+	                var cluster = {
+	                    'id': 0x1f43b675, // Cluster
+	                    'data': getClusterData(clusterTimecode, clusterCounter, clusterFrames)
+	                }; //Add cluster to segment
+	                EBML[1].data.push(cluster);
+	                clusterTimecode += clusterDuration;
+	            }
+
+	            return generateEBML(EBML);
+	        }
+
+	        function getClusterData(clusterTimecode, clusterCounter, clusterFrames) {
+	            return [{
+	                'data': clusterTimecode,
+	                'id': 0xe7 // Timecode
+	            }].concat(clusterFrames.map(function(webp) {
+	                var block = makeSimpleBlock({
+	                    discardable: 0,
+	                    frame: webp.data.slice(4),
+	                    invisible: 0,
+	                    keyframe: 1,
+	                    lacing: 0,
+	                    trackNum: 1,
+	                    timecode: Math.round(clusterCounter)
+	                });
+	                clusterCounter += webp.duration;
+	                return {
+	                    data: block,
+	                    id: 0xa3
+	                };
+	            }));
+	        }
+
+	        // sums the lengths of all the frames and gets the duration
+
+	        function checkFrames(frames) {
+	            if (!frames[0]) {
+	                postMessage({
+	                    error: 'Something went wrong. Maybe WebP format is not supported in the current browser.'
+	                });
+	                return;
+	            }
+
+	            var width = frames[0].width,
+	                height = frames[0].height,
+	                duration = frames[0].duration;
+
+	            for (var i = 1; i < frames.length; i++) {
+	                duration += frames[i].duration;
+	            }
+	            return {
+	                duration: duration,
+	                width: width,
+	                height: height
+	            };
+	        }
+
+	        function numToBuffer(num) {
+	            var parts = [];
+	            while (num > 0) {
+	                parts.push(num & 0xff);
+	                num = num >> 8;
+	            }
+	            return new Uint8Array(parts.reverse());
+	        }
+
+	        function strToBuffer(str) {
+	            return new Uint8Array(str.split('').map(function(e) {
+	                return e.charCodeAt(0);
+	            }));
+	        }
+
+	        function bitsToBuffer(bits) {
+	            var data = [];
+	            var pad = (bits.length % 8) ? (new Array(1 + 8 - (bits.length % 8))).join('0') : '';
+	            bits = pad + bits;
+	            for (var i = 0; i < bits.length; i += 8) {
+	                data.push(parseInt(bits.substr(i, 8), 2));
+	            }
+	            return new Uint8Array(data);
+	        }
+
+	        function generateEBML(json) {
+	            var ebml = [];
+	            for (var i = 0; i < json.length; i++) {
+	                var data = json[i].data;
+
+	                if (typeof data === 'object') {
+	                    data = generateEBML(data);
+	                }
+
+	                if (typeof data === 'number') {
+	                    data = bitsToBuffer(data.toString(2));
+	                }
+
+	                if (typeof data === 'string') {
+	                    data = strToBuffer(data);
+	                }
+
+	                var len = data.size || data.byteLength || data.length;
+	                var zeroes = Math.ceil(Math.ceil(Math.log(len) / Math.log(2)) / 8);
+	                var sizeToString = len.toString(2);
+	                var padded = (new Array((zeroes * 7 + 7 + 1) - sizeToString.length)).join('0') + sizeToString;
+	                var size = (new Array(zeroes)).join('0') + '1' + padded;
+
+	                ebml.push(numToBuffer(json[i].id));
+	                ebml.push(bitsToBuffer(size));
+	                ebml.push(data);
+	            }
+
+	            return new Blob(ebml, {
+	                type: 'video/webm'
+	            });
+	        }
+
+	        function toBinStrOld(bits) {
+	            var data = '';
+	            var pad = (bits.length % 8) ? (new Array(1 + 8 - (bits.length % 8))).join('0') : '';
+	            bits = pad + bits;
+	            for (var i = 0; i < bits.length; i += 8) {
+	                data += String.fromCharCode(parseInt(bits.substr(i, 8), 2));
+	            }
+	            return data;
+	        }
+
+	        function makeSimpleBlock(data) {
+	            var flags = 0;
+
+	            if (data.keyframe) {
+	                flags |= 128;
+	            }
+
+	            if (data.invisible) {
+	                flags |= 8;
+	            }
+
+	            if (data.lacing) {
+	                flags |= (data.lacing << 1);
+	            }
+
+	            if (data.discardable) {
+	                flags |= 1;
+	            }
+
+	            if (data.trackNum > 127) {
+	                throw 'TrackNumber > 127 not supported';
+	            }
+
+	            var out = [data.trackNum | 0x80, data.timecode >> 8, data.timecode & 0xff, flags].map(function(e) {
+	                return String.fromCharCode(e);
+	            }).join('') + data.frame;
+
+	            return out;
+	        }
+
+	        function parseWebP(riff) {
+	            var VP8 = riff.RIFF[0].WEBP[0];
+
+	            var frameStart = VP8.indexOf('\x9d\x01\x2a'); // A VP8 keyframe starts with the 0x9d012a header
+	            for (var i = 0, c = []; i < 4; i++) {
+	                c[i] = VP8.charCodeAt(frameStart + 3 + i);
+	            }
+
+	            var width, height, tmp;
+
+	            //the code below is literally copied verbatim from the bitstream spec
+	            tmp = (c[1] << 8) | c[0];
+	            width = tmp & 0x3FFF;
+	            tmp = (c[3] << 8) | c[2];
+	            height = tmp & 0x3FFF;
+	            return {
+	                width: width,
+	                height: height,
+	                data: VP8,
+	                riff: riff
+	            };
+	        }
+
+	        function getStrLength(string, offset) {
+	            return parseInt(string.substr(offset + 4, 4).split('').map(function(i) {
+	                var unpadded = i.charCodeAt(0).toString(2);
+	                return (new Array(8 - unpadded.length + 1)).join('0') + unpadded;
+	            }).join(''), 2);
+	        }
+
+	        function parseRIFF(string) {
+	            var offset = 0;
+	            var chunks = {};
+
+	            while (offset < string.length) {
+	                var id = string.substr(offset, 4);
+	                var len = getStrLength(string, offset);
+	                var data = string.substr(offset + 4 + 4, len);
+	                offset += 4 + 4 + len;
+	                chunks[id] = chunks[id] || [];
+
+	                if (id === 'RIFF' || id === 'LIST') {
+	                    chunks[id].push(parseRIFF(data));
+	                } else {
+	                    chunks[id].push(data);
+	                }
+	            }
+	            return chunks;
+	        }
+
+	        function doubleToString(num) {
+	            return [].slice.call(
+	                new Uint8Array((new Float64Array([num])).buffer), 0).map(function(e) {
+	                return String.fromCharCode(e);
+	            }).reverse().join('');
+	        }
+
+	        var webm = new ArrayToWebM(frames.map(function(frame) {
+	            var webp = parseWebP(parseRIFF(atob(frame.image.slice(23))));
+	            webp.duration = frame.duration;
+	            return webp;
+	        }));
+
+	        postMessage(webm);
+	    }
+
+	    /**
+	     * Encodes frames in WebM container. It uses WebWorkinvoke to invoke 'ArrayToWebM' method.
+	     * @param {function} callback - Callback function, that is used to pass recorded blob back to the callee.
+	     * @method
+	     * @memberof Whammy
+	     * @example
+	     * recorder = new Whammy().Video(0.8, 100);
+	     * recorder.compile(function(blob) {
+	     *    // blob.size - blob.type
+	     * });
+	     */
+	    WhammyVideo.prototype.compile = function(callback) {
+	        var webWorker = processInWebWorker(whammyInWebWorker);
+
+	        webWorker.onmessage = function(event) {
+	            if (event.data.error) {
+	                console.error(event.data.error);
+	                return;
+	            }
+	            callback(event.data);
+	        };
+
+	        webWorker.postMessage(this.frames);
+	    };
+
+	    return {
+	        /**
+	         * A more abstract-ish API.
+	         * @method
+	         * @memberof Whammy
+	         * @example
+	         * recorder = new Whammy().Video(0.8, 100);
+	         * @param {?number} speed - 0.8
+	         * @param {?number} quality - 100
+	         */
+	        Video: WhammyVideo
+	    };
+	})();
+
+	if (typeof MediaStreamRecorder !== 'undefined') {
+	    MediaStreamRecorder.Whammy = Whammy;
 	}
+
+	// Last time updated at Nov 18, 2014, 08:32:23
+
+	// Latest file can be found here: https://cdn.webrtc-experiment.com/ConcatenateBlobs.js
+
+	// Muaz Khan    - www.MuazKhan.com
+	// MIT License  - www.WebRTC-Experiment.com/licence
+	// Source Code  - https://github.com/muaz-khan/ConcatenateBlobs
+	// Demo         - https://www.WebRTC-Experiment.com/ConcatenateBlobs/
+
+	// ___________________
+	// ConcatenateBlobs.js
+
+	// Simply pass array of blobs.
+	// This javascript library will concatenate all blobs in single "Blob" object.
+
+	(function() {
+	    window.ConcatenateBlobs = function(blobs, type, callback) {
+	        var buffers = [];
+
+	        var index = 0;
+
+	        function readAsArrayBuffer() {
+	            if (!blobs[index]) {
+	                return concatenateBuffers();
+	            }
+	            var reader = new FileReader();
+	            reader.onload = function(event) {
+	                buffers.push(event.target.result);
+	                index++;
+	                readAsArrayBuffer();
+	            };
+	            reader.readAsArrayBuffer(blobs[index]);
+	        }
+
+	        readAsArrayBuffer();
+
+	        function concatenateBuffers() {
+	            var byteLength = 0;
+	            buffers.forEach(function(buffer) {
+	                byteLength += buffer.byteLength;
+	            });
+
+	            var tmp = new Uint16Array(byteLength);
+	            var lastOffset = 0;
+	            buffers.forEach(function(buffer) {
+	                // BYTES_PER_ELEMENT == 2 for Uint16Array
+	                var reusableByteLength = buffer.byteLength;
+	                if (reusableByteLength % 2 != 0) {
+	                    buffer = buffer.slice(0, reusableByteLength - 1)
+	                }
+	                tmp.set(new Uint16Array(buffer), lastOffset);
+	                lastOffset += reusableByteLength;
+	            });
+
+	            var blob = new Blob([tmp.buffer], {
+	                type: type
+	            });
+
+	            callback(blob);
+	        }
+	    };
+	})();
+
+	// https://github.com/streamproc/MediaStreamRecorder/issues/42
+	if (true /* && !!module.exports*/ ) {
+	    module.exports = MediaStreamRecorder;
+	}
+
+	if (true) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function() {
+	        return MediaStreamRecorder;
+	    }.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	}
+
+	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
 /* 298 */
@@ -50022,8 +50723,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -50056,17 +50755,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-viewer-content', __self: this
-						},
+						{ className: 'mky-viewer-content' },
 						_react2.default.createElement(
 							'button',
-							{ id: 'mky-button-exit', onClick: this.close, __self: this
-							},
+							{ id: 'mky-button-exit', onClick: this.close },
 							' X '
 						),
-						_react2.default.createElement(Component, _extends({}, this.props, {
-							__self: this
-						}))
+						_react2.default.createElement(Component, this.props)
 					);
 				}
 			}, {
@@ -50091,8 +50786,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -50123,11 +50816,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ id: 'mky-chat-login', __self: this
-						},
-						_react2.default.createElement(Component, _extends({}, this.props, {
-							__self: this
-						}))
+						{ id: 'mky-chat-login' },
+						_react2.default.createElement(Component, this.props)
 					);
 				}
 			}]);
@@ -50176,8 +50866,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					"span",
-					{ className: "mky-content-text", __self: this
-					},
+					{ className: "mky-content-text" },
 					this.props.message.text
 				);
 			}
@@ -50242,28 +50931,20 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-image', __self: this
-					},
+					{ className: 'mky-content-image' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-data', __self: this
-						},
-						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage, __self: this
-						})
+						{ className: 'mky-content-image-data' },
+						_react2.default.createElement('img', { src: this.props.message.data, onClick: this.openImage })
 					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-loading', __self: this
-						},
-						_react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-						}),
-						_react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-						})
+						{ className: 'mky-content-image-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-image-to-download', onClick: this.downloadData, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-						})
+						{ className: 'mky-content-image-to-download', onClick: this.downloadData },
+						_react2.default.createElement('i', { className: 'icon mky-icon-download' })
 					)
 				);
 			}
@@ -50345,41 +51026,32 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-content-file', __self: this
-					},
+					{ className: 'mky-content-file' },
 					this.props.message.data ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-data', __self: this
-						},
+						{ className: 'mky-content-file-data' },
 						_react2.default.createElement(
 							'a',
-							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename, __self: this
-							},
-							_react2.default.createElement(Fileicon, { classFileType: this.defineFileType(this.props.message.filename), __self: this
-							}),
+							{ className: 'mky-file-link', href: this.props.message.data, download: this.props.message.filename },
+							_react2.default.createElement(Fileicon, { classFileType: this.defineFileType(this.props.message.filename) }),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-file-detail', __self: this
-								},
+								{ className: 'mky-file-detail' },
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-file-name', __self: this
-									},
+									{ className: 'mky-file-name' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.props.message.filename
 									)
 								),
 								_react2.default.createElement(
 									'div',
-									{ className: 'mky-file-size', __self: this
-									},
+									{ className: 'mky-file-size' },
 									_react2.default.createElement(
 										'span',
-										{ className: 'mky-ellipsify', __self: this
-										},
+										{ className: 'mky-ellipsify' },
 										this.humanFileSize(this.props.message.filesize, true)
 									)
 								)
@@ -50387,18 +51059,13 @@ return /******/ (function(modules) { // webpackBootstrap
 						)
 					) : this.state.isDownloading ? _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-loading', __self: this
-						},
-						_react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-						}),
-						_react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-						})
+						{ className: 'mky-content-file-loading' },
+						_react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+						_react2.default.createElement('div', { className: 'mky-double-bounce2' })
 					) : _react2.default.createElement(
 						'div',
-						{ className: 'mky-content-file-to-download', onClick: this.downloadData, __self: this
-						},
-						_react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-						})
+						{ className: 'mky-content-file-to-download', onClick: this.downloadData },
+						_react2.default.createElement('i', { className: 'icon mky-icon-download' })
 					)
 				);
 			}
@@ -50460,8 +51127,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var Fileicon = function Fileicon(_ref) {
 		var classFileType = _ref.classFileType;
-		return _react2.default.createElement('div', { className: 'mky-file-icon ' + classFileType, __self: undefined
-		});
+		return _react2.default.createElement('div', { className: 'mky-file-icon ' + classFileType });
 	};
 
 	exports.default = BubbleFile;
@@ -50518,6 +51184,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this.pauseAudioBubble = _this.pauseAudioBubble.bind(_this);
 	        _this.pauseAllAudio = _this.pauseAllAudio.bind(_this);
 	        _this.updateAnimationBuble = _this.updateAnimationBuble.bind(_this);
+	        console.log('audio constructor: ' + _this.messageId);
 	        return _this;
 	    }
 
@@ -50534,60 +51201,42 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function render() {
 	            return _react2.default.createElement(
 	                'div',
-	                { className: 'mky-content-audio', __self: this
-	                },
+	                { className: 'mky-content-audio' },
 	                this.props.message.data ? _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-data', __self: this
-	                    },
-	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-play-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-play-button mky-bubble-audio-play-button-green', onClick: this.playAudioBubble, __self: this
-	                    }),
-	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-pause-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green', onClick: this.pauseAudioBubble, __self: this
-	                    }),
-	                    _react2.default.createElement('input', { id: 'mky-bubble-audio-player-' + this.messageId, className: 'knob second', __self: this
-	                    }),
+	                    { className: 'mky-content-audio-data' },
+	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-play-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-play-button mky-bubble-audio-play-button-green', onClick: this.playAudioBubble }),
+	                    _react2.default.createElement('div', { id: 'mky-bubble-audio-pause-button-' + this.messageId, className: 'mky-bubble-audio-button mky-bubble-audio-button-' + this.messageId + ' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green', onClick: this.pauseAudioBubble }),
+	                    _react2.default.createElement('input', { id: 'mky-bubble-audio-player-' + this.messageId, className: 'knob second' }),
 	                    _react2.default.createElement(
 	                        'div',
-	                        { className: 'mky-bubble-audio-timer', __self: this
-	                        },
+	                        { className: 'mky-bubble-audio-timer' },
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            this.state.minutes
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            ':'
 	                        ),
 	                        _react2.default.createElement(
 	                            'span',
-	                            {
-	                                __self: this
-	                            },
+	                            null,
 	                            this.state.seconds
 	                        )
 	                    ),
-	                    _react2.default.createElement('audio', { id: 'audio_' + this.messageId, preload: 'auto', controls: '', src: this.props.message.data, __self: this
-	                    })
+	                    _react2.default.createElement('audio', { id: 'audio_' + this.messageId, preload: 'auto', controls: '', src: this.props.message.data })
 	                ) : this.state.isDownloading ? _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-loading', __self: this
-	                    },
-	                    _react2.default.createElement('div', { className: 'mky-double-bounce1', __self: this
-	                    }),
-	                    _react2.default.createElement('div', { className: 'mky-double-bounce2', __self: this
-	                    })
+	                    { className: 'mky-content-audio-loading' },
+	                    _react2.default.createElement('div', { className: 'mky-double-bounce1' }),
+	                    _react2.default.createElement('div', { className: 'mky-double-bounce2' })
 	                ) : _react2.default.createElement(
 	                    'div',
-	                    { className: 'mky-content-audio-to-download', onClick: this.downloadData, __self: this
-	                    },
-	                    _react2.default.createElement('i', { className: 'icon mky-icon-download', __self: this
-	                    })
+	                    { className: 'mky-content-audio-to-download', onClick: this.downloadData },
+	                    _react2.default.createElement('i', { className: 'icon mky-icon-download' })
 	                )
 	            );
 	        }
@@ -50606,6 +51255,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (mkyAudioBubble) {
 	                mkyAudioBubble.oncanplay = function () {
 	                    that.createAudioHandlerBubble(that.messageId, Math.round(mkyAudioBubble.duration));
+	                    console.log('audio: ' + that.messageId);
 	                    that.setDurationTime(that.messageId);
 	                    //                     that.setState({disabledClass: ''});
 	                };
@@ -50642,7 +51292,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                var durationTime = Math.round(mkyAudioBubble.duration);
 	                var seconds = ('0' + durationTime % 60).slice(-2);
 	                var minutes = ('0' + parseInt(durationTime / 60)).slice(-2);
-	                console.log('set state 4');
+	                console.log('set state 4: ' + timestamp);
 	                this.setState({
 	                    minutes: minutes,
 	                    seconds: seconds
@@ -50773,30 +51423,24 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-viewer-image-container', __self: this
-					},
+					{ className: 'mky-viewer-image-container' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-viewer-toolbar', __self: this
-						},
+						{ className: 'mky-viewer-toolbar' },
 						_react2.default.createElement(
 							'a',
-							{ href: this.props.message.data, download: this.props.message.filename, __self: this
-							},
+							{ href: this.props.message.data, download: this.props.message.filename },
 							_react2.default.createElement(
 								'button',
-								{ className: 'mky-button-download', title: 'Download', __self: this
-								},
+								{ className: 'mky-button-download', title: 'Download' },
 								'Download'
 							)
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ id: 'file_viewer_image', className: 'mky-viewer-image', __self: this
-						},
-						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize, __self: this
-						})
+						{ id: 'file_viewer_image', className: 'mky-viewer-image' },
+						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize })
 					)
 				);
 			}
@@ -50856,74 +51500,58 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'div',
-					{ className: 'mky-monkey-login', __self: this
-					},
+					{ className: 'mky-monkey-login' },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-monkey-logo', __self: this
-						},
-						_react2.default.createElement('img', { src: this.defineLogo(), __self: this
-						})
+						{ className: 'mky-monkey-logo' },
+						_react2.default.createElement('img', { src: this.defineLogo() })
 					),
 					_react2.default.createElement(
 						'form',
-						{ className: 'mky-chat-login-container', __self: this
-						},
+						{ className: 'mky-chat-login-container' },
 						_react2.default.createElement(
 							'div',
-							{ className: 'field-login-text', __self: this
-							},
+							{ className: 'field-login-text' },
 							_react2.default.createElement(
 								'p',
-								{ className: 'title', __self: this
-								},
+								{ className: 'title' },
 								' ',
 								_react2.default.createElement(
 									'b',
-									{
-										__self: this
-									},
+									null,
 									this.defineLoginTitle()
 								),
 								'  '
 							),
 							_react2.default.createElement(
 								'p',
-								{ className: 'subtittle', __self: this
-								},
+								{ className: 'subtittle' },
 								'Please enter the information I need'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'field field-input-name', __self: this
-							},
-							_react2.default.createElement('input', { type: 'text', id: 'user_name', placeholder: 'Name', value: this.state.text, onChange: this.handleOnChangeInput, __self: this
-							}),
+							{ className: 'field field-input-name' },
+							_react2.default.createElement('input', { type: 'text', id: 'user_name', placeholder: 'Name', value: this.state.text, onChange: this.handleOnChangeInput }),
 							_react2.default.createElement(
 								'div',
-								{ className: 'error', __self: this
-								},
+								{ className: 'error' },
 								'Name must contain at least 2 character.'
 							)
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'field field-input-submit', __self: this
-							},
-							_react2.default.createElement('input', { type: 'submit', value: 'SUBMIT', id: 'submitChat', onClick: this.login, __self: this
-							})
+							{ className: 'field field-input-submit' },
+							_react2.default.createElement('input', { type: 'submit', value: 'SUBMIT', id: 'submitChat', onClick: this.login })
 						)
 					),
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-monkey_footer_sign', __self: this
-						},
+						{ className: 'mky-monkey_footer_sign' },
 						'Powered by ',
 						_react2.default.createElement(
 							'a',
-							{ href: 'http://criptext.com/', __self: this
-							},
+							{ href: 'http://criptext.com/' },
 							'Criptext'
 						)
 					)
@@ -51020,8 +51648,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		value: true
 	});
 
-	var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 	var _react = __webpack_require__(1);
@@ -51051,29 +51677,22 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function render() {
 					return _react2.default.createElement(
 						'div',
-						{ className: 'mky-generic-modal', onClick: this.props.togglePopup, __self: this
-						},
+						{ className: 'mky-generic-modal', onClick: this.props.togglePopup },
 						_react2.default.createElement(
 							'div',
-							{ className: 'mky-inner-modal', __self: this
-							},
+							{ className: 'mky-inner-modal' },
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-popup-message', __self: this
-								},
+								{ className: 'mky-popup-message' },
 								this.props.popUpMessage
 							),
 							_react2.default.createElement(
 								'div',
-								{ className: 'mky-popup-buttons', __self: this
-								},
-								_react2.default.createElement(Component, _extends({}, this.props, {
-									__self: this
-								})),
+								{ className: 'mky-popup-buttons' },
+								_react2.default.createElement(Component, this.props),
 								_react2.default.createElement(
 									'button',
-									{ className: 'mky-popup-button', onClick: this.props.togglePopup, __self: this
-									},
+									{ className: 'mky-popup-button', onClick: this.props.togglePopup },
 									'CANCEL'
 								)
 							)
@@ -51126,8 +51745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function render() {
 				return _react2.default.createElement(
 					'button',
-					{ className: 'mky-popup-button', onClick: this.props.userSessionLogout, __self: this
-					},
+					{ className: 'mky-popup-button', onClick: this.props.userSessionLogout },
 					'YES'
 				);
 			}
