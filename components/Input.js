@@ -3,6 +3,7 @@ import Dropzone from 'react-dropzone';
 import InputMenu from './InputMenu.js';
 import { getExtention } from '../utils/monkey-utils.js'
 import styles from '../styles/animate.min.css' // from ReactToastr
+import Textarea from 'react-textarea-autosize';
 
 var ReactToastr = require("react-toastr");
 var {ToastContainer} = ReactToastr; // This is a React Element.
@@ -48,6 +49,7 @@ class Input extends Component {
 		this.setTime = this.setTime.bind(this);
 		this.clearAudioRecordTimer = this.clearAudioRecordTimer.bind(this);
 		this.handleAttach = this.handleAttach.bind(this);
+        this.handleAttachFile = this.handleAttachFile.bind(this);
 		this.onDrop = this.onDrop.bind(this);
 		this.catchUpFile = this.catchUpFile.bind(this);
 		this.generateDataFile = this.generateDataFile.bind(this);
@@ -75,15 +77,31 @@ class Input extends Component {
 	}
 
     componentWillReceiveProps(nextProps){
-		
+
     }
-    
+
     componentWillMount() {
 	    if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)){
             this.audioInputClass = 'mky-disabled';
         }
+
+
+
     }
-    
+
+		componentDidUpdate() {
+			//could not find a better way for now
+			let minus = 0;
+			if ( $('.dw-content').length > 0 ) {
+					minus = 93;
+			} else {
+					minus = 15;
+			}
+			let footerHeight = $('#mky-chat-input').height();
+			let container = $('.mky-chat-area').height() - minus;
+			$('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
+		}
+
 	render() {
 		let styleInput = this.defineStyles();
     	return (
@@ -93,12 +111,12 @@ class Input extends Component {
     				<div className={'mky-button-input '+this.state.classAttachButton}>
     					<i id='mky-button-add' className='mky-button-icon icon mky-icon-menu-dots-strong' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
     				</div>
-                    <InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} colorButton={styleInput.inputRightButton}/>
+                    <InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
     				<div className={'mky-button-input '+this.state.classCancelAudioButton}>
 
     					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
     				</div>
-    				<textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></textarea>
+    				<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message s' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></Textarea>
     				<div id='mky-record-area' className={this.state.classAudioArea}>
     					<div className='mky-record-preview-area'>
     						<div id='mky-button-action-record'>
@@ -126,9 +144,12 @@ class Input extends Component {
 
     				}
     				</div>
-    				<Dropzone ref='dropzone' className='mky-disappear' onDrop={this.onDrop} >
+    				<Dropzone ref='dropzone' className='mky-disappear' onDrop={this.onDrop} accept="image/*" >
     	            	<div>Try dropping some files here, or click to select files to upload.</div>
     	            </Dropzone>
+                    <Dropzone ref='dropzoneFile' className='mky-disappear' onDrop={this.onDrop} accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.zip,.tar" >
+                        <div>Try dropping some files here, or click to select files to upload.</div>
+                    </Dropzone>
                     <ToastContainer ref='container' toastMessageFactory={ToastMessageFactory} className='toast-bottom-center' />
     			</div>
             </div>
@@ -138,7 +159,7 @@ class Input extends Component {
 	componentDidMount() {
 		this.ffmpegWorker = this.getFFMPEGWorker();
 	}
-	
+
 	defineStyles() {
 		let style = {
 			inputLeftButton: {},
@@ -152,30 +173,39 @@ class Input extends Component {
 				style.inputRightButton.color = this.context.styles.inputRightButtonColor
 			}
 		}
-		
+
 		return style;
 	}
-	
+
     handleMenuVisibility() {
         this.setState({menuVisibility : !this.state.menuVisibility});
     }
 
 	handleOnKeyDownTextArea(event) {
 		this.typeMessageToSend = 0;
+
+
+
 		if(event.keyCode === 13 && !event.shiftKey) {
+			console.log('enter!!');
 			event.preventDefault()
 			let text = this.state.text.trim();
 			if(text){
 				this.textMessageInput(event.target.value.trim());
 			}
 			this.setState({text: ''});
+
 		}
+
+
+		console.log('letter!!');
+
 	}
 
 	handleOnChangeTextArea(event, value){
 		this.setState({text: event.target.value});
 	}
-	
+
 	textMessageInput(text) {
 		let message = {
 			bubbleType: 'text',
@@ -184,7 +214,7 @@ class Input extends Component {
 		}
 		this.props.messageCreated(message);
 	}
-	
+
 	handleRecordAudio() {
 		this.setState({
 			classAudioArea: 'mky-appear',
@@ -204,7 +234,7 @@ class Input extends Component {
             navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
         }
     }
-            
+
     onMediaSuccess(stream) {
         //default settings to record
         this.micActivated = true;
@@ -418,6 +448,12 @@ class Input extends Component {
     handleAttach() {
         this.handleMenuVisibility();
 	    this.refs.dropzone.open();
+    }
+
+    handleAttachFile() {
+        console.log('handleAttachFile');
+        this.handleMenuVisibility();
+        this.refs.dropzoneFile.open();
     }
 
     onDrop(files) {

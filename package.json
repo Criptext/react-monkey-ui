@@ -39,10 +39,11 @@
     "react-search-input": "^0.8.0",
     "react-toastr": "^2.6.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "react-textarea-autosize": "^4.0.3"
   },
   "peerDependencies": {
-    "react": "^0.14.0 || ^15.0.0"
+    "react": "^0.14.0 || ^15.1.0"
   },
   "dependencies": {}
 }
