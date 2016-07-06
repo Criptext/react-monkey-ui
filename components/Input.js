@@ -77,15 +77,31 @@ class Input extends Component {
 	}
 
     componentWillReceiveProps(nextProps){
-		
+
     }
-    
+
     componentWillMount() {
 	    if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)){
             this.audioInputClass = 'mky-disabled';
         }
+
+
+
     }
-    
+
+		componentDidUpdate() {
+			//could not find a better way for now
+			let minus = 0;
+			if ( $('.dw-content').length > 0 ) {
+					minus = 93;
+			} else {
+					minus = 15;
+			}
+			let footerHeight = $('#mky-chat-input').height();
+			let container = $('.mky-chat-area').height() - minus;
+			$('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
+		}
+
 	render() {
 		let styleInput = this.defineStyles();
     	return (
@@ -143,7 +159,7 @@ class Input extends Component {
 	componentDidMount() {
 		this.ffmpegWorker = this.getFFMPEGWorker();
 	}
-	
+
 	defineStyles() {
 		let style = {
 			inputLeftButton: {},
@@ -157,45 +173,39 @@ class Input extends Component {
 				style.inputRightButton.color = this.context.styles.inputRightButtonColor
 			}
 		}
-		
+
 		return style;
 	}
-	
+
     handleMenuVisibility() {
         this.setState({menuVisibility : !this.state.menuVisibility});
     }
 
 	handleOnKeyDownTextArea(event) {
 		this.typeMessageToSend = 0;
-        //could not find a better way for now
-        let minus = 0;
-        if ( $('.dw-content').length > 0 ) {
-            minus = 93;
-        } else {
-            minus = 15;
-        }
-        let footerHeight = $('#mky-chat-input').height();
-        let container = $('.mky-chat-area').height() - minus;
-        $('#mky-chat-timeline').height(container - footerHeight);
+
 
 
 		if(event.keyCode === 13 && !event.shiftKey) {
+			console.log('enter!!');
 			event.preventDefault()
 			let text = this.state.text.trim();
 			if(text){
 				this.textMessageInput(event.target.value.trim());
 			}
 			this.setState({text: ''});
+
 		}
 
-        
-        
+
+		console.log('letter!!');
+
 	}
 
 	handleOnChangeTextArea(event, value){
 		this.setState({text: event.target.value});
 	}
-	
+
 	textMessageInput(text) {
 		let message = {
 			bubbleType: 'text',
@@ -204,7 +214,7 @@ class Input extends Component {
 		}
 		this.props.messageCreated(message);
 	}
-	
+
 	handleRecordAudio() {
 		this.setState({
 			classAudioArea: 'mky-appear',
@@ -224,7 +234,7 @@ class Input extends Component {
             navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
         }
     }
-            
+
     onMediaSuccess(stream) {
         //default settings to record
         this.micActivated = true;
