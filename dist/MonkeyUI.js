@@ -74,43 +74,43 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ContentWindow2 = _interopRequireDefault(_ContentWindow);
 
-	var _ContentLogin = __webpack_require__(306);
+	var _ContentLogin = __webpack_require__(305);
 
 	var _ContentLogin2 = _interopRequireDefault(_ContentLogin);
 
-	var _BubbleText = __webpack_require__(307);
+	var _BubbleText = __webpack_require__(306);
 
 	var _BubbleText2 = _interopRequireDefault(_BubbleText);
 
-	var _BubbleImage = __webpack_require__(308);
+	var _BubbleImage = __webpack_require__(307);
 
 	var _BubbleImage2 = _interopRequireDefault(_BubbleImage);
 
-	var _BubbleFile = __webpack_require__(309);
+	var _BubbleFile = __webpack_require__(308);
 
 	var _BubbleFile2 = _interopRequireDefault(_BubbleFile);
 
-	var _BubbleAudio = __webpack_require__(310);
+	var _BubbleAudio = __webpack_require__(309);
 
 	var _BubbleAudio2 = _interopRequireDefault(_BubbleAudio);
 
-	var _ContentViewer = __webpack_require__(311);
+	var _ContentViewer = __webpack_require__(310);
 
 	var _ContentViewer2 = _interopRequireDefault(_ContentViewer);
 
-	var _MyForm = __webpack_require__(312);
+	var _MyForm = __webpack_require__(311);
 
 	var _MyForm2 = _interopRequireDefault(_MyForm);
 
-	var _PopUp = __webpack_require__(315);
+	var _PopUp = __webpack_require__(314);
 
 	var _PopUp2 = _interopRequireDefault(_PopUp);
 
-	var _ContentLogOut = __webpack_require__(316);
+	var _ContentLogOut = __webpack_require__(315);
 
 	var _ContentLogOut2 = _interopRequireDefault(_ContentLogOut);
 
-	var _chat = __webpack_require__(317);
+	var _chat = __webpack_require__(316);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
@@ -15961,6 +15961,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	// shim for using process in browser
 
 	var process = module.exports = {};
+
+	// cached from whatever global is present so that test runners that stub it don't break things.
+	var cachedSetTimeout = setTimeout;
+	var cachedClearTimeout = clearTimeout;
+
 	var queue = [];
 	var draining = false;
 	var currentQueue;
@@ -15985,7 +15990,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (draining) {
 	        return;
 	    }
-	    var timeout = setTimeout(cleanUpNextTick);
+	    var timeout = cachedSetTimeout(cleanUpNextTick);
 	    draining = true;
 
 	    var len = queue.length;
@@ -16002,7 +16007,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    currentQueue = null;
 	    draining = false;
-	    clearTimeout(timeout);
+	    cachedClearTimeout(timeout);
 	}
 
 	process.nextTick = function (fun) {
@@ -16014,7 +16019,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 	    queue.push(new Item(fun, args));
 	    if (queue.length === 1 && !draining) {
-	        setTimeout(drainQueue, 0);
+	        cachedSetTimeout(drainQueue, 0);
 	    }
 	};
 
@@ -18202,7 +18207,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 *
+	 * 
 	 */
 
 	function makeEmptyFunction(arg) {
@@ -24528,7 +24533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 *
+	 * 
 	 * @typechecks static-only
 	 */
 
@@ -30012,7 +30017,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
 	 * @typechecks
-	 *
+	 * 
 	 */
 
 	/*eslint-disable no-self-compare */
@@ -32798,7 +32803,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * LICENSE file in the root directory of this source tree. An additional grant
 	 * of patent rights can be found in the PATENTS file in the same directory.
 	 *
-	 *
+	 * 
 	 */
 
 	var isTextNode = __webpack_require__(248);
@@ -35713,7 +35718,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _Input2 = _interopRequireDefault(_Input);
 
-	var _Modal = __webpack_require__(305);
+	var _Modal = __webpack_require__(304);
 
 	var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -35787,7 +35792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								{ id: 'mky-conversation-selected-name' },
 								this.props.conversationSelected.name
 							),
-							!(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? this.props.conversationSelected.online == 0 ? _react2.default.createElement(
+							!(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? this.props.conversationSelected.online === false ? _react2.default.createElement(
 								'span',
 								{ id: 'mky-conversation-selected-status' },
 								' ',
@@ -36111,7 +36116,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				value: function componentWillMount() {
 					if ((0, _monkeyUtils.isConversationGroup)(this.props.message.recipientId) && this.props.userSessionId != this.props.message.senderId) {
 						var user = this.props.getUser(this.props.message.senderId);
-						this.username = user.name ? user.name : 'Uknown';
+						this.username = user.name ? user.name : 'Unknown';
 						this.userColor = user.color ? user.color : '#8c8c8c';
 					}
 				}
@@ -36283,20 +36288,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// ======================
 	// MediaStreamRecorder.js
-
-	var MediaStreamRecorder = __webpack_require__(300).MediaStreamRecorder;
-	window.StereoRecorder = __webpack_require__(300).StereoRecorder;
-	window.MediaRecorderWrapper = __webpack_require__(300).MediaRecorderWrapper;
-
+	var MediaStreamRecorder = __webpack_require__(299);
 
 	// ======================
 	// FileAPI.js
-	__webpack_require__(301);
+	__webpack_require__(300);
 
 	// ======================
 	// jquery.knob.js
-	__webpack_require__(303);
-	var $ = __webpack_require__(304);
+	__webpack_require__(302);
+	var $ = __webpack_require__(303);
 
 	var Input = function (_Component) {
 	    _inherits(Input, _Component);
@@ -36390,7 +36391,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        { className: 'mky-button-input ' + this.state.classCancelAudioButton },
 	                        _react2.default.createElement('i', { id: 'mky-button-cancel-audio', className: 'mky-button-icon icon mky-icon-trashcan-regular', onClick: this.handleCancelAudio })
 	                    ),
-	                    _react2.default.createElement(_reactTextareaAutosize2.default, { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure message s', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea }),
+	                    _react2.default.createElement(_reactTextareaAutosize2.default, { ref: 'textareaInput', id: 'mky-message-text-input', className: 'mky-textarea-input ' + this.state.classTextArea, value: this.state.text, placeholder: 'Write a secure messages', onKeyDown: this.handleOnKeyDownTextArea, onChange: this.handleOnChangeTextArea }),
 	                    _react2.default.createElement(
 	                        'div',
 	                        { id: 'mky-record-area', className: this.state.classAudioArea },
@@ -36468,6 +36469,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.ffmpegWorker = this.getFFMPEGWorker();
 	        }
 	    }, {
+	        key: 'componentDidUpdate',
+	        value: function componentDidUpdate() {
+	            //could not find a better way for now
+	            var minus = 0;
+	            if ($('.dw-content').length > 0) {
+	                minus = 93;
+	            } else {
+	                minus = 15;
+	            }
+	            var footerHeight = $('#mky-chat-input').height();
+	            var container = $('.mky-chat-area').height() - minus;
+	            $('#mky-chat-timeline').attr('style', 'height: ' + (container - footerHeight) + 'px !important');
+	        }
+	    }, {
 	        key: 'defineStyles',
 	        value: function defineStyles() {
 	            var style = {
@@ -36494,18 +36509,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	        key: 'handleOnKeyDownTextArea',
 	        value: function handleOnKeyDownTextArea(event) {
 	            this.typeMessageToSend = 0;
-	            //could not find a better way for now
-	            var minus = 0;
-	            if ($('.dw-content').length > 0) {
-	                minus = 93;
-	            } else {
-	                minus = 15;
-	            }
-	            var footerHeight = $('#mky-chat-input').height();
-	            var container = $('.mky-chat-area').height() - minus;
-	            $('#mky-chat-timeline').height(container - footerHeight);
 
 	            if (event.keyCode === 13 && !event.shiftKey) {
+	                console.log('enter!!');
 	                event.preventDefault();
 	                var text = this.state.text.trim();
 	                if (text) {
@@ -36927,80 +36933,88 @@ return /******/ (function(modules) { // webpackBootstrap
 	/***/ function(module, exports, __webpack_require__) {
 
 		'use strict';
-
+		
 		Object.defineProperty(exports, "__esModule", {
 		  value: true
 		});
-
+		
 		var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
+		
 		var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
+		
 		var _attrAccept = __webpack_require__(1);
-
+		
 		var _attrAccept2 = _interopRequireDefault(_attrAccept);
-
+		
 		var _react = __webpack_require__(2);
-
+		
 		var _react2 = _interopRequireDefault(_react);
-
+		
 		function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
+		
 		function _objectWithoutProperties(obj, keys) { var target = {}; for (var i in obj) { if (keys.indexOf(i) >= 0) continue; if (!Object.prototype.hasOwnProperty.call(obj, i)) continue; target[i] = obj[i]; } return target; }
-
+		
 		function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
+		
 		function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+		
+		function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* eslint prefer-template: 0 */
+		
 		var supportMultiple = typeof document !== 'undefined' && document && document.createElement ? 'multiple' in document.createElement('input') : true;
-
+		
 		var Dropzone = function (_React$Component) {
 		  _inherits(Dropzone, _React$Component);
-
+		
 		  function Dropzone(props, context) {
 		    _classCallCheck(this, Dropzone);
-
+		
 		    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Dropzone).call(this, props, context));
-
+		
 		    _this.onClick = _this.onClick.bind(_this);
+		    _this.onDragStart = _this.onDragStart.bind(_this);
 		    _this.onDragEnter = _this.onDragEnter.bind(_this);
 		    _this.onDragLeave = _this.onDragLeave.bind(_this);
 		    _this.onDragOver = _this.onDragOver.bind(_this);
 		    _this.onDrop = _this.onDrop.bind(_this);
-
+		
 		    _this.state = {
 		      isDragActive: false
 		    };
 		    return _this;
 		  }
-
+		
 		  _createClass(Dropzone, [{
 		    key: 'componentDidMount',
 		    value: function componentDidMount() {
 		      this.enterCounter = 0;
 		    }
 		  }, {
+		    key: 'onDragStart',
+		    value: function onDragStart(e) {
+		      if (this.props.onDragStart) {
+		        this.props.onDragStart.call(this, e);
+		      }
+		    }
+		  }, {
 		    key: 'onDragEnter',
 		    value: function onDragEnter(e) {
 		      e.preventDefault();
-
+		
 		      // Count the dropzone and any children that are entered.
 		      ++this.enterCounter;
-
+		
 		      // This is tricky. During the drag even the dataTransfer.files is null
 		      // But Chrome implements some drag store, which is accesible via dataTransfer.items
 		      var dataTransferItems = e.dataTransfer && e.dataTransfer.items ? e.dataTransfer.items : [];
-
+		
 		      // Now we need to convert the DataTransferList to Array
 		      var allFilesAccepted = this.allFilesAccepted(Array.prototype.slice.call(dataTransferItems));
-
+		
 		      this.setState({
 		        isDragActive: allFilesAccepted,
 		        isDragReject: !allFilesAccepted
 		      });
-
+		
 		      if (this.props.onDragEnter) {
 		        this.props.onDragEnter.call(this, e);
 		      }
@@ -37016,17 +37030,17 @@ return /******/ (function(modules) { // webpackBootstrap
 		    key: 'onDragLeave',
 		    value: function onDragLeave(e) {
 		      e.preventDefault();
-
+		
 		      // Only deactivate once the dropzone and all children was left.
 		      if (--this.enterCounter > 0) {
 		        return;
 		      }
-
+		
 		      this.setState({
 		        isDragActive: false,
 		        isDragReject: false
 		      });
-
+		
 		      if (this.props.onDragLeave) {
 		        this.props.onDragLeave.call(this, e);
 		      }
@@ -37035,19 +37049,19 @@ return /******/ (function(modules) { // webpackBootstrap
 		    key: 'onDrop',
 		    value: function onDrop(e) {
 		      e.preventDefault();
-
+		
 		      // Reset the counter along with the drag on a drop.
 		      this.enterCounter = 0;
-
+		
 		      this.setState({
 		        isDragActive: false,
 		        isDragReject: false
 		      });
-
+		
 		      var droppedFiles = e.dataTransfer ? e.dataTransfer.files : e.target.files;
 		      var max = this.props.multiple ? droppedFiles.length : Math.min(droppedFiles.length, 1);
 		      var files = [];
-
+		
 		      for (var i = 0; i < max; i++) {
 		        var file = droppedFiles[i];
 		        // We might want to disable the preview creation to support big files
@@ -37056,11 +37070,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		        }
 		        files.push(file);
 		      }
-
+		
 		      if (this.props.onDrop) {
 		        this.props.onDrop.call(this, files, e);
 		      }
-
+		
 		      if (this.allFilesAccepted(files)) {
 		        if (this.props.onDropAccepted) {
 		          this.props.onDropAccepted.call(this, files, e);
@@ -37082,7 +37096,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		    key: 'allFilesAccepted',
 		    value: function allFilesAccepted(files) {
 		      var _this2 = this;
-
+		
 		      return files.every(function (file) {
 		        return (0, _attrAccept2.default)(file, _this2.props.accept);
 		      });
@@ -37097,7 +37111,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		    key: 'render',
 		    value: function render() {
 		      var _this3 = this;
-
+		
 		      var _props = this.props;
 		      var accept = _props.accept;
 		      var activeClassName = _props.activeClassName;
@@ -37105,31 +37119,31 @@ return /******/ (function(modules) { // webpackBootstrap
 		      var multiple = _props.multiple;
 		      var name = _props.name;
 		      var rejectClassName = _props.rejectClassName;
-
+		
 		      var rest = _objectWithoutProperties(_props, ['accept', 'activeClassName', 'inputProps', 'multiple', 'name', 'rejectClassName']);
-
+		
 		      var activeStyle = // eslint-disable-line prefer-const
 		      rest.activeStyle;
 		      var className = rest.className;
 		      var rejectStyle = rest.rejectStyle;
 		      var style = rest.style;
-
+		
 		      var props = _objectWithoutProperties(rest, ['activeStyle', 'className', 'rejectStyle', 'style']);
-
+		
 		      var _state = this.state;
 		      var isDragActive = _state.isDragActive;
 		      var isDragReject = _state.isDragReject;
-
-
+		
+		
 		      className = className || '';
-
+		
 		      if (isDragActive && activeClassName) {
 		        className += ' ' + activeClassName;
 		      }
 		      if (isDragReject && rejectClassName) {
 		        className += ' ' + rejectClassName;
 		      }
-
+		
 		      if (!className && !style && !activeStyle && !rejectStyle) {
 		        style = {
 		          width: 200,
@@ -37148,7 +37162,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		          backgroundColor: '#ffdddd'
 		        };
 		      }
-
+		
 		      var appliedStyle = void 0;
 		      if (activeStyle && isDragActive) {
 		        appliedStyle = _extends({}, style, activeStyle);
@@ -37157,7 +37171,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		      } else {
 		        appliedStyle = _extends({}, style);
 		      }
-
+		
 		      var inputAttributes = {
 		        accept: accept,
 		        type: 'file',
@@ -37165,14 +37179,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		        multiple: supportMultiple && multiple,
 		        ref: function ref(el) {
 		          return _this3.fileInputEl = el;
-		        },
+		        }, // eslint-disable-line
 		        onChange: this.onDrop
 		      };
-
+		
 		      if (name && name.length) {
 		        inputAttributes.name = name;
 		      }
-
+		
 		      return _react2.default.createElement(
 		        'div',
 		        _extends({
@@ -37180,6 +37194,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		          style: appliedStyle
 		        }, props /* expand user provided props first so event handlers are never overridden */, {
 		          onClick: this.onClick,
+		          onDragStart: this.onDragStart,
 		          onDragEnter: this.onDragEnter,
 		          onDragOver: this.onDragOver,
 		          onDragLeave: this.onDragLeave,
@@ -37190,40 +37205,44 @@ return /******/ (function(modules) { // webpackBootstrap
 		      );
 		    }
 		  }]);
-
+		
 		  return Dropzone;
 		}(_react2.default.Component);
-
+		
 		Dropzone.defaultProps = {
 		  disablePreview: false,
 		  disableClick: false,
 		  multiple: true
 		};
-
+		
 		Dropzone.propTypes = {
+		  // Overriding drop behavior
 		  onDrop: _react2.default.PropTypes.func,
 		  onDropAccepted: _react2.default.PropTypes.func,
 		  onDropRejected: _react2.default.PropTypes.func,
+		
+		  // Overriding drag behavior
+		  onDragStart: _react2.default.PropTypes.func,
 		  onDragEnter: _react2.default.PropTypes.func,
 		  onDragLeave: _react2.default.PropTypes.func,
-
-		  children: _react2.default.PropTypes.node,
-		  style: _react2.default.PropTypes.object,
-		  activeStyle: _react2.default.PropTypes.object,
-		  rejectStyle: _react2.default.PropTypes.object,
-		  className: _react2.default.PropTypes.string,
-		  activeClassName: _react2.default.PropTypes.string,
-		  rejectClassName: _react2.default.PropTypes.string,
-
-		  disablePreview: _react2.default.PropTypes.bool,
-		  disableClick: _react2.default.PropTypes.bool,
-
-		  inputProps: _react2.default.PropTypes.object,
-		  multiple: _react2.default.PropTypes.bool,
-		  accept: _react2.default.PropTypes.string,
-		  name: _react2.default.PropTypes.string
+		
+		  children: _react2.default.PropTypes.node, // Contents of the dropzone
+		  style: _react2.default.PropTypes.object, // CSS styles to apply
+		  activeStyle: _react2.default.PropTypes.object, // CSS styles to apply when drop will be accepted
+		  rejectStyle: _react2.default.PropTypes.object, // CSS styles to apply when drop will be rejected
+		  className: _react2.default.PropTypes.string, // Optional className
+		  activeClassName: _react2.default.PropTypes.string, // className for accepted state
+		  rejectClassName: _react2.default.PropTypes.string, // className for rejected state
+		
+		  disablePreview: _react2.default.PropTypes.bool, // Enable/disable preview generation
+		  disableClick: _react2.default.PropTypes.bool, // Disallow clicking on the dropzone container to open file dialog
+		
+		  inputProps: _react2.default.PropTypes.object, // Pass additional attributes to the <file type="input"/> tag
+		  multiple: _react2.default.PropTypes.bool, // Allow dropping multiple files
+		  accept: _react2.default.PropTypes.string, // Allow specific types of files. See https://github.com/okonet/attr-accept for more information
+		  name: _react2.default.PropTypes.string // name attribute for the input tag
 		};
-
+		
 		exports.default = Dropzone;
 		module.exports = exports['default'];
 
@@ -38441,7 +38460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _animationMixin2 = _interopRequireDefault(_animationMixin);
 
-	var _jQueryMixin = __webpack_require__(299);
+	var _jQueryMixin = __webpack_require__(298);
 
 	var _jQueryMixin2 = _interopRequireDefault(_jQueryMixin);
 
@@ -38614,11 +38633,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ReactTransitionEvents2 = _interopRequireDefault(_ReactTransitionEvents);
 
-	var _reactDom = __webpack_require__(297);
+	var _reactDom = __webpack_require__(112);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _elementClass = __webpack_require__(298);
+	var _elementClass = __webpack_require__(297);
 
 	var _elementClass2 = _interopRequireDefault(_elementClass);
 
@@ -38886,15 +38905,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 297 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	module.exports = __webpack_require__(113);
-
-
-/***/ },
-/* 298 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -38959,7 +38969,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 299 */
+/* 298 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -38968,7 +38978,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _reactDom = __webpack_require__(297);
+	var _reactDom = __webpack_require__(112);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -39052,10 +39062,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-
-/* 300 */
-/***/ function(module, exports) {
-
+/* 299 */
+/***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {// Last time updated: 2016-07-03 8:51:35 AM UTC
 
@@ -39737,7 +39745,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            }
 	        }
 
-	        // i.e. stop recording when <video> is paused by the user; and auto restart recording
+	        // i.e. stop recording when <video> is paused by the user; and auto restart recording 
 	        // when video is resumed. E.g. yourStream.getVideoTracks()[0].muted = true; // it will auto-stop recording.
 	        mediaRecorder.ignoreMutedMedia = self.ignoreMutedMedia || false;
 
@@ -39791,10 +39799,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	                }
 	            }
 
-	            // When the stream is "ended" set recording to 'inactive'
-	            // and stop gathering data. Callers should not rely on
-	            // exactness of the timeSlice value, especially
-	            // if the timeSlice value is small. Callers should
+	            // When the stream is "ended" set recording to 'inactive' 
+	            // and stop gathering data. Callers should not rely on 
+	            // exactness of the timeSlice value, especially 
+	            // if the timeSlice value is small. Callers should 
 	            // consider timeSlice as a minimum value
 
 	            if (!!mediaRecorder && mediaRecorder.state !== 'inactive' && mediaRecorder.state !== 'stopped') {
@@ -40030,7 +40038,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function StereoAudioRecorderHelper(mediaStream, root) {
 
-	    // variables
+	    // variables    
 	    var deviceSampleRate = 44100; // range: 22050 to 96000
 
 	    if (!ObjectStore.AudioContextConstructor) {
@@ -40221,7 +40229,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    /* From the spec: This value controls how frequently the audioprocess event is
 	    dispatched and how many sample-frames need to be processed each call.
 	    Lower values for buffer size will result in a lower (better) latency.
-	    Higher values will be necessary to avoid audio breakup and glitches
+	    Higher values will be necessary to avoid audio breakup and glitches 
 	    Legal values are 256, 512, 1024, 2048, 4096, 8192, and 16384.*/
 	    var bufferSize = root.bufferSize || 2048;
 	    if (root.bufferSize === 0) {
@@ -41306,15 +41314,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 301 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! FileAPI 2.0.19 - BSD | git://github.com/mailru/FileAPI.git */
 	!function(a){"use strict";var b=a.HTMLCanvasElement&&a.HTMLCanvasElement.prototype,c=a.Blob&&function(){try{return Boolean(new Blob)}catch(a){return!1}}(),d=c&&a.Uint8Array&&function(){try{return 100===new Blob([new Uint8Array(100)]).size}catch(a){return!1}}(),e=a.BlobBuilder||a.WebKitBlobBuilder||a.MozBlobBuilder||a.MSBlobBuilder,f=(c||e)&&a.atob&&a.ArrayBuffer&&a.Uint8Array&&function(a){var b,f,g,h,i,j;for(b=a.split(",")[0].indexOf("base64")>=0?atob(a.split(",")[1]):decodeURIComponent(a.split(",")[1]),f=new ArrayBuffer(b.length),g=new Uint8Array(f),h=0;h<b.length;h+=1)g[h]=b.charCodeAt(h);return i=a.split(",")[0].split(":")[1].split(";")[0],c?new Blob([d?g:f],{type:i}):(j=new e,j.append(f),j.getBlob(i))};a.HTMLCanvasElement&&!b.toBlob&&(b.mozGetAsFile?b.toBlob=function(a,c,d){a(d&&b.toDataURL&&f?f(this.toDataURL(c,d)):this.mozGetAsFile("blob",c))}:b.toDataURL&&f&&(b.toBlob=function(a,b,c){a(f(this.toDataURL(b,c)))})),a.dataURLtoBlob=f}(window),function(a,b){"use strict";function c(a,b,c,d,e){var f={type:c.type||c,target:a,result:d};Y(f,e),b(f)}function d(a){return z&&!!z.prototype["readAs"+a]}function e(a,e,f,g){if(ca.isBlob(a)&&d(f)){var h=new z;Z(h,S,function j(b){var d=b.type;"progress"==d?c(a,e,b,b.target.result,{loaded:b.loaded,total:b.total}):"loadend"==d?($(h,S,j),h=null):c(a,e,b,b.target.result)});try{g?h["readAs"+f](a,g):h["readAs"+f](a)}catch(i){c(a,e,"error",b,{error:i.toString()})}}else c(a,e,"error",b,{error:"filreader_not_support_"+f})}function f(a,b){if(!a.type&&(u||a.size%4096===0&&a.size<=102400))if(z)try{var c=new z;_(c,S,function(a){var d="error"!=a.type;d?((null==c.readyState||c.readyState===c.LOADING)&&c.abort(),b(d)):b(!1,c.error)}),c.readAsDataURL(a)}catch(d){b(!1,d)}else b(null,new Error("FileReader is not supported"));else b(!0)}function g(a){return a&&(a.isFile||a.isDirectory)}function h(a){var b;return a.getAsEntry?b=a.getAsEntry():a.webkitGetAsEntry&&(b=a.webkitGetAsEntry()),b}function i(a,b){if(a)if(a.isFile)a.file(function(c){c.fullPath=a.fullPath,b(!1,[c],[c])},function(c){a.error=c,b("FileError.code: "+c.code,[],[a])});else if(a.isDirectory){var c=a.createReader(),d=!0,e=[],f=[a],g=function(c){a.error=c,b("DirectoryError.code: "+c.code,e,f)},j=function l(h){d&&(d=!1,h.length||(a.error=new Error("directory is empty"))),h.length?ca.afor(h,function(a,b){i(b,function(b,d,h){b||(e=e.concat(d)),f=f.concat(h),a?a():c.readEntries(l,g)})}):b(!1,e,f)};c.readEntries(j,g)}else i(h(a),b);else{var k=new Error("invalid entry");a=new Object(a),a.error=k,b(k.message,[],[a])}}function j(a){var b={};return X(a,function(a,c){a&&"object"==typeof a&&void 0===a.nodeType&&(a=Y({},a)),b[c]=a}),b}function k(a){return L.test(a&&a.tagName)}function l(a){return(a.originalEvent||a||"").dataTransfer||{}}function m(a){var b;for(b in a)if(a.hasOwnProperty(b)&&!(a[b]instanceof Object||"overlay"===b||"filter"===b))return!0;return!1}var n,o,p=1,q=function(){},r=a.document,s=r.doctype||{},t=a.navigator.userAgent,u=/safari\//i.test(t)&&!/chrome\//i.test(t),v=/iemobile\//i.test(t),w=a.createObjectURL&&a||a.URL&&URL.revokeObjectURL&&URL||a.webkitURL&&webkitURL,x=a.Blob,y=a.File,z=a.FileReader,A=a.FormData,B=a.XMLHttpRequest,C=a.jQuery,D=!(!(y&&z&&(a.Uint8Array||A||B.prototype.sendAsBinary))||u&&/windows/i.test(t)&&!v),E=D&&"withCredentials"in new B,F=D&&!!x&&!!(x.prototype.webkitSlice||x.prototype.mozSlice||x.prototype.slice),G=(""+"".normalize).indexOf("[native code]")>0,H=a.dataURLtoBlob,I=/img/i,J=/canvas/i,K=/img|canvas/i,L=/input/i,M=/^data:[^,]+,/,N={}.toString,O=a.Math,P=function(b){return b=new a.Number(O.pow(1024,b)),b.from=function(a){return O.round(a*this)},b},Q={},R=[],S="abort progress error load loadend",T="status statusText readyState response responseXML responseText responseBody".split(" "),U="currentTarget",V="preventDefault",W=function(a){return a&&"length"in a},X=function(a,b,c){if(a)if(W(a))for(var d=0,e=a.length;e>d;d++)d in a&&b.call(c,a[d],d,a);else for(var f in a)a.hasOwnProperty(f)&&b.call(c,a[f],f,a)},Y=function(a){for(var b=arguments,c=1,d=function(b,c){a[c]=b};c<b.length;c++)X(b[c],d);return a},Z=function(a,b,c){if(a){var d=ca.uid(a);Q[d]||(Q[d]={});var e=z&&a&&a instanceof z;X(b.split(/\s+/),function(b){C&&!e?C.event.add(a,b,c):(Q[d][b]||(Q[d][b]=[]),Q[d][b].push(c),a.addEventListener?a.addEventListener(b,c,!1):a.attachEvent?a.attachEvent("on"+b,c):a["on"+b]=c)})}},$=function(a,b,c){if(a){var d=ca.uid(a),e=Q[d]||{},f=z&&a&&a instanceof z;X(b.split(/\s+/),function(b){if(C&&!f)C.event.remove(a,b,c);else{for(var d=e[b]||[],g=d.length;g--;)if(d[g]===c){d.splice(g,1);break}a.addEventListener?a.removeEventListener(b,c,!1):a.detachEvent?a.detachEvent("on"+b,c):a["on"+b]=null}})}},_=function(a,b,c){Z(a,b,function d(e){$(a,b,d),c(e)})},aa=function(b){return b.target||(b.target=a.event&&a.event.srcElement||r),3===b.target.nodeType&&(b.target=b.target.parentNode),b},ba=function(a){var b=r.createElement("input");return b.setAttribute("type","file"),a in b},ca={version:"2.0.19",cors:!1,html5:!0,media:!1,formData:!0,multiPassResize:!0,debug:!1,pingUrl:!1,multiFlash:!1,flashAbortTimeout:0,withCredentials:!0,staticPath:"./dist/",flashUrl:0,flashImageUrl:0,postNameConcat:function(a,b){return a+(null!=b?"["+b+"]":"")},ext2mime:{jpg:"image/jpeg",tif:"image/tiff",txt:"text/plain"},accept:{"image/*":"art bm bmp dwg dxf cbr cbz fif fpx gif ico iefs jfif jpe jpeg jpg jps jut mcf nap nif pbm pcx pgm pict pm png pnm qif qtif ras rast rf rp svf tga tif tiff xbm xbm xpm xwd","audio/*":"m4a flac aac rm mpa wav wma ogg mp3 mp2 m3u mod amf dmf dsm far gdm imf it m15 med okt s3m stm sfx ult uni xm sid ac3 dts cue aif aiff wpl ape mac mpc mpp shn wv nsf spc gym adplug adx dsp adp ymf ast afc hps xs","video/*":"m4v 3gp nsv ts ty strm rm rmvb m3u ifo mov qt divx xvid bivx vob nrg img iso pva wmv asf asx ogm m2v avi bin dat dvr-ms mpg mpeg mp4 mkv avc vp3 svq3 nuv viv dv fli flv wpl"},uploadRetry:0,networkDownRetryTimeout:5e3,chunkSize:0,chunkUploadRetry:0,chunkNetworkDownRetryTimeout:2e3,KB:P(1),MB:P(2),GB:P(3),TB:P(4),EMPTY_PNG:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIW2NkAAIAAAoAAggA9GkAAAAASUVORK5CYII=",expando:"fileapi"+(new Date).getTime(),uid:function(a){return a?a[ca.expando]=a[ca.expando]||ca.uid():(++p,ca.expando+p)},log:function(){ca.debug&&n&&(o?console.log.apply(console,arguments):console.log([].join.call(arguments," ")))},newImage:function(a,b){var c=r.createElement("img");return b&&ca.event.one(c,"error load",function(a){b("error"==a.type,c),c=null}),c.src=a,c},getXHR:function(){var b;if(B)b=new B;else if(a.ActiveXObject)try{b=new ActiveXObject("MSXML2.XMLHttp.3.0")}catch(c){b=new ActiveXObject("Microsoft.XMLHTTP")}return b},isArray:W,support:{dnd:E&&"ondrop"in r.createElement("div"),cors:E,html5:D,chunked:F,dataURI:!0,accept:ba("accept"),multiple:ba("multiple")},event:{on:Z,off:$,one:_,fix:aa},throttle:function(b,c){var d,e;return function(){e=arguments,d||(b.apply(a,e),d=setTimeout(function(){d=0,b.apply(a,e)},c))}},F:function(){},parseJSON:function(b){var c;return c=a.JSON&&JSON.parse?JSON.parse(b):new Function("return ("+b.replace(/([\r\n])/g,"\\$1")+");")()},trim:function(a){return a=String(a),a.trim?a.trim():a.replace(/^\s+|\s+$/g,"")},defer:function(){var a,c,d=[],e={resolve:function(b,f){for(e.resolve=q,c=b||!1,a=f;f=d.shift();)f(c,a)},then:function(e){c!==b?e(c,a):d.push(e)}};return e},queue:function(a){var b=0,c=0,d=!1,e=!1,f={inc:function(){c++},next:function(){b++,setTimeout(f.check,0)},check:function(){b>=c&&!d&&f.end()},isFail:function(){return d},fail:function(){!d&&a(d=!0)},end:function(){e||(e=!0,a())}};return f},each:X,afor:function(a,b){var c=0,d=a.length;W(a)&&d--?!function e(){b(d!=c&&e,a[c],c++)}():b(!1)},extend:Y,isFile:function(a){return"[object File]"===N.call(a)},isBlob:function(a){return this.isFile(a)||"[object Blob]"===N.call(a)},isCanvas:function(a){return a&&J.test(a.nodeName)},getFilesFilter:function(a){return a="string"==typeof a?a:a.getAttribute&&a.getAttribute("accept")||"",a?new RegExp("("+a.replace(/\./g,"\\.").replace(/,/g,"|")+")$","i"):/./},readAsDataURL:function(a,b){ca.isCanvas(a)?c(a,b,"load",ca.toDataURL(a)):e(a,b,"DataURL")},readAsBinaryString:function(a,b){d("BinaryString")?e(a,b,"BinaryString"):e(a,function(a){if("load"==a.type)try{a.result=ca.toBinaryString(a.result)}catch(c){a.type="error",a.message=c.toString()}b(a)},"DataURL")},readAsArrayBuffer:function(a,b){e(a,b,"ArrayBuffer")},readAsText:function(a,b,c){c||(c=b,b="utf-8"),e(a,c,"Text",b)},toDataURL:function(a,b){return"string"==typeof a?a:a.toDataURL?a.toDataURL(b||"image/png"):void 0},toBinaryString:function(b){return a.atob(ca.toDataURL(b).replace(M,""))},readAsImage:function(a,d,e){if(ca.isBlob(a))if(w){var f=w.createObjectURL(a);f===b?c(a,d,"error"):ca.readAsImage(f,d,e)}else ca.readAsDataURL(a,function(b){"load"==b.type?ca.readAsImage(b.result,d,e):(e||"error"==b.type)&&c(a,d,b,null,{loaded:b.loaded,total:b.total})});else if(ca.isCanvas(a))c(a,d,"load",a);else if(I.test(a.nodeName))if(a.complete)c(a,d,"load",a);else{var g="error abort load";_(a,g,function i(b){"load"==b.type&&w&&w.revokeObjectURL(a.src),$(a,g,i),c(a,d,b,a)})}else if(a.iframe)c(a,d,{type:"error"});else{var h=ca.newImage(a.dataURL||a);ca.readAsImage(h,d,e)}},checkFileObj:function(a){var b={},c=ca.accept;return"object"==typeof a?b=a:b.name=(a+"").split(/\\|\//g).pop(),null==b.type&&(b.type=b.name.split(".").pop()),X(c,function(a,c){a=new RegExp(a.replace(/\s/g,"|"),"i"),(a.test(b.type)||ca.ext2mime[b.type])&&(b.type=ca.ext2mime[b.type]||c.split("/")[0]+"/"+b.type)}),b},getDropFiles:function(a,b){var c,d=[],e=[],j=l(a),k=j.files,m=j.items,n=W(m)&&m[0]&&h(m[0]),o=ca.queue(function(){b(d,e)});if(n)if(G&&k){var p,q,r=k.length;for(c=new Array(r);r--;){p=k[r];try{q=h(m[r])}catch(s){ca.log("[err] getDropFiles: ",s),q=null}g(q)&&(q.isDirectory||q.isFile&&p.name==p.name.normalize("NFC"))?c[r]=q:c[r]=p}}else c=m;else c=k;X(c||[],function(a){o.inc();try{n&&g(a)?i(a,function(a,b,c){a?ca.log("[err] getDropFiles:",a):d.push.apply(d,b),e.push.apply(e,c),o.next()}):f(a,function(b,c){b?d.push(a):a.error=c,e.push(a),o.next()})}catch(b){o.next(),ca.log("[err] getDropFiles: ",b)}}),o.check()},getFiles:function(a,b,c){var d=[];return c?(ca.filterFiles(ca.getFiles(a),b,c),null):(a.jquery&&(a.each(function(){d=d.concat(ca.getFiles(this))}),a=d,d=[]),"string"==typeof b&&(b=ca.getFilesFilter(b)),a.originalEvent?a=aa(a.originalEvent):a.srcElement&&(a=aa(a)),a.dataTransfer?a=a.dataTransfer:a.target&&(a=a.target),a.files?(d=a.files,D||(d[0].blob=a,d[0].iframe=!0)):!D&&k(a)?ca.trim(a.value)&&(d=[ca.checkFileObj(a.value)],d[0].blob=a,d[0].iframe=!0):W(a)&&(d=a),ca.filter(d,function(a){return!b||b.test(a.name)}))},getTotalSize:function(a){for(var b=0,c=a&&a.length;c--;)b+=a[c].size;return b},getInfo:function(a,b){var c={},d=R.concat();ca.isBlob(a)?!function e(){var f=d.shift();f?f.test(a.type)?f(a,function(a,d){a?b(a):(Y(c,d),e())}):e():b(!1,c)}():b("not_support_info",c)},addInfoReader:function(a,b){b.test=function(b){return a.test(b)},R.push(b)},filter:function(a,b){for(var c,d=[],e=0,f=a.length;f>e;e++)e in a&&(c=a[e],b.call(c,c,e,a)&&d.push(c));return d},filterFiles:function(a,b,c){if(a.length){var d,e=a.concat(),f=[],g=[];!function h(){e.length?(d=e.shift(),ca.getInfo(d,function(a,c){(b(d,a?!1:c)?f:g).push(d),h()})):c(f,g)}()}else c([],a)},upload:function(a){a=Y({jsonp:"callback",prepare:ca.F,beforeupload:ca.F,upload:ca.F,fileupload:ca.F,fileprogress:ca.F,filecomplete:ca.F,progress:ca.F,complete:ca.F,pause:ca.F,imageOriginal:!0,chunkSize:ca.chunkSize,chunkUploadRetry:ca.chunkUploadRetry,uploadRetry:ca.uploadRetry},a),a.imageAutoOrientation&&!a.imageTransform&&(a.imageTransform={rotate:"auto"});var b,c=new ca.XHR(a),d=this._getFilesDataArray(a.files),e=this,f=0,g=0,h=!1;return X(d,function(a){f+=a.size}),c.files=[],X(d,function(a){c.files.push(a.file)}),c.total=f,c.loaded=0,c.filesLeft=d.length,a.beforeupload(c,a),b=function(){var i=d.shift(),k=i&&i.file,l=!1,m=j(a);if(c.filesLeft=d.length,k&&k.name===ca.expando&&(k=null,ca.log("[warn] FileAPI.upload() — called without files")),("abort"!=c.statusText||c.current)&&i){if(h=!1,c.currentFile=k,k&&a.prepare(k,m)===!1)return void b.call(e);m.file=k,e._getFormData(m,i,function(h){g||a.upload(c,a);var j=new ca.XHR(Y({},m,{upload:k?function(){a.fileupload(k,j,m)}:q,progress:k?function(b){l||(l=b.loaded===b.total,a.fileprogress({type:"progress",total:i.total=b.total,loaded:i.loaded=b.loaded},k,j,m),a.progress({type:"progress",total:f,loaded:c.loaded=g+i.size*(b.loaded/b.total)||0},k,j,m))}:q,complete:function(d){X(T,function(a){c[a]=j[a]}),k&&(i.total=i.total||i.size,i.loaded=i.total,d||(this.progress(i),l=!0,g+=i.size,c.loaded=g),a.filecomplete(d,j,k,m)),setTimeout(function(){b.call(e)},0)}}));c.abort=function(a){a||(d.length=0),this.current=a,j.abort()},j.send(h)})}else{var n=200==c.status||201==c.status||204==c.status;a.complete(n?!1:c.statusText||"error",c,a),h=!0}},setTimeout(b,0),c.append=function(a,g){a=ca._getFilesDataArray([].concat(a)),X(a,function(a){f+=a.size,c.files.push(a.file),g?d.unshift(a):d.push(a)}),c.statusText="",h&&b.call(e)},c.remove=function(a){for(var b,c=d.length;c--;)d[c].file==a&&(b=d.splice(c,1),f-=b.size);return b},c},_getFilesDataArray:function(a){var b=[],c={};if(k(a)){var d=ca.getFiles(a);c[a.name||"file"]=null!==a.getAttribute("multiple")?d:d[0]}else W(a)&&k(a[0])?X(a,function(a){c[a.name||"file"]=ca.getFiles(a)}):c=a;return X(c,function e(a,c){W(a)?X(a,function(a){e(a,c)}):a&&(a.name||a.image)&&b.push({name:c,file:a,size:a.size,total:a.size,loaded:0})}),b.length||b.push({file:{name:ca.expando}}),b},_getFormData:function(a,b,c){var d=b.file,e=b.name,f=d.name,g=d.type,h=ca.support.transform&&a.imageTransform,i=new ca.Form,j=ca.queue(function(){c(i)}),k=h&&m(h),l=ca.postNameConcat;X(a.data,function n(a,b){"object"==typeof a?X(a,function(a,c){n(a,l(b,c))}):i.append(b,a)}),function o(b){b.image?(j.inc(),b.toData(function(a,c){b.file&&(c.type=b.file.type,c.quality=b.matrix.quality,f=b.file&&b.file.name),f=f||(new Date).getTime()+".png",o(c),j.next()})):ca.Image&&h&&(/^image/.test(b.type)||K.test(b.nodeName))?(j.inc(),k&&(h=[h]),ca.Image.transform(b,h,a.imageAutoOrientation,function(c,d){if(k&&!c)H||ca.flashEngine||(i.multipart=!0),i.append(e,d[0],f,h[0].type||g);else{var m=0;c||X(d,function(a,b){H||ca.flashEngine||(i.multipart=!0),h[b].postName||(m=1),i.append(h[b].postName||l(e,b),a,f,h[b].type||g)}),(c||a.imageOriginal)&&i.append(l(e,m?"original":null),b,f,g)}j.next()})):f!==ca.expando&&i.append(e,b,f)}(d),j.check()},reset:function(a,b){var c,d;return C?(d=C(a).clone(!0).insertBefore(a).val("")[0],b||C(a).remove()):(c=a.parentNode,d=c.insertBefore(a.cloneNode(!0),a),d.value="",b||c.removeChild(a),X(Q[ca.uid(a)],function(b,c){X(b,function(b){$(a,c,b),Z(d,c,b)})})),d},load:function(a,b){var c=ca.getXHR();return c?(c.open("GET",a,!0),c.overrideMimeType&&c.overrideMimeType("text/plain; charset=x-user-defined"),Z(c,"progress",function(a){a.lengthComputable&&b({type:a.type,loaded:a.loaded,total:a.total},c)}),c.onreadystatechange=function(){if(4==c.readyState)if(c.onreadystatechange=null,200==c.status){a=a.split("/");var d={name:a[a.length-1],size:c.getResponseHeader("Content-Length"),type:c.getResponseHeader("Content-Type")};d.dataURL="data:"+d.type+";base64,"+ca.encode64(c.responseBody||c.responseText),b({type:"load",result:d},c)}else b({type:"error"},c)},c.send(null)):b({type:"error"}),c},encode64:function(a){var b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",c="",d=0;for("string"!=typeof a&&(a=String(a));d<a.length;){var e,f,g=255&a.charCodeAt(d++),h=255&a.charCodeAt(d++),i=255&a.charCodeAt(d++),j=g>>2,k=(3&g)<<4|h>>4;isNaN(h)?e=f=64:(e=(15&h)<<2|i>>6,f=isNaN(i)?64:63&i),c+=b.charAt(j)+b.charAt(k)+b.charAt(e)+b.charAt(f)}return c}};ca.addInfoReader(/^image/,function(a,b){if(!a.__dimensions){var c=a.__dimensions=ca.defer();ca.readAsImage(a,function(a){var b=a.target;c.resolve("load"==a.type?!1:"error",{width:b.width,height:b.height}),b.src=ca.EMPTY_PNG,b=null})}a.__dimensions.then(b)}),ca.event.dnd=function(a,b,c){var d,e;c||(c=b,b=ca.F),z?(Z(a,"dragenter dragleave dragover",b.ff=b.ff||function(a){for(var c=l(a).types,f=c&&c.length,g=!1;f--;)if(~c[f].indexOf("File")){a[V](),e!==a.type&&(e=a.type,"dragleave"!=e&&b.call(a[U],!0,a),g=!0);break}g&&(clearTimeout(d),d=setTimeout(function(){b.call(a[U],"dragleave"!=e,a)},50))}),Z(a,"drop",c.ff=c.ff||function(a){a[V](),e=0,b.call(a[U],!1,a),ca.getDropFiles(a,function(b,d){c.call(a[U],b,d,a)})})):ca.log("Drag'n'Drop -- not supported")},ca.event.dnd.off=function(a,b,c){$(a,"dragenter dragleave dragover",b.ff),$(a,"drop",c.ff)},C&&!C.fn.dnd&&(C.fn.dnd=function(a,b){return this.each(function(){ca.event.dnd(this,a,b)})},C.fn.offdnd=function(a,b){return this.each(function(){ca.event.dnd.off(this,a,b)})}),a.FileAPI=Y(ca,a.FileAPI),ca.log("FileAPI: "+ca.version),ca.log("protocol: "+a.location.protocol),ca.log("doctype: ["+s.name+"] "+s.publicId+" "+s.systemId),X(r.getElementsByTagName("meta"),function(a){/x-ua-compatible/i.test(a.getAttribute("http-equiv"))&&ca.log("meta.http-equiv: "+a.getAttribute("content"))});try{n=!!console.log,o=!!console.log.apply}catch(da){}ca.flashUrl||(ca.flashUrl=ca.staticPath+"FileAPI.flash.swf"),ca.flashImageUrl||(ca.flashImageUrl=ca.staticPath+"FileAPI.flash.image.swf"),ca.flashWebcamUrl||(ca.flashWebcamUrl=ca.staticPath+"FileAPI.flash.camera.swf")}(window,void 0),function(a,b,c){"use strict";function d(b){if(b instanceof d){var c=new d(b.file);return a.extend(c.matrix,b.matrix),c}return this instanceof d?(this.file=b,this.size=b.size||100,void(this.matrix={sx:0,sy:0,sw:0,sh:0,dx:0,dy:0,dw:0,dh:0,resize:0,deg:0,quality:1,filter:0})):new d(b)}var e=Math.min,f=Math.round,g=function(){return b.createElement("canvas")},h=!1,i={8:270,3:180,6:90,7:270,4:180,5:90};try{h=g().toDataURL("image/png").indexOf("data:image/png")>-1}catch(j){}d.prototype={image:!0,constructor:d,set:function(b){return a.extend(this.matrix,b),this},crop:function(a,b,d,e){return d===c&&(d=a,e=b,a=b=0),this.set({sx:a,sy:b,sw:d,sh:e||d})},resize:function(a,b,c){return/min|max|height|width/.test(b)&&(c=b,b=a),this.set({dw:a,dh:b||a,resize:c})},preview:function(a,b){return this.resize(a,b||a,"preview")},rotate:function(a){return this.set({deg:a})},filter:function(a){return this.set({filter:a})},overlay:function(a){return this.set({overlay:a})},clone:function(){return new d(this)},_load:function(b,c){var d=this;/img|video/i.test(b.nodeName)?c.call(d,null,b):a.readAsImage(b,function(a){c.call(d,"load"!=a.type,a.result)})},_apply:function(b,c){var f,h=g(),i=this.getMatrix(b),j=h.getContext("2d"),k=b.videoWidth||b.width,l=b.videoHeight||b.height,m=i.deg,n=i.dw,o=i.dh,p=k,q=l,r=i.filter,s=b,t=i.overlay,u=a.queue(function(){b.src=a.EMPTY_PNG,c(!1,h)}),v=a.renderImageToCanvas;for(m-=360*Math.floor(m/360),b._type=this.file.type;i.multipass&&e(p/n,q/o)>2;)p=p/2+.5|0,q=q/2+.5|0,f=g(),f.width=p,f.height=q,s!==b?(v(f,s,0,0,s.width,s.height,0,0,p,q),s=f):(s=f,v(s,b,i.sx,i.sy,i.sw,i.sh,0,0,p,q),i.sx=i.sy=i.sw=i.sh=0);h.width=m%180?o:n,h.height=m%180?n:o,h.type=i.type,h.quality=i.quality,j.rotate(m*Math.PI/180),v(j.canvas,s,i.sx,i.sy,i.sw||s.width,i.sh||s.height,180==m||270==m?-n:0,90==m||180==m?-o:0,n,o),n=h.width,o=h.height,t&&a.each([].concat(t),function(b){u.inc();var c=new window.Image,d=function(){var e=0|b.x,f=0|b.y,g=b.w||c.width,h=b.h||c.height,i=b.rel;e=1==i||4==i||7==i?(n-g+e)/2:2==i||5==i||8==i?n-(g+e):e,f=3==i||4==i||5==i?(o-h+f)/2:i>=6?o-(h+f):f,a.event.off(c,"error load abort",d);try{j.globalAlpha=b.opacity||1,j.drawImage(c,e,f,g,h)}catch(k){}u.next()};a.event.on(c,"error load abort",d),c.src=b.src,c.complete&&d()}),r&&(u.inc(),d.applyFilter(h,r,u.next)),u.check()},getMatrix:function(b){var c=a.extend({},this.matrix),d=c.sw=c.sw||b.videoWidth||b.naturalWidth||b.width,g=c.sh=c.sh||b.videoHeight||b.naturalHeight||b.height,h=c.dw=c.dw||d,i=c.dh=c.dh||g,j=d/g,k=h/i,l=c.resize;if("preview"==l){if(h!=d||i!=g){var m,n;k>=j?(m=d,n=m/k):(n=g,m=n*k),(m!=d||n!=g)&&(c.sx=~~((d-m)/2),c.sy=~~((g-n)/2),d=m,g=n)}}else"height"==l?h=i*j:"width"==l?i=h/j:l&&(d>h||g>i?"min"==l?(h=f(k>j?e(d,h):i*j),i=f(k>j?h/j:e(g,i))):(h=f(j>=k?e(d,h):i*j),i=f(j>=k?h/j:e(g,i))):(h=d,i=g));return c.sw=d,c.sh=g,c.dw=h,c.dh=i,c.multipass=a.multiPassResize,c},_trans:function(b){this._load(this.file,function(c,d){if(c)b(c);else try{this._apply(d,b)}catch(c){a.log("[err] FileAPI.Image.fn._apply:",c),b(c)}})},get:function(b){if(a.support.transform){var c=this,d=c.matrix;"auto"==d.deg?a.getInfo(c.file,function(a,e){d.deg=i[e&&e.exif&&e.exif.Orientation]||0,c._trans(b)}):c._trans(b)}else b("not_support_transform");return this},toData:function(a){return this.get(a)}},d.exifOrientation=i,d.transform=function(b,e,f,g){function h(h,i){var j={},k=a.queue(function(a){g(a,j)});h?k.fail():a.each(e,function(a,e){if(!k.isFail()){var g=new d(i.nodeType?i:b),h="function"==typeof a;if(h?a(i,g):a.width?g[a.preview?"preview":"resize"](a.width,a.height,a.strategy):a.maxWidth&&(i.width>a.maxWidth||i.height>a.maxHeight)&&g.resize(a.maxWidth,a.maxHeight,"max"),a.crop){var l=a.crop;g.crop(0|l.x,0|l.y,l.w||l.width,l.h||l.height)}a.rotate===c&&f&&(a.rotate="auto"),g.set({type:g.matrix.type||a.type||b.type||"image/png"}),h||g.set({deg:a.rotate,overlay:a.overlay,filter:a.filter,quality:a.quality||1}),k.inc(),g.toData(function(a,b){a?k.fail():(j[e]=b,k.next())})}})}b.width?h(!1,b):a.getInfo(b,h)},a.each(["TOP","CENTER","BOTTOM"],function(b,c){a.each(["LEFT","CENTER","RIGHT"],function(a,e){d[b+"_"+a]=3*c+e,d[a+"_"+b]=3*c+e})}),d.toCanvas=function(a){var c=b.createElement("canvas");return c.width=a.videoWidth||a.width,c.height=a.videoHeight||a.height,c.getContext("2d").drawImage(a,0,0),c},d.fromDataURL=function(b,c,d){var e=a.newImage(b);a.extend(e,c),d(e)},d.applyFilter=function(b,c,e){"function"==typeof c?c(b,e):window.Caman&&window.Caman("IMG"==b.tagName?d.toCanvas(b):b,function(){"string"==typeof c?this[c]():a.each(c,function(a,b){this[b](a)},this),this.render(e)})},a.renderImageToCanvas=function(b,c,d,e,f,g,h,i,j,k){try{return b.getContext("2d").drawImage(c,d,e,f,g,h,i,j,k)}catch(l){throw a.log("renderImageToCanvas failed"),l}},a.support.canvas=a.support.transform=h,a.Image=d}(FileAPI,document),function(a){"use strict";a(FileAPI)}(function(a){"use strict";if(window.navigator&&window.navigator.platform&&/iP(hone|od|ad)/.test(window.navigator.platform)){var b=a.renderImageToCanvas;a.detectSubsampling=function(a){var b,c;return a.width*a.height>1048576?(b=document.createElement("canvas"),b.width=b.height=1,c=b.getContext("2d"),c.drawImage(a,-a.width+1,0),0===c.getImageData(0,0,1,1).data[3]):!1},a.detectVerticalSquash=function(a,b){var c,d,e,f,g,h=a.naturalHeight||a.height,i=document.createElement("canvas"),j=i.getContext("2d");for(b&&(h/=2),i.width=1,i.height=h,j.drawImage(a,0,0),c=j.getImageData(0,0,1,h).data,d=0,e=h,f=h;f>d;)g=c[4*(f-1)+3],0===g?e=f:d=f,f=e+d>>1;return f/h||1},a.renderImageToCanvas=function(c,d,e,f,g,h,i,j,k,l){if("image/jpeg"===d._type){var m,n,o,p,q=c.getContext("2d"),r=document.createElement("canvas"),s=1024,t=r.getContext("2d");if(r.width=s,r.height=s,q.save(),m=a.detectSubsampling(d),m&&(e/=2,f/=2,g/=2,h/=2),n=a.detectVerticalSquash(d,m),m||1!==n){for(f*=n,k=Math.ceil(s*k/g),l=Math.ceil(s*l/h/n),j=0,p=0;h>p;){for(i=0,o=0;g>o;)t.clearRect(0,0,s,s),t.drawImage(d,e,f,g,h,-o,-p,g,h),q.drawImage(r,0,0,s,s,i,j,k,l),o+=s,i+=k;p+=s,j+=l}return q.restore(),c}}return b(c,d,e,f,g,h,i,j,k,l)}}}),function(a,b){"use strict";function c(b,c,d){var e=b.blob,f=b.file;if(f){if(!e.toDataURL)return void a.readAsBinaryString(e,function(a){"load"==a.type&&c(b,a.result)});var g={"image/jpeg":".jpe?g","image/png":".png"},h=g[b.type]?b.type:"image/png",i=g[h]||".png",j=e.quality||1;f.match(new RegExp(i+"$","i"))||(f+=i.replace("?","")),b.file=f,b.type=h,!d&&e.toBlob?e.toBlob(function(a){c(b,a)},h,j):c(b,a.toBinaryString(e.toDataURL(h,j)))}else c(b,e)}var d=b.document,e=b.FormData,f=function(){this.items=[]},g=b.encodeURIComponent;f.prototype={append:function(a,b,c,d){this.items.push({name:a,blob:b&&b.blob||(void 0==b?"":b),file:b&&(c||b.name),type:b&&(d||b.type)})},each:function(a){for(var b=0,c=this.items.length;c>b;b++)a.call(this,this.items[b])},toData:function(b,c){c._chunked=a.support.chunked&&c.chunkSize>0&&1==a.filter(this.items,function(a){return a.file}).length,a.support.html5?a.formData&&!this.multipart&&e?c._chunked?(a.log("FileAPI.Form.toPlainData"),this.toPlainData(b)):(a.log("FileAPI.Form.toFormData"),this.toFormData(b)):(a.log("FileAPI.Form.toMultipartData"),this.toMultipartData(b)):(a.log("FileAPI.Form.toHtmlData"),this.toHtmlData(b))},_to:function(b,c,d,e){var f=a.queue(function(){c(b)});this.each(function(g){try{d(g,b,f,e)}catch(h){a.log("FileAPI.Form._to: "+h.message),c(h)}}),f.check()},toHtmlData:function(b){this._to(d.createDocumentFragment(),b,function(b,c){var e,f=b.blob;b.file?(a.reset(f,!0),f.name=b.name,f.disabled=!1,c.appendChild(f)):(e=d.createElement("input"),e.name=b.name,e.type="hidden",e.value=f,c.appendChild(e))})},toPlainData:function(a){this._to({},a,function(a,b,d){a.file&&(b.type=a.file),a.blob.toBlob?(d.inc(),c(a,function(a,c){b.name=a.name,b.file=c,b.size=c.length,b.type=a.type,d.next()})):a.file?(b.name=a.blob.name,b.file=a.blob,b.size=a.blob.size,b.type=a.type):(b.params||(b.params=[]),b.params.push(g(a.name)+"="+g(a.blob))),b.start=-1,b.end=b.file&&b.file.FileAPIReadPosition||-1,b.retry=0})},toFormData:function(a){this._to(new e,a,function(a,b,d){a.blob&&a.blob.toBlob?(d.inc(),c(a,function(a,c){b.append(a.name,c,a.file),d.next()})):a.file?b.append(a.name,a.blob,a.file):b.append(a.name,a.blob),a.file&&b.append("_"+a.name,a.file)})},toMultipartData:function(b){this._to([],b,function(a,b,d,e){d.inc(),c(a,function(a,c){b.push("--_"+e+('\r\nContent-Disposition: form-data; name="'+a.name+'"'+(a.file?'; filename="'+g(a.file)+'"':"")+(a.file?"\r\nContent-Type: "+(a.type||"application/octet-stream"):"")+"\r\n\r\n"+(a.file?c:g(c))+"\r\n")),d.next()},!0)},a.expando)}},a.Form=f}(FileAPI,window),function(a,b){"use strict";var c=function(){},d=a.document,e=function(a){this.uid=b.uid(),this.xhr={abort:c,getResponseHeader:c,getAllResponseHeaders:c},this.options=a},f={"":1,XML:1,Text:1,Body:1};e.prototype={status:0,statusText:"",constructor:e,getResponseHeader:function(a){return this.xhr.getResponseHeader(a)},getAllResponseHeaders:function(){return this.xhr.getAllResponseHeaders()||{}},end:function(d,e){var f=this,g=f.options;f.end=f.abort=c,f.status=d,e&&(f.statusText=e),b.log("xhr.end:",d,e),g.complete(200==d||201==d?!1:f.statusText||"unknown",f),f.xhr&&f.xhr.node&&setTimeout(function(){var b=f.xhr.node;try{b.parentNode.removeChild(b)}catch(c){}try{delete a[f.uid]}catch(c){}a[f.uid]=f.xhr.node=null},9)},abort:function(){this.end(0,"abort"),this.xhr&&(this.xhr.aborted=!0,this.xhr.abort())},send:function(a){var b=this,c=this.options;a.toData(function(a){a instanceof Error?b.end(0,a.message):(c.upload(c,b),b._send.call(b,c,a))},c)},_send:function(c,e){var g,h=this,i=h.uid,j=h.uid+"Load",k=c.url;if(b.log("XHR._send:",e),c.cache||(k+=(~k.indexOf("?")?"&":"?")+b.uid()),e.nodeName){var l=c.jsonp;k=k.replace(/([a-z]+)=(\?)/i,"$1="+i),c.upload(c,h);var m=function(a){if(~k.indexOf(a.origin))try{var c=b.parseJSON(a.data);c.id==i&&n(c.status,c.statusText,c.response)}catch(d){n(0,d.message)}},n=a[i]=function(c,d,e){h.readyState=4,h.responseText=e,h.end(c,d),b.event.off(a,"message",m),a[i]=g=p=a[j]=null};h.xhr.abort=function(){try{p.stop?p.stop():p.contentWindow.stop?p.contentWindow.stop():p.contentWindow.document.execCommand("Stop")}catch(a){}n(0,"abort")},b.event.on(a,"message",m),a[j]=function(){try{var a=p.contentWindow,c=a.document,d=a.result||b.parseJSON(c.body.innerHTML);n(d.status,d.statusText,d.response)}catch(e){b.log("[transport.onload]",e)}},g=d.createElement("div"),g.innerHTML='<form target="'+i+'" action="'+k+'" method="POST" enctype="multipart/form-data" style="position: absolute; top: -1000px; overflow: hidden; width: 1px; height: 1px;"><iframe name="'+i+'" src="javascript:false;" onload="window.'+j+" && "+j+'();"></iframe>'+(l&&c.url.indexOf("=?")<0?'<input value="'+i+'" name="'+l+'" type="hidden"/>':"")+"</form>";var o=g.getElementsByTagName("form")[0],p=g.getElementsByTagName("iframe")[0];o.appendChild(e),b.log(o.parentNode.innerHTML),d.body.appendChild(g),h.xhr.node=g,h.readyState=2;try{o.submit()}catch(q){b.log("iframe.error: "+q)}o=null}else{if(k=k.replace(/([a-z]+)=(\?)&?/i,""),this.xhr&&this.xhr.aborted)return void b.log("Error: already aborted");if(g=h.xhr=b.getXHR(),e.params&&(k+=(k.indexOf("?")<0?"?":"&")+e.params.join("&")),g.open("POST",k,!0),b.withCredentials&&(g.withCredentials="true"),c.headers&&c.headers["X-Requested-With"]||g.setRequestHeader("X-Requested-With","XMLHttpRequest"),b.each(c.headers,function(a,b){g.setRequestHeader(b,a)}),c._chunked){g.upload&&g.upload.addEventListener("progress",b.throttle(function(a){e.retry||c.progress({type:a.type,total:e.size,loaded:e.start+a.loaded,totalSize:e.size},h,c)},100),!1),g.onreadystatechange=function(){var a=parseInt(g.getResponseHeader("X-Last-Known-Byte"),10);if(h.status=g.status,h.statusText=g.statusText,h.readyState=g.readyState,4==g.readyState){for(var d in f)h["response"+d]=g["response"+d];if(g.onreadystatechange=null,!g.status||g.status-201>0)if(b.log("Error: "+g.status),(!g.status&&!g.aborted||500==g.status||416==g.status)&&++e.retry<=c.chunkUploadRetry){var i=g.status?0:b.chunkNetworkDownRetryTimeout;c.pause(e.file,c),b.log("X-Last-Known-Byte: "+a),a?e.end=a:(e.end=e.start-1,416==g.status&&(e.end=e.end-c.chunkSize)),setTimeout(function(){h._send(c,e)},i)}else h.end(g.status);else e.retry=0,e.end==e.size-1?h.end(g.status):(b.log("X-Last-Known-Byte: "+a),a&&(e.end=a),e.file.FileAPIReadPosition=e.end,setTimeout(function(){h._send(c,e)},0));g=null}},e.start=e.end+1,e.end=Math.max(Math.min(e.start+c.chunkSize,e.size)-1,e.start);var r=e.file,s=(r.slice||r.mozSlice||r.webkitSlice).call(r,e.start,e.end+1);e.size&&!s.size?setTimeout(function(){h.end(-1)}):(g.setRequestHeader("Content-Range","bytes "+e.start+"-"+e.end+"/"+e.size),g.setRequestHeader("Content-Disposition","attachment; filename="+encodeURIComponent(e.name)),g.setRequestHeader("Content-Type",e.type||"application/octet-stream"),g.send(s)),r=s=null}else if(g.upload&&g.upload.addEventListener("progress",b.throttle(function(a){c.progress(a,h,c)},100),!1),g.onreadystatechange=function(){if(h.status=g.status,h.statusText=g.statusText,h.readyState=g.readyState,4==g.readyState){for(var a in f)h["response"+a]=g["response"+a];if(g.onreadystatechange=null,!g.status||g.status>201)if(b.log("Error: "+g.status),(!g.status&&!g.aborted||500==g.status)&&(c.retry||0)<c.uploadRetry){c.retry=(c.retry||0)+1;var d=b.networkDownRetryTimeout;c.pause(c.file,c),setTimeout(function(){h._send(c,e)},d)}else h.end(g.status);else h.end(g.status);g=null}},b.isArray(e)){g.setRequestHeader("Content-Type","multipart/form-data; boundary=_"+b.expando);var t=e.join("")+"--_"+b.expando+"--";if(g.sendAsBinary)g.sendAsBinary(t);else{var u=Array.prototype.map.call(t,function(a){return 255&a.charCodeAt(0)});g.send(new Uint8Array(u).buffer)}}else g.send(e)}}},b.XHR=e}(window,FileAPI),function(a,b){"use strict";function c(a){return a>=0?a+"px":a}function d(a){var c,d=f.createElement("canvas"),e=!1;try{c=d.getContext("2d"),c.drawImage(a,0,0,1,1),e=255!=c.getImageData(0,0,1,1).data[4]}catch(g){b.log("[FileAPI.Camera] detectVideoSignal:",g)}return e}var e=a.URL||a.webkitURL,f=a.document,g=a.navigator,h=g.getUserMedia||g.webkitGetUserMedia||g.mozGetUserMedia||g.msGetUserMedia,i=!!h;b.support.media=i;var j=function(a){this.video=a};j.prototype={isActive:function(){return!!this._active},start:function(a){var b,c,f=this,i=f.video,j=function(d){f._active=!d,clearTimeout(c),clearTimeout(b),a&&a(d,f)};h.call(g,{video:!0},function(a){f.stream=a,i.src=e.createObjectURL(a),b=setInterval(function(){d(i)&&j(null)},1e3),c=setTimeout(function(){j("timeout");
-	},5e3),i.play()},j)},stop:function(){try{this._active=!1,this.video.pause();try{this.stream.stop()}catch(a){b.each(this.stream.getTracks(),function(a){a.stop()})}this.stream=null}catch(a){b.log("[FileAPI.Camera] stop:",a)}},shot:function(){return new k(this.video)}},j.get=function(a){return new j(a.firstChild)},j.publish=function(d,e,g){"function"==typeof e&&(g=e,e={}),e=b.extend({},{width:"100%",height:"100%",start:!0},e),d.jquery&&(d=d[0]);var h=function(a){if(a)g(a);else{var b=j.get(d);e.start?b.start(g):g(null,b)}};if(d.style.width=c(e.width),d.style.height=c(e.height),b.html5&&i){var k=f.createElement("video");k.style.width=c(e.width),k.style.height=c(e.height),a.jQuery?jQuery(d).empty():d.innerHTML="",d.appendChild(k),h()}else j.fallback(d,e,h)},j.fallback=function(a,b,c){c("not_support_camera")};var k=function(a){var c=a.nodeName?b.Image.toCanvas(a):a,d=b.Image(c);return d.type="image/png",d.width=c.width,d.height=c.height,d.size=c.width*c.height*4,d};j.Shot=k,b.Camera=j}(window,FileAPI),function(a,b,c){"use strict";var d=a.document,e=a.location,f=a.navigator,g=c.each;c.support.flash=function(){var b=f.mimeTypes,d=!1;if(f.plugins&&"object"==typeof f.plugins["Shockwave Flash"])d=f.plugins["Shockwave Flash"].description&&!(b&&b["application/x-shockwave-flash"]&&!b["application/x-shockwave-flash"].enabledPlugin);else try{d=!(!a.ActiveXObject||!new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))}catch(g){c.log("Flash -- does not supported.")}return d&&/^file:/i.test(e)&&c.log("[warn] Flash does not work on `file:` protocol."),d}(),c.support.flash&&(!c.html5||!c.support.html5||c.cors&&!c.support.cors||c.media&&!c.support.media)&&function(){function h(a){return('<object id="#id#" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'"><param name="movie" value="#src#" /><param name="flashvars" value="#flashvars#" /><param name="swliveconnect" value="true" /><param name="allowscriptaccess" value="always" /><param name="allownetworking" value="all" /><param name="menu" value="false" /><param name="wmode" value="#wmode#" /><embed flashvars="#flashvars#" swliveconnect="true" allownetworking="all" allowscriptaccess="always" name="#id#" src="#src#" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'" menu="false" wmode="transparent" type="application/x-shockwave-flash"></embed></object>').replace(/#(\w+)#/gi,function(b,c){return a[c]})}function i(a,b){if(a&&a.style){var c,d;for(c in b){d=b[c],"number"==typeof d&&(d+="px");try{a.style[c]=d}catch(e){}}}}function j(a,b){g(b,function(b,c){var d=a[c];a[c]=function(){return this.parent=d,b.apply(this,arguments)}})}function k(a){return a&&!a.flashId}function l(a){var b=a.wid=c.uid();return v._fn[b]=a,"FileAPI.Flash._fn."+b}function m(a){try{v._fn[a.wid]=null,delete v._fn[a.wid]}catch(b){}}function n(a,b){if(!u.test(a)){if(/^\.\//.test(a)||"/"!=a.charAt(0)){var c=e.pathname;c=c.substr(0,c.lastIndexOf("/")),a=(c+"/"+a).replace("/./","/")}"//"!=a.substr(0,2)&&(a="//"+e.host+a),u.test(a)||(a=e.protocol+a)}return b&&(a+=(/\?/.test(a)?"&":"?")+b),a}function o(a,b,e){function f(){try{var a=v.get(j);a.setImage(b)}catch(d){c.log('[err] FlashAPI.Preview.setImage -- can not set "base64":',d)}}var g,j=c.uid(),k=d.createElement("div"),o=10;for(g in a)k.setAttribute(g,a[g]),k[g]=a[g];i(k,a),a.width="100%",a.height="100%",k.innerHTML=h(c.extend({id:j,src:n(c.flashImageUrl,"r="+c.uid()),wmode:"opaque",flashvars:"scale="+a.scale+"&callback="+l(function p(){return m(p),--o>0&&f(),!0})},a)),e(!1,k),k=null}function p(a){return{id:a.id,name:a.name,matrix:a.matrix,flashId:a.flashId}}function q(b){var c=b.getBoundingClientRect(),e=d.body,f=(b&&b.ownerDocument).documentElement;return{top:c.top+(a.pageYOffset||f.scrollTop)-(f.clientTop||e.clientTop||0),left:c.left+(a.pageXOffset||f.scrollLeft)-(f.clientLeft||e.clientLeft||0),width:c.right-c.left,height:c.bottom-c.top}}var r=c.uid(),s=0,t={},u=/^https?:/i,v={_fn:{},init:function(){var a=d.body&&d.body.firstChild;if(a)do if(1==a.nodeType){c.log("FlashAPI.state: awaiting");var b=d.createElement("div");return b.id="_"+r,i(b,{top:1,right:1,width:5,height:5,position:"absolute",zIndex:"2147483647"}),a.parentNode.insertBefore(b,a),void v.publish(b,r)}while(a=a.nextSibling);10>s&&setTimeout(v.init,50*++s)},publish:function(a,b,d){d=d||{},a.innerHTML=h({id:b,src:n(c.flashUrl,"r="+c.version),wmode:d.camera?"":"transparent",flashvars:"callback="+(d.onEvent||"FileAPI.Flash.onEvent")+"&flashId="+b+"&storeKey="+f.userAgent.match(/\d/gi).join("")+"_"+c.version+(v.isReady||(c.pingUrl?"&ping="+c.pingUrl:""))+"&timeout="+c.flashAbortTimeout+(d.camera?"&useCamera="+n(c.flashWebcamUrl):"")+"&debug="+(c.debug?"1":"")},d)},ready:function(){c.log("FlashAPI.state: ready"),v.ready=c.F,v.isReady=!0,v.patch(),v.patchCamera&&v.patchCamera(),c.event.on(d,"mouseover",v.mouseover),c.event.on(d,"click",function(a){v.mouseover(a)&&(a.preventDefault?a.preventDefault():a.returnValue=!0)})},getEl:function(){return d.getElementById("_"+r)},getWrapper:function(a){do if(/js-fileapi-wrapper/.test(a.className))return a;while((a=a.parentNode)&&a!==d.body)},mouseover:function(a){var b=c.event.fix(a).target;if(/input/i.test(b.nodeName)&&"file"==b.type&&!b.disabled){var e=b.getAttribute(r),f=v.getWrapper(b);if(c.multiFlash){if("i"==e||"r"==e)return!1;if("p"!=e){b.setAttribute(r,"i");var g=d.createElement("div");if(!f)return void c.log("[err] FlashAPI.mouseover: js-fileapi-wrapper not found");i(g,{top:0,left:0,width:b.offsetWidth,height:b.offsetHeight,zIndex:"2147483647",position:"absolute"}),f.appendChild(g),v.publish(g,c.uid()),b.setAttribute(r,"p")}return!0}if(f){var h=q(f);i(v.getEl(),h),v.curInp=b}}else/object|embed/i.test(b.nodeName)||i(v.getEl(),{top:1,left:1,width:5,height:5})},onEvent:function(a){var b=a.type;if("ready"==b){try{v.getInput(a.flashId).setAttribute(r,"r")}catch(d){}return v.ready(),setTimeout(function(){v.mouseenter(a)},50),!0}"ping"===b?c.log("(flash -> js).ping:",[a.status,a.savedStatus],a.error):"log"===b?c.log("(flash -> js).log:",a.target):b in v&&setTimeout(function(){c.log("FlashAPI.event."+a.type+":",a),v[b](a)},1)},mouseenter:function(a){var b=v.getInput(a.flashId);if(b){v.cmd(a,"multiple",null!=b.getAttribute("multiple"));var d=[],e={};g((b.getAttribute("accept")||"").split(/,\s*/),function(a){c.accept[a]&&g(c.accept[a].split(" "),function(a){e[a]=1})}),g(e,function(a,b){d.push(b)}),v.cmd(a,"accept",d.length?d.join(",")+","+d.join(",").toUpperCase():"*")}},get:function(b){return d[b]||a[b]||d.embeds[b]},getInput:function(a){if(!c.multiFlash)return v.curInp;try{var b=v.getWrapper(v.get(a));if(b)return b.getElementsByTagName("input")[0]}catch(d){c.log('[err] Can not find "input" by flashId:',a,d)}},select:function(a){var e,f=v.getInput(a.flashId),h=c.uid(f),i=a.target.files;g(i,function(a){c.checkFileObj(a)}),t[h]=i,d.createEvent?(e=d.createEvent("Event"),e.files=i,e.initEvent("change",!0,!0),f.dispatchEvent(e)):b?b(f).trigger({type:"change",files:i}):(e=d.createEventObject(),e.files=i,f.fireEvent("onchange",e))},cmd:function(a,b,d,e){try{return c.log("(js -> flash)."+b+":",d),v.get(a.flashId||a).cmd(b,d)}catch(f){c.log("(js -> flash).onError:",f.toString()),e||setTimeout(function(){v.cmd(a,b,d,!0)},50)}},patch:function(){c.flashEngine=!0,j(c,{getFiles:function(a,b,d){if(d)return c.filterFiles(c.getFiles(a),b,d),null;var e=c.isArray(a)?a:t[c.uid(a.target||a.srcElement||a)];return e?(b&&(b=c.getFilesFilter(b),e=c.filter(e,function(a){return b.test(a.name)})),e):this.parent.apply(this,arguments)},getInfo:function(a,b){if(k(a))this.parent.apply(this,arguments);else if(a.isShot)b(null,a.info={width:a.width,height:a.height});else{if(!a.__info){var d=a.__info=c.defer();v.cmd(a,"getFileInfo",{id:a.id,callback:l(function e(b,c){m(e),d.resolve(b,a.info=c)})})}a.__info.then(b)}}}),c.support.transform=!0,c.Image&&j(c.Image.prototype,{get:function(a,b){return this.set({scaleMode:b||"noScale"}),this.parent(a)},_load:function(a,b){if(c.log("FlashAPI.Image._load:",a),k(a))this.parent.apply(this,arguments);else{var d=this;c.getInfo(a,function(c){b.call(d,c,a)})}},_apply:function(a,b){if(c.log("FlashAPI.Image._apply:",a),k(a))this.parent.apply(this,arguments);else{var d=this.getMatrix(a.info),e=b;v.cmd(a,"imageTransform",{id:a.id,matrix:d,callback:l(function f(g,h){c.log("FlashAPI.Image._apply.callback:",g),m(f),g?e(g):c.support.html5||c.support.dataURI&&!(h.length>3e4)?(d.filter&&(e=function(a,e){a?b(a):c.Image.applyFilter(e,d.filter,function(){b(a,this.canvas)})}),c.newImage("data:"+a.type+";base64,"+h,e)):o({width:d.deg%180?d.dh:d.dw,height:d.deg%180?d.dw:d.dh,scale:d.scaleMode},h,e)})})}},toData:function(a){var b=this.file,d=b.info,e=this.getMatrix(d);c.log("FlashAPI.Image.toData"),k(b)?this.parent.apply(this,arguments):("auto"==e.deg&&(e.deg=c.Image.exifOrientation[d&&d.exif&&d.exif.Orientation]||0),a.call(this,!b.info,{id:b.id,flashId:b.flashId,name:b.name,type:b.type,matrix:e}))}}),c.Image&&j(c.Image,{fromDataURL:function(a,b,d){!c.support.dataURI||a.length>3e4?o(c.extend({scale:"exactFit"},b),a.replace(/^data:[^,]+,/,""),function(a,b){d(b)}):this.parent(a,b,d)}}),j(c.Form.prototype,{toData:function(a){for(var b=this.items,d=b.length;d--;)if(b[d].file&&k(b[d].blob))return this.parent.apply(this,arguments);c.log("FlashAPI.Form.toData"),a(b)}}),j(c.XHR.prototype,{_send:function(a,b){if(b.nodeName||b.append&&c.support.html5||c.isArray(b)&&"string"==typeof b[0])return this.parent.apply(this,arguments);var d,e,f={},h={},i=this;if(g(b,function(a){a.file?(h[a.name]=a=p(a.blob),e=a.id,d=a.flashId):f[a.name]=a.blob}),e||(d=r),!d)return c.log("[err] FlashAPI._send: flashId -- undefined"),this.parent.apply(this,arguments);c.log("FlashAPI.XHR._send: "+d+" -> "+e),i.xhr={headers:{},abort:function(){v.cmd(d,"abort",{id:e})},getResponseHeader:function(a){return this.headers[a]},getAllResponseHeaders:function(){return this.headers}};var j=c.queue(function(){v.cmd(d,"upload",{url:n(a.url.replace(/([a-z]+)=(\?)&?/i,"")),data:f,files:e?h:null,headers:a.headers||{},callback:l(function b(d){var e=d.type,f=d.result;c.log("FlashAPI.upload."+e),"progress"==e?(d.loaded=Math.min(d.loaded,d.total),d.lengthComputable=!0,a.progress(d)):"complete"==e?(m(b),"string"==typeof f&&(i.responseText=f.replace(/%22/g,'"').replace(/%5c/g,"\\").replace(/%26/g,"&").replace(/%25/g,"%")),i.end(d.status||200)):("abort"==e||"error"==e)&&(i.end(d.status||0,d.message),m(b))})})});g(h,function(a){j.inc(),c.getInfo(a,j.next)}),j.check()}})}};c.Flash=v,c.newImage("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",function(a,b){c.support.dataURI=!(1!=b.width||1!=b.height),v.init()})}()}(window,window.jQuery,FileAPI),function(a,b,c){"use strict";var d=c.each,e=[];!c.support.flash||!c.media||c.support.media&&c.html5||!function(){function a(a){var b=a.wid=c.uid();return c.Flash._fn[b]=a,"FileAPI.Flash._fn."+b}function b(a){try{c.Flash._fn[a.wid]=null,delete c.Flash._fn[a.wid]}catch(b){}}var f=c.Flash;c.extend(c.Flash,{patchCamera:function(){c.Camera.fallback=function(d,e,g){var h=c.uid();c.log("FlashAPI.Camera.publish: "+h),f.publish(d,h,c.extend(e,{camera:!0,onEvent:a(function i(a){"camera"===a.type&&(b(i),a.error?(c.log("FlashAPI.Camera.publish.error: "+a.error),g(a.error)):(c.log("FlashAPI.Camera.publish.success: "+h),g(null)))})}))},d(e,function(a){c.Camera.fallback.apply(c.Camera,a)}),e=[],c.extend(c.Camera.prototype,{_id:function(){return this.video.id},start:function(d){var e=this;f.cmd(this._id(),"camera.on",{callback:a(function g(a){b(g),a.error?(c.log("FlashAPI.camera.on.error: "+a.error),d(a.error,e)):(c.log("FlashAPI.camera.on.success: "+e._id()),e._active=!0,d(null,e))})})},stop:function(){this._active=!1,f.cmd(this._id(),"camera.off")},shot:function(){c.log("FlashAPI.Camera.shot:",this._id());var a=c.Flash.cmd(this._id(),"shot",{});return a.type="image/png",a.flashId=this._id(),a.isShot=!0,new c.Camera.Shot(a)}})}}),c.Camera.fallback=function(){e.push(arguments)}}()}(window,window.jQuery,FileAPI),"function"=="function"&&__webpack_require__(302)&&!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){return FileAPI}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	},5e3),i.play()},j)},stop:function(){try{this._active=!1,this.video.pause();try{this.stream.stop()}catch(a){b.each(this.stream.getTracks(),function(a){a.stop()})}this.stream=null}catch(a){b.log("[FileAPI.Camera] stop:",a)}},shot:function(){return new k(this.video)}},j.get=function(a){return new j(a.firstChild)},j.publish=function(d,e,g){"function"==typeof e&&(g=e,e={}),e=b.extend({},{width:"100%",height:"100%",start:!0},e),d.jquery&&(d=d[0]);var h=function(a){if(a)g(a);else{var b=j.get(d);e.start?b.start(g):g(null,b)}};if(d.style.width=c(e.width),d.style.height=c(e.height),b.html5&&i){var k=f.createElement("video");k.style.width=c(e.width),k.style.height=c(e.height),a.jQuery?jQuery(d).empty():d.innerHTML="",d.appendChild(k),h()}else j.fallback(d,e,h)},j.fallback=function(a,b,c){c("not_support_camera")};var k=function(a){var c=a.nodeName?b.Image.toCanvas(a):a,d=b.Image(c);return d.type="image/png",d.width=c.width,d.height=c.height,d.size=c.width*c.height*4,d};j.Shot=k,b.Camera=j}(window,FileAPI),function(a,b,c){"use strict";var d=a.document,e=a.location,f=a.navigator,g=c.each;c.support.flash=function(){var b=f.mimeTypes,d=!1;if(f.plugins&&"object"==typeof f.plugins["Shockwave Flash"])d=f.plugins["Shockwave Flash"].description&&!(b&&b["application/x-shockwave-flash"]&&!b["application/x-shockwave-flash"].enabledPlugin);else try{d=!(!a.ActiveXObject||!new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))}catch(g){c.log("Flash -- does not supported.")}return d&&/^file:/i.test(e)&&c.log("[warn] Flash does not work on `file:` protocol."),d}(),c.support.flash&&(!c.html5||!c.support.html5||c.cors&&!c.support.cors||c.media&&!c.support.media)&&function(){function h(a){return('<object id="#id#" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'"><param name="movie" value="#src#" /><param name="flashvars" value="#flashvars#" /><param name="swliveconnect" value="true" /><param name="allowscriptaccess" value="always" /><param name="allownetworking" value="all" /><param name="menu" value="false" /><param name="wmode" value="#wmode#" /><embed flashvars="#flashvars#" swliveconnect="true" allownetworking="all" allowscriptaccess="always" name="#id#" src="#src#" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'" menu="false" wmode="transparent" type="application/x-shockwave-flash"></embed></object>').replace(/#(\w+)#/gi,function(b,c){return a[c]})}function i(a,b){if(a&&a.style){var c,d;for(c in b){d=b[c],"number"==typeof d&&(d+="px");try{a.style[c]=d}catch(e){}}}}function j(a,b){g(b,function(b,c){var d=a[c];a[c]=function(){return this.parent=d,b.apply(this,arguments)}})}function k(a){return a&&!a.flashId}function l(a){var b=a.wid=c.uid();return v._fn[b]=a,"FileAPI.Flash._fn."+b}function m(a){try{v._fn[a.wid]=null,delete v._fn[a.wid]}catch(b){}}function n(a,b){if(!u.test(a)){if(/^\.\//.test(a)||"/"!=a.charAt(0)){var c=e.pathname;c=c.substr(0,c.lastIndexOf("/")),a=(c+"/"+a).replace("/./","/")}"//"!=a.substr(0,2)&&(a="//"+e.host+a),u.test(a)||(a=e.protocol+a)}return b&&(a+=(/\?/.test(a)?"&":"?")+b),a}function o(a,b,e){function f(){try{var a=v.get(j);a.setImage(b)}catch(d){c.log('[err] FlashAPI.Preview.setImage -- can not set "base64":',d)}}var g,j=c.uid(),k=d.createElement("div"),o=10;for(g in a)k.setAttribute(g,a[g]),k[g]=a[g];i(k,a),a.width="100%",a.height="100%",k.innerHTML=h(c.extend({id:j,src:n(c.flashImageUrl,"r="+c.uid()),wmode:"opaque",flashvars:"scale="+a.scale+"&callback="+l(function p(){return m(p),--o>0&&f(),!0})},a)),e(!1,k),k=null}function p(a){return{id:a.id,name:a.name,matrix:a.matrix,flashId:a.flashId}}function q(b){var c=b.getBoundingClientRect(),e=d.body,f=(b&&b.ownerDocument).documentElement;return{top:c.top+(a.pageYOffset||f.scrollTop)-(f.clientTop||e.clientTop||0),left:c.left+(a.pageXOffset||f.scrollLeft)-(f.clientLeft||e.clientLeft||0),width:c.right-c.left,height:c.bottom-c.top}}var r=c.uid(),s=0,t={},u=/^https?:/i,v={_fn:{},init:function(){var a=d.body&&d.body.firstChild;if(a)do if(1==a.nodeType){c.log("FlashAPI.state: awaiting");var b=d.createElement("div");return b.id="_"+r,i(b,{top:1,right:1,width:5,height:5,position:"absolute",zIndex:"2147483647"}),a.parentNode.insertBefore(b,a),void v.publish(b,r)}while(a=a.nextSibling);10>s&&setTimeout(v.init,50*++s)},publish:function(a,b,d){d=d||{},a.innerHTML=h({id:b,src:n(c.flashUrl,"r="+c.version),wmode:d.camera?"":"transparent",flashvars:"callback="+(d.onEvent||"FileAPI.Flash.onEvent")+"&flashId="+b+"&storeKey="+f.userAgent.match(/\d/gi).join("")+"_"+c.version+(v.isReady||(c.pingUrl?"&ping="+c.pingUrl:""))+"&timeout="+c.flashAbortTimeout+(d.camera?"&useCamera="+n(c.flashWebcamUrl):"")+"&debug="+(c.debug?"1":"")},d)},ready:function(){c.log("FlashAPI.state: ready"),v.ready=c.F,v.isReady=!0,v.patch(),v.patchCamera&&v.patchCamera(),c.event.on(d,"mouseover",v.mouseover),c.event.on(d,"click",function(a){v.mouseover(a)&&(a.preventDefault?a.preventDefault():a.returnValue=!0)})},getEl:function(){return d.getElementById("_"+r)},getWrapper:function(a){do if(/js-fileapi-wrapper/.test(a.className))return a;while((a=a.parentNode)&&a!==d.body)},mouseover:function(a){var b=c.event.fix(a).target;if(/input/i.test(b.nodeName)&&"file"==b.type&&!b.disabled){var e=b.getAttribute(r),f=v.getWrapper(b);if(c.multiFlash){if("i"==e||"r"==e)return!1;if("p"!=e){b.setAttribute(r,"i");var g=d.createElement("div");if(!f)return void c.log("[err] FlashAPI.mouseover: js-fileapi-wrapper not found");i(g,{top:0,left:0,width:b.offsetWidth,height:b.offsetHeight,zIndex:"2147483647",position:"absolute"}),f.appendChild(g),v.publish(g,c.uid()),b.setAttribute(r,"p")}return!0}if(f){var h=q(f);i(v.getEl(),h),v.curInp=b}}else/object|embed/i.test(b.nodeName)||i(v.getEl(),{top:1,left:1,width:5,height:5})},onEvent:function(a){var b=a.type;if("ready"==b){try{v.getInput(a.flashId).setAttribute(r,"r")}catch(d){}return v.ready(),setTimeout(function(){v.mouseenter(a)},50),!0}"ping"===b?c.log("(flash -> js).ping:",[a.status,a.savedStatus],a.error):"log"===b?c.log("(flash -> js).log:",a.target):b in v&&setTimeout(function(){c.log("FlashAPI.event."+a.type+":",a),v[b](a)},1)},mouseenter:function(a){var b=v.getInput(a.flashId);if(b){v.cmd(a,"multiple",null!=b.getAttribute("multiple"));var d=[],e={};g((b.getAttribute("accept")||"").split(/,\s*/),function(a){c.accept[a]&&g(c.accept[a].split(" "),function(a){e[a]=1})}),g(e,function(a,b){d.push(b)}),v.cmd(a,"accept",d.length?d.join(",")+","+d.join(",").toUpperCase():"*")}},get:function(b){return d[b]||a[b]||d.embeds[b]},getInput:function(a){if(!c.multiFlash)return v.curInp;try{var b=v.getWrapper(v.get(a));if(b)return b.getElementsByTagName("input")[0]}catch(d){c.log('[err] Can not find "input" by flashId:',a,d)}},select:function(a){var e,f=v.getInput(a.flashId),h=c.uid(f),i=a.target.files;g(i,function(a){c.checkFileObj(a)}),t[h]=i,d.createEvent?(e=d.createEvent("Event"),e.files=i,e.initEvent("change",!0,!0),f.dispatchEvent(e)):b?b(f).trigger({type:"change",files:i}):(e=d.createEventObject(),e.files=i,f.fireEvent("onchange",e))},cmd:function(a,b,d,e){try{return c.log("(js -> flash)."+b+":",d),v.get(a.flashId||a).cmd(b,d)}catch(f){c.log("(js -> flash).onError:",f.toString()),e||setTimeout(function(){v.cmd(a,b,d,!0)},50)}},patch:function(){c.flashEngine=!0,j(c,{getFiles:function(a,b,d){if(d)return c.filterFiles(c.getFiles(a),b,d),null;var e=c.isArray(a)?a:t[c.uid(a.target||a.srcElement||a)];return e?(b&&(b=c.getFilesFilter(b),e=c.filter(e,function(a){return b.test(a.name)})),e):this.parent.apply(this,arguments)},getInfo:function(a,b){if(k(a))this.parent.apply(this,arguments);else if(a.isShot)b(null,a.info={width:a.width,height:a.height});else{if(!a.__info){var d=a.__info=c.defer();v.cmd(a,"getFileInfo",{id:a.id,callback:l(function e(b,c){m(e),d.resolve(b,a.info=c)})})}a.__info.then(b)}}}),c.support.transform=!0,c.Image&&j(c.Image.prototype,{get:function(a,b){return this.set({scaleMode:b||"noScale"}),this.parent(a)},_load:function(a,b){if(c.log("FlashAPI.Image._load:",a),k(a))this.parent.apply(this,arguments);else{var d=this;c.getInfo(a,function(c){b.call(d,c,a)})}},_apply:function(a,b){if(c.log("FlashAPI.Image._apply:",a),k(a))this.parent.apply(this,arguments);else{var d=this.getMatrix(a.info),e=b;v.cmd(a,"imageTransform",{id:a.id,matrix:d,callback:l(function f(g,h){c.log("FlashAPI.Image._apply.callback:",g),m(f),g?e(g):c.support.html5||c.support.dataURI&&!(h.length>3e4)?(d.filter&&(e=function(a,e){a?b(a):c.Image.applyFilter(e,d.filter,function(){b(a,this.canvas)})}),c.newImage("data:"+a.type+";base64,"+h,e)):o({width:d.deg%180?d.dh:d.dw,height:d.deg%180?d.dw:d.dh,scale:d.scaleMode},h,e)})})}},toData:function(a){var b=this.file,d=b.info,e=this.getMatrix(d);c.log("FlashAPI.Image.toData"),k(b)?this.parent.apply(this,arguments):("auto"==e.deg&&(e.deg=c.Image.exifOrientation[d&&d.exif&&d.exif.Orientation]||0),a.call(this,!b.info,{id:b.id,flashId:b.flashId,name:b.name,type:b.type,matrix:e}))}}),c.Image&&j(c.Image,{fromDataURL:function(a,b,d){!c.support.dataURI||a.length>3e4?o(c.extend({scale:"exactFit"},b),a.replace(/^data:[^,]+,/,""),function(a,b){d(b)}):this.parent(a,b,d)}}),j(c.Form.prototype,{toData:function(a){for(var b=this.items,d=b.length;d--;)if(b[d].file&&k(b[d].blob))return this.parent.apply(this,arguments);c.log("FlashAPI.Form.toData"),a(b)}}),j(c.XHR.prototype,{_send:function(a,b){if(b.nodeName||b.append&&c.support.html5||c.isArray(b)&&"string"==typeof b[0])return this.parent.apply(this,arguments);var d,e,f={},h={},i=this;if(g(b,function(a){a.file?(h[a.name]=a=p(a.blob),e=a.id,d=a.flashId):f[a.name]=a.blob}),e||(d=r),!d)return c.log("[err] FlashAPI._send: flashId -- undefined"),this.parent.apply(this,arguments);c.log("FlashAPI.XHR._send: "+d+" -> "+e),i.xhr={headers:{},abort:function(){v.cmd(d,"abort",{id:e})},getResponseHeader:function(a){return this.headers[a]},getAllResponseHeaders:function(){return this.headers}};var j=c.queue(function(){v.cmd(d,"upload",{url:n(a.url.replace(/([a-z]+)=(\?)&?/i,"")),data:f,files:e?h:null,headers:a.headers||{},callback:l(function b(d){var e=d.type,f=d.result;c.log("FlashAPI.upload."+e),"progress"==e?(d.loaded=Math.min(d.loaded,d.total),d.lengthComputable=!0,a.progress(d)):"complete"==e?(m(b),"string"==typeof f&&(i.responseText=f.replace(/%22/g,'"').replace(/%5c/g,"\\").replace(/%26/g,"&").replace(/%25/g,"%")),i.end(d.status||200)):("abort"==e||"error"==e)&&(i.end(d.status||0,d.message),m(b))})})});g(h,function(a){j.inc(),c.getInfo(a,j.next)}),j.check()}})}};c.Flash=v,c.newImage("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",function(a,b){c.support.dataURI=!(1!=b.width||1!=b.height),v.init()})}()}(window,window.jQuery,FileAPI),function(a,b,c){"use strict";var d=c.each,e=[];!c.support.flash||!c.media||c.support.media&&c.html5||!function(){function a(a){var b=a.wid=c.uid();return c.Flash._fn[b]=a,"FileAPI.Flash._fn."+b}function b(a){try{c.Flash._fn[a.wid]=null,delete c.Flash._fn[a.wid]}catch(b){}}var f=c.Flash;c.extend(c.Flash,{patchCamera:function(){c.Camera.fallback=function(d,e,g){var h=c.uid();c.log("FlashAPI.Camera.publish: "+h),f.publish(d,h,c.extend(e,{camera:!0,onEvent:a(function i(a){"camera"===a.type&&(b(i),a.error?(c.log("FlashAPI.Camera.publish.error: "+a.error),g(a.error)):(c.log("FlashAPI.Camera.publish.success: "+h),g(null)))})}))},d(e,function(a){c.Camera.fallback.apply(c.Camera,a)}),e=[],c.extend(c.Camera.prototype,{_id:function(){return this.video.id},start:function(d){var e=this;f.cmd(this._id(),"camera.on",{callback:a(function g(a){b(g),a.error?(c.log("FlashAPI.camera.on.error: "+a.error),d(a.error,e)):(c.log("FlashAPI.camera.on.success: "+e._id()),e._active=!0,d(null,e))})})},stop:function(){this._active=!1,f.cmd(this._id(),"camera.off")},shot:function(){c.log("FlashAPI.Camera.shot:",this._id());var a=c.Flash.cmd(this._id(),"shot",{});return a.type="image/png",a.flashId=this._id(),a.isShot=!0,new c.Camera.Shot(a)}})}}),c.Camera.fallback=function(){e.push(arguments)}}()}(window,window.jQuery,FileAPI),"function"=="function"&&__webpack_require__(301)&&!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){return FileAPI}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
-/* 302 */
+/* 301 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -41322,13 +41330,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 303 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(e){if(true){!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(304)], __WEBPACK_AMD_DEFINE_FACTORY__ = (e), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}else{e(jQuery)}})(function(e){"use strict";var t={},n=Math.max,r=Math.min;t.c={};t.c.d=e(document);t.c.t=function(e){return e.originalEvent.touches.length-1};t.o=function(){var n=this;this.o=null;this.$=null;this.i=null;this.g=null;this.v=null;this.cv=null;this.x=0;this.y=0;this.w=0;this.h=0;this.$c=null;this.c=null;this.t=0;this.isInit=false;this.fgColor=null;this.pColor=null;this.dH=null;this.cH=null;this.eH=null;this.rH=null;this.scale=1;this.relative=false;this.relativeWidth=false;this.relativeHeight=false;this.$div=null;this.run=function(){var t=function(e,t){var r;for(r in t){n.o[r]=t[r]}n._carve().init();n._configure()._draw()};if(this.$.data("kontroled"))return;this.$.data("kontroled",true);this.extend();this.o=e.extend({min:this.$.data("min")!==undefined?this.$.data("min"):0,max:this.$.data("max")!==undefined?this.$.data("max"):100,stopper:true,readOnly:this.$.data("readonly")||this.$.attr("readonly")==="readonly",cursor:this.$.data("cursor")===true&&30||this.$.data("cursor")||0,thickness:this.$.data("thickness")&&Math.max(Math.min(this.$.data("thickness"),1),.01)||.35,lineCap:this.$.data("linecap")||"butt",width:this.$.data("width")||200,height:this.$.data("height")||200,displayInput:this.$.data("displayinput")==null||this.$.data("displayinput"),displayPrevious:this.$.data("displayprevious"),fgColor:this.$.data("fgcolor")||"#87CEEB",inputColor:this.$.data("inputcolor"),font:this.$.data("font")||"Arial",fontWeight:this.$.data("font-weight")||"bold",inline:false,step:this.$.data("step")||1,rotation:this.$.data("rotation"),draw:null,change:null,cancel:null,release:null,format:function(e){return e},parse:function(e){return parseFloat(e)}},this.o);this.o.flip=this.o.rotation==="anticlockwise"||this.o.rotation==="acw";if(!this.o.inputColor){this.o.inputColor=this.o.fgColor}if(this.$.is("fieldset")){this.v={};this.i=this.$.find("input");this.i.each(function(t){var r=e(this);n.i[t]=r;n.v[t]=n.o.parse(r.val());r.bind("change blur",function(){var e={};e[t]=r.val();n.val(n._validate(e))})});this.$.find("legend").remove()}else{this.i=this.$;this.v=this.o.parse(this.$.val());this.v===""&&(this.v=this.o.min);this.$.bind("change blur",function(){n.val(n._validate(n.o.parse(n.$.val())))})}!this.o.displayInput&&this.$.hide();this.$c=e(document.createElement("canvas")).attr({width:this.o.width,height:this.o.height});this.$div=e('<div style="'+(this.o.inline?"display:inline;":"")+"width:"+this.o.width+"px;height:"+this.o.height+"px;"+'"></div>');this.$.wrap(this.$div).before(this.$c);this.$div=this.$.parent();if(typeof G_vmlCanvasManager!=="undefined"){G_vmlCanvasManager.initElement(this.$c[0])}this.c=this.$c[0].getContext?this.$c[0].getContext("2d"):null;if(!this.c){throw{name:"CanvasNotSupportedException",message:"Canvas not supported. Please use excanvas on IE8.0.",toString:function(){return this.name+": "+this.message}}}this.scale=(window.devicePixelRatio||1)/(this.c.webkitBackingStorePixelRatio||this.c.mozBackingStorePixelRatio||this.c.msBackingStorePixelRatio||this.c.oBackingStorePixelRatio||this.c.backingStorePixelRatio||1);this.relativeWidth=this.o.width%1!==0&&this.o.width.indexOf("%");this.relativeHeight=this.o.height%1!==0&&this.o.height.indexOf("%");this.relative=this.relativeWidth||this.relativeHeight;this._carve();if(this.v instanceof Object){this.cv={};this.copy(this.v,this.cv)}else{this.cv=this.v}this.$.bind("configure",t).parent().bind("configure",t);this._listen()._configure()._xy().init();this.isInit=true;this.$.val(this.o.format(this.v));this._draw();return this};this._carve=function(){if(this.relative){var e=this.relativeWidth?this.$div.parent().width()*parseInt(this.o.width)/100:this.$div.parent().width(),t=this.relativeHeight?this.$div.parent().height()*parseInt(this.o.height)/100:this.$div.parent().height();this.w=this.h=Math.min(e,t)}else{this.w=this.o.width;this.h=this.o.height}this.$div.css({width:this.w+"px",height:this.h+"px"});this.$c.attr({width:this.w,height:this.h});if(this.scale!==1){this.$c[0].width=this.$c[0].width*this.scale;this.$c[0].height=this.$c[0].height*this.scale;this.$c.width(this.w);this.$c.height(this.h)}return this};this._draw=function(){var e=true;n.g=n.c;n.clear();n.dH&&(e=n.dH());e!==false&&n.draw()};this._touch=function(e){var r=function(e){var t=n.xy2val(e.originalEvent.touches[n.t].pageX,e.originalEvent.touches[n.t].pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};this.t=t.c.t(e);r(e);t.c.d.bind("touchmove.k",r).bind("touchend.k",function(){t.c.d.unbind("touchmove.k touchend.k");n.val(n.cv)});return this};this._mouse=function(e){var r=function(e){var t=n.xy2val(e.pageX,e.pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};r(e);t.c.d.bind("mousemove.k",r).bind("keyup.k",function(e){if(e.keyCode===27){t.c.d.unbind("mouseup.k mousemove.k keyup.k");if(n.eH&&n.eH()===false)return;n.cancel()}}).bind("mouseup.k",function(e){t.c.d.unbind("mousemove.k mouseup.k keyup.k");n.val(n.cv)});return this};this._xy=function(){var e=this.$c.offset();this.x=e.left;this.y=e.top;return this};this._listen=function(){if(!this.o.readOnly){this.$c.bind("mousedown",function(e){e.preventDefault();n._xy()._mouse(e)}).bind("touchstart",function(e){e.preventDefault();n._xy()._touch(e)});this.listen()}else{this.$.attr("readonly","readonly")}if(this.relative){e(window).resize(function(){n._carve().init();n._draw()})}return this};this._configure=function(){if(this.o.draw)this.dH=this.o.draw;if(this.o.change)this.cH=this.o.change;if(this.o.cancel)this.eH=this.o.cancel;if(this.o.release)this.rH=this.o.release;if(this.o.displayPrevious){this.pColor=this.h2rgba(this.o.fgColor,"0.4");this.fgColor=this.h2rgba(this.o.fgColor,"0.6")}else{this.fgColor=this.o.fgColor}return this};this._clear=function(){this.$c[0].width=this.$c[0].width};this._validate=function(e){var t=~~((e<0?-.5:.5)+e/this.o.step)*this.o.step;return Math.round(t*100)/100};this.listen=function(){};this.extend=function(){};this.init=function(){};this.change=function(e){};this.val=function(e){};this.xy2val=function(e,t){};this.draw=function(){};this.clear=function(){this._clear()};this.h2rgba=function(e,t){var n;e=e.substring(1,7);n=[parseInt(e.substring(0,2),16),parseInt(e.substring(2,4),16),parseInt(e.substring(4,6),16)];return"rgba("+n[0]+","+n[1]+","+n[2]+","+t+")"};this.copy=function(e,t){for(var n in e){t[n]=e[n]}}};t.Dial=function(){t.o.call(this);this.startAngle=null;this.xy=null;this.radius=null;this.lineWidth=null;this.cursorExt=null;this.w2=null;this.PI2=2*Math.PI;this.extend=function(){this.o=e.extend({bgColor:this.$.data("bgcolor")||"#EEEEEE",angleOffset:this.$.data("angleoffset")||0,angleArc:this.$.data("anglearc")||360,inline:true},this.o)};this.val=function(e,t){if(null!=e){e=this.o.parse(e);if(t!==false&&e!=this.v&&this.rH&&this.rH(e)===false){return}this.cv=this.o.stopper?n(r(e,this.o.max),this.o.min):e;this.v=this.cv;this.$.val(this.o.format(this.v));this._draw()}else{return this.v}};this.xy2val=function(e,t){var i,s;i=Math.atan2(e-(this.x+this.w2),-(t-this.y-this.w2))-this.angleOffset;if(this.o.flip){i=this.angleArc-i-this.PI2}if(this.angleArc!=this.PI2&&i<0&&i>-.5){i=0}else if(i<0){i+=this.PI2}s=i*(this.o.max-this.o.min)/this.angleArc+this.o.min;this.o.stopper&&(s=n(r(s,this.o.max),this.o.min));return s};this.listen=function(){var t=this,i,s,o=function(e){e.preventDefault();var o=e.originalEvent,u=o.detail||o.wheelDeltaX,a=o.detail||o.wheelDeltaY,f=t._validate(t.o.parse(t.$.val()))+(u>0||a>0?t.o.step:u<0||a<0?-t.o.step:0);f=n(r(f,t.o.max),t.o.min);t.val(f,false);if(t.rH){clearTimeout(i);i=setTimeout(function(){t.rH(f);i=null},100);if(!s){s=setTimeout(function(){if(i)t.rH(f);s=null},200)}}},u,a,f=1,l={37:-t.o.step,38:t.o.step,39:t.o.step,40:-t.o.step};this.$.bind("keydown",function(i){var s=i.keyCode;if(s>=96&&s<=105){s=i.keyCode=s-48}u=parseInt(String.fromCharCode(s));if(isNaN(u)){s!==13&&s!==8&&s!==9&&s!==189&&(s!==190||t.$.val().match(/\./))&&i.preventDefault();if(e.inArray(s,[37,38,39,40])>-1){i.preventDefault();var o=t.o.parse(t.$.val())+l[s]*f;t.o.stopper&&(o=n(r(o,t.o.max),t.o.min));t.change(t._validate(o));t._draw();a=window.setTimeout(function(){f*=2},30)}}}).bind("keyup",function(e){if(isNaN(u)){if(a){window.clearTimeout(a);a=null;f=1;t.val(t.$.val())}}else{t.$.val()>t.o.max&&t.$.val(t.o.max)||t.$.val()<t.o.min&&t.$.val(t.o.min)}});this.$c.bind("mousewheel DOMMouseScroll",o);this.$.bind("mousewheel DOMMouseScroll",o)};this.init=function(){if(this.v<this.o.min||this.v>this.o.max){this.v=this.o.min}this.$.val(this.v);this.w2=this.w/2;this.cursorExt=this.o.cursor/100;this.xy=this.w2*this.scale;this.lineWidth=this.xy*this.o.thickness;this.lineCap=this.o.lineCap;this.radius=this.xy-this.lineWidth/2;this.o.angleOffset&&(this.o.angleOffset=isNaN(this.o.angleOffset)?0:this.o.angleOffset);this.o.angleArc&&(this.o.angleArc=isNaN(this.o.angleArc)?this.PI2:this.o.angleArc);this.angleOffset=this.o.angleOffset*Math.PI/180;this.angleArc=this.o.angleArc*Math.PI/180;this.startAngle=1.5*Math.PI+this.angleOffset;this.endAngle=1.5*Math.PI+this.angleOffset+this.angleArc;var e=n(String(Math.abs(this.o.max)).length,String(Math.abs(this.o.min)).length,2)+2;this.o.displayInput&&this.i.css({width:(this.w/2+4>>0)+"px",height:(this.w/3>>0)+"px",position:"absolute","vertical-align":"middle","margin-top":(this.w/3>>0)+"px","margin-left":"-"+(this.w*3/4+2>>0)+"px",border:0,background:"none",font:this.o.fontWeight+" "+(this.w/e>>0)+"px "+this.o.font,"text-align":"center",color:this.o.inputColor||this.o.fgColor,padding:"0px","-webkit-appearance":"none"})||this.i.css({width:"0px",visibility:"hidden"})};this.change=function(e){this.cv=e;this.$.val(this.o.format(e))};this.angle=function(e){return(e-this.o.min)*this.angleArc/(this.o.max-this.o.min)};this.arc=function(e){var t,n;e=this.angle(e);if(this.o.flip){t=this.endAngle+1e-5;n=t-e-1e-5}else{t=this.startAngle-1e-5;n=t+e+1e-5}this.o.cursor&&(t=n-this.cursorExt)&&(n=n+this.cursorExt);return{s:t,e:n,d:this.o.flip&&!this.o.cursor}};this.draw=function(){var e=this.g,t=this.arc(this.cv),n,r=1;e.lineWidth=this.lineWidth;e.lineCap=this.lineCap;if(this.o.bgColor!=="none"){e.beginPath();e.strokeStyle=this.o.bgColor;e.arc(this.xy,this.xy,this.radius,this.endAngle-1e-5,this.startAngle+1e-5,true);e.stroke()}if(this.o.displayPrevious){n=this.arc(this.v);e.beginPath();e.strokeStyle=this.pColor;e.arc(this.xy,this.xy,this.radius,n.s,n.e,n.d);e.stroke();r=this.cv==this.v}e.beginPath();e.strokeStyle=r?this.o.fgColor:this.fgColor;e.arc(this.xy,this.xy,this.radius,t.s,t.e,t.d);e.stroke()};this.cancel=function(){this.val(this.v)}};e.fn.dial=e.fn.knob=function(n){return this.each(function(){var r=new t.Dial;r.o=n;r.$=e(this);r.run()}).parent()}})
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(e){if(true){!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(303)], __WEBPACK_AMD_DEFINE_FACTORY__ = (e), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}else{e(jQuery)}})(function(e){"use strict";var t={},n=Math.max,r=Math.min;t.c={};t.c.d=e(document);t.c.t=function(e){return e.originalEvent.touches.length-1};t.o=function(){var n=this;this.o=null;this.$=null;this.i=null;this.g=null;this.v=null;this.cv=null;this.x=0;this.y=0;this.w=0;this.h=0;this.$c=null;this.c=null;this.t=0;this.isInit=false;this.fgColor=null;this.pColor=null;this.dH=null;this.cH=null;this.eH=null;this.rH=null;this.scale=1;this.relative=false;this.relativeWidth=false;this.relativeHeight=false;this.$div=null;this.run=function(){var t=function(e,t){var r;for(r in t){n.o[r]=t[r]}n._carve().init();n._configure()._draw()};if(this.$.data("kontroled"))return;this.$.data("kontroled",true);this.extend();this.o=e.extend({min:this.$.data("min")!==undefined?this.$.data("min"):0,max:this.$.data("max")!==undefined?this.$.data("max"):100,stopper:true,readOnly:this.$.data("readonly")||this.$.attr("readonly")==="readonly",cursor:this.$.data("cursor")===true&&30||this.$.data("cursor")||0,thickness:this.$.data("thickness")&&Math.max(Math.min(this.$.data("thickness"),1),.01)||.35,lineCap:this.$.data("linecap")||"butt",width:this.$.data("width")||200,height:this.$.data("height")||200,displayInput:this.$.data("displayinput")==null||this.$.data("displayinput"),displayPrevious:this.$.data("displayprevious"),fgColor:this.$.data("fgcolor")||"#87CEEB",inputColor:this.$.data("inputcolor"),font:this.$.data("font")||"Arial",fontWeight:this.$.data("font-weight")||"bold",inline:false,step:this.$.data("step")||1,rotation:this.$.data("rotation"),draw:null,change:null,cancel:null,release:null,format:function(e){return e},parse:function(e){return parseFloat(e)}},this.o);this.o.flip=this.o.rotation==="anticlockwise"||this.o.rotation==="acw";if(!this.o.inputColor){this.o.inputColor=this.o.fgColor}if(this.$.is("fieldset")){this.v={};this.i=this.$.find("input");this.i.each(function(t){var r=e(this);n.i[t]=r;n.v[t]=n.o.parse(r.val());r.bind("change blur",function(){var e={};e[t]=r.val();n.val(n._validate(e))})});this.$.find("legend").remove()}else{this.i=this.$;this.v=this.o.parse(this.$.val());this.v===""&&(this.v=this.o.min);this.$.bind("change blur",function(){n.val(n._validate(n.o.parse(n.$.val())))})}!this.o.displayInput&&this.$.hide();this.$c=e(document.createElement("canvas")).attr({width:this.o.width,height:this.o.height});this.$div=e('<div style="'+(this.o.inline?"display:inline;":"")+"width:"+this.o.width+"px;height:"+this.o.height+"px;"+'"></div>');this.$.wrap(this.$div).before(this.$c);this.$div=this.$.parent();if(typeof G_vmlCanvasManager!=="undefined"){G_vmlCanvasManager.initElement(this.$c[0])}this.c=this.$c[0].getContext?this.$c[0].getContext("2d"):null;if(!this.c){throw{name:"CanvasNotSupportedException",message:"Canvas not supported. Please use excanvas on IE8.0.",toString:function(){return this.name+": "+this.message}}}this.scale=(window.devicePixelRatio||1)/(this.c.webkitBackingStorePixelRatio||this.c.mozBackingStorePixelRatio||this.c.msBackingStorePixelRatio||this.c.oBackingStorePixelRatio||this.c.backingStorePixelRatio||1);this.relativeWidth=this.o.width%1!==0&&this.o.width.indexOf("%");this.relativeHeight=this.o.height%1!==0&&this.o.height.indexOf("%");this.relative=this.relativeWidth||this.relativeHeight;this._carve();if(this.v instanceof Object){this.cv={};this.copy(this.v,this.cv)}else{this.cv=this.v}this.$.bind("configure",t).parent().bind("configure",t);this._listen()._configure()._xy().init();this.isInit=true;this.$.val(this.o.format(this.v));this._draw();return this};this._carve=function(){if(this.relative){var e=this.relativeWidth?this.$div.parent().width()*parseInt(this.o.width)/100:this.$div.parent().width(),t=this.relativeHeight?this.$div.parent().height()*parseInt(this.o.height)/100:this.$div.parent().height();this.w=this.h=Math.min(e,t)}else{this.w=this.o.width;this.h=this.o.height}this.$div.css({width:this.w+"px",height:this.h+"px"});this.$c.attr({width:this.w,height:this.h});if(this.scale!==1){this.$c[0].width=this.$c[0].width*this.scale;this.$c[0].height=this.$c[0].height*this.scale;this.$c.width(this.w);this.$c.height(this.h)}return this};this._draw=function(){var e=true;n.g=n.c;n.clear();n.dH&&(e=n.dH());e!==false&&n.draw()};this._touch=function(e){var r=function(e){var t=n.xy2val(e.originalEvent.touches[n.t].pageX,e.originalEvent.touches[n.t].pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};this.t=t.c.t(e);r(e);t.c.d.bind("touchmove.k",r).bind("touchend.k",function(){t.c.d.unbind("touchmove.k touchend.k");n.val(n.cv)});return this};this._mouse=function(e){var r=function(e){var t=n.xy2val(e.pageX,e.pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};r(e);t.c.d.bind("mousemove.k",r).bind("keyup.k",function(e){if(e.keyCode===27){t.c.d.unbind("mouseup.k mousemove.k keyup.k");if(n.eH&&n.eH()===false)return;n.cancel()}}).bind("mouseup.k",function(e){t.c.d.unbind("mousemove.k mouseup.k keyup.k");n.val(n.cv)});return this};this._xy=function(){var e=this.$c.offset();this.x=e.left;this.y=e.top;return this};this._listen=function(){if(!this.o.readOnly){this.$c.bind("mousedown",function(e){e.preventDefault();n._xy()._mouse(e)}).bind("touchstart",function(e){e.preventDefault();n._xy()._touch(e)});this.listen()}else{this.$.attr("readonly","readonly")}if(this.relative){e(window).resize(function(){n._carve().init();n._draw()})}return this};this._configure=function(){if(this.o.draw)this.dH=this.o.draw;if(this.o.change)this.cH=this.o.change;if(this.o.cancel)this.eH=this.o.cancel;if(this.o.release)this.rH=this.o.release;if(this.o.displayPrevious){this.pColor=this.h2rgba(this.o.fgColor,"0.4");this.fgColor=this.h2rgba(this.o.fgColor,"0.6")}else{this.fgColor=this.o.fgColor}return this};this._clear=function(){this.$c[0].width=this.$c[0].width};this._validate=function(e){var t=~~((e<0?-.5:.5)+e/this.o.step)*this.o.step;return Math.round(t*100)/100};this.listen=function(){};this.extend=function(){};this.init=function(){};this.change=function(e){};this.val=function(e){};this.xy2val=function(e,t){};this.draw=function(){};this.clear=function(){this._clear()};this.h2rgba=function(e,t){var n;e=e.substring(1,7);n=[parseInt(e.substring(0,2),16),parseInt(e.substring(2,4),16),parseInt(e.substring(4,6),16)];return"rgba("+n[0]+","+n[1]+","+n[2]+","+t+")"};this.copy=function(e,t){for(var n in e){t[n]=e[n]}}};t.Dial=function(){t.o.call(this);this.startAngle=null;this.xy=null;this.radius=null;this.lineWidth=null;this.cursorExt=null;this.w2=null;this.PI2=2*Math.PI;this.extend=function(){this.o=e.extend({bgColor:this.$.data("bgcolor")||"#EEEEEE",angleOffset:this.$.data("angleoffset")||0,angleArc:this.$.data("anglearc")||360,inline:true},this.o)};this.val=function(e,t){if(null!=e){e=this.o.parse(e);if(t!==false&&e!=this.v&&this.rH&&this.rH(e)===false){return}this.cv=this.o.stopper?n(r(e,this.o.max),this.o.min):e;this.v=this.cv;this.$.val(this.o.format(this.v));this._draw()}else{return this.v}};this.xy2val=function(e,t){var i,s;i=Math.atan2(e-(this.x+this.w2),-(t-this.y-this.w2))-this.angleOffset;if(this.o.flip){i=this.angleArc-i-this.PI2}if(this.angleArc!=this.PI2&&i<0&&i>-.5){i=0}else if(i<0){i+=this.PI2}s=i*(this.o.max-this.o.min)/this.angleArc+this.o.min;this.o.stopper&&(s=n(r(s,this.o.max),this.o.min));return s};this.listen=function(){var t=this,i,s,o=function(e){e.preventDefault();var o=e.originalEvent,u=o.detail||o.wheelDeltaX,a=o.detail||o.wheelDeltaY,f=t._validate(t.o.parse(t.$.val()))+(u>0||a>0?t.o.step:u<0||a<0?-t.o.step:0);f=n(r(f,t.o.max),t.o.min);t.val(f,false);if(t.rH){clearTimeout(i);i=setTimeout(function(){t.rH(f);i=null},100);if(!s){s=setTimeout(function(){if(i)t.rH(f);s=null},200)}}},u,a,f=1,l={37:-t.o.step,38:t.o.step,39:t.o.step,40:-t.o.step};this.$.bind("keydown",function(i){var s=i.keyCode;if(s>=96&&s<=105){s=i.keyCode=s-48}u=parseInt(String.fromCharCode(s));if(isNaN(u)){s!==13&&s!==8&&s!==9&&s!==189&&(s!==190||t.$.val().match(/\./))&&i.preventDefault();if(e.inArray(s,[37,38,39,40])>-1){i.preventDefault();var o=t.o.parse(t.$.val())+l[s]*f;t.o.stopper&&(o=n(r(o,t.o.max),t.o.min));t.change(t._validate(o));t._draw();a=window.setTimeout(function(){f*=2},30)}}}).bind("keyup",function(e){if(isNaN(u)){if(a){window.clearTimeout(a);a=null;f=1;t.val(t.$.val())}}else{t.$.val()>t.o.max&&t.$.val(t.o.max)||t.$.val()<t.o.min&&t.$.val(t.o.min)}});this.$c.bind("mousewheel DOMMouseScroll",o);this.$.bind("mousewheel DOMMouseScroll",o)};this.init=function(){if(this.v<this.o.min||this.v>this.o.max){this.v=this.o.min}this.$.val(this.v);this.w2=this.w/2;this.cursorExt=this.o.cursor/100;this.xy=this.w2*this.scale;this.lineWidth=this.xy*this.o.thickness;this.lineCap=this.o.lineCap;this.radius=this.xy-this.lineWidth/2;this.o.angleOffset&&(this.o.angleOffset=isNaN(this.o.angleOffset)?0:this.o.angleOffset);this.o.angleArc&&(this.o.angleArc=isNaN(this.o.angleArc)?this.PI2:this.o.angleArc);this.angleOffset=this.o.angleOffset*Math.PI/180;this.angleArc=this.o.angleArc*Math.PI/180;this.startAngle=1.5*Math.PI+this.angleOffset;this.endAngle=1.5*Math.PI+this.angleOffset+this.angleArc;var e=n(String(Math.abs(this.o.max)).length,String(Math.abs(this.o.min)).length,2)+2;this.o.displayInput&&this.i.css({width:(this.w/2+4>>0)+"px",height:(this.w/3>>0)+"px",position:"absolute","vertical-align":"middle","margin-top":(this.w/3>>0)+"px","margin-left":"-"+(this.w*3/4+2>>0)+"px",border:0,background:"none",font:this.o.fontWeight+" "+(this.w/e>>0)+"px "+this.o.font,"text-align":"center",color:this.o.inputColor||this.o.fgColor,padding:"0px","-webkit-appearance":"none"})||this.i.css({width:"0px",visibility:"hidden"})};this.change=function(e){this.cv=e;this.$.val(this.o.format(e))};this.angle=function(e){return(e-this.o.min)*this.angleArc/(this.o.max-this.o.min)};this.arc=function(e){var t,n;e=this.angle(e);if(this.o.flip){t=this.endAngle+1e-5;n=t-e-1e-5}else{t=this.startAngle-1e-5;n=t+e+1e-5}this.o.cursor&&(t=n-this.cursorExt)&&(n=n+this.cursorExt);return{s:t,e:n,d:this.o.flip&&!this.o.cursor}};this.draw=function(){var e=this.g,t=this.arc(this.cv),n,r=1;e.lineWidth=this.lineWidth;e.lineCap=this.lineCap;if(this.o.bgColor!=="none"){e.beginPath();e.strokeStyle=this.o.bgColor;e.arc(this.xy,this.xy,this.radius,this.endAngle-1e-5,this.startAngle+1e-5,true);e.stroke()}if(this.o.displayPrevious){n=this.arc(this.v);e.beginPath();e.strokeStyle=this.pColor;e.arc(this.xy,this.xy,this.radius,n.s,n.e,n.d);e.stroke();r=this.cv==this.v}e.beginPath();e.strokeStyle=r?this.o.fgColor:this.fgColor;e.arc(this.xy,this.xy,this.radius,t.s,t.e,t.d);e.stroke()};this.cancel=function(){this.val(this.v)}};e.fn.dial=e.fn.knob=function(n){return this.each(function(){var r=new t.Dial;r.o=n;r.$=e(this);r.run()}).parent()}})
 
 /***/ },
-/* 304 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -51148,7 +51156,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 305 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51212,7 +51220,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Modal;
 
 /***/ },
-/* 306 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51263,7 +51271,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentLogin;
 
 /***/ },
-/* 307 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -51312,7 +51320,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleText;
 
 /***/ },
-/* 308 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51406,7 +51414,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleImage;
 
 /***/ },
-/* 309 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51567,7 +51575,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleFile;
 
 /***/ },
-/* 310 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51592,8 +51600,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// ======================
 	// jquery.knob.js
-	__webpack_require__(303);
-	var $ = __webpack_require__(304);
+	__webpack_require__(302);
+	var $ = __webpack_require__(303);
 
 	var playIntervalBubble;
 	var $bubblePlayer;
@@ -51801,7 +51809,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleAudio;
 
 /***/ },
-/* 311 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51886,7 +51894,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentViewer;
 
 /***/ },
-/* 312 */
+/* 311 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -51901,7 +51909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _myform = __webpack_require__(313);
+	var _myform = __webpack_require__(312);
 
 	var _myform2 = _interopRequireDefault(_myform);
 
@@ -52033,13 +52041,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = MyForm;
 
 /***/ },
-/* 313 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(314);
+	var content = __webpack_require__(313);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(286)(content, {});
@@ -52059,7 +52067,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 314 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(285)();
@@ -52073,7 +52081,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 315 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52142,7 +52150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = PopUp;
 
 /***/ },
-/* 316 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52191,13 +52199,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentLogOut;
 
 /***/ },
-/* 317 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(318);
+	var content = __webpack_require__(317);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(286)(content, {});
@@ -52217,7 +52225,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 318 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(285)();
@@ -52225,9 +52233,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 	// module
-
 	exports.push([module.id, "\n/***\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- POP UP\n6.- GLOBAL SETTINGS\n7.- MEDIA QUERIES\n8.- REACT CONTAINER\n\n***/\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'monkey';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix') format('embedded-opentype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.woff') format('woff'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.ttf') format('truetype'),\n  \t   url('https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"monkey\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"monkey\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-add-filled:before {\n  content: \"a\";\n}\n.mky-icon-add-regular:before {\n  content: \"b\";\n}\n.mky-icon-arrowback:before {\n  content: \"c\";\n}\n.mky-icon-attach-tilt:before {\n  content: \"d\";\n}\n.mky-icon-attach-regular:before {\n  content: \"e\";\n}\n.mky-icon-audio-ephemeral:before {\n  content: \"f\";\n}\n.mky-icon-back:before {\n  content: \"g\";\n}\n.mky-icon-check:before {\n  content: \"i\";\n}\n.mky-icon-download:before {\n  content: \"k\";\n}\n.mky-icon-edit:before {\n  content: \"l\";\n}\n.mky-icon-copy:before {\n  content: \"m\";\n}\n.mky-icon-share:before {\n  content: \"n\";\n}\n.mky-icon-align-center:before {\n  content: \"o\";\n}\n.mky-icon-align-left:before {\n  content: \"p\";\n}\n.mky-icon-align-right:before {\n  content: \"q\";\n}\n.mky-icon-bold:before {\n  content: \"v\";\n}\n.mky-icon-bulletlist:before {\n  content: \"w\";\n}\n.mky-icon-icon-indentlees:before {\n  content: \"A\";\n}\n.mky-icon-indent-more:before {\n  content: \"B\";\n}\n.mky-icon-italic:before {\n  content: \"C\";\n}\n.mky-icon-numberlist:before {\n  content: \"G\";\n}\n.mky-icon-remove-formating:before {\n  content: \"H\";\n}\n.mky-icon-icon-size:before {\n  content: \"I\";\n}\n.mky-icon-textcolor:before {\n  content: \"J\";\n}\n.mky-icon-underline:before {\n  content: \"K\";\n}\n.mky-icon-info:before {\n  content: \"L\";\n}\n.mky-icon-key:before {\n  content: \"M\";\n}\n.mky-icon-location-filled:before {\n  content: \"N\";\n}\n.mky-icon-lock:before {\n  content: \"O\";\n}\n.mky-icon-logout-left:before {\n  content: \"P\";\n}\n.mky-icon-logout-right:before {\n  content: \"Q\";\n}\n.mky-icon-mail:before {\n  content: \"R\";\n}\n.mky-icon-menu-hamburguer:before {\n  content: \"S\";\n}\n.mky-icon-arrow-down-regular:before {\n  content: \"T\";\n}\n.mky-icon-arrow-up-regular:before {\n  content: \"U\";\n}\n.mky-icon-mic-empty:before {\n  content: \"V\";\n}\n.mky-icon-mic-filled:before {\n  content: \"W\";\n}\n.mky-icon-minimize:before {\n  content: \"X\";\n}\n.mky-icon-photo:before {\n  content: \"Y\";\n}\n.mky-icon-image-square:before {\n  content: \"Z\";\n}\n.mky-icon-image-ephemeral:before {\n  content: \"0\";\n}\n.mky-icon-push:before {\n  content: \"1\";\n}\n.mky-icon-search:before {\n  content: \"2\";\n}\n.mky-icon-send-regular:before {\n  content: \"3\";\n}\n.mky-icon-send-filled:before {\n  content: \"4\";\n}\n.mky-icon-text-ephemeral:before {\n  content: \"5\";\n}\n.mky-icon-timer-regular:before {\n  content: \"6\";\n}\n.mky-icon-timer-regular-1:before {\n  content: \"7\";\n}\n.mky-icon-timer-filled:before {\n  content: \"8\";\n}\n.mky-icon-trashcan-regular:before {\n  content: \"9\";\n}\n.mky-icon-trashcan-filled:before {\n  content: \"!\";\n}\n.mky-icon-webhook:before {\n  content: \"\\\"\";\n}\n.mky-icon-menu-dots-strong:before {\n  content: \"E\";\n}\n.mky-icon-menu-dots:before {\n  content: \"F\";\n}\n.mky-icon-localization-regular:before {\n  content: \"y\";\n}\n.mky-icon-doc-regular:before {\n  content: \"z\";\n}\n.mky-icon-image-regular:before {\n  content: \"D\";\n}\n.mky-icon-chats:before {\n  content: \"h\";\n}\n.mky-icon-arrow-up-light:before {\n  content: \"r\";\n}\n.mky-icon-arrow-up-bold:before {\n  content: \"s\";\n}\n.mky-icon-arrow-down-bold:before {\n  content: \"#\";\n}\n.mky-icon-arrow-down-light:before {\n  content: \"$\";\n}\n.mky-icon-close-light:before {\n  content: \"j\";\n}\n.mky-icon-close:before {\n  content: \"t\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  padding-top: 1px;\n  position: fixed;\n  -webkit-font-smoothing: antialiased;\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n  \n}\n\n.mky-fullsize{\n\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 100;\n}\n\n.mky-classic{\n  bottom: 0;\n  right: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n#mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n#mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  width: 100%;\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  box-shadow: 0 0 10px rgba(0,0,0,0.3);\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, #mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n#mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-wrapper-out aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid #c2c2c2;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n\twidth: 100%;\n\theight: 64px;\n\tbackground-color: #fff;\n\tborder-bottom: 1px solid #e1e1e1;\n}\n\n#mky-session-header{\n\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n#mky-session-image{\n\twidth: 40px;\n\theight: 40px;\n\tmargin: 10px 20px;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n#mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n#mky-session-description{\n\twidth: calc(100% - 80px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 22px;\n  margin-right: 9px;\n  cursor: pointer;\n}\n\n.mky-header-exit i{\n  color: #6e8191;\n  font-size: 19px;\n}\n\n#mky-session-name{\n  margin-top: 25px;\n  float: left;\n  display: flex;\n  white-space: nowrap;\n  width: calc(100% - 50px);\n}\n\n#mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #EFEFEF;\n}\n\n.mky-search-input > input {\n    width: 100%;\n    padding: 8px 10px 8px 40px;\n    border-radius: 10px;\n    border: 1px solid #EFF0F2;\n    position: relative;\n    outline: 0;\n    text-align: left;\n    font-size: 12px;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n    background-repeat: no-repeat;\n    background-position: 5%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-unselected{\n  background-color: #fff;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n\n#mky-conversation-list {\n    width: 100%;\n    height: calc(100% - 51px);\n    margin: 0;\n    padding: 0;\n    list-style: none;\n    overflow: auto;\n    background: #f6f7f9;\n}\n\n#mky-conversation-list li{\n  width: 100%;\n  height: 68px;\n  position: relative;\n  border-bottom: 1px solid #efefef;\n}\n\n.mky-conversation-selected{\n  background-color: #eaf0f9;\n}\n\n#mky-conversation-list .mky-conversation-unselected{\n  background-color: transparent;\n}\n\n.mky-conversation-unselected:hover{\n  background-color: #e9f8ff;\n  cursor: pointer;\n}\n.mky-delete-conv{\n  display: none;\n}\n\n.mky-conversation-unselected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-conversation-selected:hover .mky-delete-conv{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-delete-conv i{\n  font-size: 10px;\n  margin-left: 10px;\n  color: #6e8191;\n}\n\n.mky-conversation-image{\n  width: 48px;\n  height: 48px;\n  margin: 0px;\n  width: 48px;\n  padding: 10px 15px 10px 20px;\n  border-bottom: 1px solid #F6F7F9;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 100px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 13px;\n  margin-right: 0;\n  margin-left:8px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n\tcolor: black;\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-time{\n\twidth: 65px;\n\tfloat: right;\n\tmargin-left: 5px;\n\ttext-align: right;\n}\n\n.mky-conversation-time span{\n\tfont-size: 11px;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-conversation-state{\n  color: #8a8a8a;\n  margin-top: 8px;\n  display: flex;\n  width:88%;\n}\n\n.mky-conversation-notification{\n  position: relative;\n  /*right: 15px;*/\n  /*bottom: 12px;*/\n  /*float: right;*/\n  display: inline-block;\n  vertical-align: top;\n}\n.mnk-conversation-opts{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n  /*float: right;*/\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border-radius: 50%;\n  background: #8ec549;\n  color: #fff;\n  font-size: 9px;\n  font-weight: bold;\n  padding: 4px;\n  text-align: center;\n}\n\n.mky-bold-text{\n    font-family: Verdana Pro W01 SemiBold;\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n    height: 100%;\n    margin: 0;\n    vertical-align: top;\n    float: left;\n    position: relative;\n    background-color: #ffffff;\n}\n\n.mky-content-window-only{\n    width: 100%;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n\twidth: 100%;\n\theight: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n#mky-conversation-selected-header{\n    background: #fff;\n    position: relative;\n    z-index: 1;\n}\n\n#mky-conversation-selected-header div{\n    display: inline-table;\n    vertical-align: top;\n}\n\n.mky-conversation-burger{\n  float: left;\n  margin: 24px 5px 0 12px;\n  width: auto;\n}\n\n.mky-conversation-burger i{\n\tcolor: #6e8191;\n    font-size: 19px;\n}\n\n#mky-conversation-selected-image{\n    width: 40px;\n    height: 40px;\n    margin: 13px;\n    float: left;\n    margin-left: 25px;\n}\n\n.mky-rightside #mky-conversation-selected-image{\n\tmargin-left: 8px;\n}\n\n/*\n.mky-partialsize #mky-conversation-selected-image{\n\tmargin-left: 5px;\n}\n*/\n\n#mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n#mky-conversation-selected-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n#mky-conversation-selected-description span{\n    display: block;\n    text-align: left;\n    font-weigth: normal;\n    color:#a2a2a2;\n    max-width: 550px;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    line-height: 16px;\n}\n\n#mky-conversation-selected-name{\n    font-size: 14px;\n    color: #353535 !important;\n}\n\n#mky-conversation-selected-status{\n    font-size: 12px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n\twidth: 100%;\n\theight: calc(100% - 65px);\n\tposition: relative;\n}\n\n#mky-chat-timeline {\n    width: 100%;\n    height: calc(100% - 57px);\n    background-color: #fff;\n    position: relative;\n    overflow: auto;\n    overflow-x: hidden;\n}\n\n.mky-partialsize #mky-chat-timeline {\n    height: calc(100% - 62px);\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 40px);\n    height: auto;\n    margin: 10px auto;\n    padding: 10px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n}\n\n/* base bubble */\n\n.mky-bubble{\n  \tbox-sizing: content-box;\n  \tmax-width: 60%;\n  \tmargin: 0 auto;\n  \twidth: auto;\n  \tmin-width: 42px;\n  \tmin-height: 16px;\n  \tpadding: 6px 10px 8px 14px;\n  \t-webkit-border-radius: 15px;\n  \t-moz-border-radius: 15px;\n  \tborder-radius: 15px;\n  \tmargin-top: 15px;\n  \tposition: relative;\n  \tline-height: 19px;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #829be2;\n    border-bottom-right-radius: 1px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: #fff;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #fff;\n  \tmin-width: 112px;\n  \tbackground: #00bfa5;\n  \tborder-bottom-left-radius: 1px;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #42a5f5;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #bbb;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n      background-size: 100%;\n    background-repeat: no-repeat;\n    background-position: 50%;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #bbb;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-file-out {\n    text-align: right;\n}\n\n.mky-bubble-file-in {\n    text-align: left;\n}\n\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 15px;\n    position: absolute;\n    top: -15px;\n}\n\n.mky-message-detail span{\n    font-size: 10px;\n    color: #8c8c8c;\n    line-height: 12px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 9px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-bubble-out .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n    right: 0;\n    text-align: right;\n}\n\n.mky-button-message-unsend{\n    position: absolute;\n    color: blue;\n    font-size: 12px;\n    top: 1px;\n    font-weight: bold;\n    right: 6px;\n    z-index: 1;\n    width: 15px;\n    height: 15px;\n    opacity: 0;\n    cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #00bfa5;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/*content text bubble */\n\n.mky-content-text{\n  /*vertical-align: top;*/\n  font-size: 14px;\n}\n\n/*content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #00BFA5;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;  \n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: auto;\n  max-height: 250px;\n  min-height: 200px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n    height: 100%;\n    align-items: center;\n    display: flex;\n    -webkit-border-radius: 14px;\n    -moz-border-radius: 14px;\n    border-radius: 14px;\n    overflow: hidden;\n    justify-content: center;\n}\n\n.mky-content-image-data img{\n\theight: 250px;\n\twidth: auto;\n\tcursor: pointer;\n}\n\n/*content file bubble */\n\n.mky-content-file{\n    text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 50px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-word-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/word-icon.png);\n}\n\n.mky-file-exel-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n\n\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 1;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.4.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  width: 100%;\n  box-sizing: content-box;\n  border-top: 1px solid #ccc;\n  /*height: 55px;*/\n  height: auto;\n  margin: 0 auto;\n  background-color: #fff;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n  display: table;\n}\n\n.mky-inner-chat-input{\n  height: 100%;\n  max-width: 887px;\n  margin: 0 auto;\n  display: inline;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  border: 1px solid #E0E0E0;\n  width: calc(100% - 30px);\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: auto;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n  top: 50%;\n  transform: translateY(50%);\n  -webkit-transform: translateY(50%);\n  -moz-transform: translateY(50%);\n}\n\n.mky-button-icon{\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: contain;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n#mky-button-add{\n  background: none;\n  color: #8660a9;\n  font-size: 26px;\n}\n\n#mky-button-cancel-audio{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n#mky-button-send-message{\n  background: none;\n  color: #00bfa5;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n#mky-button-record-audio{\n  background: none;\n  color: #00BFA5;\n  font-size: 22px;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n#mky-button-cancel-audio:hover,\n#mky-button-record-audio:hover,\n#mky-button-send-message:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n#mky-message-text-input{\n  box-sizing: content-box;\n  width: calc(100% - 124px);\n  /*height: 24px;*/\n  height: auto;\n  margin: 8px 10px;\n  padding: 10px 10px 0px 10px;\n  resize: none;\n  border: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  top: initial;\n  max-height: 45px;\n}\n\n.mky-chat-input-file #mky-message-text-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n#mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 100px);\n  height: 38px;\n  padding: 5px;\n  margin: 1px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  width: 97%;\n  text-align: center;\n  margin-top: 10px;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat:no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n\tcolor: #42A5F5;\n\ttext-decoration-line: dotted;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 50px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #00bfa5;\n  opacity: 0.8;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 100%;\n  bottom: 55px;\n  border: none;\n  background: #F0f4fc;\n  border-radius: 0;\n  height: 120px;\n  color: #8a8a8a;\n  box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -moz-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);\n  left: 0;\n  top: initial;\n  opacity: 1;\n  z-index: 1;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: center;\n  cursor: pointer;\n  width: 49%;\n}\n\n.mky-menu-bubble-item i{\n  display: inline-block;\n}\n\n.mky-menu-bubble-item:first-child{\n  border-right: 1px solid #ccc;\n}\n\n.mky-menu-bubble-item:hover{\n  background: #F0f4fc;\n  color: #8a8a8a;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #2979ff;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n/*3.4.- BANNER and dependent clases*/\n\n.mky-banner-section{\n  width: 400px;\n  /*border: 1px solid #ccc;*/\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n.mky-banner-section img{\n  width: 100%;\n  /*height: 100%;*/\n}\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n\n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n/* 5.- POP UP\n   ----------------------------- */\n\n.mky-inner-modal{\n  max-width: 400px;\n  height: 200px;\n  background: white;\n  margin: auto;\n  top: 38%;\n  position: relative;\n  z-index: 200;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  width: 90%;\n}\n\n.mky-popup-message{\n  color: black;\n  height: 20%;\n  text-align: center;\n  padding-top: 45px;\n  margin: 0 5%;\n  position: relative;\n  width: 90%;\n}\n\n.mky-popup-buttons{\n  margin-top: 30px;\n  text-align: center;\n}\n\n.mky-popup-button{\n  cursor: pointer;\n  height: 25px;\n  width: auto;\n  margin: 0 10px;\n  background: white;\n  border-style: none;\n  color: #2196f3;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n/* 6.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n/* 7.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 600px){\n\n/* Disappear description user session */\n  #mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n/*\n  .mky-wrapper-out aside{\n        min-width: 130px;\n  }\n*/\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-wrapper-out aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-wrapper-out aside{\n    \tdisplay: none;\n\t}\n\n\t/* Icons bigger */\n\n\t#mky-button-send-message, #mky-button-cancel-audio{\n\t    height: 19px;\n\t    width: 24px;\n\t}\n\n\t#mky-button-action-record button{\n\t    height: 16px;\n\t    width: 16px;\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Input */\n\t#mky-record-area{\n\t  \tmargin-top: 7px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-wrapper-out aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  #mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n\n/* 8.- REACT CONTAINER\n   ----------------------------- */\n\n.mky-full{\n\twidth: 100%;\n\theight: 100%;\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/\n\n", ""]);
-
 
 	// exports
 
