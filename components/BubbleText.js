@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Linkify from 'react-linkify'
 
 class BubbleText extends React.Component {
 	constructor(props) {
@@ -6,7 +7,7 @@ class BubbleText extends React.Component {
 	}
 	
 	render() {
-		return <span className="mky-content-text">{this.props.message.text}</span>
+		return <span className="mky-content-text"><Linkify>{this.props.message.text}</Linkify></span>
 	}
 }
 
