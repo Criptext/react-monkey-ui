@@ -23,7 +23,6 @@ class BubbleAudio extends Component {
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.updateAnimationBuble = this.updateAnimationBuble.bind(this);
-		console.log('audio constructor: '+this.messageId);
 	}
 	
 	componentWillMount() {		
@@ -66,14 +65,15 @@ class BubbleAudio extends Component {
 		
 		this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.length ? this.props.message.length : 1));
 		//this.createAudioHandlerBubble(this.messageId,Math.round(this.props.message.duration));
-
-        let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
+	}
+	
+	componentDidUpdate() {
+		let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
         var that = this;
         
         if(mkyAudioBubble){
 	        mkyAudioBubble.oncanplay = function() {
                 that.createAudioHandlerBubble(that.messageId,Math.round(mkyAudioBubble.duration));
-                console.log('audio: '+that.messageId);
                 that.setDurationTime(that.messageId);
 //                     that.setState({disabledClass: ''});
             }
@@ -108,7 +108,6 @@ class BubbleAudio extends Component {
 	        let durationTime= Math.round(mkyAudioBubble.duration);
 	        let seconds = ('0' + durationTime%60).slice(-2);
 	        let minutes = ('0' + parseInt(durationTime/60)).slice(-2);
-	        console.log('set state 4: '+timestamp);
 	        this.setState({
 		        minutes: minutes,
 		        seconds: seconds
@@ -165,7 +164,6 @@ class BubbleAudio extends Component {
         window.$bubblePlayer.val(currentTime).trigger('change');
         let seconds = ('0' + currentTime%60).slice(-2);
         let minutes = ('0' + parseInt(currentTime/60)).slice(-2);
-        console.log('set state 6');
         this.setState({
 	        minutes: minutes,
 	        seconds: seconds

@@ -4,6 +4,7 @@ import ContentWindow from './ContentWindow.js'
 
 import ContentLogin from './ContentLogin.js'
 
+import Bubble from './Bubble.js'
 import BubbleText from './BubbleText.js'
 import BubbleImage from './BubbleImage.js'
 import BubbleFile from './BubbleFile.js'
@@ -67,10 +68,10 @@ class MonkeyUI extends Component {
 	    return {
 		    userSession: this.props.userSession,
 		    bubbles: {
-			    text: BubbleText,
-			    image: BubbleImage,
-			    file: BubbleFile,
-			    audio: BubbleAudio
+			    text: Bubble(BubbleText),
+			    image: Bubble(BubbleImage),
+			    file: Bubble(BubbleFile),
+			    audio: Bubble(BubbleAudio)
 		    },
 		    bubblePreviews: {
 			    image: ContentViewer

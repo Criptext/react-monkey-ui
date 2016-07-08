@@ -4,7 +4,7 @@ import Input from './Input.js'
 // import LocationInput from './LocationInput.js'
 
 import Modal from './Modal.js'
-import { defineTime, isConversationGroup } from '../utils/monkey-utils.js'
+import { defineTime } from '../utils/monkey-utils.js'
 
 class ContentConversation extends Component {
 	constructor(props, context) {
@@ -40,12 +40,12 @@ class ContentConversation extends Component {
 					<div id='mky-conversation-selected-image'><img src={this.defineUrlAvatar()}/></div>
 					<div id='mky-conversation-selected-description'>
 						<span id='mky-conversation-selected-name'>{this.props.conversationSelected.name}</span>
-						{ !isConversationGroup(this.props.conversationSelected.id)
-							? ( this.props.conversationSelected.online === false
+						{ this.props.conversationSelected.description === null
+							? ( !this.props.conversationSelected.online
 								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTime(this.props.conversationSelected.lastOpenApp)}</span>
 								: <span id='mky-conversation-selected-status'> Online </span>
 							)
-							: <span id='mky-conversation-selected-status'> {this.props.conversationSelected.description}</span>
+							: <span id='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
