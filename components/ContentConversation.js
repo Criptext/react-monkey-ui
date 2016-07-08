@@ -41,7 +41,7 @@ class ContentConversation extends Component {
 					<div id='mky-conversation-selected-description'>
 						<span id='mky-conversation-selected-name'>{this.props.conversationSelected.name}</span>
 						{ !isConversationGroup(this.props.conversationSelected.id)
-							? ( this.props.conversationSelected.online == 0
+							? ( this.props.conversationSelected.online === false
 								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTime(this.props.conversationSelected.lastOpenApp)}</span>
 								: <span id='mky-conversation-selected-status'> Online </span>
 							)

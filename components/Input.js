@@ -84,23 +84,7 @@ class Input extends Component {
 	    if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)){
             this.audioInputClass = 'mky-disabled';
         }
-
-
-
     }
-
-		componentDidUpdate() {
-			//could not find a better way for now
-			let minus = 0;
-			if ( $('.dw-content').length > 0 ) {
-					minus = 93;
-			} else {
-					minus = 15;
-			}
-			let footerHeight = $('#mky-chat-input').height();
-			let container = $('.mky-chat-area').height() - minus;
-			$('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
-		}
 
 	render() {
 		let styleInput = this.defineStyles();
@@ -116,7 +100,7 @@ class Input extends Component {
 
     					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
     				</div>
-    				<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message s' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></Textarea>
+    				<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></Textarea>
     				<div id='mky-record-area' className={this.state.classAudioArea}>
     					<div className='mky-record-preview-area'>
     						<div id='mky-button-action-record'>
@@ -159,7 +143,20 @@ class Input extends Component {
 	componentDidMount() {
 		this.ffmpegWorker = this.getFFMPEGWorker();
 	}
-
+	
+	componentDidUpdate() {
+		//could not find a better way for now
+		let minus = 0;
+		if ( $('.dw-content').length > 0 ) {
+				minus = 93;
+		} else {
+				minus = 15;
+		}
+		let footerHeight = $('#mky-chat-input').height();
+		let container = $('.mky-chat-area').height() - minus;
+		$('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
+	}
+	
 	defineStyles() {
 		let style = {
 			inputLeftButton: {},
@@ -184,8 +181,6 @@ class Input extends Component {
 	handleOnKeyDownTextArea(event) {
 		this.typeMessageToSend = 0;
 
-
-
 		if(event.keyCode === 13 && !event.shiftKey) {
 			console.log('enter!!');
 			event.preventDefault()
@@ -194,12 +189,7 @@ class Input extends Component {
 				this.textMessageInput(event.target.value.trim());
 			}
 			this.setState({text: ''});
-
 		}
-
-
-		console.log('letter!!');
-
 	}
 
 	handleOnChangeTextArea(event, value){
