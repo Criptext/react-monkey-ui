@@ -938,7 +938,7 @@ TABLE OF CONTENTS
   color: #fff;
   font-size: 12px;
   font-weight: bold;
-  padding: 5px 6px 3px 7px;
+  padding: 5px 6px 2px 5px;
   text-align: center;
 }
 
@@ -2387,7 +2387,7 @@ TABLE OF CONTENTS
 }
 
 .mky-partialsize .mky-menu-bubble{
-  z-index: 0; 
+  z-index: 0;
 }
 
 .mky-menu-bubble:before{

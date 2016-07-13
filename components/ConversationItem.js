@@ -21,6 +21,8 @@ class ConversationItem extends Component {
 	}
 
 	render() {
+			// console.log('conversation information');
+			// console.log(this.props.conversation.messages);
 			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
 			<li className={classContent}>
@@ -55,6 +57,15 @@ class ConversationItem extends Component {
 				<div className='mnk-conversation-opts'>
 					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
 					<Badge value={this.props.conversation.unreadMessageCounter} />
+
+							{ Object.keys(this.props.conversation.messages).length ? (
+									this.props.conversation.messages[this.props.conversation.lastMessage] ?
+									(this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 ?
+										<span> c </span>:''
+									):null
+								):null
+							}
+
 				</div>
 			</li>
 		)
