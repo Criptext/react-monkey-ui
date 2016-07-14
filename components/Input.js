@@ -410,7 +410,13 @@ class Input extends Component {
                 that.audioCaptured.oldId = that.audioMessageOldId;
                 that.audioCaptured.type = 'audio/mpeg';
 
-                let message = {data: that.audioCaptured.src, bubbleType: 'audio', preview: 'Audio', length:that.audioCaptured.duration};
+                let message = {
+	                data: that.audioCaptured.src,
+	                bubbleType: 'audio',
+	                preview: 'Audio',
+	                length:that.audioCaptured.duration,
+	                mimetype: 'audio/mpeg'
+	            };
                 that.props.messageCreated(message);
                 that.setState({creatingAudio: false});
 
