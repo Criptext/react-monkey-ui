@@ -4,17 +4,13 @@ import { getExtention } from '../utils/monkey-utils.js'
 class BubbleFile extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			isDownloading: false
-		}
 		this.eventBubble = this.eventBubble.bind(this);
 		this.downloadData = this.downloadData.bind(this);
 	}
 
 	componentWillMount() {
-        if(this.props.message.data == null && !this.state.isDownloading && !this.props.message.error){
+        if(this.props.message.data == null && !this.props.message.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
-            this.setState({isDownloading: true});
         }
 	}
 
@@ -36,7 +32,7 @@ class BubbleFile extends Component {
 						</a>
 					</div>
 				)
-				: ( this.state.isDownloading
+				: ( this.props.message.isDownloading
 					? ( <div className='mky-content-file-loading'>
                         	<div className='mky-double-bounce1'></div>
 							<div className='mky-double-bounce2'></div>
@@ -54,7 +50,6 @@ class BubbleFile extends Component {
 	
 	downloadData() {
 		this.props.dataDownloadRequest(this.props.message.mokMessage);
-        this.setState({isDownloading: true});
 	}
 	
 	humanFileSize(bytes, si) {

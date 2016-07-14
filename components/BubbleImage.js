@@ -3,18 +3,14 @@ import React, { Component } from 'react'
 class BubbleImage extends Component {
 	constructor(props) {
 		super(props);
-		this.state = {
-			isDownloading: false
-		}
 		this.eventBubble = this.eventBubble.bind(this);
 		this.openImage = this.openImage.bind(this);
 		this.downloadData = this.downloadData.bind(this);
 	}
 
 	componentWillMount() {
-        if(this.props.message.data == null && !this.state.isDownloading && !this.props.message.error){
+        if(this.props.message.data == null && !this.props.message.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
-            this.setState({isDownloading: true});
         }
 	}
 	
@@ -26,7 +22,7 @@ class BubbleImage extends Component {
 							<img src={this.props.message.data} onClick={this.openImage}></img>
 						</div>
 					)
-					: ( this.state.isDownloading
+					: ( this.props.message.isDownloading
 						? ( <div className='mky-content-image-loading'>
                             	<div className='mky-double-bounce1'></div>
 								<div className='mky-double-bounce2'></div>
@@ -49,7 +45,6 @@ class BubbleImage extends Component {
 	
 	downloadData() {
 		this.props.dataDownloadRequest(this.props.message.mokMessage);
-        this.setState({isDownloading: true});
 	}
 }
 
