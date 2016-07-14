@@ -7,7 +7,7 @@ class BubbleText extends React.Component {
 	}
 	
 	render() {
-		return <span className="mky-content-text"><Linkify>{this.props.message.text}</Linkify></span>
+		return <span className="mky-content-text"><Linkify properties={{target: '_blank'}}>{this.props.message.text}</Linkify></span>
 	}
 }
 

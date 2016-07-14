@@ -1,6 +1,6 @@
 {
   "name": "react-monkey-ui",
-  "version": "2.0.27",
+  "version": "2.0.28",
   "description": "User interface of MonkeySDK to create your own chat.",
   "keywords": [
     "monkey-ui",
@@ -11,7 +11,7 @@
   "main": "./dist/MonkeyUI.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
+    "build": "webpack && uglifyjs ./dist/MonkeyUI.js -m -c -o ./dist/MonkeyUI.min.js",
     "prepublish": "npm run build"
   },
   "author": "Criptext Inc.",
@@ -41,6 +41,7 @@
     "react-textarea-autosize": "^4.0.3",
     "react-toastr": "^2.6.1",
     "style-loader": "^0.13.1",
+    "uglify-js": "^2.7.0",
     "webpack": "^1.12.14"
   },
   "peerDependencies": {

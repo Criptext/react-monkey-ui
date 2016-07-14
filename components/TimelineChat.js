@@ -52,11 +52,11 @@ class TimelineChat extends Component {
 	}
 
 	componentWillUpdate() {
-
+		
 	}
 
 	render(){
-		return( <div ref="timelineChat" id='mky-chat-timeline'>
+		return( <div ref='timelineChat' id='mky-chat-timeline'>
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
@@ -72,14 +72,14 @@ class TimelineChat extends Component {
 		//this.domNode.lastChild.scrollIntoView();
 	    this.domNode.addEventListener('scroll', this.handleScroll);
 	    let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
-	    if( amountMessages === 1 || (amountMessages > 0 && amountMessages < 10) ){
+	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
 			this.getMoreMessages();
 		}
 	}
 
 	componentDidUpdate() {
 		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
-	    if( amountMessages === 1 || (amountMessages > 0 && amountMessages < 10) ){
+	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
 			this.getMoreMessages();
 		}
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
@@ -107,9 +107,11 @@ class TimelineChat extends Component {
 			this.goBottom = false;
 // 			this.domNode.lastChild.scrollIntoView();
 
-		}else if(this.domNode.scrollTop === 0 && this.scrollTop != 0){
+		}else if(this.domNode.scrollTop === 0 && this.scrollTop != 0 ){
 			this.scrollHeight = this.domNode.scrollHeight;
-			this.getMoreMessages();
+			if(!this.props.conversationSelected.loading){
+				this.getMoreMessages();	
+			}
 		}
 		this.scrollTop = this.domNode.scrollTop;
 	}

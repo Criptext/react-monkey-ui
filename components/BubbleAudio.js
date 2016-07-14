@@ -13,7 +13,6 @@ class BubbleAudio extends Component {
 		super(props);
 		this.messageId = (this.props.message.id[0] == '-' ? (this.props.message.datetimeCreation) : this.props.message.id);
 		this.state = {
-			isDownloading: false,
 			disabledClass: 'mky-disabled',
 			minutes: ('0' + parseInt(this.props.message.length/60)).slice(-2),
 			seconds: ('0' + this.props.message.length%60).slice(-2)
@@ -26,9 +25,8 @@ class BubbleAudio extends Component {
 	}
 	
 	componentWillMount() {		
-        if(this.props.message.data == null && !this.state.isDownloading && !this.props.message.error){
+        if(this.props.message.data == null && !this.props.message.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
-            this.setState({isDownloading: true});
         }
 	}
 	
@@ -47,7 +45,7 @@ class BubbleAudio extends Component {
 	                        <audio id={'audio_'+this.messageId} preload='auto' controls='' src={this.props.message.data}></audio>
 						</div>
                     )
-                    : ( this.state.isDownloading
+                    : ( this.props.message.isDownloading
 						? ( <div className='mky-content-audio-loading'>
 	                        	<div className='mky-double-bounce1'></div>
 								<div className='mky-double-bounce2'></div>
@@ -82,7 +80,6 @@ class BubbleAudio extends Component {
 	
 	downloadData() {
 		this.props.dataDownloadRequest(this.props.message.mokMessage);
-        this.setState({isDownloading: true});
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
@@ -160,14 +157,18 @@ class BubbleAudio extends Component {
     
     updateAnimationBuble() {
 	    let audiobuble = document.getElementById('audio_'+this.messageId);
-        var currentTime = Math.round(audiobuble.currentTime);
-        window.$bubblePlayer.val(currentTime).trigger('change');
-        let seconds = ('0' + currentTime%60).slice(-2);
-        let minutes = ('0' + parseInt(currentTime/60)).slice(-2);
-        this.setState({
-	        minutes: minutes,
-	        seconds: seconds
-	    });
+	    if(audiobuble){
+			var currentTime = Math.round(audiobuble.currentTime);
+	        window.$bubblePlayer.val(currentTime).trigger('change');
+	        let seconds = ('0' + currentTime%60).slice(-2);
+	        let minutes = ('0' + parseInt(currentTime/60)).slice(-2);
+	        this.setState({
+		        minutes: minutes,
+		        seconds: seconds
+		    });   
+	    }else{
+		    clearInterval(window.playIntervalBubble);
+	    }
     }
 }
 
