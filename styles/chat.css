@@ -1537,6 +1537,7 @@ TABLE OF CONTENTS
   	color: #808080;
   	padding: 0px;
   	background: transparent;
+    box-shadow: none;
 }
 
 .mky-bubble-audio-out {
@@ -2129,7 +2130,7 @@ TABLE OF CONTENTS
 .mky-bubble-audio-button{
   position: absolute;
   margin: 25px 22px 0 22px;
-  z-index: 1;
+  z-index: 0;
   height: 60px;
   display: none;
 }
@@ -2247,7 +2248,9 @@ TABLE OF CONTENTS
 }
 
 .mky-partialsize #mky-message-text-input{
-  width: calc(100% - 90px);
+  width: calc(100% - 94px);
+  margin-left: 0;
+  margin-right: 0;
 }
 
 #mky-divider-chat-input{
