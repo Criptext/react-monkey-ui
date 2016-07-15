@@ -21,6 +21,7 @@ class ConversationItem extends Component {
 	}
 
 	render() {
+
 			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
 			<li className={classContent}>
@@ -35,7 +36,10 @@ class ConversationItem extends Component {
 								}
 							</div>
 							<div className='mky-conversation-time'>
-								<span className=''>{this.props.conversation.messages[this.props.conversation.lastMessage] ? defineTimeByToday(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''}</span>
+								{ this.state.unreadMessages
+									? <span className=''>{this.props.conversation.messages[this.props.conversation.lastMessage] ? defineTimeByToday(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''}</span>
+									: <span className='mky-read-conversation-span' >{this.props.conversation.messages[this.props.conversation.lastMessage] ? defineTimeByToday(this.props.conversation.messages[this.props.conversation.lastMessage].datetimeCreation) : ''}</span>
+								}
 							</div>
 						</div>
 						<div className='mky-conversation-state'>
@@ -50,8 +54,17 @@ class ConversationItem extends Component {
 					</div>
 				</div>
 				<div className='mnk-conversation-opts'>
-					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close'></i></div>
+					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
 					<Badge value={this.props.conversation.unreadMessageCounter} />
+
+							{ Object.keys(this.props.conversation.messages).length ? (
+									this.props.conversation.messages[this.props.conversation.lastMessage] ?
+									(this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 ?
+										<div className="mky-message-status mky-status-read" ><i className="icon mky-icon-check-sober mky-message-read"></i></div>:''
+									):null
+								):null
+							}
+
 				</div>
 			</li>
 		)
@@ -68,7 +81,7 @@ class ConversationItem extends Component {
 			this.props.deleteConversation(this.props.conversation, this.props.index, false)
 		}
 	}
-	
+
 	defineUrlAvatar() {
 		return this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}

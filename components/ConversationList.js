@@ -24,24 +24,24 @@ class ConversationList extends Component {
 	    this.searchUpdated = this.searchUpdated.bind(this);
 	    this.conversationIdSelected = this.conversationIdSelected.bind(this);
 	    this.isSelected = this.isSelected.bind(this);
-	    
+
 	    this.handleDeleteConversation = this.handleDeleteConversation.bind(this);
 	    this.handleExitGroup = this.handleExitGroup.bind(this);
 	    this.handleClosePopup = this.handleClosePopup.bind(this);
-	    
+
 	    this.handleAskDeleteConversation = this.handleAskDeleteConversation.bind(this);
 	    this.setConversationSelected = this.setConversationSelected.bind(this);
 	    this.domNode;
 	}
-	
+
 	componentWillMount() {
 		this.setState({conversationArray: this.createArray(this.props.conversations)});
 	}
-	
+
 	componentWillReceiveProps(nextProps) {
 		this.setState({conversationArray: this.createArray(nextProps.conversations)});
 	}
-	
+
 	render() {
 		const conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
     	return (
@@ -49,7 +49,7 @@ class ConversationList extends Component {
     			{ this.state.isDeleting
 	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation} handleExitGroup={this.handleExitGroup} handleClosePopup={this.handleClosePopup} isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null }
-	    		<SearchInput className='mky-search-input' onChange={this.searchUpdated} />
+	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
 	    		{ this.props.conversationsLoading
 		    		? ( <div>
 		    				<div className='mky-spinner'>
@@ -71,7 +71,7 @@ class ConversationList extends Component {
 			</div>
 		)
 	}
-	
+
 	handleAskDeleteConversation(conversation, index, active) {
 		this.setState({
 			deletingConversation: conversation,
@@ -89,7 +89,7 @@ class ConversationList extends Component {
 	componentDidMount() {
 		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
 	}
-	
+
 	conversationIdSelected(conversationId) {
 		this.props.handleConversationSelected(this.props.conversations[conversationId]);
 	}
@@ -97,7 +97,7 @@ class ConversationList extends Component {
 	setConversationSelected() {
 		this.setState({isDeleting: false});
 	}
-	
+
 	isSelected(conversationId) {
 		let result = false
 		if(this.props.conversationSelected){
@@ -107,11 +107,11 @@ class ConversationList extends Component {
 		}
 		return result;
 	}
-	
+
 	searchUpdated(term) {
     	this.setState({searchTerm: term});
   	}
-  	
+
   	createArray(conversations) {
   		let conversationarray = [];
 		for(var x in conversations){
@@ -125,14 +125,14 @@ class ConversationList extends Component {
   	}
 
   	scrollToFirstChildWhenItsNecessary() {
-		if(this.domNode!=null && this.domNode.children.length > 0 
+		if(this.domNode!=null && this.domNode.children.length > 0
 			&& this.isSelected(this.state.conversationArray[0].id)){
 			this.domNode.firstChild.scrollIntoView();
 		}
   	}
-  	
+
   	// PopUp methods
-  	
+
   	handleDeleteConversation() {
 		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 		var nextConversation = conversationNameFiltered[this.state.deletingIndex + 1];
@@ -141,7 +141,7 @@ class ConversationList extends Component {
 		}
 		this.props.handleConversationDelete(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
 	}
-	
+
 	handleExitGroup() {
 		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 		var nextConversation = conversationNameFiltered[this.state.deletingIndex + 1];
@@ -150,11 +150,11 @@ class ConversationList extends Component {
 		}
 		this.props.handleConversationExit(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
 	}
-	
+
 	handleClosePopup() {
 		this.setState({isDeleting: false});
 	}
-	
+
 }
 
 ConversationList.contextTypes = {

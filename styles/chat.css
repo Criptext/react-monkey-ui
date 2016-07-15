@@ -31,17 +31,311 @@ TABLE OF CONTENTS
     font-weight: normal;
     src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');
 }
+@font-face {
+    font-family: 'helvetica-light';
+    font-style: normal;
+    font-weight: normal;
+    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaLTStd-Light.otf') format('opentype');
+}
+
+/*FONTELLO CSS*/
+@charset "UTF-8";
 
 @font-face {
-  font-family: 'monkey';
-  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot');
-  src: url('https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix') format('embedded-opentype'),
-  	   url('https://cdn.criptext.com/MonkeyUI/font/monkey.woff') format('woff'),
-  	   url('https://cdn.criptext.com/MonkeyUI/font/monkey.ttf') format('truetype'),
-  	   url('https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey') format('svg');
+  font-family: "monkey";
+  src:url("https://cdn.criptext.com/MonkeyUI/font/monkey.eot");
+  src:url("https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.criptext.com/MonkeyUI/font/monkey.woff") format("woff"),
+    url("https://cdn.criptext.com/MonkeyUI/font/monkey.ttf") format("truetype"),
+    url("https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey") format("svg");
   font-weight: normal;
   font-style: normal;
+
 }
+
+[data-icon]:before {
+  font-family: "monkey" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="mky-icon-"]:before,
+[class*=" mky-icon-"]:before {
+  font-family: "monkey" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[data-icon]:before {
+  font-family: "monkey" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="mky-icon-"]:before,
+[class*=" mky-icon-"]:before {
+  font-family: "monkey" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mky-icon-add-filled:before {
+  content: "\61";
+}
+.mky-icon-add-regular:before {
+  content: "\62";
+}
+.mky-icon-arrowback:before {
+  content: "\63";
+}
+.mky-icon-attach-tilt:before {
+  content: "\64";
+}
+.mky-icon-attach-regular:before {
+  content: "\65";
+}
+.mky-icon-audio-ephemeral:before {
+  content: "\66";
+}
+.mky-icon-back:before {
+  content: "\67";
+}
+.mky-icon-check:before {
+  content: "\69";
+}
+.mky-icon-download:before {
+  content: "\6b";
+}
+.mky-icon-edit:before {
+  content: "\6c";
+}
+.mky-icon-copy:before {
+  content: "\6d";
+}
+.mky-icon-share:before {
+  content: "\6e";
+}
+.mky-icon-align-center:before {
+  content: "\6f";
+}
+.mky-icon-align-left:before {
+  content: "\70";
+}
+.mky-icon-align-right:before {
+  content: "\71";
+}
+.mky-icon-bold:before {
+  content: "\76";
+}
+.mky-icon-bulletlist:before {
+  content: "\77";
+}
+.mky-icon-icon-indentlees:before {
+  content: "\41";
+}
+.mky-icon-indent-more:before {
+  content: "\42";
+}
+.mky-icon-italic:before {
+  content: "\43";
+}
+.mky-icon-numberlist:before {
+  content: "\47";
+}
+.mky-icon-remove-formating:before {
+  content: "\48";
+}
+.mky-icon-icon-size:before {
+  content: "\49";
+}
+.mky-icon-textcolor:before {
+  content: "\4a";
+}
+.mky-icon-underline:before {
+  content: "\4b";
+}
+.mky-icon-info:before {
+  content: "\4c";
+}
+.mky-icon-key:before {
+  content: "\4d";
+}
+.mky-icon-location-filled:before {
+  content: "\4e";
+}
+.mky-icon-lock:before {
+  content: "\4f";
+}
+.mky-icon-logout-left:before {
+  content: "\50";
+}
+.mky-icon-logout-right:before {
+  content: "\51";
+}
+.mky-icon-mail:before {
+  content: "\52";
+}
+.mky-icon-menu-hamburguer:before {
+  content: "\53";
+}
+.mky-icon-arrow-down-regular:before {
+  content: "\54";
+}
+.mky-icon-arrow-up-regular:before {
+  content: "\55";
+}
+.mky-icon-mic-empty:before {
+  content: "\56";
+}
+.mky-icon-mic-filled:before {
+  content: "\57";
+}
+.mky-icon-minimize:before {
+  content: "\58";
+}
+.mky-icon-photo:before {
+  content: "\59";
+}
+.mky-icon-image-square:before {
+  content: "\5a";
+}
+.mky-icon-push:before {
+  content: "\31";
+}
+.mky-icon-search:before {
+  content: "\32";
+}
+.mky-icon-send-regular:before {
+  content: "\33";
+}
+.mky-icon-send-filled:before {
+  content: "\34";
+}
+.mky-icon-text-ephemeral:before {
+  content: "\35";
+}
+.mky-icon-timer-regular:before {
+  content: "\36";
+}
+.mky-icon-timer-regular-1:before {
+  content: "\37";
+}
+.mky-icon-timer-filled:before {
+  content: "\38";
+}
+.mky-icon-trashcan-regular:before {
+  content: "\39";
+}
+.mky-icon-trashcan-filled:before {
+  content: "\21";
+}
+.mky-icon-webhook:before {
+  content: "\22";
+}
+.mky-icon-menu-dots-strong:before {
+  content: "\45";
+}
+.mky-icon-menu-dots:before {
+  content: "\46";
+}
+.mky-icon-localization-regular:before {
+  content: "\79";
+}
+.mky-icon-doc-regular:before {
+  content: "\7a";
+}
+.mky-icon-image-regular:before {
+  content: "\44";
+}
+.mky-icon-chats:before {
+  content: "\68";
+}
+.mky-icon-arrow-up-light:before {
+  content: "\72";
+}
+.mky-icon-arrow-up-bold:before {
+  content: "\73";
+}
+.mky-icon-arrow-down-bold:before {
+  content: "\23";
+}
+.mky-icon-arrow-down-light:before {
+  content: "\24";
+}
+.mky-icon-close-light:before {
+  content: "\6a";
+}
+.mky-icon-close:before {
+  content: "\74";
+}
+.mky-icon-close-medium:before {
+  content: "\75";
+}
+.mky-icon-picture-ephemeral:before {
+  content: "\78";
+}
+.mky-icon-drawer-sober:before {
+  content: "\30";
+}
+.mky-icon-file-sober:before {
+  content: "\25";
+}
+.mky-icon-image-sober:before {
+  content: "\26";
+}
+.mky-icon-mic-sober:before {
+  content: "\27";
+}
+.mky-icon-send-sober:before {
+  content: "\28";
+}
+.mky-icon-signout-sober:before {
+  content: "\29";
+}
+.mky-icon-new-chat-sober:before {
+  content: "\2a";
+}
+.mky-icon-close-sober:before {
+  content: "\2b";
+}
+.mky-icon-check-sober:before {
+  content: "\2c";
+}
+
+
+/*END FONTELLO CSS*/
+
+
+
+
+
+
 
 @font-face {
   font-family: 'Verdana Pro W01 SemiBold';
@@ -280,17 +574,18 @@ TABLE OF CONTENTS
    ----------------------------- */
 
 .mky-wrapper-out{
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
+  font-family: 'helvetica-light', Helvetica, sans-serif;
   width: 100%;
   height: 100%;
   padding-top: 1px;
   position: fixed;
-  -webkit-font-smoothing: antialiased;
+  /*-webkit-font-smoothing: antialiased;*/
   letter-spacing: 0.2px;
 }
 
 .mky-partialsize{
-  
+
 }
 
 .mky-fullsize{
@@ -521,7 +816,7 @@ TABLE OF CONTENTS
   vertical-align: top;
   margin: 0;
   float: left;
-  border-right: 1px solid #c2c2c2;
+  border-right: 1px solid rgba(219,219,219,0.7);
 /*   min-width: 240px; */
 }
 
@@ -530,9 +825,9 @@ TABLE OF CONTENTS
 
 .mky-wrapper-out header{
 	width: 100%;
-	height: 64px;
-	background-color: #fff;
-	border-bottom: 1px solid #e1e1e1;
+	height: 65px;
+	background-color: #eee;
+	border-bottom: 1px solid rgba(219,219,219,0.7);
 }
 
 #mky-session-header{
@@ -578,7 +873,7 @@ TABLE OF CONTENTS
 }
 
 .mky-header-exit i{
-  color: #6e8191;
+  color: #F35E58;
   font-size: 19px;
 }
 
@@ -607,7 +902,8 @@ TABLE OF CONTENTS
   padding: 10px 18px;
   height: 30px;
   position: relative;
-  border-bottom: 1px solid #EFEFEF;
+  border-bottom: 1px solid #ededed;
+  background: #fbfbfb;
 }
 
 .mky-search-input > input {
@@ -622,6 +918,7 @@ TABLE OF CONTENTS
     background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);
     background-repeat: no-repeat;
     background-position: 5%;
+    -webkit-font-smoothing:antialiased;
 }
 
 .mky-search-input > input:focus {
@@ -729,7 +1026,7 @@ TABLE OF CONTENTS
     padding: 0;
     list-style: none;
     overflow: auto;
-    background: #f6f7f9;
+    background: #fff;
 }
 
 #mky-conversation-list li{
@@ -743,6 +1040,12 @@ TABLE OF CONTENTS
   background-color: #eaf0f9;
 }
 
+.mky-conversation-selected .mky-message-status,
+.mky-conversation-unselected .mky-message-status{
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
 #mky-conversation-list .mky-conversation-unselected{
   background-color: transparent;
 }
@@ -752,7 +1055,8 @@ TABLE OF CONTENTS
   cursor: pointer;
 }
 .mky-delete-conv{
-  display: none;
+  /*display: none;*/
+  opacity: 0;
 }
 
 .mky-conversation-unselected:hover .mky-delete-conv{
@@ -763,6 +1067,13 @@ TABLE OF CONTENTS
     z-index: 1000;
     cursor: pointer;
     float: right;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+
     display: inline-block;
     vertical-align: top;
 }
@@ -777,13 +1088,65 @@ TABLE OF CONTENTS
     float: right;
     display: inline-block;
     vertical-align: top;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+}
+.mky-conversation-selected:hover .mky-message-read,
+.mky-conversation-unselected:hover .mky-message-read {
+  right: 18px;
+  -webkit-transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  -ms-transition: right 0.5s;
+  -o-transition: right 0.5s;
+  transition: right 0.5s;
+}
+
+
+.mky-conversation-unselected:hover .mky-conversation-notification{
+  right: 18px;
+  -webkit-transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  -ms-transition: right 0.5s;
+  -o-transition: right 0.5s;
+  transition: right 0.5s;
+}
+
+.mky-conversation-unselected:hover .mky-conversation-notification{
+  right: 18px;
+  -webkit-transition: right 0.5s;
+  -moz-transition: right 0.5s;
+  -ms-transition: right 0.5s;
+  -o-transition: right 0.5s;
+  transition: right 0.5s;
 }
 
 .mky-delete-conv i{
   font-size: 10px;
   margin-left: 10px;
-  color: #6e8191;
+  color: #FC464E;
+  position: relative;
+  top: 5px;
 }
+
+.mky-header-exit .mky-icon-signout-sober{
+  color: #F35E58;
+  font-size: 28px;
+    position: relative;
+    top: -3px;
+}
+
+.mky-status-read .mky-message-read{
+  font-size: 14px;
+  top: 6px;
+  right: 0px;
+  position: absolute;
+}
+
+
 
 .mky-conversation-image{
   width: 48px;
@@ -791,7 +1154,7 @@ TABLE OF CONTENTS
   margin: 0px;
   width: 48px;
   padding: 10px 15px 10px 20px;
-  border-bottom: 1px solid #F6F7F9;
+  border-bottom: 1px solid #fff;
 }
 
 .mky-conversation-image img{
@@ -807,7 +1170,7 @@ TABLE OF CONTENTS
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  padding-top: 13px;
+  padding-top: 15px;
   margin-right: 0;
   margin-left:8px;
 }
@@ -824,7 +1187,7 @@ TABLE OF CONTENTS
 .mky-conversation-name{
   width: calc(100% - 70px);
   float: left;
-  font-size: 14px;
+  font-size: 15px;
   text-align: left;
   white-space: nowrap;
   display: flex;
@@ -838,7 +1201,13 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-time span{
+	font-size: 13px;
+  position: relative;
+  top: 1px;
+}
+.mky-read-conversation-span{
 	font-size: 11px;
+  color: #a5a5a5 !important;
 }
 
 .mky-ellipsify {
@@ -850,19 +1219,30 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-state{
-  color: #8a8a8a;
+  color: #a5a5a5;
   margin-top: 8px;
   display: flex;
-  width:88%;
+  width:80%;
+  font-family: 'helvetica-normal', helvetica;
+}
+
+.mky-conversation-state .mky-bold-text{
+  color: #000;
+  /*font-family: 'helvetica-normal', helvetica !important; */
+}
+
+.mky-conversation-title span.mky-bold-text{
+  font-family: 'helvetica-normal', helvetica !important;
 }
 
 .mky-conversation-notification{
-  position: relative;
-  /*right: 15px;*/
-  /*bottom: 12px;*/
+  position: absolute;
+  right: 0px;
+  bottom: -3px;
   /*float: right;*/
   display: inline-block;
   vertical-align: top;
+  z-index: 1;
 }
 .mnk-conversation-opts{
   position: absolute;
@@ -874,16 +1254,17 @@ TABLE OF CONTENTS
 .mky-notification-amount{
   min-width: 10px;
   border-radius: 50%;
-  background: #8ec549;
+  background: #1982E8;
   color: #fff;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: bold;
-  padding: 4px;
+  padding: 5px 6px 2px 5px;
   text-align: center;
 }
 
 .mky-bold-text{
-    font-family: Verdana Pro W01 SemiBold;
+    /*font-family: Verdana Pro W01 SemiBold;*/
+    font-family: helvetica;
 }
 
 
@@ -943,7 +1324,7 @@ TABLE OF CONTENTS
      ----------------------------- */
 
 #mky-conversation-selected-header{
-    background: #fff;
+    background: #eee;
     position: relative;
     z-index: 1;
 }
@@ -1026,19 +1407,20 @@ TABLE OF CONTENTS
 	width: 100%;
 	height: calc(100% - 65px);
 	position: relative;
+  background: #eee;
 }
 
 #mky-chat-timeline {
     width: 100%;
-    height: calc(100% - 57px);
-    background-color: #fff;
+    height: calc(100% - 71px);
+    background-color: #FAF8F5;
     position: relative;
     overflow: auto;
     overflow-x: hidden;
 }
 
 .mky-partialsize #mky-chat-timeline {
-    height: calc(100% - 62px);
+    height: calc(100% - 71px);
 }
 
 .mky-chat-timeline-conversation{
@@ -1049,10 +1431,10 @@ TABLE OF CONTENTS
 
 .mky-message-line{
     box-sizing: content-box;
-    width: calc(100% - 40px);
+    width: calc(100% - 70px);
     height: auto;
-    margin: 10px auto;
-    padding: 10px 0px;
+    margin: 0px auto;
+    padding: 5px 0px 4px 0px;
     clear: both;
     display: table;
     max-width: 840px;
@@ -1061,6 +1443,7 @@ TABLE OF CONTENTS
 .mky-partialsize .mky-message-line{
     width: calc(100% - 30px);
     padding: 0 15px 0 15px;
+    margin: 10px 0px;
 }
 
 /* base bubble */
@@ -1072,13 +1455,17 @@ TABLE OF CONTENTS
   	width: auto;
   	min-width: 42px;
   	min-height: 16px;
-  	padding: 6px 10px 8px 14px;
+  	/*padding: 8px 10px 6px 14px;*/
+    padding: 12px 12px 10px 12px;
   	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
   	border-radius: 15px;
   	margin-top: 15px;
   	position: relative;
   	line-height: 19px;
+    box-shadow: 1px 1px 1px #ccc;
+    -moz-box-shadow: 1px 1px 1px #ccc;
+    -webkit-box-shadow: 1px 1px 1px #ccc;
 }
 
 .mky-bubble-out{
@@ -1103,23 +1490,25 @@ TABLE OF CONTENTS
 .mky-bubble-text-out {
     color: #fff;
     min-width: 43px;
-    background: #829be2;
+    background: #096EFF;
     border-bottom-right-radius: 1px;
 }
 
 .mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {
-  	color: #fff;
+  	color: inherit;
 }
 
 .mky-bubble-text-in {
-  	color: #fff;
+  	color: #000;
   	min-width: 112px;
-  	background: #00bfa5;
+  	background: #fff;
   	border-bottom-left-radius: 1px;
+    border: 1px solid #f2f2f2;
+
 }
 
 .mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {
-  	color: #42a5f5;
+  	color: inherit;
 }
 
 /* image bubble */
@@ -1130,7 +1519,7 @@ TABLE OF CONTENTS
   	max-width: 260px;
   	padding: 0;
   	background: #fff;
-  	border: 1px solid #bbb;
+  	border: 1px solid #f2f2f2;
 }
 
 .mky-bubble-image-out{
@@ -1226,18 +1615,21 @@ TABLE OF CONTENTS
     width: 100%;
     height: 15px;
     position: absolute;
-    top: -15px;
+    top: -12px;
 }
 
 .mky-message-detail span{
-    font-size: 10px;
+    font-size: 11px;
     color: #8c8c8c;
     line-height: 12px;
+    position: relative;
+    top:-3px;
 }
 
 .mky-message-hour{
     float: right;
-    font-size: 9px !important;
+    font-size: 11px !important;
+    top: 1px !important;
 }
 
 .mky-message-user-name{
@@ -1347,7 +1739,7 @@ TABLE OF CONTENTS
 }
 
 .mky-status-read{
-  color: #00bfa5;
+  color: #096EFF;
 }
 
 .mky-message-line .mky-bubble-private{
@@ -1445,7 +1837,7 @@ TABLE OF CONTENTS
   top: 0;
   left: 0;
   bottom: 0;
-  right: 0;  
+  right: 0;
 }
 */
 
@@ -1809,16 +2201,33 @@ TABLE OF CONTENTS
 #mky-chat-input{
   width: 100%;
   box-sizing: content-box;
-  border-top: 1px solid #ccc;
-  /*height: 55px;*/
+  border-top: 1px solid rgba(219,219,219,0.7);
+
   height: auto;
   margin: 0 auto;
-  background-color: #fff;
+
   bottom: 0;
   text-align: center;
   line-height: 20px;
   position: relative;
   display: table;
+  background: #eee;
+  z-index: 0;
+}
+
+#mky-chat-inner-input{
+  border: none;
+  background: #fff;
+  height: 50px;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  width: calc(100% - 30px);
+  margin: 10px auto;
+  -webkit-border-radius: 8px;
+}
+
+.mky-partialsize #mky-chat-inner-input{
+  width: calc(100% - 20px);
 }
 
 .mky-inner-chat-input{
@@ -1832,8 +2241,13 @@ TABLE OF CONTENTS
 }
 
 .mky-partialsize #mky-chat-input{
-  border: 1px solid #E0E0E0;
-  width: calc(100% - 30px);
+  /*border: 1px solid #E0E0E0;*/
+  width: 100%;
+  border: none;
+}
+
+.mky-partialsize #mky-message-text-input{
+  width: calc(100% - 90px);
 }
 
 #mky-divider-chat-input{
@@ -1864,6 +2278,10 @@ TABLE OF CONTENTS
   -moz-transform: translateY(50%);
 }
 
+.mky-partialsize .mky-button-input{
+  top: 0px;
+}
+
 .mky-button-icon{
   display: inline-block;
   border: 0 none;
@@ -1878,8 +2296,10 @@ TABLE OF CONTENTS
 
 #mky-button-add{
   background: none;
-  color: #8660a9;
-  font-size: 26px;
+  color: #546E7B;
+  font-size: 32px;
+  margin-top: -8px;
+  margin-right: 2px;
 }
 
 #mky-button-cancel-audio{
@@ -1899,8 +2319,9 @@ TABLE OF CONTENTS
 
 #mky-button-record-audio{
   background: none;
-  color: #00BFA5;
-  font-size: 22px;
+  color: #546E7B;
+  font-size: 29px;
+  margin-top: -5px;
 }
 
 #mky-button-send-audio{
@@ -1934,11 +2355,12 @@ TABLE OF CONTENTS
 
 #mky-message-text-input{
   box-sizing: content-box;
-  width: calc(100% - 124px);
+  width: calc(100% - 134px);
   /*height: 24px;*/
   height: auto;
-  margin: 8px 10px;
-  padding: 10px 10px 0px 10px;
+  /*min-height: 30px;*/
+  margin: 8px 10px 7px 10px;
+  padding: 8px 10px 6px 10px;
   resize: none;
   border: none;
   outline: 0;
@@ -1946,7 +2368,9 @@ TABLE OF CONTENTS
   position: relative;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   top: initial;
-  max-height: 45px;
+  max-height: 20px;
+  border-radius: none;
+  border-left: 1px solid #ccc;
 }
 
 .mky-chat-input-file #mky-message-text-input{
@@ -2151,13 +2575,13 @@ TABLE OF CONTENTS
 
 #mky-menu-attach-icon,
 #mky-menu-attach-file{
-  font-size: 50px;
+  font-size: 31px;
   width: 100%;
   text-align: center;
   padding: 11px 0px 11px 0px;
   margin: 0;
   margin-top: 12px;
-  color: #00bfa5;
+  color: #096EFF;
   opacity: 0.8;
 }
 
@@ -2266,20 +2690,24 @@ TABLE OF CONTENTS
 
 .mky-menu-bubble{
   position: absolute;
-  width: 100%;
-  bottom: 55px;
+  width: 400px;
+  bottom: 69px;
   border: none;
-  background: #F0f4fc;
+  /*background: #fff;*/
   border-radius: 0;
-  height: 120px;
+  height: 85px;
   color: #8a8a8a;
-  box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);
+  /*box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);
   -moz-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);
-  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);
+  -webkit-box-shadow: 1px -2px 7px -1px rgba(136, 136, 136, 0.67);*/
   left: 0;
   top: initial;
   opacity: 1;
-  z-index: 1;
+  z-index: -1;
+}
+
+.mky-partialsize .mky-menu-bubble{
+  z-index: 0;
 }
 
 .mky-menu-bubble:before{
@@ -2307,22 +2735,29 @@ TABLE OF CONTENTS
   display: inline-block;
   height: 100%;
   overflow: hidden;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
-  width: 49%;
+  width: 175px;
+  float: left;
+  opacity: 1;
 }
 
 .mky-menu-bubble-item i{
-  display: inline-block;
+  /*display: inline-block;*/
 }
 
 .mky-menu-bubble-item:first-child{
-  border-right: 1px solid #ccc;
+  /*border-right: 1px solid #ccc;*/
 }
 
 .mky-menu-bubble-item:hover{
-  background: #F0f4fc;
-  color: #8a8a8a;
+  /*background: #F0f4fc;*/
+  /*color: #8a8a8a;*/
+  opacity: 0.9;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -ms-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
 }
 
 .mky-menu-bubble-item p{
@@ -2336,6 +2771,34 @@ TABLE OF CONTENTS
   float: left;
   top: 20%;
   position: relative;
+}
+
+.mky-bubble-circle-icon{
+  background: #FFFFFF;
+  /* width: 60px; */
+  /* height: 60px; */
+  border-radius: 50%;
+  display: inline-block;
+  text-align: center;
+  padding: 19px 19px 12px 19px;
+  box-shadow: 0px 0px 9px -1px #B7B7B7;
+  -moz-box-shadow: 0px 0px 9px -1px #B7B7B7;
+  -webkit-box-shadow: 0px 0px 9px -1px #B7B7B7;
+  -o-box-shadow: 0px 0px 9px -1px #B7B7B7;
+  margin: 7px;
+}
+.mky-bubble-title{
+  display: inline-block;
+  position: relative;
+  bottom: 10px;
+  padding: 11px 19px 8px 19px;
+  margin-left: -15px;
+  background: #096EFF;
+  color: #fff;
+  border-top-right-radius: 18px;
+  border-bottom-right-radius: 19px;
+  z-index: -1;
+  font-size: 14px;
 }
 
 #mky-layer-menu{
@@ -2855,4 +3318,3 @@ input:focus{
   margin: 0 auto;
 }
 */
-
