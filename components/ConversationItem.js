@@ -21,8 +21,7 @@ class ConversationItem extends Component {
 	}
 
 	render() {
-			// console.log('conversation information');
-			// console.log(this.props.conversation.messages);
+
 			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
 			<li className={classContent}>
@@ -61,7 +60,7 @@ class ConversationItem extends Component {
 							{ Object.keys(this.props.conversation.messages).length ? (
 									this.props.conversation.messages[this.props.conversation.lastMessage] ?
 									(this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 ?
-										<span> c </span>:''
+										<div className="mky-message-status mky-status-read" ><div data-icon="," className="icon mky-read-icon-blue"></div></div>:''
 									):null
 								):null
 							}

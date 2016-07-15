@@ -11,13 +11,15 @@ class InputMenu extends React.Component {
 				{/*<div className="menu-bubble-item" onClick={this.props.enableGeoInput}><i id="mky-menu-location-icon" className="demo-icon mky-location">&#xe815;</i><p>Send Location</p></div>*/}
 				<div className="mky-menu-bubble-item" onClick={this.props.handleAttach}>
 					<div className="mky-bubble-circle-icon">
-						<i id="mky-menu-attach-icon" className="icon mky-icon-image-regular" style={this.props.colorButton}></i>
+						<i data-icon="&amp;"  id="mky-menu-attach-icon" className="icons" style={this.props.colorButton}></i>
+
 					</div>
 					<div className="mky-bubble-title">Image</div>
 				</div>
 				<div className="mky-menu-bubble-item" onClick={this.props.handleAttachFile}>
 					<div className="mky-bubble-circle-icon">
-						<i id="mky-menu-attach-file" className="icon mky-icon-doc-regular" style={this.props.colorButton}></i>
+						<i  data-icon="%"  id="mky-menu-attach-file" className="icon " style={this.props.colorButton}></i>
+						
 					</div>
 					<div className="mky-bubble-title">File</div>
 				</div>

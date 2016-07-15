@@ -93,10 +93,10 @@ const Bubble = Component => class extends Component {
 				}
 			}
 		}
-		
+
 		return style;
 	}
-	
+
 	resendMessage(){
 		console.log('resend function');
 	}
@@ -107,7 +107,7 @@ const Status = ({value, classStatus, resendFunction}) => (
 		{ value !== 0
 			? ( value == -1
 				? <i className="demo-icon mky-check">!</i>
-				: <i className="icon mky-icon-check"></i>
+				: <div data-icon="," className="icon"></div>
 			)
 			: null
 		}

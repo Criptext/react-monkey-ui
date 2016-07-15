@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 
+require('jquery-knob/dist/jquery.knob.min.js');
+var $ = require('jquery');
+
 class ContentViewer extends Component {
 	constructor(props){
 		super(props);
