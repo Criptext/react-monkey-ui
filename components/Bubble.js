@@ -107,7 +107,7 @@ const Status = ({value, classStatus, resendFunction}) => (
 		{ value !== 0
 			? ( value == -1
 				? <i className="demo-icon mky-check">!</i>
-				: <div data-icon="," className="icon"></div>
+				: <i className="icon mky-icon-check-sober"></i>
 			)
 			: null
 		}

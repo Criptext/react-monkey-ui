@@ -95,7 +95,7 @@ class Input extends Component {
             <div className='mky-inner-chat-input'>
       				<div id='mky-divider-chat-input'></div>
       				<div className={'mky-button-input '+this.state.classAttachButton}>
-      					<i  data-icon="0" id='mky-button-add' className='mky-button-icon icon' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+      					<i id='mky-button-add' className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
 
       				</div>
 
@@ -128,8 +128,8 @@ class Input extends Component {
       							<div className='mky-rect4'></div>
       						</div>
       					)
-      					: <i data-icon="'"  id='mky-button-record-audio' className='mky-button-icon icon' style={styleInput.inputRightButton} onClick={this.handleRecordAudio}></i>
-								
+      					: <i id='mky-button-record-audio' className='mky-button-icon icon mky-icon-mic-sober' style={styleInput.inputRightButton} onClick={this.handleRecordAudio}></i>
+
 
       				}
       				</div>

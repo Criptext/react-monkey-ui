@@ -60,7 +60,7 @@ class ConversationItem extends Component {
 							{ Object.keys(this.props.conversation.messages).length ? (
 									this.props.conversation.messages[this.props.conversation.lastMessage] ?
 									(this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 ?
-										<div className="mky-message-status mky-status-read" ><div data-icon="," className="icon mky-read-icon-blue"></div></div>:''
+										<div className="mky-message-status mky-status-read" ><i className="icon mky-icon-check-sober mky-message-read"></i></div>:''
 									):null
 								):null
 							}

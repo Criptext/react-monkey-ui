@@ -79,6 +79,32 @@ TABLE OF CONTENTS
   -moz-osx-font-smoothing: grayscale;
 }
 
+[data-icon]:before {
+  font-family: "monkey" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="mky-icon-"]:before,
+[class*=" mky-icon-"]:before {
+  font-family: "monkey" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 .mky-icon-add-filled:before {
   content: "\61";
 }
@@ -274,49 +300,35 @@ TABLE OF CONTENTS
 .mky-icon-picture-ephemeral:before {
   content: "\78";
 }
-.mky-icon-icon-drawer:before {
+.mky-icon-drawer-sober:before {
   content: "\30";
 }
-.mky-icon-icon-file:before {
+.mky-icon-file-sober:before {
   content: "\25";
 }
-.mky-icon-icon-image:before {
+.mky-icon-image-sober:before {
   content: "\26";
 }
-.mky-icon-icon-mic:before {
+.mky-icon-mic-sober:before {
   content: "\27";
 }
-.mky-icon-icon-send:before {
+.mky-icon-send-sober:before {
   content: "\28";
 }
-.mky-icon-icon-signout:before {
+.mky-icon-signout-sober:before {
   content: "\29";
 }
-.mky-icon-icon-new-chat:before {
+.mky-icon-new-chat-sober:before {
   content: "\2a";
 }
-.mky-icon-icon-close-1:before {
+.mky-icon-close-sober:before {
   content: "\2b";
 }
-.mky-icon-icon-checked:before {
+.mky-icon-check-sober:before {
   content: "\2c";
 }
 
 
-
-.icon[data-icon=")"]{
-  color: #F35E58;
-  font-size: 28px;
-    position: relative;
-    top: -3px;
-}
-
-.mky-read-icon-blue{
-  font-size: 14px;
-  top: 6px;
-  right: 0px;
-  position: absolute;
-}
 /*END FONTELLO CSS*/
 
 
@@ -1083,8 +1095,8 @@ TABLE OF CONTENTS
     -o-transition: opacity 0.2s ease-in-out;
     transition: opacity 0.2s ease-in-out;
 }
-.mky-conversation-selected:hover .mky-read-icon-blue,
-.mky-conversation-unselected:hover .mky-read-icon-blue {
+.mky-conversation-selected:hover .mky-message-read,
+.mky-conversation-unselected:hover .mky-message-read {
   right: 18px;
   -webkit-transition: right 0.5s;
   -moz-transition: right 0.5s;
@@ -1115,11 +1127,26 @@ TABLE OF CONTENTS
 .mky-delete-conv i{
   font-size: 10px;
   margin-left: 10px;
-  /*color: #6e8191;*/
   color: #FC464E;
   position: relative;
   top: 5px;
 }
+
+.mky-header-exit .mky-icon-signout-sober{
+  color: #F35E58;
+  font-size: 28px;
+    position: relative;
+    top: -3px;
+}
+
+.mky-status-read .mky-message-read{
+  font-size: 14px;
+  top: 6px;
+  right: 0px;
+  position: absolute;
+}
+
+
 
 .mky-conversation-image{
   width: 48px;

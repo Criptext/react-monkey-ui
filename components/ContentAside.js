@@ -23,7 +23,7 @@ class ContentAside extends Component {
 						</div>
 						{ this.props.isMobile
 							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-close-light'></i></div>
-							: <div className='mky-header-exit' onClick={this.logout}><div data-icon=")" className="icon"></div></div>
+							: <div className='mky-header-exit' onClick={this.logout}><i className="icon mky-icon-signout-sober"></i></div>
 						}
 					</div>
 				</header>
