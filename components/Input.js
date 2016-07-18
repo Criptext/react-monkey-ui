@@ -151,12 +151,12 @@ class Input extends Component {
 	}
 
 	componentDidUpdate() {
-		//could not find a better way for now
+		// could not find a better way for now
 		// let minus = 0;
 		// if ( $('.dw-content').length > 0 ) {
 		// 		minus = 93;
 		// } else {
-		// 		minus = 15;
+		// 		minus = 10;
 		// }
 		// let footerHeight = $('#mky-chat-input').height();
 		// let container = $('.mky-chat-area').height() - minus;
@@ -508,7 +508,7 @@ class Input extends Component {
     checkExtention(files) {
         var ft=0;  //fileType by extention
 
-        var file=["doc","docx","pdf","xls", "xlsx","ppt","pptx"];
+        var file=["doc","docx","pdf","xls", "xlsx","ppt","pptx","zip","tar","csv"];
         var img=["jpe","jpeg","jpg","png","gif"]; //1
 
         var extension = getExtention(files.name);
