@@ -104,7 +104,7 @@ class Input extends Component {
       					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
       				</div>
 
-							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></Textarea>
+							<textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></textarea>
       				<div id='mky-record-area' className={this.state.classAudioArea}>
       					<div className='mky-record-preview-area'>
       						<div id='mky-button-action-record'>
@@ -152,15 +152,15 @@ class Input extends Component {
 
 	componentDidUpdate() {
 		// could not find a better way for now
-		let minus = 0;
-		if ( $('.dw-content').length > 0 ) {
-				minus = 93;
-		} else {
-				minus = 10;
-		}
-		let footerHeight = $('#mky-chat-input').height();
-		let container = $('.mky-chat-area').height() - minus;
-		$('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
+		// let minus = 0;
+		// if ( $('.dw-content').length > 0 ) {
+		// 		minus = 93;
+		// } else {
+		// 		minus = 10;
+		// }
+		// let footerHeight = $('#mky-chat-input').height();
+		// let container = $('.mky-chat-area').height() - minus;
+		// $('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
 	}
 
 	defineStyles() {

@@ -1,8 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 
-require('jquery-knob/dist/jquery.knob.min.js');
-var $ = require('jquery');
 
 class TimelineChat extends Component {
 
@@ -82,7 +80,7 @@ class TimelineChat extends Component {
 				this.getMoreMessages();
 			}
 
-			window.addEventListener('resize', this.handleTextareaContentResize);
+
 	}
 
 
@@ -126,18 +124,6 @@ class TimelineChat extends Component {
 		this.scrollTop = this.domNode.scrollTop;
 	}
 
-	handleTextareaContentResize() {
-		// could not find a better way for now
-		let minus = 0;
-		if ( $('.dw-content').length > 0 ) {
-				minus = 93;
-		} else {
-				minus = 10;
-		}
-		let footerHeight = $('#mky-chat-input').height();
-		let container = $('.mky-chat-area').height() - minus;
-		$('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
-	}
 
 	handleScroll(event) {
 		this.updateScrollTop();
