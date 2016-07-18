@@ -47,11 +47,11 @@ class BubbleFile extends Component {
 	eventBubble() {
 		this.props.onClickMessage(this.props.message);
 	}
-	
+
 	downloadData() {
 		this.props.dataDownloadRequest(this.props.message.mokMessage);
 	}
-	
+
 	humanFileSize(bytes, si) {
 	    var thresh = si ? 1000 : 1024;
 	    if(Math.abs(bytes) < thresh) {
@@ -81,13 +81,13 @@ class BubbleFile extends Component {
 		if (pdf.indexOf(extension)>-1){
 			ft = 'pdf'
 		}else if (doc.indexOf(extension)>-1){
-            ft = 'word';
+            ft = 'doc';
         }else if(xls.indexOf(extension)>-1){
-	        ft = 'exel';
+	        ft = 'xls';
         }else if(ppt.indexOf(extension)>-1){
 	        ft = 'ppt';
         }else {
-	     	ft = 'file';   
+	     	ft = 'ext';
         }
         return 'mky-file-'+ft+'-icon';
     }
