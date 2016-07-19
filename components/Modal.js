@@ -10,7 +10,7 @@ const Modal = Component => class extends Component {
 		return(
 			<div className={'mky-viewer-content'}> 
 				<button id="mky-button-exit" onClick={this.close}> X </button>
-				<Component {...this.props}/>
+				<Component {...this.props} onClose={this.close}/>
 			</div>
 		)
 	}

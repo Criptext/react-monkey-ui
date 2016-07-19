@@ -1331,7 +1331,7 @@ TABLE OF CONTENTS
 }
 
 #mky-conversation-selected-header div{
-    display: inline-table;
+    display: inline;
     vertical-align: top;
 }
 
@@ -2978,6 +2978,13 @@ aside.aside-divided{
   color: #fff;
   font-size: 13px;
   margin-top: 5px;
+}
+
+.mky-viewer-back-close {
+  position: absolute;
+  top: 36px;
+  width: 100%;
+  height: calc(100% - 36px);
 }
 
 .mky-button-download{
