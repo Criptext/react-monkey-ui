@@ -30,13 +30,14 @@ class ContentViewer extends Component {
 						<button className="mky-button-download" title="Download">Download</button>
 					</a>
 				</div>
-				<div id="file_viewer_image" className="mky-viewer-image" >
+				<div id="file_viewer_image" className="mky-viewer-image">
+					<div className="mky-viewer-back-close" onClick={this.props.onClose}>
+					</div>
 					<img id="viewer-img" src={this.props.message.data} onLoad={this.handleResize} />
 				</div>
 			</div>
 		)
 	}
-
 }
 
 export default ContentViewer;
