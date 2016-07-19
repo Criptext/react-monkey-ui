@@ -35933,11 +35933,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.handleScroll = _this.handleScroll.bind(_this);
 			_this.updateScrollTop = _this.updateScrollTop.bind(_this);
 			_this.getMoreMessages = _this.getMoreMessages.bind(_this);
-			_this.handleTextareaContentResize = _this.handleTextareaContentResize.bind(_this);
+			// 		this.handleTextareaContentResize = this.handleTextareaContentResize.bind(this);
 			_this.state = {
 				update: 0
 			};
 			_this.domNode;
+			console.log('constructor timeline');
 			return _this;
 		}
 
@@ -51333,7 +51334,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		function BubbleText(props) {
 			_classCallCheck(this, BubbleText);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BubbleText).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(BubbleText).call(this, props));
+
+			console.log('constructor bubble text');
+			return _this;
 		}
 
 		_createClass(BubbleText, [{

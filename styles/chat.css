@@ -2225,7 +2225,7 @@ TABLE OF CONTENTS
 #mky-chat-inner-input{
   border: none;
   background: #fff;
-  height: auto;
+  height: 50px;
   border-radius: 8px;
   -moz-border-radius: 8px;
   width: calc(100% - 30px);
@@ -2375,8 +2375,8 @@ TABLE OF CONTENTS
   position: relative;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   top: initial;
-  /*max-height: 20px;*/
-  max-height: 40px;
+  max-height: 20px;
+/*   max-height: 40px; */
   border-radius: none;
   border-left: 1px solid #ccc;
 }
