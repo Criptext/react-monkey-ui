@@ -15,7 +15,7 @@ class TimelineChat extends Component {
 		this.handleScroll = this.handleScroll.bind(this);
 		this.updateScrollTop = this.updateScrollTop.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
-		this.handleTextareaContentResize = this.handleTextareaContentResize.bind(this);
+// 		this.handleTextareaContentResize = this.handleTextareaContentResize.bind(this);
 		this.state = {
 			update: 0
 		}
@@ -57,8 +57,6 @@ class TimelineChat extends Component {
 
 	}
 
-
-
 	render(){
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
 			{ Object.keys(this.props.conversationSelected).length
@@ -77,13 +75,9 @@ class TimelineChat extends Component {
 	    this.domNode.addEventListener('scroll', this.handleScroll);
 	    let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
 	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
-				this.getMoreMessages();
-			}
-
-
+			this.getMoreMessages();
+		}
 	}
-
-
 
 	componentDidUpdate() {
 		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
@@ -114,7 +108,6 @@ class TimelineChat extends Component {
 		if (this.goBottom){
 			this.goBottom = false;
 // 			this.domNode.lastChild.scrollIntoView();
-
 		}else if(this.domNode.scrollTop === 0 && this.scrollTop != 0 ){
 			this.scrollHeight = this.domNode.scrollHeight;
 			if(!this.props.conversationSelected.loading){
