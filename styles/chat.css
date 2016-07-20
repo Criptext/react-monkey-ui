@@ -1034,11 +1034,15 @@ TABLE OF CONTENTS
   width: 100%;
   height: 68px;
   position: relative;
-  border-bottom: 1px solid #efefef;
+  border-bottom: none;
 }
 
 .mky-conversation-selected{
   background-color: #eaf0f9;
+}
+.mky-conversation-selected{
+  border-top: 1px solid #EAF0F9;
+  margin-top:-1px;
 }
 
 .mky-conversation-selected .mky-message-status,
@@ -1099,30 +1103,30 @@ TABLE OF CONTENTS
 .mky-conversation-selected:hover .mky-message-read,
 .mky-conversation-unselected:hover .mky-message-read {
   right: 18px;
-  -webkit-transition: right 0.5s;
-  -moz-transition: right 0.5s;
-  -ms-transition: right 0.5s;
-  -o-transition: right 0.5s;
-  transition: right 0.5s;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  -ms-transition: right 0.3s;
+  -o-transition: right 0.3s;
+  transition: right 0.3s;
 }
 
 
 .mky-conversation-unselected:hover .mky-conversation-notification{
   right: 18px;
-  -webkit-transition: right 0.5s;
-  -moz-transition: right 0.5s;
-  -ms-transition: right 0.5s;
-  -o-transition: right 0.5s;
-  transition: right 0.5s;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  -ms-transition: right 0.3s;
+  -o-transition: right 0.3s;
+  transition: right 0.3s;
 }
 
 .mky-conversation-unselected:hover .mky-conversation-notification{
   right: 18px;
-  -webkit-transition: right 0.5s;
-  -moz-transition: right 0.5s;
-  -ms-transition: right 0.5s;
-  -o-transition: right 0.5s;
-  transition: right 0.5s;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  -ms-transition: right 0.3s;
+  -o-transition: right 0.3s;
+  transition: right 0.3s;
 }
 
 .mky-delete-conv i{
@@ -1155,7 +1159,8 @@ TABLE OF CONTENTS
   margin: 0px;
   width: 48px;
   padding: 10px 15px 10px 20px;
-  border-bottom: 1px solid #fff;
+  margin-top: -1px;
+  /*border-bottom: 1px solid #fff;*/
 }
 
 .mky-conversation-image img{
@@ -1165,15 +1170,20 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-description{
-  width: calc(100% - 100px);
-  font-size: 14px;
-  text-align: left;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  padding-top: 15px;
-  margin-right: 0;
-  margin-left:8px;
+  width: calc(100% - 99px);
+    font-size: 14px;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding-top: 15px;
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 8px;
+    padding-left: 8px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #EFEFEF;
+    box-sizing: content-box;
 }
 
 .mky-conversation-title{
@@ -1413,15 +1423,27 @@ TABLE OF CONTENTS
 
 #mky-chat-timeline {
     width: 100%;
-    height: calc(100% - 71px);
+    height: calc(100% - 74px);
     background-color: #FAF8F5;
     position: relative;
     overflow: auto;
     overflow-x: hidden;
 }
 
+
+
 .mky-partialsize #mky-chat-timeline {
     height: calc(100% - 71px);
+}
+
+.mky-chat-timeline-73{
+  height: calc(100% - 71px);
+}
+.mky-chat-timeline-90{
+  height: calc(100% - 91px) !important;
+}
+.mky-chat-timeline-96{
+  height: calc(100% - 97px) !important;
 }
 
 .mky-chat-timeline-conversation{
@@ -1464,9 +1486,9 @@ TABLE OF CONTENTS
   	margin-top: 15px;
   	position: relative;
   	line-height: 19px;
-    box-shadow: 1px 1px 1px #ccc;
-    -moz-box-shadow: 1px 1px 1px #ccc;
-    -webkit-box-shadow: 1px 1px 1px #ccc;
+    box-shadow: 1px 1px 4px -2px #ccc;
+    -moz-box-shadow: 1px 1px 4px -2px #ccc;
+    -webkit-box-shadow: 1px 1px 4px -2px #ccc;
 }
 
 .mky-bubble-out{
@@ -1505,7 +1527,7 @@ TABLE OF CONTENTS
   	background: #fff;
   	border-bottom-left-radius: 1px;
     border: 1px solid #f2f2f2;
-
+    padding-bottom: 8px;
 }
 
 .mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {
@@ -2225,7 +2247,9 @@ TABLE OF CONTENTS
 #mky-chat-inner-input{
   border: none;
   background: #fff;
-  height: 50px;
+  /*height: 50px;*/
+  max-height: 70px;
+  height: auto;
   border-radius: 8px;
   -moz-border-radius: 8px;
   width: calc(100% - 30px);
@@ -2366,7 +2390,7 @@ TABLE OF CONTENTS
   box-sizing: content-box;
   width: calc(100% - 134px);
   height: auto;
-  margin: 8px 10px 7px 10px;
+  margin: 8px 10px 4px 10px;
   padding: 8px 10px 6px 10px;
   resize: none;
   border: none;
@@ -2375,8 +2399,8 @@ TABLE OF CONTENTS
   position: relative;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   top: initial;
-  max-height: 20px;
-/*   max-height: 40px; */
+  /*max-height: 20px;*/
+   max-height: 40px;
   border-radius: none;
   border-left: 1px solid #ccc;
 }

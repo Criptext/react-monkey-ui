@@ -3,7 +3,7 @@ import Dropzone from 'react-dropzone';
 import InputMenu from './InputMenu.js';
 import { getExtention } from '../utils/monkey-utils.js'
 import styles from '../styles/animate.min.css' // from ReactToastr
-import Textarea from 'react-textarea-autosize';
+import Textarea from 'react-autosize-textarea';
 
 var ReactToastr = require("react-toastr");
 var {ToastContainer} = ReactToastr; // This is a React Element.
@@ -61,6 +61,7 @@ class Input extends Component {
 		this.readData = this.readData.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
+		this.handletextareaResize = this.handletextareaResize.bind(this);
 		this.mediaRecorder;
 		this.micActivated = false;
 		this.mediaConstraints = {
@@ -104,7 +105,7 @@ class Input extends Component {
       					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
       				</div>
 
-							<textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea}></textarea>
+							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} onResize={this.handletextareaResize}></Textarea>
       				<div id='mky-record-area' className={this.state.classAudioArea}>
       					<div className='mky-record-preview-area'>
       						<div id='mky-button-action-record'>
@@ -151,15 +152,39 @@ class Input extends Component {
 	}
 
 	componentDidUpdate() {
-		// could not find a better way for now
-		// let minus = 0;
-		// if ( $('.dw-content').length > 0 ) {
-		// 		minus = 93;
-		// } else {
-		// 		minus = 10;
-		// }
-		// let footerHeight = $('#mky-chat-input').height();
+
+	}
+	handletextareaResize(){
+		let minus = 0;
+		if ( $('.dw-content').length > 0 ) {
+				minus = 93;
+		} else {
+				minus = 15;
+		}
+
+		let footerHeight = $('#mky-chat-input').height();
+		console.log(footerHeight);
+		switch (footerHeight) {
+			case 73:
+					$('#mky-chat-timeline').removeClass('mky-chat-timeline-90');
+					$('#mky-chat-timeline').removeClass('mky-chat-timeline-96');
+				break;
+			case 96:
+					$('#mky-chat-timeline').removeClass('mky-chat-timeline-90');
+					$('#mky-chat-timeline').addClass('mky-chat-timeline-96');
+				break;
+			case 90:
+					$('#mky-chat-timeline').addClass('mky-chat-timeline-90');
+					$('#mky-chat-timeline').removeClass('mky-chat-timeline-96');
+				break;
+			default:
+					$('#mky-chat-timeline').removeClass('mky-chat-timeline-90');
+					$('#mky-chat-timeline').removeClass('mky-chat-timeline-96');
+		}
 		// let container = $('.mky-chat-area').height() - minus;
+		// console.log(minus);
+		// console.log(container);
+		// console.log(footerHeight);
 		// $('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
 	}
 
