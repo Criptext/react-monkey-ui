@@ -1436,14 +1436,16 @@ TABLE OF CONTENTS
     height: calc(100% - 71px);
 }
 
-.mky-chat-timeline-73{
+#mky-chat-timeline.mky-chat-timeline-73{
   height: calc(100% - 71px);
 }
-.mky-chat-timeline-90{
+
+#mky-chat-timeline.mky-chat-timeline-tall{
   height: calc(100% - 91px) !important;
 }
-.mky-chat-timeline-96{
-  height: calc(100% - 97px) !important;
+
+#mky-chat-timeline.mky-chat-timeline-medium{
+  height: calc(100% - 88px) !important;
 }
 
 .mky-chat-timeline-conversation{

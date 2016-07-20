@@ -105,7 +105,7 @@ class Input extends Component {
       					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
       				</div>
 
-							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} onResize={this.handletextareaResize}></Textarea>
+							<Textarea  ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
       				<div id='mky-record-area' className={this.state.classAudioArea}>
       					<div className='mky-record-preview-area'>
       						<div id='mky-button-action-record'>
@@ -164,23 +164,25 @@ class Input extends Component {
 
 		let footerHeight = $('#mky-chat-input').height();
 		console.log(footerHeight);
-		switch (footerHeight) {
-			case 73:
-					$('#mky-chat-timeline').removeClass('mky-chat-timeline-90');
-					$('#mky-chat-timeline').removeClass('mky-chat-timeline-96');
-				break;
-			case 96:
-					$('#mky-chat-timeline').removeClass('mky-chat-timeline-90');
-					$('#mky-chat-timeline').addClass('mky-chat-timeline-96');
-				break;
-			case 90:
-					$('#mky-chat-timeline').addClass('mky-chat-timeline-90');
-					$('#mky-chat-timeline').removeClass('mky-chat-timeline-96');
-				break;
-			default:
-					$('#mky-chat-timeline').removeClass('mky-chat-timeline-90');
-					$('#mky-chat-timeline').removeClass('mky-chat-timeline-96');
+
+		$('#mky-chat-timeline').removeClass('mky-chat-timeline-tall');
+		$('#mky-chat-timeline').removeClass('mky-chat-timeline-medium');
+
+		if (footerHeight > 73 && footerHeight < 90 ) {
+			$('#mky-chat-timeline').addClass('mky-chat-timeline-medium');
+		}else if(footerHeight >= 90){
+			$('#mky-chat-timeline').addClass('mky-chat-timeline-tall');
 		}
+		// switch (footerHeight) {
+		// 	case 96:
+		// 			$('#mky-chat-timeline').addClass('mky-chat-timeline-medium');
+		// 		break;
+		// 	case 90:
+		// 			$('#mky-chat-timeline').addClass('mky-chat-timeline-tall');
+		// 		break;
+		// 	default:
+		// }
+
 		// let container = $('.mky-chat-area').height() - minus;
 		// console.log(minus);
 		// console.log(container);
@@ -213,6 +215,10 @@ class Input extends Component {
 		this.typeMessageToSend = 0;
 
 		if(event.keyCode === 13 && !event.shiftKey) {
+			 if ($('#mky-chat-input').attr('style') != undefined) {
+			 	$('#mky-chat-input').attr('style','');
+			 }
+
 			console.log('enter!!');
 			event.preventDefault()
 			let text = this.state.text.trim();
