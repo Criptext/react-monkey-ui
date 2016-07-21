@@ -32,6 +32,7 @@ class TimelineChat extends Component {
 			this.scrollTop = 0;
 			this.scrollHeight = 0;
 			this.loadingMessages = 0;
+			this.firstLoad = true;
 		}
 
 		if(this.props.conversationSelected.id == nextProps.conversationSelected.id && nextProps.conversationSelected.lastMessage == this.props.conversationSelected.lastMessage){
@@ -59,6 +60,7 @@ class TimelineChat extends Component {
 
 	render(){
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
+			{ this.props.conversationSelected.loading ? <Loading /> : null } 
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
@@ -81,17 +83,19 @@ class TimelineChat extends Component {
 
 	componentDidUpdate() {
 		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
-	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
+	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading && this.firstLoad){
+			this.firstLoad = false;
 			this.getMoreMessages();
 		}
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 		if(!this.loadingMessages && this.domNode.lastChild!=null && !this.noNewMessage){
+			console.log(this.domNode.lastChild);
  			this.domNode.lastChild.scrollIntoView();
  		}
  		this.updateScrollTop();
  		if(this.scrollHeight != this.domNode.scrollHeight && this.loadingMessages){
 
- 			this.domNode.scrollTop += this.domNode.scrollHeight - this.scrollHeight;
+ 			this.domNode.scrollTop += this.domNode.scrollHeight - this.scrollHeight - 60;
  			this.scrollHeight = this.domNode.scrollHeight;
  			this.loadingMessages = 0;
  		}
@@ -141,6 +145,22 @@ class TimelineChat extends Component {
 		this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation/1000);
 	}
 }
+
+const Loading = () => <div className="mky-fading-circle">
+	<div className="mky-circle1 mky-circle"></div>
+	<div className="mky-circle2 mky-circle"></div>
+	<div className="mky-circle3 mky-circle"></div>
+	<div className="mky-circle4 mky-circle"></div>
+	<div className="mky-circle5 mky-circle"></div>
+	<div className="mky-circle6 mky-circle"></div>
+	<div className="mky-circle7 mky-circle"></div>
+	<div className="mky-circle8 mky-circle"></div>
+	<div className="mky-circle9 mky-circle"></div>
+	<div className="mky-circle10 mky-circle"></div>
+	<div className="mky-circle11 mky-circle"></div>
+	<div className="mky-circle12 mky-circle"></div>
+</div>
+
 
 TimelineChat.contextTypes = {
     userSession: React.PropTypes.object.isRequired,
