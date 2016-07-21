@@ -60,7 +60,7 @@ class TimelineChat extends Component {
 
 	render(){
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
-			{ this.props.conversationSelected.loading ? this.drawLoading() : null } 
+			{ this.props.conversationSelected.loading ? <Loading /> : null } 
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
@@ -95,7 +95,7 @@ class TimelineChat extends Component {
  		this.updateScrollTop();
  		if(this.scrollHeight != this.domNode.scrollHeight && this.loadingMessages){
 
- 			this.domNode.scrollTop += this.domNode.scrollHeight - this.scrollHeight;
+ 			this.domNode.scrollTop += this.domNode.scrollHeight - this.scrollHeight - 60;
  			this.scrollHeight = this.domNode.scrollHeight;
  			this.loadingMessages = 0;
  		}
@@ -144,24 +144,23 @@ class TimelineChat extends Component {
 	getMoreMessages() {
 		this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation/1000);
 	}
-
-	drawLoading(){
-		return (<div className="sk-fading-circle">
-			<div className="sk-circle1 sk-circle"></div>
-			<div className="sk-circle2 sk-circle"></div>
-			<div className="sk-circle3 sk-circle"></div>
-			<div className="sk-circle4 sk-circle"></div>
-			<div className="sk-circle5 sk-circle"></div>
-			<div className="sk-circle6 sk-circle"></div>
-			<div className="sk-circle7 sk-circle"></div>
-			<div className="sk-circle8 sk-circle"></div>
-			<div className="sk-circle9 sk-circle"></div>
-			<div className="sk-circle10 sk-circle"></div>
-			<div className="sk-circle11 sk-circle"></div>
-			<div className="sk-circle12 sk-circle"></div>
-		</div>)
-	}
 }
+
+const Loading = () => <div className="mky-fading-circle">
+	<div className="mky-circle1 mky-circle"></div>
+	<div className="mky-circle2 mky-circle"></div>
+	<div className="mky-circle3 mky-circle"></div>
+	<div className="mky-circle4 mky-circle"></div>
+	<div className="mky-circle5 mky-circle"></div>
+	<div className="mky-circle6 mky-circle"></div>
+	<div className="mky-circle7 mky-circle"></div>
+	<div className="mky-circle8 mky-circle"></div>
+	<div className="mky-circle9 mky-circle"></div>
+	<div className="mky-circle10 mky-circle"></div>
+	<div className="mky-circle11 mky-circle"></div>
+	<div className="mky-circle12 mky-circle"></div>
+</div>
+
 
 TimelineChat.contextTypes = {
     userSession: React.PropTypes.object.isRequired,
