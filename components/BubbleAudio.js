@@ -18,6 +18,7 @@ class BubbleAudio extends Component {
 		}
 		this.isLoaded = false;
 		this.downloadData = this.downloadData.bind(this);
+		this.createAudioPlayer = this.createAudioPlayer.bind(this);
 		this.playAudioBubble = this.playAudioBubble.bind(this);
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
@@ -66,46 +67,34 @@ class BubbleAudio extends Component {
 	}
 	
 	componentDidMount() {
-		if(this.isLoaded){
-			this.isLoaded = false;
-			this.createAudioHandlerBubble(this.props.message.id, Math.round(this.props.message.length ? this.props.message.length : 1));
-			let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
-	        var that = this;
-	        $('#mky-bubble-audio-play-button-'+that.messageId).show();
-	        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", true );
-			$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
-	        if(mkyAudioBubble){
-		        mkyAudioBubble.oncanplay = function() {
-			        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", false );
-	                that.createAudioHandlerBubble(that.messageId,Math.round(mkyAudioBubble.duration));
-	                that.setDurationTime(that.messageId);
-	            }
-	        }
-		}
+		this.createAudioPlayer();
 	}
 	
 	componentDidUpdate() {
-		console.log('did update bubble audio');
-		if(this.isLoaded){
-			this.isLoaded = false;
-			this.createAudioHandlerBubble(this.props.message.id, Math.round(this.props.message.length ? this.props.message.length : 1));
-			let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
-	        var that = this;
-	        $('#mky-bubble-audio-play-button-'+that.messageId).show();
-	        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", true );
-			$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
-	        if(mkyAudioBubble){
-		        mkyAudioBubble.oncanplay = function() {
-			        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", false );
-	                that.createAudioHandlerBubble(that.messageId,Math.round(mkyAudioBubble.duration));
-	                that.setDurationTime(that.messageId);
-	            }
-	        }
-		}
+		this.createAudioPlayer();
 	}
 	
 	downloadData() {
 		this.props.dataDownloadRequest(this.props.message.mokMessage);
+	}
+	
+	createAudioPlayer() {
+		if(this.isLoaded){
+			this.isLoaded = false;
+			this.createAudioHandlerBubble(this.props.message.id, Math.round(this.props.message.length ? this.props.message.length : 1));
+			let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
+	        var that = this;
+	        $('#mky-bubble-audio-play-button-'+that.messageId).show();
+	        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", true );
+			$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
+	        if(mkyAudioBubble){
+		        mkyAudioBubble.oncanplay = function() {
+			        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", false );
+	                that.createAudioHandlerBubble(that.messageId,Math.round(mkyAudioBubble.duration));
+	                that.setDurationTime(that.messageId);
+	            }
+	        }
+		}
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
