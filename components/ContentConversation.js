@@ -125,7 +125,7 @@ const Conectivity = (props) => {
 		case "Disconnected":
 			return <div className='mky-not-connected' style={{height : "40px", backgroundColor : "black"}}><span>Disconnected! You have a Session in another Window/Tab!</span></div>
 		default:
-			return;
+			return null;
 	}
 }
 

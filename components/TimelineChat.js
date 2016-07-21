@@ -86,6 +86,7 @@ class TimelineChat extends Component {
 	
 	render() {
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
+			{ this.props.conversationSelected.loading ? <Loading /> : null }
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
