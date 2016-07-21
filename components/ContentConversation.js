@@ -40,7 +40,7 @@ class ContentConversation extends Component {
 					}
 					<div id='mky-conversation-selected-image'><img src={this.defineUrlAvatar()}/></div>
 					<div id='mky-conversation-selected-description'>
-						<span id='mky-conversation-selected-name'>{this.props.conversationSelected.name}</span>
+						<span id='mky-conversation-selected-name' className='mky-ellipsify'>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description === null
 							? ( !this.props.conversationSelected.online
 								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTime(this.props.conversationSelected.lastOpenApp)}</span>
