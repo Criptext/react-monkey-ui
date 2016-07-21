@@ -32,6 +32,7 @@ class TimelineChat extends Component {
 			this.scrollTop = 0;
 			this.scrollHeight = 0;
 			this.loadingMessages = 0;
+			this.firstLoad = true;
 		}
 
 		if(this.props.conversationSelected.id == nextProps.conversationSelected.id && nextProps.conversationSelected.lastMessage == this.props.conversationSelected.lastMessage){
@@ -59,6 +60,7 @@ class TimelineChat extends Component {
 
 	render(){
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
+			{ this.props.conversationSelected.loading ? this.drawLoading() : null } 
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
@@ -81,11 +83,13 @@ class TimelineChat extends Component {
 
 	componentDidUpdate() {
 		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
-	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
+	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading && this.firstLoad){
+			this.firstLoad = false;
 			this.getMoreMessages();
 		}
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 		if(!this.loadingMessages && this.domNode.lastChild!=null && !this.noNewMessage){
+			console.log(this.domNode.lastChild);
  			this.domNode.lastChild.scrollIntoView();
  		}
  		this.updateScrollTop();
@@ -139,6 +143,23 @@ class TimelineChat extends Component {
 
 	getMoreMessages() {
 		this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation/1000);
+	}
+
+	drawLoading(){
+		return (<div className="sk-fading-circle">
+			<div className="sk-circle1 sk-circle"></div>
+			<div className="sk-circle2 sk-circle"></div>
+			<div className="sk-circle3 sk-circle"></div>
+			<div className="sk-circle4 sk-circle"></div>
+			<div className="sk-circle5 sk-circle"></div>
+			<div className="sk-circle6 sk-circle"></div>
+			<div className="sk-circle7 sk-circle"></div>
+			<div className="sk-circle8 sk-circle"></div>
+			<div className="sk-circle9 sk-circle"></div>
+			<div className="sk-circle10 sk-circle"></div>
+			<div className="sk-circle11 sk-circle"></div>
+			<div className="sk-circle12 sk-circle"></div>
+		</div>)
 	}
 }
 

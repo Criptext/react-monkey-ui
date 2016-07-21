@@ -18,6 +18,7 @@ class ContentConversation extends Component {
 		this.showAside = this.showAside.bind(this);
 		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
 		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
+		this.handleConnectionStatus = this.handleConnectionStatus.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -49,6 +50,9 @@ class ContentConversation extends Component {
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
+					{ this.handleConnectionStatus(this.props.connectionStatus) }
+					
+	
 				</header>
 				{ this.state.showLocationInput
 					? <LocationInput messageCreated={this.props.messageCreated} disableGeoInput={this.disableGeoInput.bind(this)} />
@@ -68,6 +72,24 @@ class ContentConversation extends Component {
 				}
 			</div>
 		)
+	}
+
+	handleConnectionStatus(connectionStatus){
+		if(!connectionStatus){
+			return;
+		}
+		switch(connectionStatus){
+			case "Connecting":
+				return <div className='mky-not-connected mky-status-connecting' style={{height : "40px", backgroundColor : "yellow", color : "black"}}><span>Connecting...</span></div>
+			case "Offline":
+				return <div className='mky-not-connected' style={{height : "40px"}}><span>No Internet Connection</span></div>
+			case "Connected":
+				return <div className='mky-not-connected' style={{height : "0px", backgroundColor : "green", transition: "all 2s ease"}}><span>Connected!</span></div>
+			case "Disconnected":
+				return <div className='mky-not-connected' style={{height : "40px", backgroundColor : "black"}}><span>Disconnected! You have a Session in another Window/Tab!</span></div>
+			default:
+				return;
+		}
 	}
 
 	handleMessageSelected(message) {
