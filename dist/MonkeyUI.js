@@ -36821,6 +36821,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 	// import LocationInput from './LocationInput.js'
 
+	var OFFLINE = 0;
+	var DISCONNECTED = 1;
+	var CONNECTING = 2;
+	var CONNECTED = 3;
+
 	var ContentConversation = function (_Component) {
 		_inherits(ContentConversation, _Component);
 
@@ -36972,17 +36977,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	var Conectivity = function Conectivity(props) {
 
 		switch (props.connectionStatus) {
-			case "Connecting":
-				return _react2.default.createElement(
-					'div',
-					{ className: 'mky-not-connected mky-status-connecting', style: { height: "40px", backgroundColor: "yellow", color: "black" } },
-					_react2.default.createElement(
-						'span',
-						null,
-						'Connecting...'
-					)
-				);
-			case "Offline":
+			case OFFLINE:
 				return _react2.default.createElement(
 					'div',
 					{ className: 'mky-not-connected', style: { height: "40px" } },
@@ -36992,17 +36987,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						'No Internet Connection'
 					)
 				);
-			case "Connected":
-				return _react2.default.createElement(
-					'div',
-					{ className: 'mky-not-connected', style: { height: "0px", backgroundColor: "green", transition: "all 2s ease" } },
-					_react2.default.createElement(
-						'span',
-						null,
-						'Connected!'
-					)
-				);
-			case "Disconnected":
+			case DISCONNECTED:
 				return _react2.default.createElement(
 					'div',
 					{ className: 'mky-not-connected', style: { height: "40px", backgroundColor: "black" } },
@@ -37010,6 +36995,26 @@ return /******/ (function(modules) { // webpackBootstrap
 						'span',
 						null,
 						'Disconnected! You have a Session in another Window/Tab!'
+					)
+				);
+			case CONNECTING:
+				return _react2.default.createElement(
+					'div',
+					{ className: 'mky-not-connected mky-status-connecting', style: { height: "40px", backgroundColor: "yellow", color: "black" } },
+					_react2.default.createElement(
+						'span',
+						null,
+						'Connecting...'
+					)
+				);
+			case CONNECTED:
+				return _react2.default.createElement(
+					'div',
+					{ className: 'mky-not-connected', style: { height: "0px", backgroundColor: "green", transition: "all 2s ease" } },
+					_react2.default.createElement(
+						'span',
+						null,
+						'Connected!'
 					)
 				);
 			default:
@@ -37223,11 +37228,11 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.goBottom = false;
 					// 			this.domNode.lastChild.scrollIntoView();
 				} else if (this.domNode.scrollTop === 0 && this.scrollTop != 0) {
-						this.scrollHeight = this.domNode.scrollHeight;
-						if (!this.props.conversationSelected.loading) {
-							this.getMoreMessages();
-						}
+					this.scrollHeight = this.domNode.scrollHeight;
+					if (!this.props.conversationSelected.loading) {
+						this.getMoreMessages();
 					}
+				}
 				this.scrollTop = this.domNode.scrollTop;
 			}
 		}, {
@@ -38623,7 +38628,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
-	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -39195,8 +39199,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
-	  "lpl",
-	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -51027,20 +51029,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
-	                        var code = message.data.code;
-	                        var outFileNames = Object.keys(message.data.outputFiles);
+	                    var code = message.data.code;
+	                    var outFileNames = Object.keys(message.data.outputFiles);
 
-	                        if (code == 0 && outFileNames.length) {
+	                    if (code == 0 && outFileNames.length) {
 
-	                            var outFileName = outFileNames[0];
-	                            var outFileBuffer = message.data.outputFiles[outFileName];
-	                            var mp3Blob = new Blob([outFileBuffer]);
-	                            // var src = window.URL.createObjectURL(mp3Blob);
-	                            that.readData(mp3Blob);
-	                        } else {
-	                            console.log('hubo un error');
-	                        }
+	                        var outFileName = outFileNames[0];
+	                        var outFileBuffer = message.data.outputFiles[outFileName];
+	                        var mp3Blob = new Blob([outFileBuffer]);
+	                        // var src = window.URL.createObjectURL(mp3Blob);
+	                        that.readData(mp3Blob);
+	                    } else {
+	                        console.log('hubo un error');
 	                    }
+	                }
 	            };
 	            return ffmpegWorker;
 	        }
