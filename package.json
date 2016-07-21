@@ -38,13 +38,15 @@
     "react-dropzone": "^3.4.0",
     "react-linkify": "^0.1.1",
     "react-search-input": "^0.8.0",
-    "react-textarea-autosize": "^4.0.3",
     "react-toastr": "^2.6.1",
+    "react-autosize-textarea": "^0.3.1",
     "style-loader": "^0.13.1",
     "webpack": "^1.12.14"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.1.0"
   },
-  "dependencies": {}
+  "dependencies": {
+
+  }
 }

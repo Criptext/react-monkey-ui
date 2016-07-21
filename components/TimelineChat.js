@@ -15,7 +15,7 @@ class TimelineChat extends Component {
 		this.handleScroll = this.handleScroll.bind(this);
 		this.updateScrollTop = this.updateScrollTop.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
-// 		this.handleTextareaContentResize = this.handleTextareaContentResize.bind(this);
+
 		this.state = {
 			update: 0
 		}
