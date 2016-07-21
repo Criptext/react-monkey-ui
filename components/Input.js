@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
-import Dropzone from 'react-dropzone';
-import InputMenu from './InputMenu.js';
+import Dropzone from 'react-dropzone'
+import InputMenu from './InputMenu.js'
 import { getExtention } from '../utils/monkey-utils.js'
 import styles from '../styles/animate.min.css' // from ReactToastr
-import Textarea from 'react-autosize-textarea';
+import Textarea from 'react-autosize-textarea'
 
-var ReactToastr = require("react-toastr");
-var {ToastContainer} = ReactToastr; // This is a React Element.
-var ToastMessageFactory = React.createFactory(ReactToastr.ToastMessage.animation);
+import { ToastContainer, ToastMessage } from 'react-toastr'
+const ToastMessageFactory = React.createFactory(ToastMessage.animation);
 
 // ======================
 // MediaStreamRecorder.js
@@ -89,39 +88,36 @@ class Input extends Component {
 
 	render() {
 		let styleInput = this.defineStyles();
-    	return (
-			  <div id='mky-chat-input'>
-          <div id='mky-chat-inner-input'>
+    	return ( <div id='mky-chat-input'>
+					<div id='mky-chat-inner-input'>
 						<InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
-            <div className='mky-inner-chat-input'>
-      				<div id='mky-divider-chat-input'></div>
-      				<div className={'mky-button-input '+this.state.classAttachButton}>
-      					<i id='mky-button-add' className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+						<div className='mky-inner-chat-input'>
+							<div id='mky-divider-chat-input'></div>
+							<div className={'mky-button-input '+this.state.classAttachButton}>
+								<i id='mky-button-add' className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+							</div>
 
-      				</div>
+							<div className={'mky-button-input '+this.state.classCancelAudioButton}>
+								<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
+							</div>
 
-      				<div className={'mky-button-input '+this.state.classCancelAudioButton}>
-
-      					<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
-      				</div>
-
-							<Textarea  ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
-      				<div id='mky-record-area' className={this.state.classAudioArea}>
-      					<div className='mky-record-preview-area'>
-      						<div id='mky-button-action-record'>
-      							<button id='mky-button-start-record' className='mky-blink'></button>
-      						</div>
-      						<div id='mky-time-recorder'>
-      							<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
-      						</div>
-      					</div>
-      				</div>
-      				<div className={'mky-button-input '+this.state.classSendButton}>
-      					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' onClick={this.handleSendMessage}></i>
-      				</div>
-      				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
-      				{ this.state.creatingAudio
-      					? (
+							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
+							<div id='mky-record-area' className={this.state.classAudioArea}>
+								<div className='mky-record-preview-area'>
+									<div id='mky-button-action-record'>
+										<button id='mky-button-start-record' className='mky-blink'></button>
+									</div>
+									<div id='mky-time-recorder'>
+										<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
+									</div>
+								</div>
+							</div>
+    				<div className={'mky-button-input '+this.state.classSendButton}>
+    					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' onClick={this.handleSendMessage}></i>
+    				</div>
+    				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
+    				{ this.state.creatingAudio
+    					? (
       						<div className='mky-spinner-input-audio'>
       							<div className='mky-rect1'></div>
       							<div className='mky-rect2'></div>
@@ -163,7 +159,6 @@ class Input extends Component {
 		}
 
 		let footerHeight = $('#mky-chat-input').height();
-		console.log(footerHeight);
 
 		$('#mky-chat-timeline').removeClass('mky-chat-timeline-tall');
 		$('#mky-chat-timeline').removeClass('mky-chat-timeline-medium');

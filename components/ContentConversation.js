@@ -40,7 +40,7 @@ class ContentConversation extends Component {
 					}
 					<div id='mky-conversation-selected-image'><img src={this.defineUrlAvatar()}/></div>
 					<div id='mky-conversation-selected-description'>
-						<span id='mky-conversation-selected-name'>{this.props.conversationSelected.name}</span>
+						<span id='mky-conversation-selected-name' className='mky-ellipsify'>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description === null
 							? ( !this.props.conversationSelected.online
 								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTime(this.props.conversationSelected.lastOpenApp)}</span>
@@ -125,7 +125,7 @@ const Conectivity = (props) => {
 		case "Disconnected":
 			return <div className='mky-not-connected' style={{height : "40px", backgroundColor : "black"}}><span>Disconnected! You have a Session in another Window/Tab!</span></div>
 		default:
-			return;
+			return null;
 	}
 }
 

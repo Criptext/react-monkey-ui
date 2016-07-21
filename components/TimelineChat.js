@@ -1,6 +1,16 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
 
+import Bubble from './Bubble.js';
+import BubbleText from './BubbleText.js';
+import BubbleImage from './BubbleImage.js';
+import BubbleFile from './BubbleFile.js';
+import BubbleAudio from './BubbleAudio.js';
+
+const BubbleText_ = Bubble(BubbleText);
+const BubbleImage_ = Bubble(BubbleImage);
+const BubbleFile_ = Bubble(BubbleFile);
+const BubbleAudio_ = Bubble(BubbleAudio);
 
 class TimelineChat extends Component {
 
@@ -57,20 +67,46 @@ class TimelineChat extends Component {
 	componentWillUpdate() {
 
 	}
-
-	render(){
+	
+/*
+	render() {
+		const bubbles = this.context.bubbles;
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
 			{ this.props.conversationSelected.loading ? <Loading /> : null } 
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
-					const Bubble_ = this.context.bubbles[message.bubbleType];
+					const Bubble_ = bubbles[message.bubbleType];
 					return <Bubble_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
 				})
 				: null}
 		</div>)
 	}
-
+*/
+	
+	render() {
+		return( <div ref='timelineChat' id='mky-chat-timeline'>
+			{ this.props.conversationSelected.loading ? <Loading /> : null }
+			{ Object.keys(this.props.conversationSelected).length
+				? this.orderedConversations.map( item => {
+					const message = this.props.conversationSelected.messages[item.key];
+					switch(message.bubbleType){
+					case 'text':
+						return <BubbleText_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
+					case 'image':
+						return <BubbleImage_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
+					case 'file':
+						return <BubbleFile_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
+					case 'audio':
+						return <BubbleAudio_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
+					default:
+						break;
+}
+				})
+				: null}
+		</div>)
+	}
+	
 	componentDidMount() {
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 		//this.domNode.lastChild.scrollIntoView();
@@ -88,8 +124,8 @@ class TimelineChat extends Component {
 			this.getMoreMessages();
 		}
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
-		if(!this.loadingMessages && this.domNode.lastChild!=null && !this.noNewMessage){
-			console.log(this.domNode.lastChild);
+
+		if(!this.loadingMessages && this.domNode.lastChild != null && !this.noNewMessage){
  			this.domNode.lastChild.scrollIntoView();
  		}
  		this.updateScrollTop();

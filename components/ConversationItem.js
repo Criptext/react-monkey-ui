@@ -5,11 +5,12 @@ class ConversationItem extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			unreadMessages: false
+			unreadMessages: false,
+			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.openConversation = this.openConversation.bind(this);
 		this.deleteConversation = this.deleteConversation.bind(this);
-		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
+		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -26,7 +27,7 @@ class ConversationItem extends Component {
     	return (
 			<li className={classContent}>
 				<div className='mky-full' onClick={this.openConversation}>
-					<div className='mky-conversation-image'><img src={this.defineUrlAvatar()} onerror='imgError(this);'/></div>
+					<div className='mky-conversation-image'><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-description'>
 						<div className='mky-conversation-title'>
 							<div className='mky-conversation-name'>
@@ -69,7 +70,11 @@ class ConversationItem extends Component {
 			</li>
 		)
 	}
-
+	
+	handleErrorAvatar() {
+		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
+	}
+	
 	openConversation() {
 		this.props.conversationIdSelected(this.props.conversation.id);
 	}
@@ -80,10 +85,6 @@ class ConversationItem extends Component {
 		}else{
 			this.props.deleteConversation(this.props.conversation, this.props.index, false)
 		}
-	}
-
-	defineUrlAvatar() {
-		return this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
 }
 
