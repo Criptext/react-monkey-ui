@@ -6,6 +6,11 @@ import Input from './Input.js'
 import Modal from './Modal.js'
 import { defineTime } from '../utils/monkey-utils.js'
 
+const OFFLINE = 0;
+const DISCONNECTED = 1;
+const CONNECTING = 2;
+const CONNECTED = 3;
+
 class ContentConversation extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -116,14 +121,14 @@ ContentConversation.contextTypes = {
 const Conectivity = (props) => {
 
 	switch(props.connectionStatus){
-		case "Connecting":
-			return <div className='mky-not-connected mky-status-connecting' style={{height : "40px", backgroundColor : "yellow", color : "black"}}><span>Connecting...</span></div>
-		case "Offline":
+		case OFFLINE:
 			return <div className='mky-not-connected' style={{height : "40px"}}><span>No Internet Connection</span></div>
-		case "Connected":
-			return <div className='mky-not-connected' style={{height : "0px", backgroundColor : "green", transition: "all 2s ease"}}><span>Connected!</span></div>
-		case "Disconnected":
+		case DISCONNECTED:
 			return <div className='mky-not-connected' style={{height : "40px", backgroundColor : "black"}}><span>Disconnected! You have a Session in another Window/Tab!</span></div>
+		case CONNECTING:
+			return <div className='mky-not-connected mky-status-connecting' style={{height : "40px", backgroundColor : "yellow", color : "black"}}><span>Connecting...</span></div>
+		case CONNECTED:
+			return <div className='mky-not-connected' style={{height : "0px", backgroundColor : "green", transition: "all 2s ease"}}><span>Connected!</span></div>
 		default:
 			return null;
 	}
