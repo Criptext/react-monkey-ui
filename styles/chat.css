@@ -1659,7 +1659,7 @@ TABLE OF CONTENTS
   	min-width: 42px;
   	min-height: 16px;
   	/*padding: 8px 10px 6px 14px;*/
-    padding: 12px 12px 10px 12px;
+    padding: 12px 12px 9px 12px;
   	-webkit-border-radius: 15px;
   	-moz-border-radius: 15px;
   	border-radius: 15px;
@@ -1709,7 +1709,10 @@ TABLE OF CONTENTS
     border: 1px solid #f2f2f2;
     padding-bottom: 8px;
     margin-top: 13px;
-    box-shadow: none;
+    box-shadow: 1px 1px 1px #f2f2f2;
+    -moz-box-shadow: 1px 1px 1px #f2f2f2;
+    -webkit-box-shadow: 1px 1px 1px #f2f2f2;
+    -o-box-shadow: 1px 1px 1px #f2f2f2;
 }
 
 .mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {

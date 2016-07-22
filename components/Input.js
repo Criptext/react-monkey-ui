@@ -101,7 +101,7 @@ class Input extends Component {
 								<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
 							</div>
 
-							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
+							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
 							<div id='mky-record-area' className={this.state.classAudioArea}>
 								<div className='mky-record-preview-area'>
 									<div id='mky-button-action-record'>
