@@ -113,7 +113,7 @@ class Input extends Component {
 								</div>
 							</div>
     				<div className={'mky-button-input '+this.state.classSendButton}>
-    					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' onClick={this.handleSendMessage}></i>
+    					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
     				</div>
     				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
     				{ this.state.creatingAudio
