@@ -37091,6 +37091,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.scrollHeight = 0;
 			_this.loadingMessages = 0;
 			_this.noNewMessage = false;
+			_this.firstLoad = true;
 			_this.handleScroll = _this.handleScroll.bind(_this);
 			_this.updateScrollTop = _this.updateScrollTop.bind(_this);
 			_this.getMoreMessages = _this.getMoreMessages.bind(_this);
@@ -50621,6 +50622,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        _this.handleOnChangeTextArea = _this.handleOnChangeTextArea.bind(_this);
 	        _this.handletextareaResize = _this.handletextareaResize.bind(_this);
 	        _this.mediaRecorder;
+	        _this.mediaStream;
 	        _this.micActivated = false;
 	        _this.mediaConstraints = {
 	            audio: true
@@ -50884,6 +50886,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            };
 
 	            this.refreshIntervalId = setInterval(this.setTime, 1000); //start recording timer
+	            this.mediaStream = stream;
 	            this.mediaRecorder.start(99999999999); //starts recording
 	        }
 	    }, {
@@ -50915,6 +50918,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	            });
 	            this.clearAudioRecordTimer();
 	            this.mediaRecorder = null;
+	            this.mediaStream.getTracks().forEach(function (track) {
+	                return track.stop();
+	            });
 	        }
 	    }, {
 	        key: 'handleSendMessage',
@@ -50926,6 +50932,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	                case 1:
 	                    if (this.mediaRecorder) {
 	                        this.mediaRecorder.stop(); //detiene la grabacion del audio
+	                        this.mediaStream.getTracks().forEach(function (track) {
+	                            return track.stop();
+	                        });
 	                    }
 	                    this.audioCaptured.duration = this.secondsRecording;
 	                    this.setState({ creatingAudio: true });
