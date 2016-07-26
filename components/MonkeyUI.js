@@ -331,8 +331,5 @@ if (typeof module !== 'undefined') {
 */
 export default MonkeyUI;
 
-var e = document.createElement('link');
-e.href = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css', e.type = 'text/css', e.rel = 'stylesheet', document.getElementsByTagName('head')[0].appendChild(e)
-
 var ec = document.createElement('script');
 ec.src = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', ec.type = 'text/javascript', document.getElementsByTagName('head')[0].appendChild(ec)
