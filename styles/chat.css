@@ -2458,7 +2458,7 @@ TABLE OF CONTENTS
 }
 
 .mky-partialsize #mky-message-text-input{
-  width: calc(100% - 94px);
+  width: calc(100% - 110px);
   margin-left: 0;
   margin-right: 0;
 }
