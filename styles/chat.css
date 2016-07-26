@@ -1648,6 +1648,19 @@ TABLE OF CONTENTS
   0%, 39%, 100% { opacity: 0; }
   40% { opacity: 1; }
 }
+/* System Bubble Panel */
+
+.mky-system-panel{
+    height: 20px;
+    margin: 10px auto;
+    width: calc(100% - 40px);
+    text-align: center;
+    background: rgba(204, 228, 203, 0.55);;
+    padding: 8px 20px 5px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
 
 /* base bubble */
 
