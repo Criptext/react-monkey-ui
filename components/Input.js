@@ -62,6 +62,7 @@ class Input extends Component {
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
 		this.handletextareaResize = this.handletextareaResize.bind(this);
 		this.mediaRecorder;
+        this.mediaStream;
 		this.micActivated = false;
 		this.mediaConstraints = {
 		    audio: true
@@ -272,6 +273,7 @@ class Input extends Component {
         };
 
         this.refreshIntervalId = setInterval(this.setTime, 1000);//start recording timer
+        this.mediaStream = stream;
         this.mediaRecorder.start(99999999999);//starts recording
     }
 
@@ -300,6 +302,7 @@ class Input extends Component {
 		});
 		this.clearAudioRecordTimer();
         this.mediaRecorder = null;
+        this.mediaStream.getTracks().forEach(track => track.stop());
     }
 
     handleSendMessage(){
@@ -310,6 +313,7 @@ class Input extends Component {
             case 1:
             	if (this.mediaRecorder) {
                     this.mediaRecorder.stop(); //detiene la grabacion del audio
+                    this.mediaStream.getTracks().forEach(track => track.stop());
                 }
                 this.audioCaptured.duration = this.secondsRecording;
                 this.setState({creatingAudio: true});
