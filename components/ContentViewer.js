@@ -9,8 +9,8 @@ class ContentViewer extends Component {
 		this.handleResize=this.handleResize.bind(this);
 	}
 	componentDidMount() {
-    window.addEventListener('resize', this.handleResize);
-  }
+   		window.addEventListener('resize', this.handleResize);
+	}
 
 	handleResize(){
 
