@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
+import { defineTimeByToday, isConversationGroup } from '../utils/monkey-utils.js'
 
 import Bubble from './Bubble.js';
 import BubbleText from './BubbleText.js';
@@ -26,6 +27,7 @@ class TimelineChat extends Component {
 		this.handleScroll = this.handleScroll.bind(this);
 		this.updateScrollTop = this.updateScrollTop.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
+		this.showOrderedMessages = this.showOrderedMessages.bind(this);
 
 		this.state = {
 			update: 0
@@ -86,24 +88,11 @@ class TimelineChat extends Component {
 */
 	
 	render() {
+
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
 			{ this.props.conversationSelected.loading ? <Loading /> : null }
 			{ Object.keys(this.props.conversationSelected).length
-				? this.orderedConversations.map( item => {
-					const message = this.props.conversationSelected.messages[item.key];
-					switch(message.bubbleType){
-					case 'text':
-						return <BubbleText_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
-					case 'image':
-						return <BubbleImage_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
-					case 'file':
-						return <BubbleFile_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
-					case 'audio':
-						return <BubbleAudio_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>
-					default:
-						break;
-}
-				})
+				? this.showOrderedMessages()
 				: null}
 		</div>)
 	}
@@ -136,6 +125,42 @@ class TimelineChat extends Component {
  			this.scrollHeight = this.domNode.scrollHeight;
  			this.loadingMessages = 0;
  		}
+	}
+
+	showOrderedMessages(){
+		var messagesArray = [];
+		var timeFrom = null;
+		this.orderedConversations.forEach( item => {
+
+			const message = this.props.conversationSelected.messages[item.key];
+			let messageTime = defineTimeByToday(message.datetimeOrder);
+			if(messageTime.indexOf("AM") > -1 || messageTime.indexOf("PM") > -1){
+				messageTime = "Today"
+			}
+
+			if(timeFrom != messageTime){
+				timeFrom = messageTime;
+				messagesArray.push(<SystemBubble key={messageTime} message={messageTime} />);
+			}
+			switch(message.bubbleType){
+			case 'text':
+				messagesArray.push(<BubbleText_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				break;
+			case 'image':
+				messagesArray.push(<BubbleImage_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				break;
+			case 'file':
+				messagesArray.push(<BubbleFile_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				break;
+			case 'audio':
+				messagesArray.push(<BubbleAudio_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				break;
+			default:
+				break;
+			}
+		});
+
+		return messagesArray;
 	}
 
 	updateScrollTop(){
@@ -198,6 +223,14 @@ const Loading = () => <div className="mky-fading-circle">
 	<div className="mky-circle12 mky-circle"></div>
 </div>
 
+const SystemBubble = (props) => {
+
+	return (
+		<div className="mky-system-panel">
+			{props.message}
+		</div>
+	)
+}
 
 TimelineChat.contextTypes = {
     userSession: React.PropTypes.object.isRequired,

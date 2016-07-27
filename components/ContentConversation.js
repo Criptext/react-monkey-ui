@@ -71,7 +71,7 @@ class ContentConversation extends Component {
 							    )()
 								: null
 							}
-							<Input enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
+							<Input notifyTyping={this.props.notifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
 						</div>
 					)
 				}
