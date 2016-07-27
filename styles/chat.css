@@ -1455,6 +1455,16 @@ TABLE OF CONTENTS
     50%  {background:#FFC107;}
 }
 
+.mky-reconnect-link{
+    color: white;
+    font-weight: bold;
+}
+
+.mky-reconnect-link:hover{
+    color: #83F4FF;
+    cursor: pointer;
+}
+
   /* 3.3.- SECTION: Chat timeline
      ----------------------------- */
 .mky-chat-area{
@@ -1658,7 +1668,7 @@ TABLE OF CONTENTS
     margin: 10px auto;
     width: calc(100% - 40px);
     text-align: center;
-    background: rgba(204, 228, 203, 0.55);;
+    background: #eaf0f9;
     padding: 8px 20px 5px 20px;
     overflow: hidden;
     text-overflow: ellipsis;

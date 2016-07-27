@@ -4,12 +4,15 @@ import Input from './Input.js'
 // import LocationInput from './LocationInput.js'
 
 import Modal from './Modal.js'
+import ContentViewer from './ContentViewer.js'
 import { defineTime } from '../utils/monkey-utils.js'
 
 const OFFLINE = 0;
 const DISCONNECTED = 1;
 const CONNECTING = 2;
 const CONNECTED = 3;
+
+const Modal_ = Modal(ContentViewer);
 
 class ContentConversation extends Component {
 	constructor(props, context) {
@@ -36,6 +39,11 @@ class ContentConversation extends Component {
 	}
 
 	render() {
+
+		var modalComponent = null;
+		if(this.state.messageSelected){
+			modalComponent = <Modal_ message={this.state.messageSelected} closeModal={this.handleCloseModal}/>
+		}
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 				<header id='mky-conversation-selected-header'>
@@ -55,7 +63,7 @@ class ContentConversation extends Component {
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
-					<Conectivity connectionStatus={this.props.connectionStatus} />
+					<Conectivity onReconnect={this.props.onReconnect} connectionStatus={this.props.connectionStatus} />
 					
 	
 				</header>
@@ -63,14 +71,7 @@ class ContentConversation extends Component {
 					? <LocationInput messageCreated={this.props.messageCreated} disableGeoInput={this.disableGeoInput.bind(this)} />
 					: ( <div className='mky-chat-area'>
 							<TimelineChat loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageSelected={this.handleMessageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser}/>
-							{ this.state.messageSelected
-								? (() => {
-										const Modal_ = Modal(this.context.bubblePreviews[this.state.messageSelected.bubbleType]);
-										return <Modal_ message={this.state.messageSelected} closeModal={this.handleCloseModal}/>
-									}
-							    )()
-								: null
-							}
+							{ modalComponent }
 							<Input notifyTyping={this.props.notifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
 						</div>
 					)
@@ -119,12 +120,12 @@ ContentConversation.contextTypes = {
 }
 
 const Conectivity = (props) => {
-
+	
 	switch(props.connectionStatus){
 		case OFFLINE:
 			return <div className='mky-not-connected' style={{height : "40px"}}><span>No Internet Connection</span></div>
 		case DISCONNECTED:
-			return <div className='mky-not-connected' style={{height : "40px", backgroundColor : "black"}}><span>Disconnected! You have a Session in another Window/Tab!</span></div>
+			return <div className='mky-not-connected' style={{height : "40px", backgroundColor : "black"}}><span>You have a Session in another Window/Tab!</span> <div onClick={props.onReconnect} className="mky-reconnect-link">Use Criptext Here!!</div></div>
 		case CONNECTING:
 			return <div className='mky-not-connected mky-status-connecting' style={{height : "40px", backgroundColor : "yellow", color : "black"}}><span>Connecting...</span></div>
 		case CONNECTED:
