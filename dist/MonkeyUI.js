@@ -1052,7 +1052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    var diffTime = (0, _moment2.default)().diff((0, _moment2.default)(time));
 	    if (diffTime <= oneDay) {
-	        result = (0, _moment2.default)(time).format('HH:mm A');
+	        result = (0, _moment2.default)(time).format('hh:mm A');
 	    } else if (diffTime < oneDay * 2) {
 	        result = 'yesterday';
 	    } else if (diffTime < oneDay * 7) {
@@ -37182,7 +37182,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'render',
 			value: function render() {
-				var currentTimeChat = null;
 
 				return _react2.default.createElement(
 					'div',
@@ -37388,7 +37387,6 @@ return /******/ (function(modules) { // webpackBootstrap
 				_this.username;
 				_this.userColor;
 				_this.resendMessage = _this.resendMessage.bind(_this);
-				console.log('CONSTRUCTOR BUBBLE');
 				return _this;
 			}
 
