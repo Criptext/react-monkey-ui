@@ -106,7 +106,7 @@ class Input extends Component {
 							<div id='mky-record-area' className={this.state.classAudioArea}>
 								<div className='mky-record-preview-area'>
 									<div id='mky-button-action-record'>
-										<button id='mky-button-start-record' className='mky-blink'></button>
+										<span id='mky-button-start-record' className='mky-blink'></span>
 									</div>
 									<div id='mky-time-recorder'>
 										<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>

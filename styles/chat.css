@@ -907,8 +907,10 @@ TABLE OF CONTENTS
 }
 
 .mky-search-input > input {
+    -webkit-appearance: none;
     width: 100%;
-    padding: 8px 10px 8px 40px;
+    /*padding: 8px 10px 8px 40px;*/
+    padding: 8px 4px 8px 40px;
     border-radius: 10px;
     border: 1px solid #EFF0F2;
     position: relative;
@@ -922,6 +924,7 @@ TABLE OF CONTENTS
     -webkit-font-smoothing: antialiased;
     text-overflow: ellipsis;
 }
+
 
 .mky-search-input > input:focus {
   outline: none;
@@ -2504,9 +2507,9 @@ TABLE OF CONTENTS
   vertical-align: top;
   position: relative;
   top: 50%;
-  transform: translateY(50%);
-  -webkit-transform: translateY(50%);
-  -moz-transform: translateY(-30%);
+  transform: translateY(20%);
+  -webkit-transform: translateY(20%);
+  -moz-transform: translateY(20%);
 }
 
 .mky-partialsize .mky-button-input{
@@ -2529,7 +2532,7 @@ TABLE OF CONTENTS
   background: none;
   color: #546E7B;
   font-size: 32px;
-  margin-top: -8px;
+  /*margin-top: -8px;*/
   margin-right: 2px;
 }
 
@@ -2538,6 +2541,7 @@ TABLE OF CONTENTS
   color: red;
   padding: 0px 0px;
   font-size: 20px;
+  margin-top: 8px;
 }
 
 #mky-button-send-message{
@@ -2546,13 +2550,14 @@ TABLE OF CONTENTS
   padding: 0px 0px;
   font-size: 20px;
   cursor: pointer;
+  margin-top: 8px;
 }
 
 #mky-button-record-audio{
   background: none;
   color: #546E7B;
-  font-size: 29px;
-  margin-top: -5px;
+  font-size: 28px;
+  margin-top: 3px;
 }
 
 #mky-button-send-audio{
@@ -2657,7 +2662,7 @@ TABLE OF CONTENTS
   float: left;
   width: 97%;
   text-align: center;
-  margin-top: 10px;
+  margin-top: 12px;
 }
 
 .mky-blink {
@@ -2712,11 +2717,16 @@ TABLE OF CONTENTS
 }
 
 #mky-button-start-record{
+  color: transparent;
+  border: 1px solid;
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);
   background-size: 10px 10px !important;
-  background-repeat:no-repeat;
+  background-repeat: no-repeat;
   background-position: 0% 50%;
   background-color: transparent;
+  position: relative;
+  top: -3px;
+  padding: 5px;
 }
 
 #mky-time-recorder{
