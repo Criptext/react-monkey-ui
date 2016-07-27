@@ -874,7 +874,7 @@ TABLE OF CONTENTS
 
 .mky-header-exit i{
   color: #F35E58;
-  font-size: 19px;
+  font-size: 14px;
 }
 
 #mky-session-name{
@@ -1269,7 +1269,7 @@ TABLE OF CONTENTS
 
 .mky-notification-amount{
   min-width: 10px;
-  border-radius: 50%;
+  border-radius: 20px;
   background: #1982E8;
   color: #fff;
   font-size: 12px;
@@ -1352,13 +1352,13 @@ TABLE OF CONTENTS
 
 .mky-conversation-burger{
   float: left;
-  margin: 24px 5px 0 12px;
+  margin: 21px -10px 0 12px;
   width: auto;
 }
 
 .mky-conversation-burger i{
 	color: #6e8191;
-    font-size: 19px;
+    font-size: 24px;
 }
 
 #mky-conversation-selected-image{
@@ -2102,6 +2102,16 @@ TABLE OF CONTENTS
   border-radius: 14px;
   overflow: hidden;
 }
+.mky-content-image-auto{
+  height: auto;
+  max-height: 250px;
+  align-items: center;
+  display: flex;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+}
 
 .mky-content-image-loading{
   width: 40px;
@@ -2120,7 +2130,7 @@ TABLE OF CONTENTS
   color: #6e8191;
 }
 
-.mky-content-image-data {
+.mky-content-image-data, .mky-content-image-data-auto {
     height: 100%;
     align-items: center;
     display: flex;
@@ -2133,6 +2143,11 @@ TABLE OF CONTENTS
 
 .mky-content-image-data img{
 	height: 250px;
+	width: auto;
+	cursor: pointer;
+}
+.mky-content-image-data-auto img{
+	height: auto;;
 	width: auto;
 	cursor: pointer;
 }

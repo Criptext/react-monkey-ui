@@ -3,23 +3,45 @@ import React, { Component } from 'react'
 class BubbleImage extends Component {
 	constructor(props) {
 		super(props);
+		this.state = {
+			imageHeight : 'mky-content-image-data',
+			imageBubbleClass : 'mky-content-image'
+		}
 		this.eventBubble = this.eventBubble.bind(this);
 		this.openImage = this.openImage.bind(this);
 		this.downloadData = this.downloadData.bind(this);
+
 	}
 
 	componentWillMount() {
         if(this.props.message.data == null && !this.props.message.isDownloading && !this.props.message.error){
             this.props.dataDownloadRequest(this.props.message.mokMessage);
         }
+				
+				if (this.props.message.data != null ) {
+					let imageObject = new Image();
+					var that = this;
+					imageObject.onload = function(){
+						if (imageObject.height < 250) {
+							that.setState({
+								imageHeight : 'mky-content-image-data-auto',
+								imageBubbleClass : 'mky-content-image-auto'
+				    	});
+						}
+
+
+					};
+					imageObject.src = this.props.message.data;
+				}
 	}
-	
+
 	render() {
+
 		return (
-			<div className='mky-content-image'>
+			<div className={this.state.imageBubbleClass}>
 				{ this.props.message.data
-					? ( <div className='mky-content-image-data'>
-							<img src={this.props.message.data} onClick={this.openImage}></img>
+					? ( <div className={this.state.imageHeight}>
+							<img src={this.props.message.data} onClick={this.openImage} ></img>
 						</div>
 					)
 					: ( this.props.message.isDownloading
@@ -34,7 +56,7 @@ class BubbleImage extends Component {
 			</div>
 		)
 	}
-	
+
 	openImage() {
 		this.props.messageSelected(this.props.message);
 	}
@@ -42,7 +64,7 @@ class BubbleImage extends Component {
 	eventBubble() {
 		this.props.onClickMessage(this.props.message.mokMessage);
 	}
-	
+
 	downloadData() {
 		this.props.dataDownloadRequest(this.props.message.mokMessage);
 	}
