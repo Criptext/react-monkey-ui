@@ -896,6 +896,7 @@ TABLE OF CONTENTS
 
 .mky-session-conversations{
 	height: calc(100% - 65px);
+  position: relative;
 }
 
 .mky-search-input {
@@ -1465,6 +1466,22 @@ TABLE OF CONTENTS
     cursor: pointer;
 }
 
+.mky-panel-show{
+    position: absolute;
+    top: 66px;
+    left: 0;  
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    background-color: red;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    width: calc(100% - 20px);
+    font-weight: bold;
+}
+
   /* 3.3.- SECTION: Chat timeline
      ----------------------------- */
 .mky-chat-area{
@@ -1525,6 +1542,14 @@ TABLE OF CONTENTS
 }
 
 /* Loading Messages Animation */
+.mky-absolute-circle{
+    position: absolute !important;
+    bottom: 0;
+    left: calc(50% - 23px);
+    background: #F3F3F3;
+    border-radius: 50%;
+    border: solid 6px #F3F3F3;
+}
 
 .mky-fading-circle {
   margin: 10px auto;
