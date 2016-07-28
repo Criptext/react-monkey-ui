@@ -48,7 +48,7 @@ class ContentConversation extends Component {
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
 				<header id='mky-conversation-selected-header'>
 					{ this.props.isMobile & this.props.haveConversations
-						? <div className="mky-conversation-burger" onClick={this.showAside}><i className="icon mky-icon-menu-hamburguer"></i></div>
+						? <div className="mky-conversation-burger" onClick={this.showAside}><i className="icon mky-icon-back"></i></div>
 						: null
 					}
 					<div id='mky-conversation-selected-image'><img src={this.defineUrlAvatar()}/></div>
@@ -63,9 +63,9 @@ class ContentConversation extends Component {
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
+
 					<Conectivity onReconnect={this.props.onReconnect} connectionStatus={this.props.connectionStatus} />
-					
-	
+
 				</header>
 				{ this.state.showLocationInput
 					? <LocationInput messageCreated={this.props.messageCreated} disableGeoInput={this.disableGeoInput.bind(this)} />
@@ -84,7 +84,7 @@ class ContentConversation extends Component {
 		if(!connectionStatus){
 			return;
 		}
-		
+
 	}
 
 	handleMessageSelected(message) {
@@ -109,7 +109,7 @@ class ContentConversation extends Component {
 	disableGeoInput() {
 		this.setState({showLocationInput: false});
 	}
-	
+
 	defineUrlAvatar() {
 		return this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
 	}
@@ -120,7 +120,7 @@ ContentConversation.contextTypes = {
 }
 
 const Conectivity = (props) => {
-	
+
 	switch(props.connectionStatus){
 		case OFFLINE:
 			return <div className='mky-not-connected' style={{height : "40px"}}><span>No Internet Connection</span></div>
