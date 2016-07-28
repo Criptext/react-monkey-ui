@@ -896,6 +896,7 @@ TABLE OF CONTENTS
 
 .mky-session-conversations{
 	height: calc(100% - 65px);
+  position: relative;
 }
 
 .mky-search-input {
@@ -1525,6 +1526,14 @@ TABLE OF CONTENTS
 }
 
 /* Loading Messages Animation */
+.mky-absolute-circle{
+    position: absolute !important;
+    bottom: 0;
+    left: calc(50% - 23px);
+    background: #F3F3F3;
+    border-radius: 50%;
+    border: solid 6px #F3F3F3;
+}
 
 .mky-fading-circle {
   margin: 10px auto;

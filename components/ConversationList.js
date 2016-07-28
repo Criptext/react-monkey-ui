@@ -18,12 +18,15 @@ class ConversationList extends Component {
 			isDeleting: false,
 			deletingConversation: undefined,
 			deletingIndex: undefined,
-			deletingActive: undefined
+			deletingActive: undefined,
+			loading : false,
 		}
 		this.conversationToDeleteIsGroup;
 	    this.searchUpdated = this.searchUpdated.bind(this);
 	    this.conversationIdSelected = this.conversationIdSelected.bind(this);
 	    this.isSelected = this.isSelected.bind(this);
+	    this.updateScrollTop = this.updateScrollTop.bind(this);
+	    this.handleScroll = this.handleScroll.bind(this);
 
 	    this.handleDeleteConversation = this.handleDeleteConversation.bind(this);
 	    this.handleExitGroup = this.handleExitGroup.bind(this);
@@ -32,6 +35,8 @@ class ConversationList extends Component {
 	    this.handleAskDeleteConversation = this.handleAskDeleteConversation.bind(this);
 	    this.setConversationSelected = this.setConversationSelected.bind(this);
 	    this.domNode;
+	    this.isLoading;
+	    this.scrollToLoad;
 	}
 
 	componentWillMount() {
@@ -39,6 +44,9 @@ class ConversationList extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
+		if(nextProps.isLoadingConversations != this.props.isLoadingConversations && this.props.isLoadingConversations && !nextProps.isLoadingConversations){
+			this.isLoading = false;
+		}
 		this.setState({conversationArray: this.createArray(nextProps.conversations)});
 	}
 
@@ -68,6 +76,7 @@ class ConversationList extends Component {
 						</ul>
 		    		)
 	    		}
+    		{this.props.isLoadingConversations ? <Loading /> : null}
 			</div>
 		)
 	}
@@ -88,6 +97,7 @@ class ConversationList extends Component {
 
 	componentDidMount() {
 		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
+		this.domNode.addEventListener('scroll', this.handleScroll);
 	}
 
 	conversationIdSelected(conversationId) {
@@ -155,10 +165,48 @@ class ConversationList extends Component {
 		this.setState({isDeleting: false});
 	}
 
+	handleScroll(event) {
+		this.updateScrollTop();
+	}
+
+	updateScrollTop(){
+		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
+		console.log(this.domNode.scrollTop + this.domNode.scrollHeight);
+		if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight && this.scrollToLoad){
+			console.log('SCROLL SUCCESS');
+			console.log(this.state.conversationArray);
+			var conversationArray = this.state.conversationArray;
+			var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
+			console.log(lastMessage);
+			console.log('timestamp conversation3 : ' + lastMessage.datetimeCreation);
+			this.props.loadMoreConversations(lastMessage.datetimeCreation);
+			this.isLoading = true;
+			this.scrollToLoad = false;
+		}
+		if(!this.isLoading && !this.scrollToLoad){
+			this.scrollToLoad = true;
+		}
+	}
+
 }
 
 ConversationList.contextTypes = {
     options: React.PropTypes.object.isRequired,
 }
+
+const Loading = () => <div className="mky-fading-circle mky-absolute-circle">
+	<div className="mky-circle1 mky-circle"></div>
+	<div className="mky-circle2 mky-circle"></div>
+	<div className="mky-circle3 mky-circle"></div>
+	<div className="mky-circle4 mky-circle"></div>
+	<div className="mky-circle5 mky-circle"></div>
+	<div className="mky-circle6 mky-circle"></div>
+	<div className="mky-circle7 mky-circle"></div>
+	<div className="mky-circle8 mky-circle"></div>
+	<div className="mky-circle9 mky-circle"></div>
+	<div className="mky-circle10 mky-circle"></div>
+	<div className="mky-circle11 mky-circle"></div>
+	<div className="mky-circle12 mky-circle"></div>
+</div>
 
 export default ConversationList;
