@@ -1466,6 +1466,22 @@ TABLE OF CONTENTS
     cursor: pointer;
 }
 
+.mky-panel-show{
+    position: absolute;
+    top: 66px;
+    left: 0;  
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: center;
+    background-color: red;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+    width: calc(100% - 20px);
+    font-weight: bold;
+}
+
   /* 3.3.- SECTION: Chat timeline
      ----------------------------- */
 .mky-chat-area{

@@ -173,13 +173,9 @@ class ConversationList extends Component {
 		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
 		console.log(this.domNode.scrollTop + this.domNode.scrollHeight);
 		if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight && this.scrollToLoad){
-			console.log('SCROLL SUCCESS');
-			console.log(this.state.conversationArray);
 			var conversationArray = this.state.conversationArray;
 			var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
-			console.log(lastMessage);
-			console.log('timestamp conversation3 : ' + lastMessage.datetimeCreation);
-			this.props.loadMoreConversations(lastMessage.datetimeCreation);
+			this.props.handleLoadMoreConversations(lastMessage.datetimeCreation);
 			this.isLoading = true;
 			this.scrollToLoad = false;
 		}

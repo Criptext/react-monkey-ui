@@ -222,15 +222,15 @@ class Input extends Component {
 				this.textMessageInput(event.target.value.trim());
 			}
 			this.setState({text: ''});
-            this.props.notifyTyping(false);
+            this.props.handleNotifyTyping(false);
 		}else if(event.keyCode === 8){
-            this.props.notifyTyping(false);
+            this.props.handleNotifyTyping(false);
         }
 	}
 
 	handleOnChangeTextArea(event, value){
         if(event.target.value.length > this.state.text.length){
-            this.props.notifyTyping(true);
+            this.props.handleNotifyTyping(true);
         }
 		this.setState({text: event.target.value});
 	}

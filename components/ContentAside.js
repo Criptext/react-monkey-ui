@@ -27,7 +27,7 @@ class ContentAside extends Component {
 						}
 					</div>
 				</header>
-				<ConversationList isLoadingConversations={this.props.isLoadingConversations} loadMoreConversations={this.props.loadMoreConversations} handleConversationDelete={this.props.handleConversationDelete} handleConversationExit={this.props.handleConversationExit} conversations={this.props.conversations} handleConversationSelected={this.props.handleConversationSelected} conversationSelected={this.props.conversationSelected} conversationsLoading={this.props.conversationsLoading}/>
+				<ConversationList isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.handleLoadMoreConversations} handleConversationDelete={this.props.handleConversationDelete} handleConversationExit={this.props.handleConversationExit} conversations={this.props.conversations} handleConversationSelected={this.props.handleConversationSelected} conversationSelected={this.props.conversationSelected} conversationsLoading={this.props.conversationsLoading}/>
 			</aside>
 		)
 	}
