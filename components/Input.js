@@ -62,6 +62,7 @@ class Input extends Component {
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
 		this.handletextareaResize = this.handletextareaResize.bind(this);
 		this.mediaRecorder;
+        this.mediaStream;
 		this.micActivated = false;
 		this.mediaConstraints = {
 		    audio: true
@@ -101,11 +102,11 @@ class Input extends Component {
 								<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
 							</div>
 
-							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure messages' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
+							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
 							<div id='mky-record-area' className={this.state.classAudioArea}>
 								<div className='mky-record-preview-area'>
 									<div id='mky-button-action-record'>
-										<button id='mky-button-start-record' className='mky-blink'></button>
+										<span id='mky-button-start-record' className='mky-blink'></span>
 									</div>
 									<div id='mky-time-recorder'>
 										<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
@@ -113,7 +114,7 @@ class Input extends Component {
 								</div>
 							</div>
     				<div className={'mky-button-input '+this.state.classSendButton}>
-    					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' onClick={this.handleSendMessage}></i>
+    					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
     				</div>
     				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
     				{ this.state.creatingAudio
@@ -221,10 +222,16 @@ class Input extends Component {
 				this.textMessageInput(event.target.value.trim());
 			}
 			this.setState({text: ''});
-		}
+            this.props.notifyTyping(false);
+		}else if(event.keyCode === 8){
+            this.props.notifyTyping(false);
+        }
 	}
 
 	handleOnChangeTextArea(event, value){
+        if(event.target.value.length > this.state.text.length){
+            this.props.notifyTyping(true);
+        }
 		this.setState({text: event.target.value});
 	}
 
@@ -272,6 +279,7 @@ class Input extends Component {
         };
 
         this.refreshIntervalId = setInterval(this.setTime, 1000);//start recording timer
+        this.mediaStream = stream;
         this.mediaRecorder.start(99999999999);//starts recording
     }
 
@@ -300,6 +308,7 @@ class Input extends Component {
 		});
 		this.clearAudioRecordTimer();
         this.mediaRecorder = null;
+        this.mediaStream.getTracks().forEach(track => track.stop());
     }
 
     handleSendMessage(){
@@ -310,6 +319,7 @@ class Input extends Component {
             case 1:
             	if (this.mediaRecorder) {
                     this.mediaRecorder.stop(); //detiene la grabacion del audio
+                    this.mediaStream.getTracks().forEach(track => track.stop());
                 }
                 this.audioCaptured.duration = this.secondsRecording;
                 this.setState({creatingAudio: true});

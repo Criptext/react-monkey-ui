@@ -128,21 +128,25 @@ class BubbleAudio extends Component {
     }
     
     playAudioBubble() {
-	    this.pauseAllAudio();
-        window.$bubblePlayer = $('#mky-bubble-audio-player-'+this.messageId); //handles the circle
-        $('#mky-bubble-audio-play-button-'+this.messageId).hide();
-        $('#mky-bubble-audio-pause-button-'+this.messageId).show();
-        let audiobuble = document.getElementById('audio_'+this.messageId);
-        audiobuble.play();
-        window.playIntervalBubble = setInterval(this.updateAnimationBuble,1000);
-        var that = this;
-        audiobuble.addEventListener('ended',function() {
-            that.setDurationTime(that.messageId);
-            window.$bubblePlayer.val(0).trigger('change');
-			$('#mky-bubble-audio-play-button-'+that.messageId).show();
-			$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
-            clearInterval(window.playIntervalBubble);
-        });
+	    try {
+		    this.pauseAllAudio();
+	        window.$bubblePlayer = $('#mky-bubble-audio-player-'+this.messageId); //handles the circle
+	        $('#mky-bubble-audio-play-button-'+this.messageId).hide();
+	        $('#mky-bubble-audio-pause-button-'+this.messageId).show();
+	        let audiobuble = document.getElementById('audio_'+this.messageId);
+	        audiobuble.play();
+	        window.playIntervalBubble = setInterval(this.updateAnimationBuble,1000);
+	        var that = this;
+	        audiobuble.addEventListener('ended',function() {
+	            that.setDurationTime(that.messageId);
+	            window.$bubblePlayer.val(0).trigger('change');
+				$('#mky-bubble-audio-play-button-'+that.messageId).show();
+				$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
+	            clearInterval(window.playIntervalBubble);
+	        });
+	    } catch(err) {
+		    console.log(err);
+	    }
     }
     
     pauseAudioBubble() {
@@ -154,20 +158,24 @@ class BubbleAudio extends Component {
     }
     
     pauseAllAudio() {
-	    clearInterval(window.playIntervalBubble);
-	    var that = this;
-        document.addEventListener('play', function(e){
-            var audios = document.getElementsByTagName('audio');
-            for(var i = 0, len = audios.length; i < len;i++){
-                if(audios[i] != e.target){
-                    audios[i].pause();
-                    $('.mky-bubble-audio-button').hide();
-                    $('.mky-bubble-audio-play-button').show();
-                }   
-            }
-            $('#mky-bubble-audio-play-button-'+that.messageId).hide();
-			$('#mky-bubble-audio-pause-button-'+that.messageId).show();
-        }, true);
+	    try {
+		    clearInterval(window.playIntervalBubble);
+		    var that = this;
+	        document.addEventListener('play', function(e){
+	            var audios = document.getElementsByTagName('audio');
+	            for(var i = 0, len = audios.length; i < len;i++){
+	                if(audios[i] != e.target){
+	                    audios[i].pause();
+	                    $('.mky-bubble-audio-button').hide();
+	                    $('.mky-bubble-audio-play-button').show();
+	                }   
+	            }
+	            $('#mky-bubble-audio-play-button-'+that.messageId).hide();
+				$('#mky-bubble-audio-pause-button-'+that.messageId).show();
+	        }, true);
+	    } catch(err) {
+		    console.log(err);
+	    }
     }
     
     updateAnimationBuble() {

@@ -32,7 +32,7 @@ export const defineTimeByToday = (time) => {
 	
 	let diffTime = moment().diff(moment(time));
 	if(diffTime <= oneDay) {
-		result = moment(time).format('HH:mm A');
+		result = moment(time).format('hh:mm A');
 	}else if(diffTime < oneDay*2) {
 		result = 'yesterday';
 	}else if(diffTime < oneDay*7) {
