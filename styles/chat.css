@@ -2117,19 +2117,7 @@ TABLE OF CONTENTS
 /*content image bubble */
 
 .mky-content-image{
-  height: auto;
-  max-height: 250px;
-  min-height: 200px;
-  align-items: center;
-  display: flex;
-  -webkit-border-radius: 14px;
-  -moz-border-radius: 14px;
-  border-radius: 14px;
-  overflow: hidden;
-}
-.mky-content-image-auto{
-  height: auto;
-  max-height: 250px;
+  height: 250px;
   align-items: center;
   display: flex;
   -webkit-border-radius: 14px;
@@ -2155,26 +2143,21 @@ TABLE OF CONTENTS
   color: #6e8191;
 }
 
-.mky-content-image-data, .mky-content-image-data-auto {
-    height: 100%;
-    align-items: center;
-    display: flex;
-    -webkit-border-radius: 14px;
-    -moz-border-radius: 14px;
-    border-radius: 14px;
-    overflow: hidden;
-    justify-content: center;
+.mky-content-image-data {
+  height: 100%;
+  align-items: center;
+  display: flex;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+  overflow: hidden;
+  justify-content: center;
 }
 
 .mky-content-image-data img{
-	height: 250px;
-	width: auto;
-	cursor: pointer;
-}
-.mky-content-image-data-auto img{
-	height: auto;;
-	width: auto;
-	cursor: pointer;
+  height: auto;
+  width: auto;
+  cursor: pointer;
 }
 
 /*content file bubble */
