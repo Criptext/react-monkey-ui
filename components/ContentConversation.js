@@ -118,9 +118,9 @@ const Conectivity = (props) => {
 	var params = props.panelParams;
 
 	if(props.panelParams && props.panelParams.show){
-		return <div className='mky-panel-show' style={{maxHeight : "100%", padding: "12px 10px 5px 10px", backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}><span>{params.message}</span></div>
+		return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}><p>{params.message}</p></div>
 	}else{
-		return <div className='mky-panel-show' style={{maxHeight : "0", padding: "0px 10px 0px 10px", backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}><span>{params.message}</span></div>
+		return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}><p>{params.message}</p></div>
 
 	}
 }
