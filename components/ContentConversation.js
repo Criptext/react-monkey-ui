@@ -58,7 +58,7 @@ class ContentConversation extends Component {
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
-					<Panel handleReconnect={this.props.handleReconnect} panelParams={this.props.panelParams} />
+					<Panel panelParams={this.props.panelParams} />
 
 				</header>
 				{ this.state.showLocationInput

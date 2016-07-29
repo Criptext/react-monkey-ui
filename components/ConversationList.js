@@ -92,7 +92,7 @@ class ConversationList extends Component {
 	}
 
 	componentDidUpdate() {
-		this.scrollToFirstChildWhenItsNecessary();
+		//this.scrollToFirstChildWhenItsNecessary();
 	}
 
 	componentDidMount() {
@@ -134,12 +134,12 @@ class ConversationList extends Component {
 		return conversationarray;
   	}
 
-  	scrollToFirstChildWhenItsNecessary() {
-		if(this.domNode!=null && this.domNode.children.length > 0
+  	/*scrollToFirstChildWhenItsNecessary() {
+		if(this.scrollToLoad && !this.isLoading && this.domNode!=null && this.domNode.children.length > 0
 			&& this.isSelected(this.state.conversationArray[0].id)){
 			this.domNode.firstChild.scrollIntoView();
 		}
-  	}
+  	}*/
 
   	// PopUp methods
 
@@ -181,9 +181,9 @@ class ConversationList extends Component {
 			}catch(exception){
 				timestamp = conversationArray[conversationArray.length - 1].lastModified;
 			}
-			this.props.handleLoadMoreConversations(timestamp);
 			this.isLoading = true;
 			this.scrollToLoad = false;
+			this.props.handleLoadMoreConversations(timestamp);
 		}
 		if(!this.isLoading && !this.scrollToLoad){
 			this.scrollToLoad = true;

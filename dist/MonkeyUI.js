@@ -308,7 +308,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							'div',
 							{ id: 'mky-content-app', className: '' },
 							this.state.showConversations & this.haveConversations ? _react2.default.createElement(_ContentAside2.default, { isLoadingConversations: this.props.isLoadingConversations, handleLoadMoreConversations: this.props.onLoadMoreConversations, handleConversationDelete: this.props.onConversationDelete, togglePopup: this.togglePopup, handleConversationExit: this.props.onConversationExit, userSessionLogout: this.props.onUserSessionLogout, conversations: this.state.conversations, handleConversationSelected: this.handleConversationSelected, conversationSelected: this.state.conversation, showBanner: this.state.showBanner, show: this.showListConversation, isMobile: this.state.isMobile, closeSide: this.openSide, conversationsLoading: this.props.conversationsLoading }) : null,
-							_react2.default.createElement(_ContentWindow2.default, { handleReconnect: this.props.onReconnect, handleNotifyTyping: this.handleNotifyTyping, panelParams: this.props.panelParams, loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUser: this.props.onMessageGetUser, haveConversations: this.haveConversations })
+							_react2.default.createElement(_ContentWindow2.default, { handleNotifyTyping: this.handleNotifyTyping, panelParams: this.props.panelParams, loadMessages: this.props.onMessagesLoad, conversationSelected: this.state.conversation, conversationClosed: this.props.onConversationClosed, messageCreated: this.handleMessageCreated, expandWindow: this.expandWindow, expandAside: this.handleShowAside, isMobile: this.state.isMobile, isPartialized: this.classContent, showBanner: this.state.showBanner, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.onMessageDownloadData, getUser: this.props.onMessageGetUser, haveConversations: this.haveConversations })
 						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
 						this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: "Are you sure you want to Log Out?", userSessionLogout: this.handleUserSessionLogout }) : null
 					)
@@ -741,7 +741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
-				this.scrollToFirstChildWhenItsNecessary();
+				//this.scrollToFirstChildWhenItsNecessary();
 			}
 		}, {
 			key: 'componentDidMount',
@@ -788,13 +788,13 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 				return conversationarray;
 			}
-		}, {
-			key: 'scrollToFirstChildWhenItsNecessary',
-			value: function scrollToFirstChildWhenItsNecessary() {
-				if (this.domNode != null && this.domNode.children.length > 0 && this.isSelected(this.state.conversationArray[0].id)) {
-					this.domNode.firstChild.scrollIntoView();
-				}
-			}
+
+			/*scrollToFirstChildWhenItsNecessary() {
+	  if(this.scrollToLoad && !this.isLoading && this.domNode!=null && this.domNode.children.length > 0
+	  && this.isSelected(this.state.conversationArray[0].id)){
+	  this.domNode.firstChild.scrollIntoView();
+	  }
+	  }*/
 
 			// PopUp methods
 
@@ -842,9 +842,9 @@ return /******/ (function(modules) { // webpackBootstrap
 					} catch (exception) {
 						timestamp = conversationArray[conversationArray.length - 1].lastModified;
 					}
-					this.props.handleLoadMoreConversations(timestamp);
 					this.isLoading = true;
 					this.scrollToLoad = false;
+					this.props.handleLoadMoreConversations(timestamp);
 				}
 				if (!this.isLoading && !this.scrollToLoad) {
 					this.scrollToLoad = true;
@@ -36750,7 +36750,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				return _react2.default.createElement(
 					'section',
 					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner },
-					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { handleReconnect: this.props.handleReconnect, handleNotifyTyping: this.props.handleNotifyTyping, panelParams: this.props.panelParams, loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
+					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { handleNotifyTyping: this.props.handleNotifyTyping, panelParams: this.props.panelParams, loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
 					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, null) : null
 				);
 			}
@@ -36987,7 +36987,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								'Criptext'
 							)
 						),
-						_react2.default.createElement(Panel, { handleReconnect: this.props.handleReconnect, panelParams: this.props.panelParams })
+						_react2.default.createElement(Panel, { panelParams: this.props.panelParams })
 					),
 					this.state.showLocationInput ? _react2.default.createElement(LocationInput, { messageCreated: this.props.messageCreated, disableGeoInput: this.disableGeoInput.bind(this) }) : _react2.default.createElement(
 						'div',
