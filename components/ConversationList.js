@@ -34,7 +34,7 @@ class ConversationList extends Component {
 
 	    this.handleAskDeleteConversation = this.handleAskDeleteConversation.bind(this);
 	    this.setConversationSelected = this.setConversationSelected.bind(this);
-	    this.domNode;
+	    this.domNode = null;
 	    this.isLoading;
 	    this.scrollToLoad;
 	}
@@ -47,6 +47,7 @@ class ConversationList extends Component {
 		if(nextProps.isLoadingConversations != this.props.isLoadingConversations && this.props.isLoadingConversations && !nextProps.isLoadingConversations){
 			this.isLoading = false;
 		}
+		
 		this.setState({conversationArray: this.createArray(nextProps.conversations)});
 	}
 
@@ -76,7 +77,7 @@ class ConversationList extends Component {
 						</ul>
 		    		)
 	    		}
-    		{this.props.isLoadingConversations ? <Loading /> : null}
+    			{this.props.isLoadingConversations ? <Loading /> : null}
 			</div>
 		)
 	}
@@ -93,11 +94,14 @@ class ConversationList extends Component {
 
 	componentDidUpdate() {
 		//this.scrollToFirstChildWhenItsNecessary();
+		if(!this.domNode && !this.props.conversationsLoading){
+			this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
+			this.domNode.addEventListener('scroll', this.handleScroll);
+		}
 	}
 
 	componentDidMount() {
-		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
-		this.domNode.addEventListener('scroll', this.handleScroll);
+		
 	}
 
 	conversationIdSelected(conversationId) {
