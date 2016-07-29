@@ -92,7 +92,7 @@ class ConversationList extends Component {
 	}
 
 	componentDidUpdate() {
-		this.scrollToFirstChildWhenItsNecessary();
+		//this.scrollToFirstChildWhenItsNecessary();
 	}
 
 	componentDidMount() {
@@ -134,12 +134,12 @@ class ConversationList extends Component {
 		return conversationarray;
   	}
 
-  	scrollToFirstChildWhenItsNecessary() {
-		if(this.domNode!=null && this.domNode.children.length > 0
+  	/*scrollToFirstChildWhenItsNecessary() {
+		if(this.scrollToLoad && !this.isLoading && this.domNode!=null && this.domNode.children.length > 0
 			&& this.isSelected(this.state.conversationArray[0].id)){
 			this.domNode.firstChild.scrollIntoView();
 		}
-  	}
+  	}*/
 
   	// PopUp methods
 
@@ -174,10 +174,16 @@ class ConversationList extends Component {
 		console.log(this.domNode.scrollTop + this.domNode.scrollHeight);
 		if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight && this.scrollToLoad){
 			var conversationArray = this.state.conversationArray;
-			var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
-			this.props.handleLoadMoreConversations(lastMessage.datetimeCreation);
+			var timestamp;
+			try{
+				var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
+				timestamp = lastMessage.datetimeCreation
+			}catch(exception){
+				timestamp = conversationArray[conversationArray.length - 1].lastModified;
+			}
 			this.isLoading = true;
 			this.scrollToLoad = false;
+			this.props.handleLoadMoreConversations(timestamp);
 		}
 		if(!this.isLoading && !this.scrollToLoad){
 			this.scrollToLoad = true;
