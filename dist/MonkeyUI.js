@@ -832,7 +832,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'updateScrollTop',
 			value: function updateScrollTop() {
 				this.domNode = _reactDom2.default.findDOMNode(this.refs.conversationList);
-				console.log(this.domNode.scrollTop + this.domNode.scrollHeight);
 				if (this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight && this.scrollToLoad) {
 					var conversationArray = this.state.conversationArray;
 					var timestamp;
