@@ -5,7 +5,7 @@ import Input from './Input.js'
 
 import Modal from './Modal.js'
 import ContentViewer from './ContentViewer.js'
-import { defineTime } from '../utils/monkey-utils.js'
+import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
 const Modal_ = Modal(ContentViewer);
 
@@ -51,14 +51,14 @@ class ContentConversation extends Component {
 						<span id='mky-conversation-selected-name' className='mky-ellipsify'>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description === null
 							? ( !this.props.conversationSelected.online
-								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTime(this.props.conversationSelected.lastOpenApp)}</span>
+								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTimeByToday(this.props.conversationSelected.lastOpenApp)}</span>
 								: <span id='mky-conversation-selected-status'> Online </span>
 							)
 							: <span id='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
-					<Conectivity handleReconnect={this.props.handleReconnect} panelParams={this.props.panelParams} />
+					<Panel handleReconnect={this.props.handleReconnect} panelParams={this.props.panelParams} />
 
 				</header>
 				{ this.state.showLocationInput
@@ -113,14 +113,20 @@ ContentConversation.contextTypes = {
 	bubblePreviews: React.PropTypes.object.isRequired
 }
 
-const Conectivity = (props) => {
+const Panel = (props) => {
 
 	var params = props.panelParams;
 
 	if(props.panelParams && props.panelParams.show){
-		return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}><p>{params.message}</p></div>
+		return (<div className={params.className ? params.className : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
+			<p>{params.message}</p>
+			{params.component ? params.component : null}
+		</div>)
 	}else{
-		return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}><p>{params.message}</p></div>
+		return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
+			<p>{params.message}</p>
+			{params.component ? params.component : null}
+		</div>
 
 	}
 }

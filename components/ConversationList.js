@@ -174,8 +174,14 @@ class ConversationList extends Component {
 		console.log(this.domNode.scrollTop + this.domNode.scrollHeight);
 		if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight && this.scrollToLoad){
 			var conversationArray = this.state.conversationArray;
-			var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
-			this.props.handleLoadMoreConversations(lastMessage.datetimeCreation);
+			var timestamp;
+			try{
+				var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
+				timestamp = lastMessage.datetimeCreation
+			}catch(exception){
+				timestamp = conversationArray[conversationArray.length - 1].lastModified;
+			}
+			this.props.handleLoadMoreConversations(timestamp);
 			this.isLoading = true;
 			this.scrollToLoad = false;
 		}
