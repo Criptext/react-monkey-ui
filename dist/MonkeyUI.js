@@ -677,7 +677,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			_this.handleAskDeleteConversation = _this.handleAskDeleteConversation.bind(_this);
 			_this.setConversationSelected = _this.setConversationSelected.bind(_this);
-			_this.domNode;
+			_this.domNode = null;
 			_this.isLoading;
 			_this.scrollToLoad;
 			return _this;
@@ -694,6 +694,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (nextProps.isLoadingConversations != this.props.isLoadingConversations && this.props.isLoadingConversations && !nextProps.isLoadingConversations) {
 					this.isLoading = false;
 				}
+
 				this.setState({ conversationArray: this.createArray(nextProps.conversations) });
 			}
 		}, {
@@ -742,13 +743,14 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'componentDidUpdate',
 			value: function componentDidUpdate() {
 				//this.scrollToFirstChildWhenItsNecessary();
+				if (!this.domNode && !this.props.conversationsLoading) {
+					this.domNode = _reactDom2.default.findDOMNode(this.refs.conversationList);
+					this.domNode.addEventListener('scroll', this.handleScroll);
+				}
 			}
 		}, {
 			key: 'componentDidMount',
-			value: function componentDidMount() {
-				this.domNode = _reactDom2.default.findDOMNode(this.refs.conversationList);
-				this.domNode.addEventListener('scroll', this.handleScroll);
-			}
+			value: function componentDidMount() {}
 		}, {
 			key: 'conversationIdSelected',
 			value: function conversationIdSelected(conversationId) {
