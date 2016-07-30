@@ -237,16 +237,18 @@ class MonkeyUI extends Component {
 	}
 
 	handleNotifyTyping(isTyping){
-		this.props.onNotifyTyping(this.state.conversation.id, isTyping);
-		this.notifyTime = new Date();
-		setTimeout(() => { 
-			var conversationId = this.state.conversation.id;
-			var now = new Date();
-			var dif = now.getTime() - this.notifyTime.getTime();
-			if (dif > 999){
-	        	this.props.onNotifyTyping(this.state.conversation.id, false);
-        	}
-	    }, 1000);
+		if(this.props.onNotifyTyping){
+			this.props.onNotifyTyping(this.state.conversation.id, isTyping);
+			this.notifyTime = new Date();
+			setTimeout(() => { 
+				var conversationId = this.state.conversation.id;
+				var now = new Date();
+				var dif = now.getTime() - this.notifyTime.getTime();
+				if (dif > 999){
+		        	this.props.onNotifyTyping(this.state.conversation.id, false);
+	        	}
+		    }, 1000);
+	    }
 	}
 
 	handleLoginSession(user) {
