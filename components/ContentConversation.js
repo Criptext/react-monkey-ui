@@ -117,17 +117,20 @@ const Panel = (props) => {
 
 	var params = props.panelParams;
 
-	if(props.panelParams && props.panelParams.show){
-		return (<div className={params.className ? params.className : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
-			<p>{params.message}</p>
-			{params.component ? params.component : null}
-		</div>)
+	if(props.panelParams){
+		if(props.panelParams.show){
+			return (<div className={params.className ? params.className : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
+				<p>{params.message}</p>
+				{params.component ? params.component : null}
+			</div>)
+		}else{
+			return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
+				<p>{params.message}</p>
+				{params.component ? params.component : null}
+			</div>
+		}
 	}else{
-		return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
-			<p>{params.message}</p>
-			{params.component ? params.component : null}
-		</div>
-
+		return null;
 	}
 }
 

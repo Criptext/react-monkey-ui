@@ -366,16 +366,18 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function handleNotifyTyping(isTyping) {
 				var _this2 = this;
 
-				this.props.onNotifyTyping(this.state.conversation.id, isTyping);
-				this.notifyTime = new Date();
-				setTimeout(function () {
-					var conversationId = _this2.state.conversation.id;
-					var now = new Date();
-					var dif = now.getTime() - _this2.notifyTime.getTime();
-					if (dif > 999) {
-						_this2.props.onNotifyTyping(_this2.state.conversation.id, false);
-					}
-				}, 1000);
+				if (this.props.onNotifyTyping) {
+					this.props.onNotifyTyping(this.state.conversation.id, isTyping);
+					this.notifyTime = new Date();
+					setTimeout(function () {
+						var conversationId = _this2.state.conversation.id;
+						var now = new Date();
+						var dif = now.getTime() - _this2.notifyTime.getTime();
+						if (dif > 999) {
+							_this2.props.onNotifyTyping(_this2.state.conversation.id, false);
+						}
+					}, 1000);
+				}
 			}
 		}, {
 			key: 'handleLoginSession',
@@ -37052,28 +37054,32 @@ return /******/ (function(modules) { // webpackBootstrap
 
 		var params = props.panelParams;
 
-		if (props.panelParams && props.panelParams.show) {
-			return _react2.default.createElement(
-				'div',
-				{ className: params.className ? params.className : 'mky-panel-show mky-panel-height', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white" } },
-				_react2.default.createElement(
-					'p',
-					null,
-					params.message
-				),
-				params.component ? params.component : null
-			);
+		if (props.panelParams) {
+			if (props.panelParams.show) {
+				return _react2.default.createElement(
+					'div',
+					{ className: params.className ? params.className : 'mky-panel-show mky-panel-height', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white" } },
+					_react2.default.createElement(
+						'p',
+						null,
+						params.message
+					),
+					params.component ? params.component : null
+				);
+			} else {
+				return _react2.default.createElement(
+					'div',
+					{ className: params.className ? params.className : 'mky-panel-show mky-panel-height-hide', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white" } },
+					_react2.default.createElement(
+						'p',
+						null,
+						params.message
+					),
+					params.component ? params.component : null
+				);
+			}
 		} else {
-			return _react2.default.createElement(
-				'div',
-				{ className: params.className ? params.className : 'mky-panel-show mky-panel-height-hide', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white" } },
-				_react2.default.createElement(
-					'p',
-					null,
-					params.message
-				),
-				params.component ? params.component : null
-			);
+			return null;
 		}
 	};
 
