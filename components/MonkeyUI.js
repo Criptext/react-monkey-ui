@@ -348,6 +348,3 @@ if (typeof module !== 'undefined') {
 }
 */
 export default MonkeyUI;
-
-var ec = document.createElement('script');
-ec.src = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', ec.type = 'text/javascript', document.getElementsByTagName('head')[0].appendChild(ec)
