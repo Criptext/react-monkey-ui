@@ -3493,7 +3493,7 @@ input:focus{
 @media only screen and (max-width: 600px){
 
 /* Disappear description user session */
-  #mky-session-name{
+  .mky-no-expand #mky-session-name{
 	  display: none;
   }
 }

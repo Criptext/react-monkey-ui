@@ -64,7 +64,6 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
-
 	}
 
 	getChildContext() {
@@ -90,7 +89,8 @@ class MonkeyUI extends Component {
 
 		let screenMode;
 		let style = {};
-		//screen mode for webchat and privatechat
+		
+		// screen mode for webchat and privatechat
 		if(this.props.view.type === 'fullscreen') {
 			screenMode = 'fullsize';
 			if(this.props.showConversations === false){
