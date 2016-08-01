@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Badge from './Badge.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
 class ConversationItem extends Component {
@@ -70,11 +71,11 @@ class ConversationItem extends Component {
 			</li>
 		)
 	}
-	
+
 	handleErrorAvatar() {
 		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
-	
+
 	openConversation() {
 		this.props.conversationIdSelected(this.props.conversation.id);
 	}
@@ -88,13 +89,5 @@ class ConversationItem extends Component {
 	}
 }
 
-const Badge = (props , showNotification) => (
-	<div className='mky-conversation-notification'>
-	{ props.value > 0
-		? <div className='mky-notification-amount animated pulse'>{props.value}</div>
-		: null
-	}
-	</div>
-);
 
 export default ConversationItem;

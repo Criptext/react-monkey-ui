@@ -910,7 +910,6 @@ TABLE OF CONTENTS
 .mky-search-input > input {
     -webkit-appearance: none;
     width: 100%;
-    /*padding: 8px 10px 8px 40px;*/
     padding: 8px 4px 8px 40px;
     border-radius: 10px;
     border: 1px solid #EFF0F2;
@@ -925,7 +924,14 @@ TABLE OF CONTENTS
     -webkit-font-smoothing: antialiased;
     text-overflow: ellipsis;
 }
-
+.mky-search-input > input::-webkit-search-cancel-button{
+    position:relative;
+    right:10px;
+}
+.mky-search-input > input::-moz-search-cancel-button{
+    position:relative;
+    right:10px;
+}
 
 .mky-search-input > input:focus {
   outline: none;
@@ -1256,16 +1262,16 @@ TABLE OF CONTENTS
   position: absolute;
   right: 0px;
   bottom: -3px;
-  /*float: right;*/
   display: inline-block;
   vertical-align: top;
   z-index: 1;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'helvetica-normal';
 }
 .mnk-conversation-opts{
   position: absolute;
   right: 10px;
   bottom: 10px;
-  /*float: right;*/
 }
 
 .mky-notification-amount{
@@ -1278,6 +1284,13 @@ TABLE OF CONTENTS
   padding: 5px 6px 2px 5px;
   text-align: center;
 }
+.mky-notification-amount-1{
+  padding: 5px 5px 2px 6px;
+}
+.mky-notification-amount-2{
+  padding: 5px 6px 2px 6px;
+}
+
 
 .mky-bold-text{
     /*font-family: Verdana Pro W01 SemiBold;*/
@@ -1349,6 +1362,7 @@ TABLE OF CONTENTS
 #mky-conversation-selected-header div{
     display: inline;
     vertical-align: top;
+    font-size: 13px;
 }
 
 .mky-conversation-burger{
@@ -1469,7 +1483,7 @@ TABLE OF CONTENTS
 .mky-panel-show{
     position: absolute;
     top: 66px;
-    left: 0;  
+    left: 0;
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
@@ -1484,7 +1498,7 @@ TABLE OF CONTENTS
 }
 
 .mky-panel-height{
-    max-height: 100%;  
+    max-height: 100%;
 }
 
 .mky-panel-height-hide{
@@ -1698,15 +1712,18 @@ TABLE OF CONTENTS
 /* System Bubble Panel */
 
 .mky-system-panel{
-    height: 20px;
-    margin: 10px auto;
-    width: calc(100% - 40px);
-    text-align: center;
-    background: #eaf0f9;
-    padding: 8px 20px 5px 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  height: 20px;
+  margin: 10px auto;
+  width: calc(100% - 40px);
+  text-align: center;
+  background: none;
+  padding: 8px 20px 5px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #B0BEC5;
+  font-family: 'helvetica-normal';
 }
 
 /* base bubble */
@@ -1755,6 +1772,7 @@ TABLE OF CONTENTS
     min-width: 43px;
     background: #096EFF;
     border-bottom-right-radius: 1px;
+    margin-top: 11px;
 }
 
 .mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {
@@ -1766,13 +1784,13 @@ TABLE OF CONTENTS
   	min-width: 112px;
   	background: #fff;
   	border-bottom-left-radius: 1px;
-    border: 1px solid #f2f2f2;
+    border: 1px solid #fff;
     padding-bottom: 8px;
     margin-top: 13px;
-    box-shadow: 1px 1px 1px #f2f2f2;
-    -moz-box-shadow: 1px 1px 1px #f2f2f2;
-    -webkit-box-shadow: 1px 1px 1px #f2f2f2;
-    -o-box-shadow: 1px 1px 1px #f2f2f2;
+    box-shadow: 1px 1px 1px #a7a7a7;
+    -moz-box-shadow: 1px 1px 1px #a7a7a7;
+    -webkit-box-shadow: 1px 1px 1px #a7a7a7;
+    -o-box-shadow: 1px 1px 1px #a7a7a7;
 }
 
 .mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {
@@ -1893,6 +1911,7 @@ TABLE OF CONTENTS
     line-height: 12px;
     position: relative;
     top:-1px;
+    margin-right: 2px;
 }
 
 .mky-message-hour{
@@ -2164,9 +2183,12 @@ TABLE OF CONTENTS
 }
 
 .mky-content-image-data img{
-  height: auto;
+  height: 250px;
   width: auto;
   cursor: pointer;
+}
+.mky-content-image-data-staic img{
+  height: auto;
 }
 
 /*content file bubble */
@@ -3078,7 +3100,7 @@ TABLE OF CONTENTS
   bottom: 10px;
   padding: 11px 19px 8px 19px;
   margin-left: -15px;
-  background: #096EFF;
+  background: #1496E7;
   color: #fff;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 19px;

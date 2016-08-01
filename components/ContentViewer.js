@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+require('exif-js/exif.js');
 require('jquery-knob/dist/jquery.knob.min.js');
 var $ = require('jquery');
 
