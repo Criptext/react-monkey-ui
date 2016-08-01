@@ -41,7 +41,8 @@
     "react-search-input": "0.10.1",
     "react-toastr": "2.6.2",
     "style-loader": "0.13.1",
-    "webpack": "1.13.1"
+    "webpack": "1.13.1",
+    "exif-js": "2.1.1"
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.2.1"

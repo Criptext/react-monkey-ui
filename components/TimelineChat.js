@@ -70,12 +70,12 @@ class TimelineChat extends Component {
 	componentWillUpdate() {
 
 	}
-	
+
 /*
 	render() {
 		const bubbles = this.context.bubbles;
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
-			{ this.props.conversationSelected.loading ? <Loading /> : null } 
+			{ this.props.conversationSelected.loading ? <Loading /> : null }
 			{ Object.keys(this.props.conversationSelected).length
 				? this.orderedConversations.map( item => {
 					const message = this.props.conversationSelected.messages[item.key];
@@ -86,7 +86,7 @@ class TimelineChat extends Component {
 		</div>)
 	}
 */
-	
+
 	render() {
 
 		return( <div ref='timelineChat' id='mky-chat-timeline'>
@@ -96,7 +96,7 @@ class TimelineChat extends Component {
 				: null}
 		</div>)
 	}
-	
+
 	componentDidMount() {
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 		//this.domNode.lastChild.scrollIntoView();
