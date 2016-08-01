@@ -28,6 +28,7 @@ class TimelineChat extends Component {
 		this.updateScrollTop = this.updateScrollTop.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
 		this.showOrderedMessages = this.showOrderedMessages.bind(this);
+		this.sentMessage
 
 		this.state = {
 			update: 0
@@ -37,11 +38,13 @@ class TimelineChat extends Component {
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.conversationSelected.lastMessage) {
-			if(nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage] && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId === this.context.userSession.id){
+			if(Object.keys(nextProps.conversationSelected.messages).length != Object.keys(this.props.conversationSelected.messages).length && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage] && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId === this.context.userSession.id){
 				this.goBottom = true;
+				console.log('GO BOTTOM');
 			}
 		}
 		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
+			this.goBottom = true;
 			this.scrollTop = 0;
 			this.scrollHeight = 0;
 			this.loadingMessages = 0;
@@ -115,7 +118,7 @@ class TimelineChat extends Component {
 		}
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 
-		if(!this.loadingMessages && this.domNode.lastChild != null && !this.noNewMessage){
+		if(!this.loadingMessages && this.domNode.lastChild != null && !this.noNewMessage && this.goBottom){
  			this.domNode.lastChild.scrollIntoView();
  		}
  		this.updateScrollTop();
@@ -168,10 +171,16 @@ class TimelineChat extends Component {
 
 		if(!this.goBottom && this.domNode.scrollTop != 0){
 			this.scrollTop = this.domNode.scrollTop;
+			if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75){
+				this.goBottom = true;
+			}
 			return;
 		}
 
 		if (this.goBottom){
+			if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75){
+				return;
+			}
 			this.goBottom = false;
 // 			this.domNode.lastChild.scrollIntoView();
 		}else if(this.domNode.scrollTop === 0 && this.scrollTop != 0 ){
