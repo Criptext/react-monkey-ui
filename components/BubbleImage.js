@@ -36,7 +36,7 @@ class BubbleImage extends Component {
 				}
 				EXIF.getData(imageObject, function() {
 					let orientation = EXIF.getTag(this, "Orientation");
-          console.log('orientation: '+ orientation);
+          // console.log('orientation: '+ orientation);
 
         });
 			};
