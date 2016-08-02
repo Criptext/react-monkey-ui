@@ -1365,13 +1365,14 @@ TABLE OF CONTENTS
     font-size: 13px;
 }
 
-.mky-conversation-burger{
+.mky-conversation-back{
   float: left;
   margin: 21px -10px 0 12px;
   width: auto;
+  cursor: pointer;
 }
 
-.mky-conversation-burger i{
+.mky-conversation-back i{
 	color: #6e8191;
     font-size: 24px;
 }
@@ -1382,10 +1383,6 @@ TABLE OF CONTENTS
     margin: 13px;
     float: left;
     margin-left: 25px;
-}
-
-.mky-rightside #mky-conversation-selected-image{
-	margin-left: 8px;
 }
 
 /*
