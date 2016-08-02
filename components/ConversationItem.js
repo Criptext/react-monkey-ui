@@ -6,7 +6,7 @@ class ConversationItem extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			unreadMessages: false,
+			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
 			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.openConversation = this.openConversation.bind(this);
@@ -15,16 +15,16 @@ class ConversationItem extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.conversation.unreadMessageCounter > 0){
+		if(nextProps.conversation.unreadMessageCounter > 0 && !this.state.unreadMessages) {
 			this.setState({unreadMessages: true});
-		}else{
+		}else if(nextProps.conversation.unreadMessageCounter === 0 && this.state.unreadMessages) {
 			this.setState({unreadMessages: false});
 		}
 	}
 
 	render() {
 
-			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
+		let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
 			<li className={classContent}>
 				<div className='mky-full' onClick={this.openConversation}>
