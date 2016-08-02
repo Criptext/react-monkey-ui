@@ -91,7 +91,7 @@ class Input extends Component {
 
 	render() {
 		let styleInput = this.defineStyles();
-    	return ( <div id='mky-chat-input'>
+    	return ( <div id='mky-chat-input' className={this.props.connectionStatus==3 ? "" : "mky-disabled"} >
 					<div id='mky-chat-inner-input'>
 						<InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
 						<div className='mky-inner-chat-input'>

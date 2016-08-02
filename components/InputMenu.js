@@ -6,9 +6,9 @@ class InputMenu extends React.Component {
 	}
 
 	render() {
-		let animationClass = this.props.visible ? "fadeInUp" : "fadeOutDown";
+		let animationClass = this.props.visible ? "mky-menu-bubble-show" : "mky-menu-bubble-hide";
 		return (
-			<div id="mky-menu-bubble" className={"mky-menu-bubble animated "+animationClass} style={{opacity : this.props.visible ? "1" : "0.5"}} >
+			<div id="mky-menu-bubble" className={"mky-menu-bubble "+animationClass}>
 				{/*<div className="menu-bubble-item" onClick={this.props.enableGeoInput}><i id="mky-menu-location-icon" className="demo-icon mky-location">&#xe815;</i><p>Send Location</p></div>*/}
 				<div className="mky-menu-bubble-item" onClick={this.props.handleAttach}>
 					<div className="mky-bubble-circle-icon">

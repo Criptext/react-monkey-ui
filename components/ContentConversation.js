@@ -66,7 +66,7 @@ class ContentConversation extends Component {
 					: ( <div className='mky-chat-area'>
 							<TimelineChat loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageSelected={this.handleMessageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser}/>
 							{ modalComponent }
-							<Input handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
+							<Input connectionStatus={this.props.connectionStatus} handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
 						</div>
 					)
 				}
@@ -119,12 +119,12 @@ const Panel = (props) => {
 
 	if(props.panelParams){
 		if(props.panelParams.show){
-			return (<div className={params.className ? params.className : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
+			return (<div className={params.className ? params.classNameShow : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white", fontSize : params.fontSize ? params.fontSize : ""}}>
 				<p>{params.message}</p>
 				{params.component ? params.component : null}
 			</div>)
 		}else{
-			return <div className={params.className ? params.className : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white"}}>
+			return <div className={params.className ? params.classNameHide : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white", fontSize : params.fontSize ? params.fontSize : ""}}>
 				<p>{params.message}</p>
 				{params.component ? params.component : null}
 			</div>

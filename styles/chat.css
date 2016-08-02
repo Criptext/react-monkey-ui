@@ -1497,6 +1497,10 @@ TABLE OF CONTENTS
     transition: max-height 2s ease, background-color 0.5s ease;
 }
 
+.mky-panel-show p{
+    margin: 0.7em 0.5em 0.5em 0.5em;
+}
+
 .mky-panel-height{
     max-height: 100%;
 }
@@ -3002,9 +3006,24 @@ TABLE OF CONTENTS
   color: #8a8a8a;
   left: 0;
   top: initial;
-  opacity: 1;
   z-index: -1;
+  -webkit-transition: all 0.4s ease-in;
+  -moz-transition: all 0.4s ease-in;
+  -ms-transition: all 0.4s ease-in;
+  -o-transition: all 0.4s ease-in;
+}
 
+.mky-menu-bubble-show{
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.mky-menu-bubble-hide{
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  pointer-events: none;
 }
 
 .mky-menu-bubble.fadeInUp, .mky-menu-bubble.fadeOutDown{
