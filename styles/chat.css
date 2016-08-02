@@ -574,7 +574,8 @@ TABLE OF CONTENTS
    ----------------------------- */
 
 .mky-wrapper-out{
-  /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
+  background: white;
+  border: none;
   font-family: 'helvetica-light', Helvetica, sans-serif;
   width: 100%;
   height: 100%;
@@ -867,13 +868,13 @@ TABLE OF CONTENTS
 
 .mky-header-exit{
   float: right;
-  margin-top: 22px;
-  margin-right: 9px;
+  margin-top: 26px;
+  margin-right: 16px;
   cursor: pointer;
 }
 
 .mky-header-exit i{
-  color: #F35E58;
+  color: #6e8191;
   font-size: 14px;
 }
 
@@ -907,22 +908,23 @@ TABLE OF CONTENTS
   background: #fbfbfb;
 }
 
-.mky-search-input > input {
-    -webkit-appearance: none;
-    width: 100%;
-    padding: 8px 4px 8px 40px;
-    border-radius: 10px;
-    border: 1px solid #EFF0F2;
-    position: relative;
-    outline: 0;
-    text-align: left;
-    font-size: 12px;
-    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);
-    background-repeat: no-repeat;
-    background-position: 5%;
-    background-size: 16px 16px;
-    -webkit-font-smoothing: antialiased;
-    text-overflow: ellipsis;
+.mky-search-input > input, .mky-search-input > input:valid {
+  background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);
+  background-repeat: no-repeat;
+  background-position: 5%;
+  background-size: 16px 16px;
+  border-radius: 10px;
+  border: 1px solid #EFF0F2;
+  font-size: 12px;
+  line-height: normal;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 7px 4px 7px 40px;
+  position: relative;
+  outline: 0;
+  text-align: left;    
+  -webkit-font-smoothing: antialiased;
+  text-overflow: ellipsis;
 }
 .mky-search-input > input::-webkit-search-cancel-button{
     position:relative;
@@ -1141,6 +1143,8 @@ TABLE OF CONTENTS
 }
 
 .mky-delete-conv i{
+  background: none;
+  border: none;
   font-size: 10px;
   margin-left: 10px;
   color: #FC464E;
@@ -1149,10 +1153,10 @@ TABLE OF CONTENTS
 }
 
 .mky-header-exit .mky-icon-signout-sober{
-  color: #F35E58;
+  color: #6e8191;
   font-size: 28px;
-    position: relative;
-    top: -3px;
+  position: relative;
+  top: -3px;
 }
 
 .mky-status-read .mky-message-read{
@@ -1161,8 +1165,6 @@ TABLE OF CONTENTS
   right: 0px;
   position: absolute;
 }
-
-
 
 .mky-conversation-image{
   width: 48px;
@@ -1204,16 +1206,20 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-title span{
-	color: black;
+  color: black;
+  font-family: 'helvetica-light';
 }
 
 .mky-conversation-name{
   width: calc(100% - 70px);
   float: left;
-  font-size: 15px;
   text-align: left;
   white-space: nowrap;
   display: flex;
+}
+
+.mky-conversation-name span{
+  font-size: 15px;
 }
 
 .mky-conversation-time{
@@ -1224,10 +1230,11 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-time span{
-	font-size: 13px;
+  font-size: 13px;
   position: relative;
   top: 1px;
 }
+
 .mky-read-conversation-span{
 	font-size: 11px;
   color: #a5a5a5 !important;
@@ -1276,6 +1283,7 @@ TABLE OF CONTENTS
 
 .mky-notification-amount{
   min-width: 10px;
+  border: none;
   border-radius: 20px;
   background: #1982E8;
   color: #fff;
@@ -1516,30 +1524,29 @@ TABLE OF CONTENTS
 }
 
 #mky-chat-timeline {
-    width: 100%;
-    height: calc(100% - 74px);
-    background-color: #FAF8F5;
-    position: relative;
-    overflow: auto;
-    overflow-x: hidden;
+  width: 100%;
+  background-color: #FAF8F5;
+  height: calc(100% - 83px);
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-bottom: 12px;
 }
 
-
-
 .mky-partialsize #mky-chat-timeline {
-    height: calc(100% - 71px);
+  height: calc(100% - 83px);
 }
 
 #mky-chat-timeline.mky-chat-timeline-73{
-  height: calc(100% - 71px);
+  height: calc(100% - 83px);
 }
 
 #mky-chat-timeline.mky-chat-timeline-tall{
-  height: calc(100% - 91px) !important;
+  height: calc(100% - 103px) !important;
 }
 
 #mky-chat-timeline.mky-chat-timeline-medium{
-  height: calc(100% - 88px) !important;
+  height: calc(100% - 100px) !important;
 }
 
 .mky-chat-timeline-conversation{
@@ -2497,10 +2504,8 @@ TABLE OF CONTENTS
   width: 100%;
   box-sizing: content-box;
   border-top: 1px solid rgba(219,219,219,0.7);
-
   height: auto;
   margin: 0 auto;
-
   bottom: 0;
   text-align: center;
   line-height: 20px;
@@ -2656,9 +2661,9 @@ TABLE OF CONTENTS
 
 #mky-message-text-input{
   box-sizing: content-box;
-  width: calc(100% - 134px);
+  width: calc(100% - 114px);
   height: auto;
-  margin: 8px 10px 4px 10px;
+  margin: 8px 5px 4px 5px;
   padding: 8px 10px 6px 10px;
   resize: none;
   border: none;
@@ -2667,8 +2672,7 @@ TABLE OF CONTENTS
   position: relative;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   top: initial;
-  /*max-height: 20px;*/
-   max-height: 40px;
+  max-height: 40px;
   border-radius: none;
   border-left: 1px solid #ccc;
 }
