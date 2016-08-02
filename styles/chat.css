@@ -3002,9 +3002,24 @@ TABLE OF CONTENTS
   color: #8a8a8a;
   left: 0;
   top: initial;
-  opacity: 1;
   z-index: -1;
+  -webkit-transition: all 0.4s ease-in;
+  -moz-transition: all 0.4s ease-in;
+  -ms-transition: all 0.4s ease-in;
+  -o-transition: all 0.4s ease-in;
+}
 
+.mky-menu-bubble-show{
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.mky-menu-bubble-hide{
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  pointer-events: none;
 }
 
 .mky-menu-bubble.fadeInUp, .mky-menu-bubble.fadeOutDown{

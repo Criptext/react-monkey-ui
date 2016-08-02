@@ -167,23 +167,30 @@ class TimelineChat extends Component {
 	}
 
 	updateScrollTop(){
+
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 
-		if(!this.goBottom && this.domNode.scrollTop != 0){
+		console.log('UPDATE SCROLL');
+		console.log(this.goBottom);
+		console.log(this.domNode.scrollTop);
+
+		if(this.domNode.scrollTop != 0){
 			this.scrollTop = this.domNode.scrollTop;
 			if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75){
 				this.goBottom = true;
+			}else{
+				this.goBottom = false;
 			}
 			return;
 		}
 
 		if (this.goBottom){
-			if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75){
-				return;
+			if(!(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75)){
+				this.goBottom = false;
 			}
-			this.goBottom = false;
-// 			this.domNode.lastChild.scrollIntoView();
-		}else if(this.domNode.scrollTop === 0 && this.scrollTop != 0 ){
+		}
+
+		if(this.domNode.scrollTop === 0 && this.scrollTop != 0 ){
 			this.scrollHeight = this.domNode.scrollHeight;
 			if(!this.props.conversationSelected.loading){
 				this.getMoreMessages();
