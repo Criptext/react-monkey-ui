@@ -170,10 +170,6 @@ class TimelineChat extends Component {
 
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 
-		console.log('UPDATE SCROLL');
-		console.log(this.goBottom);
-		console.log(this.domNode.scrollTop);
-
 		if(this.domNode.scrollTop != 0){
 			this.scrollTop = this.domNode.scrollTop;
 			if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75){
