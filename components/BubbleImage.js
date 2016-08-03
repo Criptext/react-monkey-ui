@@ -22,38 +22,51 @@ class BubbleImage extends Component {
 	}
 
 	componentWillReceiveProps(nextProps){
-		// console.log('start cycle');
+
 		if (nextProps.message.data != null && this.state.imageHeightAuto.length==0) {
+
 			let imageObject = new Image();
 			var that = this;
+
 			imageObject.onload = function(){
 				if (imageObject.height < 250) {
-
-					that.setState({
-						imageHeightAuto : 'mky-content-image-data-staic'
-		    	});
-
+					that.setState({ imageHeightAuto : 'mky-content-image-data-staic'});
 				}
 				EXIF.getData(imageObject, function() {
 					let orientation = EXIF.getTag(this, "Orientation");
-          // console.log('orientation: '+ orientation);
+					if (orientation != undefined) {
+						// console.log('orientation: '+ orientation);
+						// console.log(EXIF.pretty(this));
+
+						switch (orientation) {
+							case 3:
+								that.setState({ imageOrientation : 'rotate180'});
+								break;
+							case 8:
+								that.setState({ imageOrientation : 'rotate270'});
+								break;
+							case 6:
+								that.setState({ imageOrientation : 'rotate90'});
+								break;
+							default:
+
+						}
+					}
 
         });
 			};
-			// console.log('read data');
+
 			imageObject.src = nextProps.message.data;
 
 		}
-
-
 	}
 
 	render() {
-		// console.log('render state: '+this.state.imageHeightAuto);
+
 		return (
 			<div className='mky-content-image'>
 				{ this.props.message.data
-					? ( <div className={'mky-content-image-data ' +this.state.imageHeightAuto}>
+					? ( <div className={'mky-content-image-data ' +this.state.imageHeightAuto + ' '+this.state.imageOrientation}>
 							<img src={this.props.message.data} onClick={this.openImage} ></img>
 						</div>
 					)
