@@ -61,7 +61,6 @@ class Input extends Component {
 		this.readData = this.readData.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
-		this.handletextareaResize = this.handletextareaResize.bind(this);
 		this.focusTextarea = this.focusTextarea.bind(this);
 		this.mediaRecorder;
         this.mediaStream;
@@ -104,7 +103,7 @@ class Input extends Component {
 								<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
 							</div>
 
-							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onResize={this.handletextareaResize} onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
+							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
 							<div id='mky-record-area' className={this.state.classAudioArea}>
 								<div className='mky-record-preview-area'>
 									<div id='mky-button-action-record'>
@@ -153,26 +152,6 @@ class Input extends Component {
 
 	componentDidUpdate() {
 		this.focusTextarea();
-	}
-	handletextareaResize(){
-		let minus = 0;
-		if ( $('.dw-content').length > 0 ) {
-				minus = 93;
-		} else {
-				minus = 15;
-		}
-
-		let footerHeight = $('#mky-chat-input').height();
-
-		$('#mky-chat-timeline').removeClass('mky-chat-timeline-tall');
-		$('#mky-chat-timeline').removeClass('mky-chat-timeline-medium');
-
-		if (footerHeight > 73 && footerHeight < 90 ) {
-			$('#mky-chat-timeline').addClass('mky-chat-timeline-medium');
-		}else if(footerHeight >= 90){
-			$('#mky-chat-timeline').addClass('mky-chat-timeline-tall');
-		}
-
 	}
 
 	focusTextarea(){

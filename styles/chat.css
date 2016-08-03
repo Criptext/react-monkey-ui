@@ -1553,36 +1553,53 @@ TABLE OF CONTENTS
   /* 3.3.- SECTION: Chat timeline
      ----------------------------- */
 .mky-chat-area{
-	width: 100%;
-	height: calc(100% - 65px);
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 65px);
+  position: relative;
   background: #eee;
+}
+
+.mky-chat-timeline-content{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 71px);
+  position: relative;
 }
 
 #mky-chat-timeline {
   width: 100%;
   background-color: #FAF8F5;
-  height: calc(100% - 83px);
+/*   height: calc(100% - 12px); */
   position: relative;
   overflow: auto;
   overflow-x: hidden;
   padding-bottom: 12px;
 }
 
+.mky-chat-timeline-control{
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+}
+
 .mky-partialsize #mky-chat-timeline {
-  height: calc(100% - 83px);
+/*   height: calc(100% - 12px); */
 }
 
 #mky-chat-timeline.mky-chat-timeline-73{
-  height: calc(100% - 83px);
+/*   height: calc(100% - 12px); */
 }
 
 #mky-chat-timeline.mky-chat-timeline-tall{
-  height: calc(100% - 103px) !important;
+/*   height: calc(100% - 103px) !important; */
 }
 
 #mky-chat-timeline.mky-chat-timeline-medium{
-  height: calc(100% - 100px) !important;
+/*   height: calc(100% - 100px) !important; */
 }
 
 .mky-chat-timeline-conversation{

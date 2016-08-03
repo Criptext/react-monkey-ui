@@ -40,7 +40,6 @@ class TimelineChat extends Component {
 		if(nextProps.conversationSelected.lastMessage) {
 			if(Object.keys(nextProps.conversationSelected.messages).length != Object.keys(this.props.conversationSelected.messages).length && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage] && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId === this.context.userSession.id){
 				this.goBottom = true;
-				console.log('GO BOTTOM');
 			}
 		}
 		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
@@ -92,12 +91,20 @@ class TimelineChat extends Component {
 
 	render() {
 
-		return( <div ref='timelineChat' id='mky-chat-timeline'>
-			{ this.props.conversationSelected.loading ? <Loading /> : null }
-			{ Object.keys(this.props.conversationSelected).length
-				? this.showOrderedMessages()
-				: null}
-		</div>)
+		return(
+			<div className='mky-chat-timeline-content'>
+				<div ref='timelineChat' id='mky-chat-timeline'>
+					{ this.props.conversationSelected.loading ? <Loading /> : null }
+					{ Object.keys(this.props.conversationSelected).length
+						? this.showOrderedMessages()
+						: null
+					}
+				</div>
+				<div className='mky-chat-timeline-control'>
+					<i className='icon mky-icon-arrow-down-regular'></i>
+				</div>
+			</div>
+		)
 	}
 
 	componentDidMount() {
