@@ -239,7 +239,8 @@ const SystemBubble = (props) => {
 
 	return (
 		<div className="mky-system-panel">
-			{props.message}
+			<div className="mky-devider-dots"> </div>
+			<div className="mky-system-panel-date">{props.message}</div>
 		</div>
 	)
 }
