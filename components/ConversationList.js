@@ -3,7 +3,7 @@ import ConversationItem from './ConversationItem.js';
 import SearchInput, {createFilter} from 'react-search-input';
 import ReactDOM from 'react-dom';
 import DeleteConversation from './DeleteConversation.js'
-
+import AsidePanel from './AsidePanel.js'
 import { isConversationGroup } from './../utils/monkey-utils.js'
 
 const KEYS_TO_FILTERS = ['name']
@@ -52,12 +52,24 @@ class ConversationList extends Component {
 	}
 
 	render() {
+		var params = {};
+		if (this.props.panelParams){
+			params = this.props.panelParams;
+		}
+
 		const conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
     	return (
     		<div className='mky-session-conversations'>
     			{ this.state.isDeleting
 	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation} handleExitGroup={this.handleExitGroup} handleClosePopup={this.handleClosePopup} isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null }
+
+    			{ (this.props.conversationSelected == null) ?
+    				<AsidePanel panelParams={this.props.asidePanelParams} />
+					:
+					null
+    			}
+    			
 	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
 	    		{ this.props.conversationsLoading
 		    		? ( <div>

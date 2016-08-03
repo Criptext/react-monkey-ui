@@ -4,6 +4,7 @@ import Input from './Input.js'
 // import LocationInput from './LocationInput.js'
 
 import Modal from './Modal.js'
+import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
@@ -111,27 +112,6 @@ class ContentConversation extends Component {
 
 ContentConversation.contextTypes = {
 	bubblePreviews: React.PropTypes.object.isRequired
-}
-
-const Panel = (props) => {
-
-	var params = props.panelParams;
-
-	if(props.panelParams){
-		if(props.panelParams.show){
-			return (<div className={params.className ? params.classNameShow : 'mky-panel-show mky-panel-height'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white", fontSize : params.fontSize ? params.fontSize : ""}}>
-				<p>{params.message}</p>
-				{params.component ? params.component : null}
-			</div>)
-		}else{
-			return <div className={params.className ? params.classNameHide : 'mky-panel-show mky-panel-height-hide'} style={{backgroundColor : params.backgroundColor ? params.backgroundColor : "#636363", color : params.color ? params.color : "white", fontSize : params.fontSize ? params.fontSize : ""}}>
-				<p>{params.message}</p>
-				{params.component ? params.component : null}
-			</div>
-		}
-	}else{
-		return null;
-	}
 }
 
 export default ContentConversation;
