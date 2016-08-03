@@ -922,17 +922,15 @@ TABLE OF CONTENTS
   padding: 7px 4px 7px 40px;
   position: relative;
   outline: 0;
-  text-align: left;    
+  text-align: left;
   -webkit-font-smoothing: antialiased;
   text-overflow: ellipsis;
 }
+
 .mky-search-input > input::-webkit-search-cancel-button{
-    position:relative;
-    right:10px;
-}
-.mky-search-input > input::-moz-search-cancel-button{
-    position:relative;
-    right:10px;
+  position: absolute;
+  right: 10px;
+  top: 31%;
 }
 
 .mky-search-input > input:focus {
@@ -1722,6 +1720,7 @@ TABLE OF CONTENTS
 .mky-system-panel{
   height: 20px;
   margin: 10px auto;
+  position: relative;
   width: calc(100% - 40px);
   text-align: center;
   background: none;
@@ -1729,9 +1728,22 @@ TABLE OF CONTENTS
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  font-size: 12px;
+  font-size: 13px;
   color: #B0BEC5;
   font-family: 'helvetica-normal';
+}
+.mky-devider-dots{
+  border-top: 1px dotted #ccc;
+  position: relative;
+  top: 8px;
+  width: 85%;
+  margin: 0 auto;
+}
+.mky-system-panel-date{
+  position: relative;
+  width: 130px;
+  margin: 0 auto;
+  background: #FAF8F5;
 }
 
 /* base bubble */
@@ -2194,10 +2206,47 @@ TABLE OF CONTENTS
   height: 250px;
   width: auto;
   cursor: pointer;
+
+  transform-origin: top left;
+  /* IE 10+, Firefox, etc. */
+  -webkit-transform-origin: top left;
+  /* Chrome */
+  -ms-transform-origin: top left;
+  /* IE 9 */
 }
 .mky-content-image-data-staic img{
   height: auto;
 }
+
+
+
+
+/*Classes to rotate buble */
+
+.mky-content-image-data.rotate90,
+.mky-content-image-data.rotate270 {
+  height: auto;
+  width: 250px;
+}
+
+.mky-content-image-data.rotate90 img {
+  transform: rotate(90deg) translateY(-100%);
+  -webkit-transform: rotate(90deg) translateY(-100%);
+  -ms-transform: rotate(90deg) translateY(-100%);
+}
+.mky-content-image-data.rotate180 img {
+  transform: rotate(180deg) translate(-100%, -100%);
+  -webkit-transform: rotate(180deg) translate(-100%, -100%);
+  -ms-transform: rotate(180deg) translateX(-100%, -100%);
+}
+.mky-content-image-data.rotate270 img {
+  transform: rotate(270deg) translateX(-100%);
+  -webkit-transform: rotate(270deg) translateX(-100%);
+  -ms-transform: rotate(270deg) translateX(-100%);
+}
+
+
+
 
 /*content file bubble */
 
@@ -3355,6 +3404,23 @@ aside.aside-divided{
   top: 50%;
   transform: translateY(-50%);
 }
+
+.mky-viewer-image.rotate90 img {
+  transform: rotate(90deg) translateY(-100%);
+  -webkit-transform: rotate(90deg) translateY(-100%);
+  -ms-transform: rotate(90deg) translateY(-100%);
+}
+.mky-viewer-image.rotate180 img {
+  transform: rotate(180deg) translate(0%,50%);
+  -webkit-transform: rotate(180deg) translate(0%,50%);
+  -ms-transform: rotate(180deg) translate(0%,50%);
+}
+.mky-viewer-image.rotate270 img {
+  transform: rotate(270deg) translateX(-100%);
+  -webkit-transform: rotate(270deg) translateX(-100%);
+  -ms-transform: rotate(270deg) translateX(-100%);
+}
+
 
 /* 5.- POP UP
    ----------------------------- */
