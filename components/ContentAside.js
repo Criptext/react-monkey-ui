@@ -6,7 +6,7 @@ class ContentAside extends Component {
 		super(props, context);
 		this.logout = this.logout.bind(this);
 		this.closeSide = this.closeSide.bind(this);
-		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : '';
+		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
 		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 	}
 
