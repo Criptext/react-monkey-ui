@@ -56853,10 +56853,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			if (props.panelParams.show) {
 				return _react2.default.createElement(
 					'div',
-					{ className: params.className ? params.classNameShow : 'mky-panel-show mky-panel-height', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white", fontSize: params.fontSize ? params.fontSize : "" } },
+					{ className: params.className ? params.classNameShow : 'mky-panel-show mky-panel-height', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white" } },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-connection-content' },
+						{ className: 'mky-connection-content', style: { fontSize: params.fontSize ? params.fontSize : "" } },
 						params.message,
 						params.component ? params.component : null
 					)
@@ -56864,10 +56864,10 @@ return /******/ (function(modules) { // webpackBootstrap
 			} else {
 				return _react2.default.createElement(
 					'div',
-					{ className: params.className ? params.classNameHide : 'mky-panel-show mky-panel-height-hide', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white", fontSize: params.fontSize ? params.fontSize : "" } },
+					{ className: params.className ? params.classNameHide : 'mky-panel-show mky-panel-height-hide', style: { backgroundColor: params.backgroundColor ? params.backgroundColor : "#636363", color: params.color ? params.color : "white" } },
 					_react2.default.createElement(
 						'div',
-						{ className: 'mky-connection-content' },
+						{ className: 'mky-connection-content', style: { fontSize: params.fontSize ? params.fontSize : "" } },
 						params.message,
 						params.component ? params.component : null
 					)
