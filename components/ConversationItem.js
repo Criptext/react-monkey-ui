@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import Badge from './Badge.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
 class ConversationItem extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			unreadMessages: false,
+			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
 			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.openConversation = this.openConversation.bind(this);
@@ -14,16 +15,16 @@ class ConversationItem extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.conversation.unreadMessageCounter > 0){
+		if(nextProps.conversation.unreadMessageCounter > 0 && !this.state.unreadMessages) {
 			this.setState({unreadMessages: true});
-		}else{
+		}else if(nextProps.conversation.unreadMessageCounter === 0 && this.state.unreadMessages) {
 			this.setState({unreadMessages: false});
 		}
 	}
 
 	render() {
 
-			let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
+		let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
     	return (
 			<li className={classContent}>
 				<div className='mky-full' onClick={this.openConversation}>
@@ -70,11 +71,11 @@ class ConversationItem extends Component {
 			</li>
 		)
 	}
-	
+
 	handleErrorAvatar() {
 		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
-	
+
 	openConversation() {
 		this.props.conversationIdSelected(this.props.conversation.id);
 	}
@@ -88,13 +89,5 @@ class ConversationItem extends Component {
 	}
 }
 
-const Badge = (props , showNotification) => (
-	<div className='mky-conversation-notification'>
-	{ props.value > 0
-		? <div className='mky-notification-amount animated pulse'>{props.value}</div>
-		: null
-	}
-	</div>
-);
 
 export default ConversationItem;

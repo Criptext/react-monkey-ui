@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
 const isFirefox = typeof InstallTrigger !== 'undefined';
+var EXIF = require('exif-js/exif.js');
 
 class BubbleImage extends Component {
 	constructor(props) {
@@ -9,6 +9,10 @@ class BubbleImage extends Component {
 		this.openImage = this.openImage.bind(this);
 		this.downloadData = this.downloadData.bind(this);
 		this.defineImageDataStyle = this.defineImageDataStyle.bind(this);
+		this.state = {
+			imageHeightAuto : '',
+			imageOrientation : ''
+		}
 	}
 
 	componentWillMount() {
@@ -17,13 +21,53 @@ class BubbleImage extends Component {
         }
 	}
 
+	componentWillReceiveProps(nextProps){
+
+		if (nextProps.message.data != null && this.state.imageHeightAuto.length==0) {
+
+			let imageObject = new Image();
+			var that = this;
+
+			imageObject.onload = function(){
+				if (imageObject.height < 250) {
+					that.setState({ imageHeightAuto : 'mky-content-image-data-staic'});
+				}
+				EXIF.getData(imageObject, function() {
+					let orientation = EXIF.getTag(this, "Orientation");
+					if (orientation != undefined) {
+						// console.log('orientation: '+ orientation);
+						// console.log(EXIF.pretty(this));
+
+						switch (orientation) {
+							case 3:
+								that.setState({ imageOrientation : 'rotate180'});
+								break;
+							case 8:
+								that.setState({ imageOrientation : 'rotate270'});
+								break;
+							case 6:
+								that.setState({ imageOrientation : 'rotate90'});
+								break;
+							default:
+
+						}
+					}
+
+        });
+			};
+
+			imageObject.src = nextProps.message.data;
+
+		}
+	}
+
 	render() {
 
 		return (
 			<div className='mky-content-image'>
 				{ this.props.message.data
-					? ( <div className='mky-content-image-data '>
-							<img style={this.defineImageDataStyle()} src={this.props.message.data} onClick={this.openImage} ></img>
+					? ( <div className={'mky-content-image-data ' +this.state.imageHeightAuto + ' '+this.state.imageOrientation}>
+							<img src={this.props.message.data} onClick={this.openImage} ></img>
 						</div>
 					)
 					: ( this.props.message.isDownloading
@@ -38,7 +82,7 @@ class BubbleImage extends Component {
 			</div>
 		)
 	}
-	
+
 	defineImageDataStyle() {
 		let style = {};
 		if(isFirefox){
@@ -48,7 +92,7 @@ class BubbleImage extends Component {
 		}
 		return style;
 	}
-	
+
 	openImage() {
 		this.props.messageSelected(this.props.message);
 	}

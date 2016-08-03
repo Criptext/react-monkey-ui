@@ -64,7 +64,6 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
-
 	}
 
 	getChildContext() {
@@ -90,7 +89,8 @@ class MonkeyUI extends Component {
 
 		let screenMode;
 		let style = {};
-		//screen mode for webchat and privatechat
+		
+		// screen mode for webchat and privatechat
 		if(this.props.view.type === 'fullscreen') {
 			screenMode = 'fullsize';
 			if(this.props.showConversations === false){
@@ -178,7 +178,7 @@ class MonkeyUI extends Component {
 									? <ContentAside isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.onLoadMoreConversations} handleConversationDelete={this.props.onConversationDelete} togglePopup={this.togglePopup} handleConversationExit={this.props.onConversationExit} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide} conversationsLoading={this.props.conversationsLoading}/>
 									: null
 								}
-								<ContentWindow handleNotifyTyping={this.handleNotifyTyping} panelParams={this.props.panelParams} loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUser={this.props.onMessageGetUser} haveConversations={this.haveConversations}/>
+								<ContentWindow connectionStatus={this.props.connectionStatus} handleNotifyTyping={this.handleNotifyTyping} panelParams={this.props.panelParams} loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUser={this.props.onMessageGetUser} haveConversations={this.haveConversations}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -348,6 +348,3 @@ if (typeof module !== 'undefined') {
 }
 */
 export default MonkeyUI;
-
-var ec = document.createElement('script');
-ec.src = 'https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js', ec.type = 'text/javascript', document.getElementsByTagName('head')[0].appendChild(ec)
