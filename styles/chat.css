@@ -2673,8 +2673,11 @@ TABLE OF CONTENTS
   font-family: Verdana, Arial, Helvetica, sans-serif;
   top: initial;
   max-height: 40px;
-  border-radius: none;
+  border-radius: 0;
   border-left: 1px solid #ccc;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-border-radius: 0;
 }
 
 .mky-chat-input-file #mky-message-text-input{
