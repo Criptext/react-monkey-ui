@@ -574,7 +574,8 @@ TABLE OF CONTENTS
    ----------------------------- */
 
 .mky-wrapper-out{
-  /*font-family: Verdana, Arial, Helvetica, sans-serif;*/
+  background: white;
+  border: none;
   font-family: 'helvetica-light', Helvetica, sans-serif;
   width: 100%;
   height: 100%;
@@ -867,13 +868,13 @@ TABLE OF CONTENTS
 
 .mky-header-exit{
   float: right;
-  margin-top: 22px;
-  margin-right: 9px;
+  margin-top: 26px;
+  margin-right: 16px;
   cursor: pointer;
 }
 
 .mky-header-exit i{
-  color: #F35E58;
+  color: #6e8191;
   font-size: 14px;
 }
 
@@ -907,25 +908,32 @@ TABLE OF CONTENTS
   background: #fbfbfb;
 }
 
-.mky-search-input > input {
-    -webkit-appearance: none;
-    width: 100%;
-    /*padding: 8px 10px 8px 40px;*/
-    padding: 8px 4px 8px 40px;
-    border-radius: 10px;
-    border: 1px solid #EFF0F2;
-    position: relative;
-    outline: 0;
-    text-align: left;
-    font-size: 12px;
-    background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);
-    background-repeat: no-repeat;
-    background-position: 5%;
-    background-size: 16px 16px;
-    -webkit-font-smoothing: antialiased;
-    text-overflow: ellipsis;
+.mky-search-input > input, .mky-search-input > input:valid {
+  background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);
+  background-repeat: no-repeat;
+  background-position: 5%;
+  background-size: 16px 16px;
+  border-radius: 10px;
+  border: 1px solid #EFF0F2;
+  font-size: 12px;
+  line-height: normal;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 7px 4px 7px 40px;
+  position: relative;
+  outline: 0;
+  text-align: left;    
+  -webkit-font-smoothing: antialiased;
+  text-overflow: ellipsis;
 }
-
+.mky-search-input > input::-webkit-search-cancel-button{
+    position:relative;
+    right:10px;
+}
+.mky-search-input > input::-moz-search-cancel-button{
+    position:relative;
+    right:10px;
+}
 
 .mky-search-input > input:focus {
   outline: none;
@@ -1135,6 +1143,8 @@ TABLE OF CONTENTS
 }
 
 .mky-delete-conv i{
+  background: none;
+  border: none;
   font-size: 10px;
   margin-left: 10px;
   color: #FC464E;
@@ -1143,10 +1153,10 @@ TABLE OF CONTENTS
 }
 
 .mky-header-exit .mky-icon-signout-sober{
-  color: #F35E58;
+  color: #6e8191;
   font-size: 28px;
-    position: relative;
-    top: -3px;
+  position: relative;
+  top: -3px;
 }
 
 .mky-status-read .mky-message-read{
@@ -1155,8 +1165,6 @@ TABLE OF CONTENTS
   right: 0px;
   position: absolute;
 }
-
-
 
 .mky-conversation-image{
   width: 48px;
@@ -1198,16 +1206,20 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-title span{
-	color: black;
+  color: black;
+  font-family: 'helvetica-light';
 }
 
 .mky-conversation-name{
   width: calc(100% - 70px);
   float: left;
-  font-size: 15px;
   text-align: left;
   white-space: nowrap;
   display: flex;
+}
+
+.mky-conversation-name span{
+  font-size: 15px;
 }
 
 .mky-conversation-time{
@@ -1218,10 +1230,11 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-time span{
-	font-size: 13px;
+  font-size: 13px;
   position: relative;
   top: 1px;
 }
+
 .mky-read-conversation-span{
 	font-size: 11px;
   color: #a5a5a5 !important;
@@ -1256,20 +1269,21 @@ TABLE OF CONTENTS
   position: absolute;
   right: 0px;
   bottom: -3px;
-  /*float: right;*/
   display: inline-block;
   vertical-align: top;
   z-index: 1;
+  -webkit-font-smoothing: antialiased;
+  font-family: 'helvetica-normal';
 }
 .mnk-conversation-opts{
   position: absolute;
   right: 10px;
   bottom: 10px;
-  /*float: right;*/
 }
 
 .mky-notification-amount{
   min-width: 10px;
+  border: none;
   border-radius: 20px;
   background: #1982E8;
   color: #fff;
@@ -1278,6 +1292,13 @@ TABLE OF CONTENTS
   padding: 5px 6px 2px 5px;
   text-align: center;
 }
+.mky-notification-amount-1{
+  padding: 5px 5px 2px 6px;
+}
+.mky-notification-amount-2{
+  padding: 5px 6px 2px 6px;
+}
+
 
 .mky-bold-text{
     /*font-family: Verdana Pro W01 SemiBold;*/
@@ -1349,15 +1370,17 @@ TABLE OF CONTENTS
 #mky-conversation-selected-header div{
     display: inline;
     vertical-align: top;
+    font-size: 13px;
 }
 
-.mky-conversation-burger{
+.mky-conversation-back{
   float: left;
   margin: 21px -10px 0 12px;
   width: auto;
+  cursor: pointer;
 }
 
-.mky-conversation-burger i{
+.mky-conversation-back i{
 	color: #6e8191;
     font-size: 24px;
 }
@@ -1368,10 +1391,6 @@ TABLE OF CONTENTS
     margin: 13px;
     float: left;
     margin-left: 25px;
-}
-
-.mky-rightside #mky-conversation-selected-image{
-	margin-left: 8px;
 }
 
 /*
@@ -1469,7 +1488,7 @@ TABLE OF CONTENTS
 .mky-panel-show{
     position: absolute;
     top: 66px;
-    left: 0;  
+    left: 0;
     text-overflow: ellipsis;
     overflow: hidden;
     text-align: center;
@@ -1483,8 +1502,12 @@ TABLE OF CONTENTS
     transition: max-height 2s ease, background-color 0.5s ease;
 }
 
+.mky-panel-show p{
+    margin: 0.7em 0.5em 0.5em 0.5em;
+}
+
 .mky-panel-height{
-    max-height: 100%;  
+    max-height: 100%;
 }
 
 .mky-panel-height-hide{
@@ -1501,30 +1524,29 @@ TABLE OF CONTENTS
 }
 
 #mky-chat-timeline {
-    width: 100%;
-    height: calc(100% - 74px);
-    background-color: #FAF8F5;
-    position: relative;
-    overflow: auto;
-    overflow-x: hidden;
+  width: 100%;
+  background-color: #FAF8F5;
+  height: calc(100% - 83px);
+  position: relative;
+  overflow: auto;
+  overflow-x: hidden;
+  padding-bottom: 12px;
 }
 
-
-
 .mky-partialsize #mky-chat-timeline {
-    height: calc(100% - 71px);
+  height: calc(100% - 83px);
 }
 
 #mky-chat-timeline.mky-chat-timeline-73{
-  height: calc(100% - 71px);
+  height: calc(100% - 83px);
 }
 
 #mky-chat-timeline.mky-chat-timeline-tall{
-  height: calc(100% - 91px) !important;
+  height: calc(100% - 103px) !important;
 }
 
 #mky-chat-timeline.mky-chat-timeline-medium{
-  height: calc(100% - 88px) !important;
+  height: calc(100% - 100px) !important;
 }
 
 .mky-chat-timeline-conversation{
@@ -1698,15 +1720,18 @@ TABLE OF CONTENTS
 /* System Bubble Panel */
 
 .mky-system-panel{
-    height: 20px;
-    margin: 10px auto;
-    width: calc(100% - 40px);
-    text-align: center;
-    background: #eaf0f9;
-    padding: 8px 20px 5px 20px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+  height: 20px;
+  margin: 10px auto;
+  width: calc(100% - 40px);
+  text-align: center;
+  background: none;
+  padding: 8px 20px 5px 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+  color: #B0BEC5;
+  font-family: 'helvetica-normal';
 }
 
 /* base bubble */
@@ -1755,6 +1780,7 @@ TABLE OF CONTENTS
     min-width: 43px;
     background: #096EFF;
     border-bottom-right-radius: 1px;
+    margin-top: 11px;
 }
 
 .mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {
@@ -1766,13 +1792,13 @@ TABLE OF CONTENTS
   	min-width: 112px;
   	background: #fff;
   	border-bottom-left-radius: 1px;
-    border: 1px solid #f2f2f2;
+    border: 1px solid #fff;
     padding-bottom: 8px;
     margin-top: 13px;
-    box-shadow: 1px 1px 1px #f2f2f2;
-    -moz-box-shadow: 1px 1px 1px #f2f2f2;
-    -webkit-box-shadow: 1px 1px 1px #f2f2f2;
-    -o-box-shadow: 1px 1px 1px #f2f2f2;
+    box-shadow: 1px 1px 1px #a7a7a7;
+    -moz-box-shadow: 1px 1px 1px #a7a7a7;
+    -webkit-box-shadow: 1px 1px 1px #a7a7a7;
+    -o-box-shadow: 1px 1px 1px #a7a7a7;
 }
 
 .mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {
@@ -1893,6 +1919,7 @@ TABLE OF CONTENTS
     line-height: 12px;
     position: relative;
     top:-1px;
+    margin-right: 2px;
 }
 
 .mky-message-hour{
@@ -2164,9 +2191,12 @@ TABLE OF CONTENTS
 }
 
 .mky-content-image-data img{
-  height: auto;
+  height: 250px;
   width: auto;
   cursor: pointer;
+}
+.mky-content-image-data-staic img{
+  height: auto;
 }
 
 /*content file bubble */
@@ -2474,10 +2504,8 @@ TABLE OF CONTENTS
   width: 100%;
   box-sizing: content-box;
   border-top: 1px solid rgba(219,219,219,0.7);
-
   height: auto;
   margin: 0 auto;
-
   bottom: 0;
   text-align: center;
   line-height: 20px;
@@ -2633,9 +2661,9 @@ TABLE OF CONTENTS
 
 #mky-message-text-input{
   box-sizing: content-box;
-  width: calc(100% - 134px);
+  width: calc(100% - 114px);
   height: auto;
-  margin: 8px 10px 4px 10px;
+  margin: 8px 5px 4px 5px;
   padding: 8px 10px 6px 10px;
   resize: none;
   border: none;
@@ -2644,10 +2672,12 @@ TABLE OF CONTENTS
   position: relative;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   top: initial;
-  /*max-height: 20px;*/
-   max-height: 40px;
-  border-radius: none;
+  max-height: 40px;
+  border-radius: 0;
   border-left: 1px solid #ccc;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  -webkit-border-radius: 0;
 }
 
 .mky-chat-input-file #mky-message-text-input{
@@ -2980,9 +3010,24 @@ TABLE OF CONTENTS
   color: #8a8a8a;
   left: 0;
   top: initial;
-  opacity: 1;
   z-index: -1;
+  -webkit-transition: all 0.4s ease-in;
+  -moz-transition: all 0.4s ease-in;
+  -ms-transition: all 0.4s ease-in;
+  -o-transition: all 0.4s ease-in;
+}
 
+.mky-menu-bubble-show{
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+}
+
+.mky-menu-bubble-hide{
+  opacity: 0;
+  -webkit-transform: translate3d(0, 100%, 0);
+  transform: translate3d(0, 100%, 0);
+  pointer-events: none;
 }
 
 .mky-menu-bubble.fadeInUp, .mky-menu-bubble.fadeOutDown{
@@ -3078,7 +3123,7 @@ TABLE OF CONTENTS
   bottom: 10px;
   padding: 11px 19px 8px 19px;
   margin-left: -15px;
-  background: #096EFF;
+  background: #1496E7;
   color: #fff;
   border-top-right-radius: 18px;
   border-bottom-right-radius: 19px;
@@ -3452,7 +3497,7 @@ input:focus{
 @media only screen and (max-width: 600px){
 
 /* Disappear description user session */
-  #mky-session-name{
+  .mky-no-expand #mky-session-name{
 	  display: none;
   }
 }

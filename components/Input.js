@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Dropzone from 'react-dropzone'
 import InputMenu from './InputMenu.js'
+import ReactDOM from 'react-dom'
 import { getExtention } from '../utils/monkey-utils.js'
 import styles from '../styles/animate.min.css' // from ReactToastr
 import Textarea from 'react-autosize-textarea'
@@ -61,6 +62,7 @@ class Input extends Component {
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
 		this.handletextareaResize = this.handletextareaResize.bind(this);
+		this.focusTextarea = this.focusTextarea.bind(this);
 		this.mediaRecorder;
         this.mediaStream;
 		this.micActivated = false;
@@ -89,7 +91,7 @@ class Input extends Component {
 
 	render() {
 		let styleInput = this.defineStyles();
-    	return ( <div id='mky-chat-input'>
+    	return ( <div id='mky-chat-input' className={this.props.connectionStatus==3 ? "" : "mky-disabled"} >
 					<div id='mky-chat-inner-input'>
 						<InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
 						<div className='mky-inner-chat-input'>
@@ -146,10 +148,11 @@ class Input extends Component {
 
 	componentDidMount() {
 		this.ffmpegWorker = this.getFFMPEGWorker();
+		this.focusTextarea();
 	}
 
 	componentDidUpdate() {
-
+		this.focusTextarea();
 	}
 	handletextareaResize(){
 		let minus = 0;
@@ -169,21 +172,12 @@ class Input extends Component {
 		}else if(footerHeight >= 90){
 			$('#mky-chat-timeline').addClass('mky-chat-timeline-tall');
 		}
-		// switch (footerHeight) {
-		// 	case 96:
-		// 			$('#mky-chat-timeline').addClass('mky-chat-timeline-medium');
-		// 		break;
-		// 	case 90:
-		// 			$('#mky-chat-timeline').addClass('mky-chat-timeline-tall');
-		// 		break;
-		// 	default:
-		// }
 
-		// let container = $('.mky-chat-area').height() - minus;
-		// console.log(minus);
-		// console.log(container);
-		// console.log(footerHeight);
-		// $('#mky-chat-timeline').attr('style','height: '+(container - footerHeight)+'px !important');
+	}
+
+	focusTextarea(){
+		this.domNode = ReactDOM.findDOMNode(this.refs.textareaInput);
+		this.domNode.focus();
 	}
 
 	defineStyles() {
