@@ -44,6 +44,24 @@ export const defineTimeByToday = (time) => {
 	return result;
 }
 
+export const defineTimeByDay = (time) => {
+    let result;
+    const oneDay = 86400000;
+    
+    let diffTime = moment().startOf('day').diff(moment(time).startOf('day'));
+    if(diffTime <= 0) {
+        result = moment(time).format('hh:mm A');
+    }else if(diffTime <= oneDay) {
+        result = 'yesterday';
+    }else if(diffTime <= oneDay*6) {
+        result = moment(time).format('dddd');
+    }else{
+        result = moment(time).format('DD/MM/YYYY');
+    }
+    
+    return result;
+}
+
 export const getExtention = (filename) => {
     let arr = filename.split('.');
     let extension = arr[arr.length-1];

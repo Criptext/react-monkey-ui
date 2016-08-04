@@ -57,7 +57,6 @@ class BubbleImage extends Component {
 			};
 
 			imageObject.src = nextProps.message.data;
-			console.log('LOADED ' + this.state.loaded);
 			this.setState({
 				loaded : true
 			})
@@ -65,7 +64,6 @@ class BubbleImage extends Component {
 	}
 
 	render() {
-
 		return (
 			<div className='mky-content-image'>
 				{ this.props.message.data
