@@ -26,12 +26,15 @@ class TimelineChat extends Component {
 		this.firstLoad = true;
 		this.handleScroll = this.handleScroll.bind(this);
 		this.updateScrollTop = this.updateScrollTop.bind(this);
+		this.handleControlPosition = this.handleControlPosition.bind(this);
+		this.updateShowControl = this.updateShowControl.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
 		this.showOrderedMessages = this.showOrderedMessages.bind(this);
 		this.sentMessage
 
 		this.state = {
-			update: 0
+			update: 0,
+			classControl: 'mky-disappear'
 		}
 		this.domNode;
 	}
@@ -100,7 +103,7 @@ class TimelineChat extends Component {
 						: null
 					}
 				</div>
-				<div className='mky-chat-timeline-control'>
+				<div className={'mky-chat-timeline-control '+this.state.classControl} onClick={this.handleControlPosition}>
 					<i className='icon mky-icon-arrow-down-regular'></i>
 				</div>
 			</div>
@@ -137,7 +140,7 @@ class TimelineChat extends Component {
  		}
 	}
 
-	showOrderedMessages(){
+	showOrderedMessages() {
 		var messagesArray = [];
 		var timeFrom = null;
 		this.orderedConversations.forEach( item => {
@@ -173,7 +176,7 @@ class TimelineChat extends Component {
 		return messagesArray;
 	}
 
-	updateScrollTop(){
+	updateScrollTop() {
 
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 
@@ -202,11 +205,26 @@ class TimelineChat extends Component {
 		this.scrollTop = this.domNode.scrollTop;
 	}
 
-
 	handleScroll(event) {
 		this.updateScrollTop();
+		this.updateShowControl();
 	}
-
+	
+	updateShowControl() {
+		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
+		
+		if( (this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) && this.state.classControl === ''){
+			this.setState({classControl: 'mky-disappear'});
+		}else if( !(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) && this.state.classControl !== '') {
+			this.setState({classControl: ''});
+		}
+	}
+	
+	handleControlPosition() {
+		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
+		this.domNode.lastChild.scrollIntoView();
+	}
+	
 	sortObject(obj) {
     	var arr = [];
 	    var prop;
