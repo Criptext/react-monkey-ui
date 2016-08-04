@@ -1571,6 +1571,9 @@ TABLE OF CONTENTS
 }
 
 #mky-chat-timeline {
+  display: flex;
+  flex-direction: column;
+  flex: 1px;
   width: 100%;
   position: relative;
   overflow: auto;
