@@ -11,7 +11,8 @@ class BubbleImage extends Component {
 		this.defineImageDataStyle = this.defineImageDataStyle.bind(this);
 		this.state = {
 			imageHeightAuto : '',
-			imageOrientation : ''
+			imageOrientation : '',
+			loaded : false,
 		}
 	}
 
@@ -23,7 +24,7 @@ class BubbleImage extends Component {
 
 	componentWillReceiveProps(nextProps){
 
-		if (nextProps.message.data != null && this.state.imageHeightAuto.length==0) {
+		if (nextProps.message.data != null && this.state.imageHeightAuto.length==0 && !this.state.loaded) {
 
 			let imageObject = new Image();
 			var that = this;
@@ -37,7 +38,6 @@ class BubbleImage extends Component {
 					if (orientation != undefined) {
 						// console.log('orientation: '+ orientation);
 						// console.log(EXIF.pretty(this));
-
 						switch (orientation) {
 							case 3:
 								that.setState({ imageOrientation : 'rotate180'});
@@ -53,11 +53,14 @@ class BubbleImage extends Component {
 						}
 					}
 
-        });
+        		});
 			};
 
 			imageObject.src = nextProps.message.data;
-
+			console.log('LOADED ' + this.state.loaded);
+			this.setState({
+				loaded : true
+			})
 		}
 	}
 
