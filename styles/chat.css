@@ -849,7 +849,7 @@ TABLE OF CONTENTS
 #mky-session-image{
   width: 40px;
   height: 40px;
-  margin: 10px 10px 0 20px;
+  margin: 12px 10px 0 20px;
   display: inline-table;
   vertical-align: top;
   float: left;
@@ -871,7 +871,7 @@ TABLE OF CONTENTS
 
 .mky-header-exit{
   float: right;
-  margin-top: 26px;
+  margin-top: 25px;
   margin-right: 16px;
   cursor: pointer;
 }
@@ -882,7 +882,7 @@ TABLE OF CONTENTS
 }
 
 #mky-session-name{
-  margin-top: 25px;
+  margin-top: 26px;
   float: left;
   display: flex;
   white-space: nowrap;
@@ -1039,7 +1039,6 @@ TABLE OF CONTENTS
 
 #mky-conversation-list {
   width: 100%;
-  /* height: 100%; */
   margin: 0;
   padding: 0;
   list-style: none;
@@ -1161,10 +1160,10 @@ TABLE OF CONTENTS
 }
 
 .mky-header-exit .mky-icon-signout-sober{
-  color: #6e8191;
+  color: #F35E58;
   font-size: 28px;
   position: relative;
-  top: -3px;
+  top: -5px;
 }
 
 .mky-status-read .mky-message-read{
@@ -1553,36 +1552,53 @@ TABLE OF CONTENTS
   /* 3.3.- SECTION: Chat timeline
      ----------------------------- */
 .mky-chat-area{
-	width: 100%;
-	height: calc(100% - 65px);
-	position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 65px);
+  position: relative;
   background: #eee;
+}
+
+.mky-chat-timeline-content{
+  background-color: #FAF8F5;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  width: 100%;
+  height: calc(100% - 71px);
+  position: relative;
 }
 
 #mky-chat-timeline {
   width: 100%;
-  background-color: #FAF8F5;
-  height: calc(100% - 83px);
   position: relative;
   overflow: auto;
   overflow-x: hidden;
   padding-bottom: 12px;
 }
 
+.mky-chat-timeline-control{
+  cursor: pointer;
+  bottom: 10px;
+  position: absolute;
+  right: 10px;
+}
+
 .mky-partialsize #mky-chat-timeline {
-  height: calc(100% - 83px);
+/*   height: calc(100% - 12px); */
 }
 
 #mky-chat-timeline.mky-chat-timeline-73{
-  height: calc(100% - 83px);
+/*   height: calc(100% - 12px); */
 }
 
 #mky-chat-timeline.mky-chat-timeline-tall{
-  height: calc(100% - 103px) !important;
+/*   height: calc(100% - 103px) !important; */
 }
 
 #mky-chat-timeline.mky-chat-timeline-medium{
-  height: calc(100% - 100px) !important;
+/*   height: calc(100% - 100px) !important; */
 }
 
 .mky-chat-timeline-conversation{

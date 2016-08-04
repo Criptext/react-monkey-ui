@@ -26,12 +26,15 @@ class TimelineChat extends Component {
 		this.firstLoad = true;
 		this.handleScroll = this.handleScroll.bind(this);
 		this.updateScrollTop = this.updateScrollTop.bind(this);
+		this.handleControlPosition = this.handleControlPosition.bind(this);
+		this.updateShowControl = this.updateShowControl.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
 		this.showOrderedMessages = this.showOrderedMessages.bind(this);
 		this.sentMessage
 
 		this.state = {
-			update: 0
+			update: 0,
+			classControl: 'mky-disappear'
 		}
 		this.domNode;
 	}
@@ -40,7 +43,6 @@ class TimelineChat extends Component {
 		if(nextProps.conversationSelected.lastMessage) {
 			if(Object.keys(nextProps.conversationSelected.messages).length != Object.keys(this.props.conversationSelected.messages).length && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage] && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId === this.context.userSession.id){
 				this.goBottom = true;
-				console.log('GO BOTTOM');
 			}
 		}
 		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
@@ -92,12 +94,20 @@ class TimelineChat extends Component {
 
 	render() {
 
-		return( <div ref='timelineChat' id='mky-chat-timeline'>
-			{ this.props.conversationSelected.loading ? <Loading /> : null }
-			{ Object.keys(this.props.conversationSelected).length
-				? this.showOrderedMessages()
-				: null}
-		</div>)
+		return(
+			<div className='mky-chat-timeline-content'>
+				<div ref='timelineChat' id='mky-chat-timeline'>
+					{ this.props.conversationSelected.loading ? <Loading /> : null }
+					{ Object.keys(this.props.conversationSelected).length
+						? this.showOrderedMessages()
+						: null
+					}
+				</div>
+				<div className={'mky-chat-timeline-control '+this.state.classControl} onClick={this.handleControlPosition}>
+					<i className='icon mky-icon-arrow-down-regular'></i>
+				</div>
+			</div>
+		)
 	}
 
 	componentDidMount() {
@@ -130,7 +140,7 @@ class TimelineChat extends Component {
  		}
 	}
 
-	showOrderedMessages(){
+	showOrderedMessages() {
 		var messagesArray = [];
 		var timeFrom = null;
 		this.orderedConversations.forEach( item => {
@@ -166,7 +176,7 @@ class TimelineChat extends Component {
 		return messagesArray;
 	}
 
-	updateScrollTop(){
+	updateScrollTop() {
 
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 
@@ -195,11 +205,26 @@ class TimelineChat extends Component {
 		this.scrollTop = this.domNode.scrollTop;
 	}
 
-
 	handleScroll(event) {
 		this.updateScrollTop();
+		this.updateShowControl();
 	}
-
+	
+	updateShowControl() {
+		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
+		
+		if( (this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) && this.state.classControl === ''){
+			this.setState({classControl: 'mky-disappear'});
+		}else if( !(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) && this.state.classControl !== '') {
+			this.setState({classControl: ''});
+		}
+	}
+	
+	handleControlPosition() {
+		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
+		this.domNode.lastChild.scrollIntoView();
+	}
+	
 	sortObject(obj) {
     	var arr = [];
 	    var prop;
