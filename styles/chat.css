@@ -1046,10 +1046,6 @@ TABLE OF CONTENTS
   overflow: auto;
   background: #fff;
   position: relative;
-  /* display: table-row; */
-  /* position: relative; */
-  display: flex;
-  /* overflow: scroll; */
   flex: 1;
   flex-direction: column;
   -webkit-box-flex: 1;
