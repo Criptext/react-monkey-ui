@@ -6,7 +6,7 @@ import Input from './Input.js'
 import Modal from './Modal.js'
 import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
-import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
+import { defineTime, defineTimeByToday, defineTimeByDay } from '../utils/monkey-utils.js'
 
 const Modal_ = Modal(ContentViewer);
 
@@ -52,7 +52,7 @@ class ContentConversation extends Component {
 						<span id='mky-conversation-selected-name' className='mky-ellipsify'>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description === null
 							? ( !this.props.conversationSelected.online
-								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTimeByToday(this.props.conversationSelected.lastOpenApp)}</span>
+								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTimeByDay(this.props.conversationSelected.lastOpenApp)}</span>
 								: <span id='mky-conversation-selected-status'> Online </span>
 							)
 							: <span id='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>

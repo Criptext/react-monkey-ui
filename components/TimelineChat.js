@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom';
-import { defineTimeByToday, isConversationGroup } from '../utils/monkey-utils.js'
+import { defineTimeByToday, isConversationGroup, defineTimeByDay } from '../utils/monkey-utils.js'
 
 import Bubble from './Bubble.js';
 import BubbleText from './BubbleText.js';
@@ -146,7 +146,7 @@ class TimelineChat extends Component {
 		this.orderedConversations.forEach( item => {
 
 			const message = this.props.conversationSelected.messages[item.key];
-			let messageTime = defineTimeByToday(message.datetimeOrder);
+			let messageTime = defineTimeByDay(message.datetimeOrder);
 			if(messageTime.indexOf("AM") > -1 || messageTime.indexOf("PM") > -1){
 				messageTime = "Today"
 			}

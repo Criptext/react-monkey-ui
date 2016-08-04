@@ -1136,7 +1136,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 	    value: true
 	});
-	exports.getExtention = exports.defineTimeByToday = exports.defineTime = exports.isConversationGroup = undefined;
+	exports.getExtention = exports.defineTimeByDay = exports.defineTimeByToday = exports.defineTime = exports.isConversationGroup = undefined;
 
 	var _moment = __webpack_require__(7);
 
@@ -1180,6 +1180,24 @@ return /******/ (function(modules) { // webpackBootstrap
 	    } else if (diffTime < oneDay * 2) {
 	        result = 'yesterday';
 	    } else if (diffTime < oneDay * 7) {
+	        result = (0, _moment2.default)(time).format('dddd');
+	    } else {
+	        result = (0, _moment2.default)(time).format('DD/MM/YYYY');
+	    }
+
+	    return result;
+	};
+
+	var defineTimeByDay = exports.defineTimeByDay = function defineTimeByDay(time) {
+	    var result = void 0;
+	    var oneDay = 86400000;
+
+	    var diffTime = (0, _moment2.default)().startOf('day').diff((0, _moment2.default)(time).startOf('day'));
+	    if (diffTime <= 0) {
+	        result = (0, _moment2.default)(time).format('hh:mm A');
+	    } else if (diffTime <= oneDay) {
+	        result = 'yesterday';
+	    } else if (diffTime <= oneDay * 6) {
 	        result = (0, _moment2.default)(time).format('dddd');
 	    } else {
 	        result = (0, _moment2.default)(time).format('DD/MM/YYYY');
@@ -37092,7 +37110,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								'span',
 								{ id: 'mky-conversation-selected-status' },
 								' ',
-								'Last seen ' + (0, _monkeyUtils.defineTimeByToday)(this.props.conversationSelected.lastOpenApp)
+								'Last seen ' + (0, _monkeyUtils.defineTimeByDay)(this.props.conversationSelected.lastOpenApp)
 							) : _react2.default.createElement(
 								'span',
 								{ id: 'mky-conversation-selected-status' },
@@ -37378,7 +37396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.orderedConversations.forEach(function (item) {
 
 					var message = _this2.props.conversationSelected.messages[item.key];
-					var messageTime = (0, _monkeyUtils.defineTimeByToday)(message.datetimeOrder);
+					var messageTime = (0, _monkeyUtils.defineTimeByDay)(message.datetimeOrder);
 					if (messageTime.indexOf("AM") > -1 || messageTime.indexOf("PM") > -1) {
 						messageTime = "Today";
 					}
@@ -40248,18 +40266,19 @@ return /******/ (function(modules) { // webpackBootstrap
 							if (imageObject.height < 250) {
 								that.setState({ imageHeightAuto: 'mky-content-image-data-staic' });
 							}
-							console.log('TURURU TUTURU POKEMON JOHTO!');
 							EXIF.getData(imageObject, function () {
-								console.log('ORIENTATING');
 								var orientation = EXIF.getTag(this, "Orientation");
 								if (orientation != undefined) {
 									// console.log('orientation: '+ orientation);
 									// console.log(EXIF.pretty(this));
+<<<<<<< HEAD
 <<<<<<< 4331ae5548ecdadae44e81a300614e5e39946bea
 									console.log('ORIENTACION ' + orientation);
 =======
 
 >>>>>>> Add control button in timeline chat to go bottom position
+=======
+>>>>>>> timestamp change
 									switch (orientation) {
 										case 3:
 											that.setState({ imageOrientation: 'rotate180' });
@@ -40278,7 +40297,6 @@ return /******/ (function(modules) { // webpackBootstrap
 						};
 
 						imageObject.src = nextProps.message.data;
-						console.log('LOADED ' + _this2.state.loaded);
 						_this2.setState({
 							loaded: true
 						});
@@ -40288,7 +40306,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'render',
 			value: function render() {
-
 				return _react2.default.createElement(
 					'div',
 					{ className: 'mky-content-image' },
