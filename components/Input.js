@@ -26,6 +26,7 @@ class Input extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
+			buttonToShow: 1,
 			classSendButton: 'mky-disappear',
 			classAudioButton: '',
 			classAudioArea: 'mky-disappear',
@@ -49,7 +50,7 @@ class Input extends Component {
 		this.setTime = this.setTime.bind(this);
 		this.clearAudioRecordTimer = this.clearAudioRecordTimer.bind(this);
 		this.handleAttach = this.handleAttach.bind(this);
-        this.handleAttachFile = this.handleAttachFile.bind(this);
+		this.handleAttachFile = this.handleAttachFile.bind(this);
 		this.onDrop = this.onDrop.bind(this);
 		this.catchUpFile = this.catchUpFile.bind(this);
 		this.generateDataFile = this.generateDataFile.bind(this);
@@ -57,13 +58,13 @@ class Input extends Component {
 		this.buildAudio = this.buildAudio.bind(this);
 		this.buildMP3 = this.buildMP3.bind(this);
 		this.getFFMPEGWorker = this.getFFMPEGWorker.bind(this);
-        this.handleMenuVisibility = this.handleMenuVisibility.bind(this);
+		this.handleMenuVisibility = this.handleMenuVisibility.bind(this);
 		this.readData = this.readData.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.handleOnChangeTextArea = this.handleOnChangeTextArea.bind(this);
 		this.focusTextarea = this.focusTextarea.bind(this);
 		this.mediaRecorder;
-        this.mediaStream;
+		this.mediaStream;
 		this.micActivated = false;
 		this.mediaConstraints = {
 		    audio: true
@@ -71,7 +72,7 @@ class Input extends Component {
 		this.secondsRecording = 0;
 		this.refreshIntervalId;
 		this.typeMessageToSend = 0;
-		this.audioCaptured= {};
+		this.audioCaptured = {};
 		this.audioMessageOldId;
 		this.ffmpegRunning = false;
 		this.ffmpegWorker;
@@ -90,58 +91,62 @@ class Input extends Component {
 
 	render() {
 		let styleInput = this.defineStyles();
-    	return ( <div id='mky-chat-input' className={(this.props.connectionStatus == null || this.props.connectionStatus == 3) ? "" : "mky-disabled"} >
-					<div id='mky-chat-inner-input'>
-						<InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
-						<div className='mky-inner-chat-input'>
-							<div id='mky-divider-chat-input'></div>
-							<div className={'mky-button-input '+this.state.classAttachButton}>
-								<i id='mky-button-add' className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
-							</div>
+    	return ( 
+    		<div id='mky-chat-input' className={(this.props.connectionStatus == null || this.props.connectionStatus == 3) ? '' : 'mky-disabled'} >
+				<div id='mky-chat-inner-input'>
+					<InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
+					<div className='mky-inner-chat-input'>
+						<div id='mky-divider-chat-input'></div>
+						<div className={'mky-button-input '+this.state.classAttachButton}>
+							<i id='mky-button-add' className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+						</div>
+						<div className={'mky-button-input '+this.state.classCancelAudioButton}>
+							<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
+						</div>
 
-							<div className={'mky-button-input '+this.state.classCancelAudioButton}>
-								<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
-							</div>
-
-							<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
-							<div id='mky-record-area' className={this.state.classAudioArea}>
-								<div className='mky-record-preview-area'>
-									<div id='mky-button-action-record'>
-										<span id='mky-button-start-record' className='mky-blink'></span>
-									</div>
-									<div id='mky-time-recorder'>
-										<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
-									</div>
+						<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
+						<div id='mky-record-area' className={this.state.classAudioArea}>
+							<div className='mky-record-preview-area'>
+								<div id='mky-button-action-record'>
+									<span id='mky-button-start-record' className='mky-blink'></span>
+								</div>
+								<div id='mky-time-recorder'>
+									<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
 								</div>
 							</div>
-    				<div className={'mky-button-input '+this.state.classSendButton}>
-    					<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
-    				</div>
-    				<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
-    				{ this.state.creatingAudio
-    					? (
-      						<div className='mky-spinner-input-audio'>
-      							<div className='mky-rect1'></div>
-      							<div className='mky-rect2'></div>
-      							<div className='mky-rect3'></div>
-      							<div className='mky-rect4'></div>
-      						</div>
-      					)
-      					: <i id='mky-button-record-audio' className='mky-button-icon icon mky-icon-mic-sober' style={styleInput.inputRightButton} onClick={this.handleRecordAudio}></i>
-
-
-      				}
-      				</div>
-      				<Dropzone ref='dropzone' className='mky-disappear' onDrop={this.onDrop} accept="image/*" >
-              	<div>Try dropping some files here, or click to select files to upload.</div>
-              </Dropzone>
-              <Dropzone ref='dropzoneFile' className='mky-disappear' onDrop={this.onDrop} accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.zip,.tar" >
-                  <div>Try dropping some files here, or click to select files to upload.</div>
-              </Dropzone>
-              <ToastContainer ref='container' toastMessageFactory={ToastMessageFactory} className='toast-bottom-center' />
-      			</div>
-          </div>
-        </div>
+						</div>
+						
+						
+						
+						
+						
+						
+						<div className={'mky-button-input '+this.state.classSendButton}>
+    						<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
+						</div>
+						<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
+						{ this.state.creatingAudio
+    						? (
+	    						<div className='mky-spinner-input-audio'>
+	    							<div className='mky-rect1'></div>
+	    							<div className='mky-rect2'></div>
+	    							<div className='mky-rect3'></div>
+	    							<div className='mky-rect4'></div>
+	    						</div>
+	    					)
+							: <i id='mky-button-record-audio' className='mky-button-icon icon mky-icon-mic-sober' style={styleInput.inputRightButton} onClick={this.handleRecordAudio}></i>
+    					}
+						</div>
+						<Dropzone ref='dropzone' className='mky-disappear' onDrop={this.onDrop} accept="image/*" >
+							<div>Try dropping some files here, or click to select files to upload.</div>
+						</Dropzone>
+						<Dropzone ref='dropzoneFile' className='mky-disappear' onDrop={this.onDrop} accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.csv,.zip,.tar" >
+							<div>Try dropping some files here, or click to select files to upload.</div>
+						</Dropzone>
+						<ToastContainer ref='container' toastMessageFactory={ToastMessageFactory} className='toast-bottom-center' />
+					</div>
+				</div>
+			</div>
 		);
 	}
 
@@ -156,7 +161,7 @@ class Input extends Component {
 
 	focusTextarea(){
         if(this.props.connectionStatus == null || this.props.connectionStatus == 3){
-            this.domNode = ReactDOM.findDOMNode(this.refs.textareaInput);
+			this.domNode = ReactDOM.findDOMNode(this.refs.textareaInput);
             this.domNode.focus();
         }
 	}
@@ -350,7 +355,7 @@ class Input extends Component {
 
         this.ffmpegRunning = true;
         var fileNameExt = fileName.substr(fileName.lastIndexOf('.') + 1);
-        var outFileName = fileName.substr(0, fileName.lastIndexOf('.')) + "." + "mp3";
+        var outFileName = fileName.substr(0, fileName.lastIndexOf('.')) + '.' + 'mp3';
         var _arguments = [];
         _arguments.push("-i");
         _arguments.push(fileName);

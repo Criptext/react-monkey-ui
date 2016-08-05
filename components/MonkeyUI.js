@@ -129,18 +129,19 @@ class MonkeyUI extends Component {
 	    }
 	}
 
-	shouldComponentUpdate(nextProps, nextState) {
-		if(nextState.conversation && this.state.conversation && this.state.conversation.id != nextState.conversation.id){
-			this.props.onConversationOpened(nextState.conversation);
-		}else if(!this.state.conversation && nextState.conversation){
-			this.props.onConversationOpened(nextState.conversation);
-		}
-		return true;
-	}
-
 	componentWillReceiveProps(nextProps) {
 		this.setState({conversation: nextProps.conversation});
 		this.setState({conversations: nextProps.conversations});
+		
+		if (this.props.conversation && nextProps.conversation){
+			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
+				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+			}
+		}else if(!this.props.conversation && nextProps.conversation) {
+			if (this.state.isMobile) {
+				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+			}
+		}
 	}
 
 	render() {
@@ -175,10 +176,40 @@ class MonkeyUI extends Component {
 					{ this.props.userSession
 						? ( <div id='mky-content-app' className=''>
 								{ this.state.showConversations & this.haveConversations
-									? <ContentAside asidePanelParams={this.props.asidePanelParams} connectionStatus={this.props.connectionStatus} isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.onLoadMoreConversations} handleConversationDelete={this.props.onConversationDelete} togglePopup={this.togglePopup} handleConversationExit={this.props.onConversationExit} userSessionLogout={this.props.onUserSessionLogout} conversations={this.state.conversations} handleConversationSelected={this.handleConversationSelected} conversationSelected={this.state.conversation} showBanner={this.state.showBanner} show={this.showListConversation} isMobile={this.state.isMobile} closeSide={this.openSide} conversationsLoading={this.props.conversationsLoading}/>
+									? <ContentAside asidePanelParams={this.props.asidePanelParams}
+										connectionStatus={this.props.connectionStatus}
+										isLoadingConversations={this.props.isLoadingConversations}
+										handleLoadMoreConversations={this.props.onLoadMoreConversations}
+										handleConversationDelete={this.props.onConversationDelete}
+										togglePopup={this.togglePopup}
+										handleConversationExit={this.props.onConversationExit}
+										userSessionLogout={this.props.onUserSessionLogout}
+										conversations={this.state.conversations}
+										handleConversationSelected={this.handleConversationSelected}
+										conversationSelected={this.props.conversation}
+										showBanner={this.state.showBanner}
+										show={this.showListConversation}
+										isMobile={this.state.isMobile}
+										closeSide={this.openSide}
+										conversationsLoading={this.props.conversationsLoading}/>
 									: null
 								}
-								<ContentWindow connectionStatus={this.props.connectionStatus} handleNotifyTyping={this.handleNotifyTyping} panelParams={this.props.panelParams} loadMessages={this.props.onMessagesLoad} conversationSelected={this.state.conversation} conversationClosed={this.props.onConversationClosed} messageCreated={this.handleMessageCreated} expandWindow={this.expandWindow} expandAside={this.handleShowAside} isMobile={this.state.isMobile} isPartialized={this.classContent} showBanner={this.state.showBanner} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.onMessageDownloadData} getUser={this.props.onMessageGetUser} haveConversations={this.haveConversations}/>
+								<ContentWindow connectionStatus={this.props.connectionStatus}
+									handleNotifyTyping={this.handleNotifyTyping}
+									panelParams={this.props.panelParams}
+									loadMessages={this.props.onMessagesLoad}
+									conversationSelected={this.props.conversation}
+									conversationClosed={this.props.onConversationClosed}
+									messageCreated={this.handleMessageCreated}
+									expandWindow={this.expandWindow}
+									expandAside={this.handleShowAside}
+									isMobile={this.state.isMobile}
+									isPartialized={this.classContent}
+									showBanner={this.state.showBanner}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.onMessageDownloadData}
+									getUser={this.props.onMessageGetUser}
+									haveConversations={this.haveConversations}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -238,14 +269,14 @@ class MonkeyUI extends Component {
 
 	handleNotifyTyping(isTyping){
 		if(this.props.onNotifyTyping){
-			this.props.onNotifyTyping(this.state.conversation.id, isTyping);
+			this.props.onNotifyTyping(this.props.conversation.id, isTyping);
 			this.notifyTime = new Date();
 			setTimeout(() => { 
-				var conversationId = this.state.conversation.id;
+				var conversationId = this.props.conversation.id;
 				var now = new Date();
 				var dif = now.getTime() - this.notifyTime.getTime();
 				if (dif > 999){
-		        	this.props.onNotifyTyping(this.state.conversation.id, false);
+		        	this.props.onNotifyTyping(this.props.conversation.id, false);
 	        	}
 		    }, 1000);
 	    }
@@ -264,10 +295,10 @@ class MonkeyUI extends Component {
 	}
 
 	handleConversationSelected(conversation) {
-		this.setState({conversation: conversation});
-
-		if (this.state.isMobile) {
-			this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+		if(!this.props.conversation) {
+			this.props.onConversationOpened(conversation);
+		}else if(this.props.conversation.id !== conversation.id){
+			this.props.onConversationOpened(conversation);
 		}
 	}
 
@@ -279,7 +310,7 @@ class MonkeyUI extends Component {
 
 	handleMessageCreated(message){
 		message.senderId = this.props.userSession.id;
-		message.recipientId = this.state.conversation.id;
+		message.recipientId = this.props.conversation.id;
 		message.status = 0;
 		this.props.onMessage(message);
 	}

@@ -1571,6 +1571,9 @@ TABLE OF CONTENTS
 }
 
 #mky-chat-timeline {
+  display: flex;
+  flex-direction: column;
+  flex: 1px;
   width: 100%;
   position: relative;
   overflow: auto;
@@ -1583,22 +1586,6 @@ TABLE OF CONTENTS
   bottom: 10px;
   position: absolute;
   right: 10px;
-}
-
-.mky-partialsize #mky-chat-timeline {
-/*   height: calc(100% - 12px); */
-}
-
-#mky-chat-timeline.mky-chat-timeline-73{
-/*   height: calc(100% - 12px); */
-}
-
-#mky-chat-timeline.mky-chat-timeline-tall{
-/*   height: calc(100% - 103px) !important; */
-}
-
-#mky-chat-timeline.mky-chat-timeline-medium{
-/*   height: calc(100% - 100px) !important; */
 }
 
 .mky-chat-timeline-conversation{
@@ -1772,6 +1759,7 @@ TABLE OF CONTENTS
 /* System Bubble Panel */
 
 .mky-system-panel{
+  display: inline-table;
   height: 20px;
   margin: 10px auto;
   position: relative;
@@ -3257,6 +3245,7 @@ TABLE OF CONTENTS
   height: 25px;
   text-align: center;
   font-size: 10px;
+  padding-top: 6px;
 }
 
 .mky-spinner-input-audio > div {
