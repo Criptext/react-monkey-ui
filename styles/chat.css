@@ -1588,22 +1588,6 @@ TABLE OF CONTENTS
   right: 10px;
 }
 
-.mky-partialsize #mky-chat-timeline {
-/*   height: calc(100% - 12px); */
-}
-
-#mky-chat-timeline.mky-chat-timeline-73{
-/*   height: calc(100% - 12px); */
-}
-
-#mky-chat-timeline.mky-chat-timeline-tall{
-/*   height: calc(100% - 103px) !important; */
-}
-
-#mky-chat-timeline.mky-chat-timeline-medium{
-/*   height: calc(100% - 100px) !important; */
-}
-
 .mky-chat-timeline-conversation{
     width: 100%;
     height: 100%;
@@ -1775,6 +1759,7 @@ TABLE OF CONTENTS
 /* System Bubble Panel */
 
 .mky-system-panel{
+  display: inline-table;
   height: 20px;
   margin: 10px auto;
   position: relative;
