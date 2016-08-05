@@ -44,6 +44,10 @@ class TimelineChat extends Component {
 			if(Object.keys(nextProps.conversationSelected.messages).length != Object.keys(this.props.conversationSelected.messages).length && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage] && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId === this.context.userSession.id){
 				this.goBottom = true;
 			}
+			
+			if(nextProps.conversationSelected !== this.props.conversationSelected) {
+				this.goBottom = true;
+			}
 		}
 		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
 			this.goBottom = true;
