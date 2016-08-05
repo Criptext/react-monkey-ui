@@ -3245,6 +3245,7 @@ TABLE OF CONTENTS
   height: 25px;
   text-align: center;
   font-size: 10px;
+  padding-top: 6px;
 }
 
 .mky-spinner-input-audio > div {

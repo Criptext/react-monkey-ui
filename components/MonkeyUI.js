@@ -132,6 +132,16 @@ class MonkeyUI extends Component {
 	componentWillReceiveProps(nextProps) {
 		this.setState({conversation: nextProps.conversation});
 		this.setState({conversations: nextProps.conversations});
+		
+		if (this.props.conversation && nextProps.conversation){
+			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
+				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+			}
+		}else if(!this.props.conversation && nextProps.conversation) {
+			if (this.state.isMobile) {
+				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+			}
+		}
 	}
 
 	render() {
@@ -289,10 +299,6 @@ class MonkeyUI extends Component {
 			this.props.onConversationOpened(conversation);
 		}else if(this.props.conversation.id !== conversation.id){
 			this.props.onConversationOpened(conversation);
-		}
-
-		if (this.state.isMobile) {
-			this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
 		}
 	}
 
