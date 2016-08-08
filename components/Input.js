@@ -203,7 +203,11 @@ class Input extends Component {
 			if(text){
 				this.textMessageInput(event.target.value.trim());
 			}
-			this.setState({text: ''});
+			this.setState({
+				text: '',
+				classSendButton: 'mky-disappear',
+				classAudioButton: ''
+			});
             this.props.handleNotifyTyping(false);
 		}else if(event.keyCode === 8){
             this.props.handleNotifyTyping(false);
