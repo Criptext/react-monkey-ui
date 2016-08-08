@@ -307,18 +307,15 @@ class Input extends Component {
     handleSendMessage(){
     	switch (this.typeMessageToSend) {
             case 0:
-            	console.log('OVER HERE 0');
      			let text = this.state.text.trim();
 				if(text){
 					this.textMessageInput(text);
 				}
-				console.log('OVER HERE 1');
 				this.setState({
 					text: '',
 					classSendButton: 'mky-disappear',
 					classAudioButton: ''
 				});
-				console.log('OVER HERE 2');
      			break;
             case 1:
             	if (this.mediaRecorder) {
