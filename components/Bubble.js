@@ -32,7 +32,7 @@ const Bubble = Component => class extends Component {
 							: null
 						)
 					}
-						<span className="mky-message-hour">{defineTime(this.props.message.datetimeOrder)}</span>
+						<span className="mky-message-hour">{defineTime(this.props.message.datetimeCreation)}</span>
 					</div>
 					<Component {...this.props}/>
 				</div>

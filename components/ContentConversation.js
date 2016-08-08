@@ -67,7 +67,7 @@ class ContentConversation extends Component {
 					: ( <div className='mky-chat-area'>
 							<TimelineChat loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageSelected={this.handleMessageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser}/>
 							{ modalComponent }
-							<Input connectionStatus={this.props.connectionStatus} handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
+							<Input connectionStatus={this.props.connectionStatus} conversationSelected={this.props.conversationSelected} handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
 						</div>
 					)
 				}
