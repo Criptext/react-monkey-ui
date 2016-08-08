@@ -150,7 +150,7 @@ class TimelineChat extends Component {
 		this.orderedConversations.forEach( item => {
 
 			const message = this.props.conversationSelected.messages[item.key];
-			let messageTime = defineTimeByDay(message.datetimeOrder);
+			let messageTime = defineTimeByDay(message.datetimeCreation);
 			if(messageTime.indexOf("AM") > -1 || messageTime.indexOf("PM") > -1){
 				messageTime = "Today"
 			}

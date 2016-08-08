@@ -257,10 +257,10 @@ return /******/ (function(modules) { // webpackBootstrap
 						this.setState({ showConversations: false }); //escondiendo el aside solo cuando esta en mobile
 					}
 				} else if (!this.props.conversation && nextProps.conversation) {
-						if (this.state.isMobile) {
-							this.setState({ showConversations: false }); //escondiendo el aside solo cuando esta en mobile
-						}
+					if (this.state.isMobile) {
+						this.setState({ showConversations: false }); //escondiendo el aside solo cuando esta en mobile
 					}
+				}
 			}
 		}, {
 			key: 'render',
@@ -37168,7 +37168,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						{ className: 'mky-chat-area' },
 						_react2.default.createElement(_TimelineChat2.default, { loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, messageSelected: this.handleMessageSelected, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser }),
 						modalComponent,
-						_react2.default.createElement(_Input2.default, { connectionStatus: this.props.connectionStatus, handleNotifyTyping: this.props.handleNotifyTyping, enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated })
+						_react2.default.createElement(_Input2.default, { connectionStatus: this.props.connectionStatus, conversationSelected: this.props.conversationSelected, handleNotifyTyping: this.props.handleNotifyTyping, enableGeoInput: this.enableGeoInput.bind(this), messageCreated: this.props.messageCreated })
 					)
 				);
 			}
@@ -37430,7 +37430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.orderedConversations.forEach(function (item) {
 
 					var message = _this2.props.conversationSelected.messages[item.key];
-					var messageTime = (0, _monkeyUtils.defineTimeByDay)(message.datetimeOrder);
+					var messageTime = (0, _monkeyUtils.defineTimeByDay)(message.datetimeCreation);
 					if (messageTime.indexOf("AM") > -1 || messageTime.indexOf("PM") > -1) {
 						messageTime = "Today";
 					}
@@ -37656,7 +37656,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								_react2.default.createElement(
 									'span',
 									{ className: 'mky-message-hour' },
-									(0, _monkeyUtils.defineTime)(this.props.message.datetimeOrder)
+									(0, _monkeyUtils.defineTime)(this.props.message.datetimeCreation)
 								)
 							),
 							_react2.default.createElement(Component, this.props)
@@ -38918,7 +38918,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
-	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -39490,8 +39489,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
-	  "lpl",
-	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -51823,7 +51820,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	    _createClass(Input, [{
 	        key: 'componentWillReceiveProps',
-	        value: function componentWillReceiveProps(nextProps) {}
+	        value: function componentWillReceiveProps(nextProps) {
+	            if (nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
+	                this.setState({ text: '' });
+	            }
+	        }
 	    }, {
 	        key: 'componentWillMount',
 	        value: function componentWillMount() {
@@ -51999,6 +52000,17 @@ return /******/ (function(modules) { // webpackBootstrap
 	            if (event.target.value.length > this.state.text.length) {
 	                this.props.handleNotifyTyping(true);
 	            }
+	            if (event.target.value.length == 0) {
+	                this.setState({
+	                    classSendButton: 'mky-disappear',
+	                    classAudioButton: ''
+	                });
+	            } else {
+	                this.setState({
+	                    classSendButton: '',
+	                    classAudioButton: 'mky-disappear'
+	                });
+	            }
 	            this.setState({ text: event.target.value });
 	        }
 	    }, {
@@ -52091,7 +52103,18 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function handleSendMessage() {
 	            switch (this.typeMessageToSend) {
 	                case 0:
-	                    this.textMessageInput(e.target.value);
+	                    console.log('OVER HERE 0');
+	                    var text = this.state.text.trim();
+	                    if (text) {
+	                        this.textMessageInput(text);
+	                    }
+	                    console.log('OVER HERE 1');
+	                    this.setState({
+	                        text: '',
+	                        classSendButton: 'mky-disappear',
+	                        classAudioButton: ''
+	                    });
+	                    console.log('OVER HERE 2');
 	                    break;
 	                case 1:
 	                    if (this.mediaRecorder) {
@@ -52202,20 +52225,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
-	                        var code = message.data.code;
-	                        var outFileNames = Object.keys(message.data.outputFiles);
+	                    var code = message.data.code;
+	                    var outFileNames = Object.keys(message.data.outputFiles);
 
-	                        if (code == 0 && outFileNames.length) {
+	                    if (code == 0 && outFileNames.length) {
 
-	                            var outFileName = outFileNames[0];
-	                            var outFileBuffer = message.data.outputFiles[outFileName];
-	                            var mp3Blob = new Blob([outFileBuffer]);
-	                            // var src = window.URL.createObjectURL(mp3Blob);
-	                            that.readData(mp3Blob);
-	                        } else {
-	                            console.log('hubo un error');
-	                        }
+	                        var outFileName = outFileNames[0];
+	                        var outFileBuffer = message.data.outputFiles[outFileName];
+	                        var mp3Blob = new Blob([outFileBuffer]);
+	                        // var src = window.URL.createObjectURL(mp3Blob);
+	                        that.readData(mp3Blob);
+	                    } else {
+	                        console.log('hubo un error');
 	                    }
+	                }
 	            };
 	            return ffmpegWorker;
 	        }

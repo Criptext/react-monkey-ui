@@ -80,7 +80,9 @@ class Input extends Component {
 	}
 
     componentWillReceiveProps(nextProps){
-
+    	if(nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
+			this.setState({text: ''});
+		}
     }
 
     componentWillMount() {
@@ -212,6 +214,17 @@ class Input extends Component {
         if(event.target.value.length > this.state.text.length){
             this.props.handleNotifyTyping(true);
         }
+        if(event.target.value.length == 0){
+        	this.setState({
+				classSendButton: 'mky-disappear',
+				classAudioButton: ''
+			});
+        }else{
+    		this.setState({
+				classSendButton: '',
+				classAudioButton: 'mky-disappear'
+			});
+        }
 		this.setState({text: event.target.value});
 	}
 
@@ -294,7 +307,18 @@ class Input extends Component {
     handleSendMessage(){
     	switch (this.typeMessageToSend) {
             case 0:
-     			this.textMessageInput(e.target.value);
+            	console.log('OVER HERE 0');
+     			let text = this.state.text.trim();
+				if(text){
+					this.textMessageInput(text);
+				}
+				console.log('OVER HERE 1');
+				this.setState({
+					text: '',
+					classSendButton: 'mky-disappear',
+					classAudioButton: ''
+				});
+				console.log('OVER HERE 2');
      			break;
             case 1:
             	if (this.mediaRecorder) {
