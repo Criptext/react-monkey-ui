@@ -1479,6 +1479,10 @@ TABLE OF CONTENTS
 
 #mky-conversation-selected-status{
     font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
 }
 
 #mky-conversation-selected-members{
