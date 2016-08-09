@@ -59,6 +59,11 @@ class ContentConversation extends Component {
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
+					<div className='mky-signature-logo'>
+						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
+							<img src="https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png" ></img>
+						</a><span> {this.props.version}</span>
+					</div>
 					<Panel panelParams={this.props.panelParams} />
 
 				</header>
