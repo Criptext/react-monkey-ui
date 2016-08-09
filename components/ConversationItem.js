@@ -2,16 +2,23 @@ import React, { Component } from 'react'
 import Badge from './Badge.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
+
+
 class ConversationItem extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
-			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
+			pressClass : "mky-not-pressed"
 		}
 		this.openConversation = this.openConversation.bind(this);
 		this.deleteConversation = this.deleteConversation.bind(this);
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
+		this.handleTouchStart = this.handleTouchStart.bind(this);
+		this.handleTouchEnd = this.handleTouchEnd.bind(this);
+		this.longPressDuration = 900;
+		this.timer = null;
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -25,9 +32,11 @@ class ConversationItem extends Component {
 	render() {
 
 		let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
+		classContent = classContent + " " + this.state.pressClass;
+
     	return (
 			<li className={classContent}>
-				<div className='mky-full' onClick={this.openConversation}>
+				<div className='mky-full' onClick={this.openConversation} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
 					<div className='mky-conversation-image'><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-description'>
 						<div className='mky-conversation-title'>
@@ -77,6 +86,9 @@ class ConversationItem extends Component {
 	}
 
 	openConversation() {
+		if(this.props.isMobile){
+			return;
+		}
 		this.props.conversationIdSelected(this.props.conversation.id);
 	}
 
@@ -85,6 +97,34 @@ class ConversationItem extends Component {
 			this.props.deleteConversation(this.props.conversation, this.props.index, true)
 		}else{
 			this.props.deleteConversation(this.props.conversation, this.props.index, false)
+		}
+	}
+
+	handleTouchStart(event){
+		event.preventDefault();
+		if(!this.props.isMobile){
+			return;
+		}
+		this.setState({
+			pressClass : "mky-pressing"
+		});
+		this.timer = setTimeout(() => {
+			this.timer = 0;
+			this.setState({
+				pressClass : "mky-not-pressed"
+			});
+			this.deleteConversation();
+		}, this.longPressDuration);
+	}
+
+	handleTouchEnd(event){
+		event.preventDefault();
+		if(this.timer){
+			clearTimeout(this.timer);
+			this.setState({
+				pressClass : "mky-not-pressed"
+			});
+			this.props.conversationIdSelected(this.props.conversation.id);
 		}
 	}
 }
