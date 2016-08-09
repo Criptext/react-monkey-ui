@@ -45,7 +45,7 @@ class TimelineChat extends Component {
 				this.goBottom = true;
 			}
 			
-			if(nextProps.conversationSelected !== this.props.conversationSelected) {
+			if(nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
 				this.goBottom = true;
 			}
 		}
@@ -122,6 +122,10 @@ class TimelineChat extends Component {
 	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
 			this.getMoreMessages();
 		}
+		if(this.orderedConversations.length > 0){
+			this.domNode.lastChild.scrollIntoView();
+		}	
+
 	}
 
 	componentDidUpdate() {

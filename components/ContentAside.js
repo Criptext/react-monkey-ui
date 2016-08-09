@@ -27,7 +27,7 @@ class ContentAside extends Component {
 						}
 					</div>
 				</header>
-				<ConversationList asidePanelParams={this.props.asidePanelParams} connectionStatus={this.props.connectionStatus} isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.handleLoadMoreConversations} handleConversationDelete={this.props.handleConversationDelete} handleConversationExit={this.props.handleConversationExit} conversations={this.props.conversations} handleConversationSelected={this.props.handleConversationSelected} conversationSelected={this.props.conversationSelected} conversationsLoading={this.props.conversationsLoading}/>
+				<ConversationList isMobile={this.props.isMobile} asidePanelParams={this.props.asidePanelParams} connectionStatus={this.props.connectionStatus} isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.handleLoadMoreConversations} handleConversationDelete={this.props.handleConversationDelete} handleConversationExit={this.props.handleConversationExit} conversations={this.props.conversations} handleConversationSelected={this.props.handleConversationSelected} conversationSelected={this.props.conversationSelected} conversationsLoading={this.props.conversationsLoading}/>
 			</aside>
 		)
 	}

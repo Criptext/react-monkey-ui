@@ -1037,6 +1037,18 @@ TABLE OF CONTENTS
   /* 3.2.- ASIDE: Conversation List
      ----------------------------- */
 
+.mky-not-pressed{
+  background-position: 100%;
+  background-size: 200%;
+}
+
+.mky-pressing{
+  background: linear-gradient(270deg, #fff 50%, #D8D8D8 50%);
+  transition: all 0.9s ease;
+  background-size: 200%;
+  background-position: 0%;
+}
+
 #mky-conversation-list {
   width: 100%;
   margin: 0;
