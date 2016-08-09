@@ -136,10 +136,16 @@ class MonkeyUI extends Component {
 		if (this.props.conversation && nextProps.conversation){
 			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
 				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+				if(this.state.wrapperInClass === 'mky-disappear'){
+					this.openSide();
+				}
 			}
 		}else if(!this.props.conversation && nextProps.conversation) {
 			if (this.state.isMobile) {
 				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+				if(this.state.wrapperInClass === 'mky-disappear'){
+					this.openSide();
+				}
 			}
 		}
 	}
