@@ -931,6 +931,11 @@ TABLE OF CONTENTS
   text-align: left;
   -webkit-font-smoothing: antialiased;
   text-overflow: ellipsis;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  height: 32px;
+
 }
 
 .mky-search-input > input::-webkit-search-cancel-button{
@@ -1932,7 +1937,7 @@ TABLE OF CONTENTS
 
 .mky-bubble-file{
   background: #fff;
-  border: 1px solid #bbb;
+  border: 1px solid #eee;
   color: #606060;
   max-width: 180px;
   padding: 10px;
@@ -2722,6 +2727,7 @@ TABLE OF CONTENTS
   padding: 0px 0px;
   font-size: 20px;
   cursor: pointer;
+  margin-left: 8px;
   margin-top: 8px;
 }
 
@@ -2976,6 +2982,19 @@ TABLE OF CONTENTS
     line-height: 12px;
     bottom: 5px;
     right: 0;
+}
+.mky-signature-logo{
+    display: none;
+    width: calc(100% - 40px);
+    text-align: right;
+    color: #BCBCBC;
+    font-size: 11px;
+    position: absolute;
+    margin: 0 20px;
+    line-height: 12px;
+    bottom: 5px;
+    right: 0;
+    opacity: 0.4;
 }
 
 .mky-partialsize .mky-signature{
@@ -3741,6 +3760,19 @@ input:focus{
   }
   #mky-conversation-selected-description{
     width: calc(100% - 165px);
+  }
+  .mky-signature{
+    margin-right: 9px;
+    display: none;
+  }
+  #mky-conversation-selected-header div{
+    font-size: 10px;
+  }
+  .mky-signature-logo{
+    display: block;
+  }
+  .mky-signature-logo img{
+    height: 17px;
   }
 }
 
