@@ -45,7 +45,7 @@ class TimelineChat extends Component {
 				this.goBottom = true;
 			}
 			
-			if(nextProps.conversationSelected !== this.props.conversationSelected) {
+			if(nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
 				this.goBottom = true;
 			}
 		}

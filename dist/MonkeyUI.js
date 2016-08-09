@@ -37326,7 +37326,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						this.goBottom = true;
 					}
 
-					if (nextProps.conversationSelected !== this.props.conversationSelected) {
+					if (nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
 						this.goBottom = true;
 					}
 				}
@@ -37418,6 +37418,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				}
 				this.domNode = _reactDom2.default.findDOMNode(this.refs.timelineChat);
 
+				console.log('THIS GO BOTTOM : ' + this.goBottom);
 				if (!this.loadingMessages && this.domNode.lastChild != null && !this.noNewMessage && this.goBottom) {
 					this.domNode.lastChild.scrollIntoView();
 				}
@@ -37476,6 +37477,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 				if (this.domNode.scrollTop != 0) {
 					this.scrollTop = this.domNode.scrollTop;
+					console.log('SCROLLTOP : ' + this.domNode.scrollTop + ", clientHeight : " + this.domNode.clientHeight + ", scrollHeight : " + this.domNode.scrollHeight);
 					if (this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) {
 						this.goBottom = true;
 					} else {
@@ -51997,7 +51999,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (text) {
 	                    this.textMessageInput(event.target.value.trim());
 	                }
-	                this.setState({ text: '' });
+	                this.setState({
+	                    text: '',
+	                    classSendButton: 'mky-disappear',
+	                    classAudioButton: ''
+	                });
 	                this.props.handleNotifyTyping(false);
 	            } else if (event.keyCode === 8) {
 	                this.props.handleNotifyTyping(false);
@@ -52112,18 +52118,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	        value: function handleSendMessage() {
 	            switch (this.typeMessageToSend) {
 	                case 0:
-	                    console.log('OVER HERE 0');
 	                    var text = this.state.text.trim();
 	                    if (text) {
 	                        this.textMessageInput(text);
 	                    }
-	                    console.log('OVER HERE 1');
 	                    this.setState({
 	                        text: '',
 	                        classSendButton: 'mky-disappear',
 	                        classAudioButton: ''
 	                    });
-	                    console.log('OVER HERE 2');
 	                    break;
 	                case 1:
 	                    if (this.mediaRecorder) {
