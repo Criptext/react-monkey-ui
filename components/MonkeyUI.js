@@ -64,6 +64,7 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
+
 	}
 
 	getChildContext() {
@@ -89,7 +90,7 @@ class MonkeyUI extends Component {
 
 		let screenMode;
 		let style = {};
-		
+
 		// screen mode for webchat and privatechat
 		if(this.props.view.type === 'fullscreen') {
 			screenMode = 'fullsize';
@@ -106,7 +107,7 @@ class MonkeyUI extends Component {
 			style.width = this.props.view.type === 'rightside' ? this.props.sideWidth : this.props.view.data.width;
 			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height
 		}
-		
+
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
 
 		if(this.props.view.type === 'classic'){
@@ -127,19 +128,46 @@ class MonkeyUI extends Component {
 		    	wrapperInClass: 'mky-disappear'
 		    });
 	    }
+
+    if ( this.props.view.version == undefined ) {
+      this.props.view.version = '';
+      console.log('undefined: ');
+    }else {
+      var version = this.props.view.version.split('.');
+      console.log('length: '+ version.length );
+      if (version.length > 1) {
+        version.forEach(function (element,index) {
+          console.log(element);
+          console.log(/^\d+$/.test(element));
+          if (!(/^\d+$/.test(element))) {
+            this.props.view.version = '';
+          }
+        });
+      }
+      else {
+        this.props.view.version = '';
+      }
+
+    }
 	}
 
 	componentWillReceiveProps(nextProps) {
 		this.setState({conversation: nextProps.conversation});
 		this.setState({conversations: nextProps.conversations});
-		
+
 		if (this.props.conversation && nextProps.conversation){
 			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
 				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+				if(this.state.wrapperInClass === 'mky-disappear'){
+					this.openSide();
+				}
 			}
 		}else if(!this.props.conversation && nextProps.conversation) {
 			if (this.state.isMobile) {
 				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+				if(this.state.wrapperInClass === 'mky-disappear'){
+					this.openSide();
+				}
 			}
 		}
 	}
@@ -191,7 +219,9 @@ class MonkeyUI extends Component {
 										show={this.showListConversation}
 										isMobile={this.state.isMobile}
 										closeSide={this.openSide}
-										conversationsLoading={this.props.conversationsLoading}/>
+										conversationsLoading={this.props.conversationsLoading}
+                    viewType={this.props.view.type}
+                    />
 									: null
 								}
 								<ContentWindow connectionStatus={this.props.connectionStatus}
@@ -209,7 +239,8 @@ class MonkeyUI extends Component {
 									onClickMessage={this.props.onClickMessage}
 									dataDownloadRequest={this.props.onMessageDownloadData}
 									getUser={this.props.onMessageGetUser}
-									haveConversations={this.haveConversations}/>
+									haveConversations={this.haveConversations}
+                  version={this.props.view.version}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -222,6 +253,8 @@ class MonkeyUI extends Component {
 			</div>
 		)
 	}
+
+
 
 	togglePopup() {
 		this.setState({
@@ -248,7 +281,7 @@ class MonkeyUI extends Component {
 			});
 		}
 	}
-	
+
 	openSide() {
 		if(this.state.contentStyle.width === 0){
 			this.setState({
@@ -271,7 +304,7 @@ class MonkeyUI extends Component {
 		if(this.props.onNotifyTyping){
 			this.props.onNotifyTyping(this.props.conversation.id, isTyping);
 			this.notifyTime = new Date();
-			setTimeout(() => { 
+			setTimeout(() => {
 				var conversationId = this.props.conversation.id;
 				var now = new Date();
 				var dif = now.getTime() - this.notifyTime.getTime();
@@ -335,7 +368,7 @@ class MonkeyUI extends Component {
 		}else
 			return 'Want to know more?';
 	}
-	
+
 }
 
 MonkeyUI.propTypes = {

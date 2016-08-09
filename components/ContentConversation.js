@@ -59,6 +59,11 @@ class ContentConversation extends Component {
 						}
 					</div>
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
+					<div className='mky-signature-logo'>
+						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
+							<img src="https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png" ></img>
+						</a><span> {this.props.version}</span>
+					</div>
 					<Panel panelParams={this.props.panelParams} />
 
 				</header>
@@ -67,7 +72,7 @@ class ContentConversation extends Component {
 					: ( <div className='mky-chat-area'>
 							<TimelineChat loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageSelected={this.handleMessageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser}/>
 							{ modalComponent }
-							<Input connectionStatus={this.props.connectionStatus} handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
+							<Input connectionStatus={this.props.connectionStatus} conversationSelected={this.props.conversationSelected} handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
 						</div>
 					)
 				}

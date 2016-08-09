@@ -21,13 +21,13 @@ class ContentAside extends Component {
 						<div id='mky-session-name'>
 							<span className='mky-ellipsify'>{this.context.userSession.name}</span>
 						</div>
-						{ this.props.isMobile
+						{ this.props.viewType == 'rightside'
 							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-close-medium'></i></div>
 							: <div className='mky-header-exit' onClick={this.logout}><i className="icon mky-icon-signout-sober"></i></div>
 						}
 					</div>
 				</header>
-				<ConversationList asidePanelParams={this.props.asidePanelParams} connectionStatus={this.props.connectionStatus} isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.handleLoadMoreConversations} handleConversationDelete={this.props.handleConversationDelete} handleConversationExit={this.props.handleConversationExit} conversations={this.props.conversations} handleConversationSelected={this.props.handleConversationSelected} conversationSelected={this.props.conversationSelected} conversationsLoading={this.props.conversationsLoading}/>
+				<ConversationList isMobile={this.props.isMobile} asidePanelParams={this.props.asidePanelParams} connectionStatus={this.props.connectionStatus} isLoadingConversations={this.props.isLoadingConversations} handleLoadMoreConversations={this.props.handleLoadMoreConversations} handleConversationDelete={this.props.handleConversationDelete} handleConversationExit={this.props.handleConversationExit} conversations={this.props.conversations} handleConversationSelected={this.props.handleConversationSelected} conversationSelected={this.props.conversationSelected} conversationsLoading={this.props.conversationsLoading}/>
 			</aside>
 		)
 	}

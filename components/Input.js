@@ -80,7 +80,9 @@ class Input extends Component {
 	}
 
     componentWillReceiveProps(nextProps){
-
+    	if(nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
+			this.setState({text: ''});
+		}
     }
 
     componentWillMount() {
@@ -201,7 +203,11 @@ class Input extends Component {
 			if(text){
 				this.textMessageInput(event.target.value.trim());
 			}
-			this.setState({text: ''});
+			this.setState({
+				text: '',
+				classSendButton: 'mky-disappear',
+				classAudioButton: ''
+			});
             this.props.handleNotifyTyping(false);
 		}else if(event.keyCode === 8){
             this.props.handleNotifyTyping(false);
@@ -211,6 +217,17 @@ class Input extends Component {
 	handleOnChangeTextArea(event, value){
         if(event.target.value.length > this.state.text.length){
             this.props.handleNotifyTyping(true);
+        }
+        if(event.target.value.length == 0){
+        	this.setState({
+				classSendButton: 'mky-disappear',
+				classAudioButton: ''
+			});
+        }else{
+    		this.setState({
+				classSendButton: '',
+				classAudioButton: 'mky-disappear'
+			});
         }
 		this.setState({text: event.target.value});
 	}
@@ -294,7 +311,15 @@ class Input extends Component {
     handleSendMessage(){
     	switch (this.typeMessageToSend) {
             case 0:
-     			this.textMessageInput(e.target.value);
+     			let text = this.state.text.trim();
+				if(text){
+					this.textMessageInput(text);
+				}
+				this.setState({
+					text: '',
+					classSendButton: 'mky-disappear',
+					classAudioButton: ''
+				});
      			break;
             case 1:
             	if (this.mediaRecorder) {
