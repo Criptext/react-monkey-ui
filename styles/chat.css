@@ -574,7 +574,7 @@ TABLE OF CONTENTS
    ----------------------------- */
 
 .mky-wrapper-out{
-  background: white;
+  background: transparent;
   border: none;
   font-family: 'helvetica-light', Helvetica, sans-serif;
   width: 100%;
@@ -3603,6 +3603,12 @@ input:focus{
 }
 .animated.pulse{
   animation-duration: 0.5s;
+}
+.mky-wrapper-out.animated.pulse{
+  animation-duration: 0.5s;
+  animation-iteration-count: initial;
+  -webkit-animation-iteration-count: initial;
+  -moz-animation-iteration-count: initial;
 }
 /*END ANIMATION TIMES*/
 
