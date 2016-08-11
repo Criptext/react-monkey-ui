@@ -1808,6 +1808,28 @@ TABLE OF CONTENTS
   background: #FAF8F5;
 }
 
+/* New Messages Panel */
+.mky-messages-panel {
+    display: inline-table;
+    height: 20px;
+    margin: 10px auto;
+    position: relative;
+    width: calc(100% - 40px);
+    text-align: center;
+    background: none;
+    padding: 8px 20px 5px 20px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 13px;
+    color: #6a8d9e;
+    font-family: 'helvetica-normal';
+    border-top: grey;
+    -webkit-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);
+    -moz-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);
+    box-shadow: 0 -15px 15px -15px rgba(125, 125, 125, 0.75);
+}
+
 /* base bubble */
 
 .mky-bubble{

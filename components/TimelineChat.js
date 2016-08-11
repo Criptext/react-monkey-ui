@@ -30,7 +30,8 @@ class TimelineChat extends Component {
 		this.updateShowControl = this.updateShowControl.bind(this);
 		this.getMoreMessages = this.getMoreMessages.bind(this);
 		this.showOrderedMessages = this.showOrderedMessages.bind(this);
-		this.sentMessage
+		this.sentMessage;
+		this.showUnreadMessages = false;
 
 		this.state = {
 			update: 0,
@@ -63,6 +64,12 @@ class TimelineChat extends Component {
 			this.noNewMessage = false;
 		}
 
+		if(nextProps.conversationSelected.lastMessage && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId !== this.context.userSession.id && (this.firstLoad || this.showUnreadMessages || !document.hasFocus()) && nextProps.conversationSelected.unreadMessageCounter){
+			this.showUnreadMessages = true;
+		}else{
+			this.showUnreadMessages = false;
+		}
+
 		this.orderedConversations = this.sortObject(nextProps.conversationSelected.messages);
 		if(Object.keys(nextProps.conversationSelected.messages).length != Object.keys(this.props.conversationSelected.messages).length && nextProps.conversationSelected.lastMessage == this.props.conversationSelected.lastMessage && this.props.conversationSelected.id == nextProps.conversationSelected.id){
 			this.loadingMessages = 1;
@@ -72,6 +79,11 @@ class TimelineChat extends Component {
 	componentWillMount() {
 		if(this.props.conversationSelected.unreadMessageCount === 0){
 			this.goBottom = true;
+		}
+		if(this.props.conversationSelected.lastMessage && this.props.conversationSelected.messages[this.props.conversationSelected.lastMessage].senderId !== this.context.userSession.id && this.props.conversationSelected.unreadMessageCounter){
+			this.showUnreadMessages = true;
+		}else{
+			this.showUnreadMessages = false;
 		}
 		this.orderedConversations = this.sortObject(this.props.conversationSelected.messages);
 	}
@@ -131,9 +143,10 @@ class TimelineChat extends Component {
 	componentDidUpdate() {
 		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
 	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading && this.firstLoad){
-			this.firstLoad = false;
 			this.getMoreMessages();
 		}
+		this.firstLoad = false;
+
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 
 		if(!this.loadingMessages && this.domNode.lastChild != null && !this.noNewMessage && this.goBottom){
@@ -151,7 +164,7 @@ class TimelineChat extends Component {
 	showOrderedMessages() {
 		var messagesArray = [];
 		var timeFrom = null;
-		this.orderedConversations.forEach( item => {
+		this.orderedConversations.forEach( (item, index) => {
 
 			const message = this.props.conversationSelected.messages[item.key];
 			let messageTime = defineTimeByDay(message.datetimeCreation);
@@ -163,6 +176,11 @@ class TimelineChat extends Component {
 				timeFrom = messageTime;
 				messagesArray.push(<SystemBubble key={messageTime} message={messageTime} />);
 			}
+
+			if(this.props.conversationSelected.unreadMessageCounter > 0 && this.orderedConversations.length - index == this.props.conversationSelected.unreadMessageCounter && this.showUnreadMessages){
+				messagesArray.push(<NewMessagesBubble key={'unread'} message={this.props.conversationSelected.unreadMessageCounter + ' New Messages'} />);
+			}
+
 			switch(message.bubbleType){
 			case 'text':
 				messagesArray.push(<BubbleText_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
@@ -273,6 +291,15 @@ const SystemBubble = (props) => {
 	return (
 		<div className="mky-system-panel">
 			<div className="mky-devider-dots"> </div>
+			<div className="mky-system-panel-date">{props.message}</div>
+		</div>
+	)
+}
+
+const NewMessagesBubble = (props) => {
+
+	return (
+		<div className="mky-messages-panel">
 			<div className="mky-system-panel-date">{props.message}</div>
 		</div>
 	)
