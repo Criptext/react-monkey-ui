@@ -17,6 +17,7 @@ class ConversationItem extends Component {
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 		this.handleTouchStart = this.handleTouchStart.bind(this);
 		this.handleTouchEnd = this.handleTouchEnd.bind(this);
+		this.handleTouchMove = this.handleTouchMove.bind(this);
 		this.longPressDuration = 900;
 		this.timer = null;
 	}
@@ -36,7 +37,7 @@ class ConversationItem extends Component {
 
     	return (
 			<li className={classContent}>
-				<div className='mky-full' onClick={this.openConversation} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
+				<div className='mky-full' onClick={this.openConversation} onTouchMove={this.handleTouchMove} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
 					<div className='mky-conversation-image'><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-description'>
 						<div className='mky-conversation-title'>
@@ -66,7 +67,7 @@ class ConversationItem extends Component {
 				</div>
 				<div className='mnk-conversation-opts'>
 					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
-					<Badge value={this.props.conversation.unreadMessageCounter} />
+					<Badge value={ (this.props.conversation.unreadMessageCounter && !this.props.selected) ? this.props.conversation.unreadMessageCounter : 0} />
 
 							{ Object.keys(this.props.conversation.messages).length ? (
 									this.props.conversation.messages[this.props.conversation.lastMessage] ?
@@ -101,7 +102,6 @@ class ConversationItem extends Component {
 	}
 
 	handleTouchStart(event){
-		event.preventDefault();
 		if(!this.props.isMobile){
 			return;
 		}
@@ -117,8 +117,15 @@ class ConversationItem extends Component {
 		}, this.longPressDuration);
 	}
 
+	handleTouchMove(event){
+		clearTimeout(this.timer);
+		this.timer = 0;
+		this.setState({
+			pressClass : "mky-not-pressed"
+		});
+	}
+
 	handleTouchEnd(event){
-		event.preventDefault();
 		if(this.timer){
 			clearTimeout(this.timer);
 			this.setState({
