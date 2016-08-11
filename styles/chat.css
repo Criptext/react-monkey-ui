@@ -2782,14 +2782,17 @@ TABLE OF CONTENTS
   outline: 0;
   font-size: 14px;
   position: relative;
-  font-family: Verdana, Arial, Helvetica, sans-serif;
+  font-family: Verdana, Arial, Helvetica, sans-serif !important;
   top: initial;
   max-height: 40px;
   border-radius: 0;
   border-left: 1px solid #ccc;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
+  background: #fff;
   -webkit-border-radius: 0;
+  letter-spacing: 0px;
+  font-style: normal;
 }
 
 .mky-chat-input-file #mky-message-text-input{
@@ -2802,6 +2805,7 @@ TABLE OF CONTENTS
   padding-top: 0px;
   font-size: 15px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-transform: initial;
 }
 
 .mky-textarea-input:-moz-placeholder {
@@ -2809,6 +2813,7 @@ TABLE OF CONTENTS
   padding-top: 0px;
   font-size: 15px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-transform: initial;
 }
 
 .mky-textarea-input::-moz-placeholder {
@@ -2816,6 +2821,7 @@ TABLE OF CONTENTS
   padding-top: 0px;
   font-size: 15px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-transform: initial;
 }
 
 .mky-textarea-input:-ms-input-placeholder {
@@ -2823,7 +2829,10 @@ TABLE OF CONTENTS
   padding-top: 0px;
   font-size: 15px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
+  text-transform: initial;
 }
+
+
 
 #mky-record-area{
   box-sizing: content-box;
