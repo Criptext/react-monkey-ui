@@ -181,6 +181,9 @@
 	  min-width: 200px;
 	  font-size: 14px;
 		max-width: 68%;
+		letter-spacing: 0px;
+		font-style: normal;
+		font-family: helvetica, arial, sans-serif;
 }
 
 
