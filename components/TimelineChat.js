@@ -113,7 +113,7 @@ class TimelineChat extends Component {
 		return(
 			<div className='mky-chat-timeline-content'>
 				<div ref='timelineChat' id='mky-chat-timeline'>
-					{ this.props.conversationSelected.loading ? <Loading /> : null }
+					{ this.props.conversationSelected.loading ? <Loading customLoader={this.props.customLoader}/> : null }
 					{ Object.keys(this.props.conversationSelected).length
 						? this.showOrderedMessages()
 						: null
@@ -155,7 +155,7 @@ class TimelineChat extends Component {
  		this.updateScrollTop();
  		if(this.scrollHeight != this.domNode.scrollHeight && this.loadingMessages){
 
- 			this.domNode.scrollTop += this.domNode.scrollHeight - this.scrollHeight - 60;
+ 			this.domNode.scrollTop += this.domNode.scrollHeight - this.scrollHeight;
  			this.scrollHeight = this.domNode.scrollHeight;
  			this.loadingMessages = 0;
  		}
@@ -271,9 +271,31 @@ class TimelineChat extends Component {
 	}
 }
 
-const Loading = () => <div className='mky-loader-ring'>
+/*const Loading = () => <div className='mky-loader-ring'>
 	<div className='mky-loader-ring-light'></div>
 	<img className="mky-loading-icon-inside" src="http://cdn.criptext.com/messenger/criptextGradientLogo.png"></img>
+</div>*/
+
+const Loading = (props) => <div className='mky-loader-ring'>
+	{
+		props.customLoader ?
+		props.customLoader()
+		:
+		<div>
+			<div className="mky-circle1 mky-circle"></div>
+			<div className="mky-circle2 mky-circle"></div>
+			<div className="mky-circle3 mky-circle"></div>
+			<div className="mky-circle4 mky-circle"></div>
+			<div className="mky-circle5 mky-circle"></div>
+			<div className="mky-circle6 mky-circle"></div>
+			<div className="mky-circle7 mky-circle"></div>
+			<div className="mky-circle8 mky-circle"></div>
+			<div className="mky-circle9 mky-circle"></div>
+			<div className="mky-circle10 mky-circle"></div>
+			<div className="mky-circle11 mky-circle"></div>
+			<div className="mky-circle12 mky-circle"></div>
+		</div>
+	}
 </div>
 
 const SystemBubble = (props) => {

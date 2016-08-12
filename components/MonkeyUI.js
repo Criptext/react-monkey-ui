@@ -220,8 +220,8 @@ class MonkeyUI extends Component {
 										isMobile={this.state.isMobile}
 										closeSide={this.openSide}
 										conversationsLoading={this.props.conversationsLoading}
-                    viewType={this.props.view.type}
-                    />
+                    					viewType={this.props.view.type}
+                    					customLoader = {this.props.customLoader}/>
 									: null
 								}
 								<ContentWindow connectionStatus={this.props.connectionStatus}
@@ -240,7 +240,8 @@ class MonkeyUI extends Component {
 									dataDownloadRequest={this.props.onMessageDownloadData}
 									getUser={this.props.onMessageGetUser}
 									haveConversations={this.haveConversations}
-                  version={this.props.view.version}/>
+                  					version={this.props.view.version}
+                  					customLoader = {this.props.customLoader}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>

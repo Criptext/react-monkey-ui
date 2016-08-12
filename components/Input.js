@@ -197,7 +197,6 @@ class Input extends Component {
 			 	$('#mky-chat-input').attr('style','');
 			 }
 
-			console.log('enter!!');
 			event.preventDefault()
 			let text = this.state.text.trim();
 			if(text){
