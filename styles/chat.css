@@ -1778,6 +1778,56 @@ TABLE OF CONTENTS
   0%, 39%, 100% { opacity: 0; }
   40% { opacity: 1; }
 }
+
+
+/*Loadding Circle Blue*/
+
+.mky-loader-ring {
+  position: absolute;
+  top: calc(50% - 50px);
+  left: calc(50% - 50px);
+  /*margin: -120px 0 0 -120px;*/
+  width: 100px;
+  height: 100px;
+}
+
+.mky-loading-icon-inside{
+  position: absolute;
+  height: 65px;
+  width: 65px;
+  top: calc(50% - 32px);
+  left: calc(50% - 32px);
+}
+
+.mky-loader-ring-light {
+  width: 100px;
+  height: 100px;
+  -moz-border-radius: 240px;
+  -webkit-border-radius: 240px;
+  border-radius: 50%;
+  -moz-box-shadow: 0 4px 0 #0477aa inset;
+  -webkit-box-shadow: 0 4px 0 #0477aa inset;
+  box-shadow: 0 4px 0 #0477aa inset;
+  animation: mky-rotate-360 2s linear infinite;
+}
+
+@keyframes mky-rotate-360 {
+  from {
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+
+
 /* System Bubble Panel */
 
 .mky-system-panel{
