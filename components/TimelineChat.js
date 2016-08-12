@@ -45,7 +45,7 @@ class TimelineChat extends Component {
 			if(Object.keys(nextProps.conversationSelected.messages).length != Object.keys(this.props.conversationSelected.messages).length && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage] && nextProps.conversationSelected.messages[nextProps.conversationSelected.lastMessage].senderId === this.context.userSession.id){
 				this.goBottom = true;
 			}
-			
+
 			if(nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
 				this.goBottom = true;
 			}
@@ -136,7 +136,7 @@ class TimelineChat extends Component {
 		}
 		if(this.orderedConversations.length > 0){
 			this.domNode.lastChild.scrollIntoView();
-		}	
+		}
 
 	}
 
@@ -235,22 +235,22 @@ class TimelineChat extends Component {
 		this.updateScrollTop();
 		this.updateShowControl();
 	}
-	
+
 	updateShowControl() {
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
-		
+
 		if( (this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) && this.state.classControl === ''){
 			this.setState({classControl: 'mky-disappear'});
 		}else if( !(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight - 75) && this.state.classControl !== '') {
 			this.setState({classControl: ''});
 		}
 	}
-	
+
 	handleControlPosition() {
 		this.domNode = ReactDOM.findDOMNode(this.refs.timelineChat);
 		this.domNode.lastChild.scrollIntoView();
 	}
-	
+
 	sortObject(obj) {
     	var arr = [];
 	    var prop;
@@ -271,19 +271,9 @@ class TimelineChat extends Component {
 	}
 }
 
-const Loading = () => <div className="mky-fading-circle">
-	<div className="mky-circle1 mky-circle"></div>
-	<div className="mky-circle2 mky-circle"></div>
-	<div className="mky-circle3 mky-circle"></div>
-	<div className="mky-circle4 mky-circle"></div>
-	<div className="mky-circle5 mky-circle"></div>
-	<div className="mky-circle6 mky-circle"></div>
-	<div className="mky-circle7 mky-circle"></div>
-	<div className="mky-circle8 mky-circle"></div>
-	<div className="mky-circle9 mky-circle"></div>
-	<div className="mky-circle10 mky-circle"></div>
-	<div className="mky-circle11 mky-circle"></div>
-	<div className="mky-circle12 mky-circle"></div>
+const Loading = () => <div className='mky-loader-ring'>
+	<div className='mky-loader-ring-light'></div>
+	<img className="mky-loading-icon-inside" src="http://cdn.criptext.com/messenger/criptextGradientLogo.png"></img>
 </div>
 
 const SystemBubble = (props) => {
