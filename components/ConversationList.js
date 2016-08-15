@@ -113,7 +113,10 @@ class ConversationList extends Component {
 	}
 
 	componentDidMount() {
-
+		if(!this.domNode && !this.props.conversationsLoading){
+			this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
+			this.domNode.addEventListener('scroll', this.handleScroll);
+		}
 	}
 
 	conversationIdSelected(conversationId) {

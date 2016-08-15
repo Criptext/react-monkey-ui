@@ -818,7 +818,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		}, {
 			key: 'componentDidMount',
-			value: function componentDidMount() {}
+			value: function componentDidMount() {
+				if (!this.domNode && !this.props.conversationsLoading) {
+					this.domNode = _reactDom2.default.findDOMNode(this.refs.conversationList);
+					this.domNode.addEventListener('scroll', this.handleScroll);
+				}
+			}
 		}, {
 			key: 'conversationIdSelected',
 			value: function conversationIdSelected(conversationId) {
@@ -52129,7 +52134,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	                    $('#mky-chat-input').attr('style', '');
 	                }
 
-	                console.log('enter!!');
 	                event.preventDefault();
 	                var text = this.state.text.trim();
 	                if (text) {
