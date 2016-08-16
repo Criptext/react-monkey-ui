@@ -12,6 +12,7 @@ TABLE OF CONTENTS
   3.2.- ASIDE - header, search panel, search list, conversation list
   3.3.- SECTION - header, chat timeline, preview, chat inputs
   3.4.- BANNER -  banner
+  3.5 - ASIDE RIGHT
 4.- MODAL
   4.1.- Image preview
   4.2.- Location preview
@@ -1411,6 +1412,18 @@ TABLE OF CONTENTS
 .mky-content-conversation{
 	width: 100%;
 	height: 100%;
+}
+
+@media only screen and (max-width: 900px){
+  .mky-chat-thinner{
+    display : none;
+  }
+}
+
+@media only screen and (min-width: 901px){
+  .mky-chat-thinner{
+    width: 44%;
+  }
 }
 
   /* 3.3.- SECTION: Header
@@ -3417,6 +3430,170 @@ aside.aside-divided{
   }
 }
 
+/* 3.5 ASIDE RIGHT */
+@media only screen and (max-width: 900px){
+  .mky-aside-right{
+    width: calc(72% - 1px) !important
+  }
+}
+@media only screen and (mix-width: 901px){
+  .mky-aside-right{
+    width: calc(28% - 1px);
+  }
+}
+
+.mky-aside-right-wide{
+    width : 100% !important;
+}
+
+.mky-info-header{
+    background: #eee;
+    position: relative;
+    z-index: 1;
+}
+
+.mky-info-header div{
+    vertical-align: top;
+    font-size: 13px;
+}
+
+.mky-info-back{
+    float: left;
+    margin: 21px -10px 0 12px;
+    width: auto;
+    cursor: pointer;
+}
+
+.mky-info-back i{
+    color: #6e8191;
+    font-size: 24px;
+}
+
+.mky-info-header-block{
+    width: calc(100% - 125px);
+    height: calc(100% - 18px);
+    float: left;
+    padding-top: 18px;
+}
+
+.mky-info-header-name{
+    font-size: 14px;
+    color: #353535 !important;
+    display: block;
+    text-align: left;
+    line-height: 16px;  
+    margin-top: 9px;
+}
+
+.mky-info-header-desc{
+    display: block;
+    text-align: left;
+    color: #a2a2a2;
+    line-height: 16px;  
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+}
+
+.mky-info-body-img{
+    width: 150px;
+    height: 150px;
+    margin: 45px auto 15px auto;
+}
+
+.mky-info-body-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.mky-info-input{
+    width: 80%;
+    margin: 15px auto;
+    border-bottom: solid 1px gray;
+}
+
+.mky-info-input input{
+    border: none;
+    width: 80%;
+    padding: 10px;
+    background: none;
+    font-family: 'helvetica-light', Helvetica, sans-serif;
+    font-size: 15px;
+}
+
+.mky-info-input-input:focus{
+    outline-width: 0;
+    border: none !important;
+    box-shadow: none;
+}
+
+.mky-info-list{
+    overflow: scroll;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    flex: 1;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+}
+
+.mky-info-list::-webkit-scrollbar { width: 0 !important }
+.mky-info-list{ -ms-overflow-style: none; }
+.mky-info-list{ overflow: -moz-scrollbars-none; }
+
+.mky-info-list-item{
+    height: 50px;
+    width: 100%;
+    clear: both;
+    position: relative;
+    padding: 5px 0;
+}
+
+.mky-info-list-item:after {
+    content: '';
+    width: 80%;
+    height: 1px;
+    background: #CACACA;
+    position: absolute;
+    bottom: 0;
+    left: 10%;
+}
+
+.mky-info-list-item img{
+    height: 40px;
+    width: 40px;
+    float: left;
+    border-radius: 50%;
+    padding: 5px;
+}
+
+.mky-info-list-name{
+    padding: 10px 5px 0px 5px;
+    width: calc(100% - 70px);
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 40px;
+    text-overflow: ellipsis;
+}
+
+.mky-info-list-desc{
+    font-size: 13px;
+    color: #5D5D5D;
+}
+
+.mky-info-container{
+    width: 100%;
+    height: calc(100% - 65px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #F9F9F9;
+}
 
 /* 4.- MODAL
    ----------------------------- */

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import ContentAside from './ContentAside.js'
 import ContentWindow from './ContentWindow.js'
-
+import ContentInfo from './ContentInfo.js';
 import ContentLogin from './ContentLogin.js'
 
 import Bubble from './Bubble.js'
@@ -241,7 +241,17 @@ class MonkeyUI extends Component {
 									getUser={this.props.onMessageGetUser}
 									haveConversations={this.haveConversations}
                   					version={this.props.view.version}
-                  					customLoader = {this.props.customLoader}/>
+                  					customLoader = {this.props.customLoader}
+                  					showConversationInfo = {this.props.showConversationInfo}
+                  					toggleConversationHeader = {this.props.toggleConversationHeader}/>
+              					{this.props.showConversationInfo 
+              						? <ContentInfo 
+              							showBanner={this.state.showBanner}
+              							toggleConversationHeader = {this.props.toggleConversationHeader}
+              							getConversationInfo = {this.props.getConversationInfo}
+              							isMobile={this.state.isMobile}/>
+              						: null
+              					}
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
