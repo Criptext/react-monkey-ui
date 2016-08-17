@@ -3513,7 +3513,7 @@ aside.aside-divided{
 .mky-info-body-img{
     width: 150px;
     height: 150px;
-    margin: 45px auto 15px auto;
+    margin: 25px auto 15px auto;
 }
 
 .mky-info-body-img img{
@@ -3620,6 +3620,13 @@ aside.aside-divided{
     width: 80%;
     margin: 0 auto;
     padding: 5px 0 5px 0;
+    background-color: #E6E6E6;
+    border: 1px solid #E6E6E6;
+}
+
+.mky-info-name-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* 4.- MODAL

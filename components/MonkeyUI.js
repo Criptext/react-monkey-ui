@@ -251,7 +251,8 @@ class MonkeyUI extends Component {
               							showBanner={this.state.showBanner}
               							toggleConversationHeader = {this.props.toggleConversationHeader}
               							getConversationInfo = {this.props.getConversationInfo}
-              							isMobile={this.state.isMobile}/>
+              							isMobile={this.state.isMobile}
+              							conversationSelected={this.props.conversation}/>
               						: null
               					}
 							</div>

@@ -7,6 +7,12 @@ class ContentInfo	 extends Component {
 		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
 	}
 
+	componentWillReceiveProps(nextProps) {
+		if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id) {
+			this.props.toggleConversationHeader();
+		}
+	}
+
 	render() {
 
 		var objectInfo = {};
@@ -51,7 +57,7 @@ class ContentInfo	 extends Component {
 				itemList.push(<div className="mky-info-list-item">
 					<img src={item.avatar} />
 					<div className="mky-info-list-name">
-						<div>{item.name}</div>
+						<div className="mky-info-name-name">{item.name}</div>
 						<div className="mky-info-list-desc">{item.description}</div>
 					</div>
 				</div>);
