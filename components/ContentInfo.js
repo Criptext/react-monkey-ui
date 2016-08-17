@@ -19,7 +19,7 @@ class ContentInfo	 extends Component {
 					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-back"></i></div>
 
 					<div className="mky-info-header-block" style={{marginLeft : '20px'}}>
-						<span className='mky-ellipsify mky-info-header-name'>Group Info</span>
+						<span className='mky-ellipsify mky-info-header-name'>{objectInfo.title ? objectInfo.title : "Information"}</span>
 						<span className="mky-info-header-desc" ></span>
 					</div>
 					
@@ -29,11 +29,14 @@ class ContentInfo	 extends Component {
 					  <img src={objectInfo.avatar} />
 					</div>
 					<div className="mky-info-input" >
-						<input defaultValue={objectInfo.name} type="text" className="mky-info-input-input" />
-						<i className="icon mky-icon-edit"></i>
+						<input value={objectInfo.name} type="text" className="mky-info-input-input" disabled/>
+						
+					</div>
+					<div className="mky-info-subtitle">
+						{objectInfo.subTitle}
 					</div>
 					<div className="mky-info-list">
-						{this.renderList(objectInfo.users)}
+						{objectInfo.users ? this.renderList(objectInfo.users) : null}
 					</div>
 			  	</div>
 			</aside>
@@ -65,3 +68,5 @@ ContentInfo.contextTypes = {
 }
 
 export default ContentInfo;
+
+//<i className="icon mky-icon-edit mky-info-edit-icon"></i>

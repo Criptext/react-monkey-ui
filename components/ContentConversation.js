@@ -23,6 +23,7 @@ class ContentConversation extends Component {
 		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
 		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 		this.handleConnectionStatus = this.handleConnectionStatus.bind(this);
+		this.closeSide = this.closeSide.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -58,8 +59,12 @@ class ContentConversation extends Component {
 							)
 							: <span id='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 						}
-						
+						{ this.props.viewType == 'rightside'
+							? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
+							: null
+						}
 					</div>
+
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
 					<div className='mky-signature-logo'>
 						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
@@ -80,6 +85,11 @@ class ContentConversation extends Component {
 				}
 			</div>
 		)
+	}
+
+	closeSide(event){
+		event.stopPropagation();
+		this.props.closeSide();
 	}
 
 	handleConnectionStatus(connectionStatus){

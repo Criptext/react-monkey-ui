@@ -243,7 +243,9 @@ class MonkeyUI extends Component {
                   					version={this.props.view.version}
                   					customLoader = {this.props.customLoader}
                   					showConversationInfo = {this.props.showConversationInfo}
-                  					toggleConversationHeader = {this.props.toggleConversationHeader}/>
+                  					toggleConversationHeader = {this.props.toggleConversationHeader}
+          							viewType={this.props.view.type}
+          							closeSide={this.openSide}/>
               					{this.props.showConversationInfo 
               						? <ContentInfo 
               							showBanner={this.state.showBanner}
