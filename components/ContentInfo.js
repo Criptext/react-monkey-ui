@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ConversationList from './ConversationList.js';
+import InfoItem from './InfoItem.js';
 
 class ContentInfo	 extends Component {
 	constructor(props, context) {
@@ -42,25 +42,20 @@ class ContentInfo	 extends Component {
 						{objectInfo.subTitle}
 					</div>
 					<div className="mky-info-list">
-						{objectInfo.users ? this.renderList(objectInfo.users) : null}
+						{objectInfo.users ? this.renderList(objectInfo.users, objectInfo.actions) : null}
 					</div>
+
 			  	</div>
 			</aside>
 		)
 	}
 
-	renderList(items){
+	renderList(items, actions){
 		var itemList = [];
 
 		items.forEach(function(item){
 			if(item){
-				itemList.push(<div className="mky-info-list-item">
-					<img src={item.avatar} />
-					<div className="mky-info-list-name">
-						<div className="mky-info-name-name">{item.name}</div>
-						<div className="mky-info-list-desc">{item.description}</div>
-					</div>
-				</div>);
+				itemList.push(<InfoItem avatar={item.avatar} name={item.name} description={item.description} actions={actions} />);
 			}
 		})
 
