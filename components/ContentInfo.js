@@ -39,7 +39,7 @@ class ContentInfo	 extends Component {
 						
 					</div>
 					<div className="mky-info-subtitle">
-						{objectInfo.subTitle}
+						{objectInfo.users && objectInfo.users.length > 0 ? objectInfo.subTitle : null}
 					</div>
 					<div className="mky-info-list">
 						{objectInfo.users ? this.renderList(objectInfo.users, objectInfo.actions) : null}
@@ -53,9 +53,9 @@ class ContentInfo	 extends Component {
 	renderList(items, actions){
 		var itemList = [];
 
-		items.forEach(function(item){
+		items.forEach((item) => {
 			if(item){
-				itemList.push(<InfoItem avatar={item.avatar} name={item.name} description={item.description} actions={actions} />);
+				itemList.push(<InfoItem avatar={item.avatar} id={item.id} rol={item.rol} conversationSelected={this.props.conversationSelected} name={item.name} description={item.description} actions={actions} />);
 			}
 		})
 

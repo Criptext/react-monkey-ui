@@ -19,9 +19,15 @@ class InfoItem extends Component {
 			<div className="mky-info-list-item">
 				<img src={this.props.avatar} />
 				<div className="mky-info-list-name">
-					<div className="mky-info-name-name">{this.props.name}</div>
+					<div className="mky-info-content">
+						<div className="mky-info-content-name">{this.props.name}</div>
+						{this.props.rol ? <div className="mky-info-content-rol">{this.props.rol}</div> : null}
+					</div>
 					<div className="mky-info-list-desc">{this.props.description}</div>
-					<div className="mky-info-actions-icon" onClick={this.toggleActions}><i className="icon mky-icon-arrow-down-regular"></i></div>
+					{ this.props.actions && this.props.actions.length > 0
+						? <div className="mky-info-actions-icon" onClick={this.toggleActions}><i className="icon mky-icon-arrow-down-regular"></i></div>
+						: null
+					}
 					{	
 						this.state.showActions && this.props.actions && this.props.actions.length > 0
 						? (<div>
@@ -49,7 +55,7 @@ class InfoItem extends Component {
 
 		this.props.actions.forEach( (action) => {
 			if(action){
-				actionList.push(<div className="mky-info-action" onClick={ () => { this.toggleActions(); action.func(); } }>
+				actionList.push(<div className="mky-info-action" onClick={ () => { this.toggleActions(); action.func(this.props.id, this.props.conversationSelected.id); } }>
 					{action.action}
 				</div>);
 			}
