@@ -2745,6 +2745,8 @@ TABLE OF CONTENTS
   font-size: 32px;
   /*margin-top: -8px;*/
   margin-right: 2px;
+  width: auto;
+  height: auto;
 }
 
 #mky-button-cancel-audio{
@@ -3059,6 +3061,7 @@ TABLE OF CONTENTS
   margin-top: 12px;
   color: #096EFF;
   opacity: 0.8;
+  display: inline;
 }
 
 #mky-menu-attach-icon:hover,
