@@ -5,18 +5,24 @@ class ContentInfo	 extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
+		this.objectInfo = {};
+		this.state = {
+			editingName : false, 
+		}
+	}
+
+	componentWillMount(){
+		this.objectInfo = this.props.getConversationInfo();
 	}
 
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id) {
 			this.props.toggleConversationHeader();
 		}
+		this.objectInfo = this.props.getConversationInfo();
 	}
 
 	render() {
-
-		var objectInfo = {};
-		objectInfo = this.props.getConversationInfo();
 
     	return (
 			<aside className={this.props.isMobile ? "mky-aside-right-wide" : "mky-aside-right"} >
@@ -25,24 +31,38 @@ class ContentInfo	 extends Component {
 					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-back"></i></div>
 
 					<div className="mky-info-header-block" style={{marginLeft : '20px'}}>
-						<span className='mky-ellipsify mky-info-header-name'>{objectInfo.title ? objectInfo.title : "Information"}</span>
+						<span className='mky-ellipsify mky-info-header-name'>{this.objectInfo.title ? this.objectInfo.title : "Information"}</span>
 						<span className="mky-info-header-desc" ></span>
 					</div>
 					
 				</header>
 				<div className="mky-info-container">
 					<div className="mky-info-body-img">
-					  <img src={objectInfo.avatar} />
+					  <img src={this.objectInfo.avatar} />
 					</div>
 					<div className="mky-info-input" >
-						<input value={objectInfo.name} type="text" className="mky-info-input-input" disabled/>
-						
+						<label>Name</label>
+						<input value={this.objectInfo.name} type="text" className="mky-info-input-input" disabled/>
+						<i className="icon mky-icon-edit mky-info-edit-icon"></i>						
 					</div>
 					<div className="mky-info-subtitle">
-						{objectInfo.users && objectInfo.users.length > 0 ? objectInfo.subTitle : null}
+						<div className="mky-info-subtitle-head">
+							<div className="mky-info-subtitle-left">
+								{this.objectInfo.subTitle}
+							</div>
+							<div>
+								{this.objectInfo.users.length + " of 50"}
+							</div>
+						</div>
+						{this.objectInfo.canAdd 
+							?	<div>
+									<i className="icon mky-icon-add-regular"></i> Add {this.objectInfo.users && this.objectInfo.users.length > 0 ? this.objectInfo.subTitle : null}
+								</div>
+							: null
+						}
 					</div>
 					<div className="mky-info-list">
-						{objectInfo.users ? this.renderList(objectInfo.users, objectInfo.actions) : null}
+						{this.objectInfo.users ? this.renderList(this.objectInfo.users, this.objectInfo.actions) : null}
 					</div>
 
 			  	</div>
@@ -55,11 +75,17 @@ class ContentInfo	 extends Component {
 
 		items.forEach((item) => {
 			if(item){
-				itemList.push(<InfoItem avatar={item.avatar} id={item.id} rol={item.rol} conversationSelected={this.props.conversationSelected} name={item.name} description={item.description} actions={actions} />);
+				itemList.push(<InfoItem item={item} conversationSelected={this.props.conversationSelected} actions={actions} />);
 			}
 		})
 
 		return itemList;
+	}
+
+	toogleEditName(){
+		this.setState({
+			
+		});
 	}
 
 }

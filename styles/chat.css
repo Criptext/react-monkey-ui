@@ -3526,7 +3526,15 @@ aside.aside-divided{
 .mky-info-input{
     width: 80%;
     margin: 15px auto;
-    border-bottom: solid 1px gray;
+    border: 2px solid #EFEFEF;
+    border-radius: 5px;
+}
+
+.mky-info-input label{
+    padding: 10px;
+    display: block;
+    font-size: 15px;
+    color: gray;
 }
 
 .mky-info-input input{
@@ -3537,6 +3545,9 @@ aside.aside-divided{
     font-family: 'helvetica-light', Helvetica, sans-serif;
     font-size: 15px;
     float: left;
+    font-weight: bold;
+    color: black;
+    text-overflow: ellipsis;
 }
 
 .mky-info-input-input:focus{
@@ -3550,9 +3561,14 @@ aside.aside-divided{
     position: relative;
     width: 80%;
     margin: 0 auto;
-    flex: 1;
     flex-direction: column;
     -webkit-box-flex: 1;
+    border-left: 2px solid #EFEFEF;
+    border-right: 2px solid #EFEFEF;
+    border-bottom: 2px solid #EFEFEF;
+    margin-bottom: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 .mky-info-list::-webkit-scrollbar { width: 0 !important }
@@ -3569,12 +3585,12 @@ aside.aside-divided{
 
 .mky-info-list-item:after {
     content: '';
-    width: 80%;
-    height: 1px;
-    background: #CACACA;
+    width: calc(100% - 60px);
+    height: 2px;
+    background: #EFEFEF;
     position: absolute;
     bottom: 0;
-    left: 10%;
+    left: 60px;
 }
 
 .mky-info-list-item img{
@@ -3583,6 +3599,7 @@ aside.aside-divided{
     float: left;
     border-radius: 50%;
     padding: 5px;
+    margin-left: 10px;
 }
 
 .mky-info-list-name{
@@ -3606,7 +3623,7 @@ aside.aside-divided{
     position: relative;
     display: flex;
     flex-direction: column;
-    background-color: #F9F9F9;
+    background-color: white;
 }
 
 .mky-info-edit-icon{
@@ -3620,8 +3637,23 @@ aside.aside-divided{
     width: 80%;
     margin: 0 auto;
     padding: 5px 0 5px 0;
-    background-color: #E6E6E6;
-    border: 1px solid #E6E6E6;
+    border: 2px solid #EFEFEF;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    color: gray;
+}
+
+.mky-info-subtitle-head{
+    display: flex;
+    padding: 5px 10px;
+}
+
+.mky-info-subtitle-left{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: left;
 }
 
 .mky-info-content {
@@ -3654,12 +3686,7 @@ aside.aside-divided{
     -webkit-flex: none;
     -ms-flex: none;
     flex: none;
-    border: 1px solid green;
-    height: 13px;
-    margin-top: -3px;
-    padding: 2px 5px 2px 5px;
-    font-size: 12px;
-    border-radius: 2px;
+    padding-right: 8px;
     color: green;
 }
 
@@ -3675,6 +3702,7 @@ aside.aside-divided{
     -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
     box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
     border-radius: 3px;
+    max-width: 85%;
 }
 
 .mky-info-action{
