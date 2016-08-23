@@ -120,7 +120,7 @@ class TimelineChat extends Component {
 					}
 				</div>
 				<div className={'mky-chat-timeline-control '+this.state.classControl} onClick={this.handleControlPosition}>
-					<i className='icon mky-icon-arrow-down-regular'></i>
+					<i className='icon mky-icon-arrow-down-regular' style={{height : '12px'}}></i>
 				</div>
 			</div>
 		)

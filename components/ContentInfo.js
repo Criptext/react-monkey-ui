@@ -42,7 +42,7 @@ class ContentInfo	 extends Component {
 			<aside className={this.props.isMobile ? "mky-aside-right-wide" : "mky-aside-right"} >
 				<header className="mky-info-header" >
 
-					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-close-light"></i></div>
+					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-close" style={{fontSize : '14px', marginTop : '5px', display : 'block'}}></i></div>
 
 					<div className="mky-info-header-block" style={{marginLeft : '20px'}}>
 						<span className='mky-ellipsify mky-info-header-name'>{this.objectInfo.title ? this.objectInfo.title : "Information"}</span>
@@ -79,6 +79,15 @@ class ContentInfo	 extends Component {
 						{this.objectInfo.users ? this.renderList(this.objectInfo.users, this.objectInfo.actions) : null}
 					</div>
 
+					{ this.objectInfo.button && this.objectInfo.button.text && this.objectInfo.button.func
+						? <button className="mky-info-button" onClick={ () => { this.objectInfo.button.func(this.props.conversationSelected.id) } }>
+							<span className="mky-info-button-text">
+								{this.objectInfo.button.text}
+							</span>
+							<i className={this.objectInfo.button.class ? this.objectInfo.button.class : "icon mky-icon-signout-sober mky-info-button-i"}></i>
+						</button>
+						: null
+					}
 			  	</div>
 			</aside>
 		)
@@ -96,7 +105,7 @@ class ContentInfo	 extends Component {
 
 		items.forEach((item) => {
 			if(item){
-				itemList.push(<InfoItem item={item} conversationSelected={this.props.conversationSelected} actions={actions} />);
+				itemList.push(<InfoItem key={item.id} item={item} conversationSelected={this.props.conversationSelected} actions={actions} />);
 			}
 		})
 
