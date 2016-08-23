@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import InfoItem from './InfoItem.js';
 
 class ContentInfo	 extends Component {
@@ -8,11 +9,19 @@ class ContentInfo	 extends Component {
 		this.objectInfo = {};
 		this.state = {
 			editingName : false, 
+			infoName : '',
 		}
+		this.toogleEditName=this.toogleEditName.bind(this);
+		this.handleNameKeyDown = this.handleNameKeyDown.bind(this);
+		this.handleNameChange = this.handleNameChange.bind(this);
+		this.handleNameBlur = this.handleNameBlur.bind(this);
 	}
 
 	componentWillMount(){
 		this.objectInfo = this.props.getConversationInfo();
+		this.setState({
+			infoName : this.objectInfo.name
+		});
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -20,6 +29,11 @@ class ContentInfo	 extends Component {
 			this.props.toggleConversationHeader();
 		}
 		this.objectInfo = this.props.getConversationInfo();
+		if(this.objectInfo.name != this.state.infoName && !this.state.editingName){
+			this.setState({
+				infoName : this.objectInfo.name
+			})
+		}
 	}
 
 	render() {
@@ -28,7 +42,7 @@ class ContentInfo	 extends Component {
 			<aside className={this.props.isMobile ? "mky-aside-right-wide" : "mky-aside-right"} >
 				<header className="mky-info-header" >
 
-					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-back"></i></div>
+					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-close-light"></i></div>
 
 					<div className="mky-info-header-block" style={{marginLeft : '20px'}}>
 						<span className='mky-ellipsify mky-info-header-name'>{this.objectInfo.title ? this.objectInfo.title : "Information"}</span>
@@ -42,8 +56,8 @@ class ContentInfo	 extends Component {
 					</div>
 					<div className="mky-info-input" >
 						<label>Name</label>
-						<input value={this.objectInfo.name} type="text" className="mky-info-input-input" disabled/>
-						<i className="icon mky-icon-edit mky-info-edit-icon"></i>						
+						<input ref="nameChange" value={this.state.infoName} onChange={this.handleNameChange} onKeyDown={this.handleNameKeyDown} onBlur={this.handleNameBlur} type="text" className="mky-info-input-input" disabled={this.state.editingName ? false : true}/>
+						{this.objectInfo.renameGroup && !this.state.editingName ? <i className="icon mky-icon-edit mky-info-edit-icon" onClick={this.toogleEditName}></i> : null}					
 					</div>
 					<div className="mky-info-subtitle">
 						<div className="mky-info-subtitle-head">
@@ -70,6 +84,13 @@ class ContentInfo	 extends Component {
 		)
 	}
 
+	componentDidUpdate(){
+		if(this.state.editingName){
+			var domNode = ReactDOM.findDOMNode(this.refs.nameChange);
+        	domNode.focus();
+		}
+	}
+
 	renderList(items, actions){
 		var itemList = [];
 
@@ -84,7 +105,31 @@ class ContentInfo	 extends Component {
 
 	toogleEditName(){
 		this.setState({
-			
+			editingName : !this.state.editingName
+		});
+		var domNode = ReactDOM.findDOMNode(this.refs.nameChange);
+        domNode.focus();
+	}
+
+	handleNameChange(event) {
+        this.setState({
+			infoName : event.target.value.trim(),
+		});
+	}
+
+	handleNameKeyDown(event){
+		if(event.keyCode === 13 && !event.shiftKey) {
+			this.objectInfo.renameGroup(this.props.conversationSelected.id, this.state.infoName);
+			this.setState({
+				editingName : false
+			});
+		}
+	}
+
+	handleNameBlur(event){
+		this.setState({
+			infoName : this.objectInfo.name,
+			editingName : false
 		});
 	}
 

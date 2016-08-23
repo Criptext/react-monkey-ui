@@ -8,7 +8,9 @@ class InfoItem extends Component {
 		this.state = {
 			showActions: false,
 			showConfirm: false,
-			actionIndex: null
+			actionIndex: null,
+			top : 0,
+			left : 0,
 		}
 		this.toggleActions = this.toggleActions.bind(this);
 		this.renderActions = this.renderActions.bind(this);
@@ -38,7 +40,7 @@ class InfoItem extends Component {
 					{	
 						this.state.showActions && this.props.actions && this.props.actions.length > 0 && !this.props.item.rol
 						? (<div>
-							<div className="mky-info-actions">
+							<div className="mky-info-actions" style={{top : this.state.top + "px", left : this.state.left + "px"}}>
 								{this.renderActions()}
 							</div>
 							<div className="mky-info-actions-back" onClick={this.toggleActions}>
@@ -55,10 +57,12 @@ class InfoItem extends Component {
 		)
 	}
 
-	toggleActions(){
+	toggleActions(event){
 		this.setState({
 			showActions : !this.state.showActions,
-			actionIndex : null
+			actionIndex : null,
+			top : event.clientY,
+			left : event.clientX - 200,
 		});
 	}
 
