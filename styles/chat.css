@@ -12,6 +12,7 @@ TABLE OF CONTENTS
   3.2.- ASIDE - header, search panel, search list, conversation list
   3.3.- SECTION - header, chat timeline, preview, chat inputs
   3.4.- BANNER -  banner
+  3.5 - ASIDE RIGHT
 4.- MODAL
   4.1.- Image preview
   4.2.- Location preview
@@ -1413,6 +1414,18 @@ TABLE OF CONTENTS
 	height: 100%;
 }
 
+@media only screen and (max-width: 900px){
+  .mky-chat-thinner{
+    display : none;
+  }
+}
+
+@media only screen and (min-width: 901px){
+  .mky-chat-thinner{
+    width: 44%;
+  }
+}
+
   /* 3.3.- SECTION: Header
      ----------------------------- */
 
@@ -1445,6 +1458,7 @@ TABLE OF CONTENTS
     margin: 13px;
     float: left;
     margin-left: 25px;
+    cursor: pointer;
 }
 
 /*
@@ -1464,6 +1478,7 @@ TABLE OF CONTENTS
     height: calc(100% - 18px);
     float: left;
     padding-top: 18px;
+    position: relative;
 }
 
 #mky-conversation-selected-description span{
@@ -1472,6 +1487,7 @@ TABLE OF CONTENTS
   font-weigth: normal;
   color:#a2a2a2;
   line-height: 16px;
+  cursor: pointer;
 }
 
 #mky-conversation-selected-name{
@@ -3046,7 +3062,7 @@ TABLE OF CONTENTS
 
 .mky-signature-link{
 	color: #42A5F5;
-	text-decoration-line: dotted;
+	text-alignt-decoration-line: dotted;
 }
 
 #mky-menu-attach-icon,
@@ -3416,6 +3432,317 @@ aside.aside-divided{
     width: 100%;
   }
 }
+
+.mky-conversation-header-exit{
+    cursor: pointer;
+    right: 0;
+    position: absolute;
+    top: 20px;
+    font-size: 15px;
+    color: #6e8191;
+}
+
+/* 3.5 ASIDE RIGHT */
+@media only screen and (max-width: 900px){
+  .mky-aside-right{
+    width: calc(72% - 1px) !important;
+  }
+}
+@media only screen and (min-width: 901px){
+  .mky-aside-right{
+    width: calc(28% - 2px) !important;
+    border-left: 1px solid #E8E8E8;
+  }
+}
+
+.mky-aside-right-wide{
+    width : 100% !important;
+}
+
+.mky-info-header{
+    background: #eee;
+    position: relative;
+    z-index: 1;
+}
+
+.mky-info-header div{
+    vertical-align: top;
+    font-size: 13px;
+}
+
+.mky-info-back{
+    float: left;
+    margin: 21px -10px 0 12px;
+    width: auto;
+    cursor: pointer;
+}
+
+.mky-info-back i{
+    color: #6e8191;
+    font-size: 24px;
+}
+
+.mky-info-header-block{
+    width: calc(100% - 125px);
+    height: calc(100% - 18px);
+    float: left;
+    padding-top: 18px;
+}
+
+.mky-info-header-name{
+    font-size: 14px;
+    color: #353535 !important;
+    display: block;
+    text-align: left;
+    line-height: 16px;  
+    margin-top: 9px;
+}
+
+.mky-info-header-desc{
+    display: block;
+    text-align: left;
+    color: #a2a2a2;
+    line-height: 16px;  
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 80%;
+}
+
+.mky-info-body-img{
+    width: 150px;
+    height: 150px;
+    margin: 25px auto 15px auto;
+}
+
+.mky-info-body-img img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.mky-info-input{
+    width: 80%;
+    margin: 15px auto;
+    border: 2px solid #EFEFEF;
+    border-radius: 5px;
+}
+
+.mky-info-input label{
+    padding: 10px;
+    display: block;
+    font-size: 15px;
+    color: gray;
+}
+
+.mky-info-input-input{
+    border: none;
+    width: 80%;
+    margin: 10px;
+    background: none;
+    font-family: 'helvetica-light', Helvetica, sans-serif;
+    font-size: 15px;
+    float: left;
+    font-weight: bold;
+    color: black;
+    text-overflow: ellipsis;
+}
+
+.mky-info-input-input:focus{
+    outline-width: 0;
+    border: none !important;
+    box-shadow: none;
+    border-bottom: 1px solid #CECECE !important;
+}
+
+.mky-info-list{
+    overflow: scroll;
+    position: relative;
+    width: 80%;
+    margin: 0 auto;
+    flex-direction: column;
+    -webkit-box-flex: 1;
+    border-left: 2px solid #EFEFEF;
+    border-right: 2px solid #EFEFEF;
+    border-bottom: 2px solid #EFEFEF;
+    margin-bottom: 15px;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+.mky-info-list::-webkit-scrollbar { width: 0 !important }
+.mky-info-list{ -ms-overflow-style: none; }
+.mky-info-list{ overflow: -moz-scrollbars-none; }
+
+.mky-info-list-item{
+    height: 50px;
+    width: 100%;
+    clear: both;
+    position: relative;
+    padding: 5px 0;
+}
+
+.mky-info-list-item:after {
+    content: '';
+    width: calc(100% - 60px);
+    height: 2px;
+    background: #EFEFEF;
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+}
+
+.mky-info-list-item img{
+    height: 40px;
+    width: 40px;
+    float: left;
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.mky-info-list-name{
+    padding: 10px 5px 0px 5px;
+    width: calc(100% - 70px);
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 40px;
+    text-overflow: ellipsis;
+}
+
+.mky-info-list-desc{
+    font-size: 13px;
+    color: #5D5D5D;
+}
+
+.mky-info-container{
+    width: 100%;
+    height: calc(100% - 65px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+}
+
+.mky-info-edit-icon{
+    float: right;
+    width: 10%;
+    margin-top: 5px;
+}
+
+.mky-info-edit-icon{
+    float: right;
+    width: 10%;
+    margin-top: 5px;
+    cursor: pointer;
+}
+
+.mky-info-edit-icon:hover{
+    color : #0077C1;
+}
+
+.mky-info-subtitle{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    padding: 5px 0 5px 0;
+    border: 2px solid #EFEFEF;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    color: gray;
+}
+
+.mky-info-subtitle-head{
+    display: flex;
+    padding: 5px 10px;
+}
+
+.mky-info-subtitle-left{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    text-align: left;
+}
+
+.mky-info-content {
+    width: 100%;
+    -ms-flex-direction: row;
+    flex-direction: row; 
+    display: -webkit-box;
+    display: -webkit-flex; 
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.mky-info-content-name{
+    -webkit-box-flex: 1;
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.mky-info-content-rol{
+    -webkit-box-flex: 0;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+    padding-right: 8px;
+    color: green;
+}
+
+.mky-info-actions{
+    position: fixed;
+    right: 10px;
+    top: 34px;
+    max-height: 150px;
+    width: 200px;
+    z-index: 1000;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+    box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+    border-radius: 3px;
+    max-width: 85%;
+}
+
+.mky-info-action{
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.mky-info-action:hover{
+    background-color: #EEEEEE;
+}
+
+.mky-info-actions-back{
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.mky-info-actions-icon{
+    position: absolute;
+    right: 15px;
+    top: 35px;
+    cursor: pointer;
+    color: gray;
+}
+
 
 
 /* 4.- MODAL
