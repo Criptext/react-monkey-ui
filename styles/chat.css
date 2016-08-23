@@ -1068,6 +1068,23 @@ TABLE OF CONTENTS
   -webkit-box-flex: 1;
 }
 
+#mky-conversation-list::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
+  background-color: #F5F5F5;
+}
+
+#mky-conversation-list::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+#mky-conversation-list::-webkit-scrollbar-thumb
+{
+  background-color: #C5C5C5;
+}
+
 #mky-conversation-list li{
   width: 100%;
   height: 58px;
@@ -1619,11 +1636,32 @@ TABLE OF CONTENTS
   padding-bottom: 12px;
 }
 
+#mky-chat-timeline::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
+  background-color: #F5F5F5;
+}
+
+#mky-chat-timeline::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+#mky-chat-timeline::-webkit-scrollbar-thumb
+{
+  background-color: #C5C5C5;
+}
+
 .mky-chat-timeline-control{
   cursor: pointer;
   bottom: 10px;
   position: absolute;
   right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
 }
 
 .mky-chat-timeline-conversation{
@@ -3570,6 +3608,7 @@ aside.aside-divided{
     margin-bottom: 15px;
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
+    min-height: 100px;
 }
 
 .mky-info-list::-webkit-scrollbar { width: 0 !important }
@@ -3625,6 +3664,24 @@ aside.aside-divided{
     display: flex;
     flex-direction: column;
     background-color: white;
+    overflow: auto;
+}
+
+.mky-info-container::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
+  background-color: #F5F5F5;
+}
+
+.mky-info-container::-webkit-scrollbar
+{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.mky-info-container::-webkit-scrollbar-thumb
+{
+  background-color: #C5C5C5;
 }
 
 .mky-info-edit-icon{
@@ -3715,6 +3772,13 @@ aside.aside-divided{
     box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
     border-radius: 3px;
     max-width: 85%;
+    animation-name: actionMenu;
+    animation-duration: 2s;
+}
+
+@keyframes actionMenu{
+    0%   {max-height: 0;}
+    100% {max-height: 150px;}
 }
 
 .mky-info-action{
@@ -3865,6 +3929,34 @@ aside.aside-divided{
   -webkit-transform: rotate(270deg);
   -ms-transform: rotate(270deg);
   top:0;
+}
+
+.mky-info-button{
+    width: 80%;
+    margin: 0 auto;
+    height: 40px;
+    background: #FF5151;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+    flex: none;
+    justify-content: center;
+    display: flex;
+}
+
+.mky-info-button-text{
+    display: block;
+    padding-top: 2px;
+    padding-right: 5px;
+}
+
+.mky-info-button-i{
+    font-size: 20px;
+    display: inline;
+    display: block;
 }
 
 

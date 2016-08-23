@@ -11,10 +11,12 @@ class InfoItem extends Component {
 			actionIndex: null,
 			top : 0,
 			left : 0,
+			errored : false
 		}
 		this.toggleActions = this.toggleActions.bind(this);
 		this.renderActions = this.renderActions.bind(this);
 		this.toggleConfirm = this.toggleConfirm.bind(this);
+		this.handleError = this.handleError.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -26,7 +28,7 @@ class InfoItem extends Component {
 
     	return (
 			<div className="mky-info-list-item">
-				<img src={this.props.item.avatar} />
+				<img src={this.state.errored ? 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png' : this.props.item.avatar} onError={this.handleError}/>
 				<div className="mky-info-list-name">
 					<div className="mky-info-content">
 						<div className="mky-info-content-name">{this.props.item.name}</div>
@@ -55,6 +57,12 @@ class InfoItem extends Component {
 				</div>
 			</div>
 		)
+	}
+
+	handleError(){
+		this.setState({
+			errored : true,
+		});
 	}
 
 	toggleActions(event){
