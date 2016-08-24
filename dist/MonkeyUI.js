@@ -373,14 +373,14 @@ return /******/ (function(modules) { // webpackBootstrap
 								haveConversations: this.haveConversations,
 								version: this.props.view.version,
 								customLoader: this.props.customLoader,
-								showConversationInfo: this.props.showConversationInfo,
+								showConversationInfo: this.props.conversationLoadInfo,
 								toggleConversationHeader: this.props.toggleConversationHeader,
 								viewType: this.props.view.type,
 								closeSide: this.openSide }),
-							this.props.showConversationInfo ? _react2.default.createElement(_ContentInfo2.default, {
+							this.props.conversationLoadInfo ? _react2.default.createElement(_ContentInfo2.default, {
 								showBanner: this.state.showBanner,
 								toggleConversationHeader: this.props.toggleConversationHeader,
-								getConversationInfo: this.props.getConversationInfo,
+								getConversationInfo: this.props.onConversationLoadInfo,
 								isMobile: this.state.isMobile,
 								conversationSelected: this.props.conversation }) : null
 						) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
@@ -37049,7 +37049,11 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.classStateWindow = '';
 				}
 				if (this.props.showConversationInfo) {
-					this.classThinner = 'mky-chat-thinner';
+					if (this.props.viewType === 'fullscreen') {
+						this.classThinner = 'mky-chat-thinner';
+					} else {
+						this.classThinner = 'mky-disappear';
+					}
 				} else {
 					this.classThinner = '';
 				}
@@ -37057,7 +37061,27 @@ return /******/ (function(modules) { // webpackBootstrap
 				return _react2.default.createElement(
 					'section',
 					{ className: this.classExpand + ' ' + this.classStateWindow + ' ' + this.classWithBanner + ' ' + this.classThinner },
-					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { closeSide: this.props.closeSide, viewType: this.props.viewType, showConversationInfo: this.props.showConversationInfo, toggleConversationHeader: this.props.toggleConversationHeader, customLoader: this.props.customLoader, connectionStatus: this.props.connectionStatus, handleNotifyTyping: this.props.handleNotifyTyping, panelParams: this.props.panelParams, loadMessages: this.props.loadMessages, conversationSelected: this.props.conversationSelected, conversationClosed: this.props.conversationClosed, messageCreated: this.props.messageCreated, isMobile: this.props.isMobile, isPartialized: this.props.isPartialized, expandAside: this.props.expandAside, onClickMessage: this.props.onClickMessage, dataDownloadRequest: this.props.dataDownloadRequest, getUser: this.props.getUser, showBanner: this.props.showBanner, haveConversations: this.props.haveConversations, version: this.props.version }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
+					this.props.conversationSelected ? _react2.default.createElement(_ContentConversation2.default, { closeSide: this.props.closeSide,
+						viewType: this.props.viewType,
+						showConversationInfo: this.props.showConversationInfo,
+						toggleConversationHeader: this.props.toggleConversationHeader,
+						customLoader: this.props.customLoader,
+						connectionStatus: this.props.connectionStatus,
+						handleNotifyTyping: this.props.handleNotifyTyping,
+						panelParams: this.props.panelParams,
+						loadMessages: this.props.loadMessages,
+						conversationSelected: this.props.conversationSelected,
+						conversationClosed: this.props.conversationClosed,
+						messageCreated: this.props.messageCreated,
+						isMobile: this.props.isMobile,
+						isPartialized: this.props.isPartialized,
+						expandAside: this.props.expandAside,
+						onClickMessage: this.props.onClickMessage,
+						dataDownloadRequest: this.props.dataDownloadRequest,
+						getUser: this.props.getUser,
+						showBanner: this.props.showBanner,
+						haveConversations: this.props.haveConversations,
+						version: this.props.version }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
 					this.props.showBanner && !this.props.isMobile ? _react2.default.createElement(_ContentBanner2.default, null) : null
 				);
 			}
@@ -39126,6 +39150,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
+	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -39697,6 +39722,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
+	  "lpl",
+	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -52433,20 +52460,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
-	                    var code = message.data.code;
-	                    var outFileNames = Object.keys(message.data.outputFiles);
+	                        var code = message.data.code;
+	                        var outFileNames = Object.keys(message.data.outputFiles);
 
-	                    if (code == 0 && outFileNames.length) {
+	                        if (code == 0 && outFileNames.length) {
 
-	                        var outFileName = outFileNames[0];
-	                        var outFileBuffer = message.data.outputFiles[outFileName];
-	                        var mp3Blob = new Blob([outFileBuffer]);
-	                        // var src = window.URL.createObjectURL(mp3Blob);
-	                        that.readData(mp3Blob);
-	                    } else {
-	                        console.log('hubo un error');
+	                            var outFileName = outFileNames[0];
+	                            var outFileBuffer = message.data.outputFiles[outFileName];
+	                            var mp3Blob = new Blob([outFileBuffer]);
+	                            // var src = window.URL.createObjectURL(mp3Blob);
+	                            that.readData(mp3Blob);
+	                        } else {
+	                            console.log('hubo un error');
+	                        }
 	                    }
-	                }
 	            };
 	            return ffmpegWorker;
 	        }
