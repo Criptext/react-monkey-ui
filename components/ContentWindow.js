@@ -22,15 +22,39 @@ class ContentWindow extends Component {
 			this.classStateWindow = '';
 		}
 		if(this.props.showConversationInfo){
-			this.classThinner = 'mky-chat-thinner';
-		}else{
+			if(this.props.viewType === 'fullscreen'){
+				this.classThinner = 'mky-chat-thinner';	
+			}else{
+				this.classThinner = 'mky-disappear';
+			}
+		}else {
 			this.classThinner = '';
 		}
 
     	return (
 	    	<section className={this.classExpand+' '+this.classStateWindow + ' '+this.classWithBanner + ' ' + this.classThinner}>
 	    	{ this.props.conversationSelected
-		    	? <ContentConversation closeSide={this.props.closeSide} viewType={this.props.viewType} showConversationInfo = {this.props.showConversationInfo} toggleConversationHeader = {this.props.toggleConversationHeader} customLoader={this.props.customLoader} connectionStatus={this.props.connectionStatus} handleNotifyTyping={this.props.handleNotifyTyping} panelParams={this.props.panelParams} loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} conversationClosed={this.props.conversationClosed} messageCreated={this.props.messageCreated} isMobile={this.props.isMobile} isPartialized={this.props.isPartialized} expandAside={this.props.expandAside} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} showBanner={this.props.showBanner} haveConversations={this.props.haveConversations} version={this.props.version}/>
+		    	? <ContentConversation closeSide={this.props.closeSide}
+		    		viewType={this.props.viewType}
+		    		showConversationInfo = {this.props.showConversationInfo}
+		    		toggleConversationHeader = {this.props.toggleConversationHeader}
+		    		customLoader={this.props.customLoader}
+		    		connectionStatus={this.props.connectionStatus}
+		    		handleNotifyTyping={this.props.handleNotifyTyping}
+		    		panelParams={this.props.panelParams}
+		    		loadMessages={this.props.loadMessages}
+		    		conversationSelected={this.props.conversationSelected}
+		    		conversationClosed={this.props.conversationClosed}
+		    		messageCreated={this.props.messageCreated}
+		    		isMobile={this.props.isMobile}
+		    		isPartialized={this.props.isPartialized}
+		    		expandAside={this.props.expandAside}
+		    		onClickMessage={this.props.onClickMessage}
+		    		dataDownloadRequest={this.props.dataDownloadRequest}
+		    		getUser={this.props.getUser}
+		    		showBanner={this.props.showBanner}
+		    		haveConversations={this.props.haveConversations}
+		    		version={this.props.version}/>
 		    	: <ContentIntro isMobile={this.props.isMobile} showBanner={this.props.showBanner}/>
 	    	}
 				{

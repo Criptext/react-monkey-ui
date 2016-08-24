@@ -434,7 +434,7 @@ class Input extends Component {
                         // var src = window.URL.createObjectURL(mp3Blob);
                         that.readData(mp3Blob);
                     } else {
-                        console.log('hubo un error');
+                        /*Error*/
                     }
                 }
         };
