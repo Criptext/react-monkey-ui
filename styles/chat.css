@@ -3687,13 +3687,7 @@ aside.aside-divided{
 .mky-info-edit-icon{
     float: right;
     width: 10%;
-    margin-top: 5px;
-}
-
-.mky-info-edit-icon{
-    float: right;
-    width: 10%;
-    margin-top: 5px;
+    margin-top: 8px;
     cursor: pointer;
 }
 
@@ -3761,8 +3755,6 @@ aside.aside-divided{
 
 .mky-info-actions{
     position: fixed;
-    right: 10px;
-    top: 34px;
     max-height: 150px;
     width: 200px;
     z-index: 1000;
@@ -3774,7 +3766,12 @@ aside.aside-divided{
     max-width: 85%;
     animation-name: actionMenu;
     animation-duration: 2s;
+    overflow: auto;
 }
+
+.mky-info-actions::-webkit-scrollbar { width: 0 !important }
+.mky-info-actions{ -ms-overflow-style: none; }
+.mky-info-actions{ overflow: -moz-scrollbars-none; }
 
 @keyframes actionMenu{
     0%   {max-height: 0;}
