@@ -3765,7 +3765,7 @@ aside.aside-divided{
     border-radius: 3px;
     max-width: 85%;
     animation-name: actionMenu;
-    animation-duration: 2s;
+    animation-duration: 0.5s;
     overflow: auto;
 }
 

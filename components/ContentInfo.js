@@ -39,7 +39,7 @@ class ContentInfo	 extends Component {
 	render() {
 
     	return (
-			<aside className={this.props.isMobile ? "mky-aside-right-wide" : "mky-aside-right"} >
+			<aside className={this.props.isMobile || this.props.viewType != 'fullscreen' ? "mky-aside-right-wide" : "mky-aside-right"} >
 				<header className="mky-info-header" >
 
 					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-close" style={{fontSize : '14px', marginTop : '5px', display : 'block'}}></i></div>
