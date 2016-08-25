@@ -167,7 +167,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				showConversations: true,
 				showBanner: false,
 				wrapperInClass: '',
-				showPopUp: false
+				showPopUp: false,
+				showConversationInfo: false
 			};
 			_this.notifyTime = 0;
 			_this.toggleTab = _this.toggleTab.bind(_this);
@@ -182,7 +183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.haveConversations = true;
 			_this.togglePopup = _this.togglePopup.bind(_this);
 			_this.handleNotifyTyping = _this.handleNotifyTyping.bind(_this);
-
+			_this.toggleConversationHeader = _this.toggleConversationHeader.bind(_this);
 			return _this;
 		}
 
@@ -373,13 +374,13 @@ return /******/ (function(modules) { // webpackBootstrap
 								haveConversations: this.haveConversations,
 								version: this.props.view.version,
 								customLoader: this.props.customLoader,
-								showConversationInfo: this.props.conversationLoadInfo,
-								toggleConversationHeader: this.props.toggleConversationHeader,
+								showConversationInfo: this.state.showConversationInfo,
+								toggleConversationHeader: this.toggleConversationHeader,
 								viewType: this.props.view.type,
 								closeSide: this.openSide }),
-							this.props.conversationLoadInfo ? _react2.default.createElement(_ContentInfo2.default, {
+							this.state.showConversationInfo ? _react2.default.createElement(_ContentInfo2.default, {
 								showBanner: this.state.showBanner,
-								toggleConversationHeader: this.props.toggleConversationHeader,
+								toggleConversationHeader: this.toggleConversationHeader,
 								getConversationInfo: this.props.onConversationLoadInfo,
 								isMobile: this.state.isMobile,
 								conversationSelected: this.props.conversation,
@@ -390,11 +391,14 @@ return /******/ (function(modules) { // webpackBootstrap
 				);
 			}
 		}, {
+			key: 'toggleConversationHeader',
+			value: function toggleConversationHeader() {
+				this.setState({ showConversationInfo: !this.state.showConversationInfo });
+			}
+		}, {
 			key: 'togglePopup',
 			value: function togglePopup() {
-				this.setState({
-					showPopUp: !this.state.showPopUp
-				});
+				this.setState({ showPopUp: !this.state.showPopUp });
 			}
 		}, {
 			key: 'toggleTab',
@@ -52458,6 +52462,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	                    // console.log(message.data);
 	                } else if (message.type == "stderr") {} else if (message.type == "done") {
+<<<<<<< aa8c71d7b474d1b80e3edccab9e3fdfb483547d1
 	                    var code = message.data.code;
 	                    var outFileNames = Object.keys(message.data.outputFiles);
 
@@ -52470,6 +52475,21 @@ return /******/ (function(modules) { // webpackBootstrap
 	                        that.readData(mp3Blob);
 	                    } else {
 	                        /*Error*/
+=======
+	                        var code = message.data.code;
+	                        var outFileNames = Object.keys(message.data.outputFiles);
+
+	                        if (code == 0 && outFileNames.length) {
+
+	                            var outFileName = outFileNames[0];
+	                            var outFileBuffer = message.data.outputFiles[outFileName];
+	                            var mp3Blob = new Blob([outFileBuffer]);
+	                            // var src = window.URL.createObjectURL(mp3Blob);
+	                            that.readData(mp3Blob);
+	                        } else {
+	                            /*Error*/
+	                        }
+>>>>>>> Add conversation info toggle
 	                    }
 	                }
 	            };
@@ -57425,9 +57445,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'componentWillReceiveProps',
 			value: function componentWillReceiveProps(nextProps) {
-				if (nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id) {
-					this.props.toggleConversationHeader();
-				}
 				this.objectInfo = this.props.getConversationInfo();
 				if (this.objectInfo.name != this.state.infoName && !this.state.editingName) {
 					this.setState({

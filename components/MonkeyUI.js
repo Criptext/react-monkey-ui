@@ -49,7 +49,8 @@ class MonkeyUI extends Component {
 			showConversations: true,
 			showBanner: false,
 			wrapperInClass: '',
-			showPopUp : false
+			showPopUp: false,
+			showConversationInfo: false
 		}
 		this.notifyTime = 0;
 		this.toggleTab = this.toggleTab.bind(this);
@@ -64,7 +65,7 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
-
+		this.toggleConversationHeader = this.toggleConversationHeader.bind(this);
 	}
 
 	getChildContext() {
@@ -242,14 +243,14 @@ class MonkeyUI extends Component {
 									haveConversations={this.haveConversations}
                 					version={this.props.view.version}
                 					customLoader = {this.props.customLoader}
-                					showConversationInfo = {this.props.conversationLoadInfo}
-                					toggleConversationHeader = {this.props.toggleConversationHeader}
+                					showConversationInfo = {this.state.showConversationInfo}
+                					toggleConversationHeader = {this.toggleConversationHeader}
         							viewType={this.props.view.type}
         							closeSide={this.openSide}/>
-            					{this.props.conversationLoadInfo 
+            					{this.state.showConversationInfo 
             						? <ContentInfo 
             							showBanner={this.state.showBanner}
-            							toggleConversationHeader = {this.props.toggleConversationHeader}
+            							toggleConversationHeader = {this.toggleConversationHeader}
             							getConversationInfo = {this.props.onConversationLoadInfo}
             							isMobile={this.state.isMobile}
             							conversationSelected={this.props.conversation}
@@ -269,12 +270,12 @@ class MonkeyUI extends Component {
 		)
 	}
 
-
+	toggleConversationHeader() {
+		this.setState({showConversationInfo: !this.state.showConversationInfo});
+	}
 
 	togglePopup() {
-		this.setState({
-			showPopUp : !this.state.showPopUp
-		});
+		this.setState({showPopUp: !this.state.showPopUp});
 	}
 
 	toggleTab() {
