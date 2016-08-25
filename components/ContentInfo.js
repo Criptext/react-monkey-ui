@@ -25,9 +25,6 @@ class ContentInfo	 extends Component {
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id) {
-			this.props.toggleConversationHeader();
-		}
 		this.objectInfo = this.props.getConversationInfo();
 		if(this.objectInfo.name != this.state.infoName && !this.state.editingName){
 			this.setState({
