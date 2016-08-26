@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ContentAside from './ContentAside.js'
 import ContentWindow from './ContentWindow.js'
-
 import ContentLogin from './ContentLogin.js'
 
 import Bubble from './Bubble.js'
@@ -49,7 +48,7 @@ class MonkeyUI extends Component {
 			showConversations: true,
 			showBanner: false,
 			wrapperInClass: '',
-			showPopUp : false
+			showPopUp: false
 		}
 		this.notifyTime = 0;
 		this.toggleTab = this.toggleTab.bind(this);
@@ -64,7 +63,6 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
-
 	}
 
 	getChildContext() {
@@ -240,8 +238,11 @@ class MonkeyUI extends Component {
 									dataDownloadRequest={this.props.onMessageDownloadData}
 									getUser={this.props.onMessageGetUser}
 									haveConversations={this.haveConversations}
-                  					version={this.props.view.version}
-                  					customLoader = {this.props.customLoader}/>
+                					version={this.props.view.version}
+                					customLoader = {this.props.customLoader}
+        							viewType={this.props.view.type}
+        							closeSide={this.openSide}
+        							getConversationInfo = {this.props.onConversationLoadInfo}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -255,12 +256,8 @@ class MonkeyUI extends Component {
 		)
 	}
 
-
-
 	togglePopup() {
-		this.setState({
-			showPopUp : !this.state.showPopUp
-		});
+		this.setState({showPopUp: !this.state.showPopUp});
 	}
 
 	toggleTab() {
