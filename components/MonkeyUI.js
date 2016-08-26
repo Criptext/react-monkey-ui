@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ContentAside from './ContentAside.js'
 import ContentWindow from './ContentWindow.js'
-import ContentInfo from './ContentInfo.js';
 import ContentLogin from './ContentLogin.js'
 
 import Bubble from './Bubble.js'
@@ -49,8 +48,7 @@ class MonkeyUI extends Component {
 			showConversations: true,
 			showBanner: false,
 			wrapperInClass: '',
-			showPopUp: false,
-			showConversationInfo: false
+			showPopUp: false
 		}
 		this.notifyTime = 0;
 		this.toggleTab = this.toggleTab.bind(this);
@@ -65,7 +63,6 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
-		this.toggleConversationHeader = this.toggleConversationHeader.bind(this);
 	}
 
 	getChildContext() {
@@ -243,20 +240,9 @@ class MonkeyUI extends Component {
 									haveConversations={this.haveConversations}
                 					version={this.props.view.version}
                 					customLoader = {this.props.customLoader}
-                					showConversationInfo = {this.state.showConversationInfo}
-                					toggleConversationHeader = {this.toggleConversationHeader}
         							viewType={this.props.view.type}
-        							closeSide={this.openSide}/>
-            					{this.state.showConversationInfo 
-            						? <ContentInfo 
-            							showBanner={this.state.showBanner}
-            							toggleConversationHeader = {this.toggleConversationHeader}
-            							getConversationInfo = {this.props.onConversationLoadInfo}
-            							isMobile={this.state.isMobile}
-            							conversationSelected={this.props.conversation}
-            							viewType={this.props.view.type}/>
-            						: null
-            					}
+        							closeSide={this.openSide}
+        							getConversationInfo = {this.props.onConversationLoadInfo}/>
 							</div>
 						)
 						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -268,10 +254,6 @@ class MonkeyUI extends Component {
 				</div>
 			</div>
 		)
-	}
-
-	toggleConversationHeader() {
-		this.setState({showConversationInfo: !this.state.showConversationInfo});
 	}
 
 	togglePopup() {

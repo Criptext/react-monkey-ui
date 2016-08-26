@@ -4,15 +4,17 @@ import ConversationList from './ConversationList.js';
 class ContentAside extends Component {
 	constructor(props, context) {
 		super(props, context);
+		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
+		this.classContentt = this.props.showBanner ? 'aside-divided' : '';
+		
 		this.logout = this.logout.bind(this);
 		this.closeSide = this.closeSide.bind(this);
-		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
 		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 	}
 
 	render() {
     	return (
-			<aside id={this.classContent} className={ this.props.showBanner ? 'aside-divided' : ''} >
+			<aside id={this.classContent} className={ 'mky-content-aside ' + this.classContentt} >
 				<header id='mky-session-header'>
 					<div id='mky-session-image'>
 						<img src={this.defineUrlAvatar()}/>

@@ -17,10 +17,12 @@ class ContentConversation extends Component {
 			showLocationInput: false,
 			messageSelected: undefined
 		}
+		this.classExpand = '' ;
+		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
+		
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.showAside = this.showAside.bind(this);
-		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
 		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 		this.handleConnectionStatus = this.handleConnectionStatus.bind(this);
 		this.closeSide = this.closeSide.bind(this);
@@ -37,13 +39,23 @@ class ContentConversation extends Component {
 
 	render() {
 
+		if(this.props.showConversationInfo){
+			if(this.props.isMobile){
+				this.classExpand = 'mky-disappear';
+			}else{
+				this.classExpand = 'mky-content-conversation-no-expand';
+			}
+		}else{
+			this.classExpand = 'mky-content-conversation-expand';
+		}
+
 		var modalComponent = null;
 		if(this.state.messageSelected){
 			modalComponent = <Modal_ message={this.state.messageSelected} closeModal={this.handleCloseModal}/>
 		}
 		
 		return (
-	    	<div className={'mky-content-conversation ' + this.conversationBannerClass}>
+	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
 				<header id='mky-conversation-selected-header'>
 					{ this.props.isMobile & this.props.haveConversations
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className="icon mky-icon-back"></i></div>
@@ -77,9 +89,19 @@ class ContentConversation extends Component {
 				{ this.state.showLocationInput
 					? <LocationInput messageCreated={this.props.messageCreated} disableGeoInput={this.disableGeoInput.bind(this)} />
 					: ( <div className='mky-chat-area'>
-							<TimelineChat customLoader={this.props.customLoader} loadMessages={this.props.loadMessages} conversationSelected={this.props.conversationSelected} messageSelected={this.handleMessageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser}/>
+							<TimelineChat customLoader={this.props.customLoader}
+								loadMessages={this.props.loadMessages}
+								conversationSelected={this.props.conversationSelected}
+								messageSelected={this.handleMessageSelected}
+								onClickMessage={this.props.onClickMessage}
+								dataDownloadRequest={this.props.dataDownloadRequest}
+								getUser={this.props.getUser}/>
 							{ modalComponent }
-							<Input connectionStatus={this.props.connectionStatus} conversationSelected={this.props.conversationSelected} handleNotifyTyping={this.props.handleNotifyTyping} enableGeoInput={this.enableGeoInput.bind(this)} messageCreated={this.props.messageCreated}/>
+							<Input connectionStatus={this.props.connectionStatus}
+								conversationSelected={this.props.conversationSelected}
+								handleNotifyTyping={this.props.handleNotifyTyping}
+								enableGeoInput={this.enableGeoInput.bind(this)}
+								messageCreated={this.props.messageCreated}/>
 						</div>
 					)
 				}
