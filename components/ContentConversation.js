@@ -40,7 +40,7 @@ class ContentConversation extends Component {
 	render() {
 
 		if(this.props.showConversationInfo){
-			if(this.props.isMobile){
+			if(this.props.isMobile || this.props.viewType != "fullscreen"){
 				this.classExpand = 'mky-disappear';
 			}else{
 				this.classExpand = 'mky-content-conversation-no-expand';
