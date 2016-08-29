@@ -5,7 +5,7 @@ import InfoItem from './InfoItem.js';
 class ContentInfo	 extends Component {
 	constructor(props, context) {
 		super(props, context);
-		this.classExpand = this.props.isMobile ? 'mky-content-info-expand' : 'mky-content-info-no-expand';
+		this.classExpand = this.props.isMobile || this.props.viewType != "fullscreen" ? 'mky-content-info-expand' : 'mky-content-info-no-expand';
 		this.objectInfo = {};
 		this.state = {
 			editingName : false, 
