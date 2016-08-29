@@ -12,7 +12,7 @@ TABLE OF CONTENTS
   3.2.- ASIDE - header, search panel, search list, conversation list
   3.3.- SECTION - header, chat timeline, preview, chat inputs
   3.4.- BANNER -  banner
-  3.5 - ASIDE RIGHT
+  3.5 - ASIDE RIGHT - conversation info
 4.- MODAL
   4.1.- Image preview
   4.2.- Location preview
@@ -1068,20 +1068,17 @@ TABLE OF CONTENTS
   -webkit-box-flex: 1;
 }
 
-#mky-conversation-list::-webkit-scrollbar-track
-{
+#mky-conversation-list::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
   background-color: #F5F5F5;
 }
 
-#mky-conversation-list::-webkit-scrollbar
-{
+#mky-conversation-list::-webkit-scrollbar{
   width: 6px;
   background-color: #F5F5F5;
 }
 
-#mky-conversation-list::-webkit-scrollbar-thumb
-{
+#mky-conversation-list::-webkit-scrollbar-thumb{
   background-color: #C5C5C5;
 }
 
@@ -1504,16 +1501,18 @@ TABLE OF CONTENTS
 }
 
 #mky-conversation-selected-name{
-    font-size: 14px;
-    color: #353535 !important;
+  font-family: 'helvetica';
+  font-size: 14px;
+  color: #353535 !important;
 }
 
 #mky-conversation-selected-status{
-    font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 80%;
+  font-size: 12px;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
 }
 
 #mky-conversation-selected-members{
@@ -3415,7 +3414,8 @@ TABLE OF CONTENTS
   }
 }
 
-/*3.4.- BANNER and dependent clases*/
+  /* 3.4.- BANNER
+     ----------------------------- */
 
 .mky-banner-section{
   width: 400px;
@@ -3447,8 +3447,6 @@ aside.aside-divided{
   width: 78%;
 }
 
-
-
 @media only screen and (max-width: 1135px){
 
   .mky-banner-section{
@@ -3479,7 +3477,8 @@ aside.aside-divided{
     color: #6e8191;
 }
 
-/* 3.5 ASIDE RIGHT */
+  /* 3.5.- ASIDE RIGHT: Conversation Info
+     ----------------------------- */
 
 .mky-content-info{
   height: 100%;
@@ -3502,23 +3501,22 @@ aside.aside-divided{
 }
 
 .mky-info-header div{
-    vertical-align: top;
-    font-size: 13px;
+  vertical-align: top;
 }
 
-.mky-info-back{
-    float: left;
-    margin: 21px -10px 0 12px;
-    width: auto;
-    cursor: pointer;
+.mky-info-close{
+  float: left;
+  margin: 26px 12px 0 15px;
+  width: auto;
+  cursor: pointer;
 }
 
-.mky-info-back i{
-    color: #6e8191;
-    font-size: 24px;
+.mky-info-close i{
+  color: #535353;
+  font-size: 12px;
 }
 
-.mky-info-header-block{
+.mky-info-header-description{
     width: calc(100% - 125px);
     height: calc(100% - 18px);
     float: left;
@@ -3526,15 +3524,16 @@ aside.aside-divided{
 }
 
 .mky-info-header-name{
-    font-size: 14px;
-    color: #353535 !important;
-    display: block;
-    text-align: left;
-    line-height: 16px;  
-    margin-top: 9px;
+  font-family: 'helvetica';
+  font-size: 15px;
+  color: #353535;
+  display: block;
+  text-align: left;
+  line-height: 16px;  
+  margin-top: 8px;
 }
 
-.mky-info-header-desc{
+.mky-info-header-status{
     display: block;
     text-align: left;
     color: #a2a2a2;
@@ -3544,6 +3543,30 @@ aside.aside-divided{
     overflow: hidden;
     text-overflow: ellipsis;
     width: 80%;
+}
+
+.mky-info-container{
+    width: 100%;
+    height: calc(100% - 65px);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    overflow: auto;
+}
+
+.mky-info-container::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
+  background-color: #F5F5F5;
+}
+
+.mky-info-container::-webkit-scrollbar{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.mky-info-container::-webkit-scrollbar-thumb{
+  background-color: #C5C5C5;
 }
 
 .mky-info-conversation-image{
@@ -3560,19 +3583,35 @@ aside.aside-divided{
   margin: 0 auto;
 }
 
-.mky-info-conversation-description {
-  width: 80%;
-  margin: 10px auto;
+.mky-info-conversation-description{
+  flex: none;
+  margin: 8px auto;
   border: 1px solid #EFEFEF;
-  border-radius: 5px;
+  border-radius: 10px;
+  width: 88%;
+}
+
+.mky-info-conversation-header{
+  border-bottom: 1px solid #EFEFEF;
+  flex: none;
+}
+
+.mky-info-conversation-data .mky-info-conversation-header{
+  border: none;
 }
 
 .mky-info-conversation-title{
   color: gray;
+  float: left;
   font-family: 'helvetica-normal', helvetica;
   font-size: 14px;
   padding: 10px;
+  width: calc(100% - 100px);
+}
+
+.mky-info-conversation-action{
   display: inline-table;
+  width: 100%;
 }
 
 .mky-info-input{
@@ -3581,9 +3620,8 @@ aside.aside-divided{
   font-family: 'helvetica-light', Helvetica, sans-serif;
   font-size: 15px;
   float: left;
-  font-weight: bold;
   color: black;
-  margin: 0 0 10px 10px;
+  margin-left: 10px;
   text-overflow: ellipsis;
   width: calc(100% - 45px);
 }
@@ -3595,55 +3633,174 @@ aside.aside-divided{
   border-bottom: 1px solid #CECECE !important;
 }
 
-.mky-info-conversation-amount{
-  color: #8297a2;
-  float: right;
-  font-family: 'helvetica-normal', helvetica;
-  font-size: 14px;
-  margin: 10px;
-}
-
 .mky-info-conversation-container{
   overflow: auto;
 }
 
-.mky-info-conversation-description{
-  flex: none;	
-}
-
-.mky-info-conversation-adapt{
+.mky-info-conversation-members{
   display: flex;
   position: relative;
   flex: 1;
   flex-direction: column;
-  min-height: 100px;
+  min-height: 120px;
 }
 
-.mky-info-conversation-header{
+.mky-info-conversation-amount{
+  color: #8297a2;
+  float: right;
+  font-family: 'helvetica-light', helvetica;
+  font-size: 14px;
+  margin: 10px;
+}
+
+.mky-info-conversation-list{
+  list-style: none;
+  margin: 0;
+  padding: 0px;
+}
+
+.mky-info-conversation-list::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
+  background-color: #F5F5F5;
+}
+
+.mky-info-conversation-list::-webkit-scrollbar{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.mky-info-conversation-list::-webkit-scrollbar-thumb{
+  background-color: #C5C5C5;
+}
+
+.mky-info-conversation-member{
+    height: 50px;
+    width: 100%;
+    clear: both;
+    position: relative;
+    padding: 5px 0;
+}
+
+.mky-info-conversation-member:after {
+    content: '';
+    width: calc(100% - 60px);
+    height: 1px;
+    background: #EFEFEF;
+    position: absolute;
+    bottom: 0;
+    left: 60px;
+}
+
+.mky-info-conversation-member img{
+    height: 36px;
+    width: 36px;
+    float: left;
+    border-radius: 50%;
+    padding: 5px;
+    margin-left: 10px;
+}
+
+.mky-info-member-description{
+    padding: 8px 5px 0px 5px;
+    width: calc(100% - 70px);
+    float: left;
+    white-space: nowrap;
+    overflow: hidden;
+    height: 35px;
+    text-overflow: ellipsis;
+}
+
+.mky-info-member-detail{
+    width: 100%;
+    -ms-flex-direction: row;
+    flex-direction: row; 
+    display: -webkit-box;
+    display: -webkit-flex; 
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+}
+
+.mky-info-member-name{
+  font-size: 15px;
+  -webkit-box-flex: 1;
+  -webkit-flex-grow: 1;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mky-info-member-rol{
+  font-size: 13px;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
   flex: none;
+  color: #8ac34a;
+}
+
+.mky-info-member-status{
+  color: #a5a5a5;
+  font-family: 'helvetica-normal';
+  font-size: 14px;
+  margin-top: 2px;
+}
+
+.mky-info-member-actions{
+  position: absolute;
+  right: 12px;
+  top: 35px;
+  cursor: pointer;
+}
+
+.mky-info-member-actions i{
+  color: #b1b1b1;
+}
+
+.mky-info-buttons{
+  padding-bottom: 20px;
 }
 
 .mky-info-button{
-  width: 80%;
-  margin: 10px auto 20px;
+  display: flex;
+  margin: 10px auto 0;
   height: 40px;
-  background: #FF5151;
+  background: #ee5350;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   color: white;
   font-weight: bold;
   cursor: pointer;
   flex: none;
   justify-content: center;
-  display: flex;
+  position: relative;
+  width: 88%;
 }
 
+.mky-info-button-text{
+  display: block;
+  font-family: 'helvetica-light';
+  font-size: 15px;
+  padding: 5px 5px 0 0;
+  text-shadow: 2px 2px #bd5353;
+  text-transform: uppercase;
+  text-align: center;
+  width: 100%
+}
 
-
-
-
-
-
+.mky-info-button i{
+  font-size: 28px;
+  position: absolute;
+  right: 10px;
+  top: 7px;
+}
 
 
 
@@ -3669,75 +3826,6 @@ aside.aside-divided{
 }
 
 .mky-info-list::-webkit-scrollbar { width: 0 !important }
-
-.mky-info-list-item{
-    height: 50px;
-    width: 100%;
-    clear: both;
-    position: relative;
-    padding: 5px 0;
-}
-
-.mky-info-list-item:after {
-    content: '';
-    width: calc(100% - 60px);
-    height: 1px;
-    background: #EFEFEF;
-    position: absolute;
-    bottom: 0;
-    left: 60px;
-}
-
-.mky-info-list-item img{
-    height: 40px;
-    width: 40px;
-    float: left;
-    border-radius: 50%;
-    padding: 5px;
-    margin-left: 10px;
-}
-
-.mky-info-list-name{
-    padding: 10px 5px 0px 5px;
-    width: calc(100% - 70px);
-    float: left;
-    white-space: nowrap;
-    overflow: hidden;
-    height: 40px;
-    text-overflow: ellipsis;
-}
-
-.mky-info-list-desc{
-    font-size: 13px;
-    color: #5D5D5D;
-}
-
-.mky-info-container{
-    width: 100%;
-    height: calc(100% - 65px);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    overflow: auto;
-}
-
-.mky-info-container::-webkit-scrollbar-track
-{
-  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
-  background-color: #F5F5F5;
-}
-
-.mky-info-container::-webkit-scrollbar
-{
-  width: 6px;
-  background-color: #F5F5F5;
-}
-
-.mky-info-container::-webkit-scrollbar-thumb
-{
-  background-color: #C5C5C5;
-}
 
 .mky-info-edit-icon{
   float: right;
@@ -3775,40 +3863,6 @@ aside.aside-divided{
     -ms-flex-positive: 1;
     flex-grow: 1;
     text-align: left;
-}
-
-.mky-info-content {
-    width: 100%;
-    -ms-flex-direction: row;
-    flex-direction: row; 
-    display: -webkit-box;
-    display: -webkit-flex; 
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
-}
-
-.mky-info-content-name{
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-}
-
-.mky-info-content-rol{
-    -webkit-box-flex: 0;
-    -webkit-flex: none;
-    -ms-flex: none;
-    flex: none;
-    padding-right: 8px;
-    color: green;
 }
 
 .mky-info-actions{
@@ -3853,16 +3907,6 @@ aside.aside-divided{
     height: 100%;
     z-index: 2;
 }
-
-.mky-info-actions-icon{
-    position: absolute;
-    right: 15px;
-    top: 35px;
-    cursor: pointer;
-    color: gray;
-}
-
-
 
 /* 4.- MODAL
    ----------------------------- */
@@ -3985,19 +4029,6 @@ aside.aside-divided{
   -ms-transform: rotate(270deg);
   top:0;
 }
-
-.mky-info-button-text{
-    display: block;
-    padding-top: 2px;
-    padding-right: 5px;
-}
-
-.mky-info-button-i{
-    font-size: 20px;
-    display: inline;
-    display: block;
-}
-
 
 /* 5.- POP UP
    ----------------------------- */

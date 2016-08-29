@@ -27,22 +27,21 @@ class InfoItem extends Component {
 		const Confirm_ = PopUp(ContentLogOut);
 
     	return (
-			<div className="mky-info-list-item">
+			<li className='mky-info-conversation-member'>
 				<img src={this.state.errored ? 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png' : this.props.item.avatar} onError={this.handleError}/>
-				<div className="mky-info-list-name">
-					<div className="mky-info-content">
-						<div className="mky-info-content-name">{this.props.item.name}</div>
-						{this.props.item.rol ? <div className="mky-info-content-rol">{this.props.item.rol}</div> : null}
+				<div className='mky-info-member-description'>
+					<div className='mky-info-member-detail'>
+						<span className='mky-info-member-name'>{this.props.item.name}</span>
+						{ this.props.item.rol ? <span className='mky-info-member-rol'>{this.props.item.rol}</span> : null }
 					</div>
-					<div className="mky-info-list-desc">{this.props.item.description}</div>
+					<span className='mky-info-member-status'>{this.props.item.description}</span>
 					{ this.props.actions && this.props.actions.length > 0 && !this.props.item.rol
-						? <div className="mky-info-actions-icon" onClick={this.toggleActions}><i className="icon mky-icon-arrow-down-regular"></i></div>
+						? <div className='mky-info-member-actions' onClick={this.toggleActions}><i className='icon mky-icon-arrow-down-regular'></i></div>
 						: null
 					}
-					{	
-						this.state.showActions && this.props.actions && this.props.actions.length > 0 && !this.props.item.rol
+					{ this.state.showActions && this.props.actions && this.props.actions.length > 0 && !this.props.item.rol
 						? (<div>
-							<div className="mky-info-actions" style={{bottom : this.state.bottom + "px", right : this.state.right + "px"}}>
+							<div className='mky-info-actions' style={{bottom : this.state.bottom + "px", right : this.state.right + "px"}}>
 								{this.renderActions()}
 							</div>
 							<div className="mky-info-actions-back" onClick={this.toggleActions}>
@@ -50,12 +49,12 @@ class InfoItem extends Component {
 						</div>)
 						: null
 					}
-					{typeof this.state.actionIndex == "number"
+					{ typeof this.state.actionIndex == "number"
 						? <Confirm_ togglePopup = {this.toggleConfirm} popUpMessage = {"Are you sure?"} userSessionLogout={() => { this.props.actions[this.state.actionIndex].func(this.props.item.id, this.props.conversationSelected.id); }}/> 
 						: null
 					}
 				</div>
-			</div>
+			</li>
 		)
 	}
 
