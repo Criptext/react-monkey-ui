@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import InfoItem from './InfoItem.js';
+import { isConversationGroup } from '../utils/monkey-utils.js'
 
 class ContentInfo	 extends Component {
 	constructor(props, context) {
@@ -34,19 +35,19 @@ class ContentInfo	 extends Component {
     	return (
 			<aside className={'mky-content-info '+this.classExpand} >
 				<header className='mky-info-header'>
-					<div className='mky-info-back' onClick={this.props.toggleConversationHeader}><i className="icon mky-icon-close" style={{fontSize : '14px', marginTop : '5px', display : 'block'}}></i></div>
-					<div className="mky-info-header-block" style={{marginLeft : '20px'}}>
-						<span className='mky-ellipsify mky-info-header-name'>{this.objectInfo.title ? this.objectInfo.title : 'Information'}</span>
-						<span className="mky-info-header-desc" ></span>
+					<div className='mky-info-close' onClick={this.props.toggleConversationHeader}><i className='icon mky-icon-close'></i></div>
+					<div className='mky-info-header-description'>
+						<span className='mky-info-header-name mky-ellipsify'>{this.objectInfo.title ? this.objectInfo.title : 'Information'}</span>
+						<span className='mky-info-header-status'></span>
 					</div>
 				</header>
 				<div className='mky-info-container'>
 					<div className='mky-info-conversation-image'>
 						<img src={this.objectInfo.avatar} />
 					</div>
-					<div className='mky-info-conversation-description'>
+					<div className='mky-info-conversation-description mky-info-conversation-data'>
 						<div className='mky-info-conversation-header'>
-							<label className='mky-info-conversation-title'>Name</label>
+							<label className='mky-info-conversation-title'>{isConversationGroup(this.props.conversationSelected.id) ? 'Group name' : 'Name'}</label>
 							<div className='mky-info-conversation-action'>
 								<input ref='nameChange'
 									className='mky-info-input'
@@ -60,9 +61,9 @@ class ContentInfo	 extends Component {
 							</div>
 						</div>
 					</div>
-					<div className='mky-info-conversation-description mky-info-conversation-adapt'>
+					<div className='mky-info-conversation-description mky-info-conversation-members'>
 						<div className='mky-info-conversation-header'>
-							<label className='mky-info-conversation-title'>{this.objectInfo.subTitle}</label>
+							<label className='mky-info-conversation-title mky-ellipsify'>{this.objectInfo.subTitle}</label>
 							<span className='mky-info-conversation-amount'>{this.objectInfo.users.length + ' of 50'}</span>
 							<div className='mky-info-conversation-action'>
 								{ this.objectInfo.canAdd 
@@ -74,16 +75,18 @@ class ContentInfo	 extends Component {
 							</div>
 						</div>
 						<div className='mky-info-conversation-container'>
-							<div className='mky-info-conversation-list'>
+							<ul className='mky-info-conversation-list'>
 								{ this.objectInfo.users ? this.renderList(this.objectInfo.users, this.objectInfo.actions) : null }
-							</div>
+							</ul>
 						</div>
 					</div>
 					{ this.objectInfo.button && this.objectInfo.button.text && this.objectInfo.button.func
-						? <button className="mky-info-button" onClick={ () => { this.objectInfo.button.func(this.props.conversationSelected.id) } }>
-							<span className="mky-info-button-text">{this.objectInfo.button.text}</span>
-							<i className={ this.objectInfo.button.class ? this.objectInfo.button.class : 'icon mky-icon-signout-sober mky-info-button-i'}></i>
-						</button>
+						? <div className='mky-info-buttons'>
+							<button className="mky-info-button" onClick={ () => { this.objectInfo.button.func(this.props.conversationSelected.id) } }>
+								<span className="mky-info-button-text">{this.objectInfo.button.text}</span>
+								<i className={ this.objectInfo.button.class ? this.objectInfo.button.class : 'icon mky-icon-signout-sober mky-info-button-i'}></i>
+							</button>
+						</div>
 						: null
 					}
 				</div>

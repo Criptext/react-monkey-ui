@@ -25,7 +25,7 @@ class ContentWindow extends Component {
 	
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.conversationSelected && this.props.conversationSelected){
-			if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id) {
+			if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id && this.state.showConversationInfo) {
 				this.toggleConversationHeader();
 			}
 		}
