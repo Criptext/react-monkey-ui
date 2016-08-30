@@ -190,7 +190,7 @@ class ConversationList extends Component {
 
 	updateScrollTop(){
 		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
-		if(this.domNode.scrollTop + this.domNode.clientHeight >= this.domNode.scrollHeight && this.scrollToLoad){
+		if(this.domNode.scrollTop + this.domNode.clientHeight + 20 >= this.domNode.scrollHeight && this.scrollToLoad){
 			var conversationArray = this.state.conversationArray;
 			var timestamp;
 			try{

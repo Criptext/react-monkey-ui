@@ -3563,11 +3563,11 @@ aside.aside-divided{
   font-family: 'helvetica-normal', helvetica;
   font-size: 14px;
   padding: 10px;
-  width: calc(100% - 85px);
+  width: calc(100% - 95px);
 }
 
 .mky-info-conversation-action{
-  display: inline-table;
+  display: flex;
   width: 100%;
 }
 
@@ -3578,7 +3578,7 @@ aside.aside-divided{
   font-size: 16px;
   float: left;
   color: black;
-  margin-left: 10px;
+  margin: 0 0 5px 10px;
   text-overflow: ellipsis;
   width: calc(100% - 45px);
 }
@@ -3622,7 +3622,7 @@ aside.aside-divided{
 .mky-info-conversation-members{
   display: flex;
   position: relative;
-  flex: 1;
+  flex: 0 1 auto;
   flex-direction: column;
   min-height: 120px;
 }
