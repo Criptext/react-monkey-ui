@@ -19,7 +19,6 @@ TABLE OF CONTENTS
 5.- POP UP
 6.- GLOBAL SETTINGS
 7.- MEDIA QUERIES
-8.- REACT CONTAINER
 
 ***/
 
@@ -736,7 +735,7 @@ TABLE OF CONTENTS
   color: #fff;
 }
 
-.mky-tab div, #mky-conversation-selected-header .mky-content-options div{
+.mky-tab div, .mky-conversation-selected-header .mky-content-options div{
   width: 20px;
   height: 15px;
   float: right;
@@ -754,7 +753,7 @@ TABLE OF CONTENTS
 	color: white;
 }
 
-#mky-conversation-selected-header .mky-content-options{
+.mky-conversation-selected-header .mky-content-options{
   display: block;
   position: absolute;
   width: 80px;
@@ -835,7 +834,7 @@ TABLE OF CONTENTS
 	border-bottom: 1px solid rgba(219,219,219,0.7);
 }
 
-#mky-session-header{
+.mky-session-header{
   display: flex;
 }
 
@@ -847,7 +846,7 @@ TABLE OF CONTENTS
 	width: 100%;
 }
 
-#mky-session-image{
+.mky-session-image{
   width: 40px;
   height: 40px;
   margin: 12px 10px 0 20px;
@@ -856,13 +855,13 @@ TABLE OF CONTENTS
   float: left;
 }
 
-#mky-session-image img{
+.mky-session-image img{
 	width: 100%;
 	height: 100%;
 	border-radius: 50%;
 }
 
-#mky-session-description{
+.mky-session-description{
 	width: calc(100% - 70px);
 	height: 100%;
 	display: inline-table;
@@ -872,17 +871,26 @@ TABLE OF CONTENTS
 
 .mky-header-exit{
   float: right;
-  margin-top: 25px;
+  margin-top: 12px;
   margin-right: 16px;
   cursor: pointer;
 }
 
-.mky-header-exit i{
+.mky-header-exit .mky-icon-close-medium{
   color: #6e8191;
   font-size: 14px;
+  position: relative;
+  top: 12px;
 }
 
-#mky-session-name{
+.mky-header-exit .mky-icon-signout-sober{
+  color: #F35E58;
+  font-size: 32px;
+  position: relative;
+  top: 4px;
+}
+
+.mky-session-name{
   margin-top: 26px;
   float: left;
   display: flex;
@@ -890,10 +898,55 @@ TABLE OF CONTENTS
   width: calc(100% - 50px);
 }
 
-#mky-session-name span{
+.mky-session-name span{
   text-align: left;
   font-size: 14px;
   color: black;
+}
+
+.mky-ellipsify {
+  flex-grow: 1;
+  overflow: hidden;
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 3.2.- ASIDE: Connection Panel
+     ----------------------------- */
+
+.mky-connection-div{
+  width: 100%;
+  background: red;
+  color: white;
+  height: auto;
+  font-weight: bold;
+  -webkit-transition: max-height 2s ease, background-color 0.5s ease;
+  -moz-transition: max-height 2s ease, background-color 0.5s ease;
+  -o-transition: max-height 2s ease, background-color 0.5s ease;
+  transition: max-height 2s ease, background-color 0.5s ease;
+}
+
+.mky-connection-content{
+  margin: 0 auto;
+  padding: 12px 10px 10px 10px;
+}
+
+.mky-connection-content p{
+  margin: 0.2em 0 0 0;
+}
+
+.mky-connection-height{
+  max-height: 200px;
+}
+
+.mky-connection-hide{
+  max-height: 0;
+}
+
+.mky-bold-text{
+    /*font-family: Verdana Pro W01 SemiBold;*/
+    font-family: helvetica;
 }
 
   /* 3.2.- ASIDE: Search Panel
@@ -1015,14 +1068,8 @@ TABLE OF CONTENTS
   padding: 0;
 }
 
-#mky-search-list .mky-conversation-unselected{
+#mky-search-list .mky-conversation-item{
   background-color: #fff;
-}
-
-.mky-conversation-image, .mky-conversation-description{
-  display: inline-block;
-  vertical-align: top;
-  float: left;
 }
 
 .mky-search-items li{
@@ -1055,7 +1102,7 @@ TABLE OF CONTENTS
   background-position: 0%;
 }
 
-#mky-conversation-list {
+.mky-conversation-list {
   width: 100%;
   margin: 0;
   padding: 0;
@@ -1068,180 +1115,49 @@ TABLE OF CONTENTS
   -webkit-box-flex: 1;
 }
 
-#mky-conversation-list::-webkit-scrollbar-track{
+.mky-conversation-list::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
   background-color: #F5F5F5;
 }
 
-#mky-conversation-list::-webkit-scrollbar{
+.mky-conversation-list::-webkit-scrollbar{
   width: 6px;
   background-color: #F5F5F5;
 }
 
-#mky-conversation-list::-webkit-scrollbar-thumb{
+.mky-conversation-list::-webkit-scrollbar-thumb{
   background-color: #C5C5C5;
 }
 
-#mky-conversation-list li{
+.mky-conversation-item{
   width: 100%;
   height: 58px;
   position: relative;
   border-bottom: none;
-}
-
-.mky-conversation-selected{
-  background-color: #eaf0f9;
-}
-.mky-conversation-selected{
-  border-top: 1px solid #EAF0F9;
-  margin-top:-1px;
-}
-
-.mky-conversation-selected .mky-message-status,
-.mky-conversation-unselected .mky-message-status{
-    margin-left: 0px;
-    margin-right: 0px;
-}
-
-#mky-conversation-list .mky-conversation-unselected{
   background-color: transparent;
 }
 
-.mky-conversation-unselected:hover{
-  background-color: #e9f8ff;
+.mky-conversation-item:hover{
+  background-color: #f9fbfd;
   cursor: pointer;
 }
-.mky-delete-conv{
-  /*display: none;*/
-  opacity: 0;
-}
 
-.mky-conversation-unselected:hover .mky-delete-conv{
-    min-width: 13px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: 1000;
-    cursor: pointer;
-    float: right;
-    opacity: 1;
-    -webkit-transition: opacity 0.2s ease-in-out;
-    -moz-transition: opacity 0.2s ease-in-out;
-    -ms-transition: opacity 0.2s ease-in-out;
-    -o-transition: opacity 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out;
-
-    display: inline-block;
-    vertical-align: top;
-}
-
-.mky-conversation-selected:hover .mky-delete-conv{
-    min-width: 13px;
-    position: relative;
-    background-repeat: no-repeat;
-    background-size: contain;
-    z-index: 1000;
-    cursor: pointer;
-    float: right;
-    display: inline-block;
-    vertical-align: top;
-    opacity: 1;
-    -webkit-transition: opacity 0.2s ease-in-out;
-    -moz-transition: opacity 0.2s ease-in-out;
-    -ms-transition: opacity 0.2s ease-in-out;
-    -o-transition: opacity 0.2s ease-in-out;
-    transition: opacity 0.2s ease-in-out;
-}
-.mky-conversation-selected:hover .mky-message-read,
-.mky-conversation-unselected:hover .mky-message-read {
-  right: 18px;
-  -webkit-transition: right 0.3s;
-  -moz-transition: right 0.3s;
-  -ms-transition: right 0.3s;
-  -o-transition: right 0.3s;
-  transition: right 0.3s;
-}
-
-
-.mky-conversation-unselected:hover .mky-conversation-notification{
-  right: 18px;
-  -webkit-transition: right 0.3s;
-  -moz-transition: right 0.3s;
-  -ms-transition: right 0.3s;
-  -o-transition: right 0.3s;
-  transition: right 0.3s;
-}
-
-.mky-conversation-unselected:hover .mky-conversation-notification{
-  right: 18px;
-  -webkit-transition: right 0.3s;
-  -moz-transition: right 0.3s;
-  -ms-transition: right 0.3s;
-  -o-transition: right 0.3s;
-  transition: right 0.3s;
-}
-
-.mky-delete-conv i{
-  background: none;
-  border: none;
-  font-size: 10px;
-  margin-left: 10px;
-  color: #FC464E;
-  position: relative;
-  top: 5px;
-}
-
-.mky-header-exit .mky-icon-signout-sober{
-  color: #F35E58;
-  font-size: 28px;
-  position: relative;
-  top: -5px;
-}
-
-.mky-status-read .mky-message-read{
-  font-size: 14px;
-  top: 6px;
-  right: 0px;
-  position: absolute;
-}
-
-.mky-connection-div{
+.mky-conversation-item-content{
   width: 100%;
-  background: red;
-  color: white;
-  height: auto;
-  font-weight: bold;
-  -webkit-transition: max-height 2s ease, background-color 0.5s ease;
-  -moz-transition: max-height 2s ease, background-color 0.5s ease;
-  -o-transition: max-height 2s ease, background-color 0.5s ease;
-  transition: max-height 2s ease, background-color 0.5s ease;
+  height: 100%;
 }
 
-.mky-connection-content{
-  margin: 0 auto;
-  padding: 12px 10px 10px 10px;
-}
-
-.mky-connection-content p{
-  margin: 0.2em 0 0 0;
-}
-
-.mky-connection-height{
-  max-height: 200px;
-}
-
-.mky-connection-hide{
-  max-height: 0;
+.mky-conversation-item .mky-message-status{
+  margin-left: 0px;
+  margin-right: 0px;
 }
 
 .mky-conversation-image{
-  width: 48px;
   height: 38px;
   margin: 0px;
   width: 38px;
   padding: 10px 15px 10px 20px;
   margin-top: -1px;
-  /*border-bottom: 1px solid #fff;*/
 }
 
 .mky-conversation-image img{
@@ -1250,8 +1166,14 @@ TABLE OF CONTENTS
   border-radius: 50%;
 }
 
+.mky-conversation-image, .mky-conversation-description{
+  display: inline-block;
+  vertical-align: top;
+  float: left;
+}
+
 .mky-conversation-description{
-  width: calc(100% - 99px);
+  width: calc(100% - 90px);
   font-size: 14px;
   text-align: left;
   white-space: nowrap;
@@ -1287,50 +1209,71 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-name span{
-  font-size: 15px;
+  font-family: helvetica;
+  font-size: 14px;
+  margin-top: 2px;
 }
 
 .mky-conversation-time{
-	width: 65px;
-	float: right;
-	margin-left: 5px;
-	text-align: right;
+  width: 65px;
+  float: right;
+  margin-left: 5px;
+  text-align: right;
 }
 
 .mky-conversation-time span{
-  font-size: 13px;
+  color: #a5a5a5;
+  font-size: 11px;
   position: relative;
-  top: 1px;
-}
-
-.mky-read-conversation-span{
-	font-size: 11px;
-  color: #a5a5a5 !important;
-}
-
-.mky-ellipsify {
-  flex-grow: 1;
-  overflow: hidden;
-  position: relative;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 .mky-conversation-state{
   color: #a5a5a5;
-  margin-top: 3px;
   display: flex;
   width:80%;
   font-family: 'helvetica-normal', helvetica;
 }
 
-.mky-conversation-state .mky-bold-text{
-  color: #000;
-  /*font-family: 'helvetica-normal', helvetica !important; */
+.mky-conversation-state span{
+  margin-top: 6px;
 }
 
-.mky-conversation-title span.mky-bold-text{
-  font-family: helvetica !important;
+.mky-conversation-options{
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+}
+
+.mky-conversation-delete{
+  opacity: 0;
+}
+
+.mky-conversation-delete i{
+  background: none;
+  border: none;
+  font-size: 10px;
+  margin-left: 10px;
+  color: #FC464E;
+  position: relative;
+  top: 5px;
+}
+
+.mky-conversation-item:hover .mky-conversation-delete{
+    min-width: 13px;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: contain;
+    z-index: 1000;
+    cursor: pointer;
+    float: right;
+    opacity: 1;
+    -webkit-transition: opacity 0.2s ease-in-out;
+    -moz-transition: opacity 0.2s ease-in-out;
+    -ms-transition: opacity 0.2s ease-in-out;
+    -o-transition: opacity 0.2s ease-in-out;
+    transition: opacity 0.2s ease-in-out;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .mky-conversation-notification{
@@ -1343,10 +1286,14 @@ TABLE OF CONTENTS
   -webkit-font-smoothing: antialiased;
   font-family: 'helvetica-normal';
 }
-.mnk-conversation-opts{
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
+
+.mky-conversation-item:hover .mky-conversation-notification{
+  right: 18px;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  -ms-transition: right 0.3s;
+  -o-transition: right 0.3s;
+  transition: right 0.3s;
 }
 
 .mky-notification-amount{
@@ -1360,19 +1307,45 @@ TABLE OF CONTENTS
   padding: 5px 6px 2px 5px;
   text-align: center;
 }
+
 .mky-notification-amount-1{
   padding: 5px 5px 2px 6px;
 }
+
 .mky-notification-amount-2{
   padding: 5px 6px 2px 6px;
 }
 
-
-.mky-bold-text{
-    /*font-family: Verdana Pro W01 SemiBold;*/
-    font-family: helvetica;
+.mky-conversation-item:hover .mky-message-read{
+  right: 18px;
+  -webkit-transition: right 0.3s;
+  -moz-transition: right 0.3s;
+  -ms-transition: right 0.3s;
+  -o-transition: right 0.3s;
+  transition: right 0.3s;
 }
 
+.mky-status-read .mky-message-read{
+  font-size: 15px;
+  top: 6px;
+  right: 0px;
+  position: absolute;
+}
+
+/* Conversation item selected */
+
+.mky-conversation-selected{
+  background-color: #ededed;
+  border-top: 1px solid #ededed;
+  margin-top:-1px;
+}
+
+/* Conversation item unread */
+
+.mky-conversation-unread .mky-conversation-state span{
+  color: #000;
+  font-family: 'helvetica-light';
+}
 
 /* 3.3.- SECTION
    ----------------------------- */
@@ -1439,15 +1412,14 @@ TABLE OF CONTENTS
   /* 3.3.- SECTION: Header
      ----------------------------- */
 
-#mky-conversation-selected-header{
+.mky-conversation-selected-header{
     background: #eee;
     position: relative;
     z-index: 1;
 }
 
-#mky-conversation-selected-header div{
-    vertical-align: top;
-    font-size: 13px;
+.mky-conversation-selected-header div{
+  vertical-align: top;
 }
 
 .mky-conversation-back{
@@ -1462,7 +1434,7 @@ TABLE OF CONTENTS
     font-size: 24px;
 }
 
-#mky-conversation-selected-image{
+.mky-conversation-selected-image{
     width: 40px;
     height: 40px;
     margin: 13px;
@@ -1471,19 +1443,13 @@ TABLE OF CONTENTS
     cursor: pointer;
 }
 
-/*
-.mky-partialsize #mky-conversation-selected-image{
-	margin-left: 5px;
-}
-*/
-
-#mky-conversation-selected-image img{
+.mky-conversation-selected-image img{
     width: 100%;
     height: 100%;
     border-radius: 50%;
 }
 
-#mky-conversation-selected-description{
+.mky-conversation-selected-description{
     width: calc(100% - 125px);
     height: calc(100% - 18px);
     float: left;
@@ -1491,23 +1457,23 @@ TABLE OF CONTENTS
     position: relative;
 }
 
-#mky-conversation-selected-description span{
+.mky-conversation-selected-description span{
   display: block;
   text-align: left;
   font-weigth: normal;
-  color:#a2a2a2;
   line-height: 16px;
   cursor: pointer;
 }
 
-#mky-conversation-selected-name{
+.mky-conversation-selected-name{
   font-family: 'helvetica';
   font-size: 14px;
-  color: #353535 !important;
+  color: #353535;
 }
 
-#mky-conversation-selected-status{
-  font-size: 12px;
+.mky-conversation-selected-status{
+  color:#a2a2a2;
+  font-size: 13px;
   margin-top: 4px;
   white-space: nowrap;
   overflow: hidden;
@@ -1846,7 +1812,7 @@ TABLE OF CONTENTS
   white-space: nowrap;
   font-size: 13px;
   color: #6a8d9e;
-  font-family: 'helvetica-normal';
+  font-family: 'helvetica-light';
 }
 .mky-devider-dots{
   border-top: 1px dotted #ccc;
@@ -1950,7 +1916,6 @@ TABLE OF CONTENTS
     -moz-box-shadow: 1px 1px 1px #a7a7a7;
     -webkit-box-shadow: 1px 1px 1px #a7a7a7;
     -o-box-shadow: 1px 1px 1px #a7a7a7;
-
 }
 
 .mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {
@@ -2386,9 +2351,6 @@ TABLE OF CONTENTS
   -ms-transform: rotate(270deg) translateX(-100%);
 }
 
-
-
-
 /*content file bubble */
 
 .mky-content-file{
@@ -2554,9 +2516,6 @@ TABLE OF CONTENTS
 .mky-location-name span{
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
-
-
-
 
 .mky-message-code{
   display: none;
@@ -2912,8 +2871,6 @@ TABLE OF CONTENTS
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-transform: initial;
 }
-
-
 
 #mky-record-area{
   box-sizing: content-box;
@@ -3525,7 +3482,7 @@ aside.aside-divided{
 
 .mky-info-header-name{
   font-family: 'helvetica';
-  font-size: 15px;
+  font-size: 16px;
   color: #353535;
   display: block;
   text-align: left;
@@ -3601,12 +3558,12 @@ aside.aside-divided{
 }
 
 .mky-info-conversation-title{
-  color: gray;
+  color: #a5a5a5;
   float: left;
   font-family: 'helvetica-normal', helvetica;
   font-size: 14px;
   padding: 10px;
-  width: calc(100% - 100px);
+  width: calc(100% - 85px);
 }
 
 .mky-info-conversation-action{
@@ -3618,7 +3575,7 @@ aside.aside-divided{
   border: none;
   background: none;
   font-family: 'helvetica-light', Helvetica, sans-serif;
-  font-size: 15px;
+  font-size: 16px;
   float: left;
   color: black;
   margin-left: 10px;
@@ -3633,8 +3590,33 @@ aside.aside-divided{
   border-bottom: 1px solid #CECECE !important;
 }
 
+.mky-info-edit-icon{
+  float: right;
+  font-size: 14px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+
+.mky-info-edit-icon:hover{
+  color : #0077C1;
+}
+
 .mky-info-conversation-container{
   overflow: auto;
+}
+
+.mky-info-conversation-container::-webkit-scrollbar-track{
+  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
+  background-color: #F5F5F5;
+}
+
+.mky-info-conversation-container::-webkit-scrollbar{
+  width: 6px;
+  background-color: #F5F5F5;
+}
+
+.mky-info-conversation-container::-webkit-scrollbar-thumb{
+  background-color: #C5C5C5;
 }
 
 .mky-info-conversation-members{
@@ -3659,26 +3641,12 @@ aside.aside-divided{
   padding: 0px;
 }
 
-.mky-info-conversation-list::-webkit-scrollbar-track{
-  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
-  background-color: #F5F5F5;
-}
-
-.mky-info-conversation-list::-webkit-scrollbar{
-  width: 6px;
-  background-color: #F5F5F5;
-}
-
-.mky-info-conversation-list::-webkit-scrollbar-thumb{
-  background-color: #C5C5C5;
-}
-
 .mky-info-conversation-member{
-    height: 50px;
-    width: 100%;
-    clear: both;
-    position: relative;
-    padding: 5px 0;
+  height: 48px;
+  width: 100%;
+  clear: both;
+  position: relative;
+  padding: 5px 0;
 }
 
 .mky-info-conversation-member:after {
@@ -3711,22 +3679,23 @@ aside.aside-divided{
 }
 
 .mky-info-member-detail{
-    width: 100%;
-    -ms-flex-direction: row;
-    flex-direction: row; 
-    display: -webkit-box;
-    display: -webkit-flex; 
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-    -webkit-flex-direction: row;
-    -ms-flex-direction: row;
-    flex-direction: row;
+  font-family: helvetica;
+  font-size: 14px;
+  width: 100%;
+  -ms-flex-direction: row;
+  flex-direction: row; 
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
 }
 
 .mky-info-member-name{
-  font-size: 15px;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3738,7 +3707,7 @@ aside.aside-divided{
 }
 
 .mky-info-member-rol{
-  font-size: 13px;
+  margin-top: 3px;
   -webkit-box-flex: 0;
   -webkit-flex: none;
   -ms-flex: none;
@@ -3764,20 +3733,16 @@ aside.aside-divided{
   color: #b1b1b1;
 }
 
-.mky-info-buttons{
-  padding-bottom: 20px;
-}
-
 .mky-info-button{
+  cursor: pointer;
   display: flex;
-  margin: 10px auto 0;
-  height: 40px;
+  margin: 8px auto;
+  height: 50px;
   background: #ee5350;
   border: none;
   border-radius: 8px;
   color: white;
   font-weight: bold;
-  cursor: pointer;
   flex: none;
   justify-content: center;
   position: relative;
@@ -3788,7 +3753,7 @@ aside.aside-divided{
   display: block;
   font-family: 'helvetica-light';
   font-size: 15px;
-  padding: 5px 5px 0 0;
+  padding: 4px 4px 0 0;
   text-shadow: 2px 2px #bd5353;
   text-transform: uppercase;
   text-align: center;
@@ -3799,70 +3764,7 @@ aside.aside-divided{
   font-size: 28px;
   position: absolute;
   right: 10px;
-  top: 7px;
-}
-
-
-
-
-
-
-
-
-.mky-info-list{
-    overflow: scroll;
-    position: relative;
-    width: 80%;
-    margin: 0 auto;
-    flex-direction: column;
-    -webkit-box-flex: 1;
-    border-left: 1px solid #EFEFEF;
-    border-right: 1px solid #EFEFEF;
-    border-bottom: 1px solid #EFEFEF;
-    margin-bottom: 15px;
-    border-bottom-right-radius: 5px;
-    border-bottom-left-radius: 5px;
-    min-height: 100px;
-}
-
-.mky-info-list::-webkit-scrollbar { width: 0 !important }
-
-.mky-info-edit-icon{
-  float: right;
-  font-size: 14px;
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.mky-info-edit-icon:hover{
-    color : #0077C1;
-}
-
-.mky-info-subtitle{
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
-    padding: 5px 0 5px 0;
-    border: 1px solid #EFEFEF;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-    color: gray;
-}
-
-.mky-info-subtitle-head{
-    display: flex;
-}
-
-.mky-info-subtitle-head div{
-  margin: 10px 10px 0px 0px;
-}
-
-.mky-info-subtitle-left{
-    -webkit-box-flex: 1;
-    -webkit-flex-grow: 1;
-    -ms-flex-positive: 1;
-    flex-grow: 1;
-    text-align: left;
+  top: 10px;
 }
 
 .mky-info-actions{
@@ -3906,6 +3808,10 @@ aside.aside-divided{
     width: 100%;
     height: 100%;
     z-index: 2;
+}
+
+.mky-content-info .mky-space{
+  padding-top: 10px;
 }
 
 /* 4.- MODAL
@@ -4190,7 +4096,7 @@ input:focus{
 @media only screen and (max-width: 600px){
 
   /* Disappear description user session */
-  .mky-no-expand #mky-session-name{
+  .mky-no-expand .mky-session-name{
 	  display: none;
   }
 }
@@ -4304,14 +4210,14 @@ input:focus{
       max-width: 100%;
       word-break: break-all;
   }
-  #mky-conversation-selected-description{
+  .mky-conversation-selected-description{
     width: calc(100% - 165px);
   }
   .mky-signature{
     margin-right: 9px;
     display: none;
   }
-  #mky-conversation-selected-header div{
+  .mky-conversation-selected-header div{
     font-size: 10px;
   }
   .mky-signature-logo{
@@ -4335,15 +4241,6 @@ input:focus{
   and (max-device-width: 1600px)
   and (-webkit-min-device-pixel-ratio: 2)
   and (min-resolution: 192dpi) {
-}
-
-
-/* 8.- REACT CONTAINER
-   ----------------------------- */
-
-.mky-full{
-	width: 100%;
-	height: 100%;
 }
 
 /*------------------------------

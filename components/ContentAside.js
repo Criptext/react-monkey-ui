@@ -15,12 +15,12 @@ class ContentAside extends Component {
 	render() {
     	return (
 			<aside id={this.classContent} className={ 'mky-content-aside ' + this.classContentt} >
-				<header id='mky-session-header'>
-					<div id='mky-session-image'>
+				<header className='mky-session-header'>
+					<div className='mky-session-image'>
 						<img src={this.defineUrlAvatar()}/>
 					</div>
-					<div id='mky-session-description'>
-						<div id='mky-session-name'>
+					<div className='mky-session-description'>
+						<div className='mky-session-name'>
 							<span className='mky-ellipsify'>{this.context.userSession.name}</span>
 						</div>
 						{ this.props.viewType == 'rightside'

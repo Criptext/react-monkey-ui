@@ -81,14 +81,13 @@ class ContentInfo	 extends Component {
 						</div>
 					</div>
 					{ this.objectInfo.button && this.objectInfo.button.text && this.objectInfo.button.func
-						? <div className='mky-info-buttons'>
-							<button className="mky-info-button" onClick={ () => { this.objectInfo.button.func(this.props.conversationSelected.id) } }>
+						? <button className="mky-info-button" onClick={ () => { this.objectInfo.button.func(this.props.conversationSelected.id) } }>
 								<span className="mky-info-button-text">{this.objectInfo.button.text}</span>
 								<i className={ this.objectInfo.button.class ? this.objectInfo.button.class : 'icon mky-icon-signout-sober mky-info-button-i'}></i>
-							</button>
-						</div>
+						</button>
 						: null
 					}
+					<div className='mky-space'></div>
 				</div>
 			</aside>
 		)
