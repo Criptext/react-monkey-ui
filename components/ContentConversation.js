@@ -56,20 +56,20 @@ class ContentConversation extends Component {
 		
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
-				<header id='mky-conversation-selected-header'>
+				<header className='mky-conversation-selected-header'>
 					{ this.props.isMobile & this.props.haveConversations
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className="icon mky-icon-back"></i></div>
 						: null
 					}
-					<div id='mky-conversation-selected-image' onClick={this.props.toggleConversationHeader}><img src={this.defineUrlAvatar()}/></div>
-					<div id='mky-conversation-selected-description' onClick={this.props.toggleConversationHeader}>
-						<span id='mky-conversation-selected-name' className='mky-ellipsify'>{this.props.conversationSelected.name}</span>
+					<div className='mky-conversation-selected-image' onClick={this.props.toggleConversationHeader}><img src={this.defineUrlAvatar()}/></div>
+					<div className='mky-conversation-selected-description' onClick={this.props.toggleConversationHeader}>
+						<span className='mky-conversation-selected-name mky-ellipsify'>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description === null
 							? ( !this.props.conversationSelected.online
-								? <span id='mky-conversation-selected-status'> {'Last seen ' + defineTimeByDay(this.props.conversationSelected.lastOpenApp)}</span>
-								: <span id='mky-conversation-selected-status'> Online </span>
+								? <span className='mky-conversation-selected-status'> {'Last seen ' + defineTimeByDay(this.props.conversationSelected.lastOpenApp)}</span>
+								: <span className='mky-conversation-selected-status'> Online </span>
 							)
-							: <span id='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
+							: <span className='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 						}
 						{ this.props.viewType == 'rightside'
 							? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
@@ -77,7 +77,7 @@ class ContentConversation extends Component {
 						}
 					</div>
 
-					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></div>
+					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a>{' '+this.props.version}</div>
 					<div className='mky-signature-logo'>
 						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
 							<img src="https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png" ></img>

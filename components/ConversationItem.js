@@ -51,20 +51,18 @@ class ConversationItem extends Component {
 
 	render() {
 
-		let classContent = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
-		classContent = classContent + " " + this.state.pressClass;
+		let classSelect = this.props.selected ? 'mky-conversation-selected' : 'mky-conversation-unselected';
+		let classUnread = this.state.unreadMessages ? 'mky-conversation-unread' : '';
+		let classContent = 'mky-conversation-item ' + classSelect + ' ' + classUnread + ' ' + this.state.pressClass;
 
     	return (
 			<li className={classContent}>
-				<div className='mky-full' onClick={this.openConversation} onTouchMove={this.handleTouchMove} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
+				<div className='mky-conversation-item-content' onClick={this.openConversation} onTouchMove={this.handleTouchMove} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
 					<div className='mky-conversation-image'><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-description'>
 						<div className='mky-conversation-title'>
 							<div className='mky-conversation-name'>
-								{ this.state.unreadMessages
-									? <span className='mky-ellipsify mky-bold-text'>{this.props.conversation.name}</span>
-									: <span className='mky-ellipsify'>{this.props.conversation.name}</span>
-								}
+								<span className='mky-ellipsify'>{this.props.conversation.name}</span>
 							</div>
 							<div className='mky-conversation-time'>
 								{ this.state.unreadMessages
@@ -75,27 +73,28 @@ class ConversationItem extends Component {
 						</div>
 						<div className='mky-conversation-state'>
 							{ Object.keys(this.props.conversation.messages).length
-								? ( this.state.unreadMessages
-									? <span className='mky-ellipsify mky-bold-text'>{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
-									: <span className='mky-ellipsify'>{this.props.conversation.messages[this.props.conversation.lastMessage] ? this.props.conversation.messages[this.props.conversation.lastMessage].preview : ''}</span>
+								? ( <span className='mky-ellipsify'>{this.props.conversation.messages[this.props.conversation.lastMessage]
+									? this.props.conversation.messages[this.props.conversation.lastMessage].preview
+									: '' }</span>
 								)
-								: <span className="mky-ellipsify">Click to open conversation</span>
+								: <span className='mky-ellipsify'>Click to open conversation</span>
 							}
 						</div>
 					</div>
 				</div>
-				<div className='mnk-conversation-opts'>
-					<div className='mky-delete-conv' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
+				<div className='mky-conversation-options'>
+					<div className='mky-conversation-delete' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
 					<Badge value={ (this.props.conversation.unreadMessageCounter && !this.props.selected) ? this.props.conversation.unreadMessageCounter : 0} />
-
-							{ Object.keys(this.props.conversation.messages).length ? (
-									this.props.conversation.messages[this.props.conversation.lastMessage] ?
-									(this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 ?
-										<div className="mky-message-status mky-status-read" ><i className="icon mky-icon-check-sober mky-message-read"></i></div>:''
-									):null
-								):null
-							}
-
+						{ Object.keys(this.props.conversation.messages).length
+							? ( this.props.conversation.messages[this.props.conversation.lastMessage]
+								? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52
+									? <div className="mky-message-status mky-status-read" ><i className="icon mky-icon-check-sober mky-message-read"></i></div>
+									: ''
+								)
+								: null
+							)
+							: null
+						}
 				</div>
 			</li>
 		)

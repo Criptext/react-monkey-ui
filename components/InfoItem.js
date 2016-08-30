@@ -44,7 +44,7 @@ class InfoItem extends Component {
 							<div className='mky-info-actions' style={{bottom : this.state.bottom + "px", right : this.state.right + "px"}}>
 								{this.renderActions()}
 							</div>
-							<div className="mky-info-actions-back" onClick={this.toggleActions}>
+							<div className='mky-info-actions-back' onClick={this.toggleActions}>
 							</div>
 						</div>)
 						: null

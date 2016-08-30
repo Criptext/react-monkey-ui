@@ -80,7 +80,7 @@ class ConversationList extends Component {
 							</div>
 		    			</div>
 		    		)
-		    		: ( <ul ref='conversationList' id='mky-conversation-list'>
+		    		: ( <ul ref='conversationList' className='mky-conversation-list'>
 						{ conversationNameFiltered.map( (conversation, index) => {
 			    			return (
 								<ConversationItem isMobile={this.props.isMobile} index={index} deleteConversation={this.handleAskDeleteConversation} key={conversation.id} conversation={conversation} conversationIdSelected={this.conversationIdSelected} selected={this.isSelected(conversation.id)}/>
