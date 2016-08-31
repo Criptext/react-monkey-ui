@@ -219,7 +219,8 @@ class MonkeyUI extends Component {
 										closeSide={this.openSide}
 										conversationsLoading={this.props.conversationsLoading}
                     					viewType={this.props.view.type}
-                    					customLoader = {this.props.customLoader}/>
+                    					customLoader = {this.props.customLoader}
+                    					usernameEdit = {this.props.onUsernameEdit}/>
 									: null
 								}
 								<ContentWindow connectionStatus={this.props.connectionStatus}

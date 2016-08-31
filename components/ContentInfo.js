@@ -122,7 +122,7 @@ class ContentInfo	 extends Component {
 
 	handleNameChange(event) {
         this.setState({
-			infoName : event.target.value.trim(),
+			infoName : event.target.value,
 		});
 	}
 

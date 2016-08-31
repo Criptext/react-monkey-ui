@@ -891,11 +891,13 @@ TABLE OF CONTENTS
 }
 
 .mky-session-name{
-  margin-top: 26px;
-  float: left;
-  display: flex;
-  white-space: nowrap;
-  width: calc(100% - 50px);
+    margin-top: 23px;
+    float: left;
+    display: flex;
+    white-space: nowrap;
+    width: calc(100% - 50px);
+    justify-content: space-between;
+    align-items: center;
 }
 
 .mky-session-name span{
@@ -1347,6 +1349,7 @@ TABLE OF CONTENTS
   font-family: 'helvetica-light';
 }
 
+
 /* 3.3.- SECTION
    ----------------------------- */
 
@@ -1411,6 +1414,32 @@ TABLE OF CONTENTS
 
   /* 3.3.- SECTION: Header
      ----------------------------- */
+
+.mky-info-edit-name {
+    float: right;
+    font-size: 18px;
+    margin-right: 8px;
+    cursor: pointer;
+}
+
+.mky-edit-input{
+    border: none;
+    background: none;
+    font-family: 'helvetica-light', Helvetica, sans-serif;
+    font-size: 16px;
+    float: left;
+    color: black;
+    margin: 0;
+    text-overflow: ellipsis;
+    width: calc(100% - 45px);
+}
+
+.mky-edit-input:focus{
+  outline-width: 0;
+  border: none !important;
+  box-shadow: none;
+  border-bottom: 1px solid #CECECE !important;
+}
 
 .mky-conversation-selected-header{
     background: #eee;
