@@ -96,7 +96,12 @@ class Input extends Component {
     	return ( 
     		<div id='mky-chat-input' className={(this.props.connectionStatus == null || this.props.connectionStatus == 3) ? '' : 'mky-disabled'} >
 				<div id='mky-chat-inner-input'>
-					<InputMenu toggleVisibility={this.handleMenuVisibility} visible={this.state.menuVisibility} enableGeoInput={this.props.enableGeoInput} handleAttach={this.handleAttach} handleAttachFile={this.handleAttachFile} colorButton={styleInput.inputRightButton}/>
+					<InputMenu toggleVisibility={this.handleMenuVisibility}
+						visible={this.state.menuVisibility}
+						enableGeoInput={this.props.enableGeoInput}
+						handleAttach={this.handleAttach}
+						handleAttachFile={this.handleAttachFile}
+						colorButton={styleInput.inputRightButton}/>
 					<div className='mky-inner-chat-input'>
 						<div id='mky-divider-chat-input'></div>
 						<div className={'mky-button-input '+this.state.classAttachButton}>
@@ -117,11 +122,6 @@ class Input extends Component {
 								</div>
 							</div>
 						</div>
-						
-						
-						
-						
-						
 						
 						<div className={'mky-button-input '+this.state.classSendButton}>
     						<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>

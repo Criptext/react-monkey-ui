@@ -26,6 +26,7 @@ class ContentConversation extends Component {
 		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 		this.handleConnectionStatus = this.handleConnectionStatus.bind(this);
 		this.closeSide = this.closeSide.bind(this);
+		this.handleToggleConversationHeader = this.handleToggleConversationHeader.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -39,7 +40,7 @@ class ContentConversation extends Component {
 
 	render() {
 
-		if(this.props.showConversationInfo){
+		if(this.props.showAsideInfo){
 			if(this.props.isMobile || this.props.viewType != "fullscreen"){
 				this.classExpand = 'mky-disappear';
 			}else{
@@ -61,8 +62,8 @@ class ContentConversation extends Component {
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className="icon mky-icon-back"></i></div>
 						: null
 					}
-					<div className='mky-conversation-selected-image' onClick={this.props.toggleConversationHeader}><img src={this.defineUrlAvatar()}/></div>
-					<div className='mky-conversation-selected-description' onClick={this.props.toggleConversationHeader}>
+					<div className='mky-conversation-selected-image' onClick={this.handleToggleConversationHeader}><img src={this.defineUrlAvatar()}/></div>
+					<div className='mky-conversation-selected-description' onClick={this.handleToggleConversationHeader}>
 						<span className='mky-conversation-selected-name mky-ellipsify'>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description === null
 							? ( !this.props.conversationSelected.online
@@ -118,7 +119,10 @@ class ContentConversation extends Component {
 		if(!connectionStatus){
 			return;
 		}
-
+	}
+	
+	handleToggleConversationHeader(){
+		this.props.toggleConversationHeader('conversation');
 	}
 
 	handleMessageSelected(message) {

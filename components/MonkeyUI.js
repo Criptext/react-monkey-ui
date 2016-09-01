@@ -336,7 +336,7 @@ class MonkeyUI extends Component {
 
 	handleShowAside(){
 		if (this.state.isMobile) {
-			this.setState({showConversations:true}); //mostrando el aside solo cuando esta en mobile
+			this.setState({showConversations: true}); //mostrando el aside solo cuando esta en mobile
 		}
 	}
 

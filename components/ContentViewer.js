@@ -13,11 +13,6 @@ class ContentViewer extends Component {
 		}
 	}
 
-	componentWillMount(){
-
-
-	}
-
 	componentDidMount() {
    		window.addEventListener('resize', this.handleResize);
 
@@ -49,14 +44,11 @@ class ContentViewer extends Component {
 				};
 
 				imageObject.src = this.props.message.data;
-
 			}
-
 	}
 
 
 	handleResize(){
-
 		var height_ = $('#file_viewer_image').parent().height() - 40;
 		var width_ = $('#file_viewer_image').parent().width() - 40;
 		$('#viewer-img').css({
