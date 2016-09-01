@@ -1420,8 +1420,12 @@ TABLE OF CONTENTS
 .mky-info-edit-name {
     float: right;
     font-size: 18px;
-    margin-right: 8px;
+    margin-right: 2px;
     cursor: pointer;
+}
+
+.mky-info-edit-name:hover {
+    color: #00C0A4;
 }
 
 .mky-edit-input{

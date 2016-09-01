@@ -50,7 +50,9 @@ class MonkeyUI extends Component {
 			wrapperInClass: '',
 			showPopUp: false
 		}
-		this.notifyTime = 0;
+		this.lastNotifyTime = 0;
+		this.firstNotifyTime = 0;
+		this.notifyTimeout = null
 		this.toggleTab = this.toggleTab.bind(this);
 		this.openSide = this.openSide.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
@@ -301,12 +303,20 @@ class MonkeyUI extends Component {
 
 	handleNotifyTyping(isTyping){
 		if(this.props.onNotifyTyping){
-			this.props.onNotifyTyping(this.props.conversation.id, isTyping);
-			this.notifyTime = new Date();
-			setTimeout(() => {
+
+			this.lastNotifyTime = new Date();
+
+			if(this.firstNotifyTime == 0 || this.lastNotifyTime.getTime() - this.firstNotifyTime.getTime()	  > 1000){
+
+				this.firstNotifyTime = this.lastNotifyTime;
+				this.props.onNotifyTyping(this.props.conversation.id, isTyping);
+			}
+
+			clearTimeout(this.notifyTimeout);
+			this.notifyTimeout = setTimeout(() => {
 				var conversationId = this.props.conversation.id;
 				var now = new Date();
-				var dif = now.getTime() - this.notifyTime.getTime();
+				var dif = now.getTime() - this.lastNotifyTime.getTime();
 				if (dif > 999){
 		        	this.props.onNotifyTyping(this.props.conversation.id, false);
 	        	}
