@@ -203,7 +203,7 @@ class ConversationList extends Component {
 			this.scrollToLoad = false;
 			this.props.handleLoadMoreConversations(timestamp);
 		}
-		if(!this.isLoading && !this.scrollToLoad){
+		if(!this.isLoading && !this.scrollToLoad && this.domNode.scrollTop + this.domNode.clientHeight + 20 < this.domNode.scrollHeight){
 			this.scrollToLoad = true;
 		}
 	}
