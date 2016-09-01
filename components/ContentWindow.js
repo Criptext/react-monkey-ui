@@ -8,7 +8,8 @@ class ContentWindow extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			showConversationInfo: false
+			showAsideInfo: false,
+			typeAsideInfo: ''
 		}
 		this.classExpand = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-content-window-with';
 		this.classStateWindow = 'mky-disabled';
@@ -24,8 +25,8 @@ class ContentWindow extends Component {
 	}
 	
 	componentWillReceiveProps(nextProps) {
-		if(nextProps.conversationSelected && this.props.conversationSelected){
-			if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id && this.state.showConversationInfo) {
+		if(nextProps.conversationSelected && this.props.conversationSelected) {
+			if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id && this.state.showAsideInfo) {
 				this.toggleConversationHeader();
 			}
 		}
@@ -37,37 +38,38 @@ class ContentWindow extends Component {
 		}
 
     	return (
-	    	<section className={this.classExpand+' '+this.classStateWindow + ' '+this.classWithBanner}>
+	    	<section className = {this.classExpand+' '+this.classStateWindow + ' '+this.classWithBanner}>
 	    	{ this.props.conversationSelected
-		    	? <ContentConversation closeSide={this.props.closeSide}
-		    		viewType={this.props.viewType}
-		    		showConversationInfo = {this.state.showConversationInfo}
+		    	? <ContentConversation closeSide = {this.props.closeSide}
+		    		viewType = {this.props.viewType}
+		    		showAsideInfo = {this.state.showAsideInfo}
 		    		toggleConversationHeader = {this.toggleConversationHeader}
-		    		customLoader={this.props.customLoader}
-		    		connectionStatus={this.props.connectionStatus}
-		    		handleNotifyTyping={this.props.handleNotifyTyping}
-		    		panelParams={this.props.panelParams}
-		    		loadMessages={this.props.loadMessages}
-		    		conversationSelected={this.props.conversationSelected}
-		    		conversationClosed={this.props.conversationClosed}
-		    		messageCreated={this.props.messageCreated}
-		    		isMobile={this.props.isMobile}
-		    		isPartialized={this.props.isPartialized}
-		    		expandAside={this.props.expandAside}
-		    		onClickMessage={this.props.onClickMessage}
-		    		dataDownloadRequest={this.props.dataDownloadRequest}
-		    		getUser={this.props.getUser}
-		    		showBanner={this.props.showBanner}
-		    		haveConversations={this.props.haveConversations}
-		    		version={this.props.version}/>
-		    	: <ContentIntro isMobile={this.props.isMobile} showBanner={this.props.showBanner}/>
+		    		customLoader = {this.props.customLoader}
+		    		connectionStatus = {this.props.connectionStatus}
+		    		handleNotifyTyping = {this.props.handleNotifyTyping}
+		    		panelParams = {this.props.panelParams}
+		    		loadMessages = {this.props.loadMessages}
+		    		conversationSelected = {this.props.conversationSelected}
+		    		conversationClosed = {this.props.conversationClosed}
+		    		messageCreated = {this.props.messageCreated}
+		    		isMobile = {this.props.isMobile}
+		    		isPartialized = {this.props.isPartialized}
+		    		expandAside = {this.props.expandAside}
+		    		onClickMessage = {this.props.onClickMessage}
+		    		dataDownloadRequest = {this.props.dataDownloadRequest}
+		    		getUser = {this.props.getUser}
+		    		showBanner = {this.props.showBanner}
+		    		haveConversations = {this.props.haveConversations}
+		    		version = {this.props.version}/>
+		    	: <ContentIntro isMobile = {this.props.isMobile} showBanner = {this.props.showBanner}/>
 	    	}
-	    	{ this.state.showConversationInfo
-		    	? <ContentInfo toggleConversationHeader = {this.toggleConversationHeader}		
-            		getConversationInfo = {this.props.getConversationInfo}
-            		isMobile={this.props.isMobile}
-            		conversationSelected={this.props.conversationSelected}
-            		viewType={this.props.viewType}/>
+	    	{ this.state.showAsideInfo
+		    	? <ContentInfo toggleConversationHeader = {this.toggleConversationHeader}
+		    		viewType = {this.props.viewType}
+		    		isMobile = {this.props.isMobile}
+		    		conversationSelected = {this.props.conversationSelected}
+		    		typeAsideInfo = {this.state.typeAsideInfo}
+            		getConversationInfo = {this.props.getConversationInfo}/>
             	: null
 	    	}
 			{ this.props.showBanner && !this.props.isMobile ?
@@ -78,8 +80,15 @@ class ContentWindow extends Component {
 		);
 	}
 	
-	toggleConversationHeader() {
-		this.setState({showConversationInfo: !this.state.showConversationInfo});
+	toggleConversationHeader(type) {	
+		if(this.showAsideInfo && this.state.typeAsideInfo !== type){
+			this.setState({typeAsideInfo: type});
+		}else {
+			this.setState({
+				showAsideInfo: !this.state.showAsideInfo,
+				typeAsideInfo: type
+			});
+		}
 	}
 }
 

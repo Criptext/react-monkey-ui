@@ -36,8 +36,6 @@ class BubbleImage extends Component {
 				EXIF.getData(imageObject, function() {
 					let orientation = EXIF.getTag(this, "Orientation");
 					if (orientation != undefined) {
-						// console.log('orientation: '+ orientation);
-						// console.log(EXIF.pretty(this));
 						switch (orientation) {
 							case 3:
 								that.setState({ imageOrientation : 'rotate180'});

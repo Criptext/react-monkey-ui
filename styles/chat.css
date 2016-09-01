@@ -12,7 +12,9 @@ TABLE OF CONTENTS
   3.2.- ASIDE - header, search panel, search list, conversation list
   3.3.- SECTION - header, chat timeline, preview, chat inputs
   3.4.- BANNER -  banner
-  3.5 - ASIDE RIGHT - conversation info
+  3.5 - ASIDE INFO
+    3.5.1 - INFO conversation
+    3.5.2 - INFO message
 4.- MODAL
   4.1.- Image preview
   4.2.- Location preview
@@ -3463,7 +3465,7 @@ aside.aside-divided{
     color: #6e8191;
 }
 
-  /* 3.5.- ASIDE RIGHT: Conversation Info
+  /* 3.5.- ASIDE INFO
      ----------------------------- */
 
 .mky-content-info{
@@ -3509,7 +3511,7 @@ aside.aside-divided{
     padding-top: 18px;
 }
 
-.mky-info-header-name{
+.mky-info-header-title{
   font-family: 'helvetica';
   font-size: 16px;
   color: #353535;
@@ -3519,16 +3521,16 @@ aside.aside-divided{
   margin-top: 8px;
 }
 
-.mky-info-header-status{
-    display: block;
-    text-align: left;
-    color: #a2a2a2;
-    line-height: 16px;  
-    font-size: 12px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    width: 80%;
+.mky-info-header-subtitle{
+  display: block;
+  text-align: left;
+  color: #a2a2a2;
+  line-height: 16px;  
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
 }
 
 .mky-info-container{
@@ -3553,6 +3555,15 @@ aside.aside-divided{
 
 .mky-info-container::-webkit-scrollbar-thumb{
   background-color: #C5C5C5;
+}
+
+  /* 3.5.1.- INFO: conversation
+     ----------------------------- */
+     
+.mky-info-conversation{
+  width: 100%;
+  height: 100%;
+  position: relative;	
 }
 
 .mky-info-conversation-image{
