@@ -1216,6 +1216,7 @@ TABLE OF CONTENTS
   font-family: helvetica;
   font-size: 14px;
   margin-top: 2px;
+  line-height: 16px;
 }
 
 .mky-conversation-time{
@@ -1239,7 +1240,8 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-state span{
-  margin-top: 6px;
+  margin-top: 4px;
+  line-height: 20px;
 }
 
 .mky-conversation-options{
