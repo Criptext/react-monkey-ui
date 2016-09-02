@@ -2498,6 +2498,18 @@ TABLE OF CONTENTS
   float: left;
 }
 
+.mky-file-download{
+    margin-top: 6px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    vertical-align: top;
+    float: left;
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin-bottom: 3px;
+}
+
 .mky-file-pdf-icon{
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);
 }
