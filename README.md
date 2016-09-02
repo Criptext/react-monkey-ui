@@ -1,145 +1,70 @@
-# react-monkey-ui
+# Getting Started
+You can use it with nodeJS.
+## Installation
+### npm
 
-Use monkeyUI using REACT, and you can pass props and methods to your React Class:
+`npm install react-monkey-ui --save`
 
-#### view (prop)
+## Usage
+### Prerequisites
+- react
 
-To define the type chat view.
+### How to use
 
-```
-let view = {
-screen: {
-type: (String),
-data: {
-width: (String),
-height: (String)
-},
-}
-}
-...
-<MonkeyUI view={view}>
-```
+```javascript
+import React, { Component } from 'react'
+import MonkeyUI from 'react-monkey-ui'
 
-#### userSession (prop)
-To define the user session.
-```
-let userSession = {
-id: (String),
-name: (String),
-urlAvatar: (String)
-}
-...
-<MonkeyUI userSession={userSession}>
-```
+class MonkeyChat extends Component {
+  constructor(props){
+	super(props);
+      this.state = {
+        userSession: null,
+        conversationId: '2',
+        conversations: {
+          '2': conv2, // * conversation Object
+          '3': conv3  // * conversation Object
+        }
+    }
+    this.handleUserSession = this.handleUserSession.bind(this);
+    this.handleMessage = this.handleMessage.bind(this);
+  }
 
-#### conversation (prop)
-To define the conversation to start the chat
-```
-let conversation = {
-id: (Strind),
-lastMessage: (String),
-messages: (Obj),
-name: (String),
-unreadMessageCounter: (int),
-urlAvatar: (String)
-}
-...
-<MonkeyUI conversation={conversation}>
-```
+  render() {
+	return (
+      <MonkeyUI userSession={this.state.userSession}
+        onUserSession={this.handleUserSession}
+        conversations={this.state.conversations}
+        conversation={this.conversations[this.state.conversationId]}  
+        onMessage={this.handleMessage}
+        onMessagesLoad={this.handleMessagesLoad}
+        onMessageGetUsername={this.handleMessageGetUsername} />
+	)
+  }
+	
+  /* User */
+	
+  handleUserSession(user) { // user = {name: 'name'}
+    user.id = '1';
+    user.urlAvatar = 'http://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+	this.setState({userSession: user});
+  }
 
-#### conversations (prop)
-To define the list conversation of the chat
-```
-let conversations = {
-[conversationA.id]: conversationA,
-[conversationB.id]: conversationB,
-...
-}
-...
-<MonkeyUI conversations={conversations}>
-```
-
-#### userSessionToSet (method)
-To receive a user's data from login
-```
-<MonkeyUI userSessionToSet={handleUserSessionToSet}>
-...
-handleUserSessionToSet(user){
-}
-
-```
-
-#### messageToSet (method)
-To receive a message generated from input.
-```
-<MonkeyUI messageToSet={handleMessageToSet}>
-...
-handleMessageToSet(message){
+  /* Message */
+	
+  handleMessage(message) { // message = {senderId: '', recipientId: '', status: 0}
+	// TODO: save message to respective conversation
+  }
+	
+  handleMessagesLoad(conversationId, firstMessageId) {
+	// TODO: to load more messages and save in the respective conversation
+  }
 }
 ```
 
-#### conversationOpened (method)
-To recieve a conversation opened.
-```
-<MonkeyUI conversationOpened={handleConversationOpened}>
-...
-handleConversationOpened(conversation){
-}
-```
+These props and methods defined are the basic to start to use it like a simple chat.
 
-#### loadMessages (method)
-To receive a conversation's data that need get more messages.
-```
-<MonkeyUI loadMessages={handleLoadMessages}>
-...
-handleLoadMessages(conversationId, firstMessageId){
-}
-```
+To understand how the data is structured, check here: http://docs.messaging.criptext.com/structure_data.html
 
-#### form (React.Component)
-To define a component form that you will add in the app.
-```
-import MyForm from './path/MyForm.js'
-...
-<MonkeyUI form={MyForm}>
-```
+To review the props and method that expose the component, check here: http://docs.messaging.criptext.com/props.html
 
-#### dataDownloadRequest (method)
-To receive the message data that need download source.
-```
-<MonkeyUI dataDownloadRequest={handleDownloadData}>
-...
-handleDownloadData(mokMessage){
-}
-```
-
-#### getUser (method)
-To receive a user's id that the UI needs to know the name and the color; it is used from bubble. 
-```
-<MonkeyUI getUser={handleGetUser}>
-...
-handleGetUser(userId){
-}
-```
-
-#### styles (prop)
-To define the styles of the chat view
-```
-let styles = {
-colorIn: (String),
-colorOut: (String),
-tabColor: (String),
-tabTextColor: (String),
-tabText: (String),
-logo: (String),
-}
-...
-<MonkeyUI styles={styles}>
-```
-
-
-## * Options
-The following options are supported in view:
-type: 'classic' | 'fullscreen'
-If use 'classic' add the data:
-data: {width: '380px',height: '500px'}
