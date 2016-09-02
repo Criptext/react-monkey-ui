@@ -9,37 +9,31 @@ class BubbleFile extends Component {
 	}
 
 	componentWillMount() {
-        if(this.props.message.data == null && !this.props.message.isDownloading && !this.props.message.error){
-            this.props.dataDownloadRequest(this.props.message.mokMessage);
-        }
+
 	}
 
 	render() {
 		return (
 			<div className='mky-content-file'>
-			{ this.props.message.data
-				? ( <div className='mky-content-file-data'>
-						<a className='mky-file-link' href={this.props.message.data} download={this.props.message.filename}>
-							<Fileicon classFileType={this.defineFileType(this.props.message.filename)} />
-							<div className='mky-file-detail'>
-								<div className='mky-file-name'>
-									<span className='mky-ellipsify'>{this.props.message.filename}</span>
-								</div>
-								<div className='mky-file-size'>
-									<span className='mky-ellipsify'>{this.humanFileSize(this.props.message.filesize, true)}</span>
-								</div>
+				<div className='mky-content-file-data'>
+					<a className='mky-file-link' onClick={this.downloadData}>
+						{ this.props.message.data == "loading"
+							?(<div className='mky-file-download'>
+	                            	<div className='mky-double-bounce1'></div>
+									<div className='mky-double-bounce2'></div>
+							</div>)
+							:<Fileicon classFileType={this.defineFileType(this.props.message.filename)} />
+						}
+						<div className='mky-file-detail'>
+							<div className='mky-file-name'>
+								<span className='mky-ellipsify'>{this.props.message.filename}</span>
 							</div>
-						</a>
-					</div>
-				)
-				: ( this.props.message.isDownloading
-					? ( <div className='mky-content-file-loading'>
-                        	<div className='mky-double-bounce1'></div>
-							<div className='mky-double-bounce2'></div>
+							<div className='mky-file-size'>
+								<span className='mky-ellipsify'>{this.humanFileSize(this.props.message.filesize, true)}</span>
+							</div>
 						</div>
-					) : <div className='mky-content-file-to-download' onClick={this.downloadData}><i className='icon mky-icon-download'></i></div>
-				)
-			}
+					</a>
+				</div>
 			</div>
 		)
 	}
