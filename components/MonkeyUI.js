@@ -65,6 +65,7 @@ class MonkeyUI extends Component {
 		this.haveConversations = true;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
+		this.formOptions = this.formOptions.bind(this);
 	}
 
 	getChildContext() {
@@ -80,11 +81,29 @@ class MonkeyUI extends Component {
 			    image: ContentViewer
 		    },
 		    styles: this.props.styles != null ? this.props.styles : {},
-		    options: this.props.options,
+		    options: this.formOptions(),
 		    extraChat: this.props.chatExtraData
 		}
 	}
-
+	
+	formOptions() {
+		if(this.props.options){
+			if(!this.props.options.deleteConversation){
+				this.props.options.deleteConversation = {
+					permission: {
+						exitGroup: true,
+						delete: true
+					}
+				}
+			}
+			if(!this.props.options.bubbleWithOptions){
+				this.props.options.bubbleWithOptions = true
+			}
+		}
+		
+		return this.props.options	
+	}		
+		
 	componentWillMount() {
 		this.setState({conversation: this.props.conversation});
 
@@ -401,7 +420,8 @@ MonkeyUI.defaultProps = {
 				exitGroup: true,
 				delete: true
 			}
-		}
+		},
+		bubbleWithOptions: true
 	},
 	chatExtraData: {}
 }

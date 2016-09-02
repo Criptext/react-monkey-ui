@@ -18,28 +18,51 @@ const Bubble = Component => class extends Component {
 	}
 
 	render() {
-		let classBubble = this.defineClass();
-		let styleBubble = this.defineStyles();
-		let customStyle = {color : this.userColor};
+		let customStyle = {color: this.userColor};
     	return (
 			<div className='mky-message-line'>
-				<div id={this.props.message.id} className={classBubble} style={styleBubble}>
-					<div className="mky-message-detail">
+				<div id={this.props.message.id} className={this.defineClass()} style={this.defineStyles()}>
+					<div className='mky-message-detail'>
 					{ this.props.userSessionId === this.props.message.senderId
 						? <Status value={this.props.message.status} classStatus={this.defineStatusClass(this.props.message.status) } resendFunction={this.resendMessage}/>
 						: ( this.username
-							? <span className="mky-message-user-name" style={customStyle}>{this.username}</span>
+							? <span className='mky-message-user-name' style={customStyle}>{this.username}</span>
 							: null
 						)
 					}
-						<span className="mky-message-hour">{defineTime(this.props.message.datetimeCreation)}</span>
+						<span className='mky-message-hour'>{defineTime(this.props.message.datetimeCreation)}</span>
 					</div>
-					<Component {...this.props}/>
+					<div className='mky-message-content'>
+						<Component {...this.props}/>
+						{ this.props.showOptions
+							? ( <div className='mky-message-option'>
+									<div className='mky-message-option-plus'>
+										<i className='icon mky-icon-arrow-down-bold'></i>
+									</div>
+								</div>
+							)
+							: null
+						}
+					</div>
 				</div>
 			</div>
 		)
 	}
+	
+	defineClass() {
+		const prefix = 'mky-';
+		const baseClass = 'bubble';
+		let layerClass = this.props.layerClass;
+		let side = '';
+		if(this.props.userSessionId === this.props.message.senderId){
+			side = 'out';
+		}else{
+			side = 'in';
+		}
 
+		return prefix+baseClass+' '+prefix+baseClass+'-'+side+' '+prefix+baseClass+'-'+layerClass+' '+prefix+baseClass+'-'+layerClass+'-'+side
+	}
+	
 	defineStatusClass(status) {
 		let state;
 		switch(status){
@@ -58,20 +81,6 @@ const Bubble = Component => class extends Component {
         }
 
         return 'mky-status-'+state;
-	}
-
-	defineClass() {
-		const prefix = 'mky-';
-		const baseClass = 'bubble';
-		let layerClass = this.props.layerClass;
-		let side = '';
-		if(this.props.userSessionId === this.props.message.senderId){
-			side = 'out';
-		}else{
-			side = 'in';
-		}
-
-		return prefix+baseClass+' '+prefix+baseClass+'-'+side+' '+prefix+baseClass+'-'+layerClass+' '+prefix+baseClass+'-'+layerClass+'-'+side
 	}
 
 	defineStyles() {
