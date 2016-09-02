@@ -180,19 +180,54 @@ class TimelineChat extends Component {
 			if(this.props.conversationSelected.unreadMessageCounter > 0 && this.orderedConversations.length - index == this.props.conversationSelected.unreadMessageCounter && this.showUnreadMessages){
 				messagesArray.push(<NewMessagesBubble key={'unread'} message={this.props.conversationSelected.unreadMessageCounter + ' New Messages'} />);
 			}
-
 			switch(message.bubbleType){
 			case 'text':
-				messagesArray.push(<BubbleText_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				messagesArray.push(<BubbleText_ key={message.id}
+									message={message}
+									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
+									messageSelected={this.props.messageSelected}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.dataDownloadRequest}
+									getUser={this.props.getUser}
+									styles={this.context.styles}
+									showOptions={this.context.options.bubbleWithOptions}/>)
 				break;
 			case 'image':
-				messagesArray.push(<BubbleImage_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				messagesArray.push(<BubbleImage_ key={message.id}
+									message={message}
+									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
+									messageSelected={this.props.messageSelected}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.dataDownloadRequest}
+									getUser={this.props.getUser}
+									styles={this.context.styles}
+									showOptions={this.context.options.bubbleWithOptions}/>)
 				break;
 			case 'file':
-				messagesArray.push(<BubbleFile_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				messagesArray.push(<BubbleFile_ key={message.id}
+									message={message}
+									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
+									messageSelected={this.props.messageSelected}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.dataDownloadRequest}
+									getUser={this.props.getUser}
+									styles={this.context.styles}
+									showOptions={this.context.options.bubbleWithOptions}/>)
 				break;
 			case 'audio':
-				messagesArray.push(<BubbleAudio_ key={message.id} message={message} userSessionId={this.context.userSession.id} layerClass={message.bubbleType} messageSelected={this.props.messageSelected} onClickMessage={this.props.onClickMessage} dataDownloadRequest={this.props.dataDownloadRequest} getUser={this.props.getUser} styles={this.context.styles}/>)
+				messagesArray.push(<BubbleAudio_ key={message.id}
+									message={message}
+									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
+									messageSelected={this.props.messageSelected}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.dataDownloadRequest}
+									getUser={this.props.getUser}
+									styles={this.context.styles}
+									showOptions={this.context.options.bubbleWithOptions}/>)
 				break;
 			default:
 				break;
@@ -320,7 +355,8 @@ const NewMessagesBubble = (props) => {
 TimelineChat.contextTypes = {
     userSession: React.PropTypes.object.isRequired,
     bubbles: React.PropTypes.object.isRequired,
-    styles: React.PropTypes.object.isRequired
+    styles: React.PropTypes.object.isRequired,
+    options: React.PropTypes.object.isRequired
 }
 
 export default TimelineChat;

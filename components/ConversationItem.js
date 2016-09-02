@@ -29,7 +29,7 @@ class ConversationItem extends Component {
 		this.state = {
 			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
 			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
-			pressClass : "mky-not-pressed"
+			pressClass: "mky-not-pressed"
 		}
 		this.openConversation = this.openConversation.bind(this);
 		this.deleteConversation = this.deleteConversation.bind(this);

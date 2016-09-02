@@ -2063,7 +2063,7 @@ TABLE OF CONTENTS
 
 .mky-message-detail{
     width: 100%;
-    height: 15px;
+    height: 12px;
     position: absolute;
     top: -12px;
 }
@@ -2093,28 +2093,102 @@ TABLE OF CONTENTS
     text-align: left;
 }
 
+.mky-message-option{
+  display: none;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+}
+
+.mky-bubble:hover .mky-message-option{
+  display: block;
+}
+
+.mky-bubble-out .mky-message-option{
+  background: #096EFF; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(right top, #096EFF 50%, transparent); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom left, #096EFF 50%, transparent); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom left, #096EFF 50%, transparent); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom left, #096EFF 50%, transparent); /* Standard syntax */
+  border-top-right-radius: 15px;
+}
+
+.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option{
+  background: #096EFF; /* For browsers that do not support gradients */
+  background: -webkit-linear-gradient(right top, #fff 50%, transparent); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(bottom left, #fff 50%, transparent); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(bottom left, #fff 50%, transparent); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(to bottom left, #fff 50%, transparent); /* Standard syntax */
+  border-top-right-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.mky-bubble-image .mky-message-option{
+  background: none;
+}
+
+.mky-bubble-audio .mky-message-option{
+  background: none;
+}
+
+.mky-message-option-plus{
+  border-radius: 50%;
+  height: 15px;
+  position: absolute;
+  right: 8px;
+  top: 5px;	
+  width: 15px;
+}
+
+.mky-bubble-out .mky-message-option-plus{
+  background-color: #fff
+}
+
+.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus{
+  background-color: #000
+}
+
+.mky-message-option-plus i{
+  display: block;
+  font-size: 8px;
+  line-height: 5px;
+  position: absolute;
+  right: 3px;
+  top: 4px;
+}
+
+.mky-bubble-out .mky-message-option-plus i{
+  color: #096EFF
+}
+
+.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i{
+  color: #fff
+}
+
 .mky-bubble-out .mky-message-detail{
-    right: 0;
-    text-align: right;
+  right: 0;
+  text-align: right;
 }
 
 .mky-bubble-in .mky-message-detail{
-    right: 0;
-    text-align: right;
+  right: 0;
+  text-align: right;
 }
 
 .mky-button-message-unsend{
-    position: absolute;
-    color: blue;
-    font-size: 12px;
-    top: 1px;
-    font-weight: bold;
-    right: 6px;
-    z-index: 1;
-    width: 15px;
-    height: 15px;
-    opacity: 0;
-    cursor: pointer;
+  position: absolute;
+  color: blue;
+  font-size: 12px;
+  top: 1px;
+  font-weight: bold;
+  right: 6px;
+  z-index: 1;
+  width: 15px;
+  height: 15px;
+  opacity: 0;
+  cursor: pointer;
 }
 
 .mky-button-message-unsend:hover{
@@ -2357,14 +2431,12 @@ TABLE OF CONTENTS
   -ms-transform-origin: top left;
   /* IE 9 */
 }
+
 .mky-content-image-data-staic img{
   height: auto;
 }
 
-
-
-
-/*Classes to rotate buble */
+/*Classes to rotate bubble */
 
 .mky-content-image-data.rotate90,
 .mky-content-image-data.rotate270 {
@@ -2391,7 +2463,7 @@ TABLE OF CONTENTS
 /*content file bubble */
 
 .mky-content-file{
-    text-align: left;
+  text-align: left;
 }
 
 .mky-content-file-loading{
