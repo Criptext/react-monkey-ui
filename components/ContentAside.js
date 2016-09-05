@@ -8,8 +8,8 @@ class ContentAside extends Component {
 		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
 		this.classContentt = this.props.showBanner ? 'aside-divided' : '';
 		this.state = {
-			editingUsername : false, 
-			username : this.context.userSession.name,
+			editingUsername: false, 
+			username: this.context.userSession.name
 		}
 
 		this.logout = this.logout.bind(this);
@@ -38,7 +38,7 @@ class ContentAside extends Component {
 									onBlur={this.handleUsernameBlur}
 									type='text'
 									disabled={this.state.editingUsername ? false : true}/>
-							{this.state.editingUsername ? null : <i className='icon mky-icon-edit mky-info-edit-name' onClick={this.toogleEditUsername}></i>}
+							{!this.props.usernameEdit || this.state.editingUsername ? null : <i className='icon mky-icon-edit mky-info-edit-name' onClick={this.toogleEditUsername}></i>}
 						</div>
 						{ this.props.viewType == 'rightside'
 							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-close-medium'></i></div>

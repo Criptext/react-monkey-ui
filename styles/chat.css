@@ -615,6 +615,10 @@ TABLE OF CONTENTS
   background: white;
 }
 
+.mky-classic .mky-wrapper-in{
+  box-shadow: none;
+}
+
 .mky-fullsize .mky-wrapper-in{
   width: calc(100% - 40px);
   height: calc(100% - 40px);
@@ -731,6 +735,7 @@ TABLE OF CONTENTS
 .mky-tab .mky-tablabel{
   position: relative;
   top: 5px;
+  line-height: 25px;
 }
 
 .mky-tab span{
@@ -3693,6 +3698,7 @@ aside.aside-divided{
   font-family: 'helvetica-normal', helvetica;
   font-size: 14px;
   padding: 10px;
+  text-align: left;
   width: calc(100% - 95px);
 }
 

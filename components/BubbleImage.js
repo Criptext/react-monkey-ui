@@ -47,17 +47,13 @@ class BubbleImage extends Component {
 								that.setState({ imageOrientation : 'rotate90'});
 								break;
 							default:
-
 						}
 					}
-
         		});
 			};
 
 			imageObject.src = nextProps.message.data;
-			this.setState({
-				loaded : true
-			})
+			this.setState({loaded: true})
 		}
 	}
 
