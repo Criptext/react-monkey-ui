@@ -97,7 +97,7 @@ class MonkeyUI extends Component {
 				}
 			}
 			if(!this.props.options.bubbleWithOptions){
-				this.props.options.bubbleWithOptions = true
+				this.props.options.bubbleWithOptions = false
 			}
 		}
 		
@@ -421,7 +421,7 @@ MonkeyUI.defaultProps = {
 				delete: true
 			}
 		},
-		bubbleWithOptions: true
+		bubbleWithOptions: false
 	},
 	chatExtraData: {}
 }
