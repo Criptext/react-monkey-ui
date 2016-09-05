@@ -8,8 +8,9 @@ class AsideConversationInfo extends Component {
 		super(props);
 		this.objectInfo = {};
 		this.state = {
-			editingName : false, 
-			infoName : ''
+			editingName: false, 
+			infoName: '',
+			urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.toogleEditName = this.toogleEditName.bind(this);
 		this.handleNameKeyDown = this.handleNameKeyDown.bind(this);
@@ -19,7 +20,10 @@ class AsideConversationInfo extends Component {
 
 	componentWillMount(){
 		this.objectInfo = this.props.getConversationInfo();
-		this.setState({infoName: this.objectInfo.name});
+		this.setState({
+			infoName: this.objectInfo.name,
+			urlAvatar: this.objectInfo.avatar ? this.objectInfo.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+		});
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -41,7 +45,7 @@ class AsideConversationInfo extends Component {
 				</header>
 				<div className='mky-info-container'>
 					<div className='mky-info-conversation-image'>
-						<img src={this.objectInfo.avatar} />
+						<img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/>
 					</div>
 					<div className='mky-info-conversation-description mky-info-conversation-data'>
 						<div className='mky-info-conversation-header'>
@@ -134,6 +138,10 @@ class AsideConversationInfo extends Component {
 			infoName: this.objectInfo.name,
 			editingName: false
 		});
+	}
+	
+	handleErrorAvatar() {
+		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
 }
 
