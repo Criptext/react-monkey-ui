@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { getExtention } from '../utils/monkey-utils.js'
 
 class BubbleFile extends Component {
@@ -6,18 +7,25 @@ class BubbleFile extends Component {
 		super(props);
 		this.eventBubble = this.eventBubble.bind(this);
 		this.downloadData = this.downloadData.bind(this);
+		this.firstLoad = false;
 	}
 
 	componentWillMount() {
 
 	}
 
+	componentWillReceiveProps(nextProps){
+		if(!this.props.message.data && nextProps.message.data){
+			this.firstLoad = true;
+		}
+	}
+
 	render() {
 		return (
 			<div className='mky-content-file'>
 				<div className='mky-content-file-data'>
-					<a className='mky-file-link' onClick={this.downloadData}>
-						{ this.props.message.data == "loading"
+					<a ref="downloadLink" className='mky-file-link' download={this.props.message.filename} href={this.props.message.data || ""} onClick={this.downloadData}>
+						{ this.props.message.isDownloading  
 							?(<div className='mky-file-download'>
 	                            	<div className='mky-double-bounce1'></div>
 									<div className='mky-double-bounce2'></div>
@@ -38,12 +46,27 @@ class BubbleFile extends Component {
 		)
 	}
 
+	componentDidUpdate(){
+		if(this.firstLoad){
+			this.firstLoad = false;
+			let link = ReactDOM.findDOMNode(this.refs.downloadLink);
+			if(link){
+				link.click();
+			}
+		}
+	}
+
 	eventBubble() {
 		this.props.onClickMessage(this.props.message);
 	}
 
-	downloadData() {
-		this.props.dataDownloadRequest(this.props.message.mokMessage);
+	downloadData(event) {
+		if(!this.props.message.data){
+			event.preventDefault();
+			if(!this.props.message.isDownloading){
+				this.props.dataDownloadRequest(this.props.message.mokMessage);
+			}
+		}
 	}
 
 	humanFileSize(bytes, si) {
