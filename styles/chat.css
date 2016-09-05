@@ -581,7 +581,6 @@ TABLE OF CONTENTS
   font-family: 'helvetica-light', Helvetica, sans-serif;
   width: 100%;
   height: 100%;
-  padding-top: 1px;
   position: fixed;
   /*-webkit-font-smoothing: antialiased;*/
   letter-spacing: 0.2px;
@@ -601,7 +600,10 @@ TABLE OF CONTENTS
 
 .mky-classic{
   bottom: 0;
+  box-shadow: rgb(176, 176, 176) 0px 0px 15px;
   right: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
 
 .mky-rightside{
@@ -718,7 +720,6 @@ TABLE OF CONTENTS
 /* 3.1.- CONTENT OPTIONS
    ----------------------------- */
 .mky-tab{
-  width: 100%;
   height: 30px;
   top: 0px;
   right: 0px;
@@ -729,7 +730,7 @@ TABLE OF CONTENTS
   cursor: pointer;
   text-align: center;
   font-size: 17px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  width: 100%;
 }
 
 .mky-tab .mky-tablabel{
@@ -1372,9 +1373,8 @@ TABLE OF CONTENTS
 }
 
 .mky-content-window-only{
-    width: 100%;
-    border:none;
-    border-top:1px solid transparent;
+  width: 100%;
+  border:none;
 }
 
 .mky-content-window-with{
@@ -3697,6 +3697,8 @@ aside.aside-divided{
   float: left;
   font-family: 'helvetica-normal', helvetica;
   font-size: 14px;
+  font-weight: 100;
+  margin: 0;
   padding: 10px;
   text-align: left;
   width: calc(100% - 95px);
@@ -3760,7 +3762,7 @@ aside.aside-divided{
   position: relative;
   flex: 0 1 auto;
   flex-direction: column;
-  min-height: 120px;
+  min-height: 154px;
 }
 
 .mky-info-conversation-amount{
@@ -3778,11 +3780,13 @@ aside.aside-divided{
 }
 
 .mky-info-conversation-member{
+  box-sizing: content-box;
   height: 48px;
   width: 100%;
   clear: both;
   position: relative;
   padding: 5px 0;
+  -webkit-box-sizing: content-box;
 }
 
 .mky-info-conversation-member:after {
@@ -3796,42 +3800,47 @@ aside.aside-divided{
 }
 
 .mky-info-conversation-member img{
-    height: 36px;
-    width: 36px;
-    float: left;
-    border-radius: 50%;
-    padding: 5px;
-    margin-left: 10px;
+  box-sizing: content-box;
+  height: 36px;
+  width: 36px;
+  float: left;
+  border-radius: 50%;
+  padding: 5px;
+  margin-left: 10px;
+  -webkit-box-sizing: content-box;
 }
 
 .mky-info-member-description{
-    padding: 8px 5px 0px 5px;
-    width: calc(100% - 70px);
-    float: left;
-    white-space: nowrap;
-    overflow: hidden;
-    height: 35px;
-    text-overflow: ellipsis;
+  float: left;
+  overflow: hidden;
+  height: 35px;
+  padding: 8px 5px 0px 5px;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: calc(100% - 70px);
 }
 
 .mky-info-member-detail{
-  font-family: helvetica;
-  font-size: 14px;
-  width: 100%;
-  -ms-flex-direction: row;
-  flex-direction: row; 
   display: -webkit-box;
   display: -webkit-flex; 
   display: -ms-flexbox;
   display: flex;
+  font-family: helvetica;
+  font-size: 14px;
+  font-weight: 400;
+  -ms-flex-direction: row;
+  flex-direction: row; 
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   flex-direction: row;
+  width: 100%;
 }
 
 .mky-info-member-name{
+  color: #000;
   -webkit-box-flex: 1;
   -webkit-flex-grow: 1;
   -ms-flex-positive: 1;
@@ -3904,19 +3913,19 @@ aside.aside-divided{
 }
 
 .mky-info-actions{
-    position: fixed;
-    max-height: 150px;
-    width: 200px;
-    z-index: 1000;
-    background-color: white;
-    -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
-    box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
-    border-radius: 3px;
-    max-width: 85%;
-    animation-name: actionMenu;
-    animation-duration: 0.5s;
-    overflow: auto;
+  animation-name: actionMenu;
+  animation-duration: 0.5s;
+  position: fixed;
+  max-height: 150px;
+  width: 200px;
+  z-index: 1000;
+  background-color: white;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);
+  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);
+  border-radius: 3px;
+  max-width: 85%;
+  overflow: auto;
 }
 
 .mky-info-actions::-webkit-scrollbar { width: 0 !important }
@@ -3929,8 +3938,9 @@ aside.aside-divided{
 }
 
 .mky-info-action{
-    padding: 10px 20px;
-    cursor: pointer;
+  color: #000;
+  cursor: pointer;
+  padding: 10px 20px;
 }
 
 .mky-info-action:hover{

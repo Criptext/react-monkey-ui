@@ -20,7 +20,7 @@ class MyForm extends Component {
 				<form className='mky-chat-login-container'>
 					<div className='field-login-text'>
 						<p className='title'> <b>{this.defineLoginTitle()}</b>  </p>
-						<p className='subtittle'>Please enter the information I need</p>
+						<p className='subtittle'>Please enter your name</p>
 					</div>
 					<div className='field field-input-name'>
 						<input type='text' id='user_name' placeholder='Name' value={this.state.text} onChange={this.handleOnChangeInput}></input>
