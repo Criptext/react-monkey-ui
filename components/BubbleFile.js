@@ -24,7 +24,7 @@ class BubbleFile extends Component {
 		return (
 			<div className='mky-content-file'>
 				<div className='mky-content-file-data'>
-					<a ref="downloadLink" className='mky-file-link' download={this.props.message.filename} href={this.props.message.data || ""} onClick={this.downloadData}>
+					<a ref="downloadLink" className='mky-file-link' download={this.props.message.filename} href={this.props.message.data || ''} onClick={this.downloadData}>
 						{ this.props.message.isDownloading  
 							?(<div className='mky-file-download'>
 	                            	<div className='mky-double-bounce1'></div>
