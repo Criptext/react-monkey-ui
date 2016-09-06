@@ -1364,12 +1364,13 @@ TABLE OF CONTENTS
    ----------------------------- */
 
 .mky-wrapper-out section{
-    height: 100%;
-    margin: 0;
-    vertical-align: top;
-    float: left;
-    position: relative;
-    background-color: #ffffff;
+  height: 100%;
+  margin: 0;
+  vertical-align: top;
+  float: left;
+  position: relative;
+  background-color: #ffffff;
+  padding: 0;
 }
 
 .mky-content-window-only{
@@ -2877,7 +2878,6 @@ TABLE OF CONTENTS
   background: none;
   color: #546E7B;
   font-size: 32px;
-  /*margin-top: -8px;*/
   margin-right: 2px;
   width: auto;
   height: auto;
@@ -3698,6 +3698,7 @@ aside.aside-divided{
   font-family: 'helvetica-normal', helvetica;
   font-size: 14px;
   font-weight: 100;
+  line-height: 1;
   margin: 0;
   padding: 10px;
   text-align: left;
@@ -3709,7 +3710,7 @@ aside.aside-divided{
   width: 100%;
 }
 
-.mky-info-input{
+input.mky-info-input{
   border: none;
   background: none;
   font-family: 'helvetica-light', Helvetica, sans-serif;
@@ -3779,7 +3780,7 @@ aside.aside-divided{
   padding: 0px;
 }
 
-.mky-info-conversation-member{
+ul.mky-info-conversation-list li.mky-info-conversation-member{
   box-sizing: content-box;
   height: 48px;
   width: 100%;
@@ -3910,6 +3911,7 @@ aside.aside-divided{
   position: absolute;
   right: 10px;
   top: 10px;
+  width: 28px;
 }
 
 .mky-info-actions{
