@@ -761,6 +761,11 @@ TABLE OF CONTENTS
 	color: white;
 }
 
+.mky-tab i{
+  display: block;
+  margin: 0;
+}
+
 .mky-conversation-selected-header .mky-content-options{
   display: block;
   position: absolute;
@@ -2878,7 +2883,7 @@ TABLE OF CONTENTS
   background: none;
   color: #546E7B;
   font-size: 32px;
-  margin-right: 2px;
+  margin: 0 2px 0 0;
   width: auto;
   height: auto;
 }
@@ -2906,6 +2911,7 @@ TABLE OF CONTENTS
   color: #546E7B;
   font-size: 28px;
   margin-top: 3px;
+  width: 28px;
 }
 
 #mky-button-send-audio{
@@ -2939,9 +2945,9 @@ TABLE OF CONTENTS
 
 #mky-message-text-input{
   box-sizing: content-box;
-  width: calc(100% - 114px);
   height: auto;
-  margin: 8px 5px 4px 5px;
+  line-height: 17px;
+  margin: 8px 5px 7px 5px;
   padding: 8px 10px 6px 10px;
   resize: none;
   border: none;
@@ -2959,6 +2965,7 @@ TABLE OF CONTENTS
   -webkit-border-radius: 0;
   letter-spacing: 0px;
   font-style: normal;
+  width: calc(100% - 114px);
 }
 
 .mky-chat-input-file #mky-message-text-input{
@@ -3718,6 +3725,7 @@ input.mky-info-input{
   float: left;
   color: black;
   margin: 0 0 5px 10px;
+  padding: 1px;
   text-overflow: ellipsis;
   width: calc(100% - 45px);
 }
@@ -3771,6 +3779,7 @@ input.mky-info-input{
   float: right;
   font-family: 'helvetica-light', helvetica;
   font-size: 14px;
+  line-height: 17px;
   margin: 10px;
 }
 
@@ -3781,6 +3790,7 @@ input.mky-info-input{
 }
 
 ul.mky-info-conversation-list li.mky-info-conversation-member{
+  border: none;
   box-sizing: content-box;
   height: 48px;
   width: 100%;
@@ -3820,6 +3830,8 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
   text-overflow: ellipsis;
   white-space: nowrap;
   width: calc(100% - 70px);
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box;
 }
 
 .mky-info-member-detail{
@@ -3853,12 +3865,12 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
 }
 
 .mky-info-member-rol{
-  margin-top: 3px;
+  color: #8ac34a;
+  flex: none;
+  line-height: 18px;
   -webkit-box-flex: 0;
   -webkit-flex: none;
   -ms-flex: none;
-  flex: none;
-  color: #8ac34a;
 }
 
 .mky-info-member-status{
