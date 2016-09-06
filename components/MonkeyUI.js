@@ -150,7 +150,6 @@ class MonkeyUI extends Component {
 
     if ( this.props.view.version == undefined ) {
       this.props.view.version = '';
-      console.log('undefined: ');
     }else {
       var version = this.props.view.version.split('.');
       console.log('length: '+ version.length );
@@ -199,7 +198,7 @@ class MonkeyUI extends Component {
 				{ this.props.view.type === 'classic'
 					? ( <div className='mky-tab' style={this.defineToggleStyle()} onClick={this.toggleTab}>
                             <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
-                            <div><i className={'icon '+this.state.classTabIcon}></i></div>
+                            <div><i className={'icon '+this.state.classTabIcon} style={this.defineTabTextColor()}></i></div>
                         </div>
 					)
 					: ( this.props.view.type === 'rightside'
