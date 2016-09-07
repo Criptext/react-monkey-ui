@@ -1665,6 +1665,12 @@ TABLE OF CONTENTS
   justify-content: center;
   align-items: center;
   border-radius: 50%;
+  background-color: white;
+  height: 40px;
+  width: 40px;
+  -webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);
+  -moz-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);
+  box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);
 }
 
 .mky-chat-timeline-conversation{

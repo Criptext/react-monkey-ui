@@ -57,7 +57,8 @@ class ContentAside extends Component {
 					conversations={this.props.conversations}
 					handleConversationSelected={this.props.handleConversationSelected}
 					conversationSelected={this.props.conversationSelected}
-					conversationsLoading={this.props.conversationsLoading}/>
+					conversationsLoading={this.props.conversationsLoading}
+					scrollTop = {this.props.scrollTop}/>
 			</aside>
 		)
 	}

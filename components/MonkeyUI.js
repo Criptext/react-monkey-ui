@@ -52,7 +52,8 @@ class MonkeyUI extends Component {
 		}
 		this.lastNotifyTime = 0;
 		this.firstNotifyTime = 0;
-		this.notifyTimeout = null
+		this.notifyTimeout = null;
+		this.listTopScroll = 0;
 		this.toggleTab = this.toggleTab.bind(this);
 		this.openSide = this.openSide.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
@@ -241,7 +242,8 @@ class MonkeyUI extends Component {
 										conversationsLoading={this.props.conversationsLoading}
                     					viewType={this.props.view.type}
                     					customLoader = {this.props.customLoader}
-                    					usernameEdit = {this.props.onUsernameEdit}/>
+                    					usernameEdit = {this.props.onUsernameEdit}
+                    					scrollTop = {this.listTopScroll}/>
 									: null
 								}
 								<ContentWindow connectionStatus={this.props.connectionStatus}
@@ -355,7 +357,8 @@ class MonkeyUI extends Component {
 	  	this.setState({conversations: this.state.conversations.concat(conversation)})
 	}
 
-	handleConversationSelected(conversation) {
+	handleConversationSelected(conversation, topScroll) {
+		this.listTopScroll = topScroll;
 		if(!this.props.conversation) {
 			this.props.onConversationOpened(conversation);
 		}else if(this.props.conversation.id !== conversation.id){
