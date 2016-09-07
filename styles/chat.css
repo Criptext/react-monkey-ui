@@ -1498,11 +1498,11 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-selected-description{
-    width: calc(100% - 125px);
-    height: calc(100% - 18px);
-    float: left;
-    padding-top: 18px;
-    position: relative;
+  height: calc(100% - 18px);
+  float: left;
+  padding-top: 18px;
+  position: relative;
+  width: calc(100% - 125px);
 }
 
 .mky-conversation-selected-description span{
@@ -1511,6 +1511,10 @@ TABLE OF CONTENTS
   font-weigth: normal;
   line-height: 16px;
   cursor: pointer;
+}
+
+.mky-rightside .mky-conversation-selected-description{
+  width: calc(100% - 140px);
 }
 
 .mky-conversation-selected-name{
@@ -1527,6 +1531,14 @@ TABLE OF CONTENTS
   overflow: hidden;
   text-overflow: ellipsis;
   width: 80%;
+}
+
+.mky-conversation-header-exit{
+  color: #6e8191;
+  cursor: pointer;
+  display: inline-table;
+  font-size: 15px;
+  margin: 20px 0 0 8px;
 }
 
 #mky-conversation-selected-members{
@@ -2805,7 +2817,6 @@ TABLE OF CONTENTS
 #mky-chat-inner-input{
   border: none;
   background: #fff;
-  /*height: 50px;*/
   max-height: 70px;
   height: auto;
   border-radius: 8px;
@@ -3564,15 +3575,6 @@ aside.aside-divided{
   }
 }
 
-.mky-conversation-header-exit{
-    cursor: pointer;
-    right: 0;
-    position: absolute;
-    top: 20px;
-    font-size: 15px;
-    color: #6e8191;
-}
-
   /* 3.5.- ASIDE INFO
      ----------------------------- */
 
@@ -3724,8 +3726,9 @@ aside.aside-divided{
 }
 
 input.mky-info-input{
-  border: none;
   background: none;
+  border: none;
+  box-shadow: none;
   font-family: 'helvetica-light', Helvetica, sans-serif;
   font-size: 16px;
   float: left;

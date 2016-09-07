@@ -72,12 +72,11 @@ class ContentConversation extends Component {
 							)
 							: <span className='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 						}
-						{ this.props.viewType == 'rightside'
-							? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
-							: null
-						}
 					</div>
-
+					{ this.props.viewType == 'rightside'
+						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
+						: null
+					}
 					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a>{' '+this.props.version}</div>
 					<div className='mky-signature-logo'>
 						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
