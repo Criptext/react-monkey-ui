@@ -116,11 +116,16 @@ class ConversationList extends Component {
 		if(!this.domNode && !this.props.conversationsLoading){
 			this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
 			this.domNode.addEventListener('scroll', this.handleScroll);
+			this.domNode.scrollTop = this.props.scrollTop;
 		}
 	}
 
 	conversationIdSelected(conversationId) {
-		this.props.handleConversationSelected(this.props.conversations[conversationId]);
+		let topScroll = 0;
+		if(this.domNode && this.domNode.scrollTop){
+			topScroll = this.domNode.scrollTop;
+		}  
+		this.props.handleConversationSelected(this.props.conversations[conversationId], topScroll);
 	}
 
 	setConversationSelected() {
@@ -195,7 +200,7 @@ class ConversationList extends Component {
 			var timestamp;
 			try{
 				var lastMessage = conversationArray[conversationArray.length - 1].messages[conversationArray[conversationArray.length - 1].lastMessage];
-				timestamp = lastMessage.datetimeCreation
+				timestamp = Math.max(lastMessage.datetimeCreation, conversationArray[conversationArray.length - 1].lastModified);
 			}catch(exception){
 				timestamp = conversationArray[conversationArray.length - 1].lastModified;
 			}
