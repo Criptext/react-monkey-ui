@@ -28,6 +28,7 @@ class Input extends Component {
 		this.state = {
 			buttonToShow: 1,
 			classSendButton: 'mky-disappear',
+			classAudioButtonAvailable: '',
 			classAudioButton: '',
 			classAudioArea: 'mky-disappear',
 			classCancelAudioButton: 'mky-disappear',
@@ -43,7 +44,6 @@ class Input extends Component {
 		this.textMessageInput = this.textMessageInput.bind(this);
 
 		this.handleRecordAudio = this.handleRecordAudio.bind(this);
-		this.startRecordAudio = this.startRecordAudio.bind(this);
 		this.onMediaSuccess = this.onMediaSuccess.bind(this);
 		this.onMediaError = this.onMediaError.bind(this);
 		this.handleCancelAudio = this.handleCancelAudio.bind(this);
@@ -76,7 +76,6 @@ class Input extends Component {
 		this.audioMessageOldId;
 		this.ffmpegRunning = false;
 		this.ffmpegWorker;
-		this.audioInputClass = '';
 	}
 
     componentWillReceiveProps(nextProps){
@@ -87,7 +86,8 @@ class Input extends Component {
 
     componentWillMount() {
 	    if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)){
-            this.audioInputClass = 'mky-disabled';
+		    this.setState({ classAudioButtonAvailable: 'mky-disabled'});
+            // this.audioInputClass = 'mky-disabled';
         }
     }
 
@@ -111,7 +111,13 @@ class Input extends Component {
 							<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
 						</div>
 
-						<Textarea ref='textareaInput' id='mky-message-text-input' className={'mky-textarea-input '+this.state.classTextArea} value={this.state.text} placeholder='Write a secure message' onKeyDown={this.handleOnKeyDownTextArea} onChange={this.handleOnChangeTextArea} ></Textarea>
+						<Textarea ref='textareaInput' id='mky-message-text-input'
+							className={'mky-textarea-input '+this.state.classTextArea}
+							value={this.state.text}
+							placeholder='Write a secure message'
+							onKeyDown={this.handleOnKeyDownTextArea}
+							onChange={this.handleOnChangeTextArea}>
+						</Textarea>
 						<div id='mky-record-area' className={this.state.classAudioArea}>
 							<div className='mky-record-preview-area'>
 								<div id='mky-button-action-record'>
@@ -126,7 +132,7 @@ class Input extends Component {
 						<div className={'mky-button-input '+this.state.classSendButton}>
     						<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
 						</div>
-						<div className={'mky-button-input '+this.audioInputClass+' '+this.state.classAudioButton}>
+						<div className={'mky-button-input '+this.state.classAudioButtonAvailable+' '+this.state.classAudioButton}>
 						{ this.state.creatingAudio
     						? (
 	    						<div className='mky-spinner-input-audio'>
@@ -241,24 +247,30 @@ class Input extends Component {
 	}
 
 	handleRecordAudio() {
-		this.setState({
-			classAudioArea: 'mky-appear',
-			classCancelAudioButton: '',
-			classAttachButton: 'mky-disappear',
-			classSendButton: '',
-			classTextArea: 'mky-disappear',
-			classAudioButton: 'mky-disappear'
-		});
-		this.startRecordAudio();
-	}
-
-	startRecordAudio() {
 		this.typeMessageToSend = 1;
 
         if (!this.mediaRecorder) {
-            navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
+	        try {
+			    navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
+/*
+			    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+			    getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
+*/
+			    this.setState({
+					classAudioArea: 'mky-appear',
+					classCancelAudioButton: '',
+					classAttachButton: 'mky-disappear',
+					classSendButton: '',
+					classTextArea: 'mky-disappear',
+					classAudioButton: 'mky-disappear'
+				});
+			}
+			catch(err) {
+			    console.log(err);
+			    this.setState({ classAudioButtonAvailable: 'mky-disabled' });
+			}
         }
-    }
+	}
 
     onMediaSuccess(stream) {
         //default settings to record
