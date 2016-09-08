@@ -2828,10 +2828,13 @@ TABLE OF CONTENTS
 }
 
 .mky-inner-chat-input{
+  align-items: center;
+  display: flex;
+  flex-direction: row;
   height: 100%;
+  justify-content: center;
   max-width: 887px;
   margin: 0 auto;
-  display: inline;
 }
 
 .mky-fullsize #mky-chat-input{
@@ -2843,7 +2846,7 @@ TABLE OF CONTENTS
   border: none;
 }
 
-.mky-partialsize #mky-message-text-input{
+.mky-partialsize .mky-textarea-input{
   width: calc(100% - 110px);
   margin-left: 0;
   margin-right: 0;
@@ -2866,15 +2869,11 @@ TABLE OF CONTENTS
 }
 
 .mky-button-input{
-  width: auto;
+  width: 33px;
   height: auto;
   display: inline-table;
   vertical-align: top;
   position: relative;
-  top: 50%;
-  transform: translateY(20%);
-  -webkit-transform: translateY(20%);
-  -moz-transform: translateY(20%);
 }
 
 .mky-partialsize .mky-button-input{
@@ -2882,10 +2881,11 @@ TABLE OF CONTENTS
 }
 
 .mky-button-icon{
-  display: inline-block;
+  background-size: contain;
   border: 0 none;
   cursor: pointer;
-  background-size: contain;
+  display: flex;
+  justify-content: center;
   margin: 0;
   padding: 0;
   background-color: transparent;
@@ -2893,39 +2893,34 @@ TABLE OF CONTENTS
   background-position: center;
 }
 
-#mky-button-add{
+.mky-button-input .mky-icon-drawer-sober{
   background: none;
   color: #546E7B;
   font-size: 32px;
-  margin: 0 2px 0 0;
   width: auto;
   height: auto;
 }
 
-#mky-button-cancel-audio{
+.mky-button-input .mky-icon-trashcan-regular{
   background: none;
   color: red;
   padding: 0px 0px;
   font-size: 20px;
-  margin-top: 8px;
 }
 
-#mky-button-send-message{
+.mky-button-input .mky-icon-mic-sober{
+  background: none;
+  color: #546E7B;
+  font-size: 28px;
+  width: 28px;
+}
+
+.mky-button-input .mky-icon-send-regular{
   background: none;
   color: #546E7B;
   padding: 0px 0px;
   font-size: 20px;
   cursor: pointer;
-  margin-left: 8px;
-  margin-top: 8px;
-}
-
-#mky-button-record-audio{
-  background: none;
-  color: #546E7B;
-  font-size: 28px;
-  margin-top: 3px;
-  width: 28px;
 }
 
 .tooltip{
@@ -2961,9 +2956,9 @@ TABLE OF CONTENTS
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);
 }
 
-#mky-button-cancel-audio:hover,
-#mky-button-record-audio:hover,
-#mky-button-send-message:hover{
+.mky-button-input .mky-icon-trashcan-regular:hover,
+.mky-button-input .mky-icon-mic-sober:hover,
+.mky-button-input .mky-icon-send-regular:hover{
   background: none;
 }
 
@@ -2981,11 +2976,11 @@ TABLE OF CONTENTS
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);
 }
 
-#mky-message-text-input{
+.mky-textarea-input{
   box-sizing: content-box;
   height: auto;
   line-height: 17px;
-  margin: 8px 5px 7px 5px;
+  margin: 8px 5px 8px 5px;
   padding: 8px 10px 6px 10px;
   resize: none;
   border: none;
@@ -3006,7 +3001,7 @@ TABLE OF CONTENTS
   width: calc(100% - 114px);
 }
 
-.mky-chat-input-file #mky-message-text-input{
+.mky-chat-input-file .mky-textarea-input{
   height: 20px;
   padding-top: 5px;
 }
@@ -3043,12 +3038,12 @@ TABLE OF CONTENTS
   text-transform: initial;
 }
 
-#mky-record-area{
+.mky-record-area{
   box-sizing: content-box;
-  width: calc(100% - 100px);
-  height: 38px;
+  width: calc(100% - 111px);
+  height: 33px;
   padding: 5px;
-  margin: 1px 9px;
+  margin: 2px 9px;
   background: #ffffff;
 }
 
@@ -3062,9 +3057,9 @@ TABLE OF CONTENTS
 
 .mky-record-preview-area{
   float: left;
-  width: 97%;
+  margin-top: 10px;
   text-align: center;
-  margin-top: 12px;
+  width: 97%;
 }
 
 .mky-blink {
@@ -4353,27 +4348,19 @@ input:focus{
 	.mky-content-aside{
     	display: none;
 	}
-
-	/* Icons bigger */
-
-	#mky-button-send-message, #mky-button-cancel-audio{
-	    height: 19px;
-	    width: 24px;
+	
+	/* Input */
+	.mky-textarea-input{
+	  width: calc(100% - 109px);
 	}
-
-	#mky-button-action-record button{
-	    height: 16px;
-	    width: 16px;
+	
+	.mky-record-area{
+	  width: calc(100% - 106px);
 	}
 
 	/* Messages */
 	.mky-bubble-text-out{
 	    min-width: 47px;
-	}
-
-	/* Input */
-	#mky-record-area{
-	  	margin-top: 7px;
 	}
 
 	/* Signature */

@@ -27,18 +27,19 @@ class Input extends Component {
 		super(props, context);
 		this.state = {
 			buttonToShow: 1,
-			classSendButton: 'mky-disappear',
 			classAudioButtonAvailable: '',
-			classAudioButton: '',
-			classAudioArea: 'mky-disappear',
-			classCancelAudioButton: 'mky-disappear',
-			classAttachButton: '',
-			classTextArea: '',
 			minutes: '00',
 			seconds: '00',
 			text: '',
             menuVisibility: 0,
-            creatingAudio: false
+            creatingAudio: false,
+            showAttachButton: true,
+            showCancelAudioButton: false,
+            showTextArea: true,
+            showAudioArea: false,
+            showAudioButton: true,
+            showSendButton: false
+            
 		}
 		this.handleOnKeyDownTextArea = this.handleOnKeyDownTextArea.bind(this);
 		this.textMessageInput = this.textMessageInput.bind(this);
@@ -103,54 +104,61 @@ class Input extends Component {
 						colorButton={styleInput.inputRightButton}/>
 					<div className='mky-inner-chat-input'>
 						<div id='mky-divider-chat-input'></div>
-						<div className={'mky-button-input '+this.state.classAttachButton}>
-							<i id='mky-button-add' className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+						<div className='mky-button-input'>
+							{ this.state.showAttachButton
+								? <i className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+								: null
+							}
+							{ this.state.showCancelAudioButton
+								? <i className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
+								: null
+							}
 						</div>
-						<div className={'mky-button-input '+this.state.classCancelAudioButton}>
-							<i id='mky-button-cancel-audio' className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
+						{ this.state.showTextArea
+							? ( <Textarea ref='textareaInput'
+									className='mky-textarea-input'
+									value={this.state.text}
+									placeholder='Write a secure message'
+									onKeyDown={this.handleOnKeyDownTextArea}
+									onChange={this.handleOnChangeTextArea}>
+								</Textarea> )
+							: null
+						}
+						{ this.state.showAudioArea
+							? ( <div className='mky-record-area'>
+									<div className='mky-record-preview-area'>
+										<div id='mky-button-action-record'>
+											<span id='mky-button-start-record' className='mky-blink'></span>
+										</div>
+										<div id='mky-time-recorder'>
+											<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
+										</div>
+									</div>
+								</div> )
+							: null
+						}
+						<div className='mky-button-input'>
+							{ this.state.showAudioButton
+								? ( this.state.creatingAudio
+									? ( <div className='mky-spinner-input-audio'>
+			    							<div className='mky-rect1'></div>
+			    							<div className='mky-rect2'></div>
+			    							<div className='mky-rect3'></div>
+			    							<div className='mky-rect4'></div>
+			    						</div> )
+									: ( <i className={'mky-button-icon icon mky-icon-mic-sober'+' '+this.state.classAudioButtonAvailable}
+											style={styleInput.inputRightButton}
+											onClick={this.handleRecordAudio}>
+											<span className='tooltip'>Browser is incompatible to record audio</span>
+										</i> )
+								)
+								: null
+							}
+							{ this.state.showSendButton
+								? <i className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
+								: null
+							}
 						</div>
-
-						<Textarea ref='textareaInput' id='mky-message-text-input'
-							className={'mky-textarea-input '+this.state.classTextArea}
-							value={this.state.text}
-							placeholder='Write a secure message'
-							onKeyDown={this.handleOnKeyDownTextArea}
-							onChange={this.handleOnChangeTextArea}>
-						</Textarea>
-						<div id='mky-record-area' className={this.state.classAudioArea}>
-							<div className='mky-record-preview-area'>
-								<div id='mky-button-action-record'>
-									<span id='mky-button-start-record' className='mky-blink'></span>
-								</div>
-								<div id='mky-time-recorder'>
-									<span id='mky-minutes'>{this.state.minutes}</span><span>:</span><span id='mky-seconds'>{this.state.seconds}</span>
-								</div>
-							</div>
-						</div>
-						
-						<div className={'mky-button-input '+this.state.classSendButton}>
-    						<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
-						</div>
-						<div className={'mky-button-input '+this.state.classAudioButton}>
-						{ this.state.creatingAudio
-    						? ( <div className='mky-spinner-input-audio'>
-	    							<div className='mky-rect1'></div>
-	    							<div className='mky-rect2'></div>
-	    							<div className='mky-rect3'></div>
-	    							<div className='mky-rect4'></div>
-	    						</div>
-	    						
-	    					)
-							: ( <i id='mky-button-record-audio'
-									className={'mky-button-icon icon mky-icon-mic-sober'+' '+this.state.classAudioButtonAvailable}
-									style={styleInput.inputRightButton}
-									onClick={this.handleRecordAudio}>
-									<span className='tooltip'>Browser is incompatible to record audio</span>
-								</i>
-							)
-    					}
-    					</div>
-						
 						<Dropzone ref='dropzone' className='mky-disappear' onDrop={this.onDrop} accept="image/*" >
 							<div>Try dropping some files here, or click to select files to upload.</div>
 						</Dropzone>
@@ -174,7 +182,7 @@ class Input extends Component {
 	}
 
 	focusTextarea(){
-        if(this.props.connectionStatus == null || this.props.connectionStatus == 3){
+        if( (this.props.connectionStatus == null || this.props.connectionStatus == 3) && this.state.showTextArea){
 			this.domNode = ReactDOM.findDOMNode(this.refs.textareaInput);
             this.domNode.focus();
         }
@@ -216,8 +224,8 @@ class Input extends Component {
 			}
 			this.setState({
 				text: '',
-				classSendButton: 'mky-disappear',
-				classAudioButton: ''
+				showAudioButton: true,
+				showSendButton: false
 			});
             this.props.handleNotifyTyping(false);
 		}else if(event.keyCode === 8){
@@ -231,13 +239,13 @@ class Input extends Component {
         }
         if(event.target.value.length == 0){
         	this.setState({
-				classSendButton: 'mky-disappear',
-				classAudioButton: ''
+				showAudioButton: true,
+				showSendButton: false
 			});
         }else{
     		this.setState({
-				classSendButton: '',
-				classAudioButton: 'mky-disappear'
+				showAudioButton: false,
+				showSendButton: true
 			});
         }
 		this.setState({text: event.target.value});
@@ -258,17 +266,13 @@ class Input extends Component {
         if (!this.mediaRecorder) {
 	        try {
 			    navigator.getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-/*
-			    var getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
-			    getUserMedia(this.mediaConstraints, this.onMediaSuccess, this.onMediaError);
-*/
 			    this.setState({
-					classAudioArea: 'mky-appear',
-					classCancelAudioButton: '',
-					classAttachButton: 'mky-disappear',
-					classSendButton: '',
-					classTextArea: 'mky-disappear',
-					classAudioButton: 'mky-disappear'
+					showAttachButton: false,
+					showCancelAudioButton: true,
+					showTextArea: false,
+					showAudioArea: true,
+					showAudioButton: false,
+					showSendButton: true
 				});
 			}
 			catch(err) {
@@ -313,12 +317,12 @@ class Input extends Component {
 
     handleCancelAudio() {
 	    this.setState({
-			classAudioArea: 'mky-disappear',
-			classCancelAudioButton: 'mky-disappear',
-			classAttachButton: '',
-			classSendButton: 'mky-disappear',
-			classTextArea: '',
-			classAudioButton: ''
+			showAttachButton: true,
+			showCancelAudioButton: false,
+			showTextArea: true,
+			showAudioArea: false,
+			showAudioButton: true,
+			showSendButton: false
 		});
 		this.clearAudioRecordTimer();
         this.mediaRecorder = null;
@@ -334,8 +338,8 @@ class Input extends Component {
 				}
 				this.setState({
 					text: '',
-					classSendButton: 'mky-disappear',
-					classAudioButton: ''
+					showAudioButton: true,
+					showSendButton: false
 				});
      			break;
             case 1:
