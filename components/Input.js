@@ -87,7 +87,6 @@ class Input extends Component {
     componentWillMount() {
 	    if (window.location.protocol != "https:" || /iPhone|iPad|iPod/i.test(navigator.userAgent)){
 		    this.setState({ classAudioButtonAvailable: 'mky-disabled'});
-            // this.audioInputClass = 'mky-disabled';
         }
     }
 
@@ -132,19 +131,26 @@ class Input extends Component {
 						<div className={'mky-button-input '+this.state.classSendButton}>
     						<i id='mky-button-send-message'  className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
 						</div>
-						<div className={'mky-button-input '+this.state.classAudioButtonAvailable+' '+this.state.classAudioButton}>
+						<div className={'mky-button-input '+this.state.classAudioButton}>
 						{ this.state.creatingAudio
-    						? (
-	    						<div className='mky-spinner-input-audio'>
+    						? ( <div className='mky-spinner-input-audio'>
 	    							<div className='mky-rect1'></div>
 	    							<div className='mky-rect2'></div>
 	    							<div className='mky-rect3'></div>
 	    							<div className='mky-rect4'></div>
 	    						</div>
+	    						
 	    					)
-							: <i id='mky-button-record-audio' className='mky-button-icon icon mky-icon-mic-sober' style={styleInput.inputRightButton} onClick={this.handleRecordAudio}></i>
+							: ( <i id='mky-button-record-audio'
+									className={'mky-button-icon icon mky-icon-mic-sober'+' '+this.state.classAudioButtonAvailable}
+									style={styleInput.inputRightButton}
+									onClick={this.handleRecordAudio}>
+									<span className='tooltip'>Browser is incompatible to record audio</span>
+								</i>
+							)
     					}
-						</div>
+    					</div>
+						
 						<Dropzone ref='dropzone' className='mky-disappear' onDrop={this.onDrop} accept="image/*" >
 							<div>Try dropping some files here, or click to select files to upload.</div>
 						</Dropzone>

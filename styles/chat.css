@@ -2928,6 +2928,30 @@ TABLE OF CONTENTS
   width: 28px;
 }
 
+.tooltip{
+  visibility: hidden;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 1;
+}
+
+.mky-button-input .tooltip{
+  font-size: 12px;
+  left: -190px;
+  line-height: 12px;
+  top: -24px;
+  width: 235px;
+}
+
+.mky-button-input:hover .mky-disabled .tooltip {
+    visibility: visible;
+}
+
 #mky-button-send-audio{
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);
   height: 16px;
