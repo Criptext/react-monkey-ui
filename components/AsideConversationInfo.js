@@ -59,7 +59,7 @@ class AsideConversationInfo extends Component {
 									onBlur={this.handleNameBlur}
 									type='text'
 									disabled={this.state.editingName ? false : true}/>
-								{ this.objectInfo.renameGroup && !this.state.editingName ? <i className='icon mky-icon-edit mky-info-edit-icon' onClick={this.toogleEditName}></i> : null }	
+								{ this.objectInfo.renameGroup && !this.state.editingName ? <i className='icon mky-icon-edit-sober' onClick={this.toogleEditName}></i> : null }	
 							</div>
 						</div>
 					</div>
