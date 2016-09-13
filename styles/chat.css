@@ -1804,14 +1804,69 @@ TABLE OF CONTENTS
   width: 200px;
 }
 
+
+
 .mky-bubble-file-out {
-    text-align: right;
+  text-align: right;
 }
 
 .mky-bubble-file-in {
+  text-align: left;
+}
+
+/*contact buble*/
+.mky-bubble-contact{
+  background: #fff;
+  border: 1px solid #eee;
+  color: #606060;
+  max-width: 180px;
+  padding: 10px;
+  width: 200px;
+}
+
+.mky-bubble-contact-out {
+    text-align: right;
+}
+
+.mky-bubble-contact-in {
     text-align: left;
 }
 
+.mky-contact-name{
+  margin-top: 8px;
+}
+
+.mky-contact-photo{
+  background-repeat: no-repeat;
+  background-size: 100%;
+  vertical-align: top;
+  float: left;
+  width: 50px;
+  height: 50px;
+  position: relative;
+  margin-left: 3px;
+}
+
+.mky-contact-photo img{
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+}
+
+.mky-contact-detail{
+  width: calc(100% - 68px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: right;
+  vertical-align: top;
+  color: #606060;
+}
+
+.mky-contact-detail span{
+    font-size: 13px;
+    line-height: 15px;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+}
 /* location bubble */
 
 .mky-bubble-location{
