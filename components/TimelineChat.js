@@ -7,11 +7,13 @@ import BubbleText from './BubbleText.js';
 import BubbleImage from './BubbleImage.js';
 import BubbleFile from './BubbleFile.js';
 import BubbleAudio from './BubbleAudio.js';
+import BubbleContact from './BubbleContact.js';
 
 const BubbleText_ = Bubble(BubbleText);
 const BubbleImage_ = Bubble(BubbleImage);
 const BubbleFile_ = Bubble(BubbleFile);
 const BubbleAudio_ = Bubble(BubbleAudio);
+const BubbleContact_ = Bubble(BubbleContact);
 
 class TimelineChat extends Component {
 
@@ -219,6 +221,18 @@ class TimelineChat extends Component {
 				break;
 			case 'audio':
 				messagesArray.push(<BubbleAudio_ key={message.id}
+									message={message}
+									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
+									messageSelected={this.props.messageSelected}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.dataDownloadRequest}
+									getUser={this.props.getUser}
+									styles={this.context.styles}
+									showOptions={this.context.options.bubbleWithOptions}/>)
+				break;
+			case 'contact':
+				messagesArray.push(<BubbleContact_ key={message.id}
 									message={message}
 									userSessionId={this.context.userSession.id}
 									layerClass={message.bubbleType}
