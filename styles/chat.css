@@ -1188,15 +1188,18 @@ TABLE OF CONTENTS
 }
 
 .mky-edit-input{
-    border: none;
-    background: none;
-    font-family: 'helvetica-light', Helvetica, sans-serif;
-    font-size: 16px;
-    float: left;
-    color: black;
-    margin: 0;
-    text-overflow: ellipsis;
-    width: calc(100% - 45px);
+  border: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  background: none;
+  font-family: 'helvetica-light', Helvetica, sans-serif;
+  font-size: 16px;
+  float: left;
+  color: black;
+  margin: 0;
+  text-overflow: ellipsis;
+  width: calc(100% - 45px);
 }
 
 .mky-edit-input:focus{
@@ -1403,20 +1406,17 @@ TABLE OF CONTENTS
   padding-bottom: 12px;
 }
 
-#mky-chat-timeline::-webkit-scrollbar-track
-{
+#mky-chat-timeline::-webkit-scrollbar-track{
   -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);
   background-color: #F5F5F5;
 }
 
-#mky-chat-timeline::-webkit-scrollbar
-{
+#mky-chat-timeline::-webkit-scrollbar{
   width: 6px;
   background-color: #F5F5F5;
 }
 
-#mky-chat-timeline::-webkit-scrollbar-thumb
-{
+#mky-chat-timeline::-webkit-scrollbar-thumb{
   background-color: #C5C5C5;
 }
 
@@ -1435,6 +1435,11 @@ TABLE OF CONTENTS
   -webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);
   -moz-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);
   box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);
+}
+
+.mky-chat-timeline-control i{
+  height: 12px;
+  color: #000;	
 }
 
 .mky-chat-timeline-conversation{
@@ -2805,6 +2810,11 @@ TABLE OF CONTENTS
   width: calc(100% - 114px);
 }
 
+.mky-textarea-input:focus{
+  border-left: 1px solid #ccc;
+  box-shadow: none;
+}
+
 .mky-chat-input-file .mky-textarea-input{
   height: 20px;
   padding-top: 5px;
@@ -3842,7 +3852,7 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
   background-color: rgba(0,0,0,0.3);
 }
 
-.mky-viewer-toolbar button{
+.mky-viewer-toolbar button, .mky-button-modal{
   display: inline-table;
   float: right;
   cursor: pointer;
