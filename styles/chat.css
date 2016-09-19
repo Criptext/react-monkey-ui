@@ -910,7 +910,7 @@ TABLE OF CONTENTS
 
 .mky-conversation-item .mky-message-status{
   margin-left: 0px;
-  margin-right: 0px;
+  margin-right: 3px;
 }
 
 .mky-conversation-image{
@@ -1090,9 +1090,9 @@ TABLE OF CONTENTS
 
 .mky-status-read .mky-message-read{
   font-size: 15px;
-  top: 6px;
-  right: 0px;
-  position: absolute;
+  margin-top: 5px;
+/*  right: 0px;
+  position: absolute;*/
 }
 
 /* Conversation item selected */
