@@ -73,6 +73,16 @@ class ConversationItem extends Component {
 						</div>
 						<div className='mky-conversation-state'>
 							{ Object.keys(this.props.conversation.messages).length
+								? ( this.props.conversation.messages[this.props.conversation.lastMessage]
+									? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52
+										? <div className='mky-message-status mky-status-read' ><i className='icon mky-icon-check-sober mky-message-read'></i></div>
+										: ''
+									)
+									: null
+								)
+								: null
+							}
+							{ Object.keys(this.props.conversation.messages).length
 								? ( <span className='mky-ellipsify'>{this.props.conversation.messages[this.props.conversation.lastMessage]
 									? this.props.conversation.messages[this.props.conversation.lastMessage].preview
 									: '' }</span>
@@ -85,16 +95,7 @@ class ConversationItem extends Component {
 				<div className='mky-conversation-options'>
 					<div className='mky-conversation-delete' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
 					<Badge value={ (this.props.conversation.unreadMessageCounter && !this.props.selected) ? this.props.conversation.unreadMessageCounter : 0} />
-						{ Object.keys(this.props.conversation.messages).length
-							? ( this.props.conversation.messages[this.props.conversation.lastMessage]
-								? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52
-									? <div className='mky-message-status mky-status-read' ><i className='icon mky-icon-check-sober mky-message-read'></i></div>
-									: ''
-								)
-								: null
-							)
-							: null
-						}
+						
 				</div>
 			</li>
 		)
