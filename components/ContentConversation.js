@@ -95,7 +95,8 @@ class ContentConversation extends Component {
 								messageSelected={this.handleMessageSelected}
 								onClickMessage={this.props.onClickMessage}
 								dataDownloadRequest={this.props.dataDownloadRequest}
-								getUser={this.props.getUser}/>
+								getUser={this.props.getUser}
+								showOptionList = {this.props.showOptionList}/>
 							{ modalComponent }
 							<Input connectionStatus={this.props.connectionStatus}
 								conversationSelected={this.props.conversationSelected}

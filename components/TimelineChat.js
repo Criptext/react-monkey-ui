@@ -193,7 +193,8 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}/>)
+									showOptions={this.context.options.bubbleWithOptions}
+									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'image':
 				messagesArray.push(<BubbleImage_ key={message.id}
@@ -205,7 +206,8 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}/>)
+									showOptions={this.context.options.bubbleWithOptions}
+									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'file':
 				messagesArray.push(<BubbleFile_ key={message.id}
@@ -217,7 +219,8 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}/>)
+									showOptions={this.context.options.bubbleWithOptions}
+									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'audio':
 				messagesArray.push(<BubbleAudio_ key={message.id}
@@ -229,7 +232,8 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}/>)
+									showOptions={this.context.options.bubbleWithOptions}
+									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'contact':
 				messagesArray.push(<BubbleContact_ key={message.id}
@@ -241,7 +245,8 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}/>)
+									showOptions={this.context.options.bubbleWithOptions}
+									showOptionList = {this.props.showOptionList}/>)
 				break;
 			default:
 				break;

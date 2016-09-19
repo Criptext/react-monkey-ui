@@ -62,6 +62,10 @@ export const defineTimeByDay = (time) => {
     return result;
 }
 
+export const defineDate = (time) => {
+    return moment(time).format('DD/MM/YYYY');
+}
+
 export const getExtention = (filename) => {
     let arr = filename.split('.');
     let extension = arr[arr.length-1];

@@ -37,7 +37,7 @@ class AsideConversationInfo extends Component {
     	return (
 			<div className='mky-info-conversation'>
 				<header className='mky-info-header'>
-					<div className='mky-info-close' onClick={this.props.toggleConversationHeader}><i className='icon mky-icon-close'></i></div>
+					<div className='mky-info-close' onClick={ () => {this.props.toggleConversationHeader('conversation')} }><i className='icon mky-icon-close'></i></div>
 					<div className='mky-info-header-description'>
 						<span className='mky-info-header-title mky-ellipsify'>{this.objectInfo.title ? this.objectInfo.title : 'Information'}</span>
 						<span className='mky-info-header-subtitle'></span>

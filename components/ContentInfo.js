@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import AsideConversationInfo from './AsideConversationInfo.js';
+import AsideMessageInfo from './AsideMessageInfo.js';
 import { isConversationGroup } from '../utils/monkey-utils.js'
 
 class ContentInfo extends Component {
@@ -24,6 +25,14 @@ class ContentInfo extends Component {
 								<AsideConversationInfo toggleConversationHeader = {this.props.toggleConversationHeader}
 									conversationSelected = {this.props.conversationSelected}
 									getConversationInfo = {this.props.getConversationInfo}/>
+							)
+						}
+						case 'message' : {
+							return (
+								<AsideMessageInfo toggleConversationHeader = {this.props.toggleConversationHeader}
+									messageSelectedInfo = {this.props.messageSelectedInfo}
+									dataDownloadRequest = {this.props.dataDownloadRequest}
+		    						getUser = {this.props.getUser}/>
 							)
 						}
 						default:

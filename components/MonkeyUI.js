@@ -48,7 +48,9 @@ class MonkeyUI extends Component {
 			showConversations: true,
 			showBanner: false,
 			wrapperInClass: '',
-			showPopUp: false
+			showPopUp: false,
+			showAsideInfo: false,
+			typeAsideInfo: ''
 		}
 		this.lastNotifyTime = 0;
 		this.firstNotifyTime = 0;
@@ -67,6 +69,9 @@ class MonkeyUI extends Component {
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
 		this.formOptions = this.formOptions.bind(this);
+		this.handleShowOptionList = this.handleShowOptionList.bind(this);
+		this.messageOptionsPosition = {x : 0, y : 0};
+		this.hideMessageOption = this.hideMessageOption.bind(this);
 	}
 
 	getChildContext() {
@@ -195,86 +200,109 @@ class MonkeyUI extends Component {
 		const Form_ = ContentLogin(this.props.form);
 		const LogOut_ = PopUp(ContentLogOut);
     	return (
-			<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
-				{ this.props.view.type === 'classic'
-					? ( <div className='mky-tab' style={this.defineToggleStyle()} onClick={this.toggleTab}>
-                            <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
-                            <div><i className={'icon '+this.state.classTabIcon} style={this.defineTabTextColor()}></i></div>
-                        </div>
-					)
-					: ( this.props.view.type === 'rightside'
-						? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.openSide}><i className='icon mky-icon-chats'></i></div>
-						: null
-					)
-				}
-				<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
-					{ this.props.viewLoading
-						? (
-							<div id='mky-content-connection' className='mky-appear'>
-								<div className='mky-spinner'>
-									<div className='mky-bounce1'></div>
-									<div className='mky-bounce2'></div>
-									<div className='mky-bounce3'></div>
+    		<div>
+				<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
+					{ this.props.view.type === 'classic'
+						? ( <div className='mky-tab' style={this.defineToggleStyle()} onClick={this.toggleTab}>
+	                            <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
+	                            <div><i className={'icon '+this.state.classTabIcon} style={this.defineTabTextColor()}></i></div>
+	                        </div>
+						)
+						: ( this.props.view.type === 'rightside'
+							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.openSide}><i className='icon mky-icon-chats'></i></div>
+							: null
+						)
+					}
+					<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
+						{ this.props.viewLoading
+							? (
+								<div id='mky-content-connection' className='mky-appear'>
+									<div className='mky-spinner'>
+										<div className='mky-bounce1'></div>
+										<div className='mky-bounce2'></div>
+										<div className='mky-bounce3'></div>
+									</div>
 								</div>
-							</div>
-						)
-						: null
-					}
-					{ this.props.userSession
-						? ( <div id='mky-content-app' className=''>
-								{ this.state.showConversations & this.haveConversations
-									? <ContentAside asidePanelParams={this.props.asidePanelParams}
+							)
+							: null
+						}
+						{ this.props.userSession
+							? ( <div id='mky-content-app' className=''>
+									{ this.state.showConversations & this.haveConversations
+										? <ContentAside asidePanelParams={this.props.asidePanelParams}
+											connectionStatus={this.props.connectionStatus}
+											isLoadingConversations={this.props.isLoadingConversations}
+											handleLoadMoreConversations={this.props.onLoadMoreConversations}
+											handleConversationDelete={this.props.onConversationDelete}
+											togglePopup={this.togglePopup}
+											handleConversationExit={this.props.onConversationExit}
+											userSessionLogout={this.props.onUserSessionLogout}
+											conversations={this.state.conversations}
+											handleConversationSelected={this.handleConversationSelected}
+											conversationSelected={this.props.conversation}
+											showBanner={this.state.showBanner}
+											show={this.showListConversation}
+											isMobile={this.state.isMobile}
+											closeSide={this.openSide}
+											conversationsLoading={this.props.conversationsLoading}
+	                    					viewType={this.props.view.type}
+	                    					customLoader = {this.props.customLoader}
+	                    					usernameEdit = {this.props.onUsernameEdit}
+	                    					scrollTop = {this.listTopScroll}/>
+										: null
+									}
+									<ContentWindow ref="contentWindow"
 										connectionStatus={this.props.connectionStatus}
-										isLoadingConversations={this.props.isLoadingConversations}
-										handleLoadMoreConversations={this.props.onLoadMoreConversations}
-										handleConversationDelete={this.props.onConversationDelete}
-										togglePopup={this.togglePopup}
-										handleConversationExit={this.props.onConversationExit}
-										userSessionLogout={this.props.onUserSessionLogout}
-										conversations={this.state.conversations}
-										handleConversationSelected={this.handleConversationSelected}
+										handleNotifyTyping={this.handleNotifyTyping}
+										panelParams={this.props.panelParams}
+										loadMessages={this.props.onMessagesLoad}
 										conversationSelected={this.props.conversation}
-										showBanner={this.state.showBanner}
-										show={this.showListConversation}
+										conversationClosed={this.props.onConversationClosed}
+										messageCreated={this.handleMessageCreated}
+										expandWindow={this.expandWindow}
+										expandAside={this.handleShowAside}
 										isMobile={this.state.isMobile}
-										closeSide={this.openSide}
-										conversationsLoading={this.props.conversationsLoading}
-                    					viewType={this.props.view.type}
-                    					customLoader = {this.props.customLoader}
-                    					usernameEdit = {this.props.onUserSessionEdit}
-                    					scrollTop = {this.listTopScroll}/>
-									: null
-								}
-								<ContentWindow connectionStatus={this.props.connectionStatus}
-									handleNotifyTyping={this.handleNotifyTyping}
-									panelParams={this.props.panelParams}
-									loadMessages={this.props.onMessagesLoad}
-									conversationSelected={this.props.conversation}
-									conversationClosed={this.props.onConversationClosed}
-									messageCreated={this.handleMessageCreated}
-									expandWindow={this.expandWindow}
-									expandAside={this.handleShowAside}
-									isMobile={this.state.isMobile}
-									isPartialized={this.classContent}
-									showBanner={this.state.showBanner}
-									onClickMessage={this.props.onClickMessage}
-									dataDownloadRequest={this.props.onMessageDownloadData}
-									getUser={this.props.onMessageGetUser}
-									haveConversations={this.haveConversations}
-                					version={this.props.view.version}
-                					customLoader = {this.props.customLoader}
-        							viewType={this.props.view.type}
-        							closeSide={this.openSide}
-        							getConversationInfo = {this.props.onConversationLoadInfo}/>
-							</div>
-						)
-						: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
-					}
-					{ this.state.showPopUp
-						? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.handleUserSessionLogout} />
-						: null
-					}
+										isPartialized={this.classContent}
+										showBanner={this.state.showBanner}
+										onClickMessage={this.props.onClickMessage}
+										dataDownloadRequest={this.props.onMessageDownloadData}
+										getUser={this.props.onMessageGetUser}
+										haveConversations={this.haveConversations}
+	                					version={this.props.view.version}
+	                					customLoader = {this.props.customLoader}
+	        							viewType={this.props.view.type}
+	        							closeSide={this.openSide}
+	        							getConversationInfo = {this.props.onConversationLoadInfo}
+	        							showOptionList = {this.handleShowOptionList}
+	        							messageSelectedInfo = {this.props.messageSelectedInfo}/>
+								</div>
+							)
+							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
+						}
+						{ this.state.showPopUp
+							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.handleUserSessionLogout} />
+							: null
+						}
+					</div>
 				</div>
+				{ 
+					this.state.messageOptions 
+					? (() => {
+						let options = null;
+						options = this.state.messageOptions.map( (option) => {
+							return <div className="mky-message-option-item" onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
+						})
+
+						return (<div>
+							<div className="mky-out-options-back" onClick={ () => { this.hideMessageOption(null) } }></div>
+							<div className="mky-out-message-options" style={this.messageOptionsPosition}>
+								{options}
+							</div>
+						</div>)
+
+					})()
+					: null
+				}
 			</div>
 		)
 	}
@@ -397,6 +425,34 @@ class MonkeyUI extends Component {
 			return this.props.styles.tabText;
 		}else
 			return 'Want to know more?';
+	}
+
+	handleShowOptionList(message, top, left){
+		this.setState({
+			messageOptions : this.props.onMessageOptions(message)
+		})
+		let style = {};
+		if(window.innerHeight - top < 300){
+			style['bottom'] = window.innerHeight - top;	
+		}else{
+			style['top'] = top;
+		}
+
+		if(window.innerWidth - left < 300){
+			style['right'] = window.innerWidth - left
+		}else{
+			style['left'] = left;
+		}
+		this.messageOptionsPosition = style;
+	}
+
+	hideMessageOption(func){
+		this.setState({
+			messageOptions : null
+		})
+		if(func){
+			func();
+		}
 	}
 
 }
