@@ -62,7 +62,7 @@ class ContentViewer extends Component {
 			<div className="mky-viewer-image-container">
 				<div className="mky-viewer-toolbar">
 					<a href={this.props.message.data} download={this.props.message.filename} >
-						<button className="mky-button-download" title="Download">Download</button>
+						<div className='mky-button-download mky-button-modal' title="Download">Download</div>
 					</a>
 				</div>
 				<div id="file_viewer_image" className={"mky-viewer-image "+this.state.imageOrientation}>
