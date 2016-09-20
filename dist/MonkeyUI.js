@@ -59,7 +59,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.getExtention = exports.defineTimeByDay = exports.defineTimeByToday = exports.defineTime = exports.isConversationGroup = exports.MonkeyUI = undefined;
+	exports.getExtention = exports.defineDate = exports.defineTimeByDay = exports.defineTimeByToday = exports.defineTime = exports.isConversationGroup = exports.MonkeyUI = undefined;
 
 	var _MonkeyUI = __webpack_require__(1);
 
@@ -69,31 +69,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	// export { default as MonkeyUI } from './components/MonkeyUI.js'
-	/*
-	export MonkeyUI from './components/MonkeyUI'
-	export { isConversationGroup } from '../utils/monkey-utils.js'
-	*/
-
-	/*
-	module.exports = {
-		MonkeyUI: require('./components/MonkeyUI.js'),
-		isConversationGroup: require('./utils/monkey-utils.js')
-	};
-	*/
-
-	/*
-	module.exports = {
-		default: require('./components/MonkeyUI.js'),
-		isConversationGroup: require('./utils/monkey-utils.js')
-	};
-	*/
-
 	exports.MonkeyUI = _MonkeyUI2.default;
 	exports.isConversationGroup = _monkeyUtils.isConversationGroup;
 	exports.defineTime = _monkeyUtils.defineTime;
 	exports.defineTimeByToday = _monkeyUtils.defineTimeByToday;
 	exports.defineTimeByDay = _monkeyUtils.defineTimeByDay;
+	exports.defineDate = _monkeyUtils.defineDate;
 	exports.getExtention = _monkeyUtils.getExtention;
 
 /***/ },
@@ -120,7 +101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ContentWindow2 = _interopRequireDefault(_ContentWindow);
 
-	var _ContentLogin = __webpack_require__(336);
+	var _ContentLogin = __webpack_require__(337);
 
 	var _ContentLogin2 = _interopRequireDefault(_ContentLogin);
 
@@ -148,7 +129,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ContentViewer2 = _interopRequireDefault(_ContentViewer);
 
-	var _MyForm = __webpack_require__(337);
+	var _MyForm = __webpack_require__(338);
 
 	var _MyForm2 = _interopRequireDefault(_MyForm);
 
@@ -160,7 +141,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ContentLogOut2 = _interopRequireDefault(_ContentLogOut);
 
-	var _chat = __webpack_require__(340);
+	var _chat = __webpack_require__(341);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
@@ -267,8 +248,11 @@ return /******/ (function(modules) { // webpackBootstrap
 							}
 						};
 					}
-					if (typeof this.props.options.bubbleWithOptions != 'boolean') {
-						this.props.options.bubbleWithOptions = false;
+					if (!this.props.options.bubbleWithOptions.incoming) {
+						this.props.options.bubbleWithOptions.incoming = false;
+					}
+					if (!this.props.options.bubbleWithOptions.outgoing) {
+						this.props.options.bubbleWithOptions.outgoing = false;
 					}
 				}
 
@@ -674,7 +658,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					delete: true
 				}
 			},
-			bubbleWithOptions: false
+			bubbleWithOptions: {
+				incoming: false,
+				outgoing: false
+			}
 		},
 		chatExtraData: {}
 	};
@@ -38231,7 +38218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								'div',
 								{ className: 'mky-message-content' },
 								_react2.default.createElement(Component, this.props),
-								this.props.showOptions ? _react2.default.createElement(
+								this.props.showOptions.incoming && this.props.userSessionId != this.props.message.senderId || this.props.showOptions.outgoing && this.props.userSessionId === this.props.message.senderId ? _react2.default.createElement(
 									'div',
 									{ className: 'mky-message-option' },
 									_react2.default.createElement(
@@ -39504,6 +39491,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
+	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -40075,6 +40063,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
+	  "lpl",
+	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -52920,20 +52910,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	          // console.log(message.data);
 	        } else if (message.type == "stderr") {} else if (message.type == "done") {
-	          var code = message.data.code;
-	          var outFileNames = Object.keys(message.data.outputFiles);
+	            var code = message.data.code;
+	            var outFileNames = Object.keys(message.data.outputFiles);
 
-	          if (code == 0 && outFileNames.length) {
+	            if (code == 0 && outFileNames.length) {
 
-	            var outFileName = outFileNames[0];
-	            var outFileBuffer = message.data.outputFiles[outFileName];
-	            var mp3Blob = new Blob([outFileBuffer]);
-	            // var src = window.URL.createObjectURL(mp3Blob);
-	            that.readData(mp3Blob);
-	          } else {
-	            /*Error*/
+	              var outFileName = outFileNames[0];
+	              var outFileBuffer = message.data.outputFiles[outFileName];
+	              var mp3Blob = new Blob([outFileBuffer]);
+	              // var src = window.URL.createObjectURL(mp3Blob);
+	              that.readData(mp3Blob);
+	            } else {
+	              /*Error*/
+	            }
 	          }
-	        }
 	      };
 	      return ffmpegWorker;
 	    }
@@ -57843,15 +57833,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _AsideConversationInfo2 = _interopRequireDefault(_AsideConversationInfo);
 
-<<<<<<< aa523e08e3e10c63f5f33f280d2d111f0933c8f1
-	var _AsideMessageInfo = __webpack_require__(335);
+	var _AsideMessageInfo = __webpack_require__(336);
 
 	var _AsideMessageInfo2 = _interopRequireDefault(_AsideMessageInfo);
 
-	var _monkeyUtils = __webpack_require__(6);
-=======
 	var _monkeyUtils = __webpack_require__(7);
->>>>>>> MonkeyUI expose utils methods
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58486,37 +58472,37 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(114);
+	var _reactDom = __webpack_require__(115);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _InfoItem = __webpack_require__(332);
+	var _InfoItem = __webpack_require__(333);
 
 	var _InfoItem2 = _interopRequireDefault(_InfoItem);
 
-	var _monkeyUtils = __webpack_require__(6);
+	var _monkeyUtils = __webpack_require__(7);
 
-	var _Bubble = __webpack_require__(286);
+	var _Bubble = __webpack_require__(287);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _BubbleText = __webpack_require__(287);
+	var _BubbleText = __webpack_require__(288);
 
 	var _BubbleText2 = _interopRequireDefault(_BubbleText);
 
-	var _BubbleImage = __webpack_require__(296);
+	var _BubbleImage = __webpack_require__(297);
 
 	var _BubbleImage2 = _interopRequireDefault(_BubbleImage);
 
-	var _BubbleFile = __webpack_require__(298);
+	var _BubbleFile = __webpack_require__(299);
 
 	var _BubbleFile2 = _interopRequireDefault(_BubbleFile);
 
-	var _BubbleAudio = __webpack_require__(299);
+	var _BubbleAudio = __webpack_require__(300);
 
 	var _BubbleAudio2 = _interopRequireDefault(_BubbleAudio);
 
-	var _BubbleContact = __webpack_require__(302);
+	var _BubbleContact = __webpack_require__(303);
 
 	var _BubbleContact2 = _interopRequireDefault(_BubbleContact);
 
@@ -58746,7 +58732,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = AsideMessageInfo;
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58757,7 +58743,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-	var _react = __webpack_require__(1);
+	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
 
@@ -58797,7 +58783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentLogin;
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58812,7 +58798,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _myform = __webpack_require__(338);
+	var _myform = __webpack_require__(339);
 
 	var _myform2 = _interopRequireDefault(_myform);
 
@@ -58944,13 +58930,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = MyForm;
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(339);
+	var content = __webpack_require__(340);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(310)(content, {});
@@ -58970,7 +58956,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(309)();
@@ -58984,13 +58970,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(341);
+	var content = __webpack_require__(342);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
 	var update = __webpack_require__(310)(content, {});
@@ -59010,7 +58996,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	exports = module.exports = __webpack_require__(309)();
