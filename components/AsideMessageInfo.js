@@ -99,6 +99,7 @@ class AsideMessageInfo extends Component {
 				return (<BubbleAudio_ key={message.id}
 									message={message}
 									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}

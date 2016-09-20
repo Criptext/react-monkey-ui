@@ -3835,6 +3835,7 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
 .mky-message-option-item{
   padding: 15px 20px;
   cursor: pointer;
+  white-space: nowrap;
 }
 
 .mky-message-option-item:hover{

@@ -45,13 +45,13 @@ class BubbleAudio extends Component {
                 { this.props.message.data
 	                ? (
                     	<div className={'mky-content-audio-data'}>
-	                        <div id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-green'} onClick={this.playAudioBubble} ></div>
-	                        <div id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green'} onClick={this.pauseAudioBubble} ></div>
-	                        <input id={'mky-bubble-audio-player-'+this.messageId} className='knob second'></input>
+	                        <div ref="mky_bubble_audio_play_button" id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-green'} onClick={this.playAudioBubble} ></div>
+	                        <div ref="mky_bubble_audio_pause_button" id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green'} onClick={this.pauseAudioBubble} ></div>
+	                        <input ref="mky_bubble_audio_player" id={'mky-bubble-audio-player-'+this.messageId} className='knob second'></input>
 	                        <div className='mky-bubble-audio-timer'>
 	                            <span>{this.state.minutes}</span><span>:</span><span>{this.state.seconds}</span>
 	                        </div>
-	                        <audio id={'audio_'+this.messageId} preload='auto' controls='' src={this.props.message.data}></audio>
+	                        <audio ref="mky_audio" id={'audio_'+this.messageId} preload='auto' controls='' src={this.props.message.data}></audio>
 						</div>
                     )
                     : ( this.props.message.isDownloading
@@ -82,23 +82,22 @@ class BubbleAudio extends Component {
 		if(this.isLoaded){
 			this.isLoaded = false;
 			this.createAudioHandlerBubble(this.props.message.id, Math.round(this.props.message.length ? this.props.message.length : 1));
-			let mkyAudioBubble = document.getElementById('audio_'+this.messageId);
-	        var that = this;
-	        $('#mky-bubble-audio-play-button-'+that.messageId).show();
-	        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", true );
-			$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
+			let mkyAudioBubble = this.refs.mky_audio;
+	        $(this.refs.mky_bubble_audio_play_button).show();
+	        $(this.refs.mky_bubble_audio_play_button).prop( "disabled", true );
+			$(this.refs.mky_bubble_audio_pause_button).hide();
 	        if(mkyAudioBubble){
 		        mkyAudioBubble.oncanplay = function() {
-			        $('#mky-bubble-audio-play-button-'+that.messageId).prop( "disabled", false );
-	                that.createAudioHandlerBubble(that.messageId,Math.round(mkyAudioBubble.duration));
-	                that.setDurationTime(that.messageId);
-	            }
+			        $(this.refs.mky_bubble_audio_play_button).prop( "disabled", false );
+	                this.createAudioHandlerBubble(this.messageId,Math.round(mkyAudioBubble.duration));
+	                this.setDurationTime(this.messageId);
+	            }.bind(this)
 	        }
 		}
 	}
 	
 	createAudioHandlerBubble(timestamp, duration) {
-		$('#mky-bubble-audio-player-'+timestamp).knob({
+		$(this.refs.mky_bubble_audio_player).knob({
             'min': 0,
             'max': duration,
             'angleOffset': -133,
@@ -115,7 +114,7 @@ class BubbleAudio extends Component {
 	}
 	
 	setDurationTime(timestamp) {
-        let mkyAudioBubble = document.getElementById('audio_'+timestamp);
+        let mkyAudioBubble = this.refs.mky_audio;
         if(mkyAudioBubble) {
 	        let durationTime= Math.round(mkyAudioBubble.duration);
 	        let seconds = ('0' + durationTime%60).slice(-2);
@@ -130,29 +129,28 @@ class BubbleAudio extends Component {
     playAudioBubble() {
 	    try {
 		    this.pauseAllAudio();
-	        window.$bubblePlayer = $('#mky-bubble-audio-player-'+this.messageId); //handles the circle
-	        $('#mky-bubble-audio-play-button-'+this.messageId).hide();
-	        $('#mky-bubble-audio-pause-button-'+this.messageId).show();
-	        let audiobuble = document.getElementById('audio_'+this.messageId);
+	        window.$bubblePlayer = $(this.refs.mky_bubble_audio_player); //handles the circle
+	        $(this.refs.mky_bubble_audio_play_button).hide();
+	        $(this.refs.mky_bubble_audio_pause_button).show();
+	        let audiobuble = this.refs.mky_audio;
 	        audiobuble.play();
 	        window.playIntervalBubble = setInterval(this.updateAnimationBuble,1000);
-	        var that = this;
 	        audiobuble.addEventListener('ended',function() {
-	            that.setDurationTime(that.messageId);
+	            this.setDurationTime(this.messageId);
 	            window.$bubblePlayer.val(0).trigger('change');
-				$('#mky-bubble-audio-play-button-'+that.messageId).show();
-				$('#mky-bubble-audio-pause-button-'+that.messageId).hide();
+				$(this.refs.mky_bubble_audio_play_button).show();
+				$(this.refs.mky_bubble_audio_pause_button).hide();
 	            clearInterval(window.playIntervalBubble);
-	        });
+	        }.bind(this));
 	    } catch(err) {
 		    console.log(err);
 	    }
     }
     
     pauseAudioBubble() {
-		$('#mky-bubble-audio-play-button-'+this.messageId).show();
-		$('#mky-bubble-audio-pause-button-'+this.messageId).hide();
-		let audiobuble = document.getElementById('audio_'+this.messageId);
+		$(this.refs.mky_bubble_audio_play_button).show();
+		$(this.refs.mky_bubble_audio_pause_button).hide();
+		let audiobuble = this.refs.mky_audio;
         audiobuble.pause();
         clearInterval(window.playIntervalBubble);
     }
@@ -160,7 +158,6 @@ class BubbleAudio extends Component {
     pauseAllAudio() {
 	    try {
 		    clearInterval(window.playIntervalBubble);
-		    var that = this;
 	        document.addEventListener('play', function(e){
 	            var audios = document.getElementsByTagName('audio');
 	            for(var i = 0, len = audios.length; i < len;i++){
@@ -170,16 +167,16 @@ class BubbleAudio extends Component {
 	                    $('.mky-bubble-audio-play-button').show();
 	                }   
 	            }
-	            $('#mky-bubble-audio-play-button-'+that.messageId).hide();
-				$('#mky-bubble-audio-pause-button-'+that.messageId).show();
-	        }, true);
+	            $(this.refs.mky_bubble_audio_play_button).hide();
+				$(this.refs.mky_bubble_audio_pause_button).show();
+	        }.bind(this), true);
 	    } catch(err) {
 		    console.log(err);
 	    }
     }
     
     updateAnimationBuble() {
-	    let audiobuble = document.getElementById('audio_'+this.messageId);
+	    let audiobuble = this.refs.mky_audio;
 	    if(audiobuble){
 			var currentTime = Math.round(audiobuble.currentTime);
 	        window.$bubblePlayer.val(currentTime).trigger('change');
