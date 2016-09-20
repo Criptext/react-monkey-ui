@@ -102,8 +102,11 @@ class MonkeyUI extends Component {
 					}
 				}
 			}
-			if(typeof this.props.options.bubbleWithOptions != 'boolean'){
-				this.props.options.bubbleWithOptions = false
+			if(!this.props.options.bubbleWithOptions.incoming){
+				this.props.options.bubbleWithOptions.incoming = false;
+			}
+			if(!this.props.options.bubbleWithOptions.outgoing){
+				this.props.options.bubbleWithOptions.outgoing = false;
 			}
 		}
 		
@@ -479,7 +482,10 @@ MonkeyUI.defaultProps = {
 				delete: true
 			}
 		},
-		bubbleWithOptions: false
+		bubbleWithOptions: {
+			incoming: false,
+			outgoing: false	
+		}
 	},
 	chatExtraData: {}
 }
