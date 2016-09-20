@@ -3,7 +3,7 @@ var path = require('path');
 
 var config = {
 	entry: {
-		MonkeyUI: './components/MonkeyUI.js'
+		MonkeyUI: './index.js'
 	},
 	output: {
 		library: 'ReactMonkeyUI',
