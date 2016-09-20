@@ -247,7 +247,7 @@ class MonkeyUI extends Component {
 											conversationsLoading={this.props.conversationsLoading}
 	                    					viewType={this.props.view.type}
 	                    					customLoader = {this.props.customLoader}
-	                    					usernameEdit = {this.props.onUsernameEdit}
+	                    					usernameEdit = {this.props.onUserSessionEdit}
 	                    					scrollTop = {this.listTopScroll}/>
 										: null
 									}

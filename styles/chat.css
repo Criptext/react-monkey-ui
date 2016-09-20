@@ -1954,7 +1954,7 @@ TABLE OF CONTENTS
   border-top-right-radius: 15px;
 }
 
-.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option{
+.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option, .mky-bubble-contact .mky-message-option{
   background: #096EFF; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(right top, #fff 50%, transparent); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom left, #fff 50%, transparent); /* For Opera 11.1 to 12.0 */
@@ -1985,7 +1985,7 @@ TABLE OF CONTENTS
   background-color: #fff
 }
 
-.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus{
+.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus, .mky-bubble-contact .mky-message-option-plus{
   background-color: #000
 }
 
@@ -2002,7 +2002,7 @@ TABLE OF CONTENTS
   color: #096EFF
 }
 
-.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i{
+.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i, .mky-bubble-contact .mky-message-option-plus i{
   color: #fff
 }
 
