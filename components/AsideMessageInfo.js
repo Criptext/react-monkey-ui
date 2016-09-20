@@ -119,6 +119,10 @@ class AsideMessageInfo extends Component {
 	}
 
 	renderList(items){
+		if(!items){
+			return;
+		}
+
 		var itemList = [];
 
 		items.forEach((item) => {

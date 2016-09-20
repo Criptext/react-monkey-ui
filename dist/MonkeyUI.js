@@ -417,7 +417,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						options = _this2.state.messageOptions.map(function (option) {
 							return _react2.default.createElement(
 								'div',
-								{ className: 'mky-message-option-item', onClick: function onClick() {
+								{ key: option.action, className: 'mky-message-option-item', onClick: function onClick() {
 										_this2.hideMessageOption(option.func);
 									} },
 								option.action
@@ -58630,6 +58630,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'renderList',
 			value: function renderList(items) {
+				if (!items) {
+					return;
+				}
+
 				var itemList = [];
 
 				items.forEach(function (item) {

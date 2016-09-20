@@ -290,7 +290,7 @@ class MonkeyUI extends Component {
 					? (() => {
 						let options = null;
 						options = this.state.messageOptions.map( (option) => {
-							return <div className="mky-message-option-item" onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
+							return <div key={option.action} className="mky-message-option-item" onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
 						})
 
 						return (<div>
