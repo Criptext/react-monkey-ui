@@ -248,11 +248,19 @@ return /******/ (function(modules) { // webpackBootstrap
 							}
 						};
 					}
-					if (!this.props.options.bubbleWithOptions.incoming) {
-						this.props.options.bubbleWithOptions.incoming = false;
-					}
-					if (!this.props.options.bubbleWithOptions.outgoing) {
-						this.props.options.bubbleWithOptions.outgoing = false;
+
+					if (this.props.options.bubbleWithOptions) {
+						if (!this.props.options.bubbleWithOptions.incoming) {
+							this.props.options.bubbleWithOptions.incoming = false;
+						}
+						if (!this.props.options.bubbleWithOptions.outgoing) {
+							this.props.options.bubbleWithOptions.outgoing = false;
+						}
+					} else {
+						this.props.options.bubbleWithOptions = {
+							incoming: false,
+							outgoing: false
+						};
 					}
 				}
 
