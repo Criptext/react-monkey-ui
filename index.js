@@ -1,5 +1,5 @@
 import MonkeyUI from './components/MonkeyUI'
-import { isConversationGroup, defineTime, defineTimeByToday, defineTimeByDay, getExtention } from './utils/monkey-utils'
+import { isConversationGroup, defineTime, defineTimeByToday, defineTimeByDay, defineDate, getExtention } from './utils/monkey-utils'
 
 export {
 	MonkeyUI,
@@ -7,5 +7,6 @@ export {
 	defineTime,
 	defineTimeByToday,
 	defineTimeByDay,
+	defineDate,
 	getExtention
 }
