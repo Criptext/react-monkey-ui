@@ -13,8 +13,8 @@ class BubbleContact extends Component {
 
 	render() {
 		return (
-			<div className='mky-content-file'>
-				<div className='mky-content-file-data'>
+			<div className='mky-content-contact'>
+				<div>
 					<div className='mky-contact-photo'>
                         <img src={this.props.message.data.photo ? "data:image/png;base64," + this.props.message.data.photo : "https://cdn.criptext.com/MonkeyUI/images/userdefault.png"} />
 					</div>

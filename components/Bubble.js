@@ -7,10 +7,11 @@ const Bubble = Component => class extends Component {
 		this.username;
 		this.userColor;
 		this.resendMessage = this.resendMessage.bind(this);
+		this.handleShowOptionList = this.handleShowOptionList.bind(this);
 	}
 
 	componentWillMount() {
-		if(isConversationGroup(this.props.message.recipientId) && (this.props.userSessionId != this.props.message.senderId)){
+		if(isConversationGroup(this.props.message.recipientId) && (this.props.userSessionId != this.props.message.senderId) && this.props.getUser){
 			var user = this.props.getUser(this.props.message.senderId);
 			this.username = user.name ? user.name : 'Unknown';
 			this.userColor = user.color ? user.color : '#8c8c8c';
@@ -36,7 +37,7 @@ const Bubble = Component => class extends Component {
 						<Component {...this.props}/>
 						{ this.props.showOptions
 							? ( <div className='mky-message-option'>
-									<div className='mky-message-option-plus'>
+									<div className='mky-message-option-plus' onClick={this.handleShowOptionList}>
 										<i className='icon mky-icon-arrow-down-bold'></i>
 									</div>
 								</div>
@@ -108,6 +109,10 @@ const Bubble = Component => class extends Component {
 
 	resendMessage(){
 		console.log('resend function');
+	}
+
+	handleShowOptionList(event){
+		this.props.showOptionList(this.props.message, event.clientY, event.clientX);
 	}
 }
 

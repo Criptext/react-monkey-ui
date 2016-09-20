@@ -27,8 +27,14 @@ class ContentWindow extends Component {
 	componentWillReceiveProps(nextProps) {
 		if(nextProps.conversationSelected && this.props.conversationSelected) {
 			if(nextProps.conversationSelected.id && nextProps.conversationSelected.id != this.props.conversationSelected.id && this.state.showAsideInfo) {
-				this.toggleConversationHeader();
+				this.toggleConversationHeader(this.state.typeAsideInfo);
+				if(this.props.messageSelectedInfo){
+					this.props.messageSelectedInfo.close();
+				}
 			}
+		}
+		if(nextProps.messageSelectedInfo && !(this.state.typeAsideInfo == 'message' && this.state.showAsideInfo) ){
+			this.toggleConversationHeader('message');
 		}
 	}
 
@@ -60,7 +66,8 @@ class ContentWindow extends Component {
 		    		getUser = {this.props.getUser}
 		    		showBanner = {this.props.showBanner}
 		    		haveConversations = {this.props.haveConversations}
-		    		version = {this.props.version}/>
+		    		version = {this.props.version}
+		    		showOptionList = {this.props.showOptionList}/>
 		    	: <ContentIntro isMobile = {this.props.isMobile} showBanner = {this.props.showBanner}/>
 	    	}
 	    	{ this.state.showAsideInfo
@@ -69,7 +76,10 @@ class ContentWindow extends Component {
 		    		isMobile = {this.props.isMobile}
 		    		conversationSelected = {this.props.conversationSelected}
 		    		typeAsideInfo = {this.state.typeAsideInfo}
-            		getConversationInfo = {this.props.getConversationInfo}/>
+            		getConversationInfo = {this.props.getConversationInfo}
+            		messageSelectedInfo = {this.props.messageSelectedInfo}
+            		dataDownloadRequest = {this.props.dataDownloadRequest}
+		    		getUser = {this.props.getUser}/>
             	: null
 	    	}
 			{ this.props.showBanner && !this.props.isMobile ?
@@ -81,7 +91,10 @@ class ContentWindow extends Component {
 	}
 	
 	toggleConversationHeader(type) {	
-		if(this.showAsideInfo && this.state.typeAsideInfo !== type){
+		if(this.state.showAsideInfo && this.state.typeAsideInfo !== type){
+			if(this.state.typeAsideInfo == "message"){
+				this.props.messageSelectedInfo.close();
+			}
 			this.setState({typeAsideInfo: type});
 		}else {
 			this.setState({

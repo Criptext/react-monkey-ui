@@ -1872,6 +1872,10 @@ TABLE OF CONTENTS
     line-height: 15px;
     font-family: Verdana, Arial, Helvetica, sans-serif;
 }
+
+.mky-content-contact{
+  text-align: left;
+}
 /* location bubble */
 
 .mky-bubble-location{
@@ -1950,7 +1954,7 @@ TABLE OF CONTENTS
   border-top-right-radius: 15px;
 }
 
-.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option{
+.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option, .mky-bubble-contact .mky-message-option{
   background: #096EFF; /* For browsers that do not support gradients */
   background: -webkit-linear-gradient(right top, #fff 50%, transparent); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(bottom left, #fff 50%, transparent); /* For Opera 11.1 to 12.0 */
@@ -1981,7 +1985,7 @@ TABLE OF CONTENTS
   background-color: #fff
 }
 
-.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus{
+.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus, .mky-bubble-contact .mky-message-option-plus{
   background-color: #000
 }
 
@@ -1998,7 +2002,7 @@ TABLE OF CONTENTS
   color: #096EFF
 }
 
-.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i{
+.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i, .mky-bubble-contact .mky-message-option-plus i{
   color: #fff
 }
 
@@ -3813,6 +3817,81 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
   padding-top: 10px;
 }
 
+/* 3.5.2.- INFO: messages
+     ----------------------------- */
+
+.mky-info-header-message{
+  width: calc(100% - 55px);
+  height: calc(100% - 18px);
+  float: left;
+  padding-top: 18px;
+}
+
+.mky-info-message-container{
+  flex: none;
+  margin: 25px 0;
+}
+
+.mky-message-option-item{
+  padding: 15px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.mky-message-option-item:hover{
+  background-color: #ededed;
+}
+
+.mky-message-info-desc{
+    float: left;
+    overflow: hidden;
+    height: 35px;
+    padding: 8px 5px 0px 5px;
+    text-align: left;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    width: calc(100% - 120px);
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+    max-width: 150px;
+}
+
+.mky-message-read-check{
+  font-size: 20px;
+  display: block;
+  width: 20px;
+  float: right;
+  margin: 1px;
+  padding: 12px 20px 0px 5px;
+}
+
+.mky-info-message-title{
+  font-family: 'helvetica';
+  font-size: 16px;
+  color: #353535;
+  display: block;
+  text-align: left;
+  line-height: 16px;  
+}
+
+.mky-info-message-subtitle{
+  display: block;
+  text-align: left;
+  color: #a2a2a2;
+  line-height: 16px;  
+  font-size: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 80%;
+  margin-top: 4px;
+}
+
+.mky-info-message-sub{
+  font-weight: 400;
+  font-family: helvetica;
+}
+
 /* 4.- MODAL
    ----------------------------- */
 
@@ -3978,6 +4057,44 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
   font-size: 12px;
   font-weight: bold;
 }
+
+  /* 5.1.- OUTSIDE DIVS
+    -------------------------------*/
+
+  .mky-out-message-options{
+    animation-name: actionMenu2;
+    animation-duration: 0.5s;
+    font-size: 14px;
+    font-family: helvetica-light, Helvetica, sans-serif;
+    position: fixed;
+    max-height: 200px;
+    max-width: 200px;
+    background-color: white;
+    -webkit-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);
+    -moz-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);
+    box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);
+    z-index: 2;
+    padding: 5px 0px;
+    border-radius: 3px;
+    overflow: auto;
+  }
+
+  .mky-out-options-back{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+  }
+
+  @keyframes actionMenu2{
+      0%   {max-height: 0; max-width: 0;}
+      100% {max-height: 200px; max-width: 200px;}
+  }
+
+  .mky-out-message-options::-webkit-scrollbar { width: 0 !important }
+  .mky-out-message-options{ -ms-overflow-style: none; }
+
+
 
 /* 6.- GLOBAL SETTINGS
    ----------------------------- */
