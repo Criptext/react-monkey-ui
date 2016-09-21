@@ -34,7 +34,7 @@ class InfoItem extends Component {
 						<span className='mky-info-member-name'>{this.props.item.name}</span>
 						{ this.props.item.rol ? <span className='mky-info-member-rol'>{this.props.item.rol}</span> : null }
 					</div>
-					<span className='mky-info-member-status'>{this.props.item.description}</span>
+					<span className={this.props.item.description == "Online" ? 'mky-info-member-status mky-info-member-online' : 'mky-info-member-status'}>{this.props.item.description}</span>
 					{ this.props.actions && this.props.actions.length > 0 && !this.props.item.rol
 						? <div className='mky-info-member-actions' onClick={this.toggleActions}><i className='icon mky-icon-arrow-down-regular'></i></div>
 						: null

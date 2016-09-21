@@ -1636,6 +1636,7 @@ TABLE OF CONTENTS
   position: relative;
   top: 8px;
   width: 85%;
+  max-width: 840px;
   margin: 0 auto;
 }
 .mky-system-panel-date{
@@ -1947,10 +1948,10 @@ TABLE OF CONTENTS
 
 .mky-bubble-out .mky-message-option{
   background: #096EFF; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(right top, #096EFF 50%, transparent); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom left, #096EFF 50%, transparent); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom left, #096EFF 50%, transparent); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom left, #096EFF 50%, transparent); /* Standard syntax */
+  background: -moz-linear-gradient(45deg, rgba(9,110,255,0) 0%, rgb(9, 110, 255) 99%); 
+  background: -webkit-linear-gradient(45deg, rgba(9,110,255,0) 0%,rgb(9, 110, 255) 99%); 
+  background: linear-gradient(45deg, rgba(9,110,255,0) 0%,rgb(9, 110, 255) 99%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00096eff', endColorstr='#1e5799',GradientType=1 );
   border-top-right-radius: 15px;
 }
 
@@ -2646,7 +2647,7 @@ TABLE OF CONTENTS
   flex-direction: row;
   height: 100%;
   justify-content: center;
-  max-width: 887px;
+  max-width: 875px;
   margin: 0 auto;
 }
 
@@ -3168,6 +3169,8 @@ TABLE OF CONTENTS
   left: 0;
   top: initial;
   z-index: -1;
+  max-width: 880px;
+  margin-left: calc(50% - 440px);
   -webkit-transition: all 0.4s ease-in;
   -moz-transition: all 0.4s ease-in;
   -ms-transition: all 0.4s ease-in;
@@ -3388,6 +3391,13 @@ aside.aside-divided{
   width: 78%;
 }
 
+@media only screen and (max-width: 1330px){
+
+  .mky-menu-bubble{
+    margin-left: calc(50% - 435px);
+  }
+}
+
 @media only screen and (max-width: 1135px){
 
   .mky-banner-section{
@@ -3398,6 +3408,9 @@ aside.aside-divided{
   }
   .mky-content-window-with.content-window-with-divided{
     width: calc(100% - 241px);
+  }
+  .mky-menu-bubble{
+    margin-left: calc(50% - 375px);
   }
 }
 @media only screen and (max-width: 740px){
@@ -3721,6 +3734,9 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
   font-family: 'helvetica-normal';
   font-size: 14px;
   margin-top: 2px;
+}
+.mky-info-member-online{
+  color: #64dd17;
 }
 
 .mky-info-member-actions{
@@ -4206,6 +4222,9 @@ input:focus{
   /* Expand content info */
   .mky-content-window-with .mky-content-info-no-expand{
 	width: 100%;
+  }
+  .mky-menu-bubble{
+    margin-left: 20px;
   }
 }
 
