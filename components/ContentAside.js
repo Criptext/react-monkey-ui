@@ -32,7 +32,7 @@ class ContentAside extends Component {
 						<div className='mky-session-name'>
 							<input ref='usernameChange'
 									className='mky-ellipsify mky-edit-input'
-									value={this.state.username}
+									value={this.state.editingUsername ? this.state.username : this.context.userSession.name}
 									onChange={this.handleUsernameChange}
 									onKeyDown={this.handleUsernameKeyDown}
 									onBlur={this.handleUsernameBlur}
@@ -83,6 +83,11 @@ class ContentAside extends Component {
 	}
 
 	toogleEditUsername(){
+		if(!this.state.editingUsername){
+			this.setState({
+				username : this.context.userSession.name
+			});
+		}
 		this.setState({
 			editingUsername : !this.state.editingUsername
 		});
