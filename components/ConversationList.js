@@ -61,7 +61,10 @@ class ConversationList extends Component {
     	return (
     		<div className='mky-session-conversations'>
     			{ this.state.isDeleting
-	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation} handleExitGroup={this.handleExitGroup} handleClosePopup={this.handleClosePopup} isGroupConversation={this.conversationToDeleteIsGroup} />
+	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation}
+	    				handleExitGroup={this.handleExitGroup}
+	    				handleClosePopup={this.handleClosePopup}
+	    				isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null }
 
     			{ (this.props.conversationSelected == null) ?
@@ -83,7 +86,13 @@ class ConversationList extends Component {
 		    		: ( <ul ref='conversationList' className='mky-conversation-list'>
 						{ conversationNameFiltered.map( (conversation, index) => {
 			    			return (
-								<ConversationItem isMobile={this.props.isMobile} index={index} deleteConversation={this.handleAskDeleteConversation} key={conversation.id} conversation={conversation} conversationIdSelected={this.conversationIdSelected} selected={this.isSelected(conversation.id)}/>
+								<ConversationItem isMobile={this.props.isMobile}
+									index={index}
+									deleteConversation={this.handleAskDeleteConversation}
+									key={conversation.id}
+									conversation={conversation}
+									conversationIdSelected={this.conversationIdSelected}
+									selected={this.isSelected(conversation.id)}/>
 							)
 						})}
 						</ul>
