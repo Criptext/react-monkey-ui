@@ -153,11 +153,15 @@ const MessageInfoUser = (props) => <li className='mky-info-conversation-member'>
 		<div className='mky-info-member-detail'>
 			<span className='mky-info-member-name'>{props.item.name}</span>
 		</div>
-		<span className='mky-info-member-status'>{props.item.description}</span>
-	</div>
+		<span className={props.item.description == "Online" ? 'mky-info-member-status mky-info-member-online' : 'mky-info-member-status'}>{props.item.description}</span>
+	</div> 
 	<div className={props.item.read ? "mky-message-read-check mky-status-read" : "mky-message-read-check mky-status-sent"}>
 		<i className="icon mky-icon-check-sober"></i>
 	</div>
 </li>
 
 export default AsideMessageInfo;
+
+
+
+
