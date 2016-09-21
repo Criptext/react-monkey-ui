@@ -775,7 +775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								{ className: 'mky-session-name' },
 								_react2.default.createElement('input', { ref: 'usernameChange',
 									className: 'mky-ellipsify mky-edit-input',
-									value: this.state.username,
+									value: this.state.editingUsername ? this.state.username : this.context.userSession.name,
 									onChange: this.handleUsernameChange,
 									onKeyDown: this.handleUsernameKeyDown,
 									onBlur: this.handleUsernameBlur,
@@ -835,6 +835,11 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'toogleEditUsername',
 			value: function toogleEditUsername() {
+				if (!this.state.editingUsername) {
+					this.setState({
+						username: this.context.userSession.name
+					});
+				}
 				this.setState({
 					editingUsername: !this.state.editingUsername
 				});
@@ -39499,7 +39504,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
-	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -40071,8 +40075,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
-	  "lpl",
-	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -52918,20 +52920,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	          // console.log(message.data);
 	        } else if (message.type == "stderr") {} else if (message.type == "done") {
-	            var code = message.data.code;
-	            var outFileNames = Object.keys(message.data.outputFiles);
+	          var code = message.data.code;
+	          var outFileNames = Object.keys(message.data.outputFiles);
 
-	            if (code == 0 && outFileNames.length) {
+	          if (code == 0 && outFileNames.length) {
 
-	              var outFileName = outFileNames[0];
-	              var outFileBuffer = message.data.outputFiles[outFileName];
-	              var mp3Blob = new Blob([outFileBuffer]);
-	              // var src = window.URL.createObjectURL(mp3Blob);
-	              that.readData(mp3Blob);
-	            } else {
-	              /*Error*/
-	            }
+	            var outFileName = outFileNames[0];
+	            var outFileBuffer = message.data.outputFiles[outFileName];
+	            var mp3Blob = new Blob([outFileBuffer]);
+	            // var src = window.URL.createObjectURL(mp3Blob);
+	            that.readData(mp3Blob);
+	          } else {
+	            /*Error*/
 	          }
+	        }
 	      };
 	      return ffmpegWorker;
 	    }
