@@ -24,8 +24,8 @@ const isMobile = {
 }
 
 class ConversationItem extends Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.state = {
 			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
 			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
@@ -74,7 +74,7 @@ class ConversationItem extends Component {
 						<div className='mky-conversation-state'>
 							{ Object.keys(this.props.conversation.messages).length
 								? ( this.props.conversation.messages[this.props.conversation.lastMessage]
-									? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52
+									? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 && this.props.conversation.messages[this.props.conversation.lastMessage].senderId === this.context.userSession.id
 										? <div className='mky-message-status mky-status-read' ><i className='icon mky-icon-check-sober mky-message-read'></i></div>
 										: ''
 									)
@@ -157,5 +157,8 @@ class ConversationItem extends Component {
 	}
 }
 
+ConversationItem.contextTypes = {
+    userSession: React.PropTypes.object.isRequired
+}
 
 export default ConversationItem;

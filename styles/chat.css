@@ -3731,12 +3731,13 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
 
 .mky-info-member-status{
   color: #a5a5a5;
-  font-family: 'helvetica-normal';
+  font-family: 'helvetica';
   font-size: 14px;
   margin-top: 2px;
 }
+
 .mky-info-member-online{
-  color: #64dd17;
+  color: #8ac34a;
 }
 
 .mky-info-member-actions{
