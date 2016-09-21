@@ -1947,10 +1947,10 @@ TABLE OF CONTENTS
 
 .mky-bubble-out .mky-message-option{
   background: #096EFF; /* For browsers that do not support gradients */
-  background: -webkit-linear-gradient(right top, #096EFF 50%, transparent); /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(bottom left, #096EFF 50%, transparent); /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(bottom left, #096EFF 50%, transparent); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(to bottom left, #096EFF 50%, transparent); /* Standard syntax */
+  background: -moz-linear-gradient(45deg, rgba(9,110,255,0) 0%, rgb(9, 110, 255) 99%); 
+  background: -webkit-linear-gradient(45deg, rgba(9,110,255,0) 0%,rgb(9, 110, 255) 99%); 
+  background: linear-gradient(45deg, rgba(9,110,255,0) 0%,rgb(9, 110, 255) 99%); 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00096eff', endColorstr='#1e5799',GradientType=1 );
   border-top-right-radius: 15px;
 }
 
