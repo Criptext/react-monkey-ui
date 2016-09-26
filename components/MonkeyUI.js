@@ -208,11 +208,16 @@ class MonkeyUI extends Component {
 					}
 					<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
 						{ this.props.viewLoading
-							? (
-								<div className='mky-content-connection' className='mky-appear'>
-									<div>
-										<img src='https://cdn.criptext.com/Email/images/processing_email.gif'></img>
-									</div>
+							? ( <div className='mky-content-connection mky-appear'>
+								{ this.props.customeLoader
+									? ( <div className='mky-spinner'>
+											<div className='mky-bounce1'></div>
+											<div className='mky-bounce2'></div>
+											<div className='mky-bounce3'></div>
+										</div>
+									)
+									: <Loading customLoader={this.props.customLoader} />
+								}			
 								</div>
 							)
 							: null
@@ -448,6 +453,28 @@ class MonkeyUI extends Component {
 
 }
 
+const Loading = (props) => <div className='mky-loader-ring'>
+	{
+		props.customLoader ?
+		props.customLoader()
+		:
+		<div>
+			<div className='mky-circle1 mky-circle'></div>
+			<div className='mky-circle2 mky-circle'></div>
+			<div className='mky-circle3 mky-circle'></div>
+			<div className='mky-circle4 mky-circle'></div>
+			<div className='mky-circle5 mky-circle'></div>
+			<div className='mky-circle6 mky-circle'></div>
+			<div className='mky-circle7 mky-circle'></div>
+			<div className='mky-circle8 mky-circle'></div>
+			<div className='mky-circle9 mky-circle'></div>
+			<div className='mky-circle10 mky-circle'></div>
+			<div className='mky-circle11 mky-circle'></div>
+			<div className='mky-circle12 mky-circle'></div>
+		</div>
+	}
+</div>
+
 MonkeyUI.propTypes = {
 	view: React.PropTypes.object,
 	form: React.PropTypes.any.isRequired
@@ -487,9 +514,4 @@ MonkeyUI.childContextTypes = {
 	extraChat: React.PropTypes.object
 }
 
-/*
-if (typeof module !== 'undefined') {
-  module.exports = startInterval;
-}
-*/
 export default MonkeyUI;

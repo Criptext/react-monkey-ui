@@ -409,14 +409,9 @@ TABLE OF CONTENTS
   z-index: 10;
 }
 
-.mky-content-connection div{
-  margin: 100px auto 0;
-  text-align: center;
-  position: relative;
+.mky-spinner > div{
+	
 }
-
-
-
 
 .mky-spinner {
   margin: 100px auto 0;
@@ -1186,14 +1181,11 @@ TABLE OF CONTENTS
      ----------------------------- */
 
 .mky-session-name i{
+  color: #535353;
   float: right;
   font-size: 20px;
   margin-right: 2px;
   cursor: pointer;
-}
-
-.mky-session-name i:hover {
-  color: #00C0A4;
 }
 
 .mky-edit-input{

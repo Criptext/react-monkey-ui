@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import ConversationItem from './ConversationItem.js';
-import SearchInput, {createFilter} from 'react-search-input';
-import ReactDOM from 'react-dom';
+import ConversationItem from './ConversationItem.js'
+import SearchInput, {createFilter} from 'react-search-input'
+import ReactDOM from 'react-dom'
 import DeleteConversation from './DeleteConversation.js'
 import AsidePanel from './AsidePanel.js'
 import { isConversationGroup } from './../utils/monkey-utils.js'
@@ -75,14 +75,7 @@ class ConversationList extends Component {
 
 	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
 	    		{ this.props.conversationsLoading
-		    		? ( <div>
-		    				<div className='mky-spinner'>
-								<div className='mky-bounce1'></div>
-								<div className='mky-bounce2'></div>
-								<div className='mky-bounce3'></div>
-							</div>
-		    			</div>
-		    		)
+		    		? <Loading customLoader={this.props.customLoader} />
 		    		: ( <ul ref='conversationList' className='mky-conversation-list'>
 						{ conversationNameFiltered.map( (conversation, index) => {
 			    			return (
@@ -98,7 +91,7 @@ class ConversationList extends Component {
 						</ul>
 		    		)
 	    		}
-    			{this.props.isLoadingConversations ? <Loading customLoader={this.props.customLoader} /> : null}
+    			{ this.props.isLoadingConversations ? <Loading customLoader={this.props.customLoader} /> : null}
 			</div>
 		)
 	}
@@ -161,7 +154,7 @@ class ConversationList extends Component {
 		  conversationarray.push(conversations[x]);
 		}
 
-		if(typeof this.context.options.conversationSort == "function"){
+		if(typeof this.context.options.conversationSort == 'function'){
 			conversationarray.sort(this.context.options.conversationSort);
 		}
 		return conversationarray;
@@ -234,25 +227,25 @@ const Loading = (props) => <div className='mky-loader-ring'>
 		props.customLoader()
 		:
 		<div>
-			<div className="mky-circle1 mky-circle"></div>
-			<div className="mky-circle2 mky-circle"></div>
-			<div className="mky-circle3 mky-circle"></div>
-			<div className="mky-circle4 mky-circle"></div>
-			<div className="mky-circle5 mky-circle"></div>
-			<div className="mky-circle6 mky-circle"></div>
-			<div className="mky-circle7 mky-circle"></div>
-			<div className="mky-circle8 mky-circle"></div>
-			<div className="mky-circle9 mky-circle"></div>
-			<div className="mky-circle10 mky-circle"></div>
-			<div className="mky-circle11 mky-circle"></div>
-			<div className="mky-circle12 mky-circle"></div>
+			<div className='mky-circle1 mky-circle'></div>
+			<div className='mky-circle2 mky-circle'></div>
+			<div className='mky-circle3 mky-circle'></div>
+			<div className='mky-circle4 mky-circle'></div>
+			<div className='mky-circle5 mky-circle'></div>
+			<div className='mky-circle6 mky-circle'></div>
+			<div className='mky-circle7 mky-circle'></div>
+			<div className='mky-circle8 mky-circle'></div>
+			<div className='mky-circle9 mky-circle'></div>
+			<div className='mky-circle10 mky-circle'></div>
+			<div className='mky-circle11 mky-circle'></div>
+			<div className='mky-circle12 mky-circle'></div>
 		</div>
 	}
 </div>
 
 /*const Loading = () => <div className='mky-loader-ring'>
 	<div className='mky-loader-ring-light'></div>
-	<img className="mky-loading-icon-inside" src="http://cdn.criptext.com/messenger/criptextGradientLogo.png"></img>
+	<img className='mky-loading-icon-inside' src='http://cdn.criptext.com/messenger/criptextGradientLogo.png'></img>
 </div>*/
 
 export default ConversationList;
