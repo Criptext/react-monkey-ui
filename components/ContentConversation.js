@@ -77,12 +77,13 @@ class ContentConversation extends Component {
 						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
 						: null
 					}
-					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a>{' '+this.props.version}</div>
-					<div className='mky-signature-logo'>
-						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
-							<img src="https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png" ></img>
-						</a><span> {this.props.version}</span>
+					<div className='mky-signature'>
+						{ this.props.version
+							? <span><a className='mky-signature-link' target='_blank' href='http://criptext.com/'><img src='https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png'></img></a>{this.props.version}</span>
+							: <span>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></span>
+						}
 					</div>
+					
 					<Panel panelParams={this.props.panelParams} />
 
 				</header>

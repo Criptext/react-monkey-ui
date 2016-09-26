@@ -341,7 +341,7 @@ TABLE OF CONTENTS
 }
 
 .mky-classic, .mky-rightside{
-  z-index: 100;
+  z-index: 1100;
 }
 
 .mky-classic{
@@ -399,7 +399,7 @@ TABLE OF CONTENTS
 /* 2.- CONTENT CONNECTION
    ----------------------------- */
 
-#mky-content-connection{
+.mky-content-connection{
   width: 100%;
   height: 100%;
   top: 0px;
@@ -408,6 +408,15 @@ TABLE OF CONTENTS
   position: absolute;
   z-index: 10;
 }
+
+.mky-content-connection div{
+  margin: 100px auto 0;
+  text-align: center;
+  position: relative;
+}
+
+
+
 
 .mky-spinner {
   margin: 100px auto 0;
@@ -2647,7 +2656,6 @@ TABLE OF CONTENTS
   flex-direction: row;
   height: 100%;
   justify-content: center;
-  max-width: 875px;
   margin: 0 auto;
 }
 
@@ -2791,13 +2799,15 @@ TABLE OF CONTENTS
 }
 
 .mky-textarea-input{
+  background: #fff;
+  border: none;
   box-sizing: content-box;
+  color: #000;
   height: auto;
   line-height: 17px;
   margin: 8px 5px 8px 5px;
   padding: 8px 10px 6px 10px;
   resize: none;
-  border: none;
   outline: 0;
   font-size: 14px;
   position: relative;
@@ -2808,7 +2818,6 @@ TABLE OF CONTENTS
   border-left: 1px solid #ccc;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
-  background: #fff;
   -webkit-border-radius: 0;
   letter-spacing: 0px;
   font-style: normal;
@@ -3019,6 +3028,7 @@ TABLE OF CONTENTS
     bottom: 5px;
     right: 0;
 }
+
 .mky-signature-logo{
     display: none;
     width: calc(100% - 40px);
@@ -3038,8 +3048,15 @@ TABLE OF CONTENTS
 }
 
 .mky-signature-link{
-	color: #42A5F5;
-	text-alignt-decoration-line: dotted;
+  color: #42A5F5;
+  text-alignt-decoration-line: dotted;
+}
+
+.mky-signature-link img{
+  height: 15px;
+  margin-right: 5px;
+  margin-bottom: -3px;
+  opacity: 0.4;
 }
 
 #mky-menu-attach-icon,
@@ -4319,7 +4336,6 @@ input:focus{
 		top: 50px;
 		z-index: 1;
 	}
-
 }
 
 @media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){
@@ -4343,16 +4359,9 @@ input:focus{
   }
   .mky-signature{
     margin-right: 9px;
-    display: none;
   }
   .mky-conversation-selected-header div{
     font-size: 10px;
-  }
-  .mky-signature-logo{
-    display: block;
-  }
-  .mky-signature-logo img{
-    height: 17px;
   }
 }
 

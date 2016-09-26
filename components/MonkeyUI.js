@@ -165,26 +165,7 @@ class MonkeyUI extends Component {
 		    	wrapperInClass: 'mky-disappear'
 		    });
 	    }
-
-    if ( this.props.view.version == undefined ) {
-      this.props.view.version = '';
-    }else {
-      var version = this.props.view.version.split('.');
-      console.log('length: '+ version.length );
-      if (version.length > 1) {
-        version.forEach(function (element,index) {
-          console.log(element);
-          console.log(/^\d+$/.test(element));
-          if (!(/^\d+$/.test(element))) {
-            this.props.view.version = '';
-          }
-        });
-      }
-      else {
-        this.props.view.version = '';
-      }
-
-    }
+		
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -228,11 +209,9 @@ class MonkeyUI extends Component {
 					<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
 						{ this.props.viewLoading
 							? (
-								<div id='mky-content-connection' className='mky-appear'>
-									<div className='mky-spinner'>
-										<div className='mky-bounce1'></div>
-										<div className='mky-bounce2'></div>
-										<div className='mky-bounce3'></div>
+								<div className='mky-content-connection' className='mky-appear'>
+									<div>
+										<img src='https://cdn.criptext.com/Email/images/processing_email.gif'></img>
 									</div>
 								</div>
 							)
