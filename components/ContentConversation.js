@@ -6,7 +6,7 @@ import Input from './Input.js'
 import Modal from './Modal.js'
 import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
-import { defineTime, defineTimeByToday, defineTimeByDay } from '../utils/monkey-utils.js'
+import { defineTime, defineTimeByToday, defineTimeByDay, isConversationGroup } from '../utils/monkey-utils.js'
 
 const Modal_ = Modal(ContentViewer);
 
@@ -15,7 +15,8 @@ class ContentConversation extends Component {
 		super(props, context);
 		this.state = {
 			showLocationInput: false,
-			messageSelected: undefined
+			messageSelected: undefined,
+			urlAvatar: this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.classExpand = '' ;
 		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
@@ -23,7 +24,7 @@ class ContentConversation extends Component {
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.showAside = this.showAside.bind(this);
-		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
+		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 		this.handleConnectionStatus = this.handleConnectionStatus.bind(this);
 		this.closeSide = this.closeSide.bind(this);
 		this.handleToggleConversationHeader = this.handleToggleConversationHeader.bind(this);
@@ -41,7 +42,7 @@ class ContentConversation extends Component {
 	render() {
 
 		if(this.props.showAsideInfo){
-			if(this.props.isMobile || this.props.viewType != "fullscreen"){
+			if(this.props.isMobile || this.props.viewType != 'fullscreen'){
 				this.classExpand = 'mky-disappear';
 			}else{
 				this.classExpand = 'mky-content-conversation-no-expand';
@@ -59,30 +60,31 @@ class ContentConversation extends Component {
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
 				<header className='mky-conversation-selected-header'>
 					{ this.props.isMobile & this.props.haveConversations
-						? <div className='mky-conversation-back' onClick={this.showAside}><i className="icon mky-icon-back"></i></div>
+						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back'></i></div>
 						: null
 					}
-					<div className='mky-conversation-selected-image' onClick={this.handleToggleConversationHeader}><img src={this.defineUrlAvatar()}/></div>
+					<div className='mky-conversation-selected-image' onClick={this.handleToggleConversationHeader}><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-selected-description' onClick={this.handleToggleConversationHeader}>
 						<span className='mky-conversation-selected-name mky-ellipsify'>{this.props.conversationSelected.name}</span>
-						{ this.props.conversationSelected.description === null
-							? ( !this.props.conversationSelected.online
-								? <span className='mky-conversation-selected-status'> {'Last seen ' + defineTimeByDay(this.props.conversationSelected.lastOpenApp)}</span>
+						{ this.props.conversationSelected.description != null
+							? <span className='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
+							: ( !this.props.conversationSelected.online
+								? <span className='mky-conversation-selected-status'> {'Last seen ' + defineTimeByDay(this.props.conversationSelected.lastSeen)}</span>
 								: <span className='mky-conversation-selected-status'> Online </span>
 							)
-							: <span className='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 						}
 					</div>
 					{ this.props.viewType == 'rightside'
 						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
 						: null
 					}
-					<div className='mky-signature'>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a>{' '+this.props.version}</div>
-					<div className='mky-signature-logo'>
-						<a className='mky-signature-link' target='_blank' href='http://criptext.com/'>
-							<img src="https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png" ></img>
-						</a><span> {this.props.version}</span>
+					<div className='mky-signature'>
+						{ this.props.version
+							? <span><a className='mky-signature-link' target='_blank' href='http://criptext.com/'><img src='https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png'></img></a>{this.props.version}</span>
+							: <span>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></span>
+						}
 					</div>
+					
 					<Panel panelParams={this.props.panelParams} />
 
 				</header>
@@ -149,7 +151,7 @@ class ContentConversation extends Component {
 	}
 
 	defineUrlAvatar() {
-		return this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
 }
 

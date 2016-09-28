@@ -165,26 +165,7 @@ class MonkeyUI extends Component {
 		    	wrapperInClass: 'mky-disappear'
 		    });
 	    }
-
-    if ( this.props.view.version == undefined ) {
-      this.props.view.version = '';
-    }else {
-      var version = this.props.view.version.split('.');
-      console.log('length: '+ version.length );
-      if (version.length > 1) {
-        version.forEach(function (element,index) {
-          console.log(element);
-          console.log(/^\d+$/.test(element));
-          if (!(/^\d+$/.test(element))) {
-            this.props.view.version = '';
-          }
-        });
-      }
-      else {
-        this.props.view.version = '';
-      }
-
-    }
+		
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -227,13 +208,16 @@ class MonkeyUI extends Component {
 					}
 					<div className={'mky-wrapper-in '+this.state.wrapperInClass}>
 						{ this.props.viewLoading
-							? (
-								<div id='mky-content-connection' className='mky-appear'>
-									<div className='mky-spinner'>
-										<div className='mky-bounce1'></div>
-										<div className='mky-bounce2'></div>
-										<div className='mky-bounce3'></div>
-									</div>
+							? ( <div className='mky-content-connection mky-appear'>
+								{ this.props.customeLoader
+									? ( <div className='mky-spinner'>
+											<div className='mky-bounce1'></div>
+											<div className='mky-bounce2'></div>
+											<div className='mky-bounce3'></div>
+										</div>
+									)
+									: <Loading customLoader={this.props.customLoader} />
+								}			
 								</div>
 							)
 							: null
@@ -245,9 +229,7 @@ class MonkeyUI extends Component {
 											connectionStatus={this.props.connectionStatus}
 											isLoadingConversations={this.props.isLoadingConversations}
 											handleLoadMoreConversations={this.props.onLoadMoreConversations}
-											handleConversationDelete={this.props.onConversationDelete}
 											togglePopup={this.togglePopup}
-											handleConversationExit={this.props.onConversationExit}
 											userSessionLogout={this.props.onUserSessionLogout}
 											conversations={this.state.conversations}
 											handleConversationSelected={this.handleConversationSelected}
@@ -263,7 +245,7 @@ class MonkeyUI extends Component {
 	                    					scrollTop = {this.listTopScroll}/>
 										: null
 									}
-									<ContentWindow ref="contentWindow"
+									<ContentWindow ref='contentWindow'
 										connectionStatus={this.props.connectionStatus}
 										handleNotifyTyping={this.handleNotifyTyping}
 										panelParams={this.props.panelParams}
@@ -286,13 +268,13 @@ class MonkeyUI extends Component {
 	        							closeSide={this.openSide}
 	        							getConversationInfo = {this.props.onConversationLoadInfo}
 	        							showOptionList = {this.handleShowOptionList}
-	        							messageSelectedInfo = {this.props.messageSelectedInfo}/>
+	        							messageSelectedInfo = {this.props.messageLoadInfo}/>
 								</div>
 							)
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 						}
 						{ this.state.showPopUp
-							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.handleUserSessionLogout} />
+							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {'Are you sure you want to Log Out?'} userSessionLogout={this.handleUserSessionLogout} />
 							: null
 						}
 					</div>
@@ -302,12 +284,12 @@ class MonkeyUI extends Component {
 					? (() => {
 						let options = null;
 						options = this.state.messageOptions.map( (option) => {
-							return <div key={option.action} className="mky-message-option-item" onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
+							return <div key={option.action} className='mky-message-option-item' onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
 						})
 
 						return (<div>
-							<div className="mky-out-options-back" onClick={ () => { this.hideMessageOption(null) } }></div>
-							<div className="mky-out-message-options" style={this.messageOptionsPosition}>
+							<div className='mky-out-options-back' onClick={ () => { this.hideMessageOption(null) } }></div>
+							<div className='mky-out-message-options' style={this.messageOptionsPosition}>
 								{options}
 							</div>
 						</div>)
@@ -407,7 +389,7 @@ class MonkeyUI extends Component {
 
 	handleShowAside(){
 		if (this.state.isMobile) {
-			this.setState({showConversations: true}); //mostrando el aside solo cuando esta en mobile
+			this.setState({ showConversations: true }); //mostrando el aside solo cuando esta en mobile
 		}
 	}
 
@@ -440,9 +422,12 @@ class MonkeyUI extends Component {
 	}
 
 	handleShowOptionList(message, top, left){
-		this.setState({
-			messageOptions : this.props.onMessageOptions(message)
-		})
+		if( message.senderId === this.props.userSession.id ){
+			this.setState({ messageOptions: this.props.options.message.optionsToOutgoing(message) });
+		}else{
+			this.setState({ messageOptions: this.props.options.message.optionsToIncoming(message) });
+		}
+		
 		let style = {};
 		if(window.innerHeight - top < 300){
 			style['bottom'] = window.innerHeight - top;	
@@ -459,15 +444,35 @@ class MonkeyUI extends Component {
 	}
 
 	hideMessageOption(func){
-		this.setState({
-			messageOptions : null
-		})
+		this.setState({ messageOptions: null });
 		if(func){
 			func();
 		}
 	}
 
 }
+
+const Loading = (props) => <div className='mky-loader-ring'>
+	{
+		props.customLoader ?
+		props.customLoader()
+		:
+		<div>
+			<div className='mky-circle1 mky-circle'></div>
+			<div className='mky-circle2 mky-circle'></div>
+			<div className='mky-circle3 mky-circle'></div>
+			<div className='mky-circle4 mky-circle'></div>
+			<div className='mky-circle5 mky-circle'></div>
+			<div className='mky-circle6 mky-circle'></div>
+			<div className='mky-circle7 mky-circle'></div>
+			<div className='mky-circle8 mky-circle'></div>
+			<div className='mky-circle9 mky-circle'></div>
+			<div className='mky-circle10 mky-circle'></div>
+			<div className='mky-circle11 mky-circle'></div>
+			<div className='mky-circle12 mky-circle'></div>
+		</div>
+	}
+</div>
 
 MonkeyUI.propTypes = {
 	view: React.PropTypes.object,
@@ -508,9 +513,4 @@ MonkeyUI.childContextTypes = {
 	extraChat: React.PropTypes.object
 }
 
-/*
-if (typeof module !== 'undefined') {
-  module.exports = startInterval;
-}
-*/
 export default MonkeyUI;

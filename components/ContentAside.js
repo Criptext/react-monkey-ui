@@ -52,8 +52,6 @@ class ContentAside extends Component {
 					connectionStatus={this.props.connectionStatus}
 					isLoadingConversations={this.props.isLoadingConversations}
 					handleLoadMoreConversations={this.props.handleLoadMoreConversations}
-					handleConversationDelete={this.props.handleConversationDelete}
-					handleConversationExit={this.props.handleConversationExit}
 					conversations={this.props.conversations}
 					handleConversationSelected={this.props.handleConversationSelected}
 					conversationSelected={this.props.conversationSelected}

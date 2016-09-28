@@ -35,7 +35,7 @@ const Bubble = Component => class extends Component {
 					</div>
 					<div className='mky-message-content'>
 						<Component {...this.props}/>
-						{ (this.props.showOptions.incoming && this.props.userSessionId != this.props.message.senderId) || (this.props.showOptions.outgoing && this.props.userSessionId === this.props.message.senderId)
+						{ (this.props.showOptions.optionsToIncoming && this.props.userSessionId != this.props.message.senderId) || (this.props.showOptions.optionsToOutgoing && this.props.userSessionId === this.props.message.senderId)
 							? ( <div className='mky-message-option'>
 									<div className='mky-message-option-plus' onClick={this.handleShowOptionList}>
 										<i className='icon mky-icon-arrow-down-bold'></i>
