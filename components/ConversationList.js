@@ -154,8 +154,8 @@ class ConversationList extends Component {
 		  conversationarray.push(conversations[x]);
 		}
 
-		if(typeof this.context.options.conversationSort == 'function'){
-			conversationarray.sort(this.context.options.conversationSort);
+		if(typeof this.context.options.conversation.onSort == 'function'){
+			conversationarray.sort(this.context.options.conversation.onSort);
 		}
 		return conversationarray;
   	}
@@ -175,7 +175,7 @@ class ConversationList extends Component {
 		if(!nextConversation) {
 			nextConversation = conversationNameFiltered[this.state.deletingIndex - 1];
 		}
-		this.props.handleConversationDelete(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
+		this.context.options.conversation.optionsToDelete.onDelete(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
 	}
 
 	handleExitGroup() {
@@ -184,7 +184,7 @@ class ConversationList extends Component {
 		if(!nextConversation) {
 			nextConversation = conversationNameFiltered[this.state.deletingIndex - 1];
 		}
-		this.props.handleConversationExit(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
+		this.context.options.conversation.optionsToDelete.onExitGroup(this.state.deletingConversation, nextConversation, this.state.deletingActive, this.setConversationSelected);
 	}
 
 	handleClosePopup() {

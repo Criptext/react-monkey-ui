@@ -229,9 +229,7 @@ class MonkeyUI extends Component {
 											connectionStatus={this.props.connectionStatus}
 											isLoadingConversations={this.props.isLoadingConversations}
 											handleLoadMoreConversations={this.props.onLoadMoreConversations}
-											handleConversationDelete={this.props.onConversationDelete}
 											togglePopup={this.togglePopup}
-											handleConversationExit={this.props.onConversationExit}
 											userSessionLogout={this.props.onUserSessionLogout}
 											conversations={this.state.conversations}
 											handleConversationSelected={this.handleConversationSelected}
@@ -247,7 +245,7 @@ class MonkeyUI extends Component {
 	                    					scrollTop = {this.listTopScroll}/>
 										: null
 									}
-									<ContentWindow ref="contentWindow"
+									<ContentWindow ref='contentWindow'
 										connectionStatus={this.props.connectionStatus}
 										handleNotifyTyping={this.handleNotifyTyping}
 										panelParams={this.props.panelParams}
@@ -270,13 +268,13 @@ class MonkeyUI extends Component {
 	        							closeSide={this.openSide}
 	        							getConversationInfo = {this.props.onConversationLoadInfo}
 	        							showOptionList = {this.handleShowOptionList}
-	        							messageSelectedInfo = {this.props.messageSelectedInfo}/>
+	        							messageSelectedInfo = {this.props.messageLoadInfo}/>
 								</div>
 							)
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 						}
 						{ this.state.showPopUp
-							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {"Are you sure you want to Log Out?"} userSessionLogout={this.handleUserSessionLogout} />
+							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {'Are you sure you want to Log Out?'} userSessionLogout={this.handleUserSessionLogout} />
 							: null
 						}
 					</div>
@@ -286,12 +284,12 @@ class MonkeyUI extends Component {
 					? (() => {
 						let options = null;
 						options = this.state.messageOptions.map( (option) => {
-							return <div key={option.action} className="mky-message-option-item" onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
+							return <div key={option.action} className='mky-message-option-item' onClick={ () => { this.hideMessageOption(option.func) } }>{option.action}</div>
 						})
 
 						return (<div>
-							<div className="mky-out-options-back" onClick={ () => { this.hideMessageOption(null) } }></div>
-							<div className="mky-out-message-options" style={this.messageOptionsPosition}>
+							<div className='mky-out-options-back' onClick={ () => { this.hideMessageOption(null) } }></div>
+							<div className='mky-out-message-options' style={this.messageOptionsPosition}>
 								{options}
 							</div>
 						</div>)
@@ -391,7 +389,7 @@ class MonkeyUI extends Component {
 
 	handleShowAside(){
 		if (this.state.isMobile) {
-			this.setState({showConversations: true}); //mostrando el aside solo cuando esta en mobile
+			this.setState({ showConversations: true }); //mostrando el aside solo cuando esta en mobile
 		}
 	}
 
@@ -424,9 +422,12 @@ class MonkeyUI extends Component {
 	}
 
 	handleShowOptionList(message, top, left){
-		this.setState({
-			messageOptions : this.props.onMessageOptions(message)
-		})
+		if( message.senderId === this.props.userSession.id ){
+			this.setState({ messageOptions: this.props.options.message.optionsToOutgoing(message) });
+		}else{
+			this.setState({ messageOptions: this.props.options.message.optionsToIncoming(message) });
+		}
+		
 		let style = {};
 		if(window.innerHeight - top < 300){
 			style['bottom'] = window.innerHeight - top;	
@@ -443,9 +444,7 @@ class MonkeyUI extends Component {
 	}
 
 	hideMessageOption(func){
-		this.setState({
-			messageOptions : null
-		})
+		this.setState({ messageOptions: null });
 		if(func){
 			func();
 		}

@@ -170,8 +170,8 @@ class TimelineChat extends Component {
 
 			const message = this.props.conversationSelected.messages[item.key];
 			let messageTime = defineTimeByDay(message.datetimeCreation);
-			if(messageTime.indexOf("AM") > -1 || messageTime.indexOf("PM") > -1){
-				messageTime = "Today"
+			if(messageTime.indexOf('AM') > -1 || messageTime.indexOf('PM') > -1){
+				messageTime = 'Today'
 			}
 
 			if(timeFrom != messageTime){
@@ -193,7 +193,7 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}
+									showOptions = {this.context.options.message}
 									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'image':
@@ -206,7 +206,7 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}
+									showOptions={this.context.options.message}
 									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'file':
@@ -219,7 +219,7 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}
+									showOptions={this.context.options.message}
 									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'audio':
@@ -232,7 +232,7 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}
+									showOptions={this.context.options.message}
 									showOptionList = {this.props.showOptionList}/>)
 				break;
 			case 'contact':
@@ -245,7 +245,7 @@ class TimelineChat extends Component {
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}
 									styles={this.context.styles}
-									showOptions={this.context.options.bubbleWithOptions}
+									showOptions={this.context.options.message}
 									showOptionList = {this.props.showOptionList}/>)
 				break;
 			default:
@@ -327,7 +327,7 @@ class TimelineChat extends Component {
 
 /*const Loading = () => <div className='mky-loader-ring'>
 	<div className='mky-loader-ring-light'></div>
-	<img className="mky-loading-icon-inside" src="http://cdn.criptext.com/messenger/criptextGradientLogo.png"></img>
+	<img className='mky-loading-icon-inside' src='http://cdn.criptext.com/messenger/criptextGradientLogo.png'></img>
 </div>*/
 
 const Loading = (props) => <div className='mky-loader-ring'>
@@ -336,18 +336,18 @@ const Loading = (props) => <div className='mky-loader-ring'>
 		props.customLoader()
 		:
 		<div>
-			<div className="mky-circle1 mky-circle"></div>
-			<div className="mky-circle2 mky-circle"></div>
-			<div className="mky-circle3 mky-circle"></div>
-			<div className="mky-circle4 mky-circle"></div>
-			<div className="mky-circle5 mky-circle"></div>
-			<div className="mky-circle6 mky-circle"></div>
-			<div className="mky-circle7 mky-circle"></div>
-			<div className="mky-circle8 mky-circle"></div>
-			<div className="mky-circle9 mky-circle"></div>
-			<div className="mky-circle10 mky-circle"></div>
-			<div className="mky-circle11 mky-circle"></div>
-			<div className="mky-circle12 mky-circle"></div>
+			<div className='mky-circle1 mky-circle'></div>
+			<div className='mky-circle2 mky-circle'></div>
+			<div className='mky-circle3 mky-circle'></div>
+			<div className='mky-circle4 mky-circle'></div>
+			<div className='mky-circle5 mky-circle'></div>
+			<div className='mky-circle6 mky-circle'></div>
+			<div className='mky-circle7 mky-circle'></div>
+			<div className='mky-circle8 mky-circle'></div>
+			<div className='mky-circle9 mky-circle'></div>
+			<div className='mky-circle10 mky-circle'></div>
+			<div className='mky-circle11 mky-circle'></div>
+			<div className='mky-circle12 mky-circle'></div>
 		</div>
 	}
 </div>
@@ -355,9 +355,9 @@ const Loading = (props) => <div className='mky-loader-ring'>
 const SystemBubble = (props) => {
 
 	return (
-		<div className="mky-system-panel">
-			<div className="mky-devider-dots"> </div>
-			<div className="mky-system-panel-date">{props.message}</div>
+		<div className='mky-system-panel'>
+			<div className='mky-devider-dots'> </div>
+			<div className='mky-system-panel-date'>{props.message}</div>
 		</div>
 	)
 }
@@ -365,8 +365,8 @@ const SystemBubble = (props) => {
 const NewMessagesBubble = (props) => {
 
 	return (
-		<div className="mky-messages-panel">
-			<div className="mky-system-panel-date">{props.message}</div>
+		<div className='mky-messages-panel'>
+			<div className='mky-system-panel-date'>{props.message}</div>
 		</div>
 	)
 }

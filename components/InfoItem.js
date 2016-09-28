@@ -9,9 +9,9 @@ class InfoItem extends Component {
 			showActions: false,
 			showConfirm: false,
 			actionIndex: null,
-			bottom : 0,
-			right : 0,
-			errored : false
+			bottom: 0,
+			right: 0,
+			urlAvatar: this.props.item.avatar ? this.props.item.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.toggleActions = this.toggleActions.bind(this);
 		this.renderActions = this.renderActions.bind(this);
@@ -28,7 +28,7 @@ class InfoItem extends Component {
 
     	return (
 			<li className='mky-info-conversation-member'>
-				<img src={this.state.errored ? 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png' : this.props.item.avatar} onError={this.handleError}/>
+				<img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/>
 				<div className='mky-info-member-description'>
 					<div className='mky-info-member-detail'>
 						<span className='mky-info-member-name'>{this.props.item.name}</span>
@@ -58,10 +58,8 @@ class InfoItem extends Component {
 		)
 	}
 
-	handleError(){
-		this.setState({
-			errored : true,
-		});
+	handleErrorAvatar() {
+		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
 
 	toggleActions(event){

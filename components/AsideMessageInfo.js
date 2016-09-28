@@ -52,7 +52,7 @@ class AsideMessageInfo extends Component {
 					</div>
 					<div className='mky-info-conversation-description mky-info-conversation-members'>
 						<div className='mky-info-conversation-header'>
-							<label className='mky-info-conversation-title mky-ellipsify mky-info-message-sub'>Read by:</label>
+							<label className='mky-info-conversation-title mky-ellipsify'>Read by:</label>
 						</div>
 						<div className='mky-info-conversation-container'>
 							<ul className='mky-info-conversation-list'>
