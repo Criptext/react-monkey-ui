@@ -94,29 +94,28 @@ class MonkeyUI extends Component {
 	
 	formOptions() {
 		if(this.props.options){
-			if(!this.props.options.deleteConversation){
-				this.props.options.deleteConversation = {
-					permission: {
-						exitGroup: true,
-						delete: true
+			if(!this.props.options.conversation){
+				this.props.options.conversation = {
+					onSort: undefined,
+					optionsToDelete: {
+						onExitGroup: undefined,
+						onDelete: undefined
 					}
 				}
-			}
-			
-			if(this.props.options.bubbleWithOptions){
-				if(!this.props.options.bubbleWithOptions.incoming){
-					this.props.options.bubbleWithOptions.incoming = false;
-				}
-				if(!this.props.options.bubbleWithOptions.outgoing){
-					this.props.options.bubbleWithOptions.outgoing = false;
-				}
-			}else{
-				this.props.options.bubbleWithOptions = {
-					incoming: false,
-					outgoing: false
+			}else if(!this.props.options.conversation.optionsToDelete){
+				this.props.options.conversation.optionsToDelete = {
+					onExitGroup: undefined,
+					onDelete: undefined
 				}
 			}
 			
+			
+			if(!this.props.options.message){
+				this.props.options.messsage = {
+					optionsToIncoming: undefined,
+					optionsToOutgoing: undefined
+				}
+			}
 		}
 		
 		return this.props.options	
@@ -490,15 +489,16 @@ MonkeyUI.defaultProps = {
 	viewLoading: true,
 	conversationsLoading: false,
 	options: {
-		deleteConversation: {
-			permission: {
-				exitGroup: true,
-				delete: true
-			}
+		conversation: {
+			onSort: undefined,
+			optionsToDelete: {
+				onExitGroup: undefined,
+				onDelete: undefined
+			}	
 		},
-		bubbleWithOptions: {
-			incoming: false,
-			outgoing: false	
+		message: {
+			optionsToIncoming: undefined,
+			optionsToOutgoing: undefined
 		}
 	},
 	chatExtraData: {}

@@ -240,26 +240,25 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'formOptions',
 			value: function formOptions() {
 				if (this.props.options) {
-					if (!this.props.options.deleteConversation) {
-						this.props.options.deleteConversation = {
-							permission: {
-								exitGroup: true,
-								delete: true
+					if (!this.props.options.conversation) {
+						this.props.options.conversation = {
+							onSort: undefined,
+							optionsToDelete: {
+								onExitGroup: undefined,
+								onDelete: undefined
 							}
+						};
+					} else if (!this.props.options.conversation.optionsToDelete) {
+						this.props.options.conversation.optionsToDelete = {
+							onExitGroup: undefined,
+							onDelete: undefined
 						};
 					}
 
-					if (this.props.options.bubbleWithOptions) {
-						if (!this.props.options.bubbleWithOptions.incoming) {
-							this.props.options.bubbleWithOptions.incoming = false;
-						}
-						if (!this.props.options.bubbleWithOptions.outgoing) {
-							this.props.options.bubbleWithOptions.outgoing = false;
-						}
-					} else {
-						this.props.options.bubbleWithOptions = {
-							incoming: false,
-							outgoing: false
+					if (!this.props.options.message) {
+						this.props.options.messsage = {
+							optionsToIncoming: undefined,
+							optionsToOutgoing: undefined
 						};
 					}
 				}
@@ -664,15 +663,16 @@ return /******/ (function(modules) { // webpackBootstrap
 		viewLoading: true,
 		conversationsLoading: false,
 		options: {
-			deleteConversation: {
-				permission: {
-					exitGroup: true,
-					delete: true
+			conversation: {
+				onSort: undefined,
+				optionsToDelete: {
+					onExitGroup: undefined,
+					onDelete: undefined
 				}
 			},
-			bubbleWithOptions: {
-				incoming: false,
-				outgoing: false
+			message: {
+				optionsToIncoming: undefined,
+				optionsToOutgoing: undefined
 			}
 		},
 		chatExtraData: {}
@@ -37515,7 +37515,8 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (this.props.conversationSelected.id != nextProps.conversationSelected.id) {
 					this.setState({
 						showLocationInput: false,
-						messageSelected: undefined
+						messageSelected: undefined,
+						urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 					});
 				}
 			}
@@ -37626,6 +37627,11 @@ return /******/ (function(modules) { // webpackBootstrap
 							messageCreated: this.props.messageCreated })
 					)
 				);
+			}
+		}, {
+			key: 'handleErrorAvatar',
+			value: function handleErrorAvatar() {
+				this.setState({ urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png' });
 			}
 		}, {
 			key: 'closeSide',
@@ -58217,7 +58223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.toggleActions = _this.toggleActions.bind(_this);
 			_this.renderActions = _this.renderActions.bind(_this);
 			_this.toggleConfirm = _this.toggleConfirm.bind(_this);
-			_this.handleError = _this.handleError.bind(_this);
+			_this.handleErrorAvatar = _this.handleErrorAvatar.bind(_this);
 			return _this;
 		}
 
