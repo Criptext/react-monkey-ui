@@ -16,7 +16,7 @@ class InfoItem extends Component {
 		this.toggleActions = this.toggleActions.bind(this);
 		this.renderActions = this.renderActions.bind(this);
 		this.toggleConfirm = this.toggleConfirm.bind(this);
-		this.handleError = this.handleError.bind(this);
+		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {

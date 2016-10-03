@@ -34,7 +34,8 @@ class ContentConversation extends Component {
 		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
 			this.setState({
 				showLocationInput: false,
-				messageSelected: undefined
+				messageSelected: undefined,
+				urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 			});
 		}
 	}
@@ -111,7 +112,11 @@ class ContentConversation extends Component {
 			</div>
 		)
 	}
-
+	
+	handleErrorAvatar() {
+		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
+	}
+	
 	closeSide(event){
 		event.stopPropagation();
 		this.props.closeSide();
