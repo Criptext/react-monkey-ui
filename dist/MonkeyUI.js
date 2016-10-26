@@ -739,12 +739,13 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.classContentt = _this.props.showBanner ? 'aside-divided' : '';
 			_this.state = {
 				editingUsername: false,
-				username: _this.context.userSession.name
+				username: _this.context.userSession.name,
+				urlAvatar: _this.context.userSession.avatar ? _this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 			};
 
+			_this.handleErrorAvatar = _this.handleErrorAvatar.bind(_this);
 			_this.logout = _this.logout.bind(_this);
 			_this.closeSide = _this.closeSide.bind(_this);
-			_this.defineUrlAvatar = _this.defineUrlAvatar.bind(_this);
 			_this.toogleEditUsername = _this.toogleEditUsername.bind(_this);
 			_this.handleUsernameKeyDown = _this.handleUsernameKeyDown.bind(_this);
 			_this.handleUsernameChange = _this.handleUsernameChange.bind(_this);
@@ -764,7 +765,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						_react2.default.createElement(
 							'div',
 							{ className: 'mky-session-image' },
-							_react2.default.createElement('img', { src: this.defineUrlAvatar() })
+							_react2.default.createElement('img', { src: this.state.urlAvatar, onError: this.handleErrorAvatar })
 						),
 						_react2.default.createElement(
 							'div',
@@ -825,9 +826,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.props.closeSide();
 			}
 		}, {
-			key: 'defineUrlAvatar',
-			value: function defineUrlAvatar() {
-				return this.context.userSession.avatar ? this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+			key: 'handleErrorAvatar',
+			value: function handleErrorAvatar() {
+				this.setState({ urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png' });
 			}
 		}, {
 			key: 'toogleEditUsername',

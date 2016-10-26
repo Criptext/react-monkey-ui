@@ -9,12 +9,13 @@ class ContentAside extends Component {
 		this.classContentt = this.props.showBanner ? 'aside-divided' : '';
 		this.state = {
 			editingUsername: false, 
-			username: this.context.userSession.name
+			username: this.context.userSession.name,
+			urlAvatar: this.context.userSession.avatar ? this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
-
+		
+		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 		this.logout = this.logout.bind(this);
 		this.closeSide = this.closeSide.bind(this);
-		this.defineUrlAvatar = this.defineUrlAvatar.bind(this);
 		this.toogleEditUsername=this.toogleEditUsername.bind(this);
 		this.handleUsernameKeyDown = this.handleUsernameKeyDown.bind(this);
 		this.handleUsernameChange = this.handleUsernameChange.bind(this);
@@ -26,7 +27,7 @@ class ContentAside extends Component {
 			<aside id={this.classContent} className={ 'mky-content-aside ' + this.classContentt} >
 				<header className='mky-session-header'>
 					<div className='mky-session-image'>
-						<img src={this.defineUrlAvatar()}/>
+						<img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/>
 					</div>
 					<div className='mky-session-description'>
 						<div className='mky-session-name'>
@@ -75,9 +76,9 @@ class ContentAside extends Component {
 	closeSide() {
 		this.props.closeSide();
 	}
-
-	defineUrlAvatar() {
-		return this.context.userSession.avatar ? this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png';
+	
+	handleErrorAvatar() {
+		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
 
 	toogleEditUsername(){
