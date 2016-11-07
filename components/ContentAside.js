@@ -10,7 +10,7 @@ class ContentAside extends Component {
 		this.state = {
 			editingUsername: false, 
 			username: this.context.userSession.name,
-			urlAvatar: this.context.userSession.avatar ? this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			urlAvatar: this.context.userSession.urlAvatar ? this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
