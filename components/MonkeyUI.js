@@ -354,12 +354,13 @@ class MonkeyUI extends Component {
 			}
 
 			clearTimeout(this.notifyTimeout);
+
+			var conversationId = this.props.conversation.id;
 			this.notifyTimeout = setTimeout(() => {
-				var conversationId = this.props.conversation.id;
 				var now = new Date();
 				var dif = now.getTime() - this.lastNotifyTime.getTime();
 				if (dif > 999){
-		        	this.props.onNotifyTyping(this.props.conversation.id, false);
+		        	this.props.onNotifyTyping(conversationId, false);
 	        	}
 		    }, 1000);
 	    }

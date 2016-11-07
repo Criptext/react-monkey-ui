@@ -82,12 +82,14 @@ class ConversationItem extends Component {
 								)
 								: null
 							}
-							{ Object.keys(this.props.conversation.messages).length
-								? ( <span className='mky-ellipsify'>{this.props.conversation.messages[this.props.conversation.lastMessage]
-									? this.props.conversation.messages[this.props.conversation.lastMessage].preview
-									: '' }</span>
-								)
-								: <span className='mky-ellipsify'>Click to open conversation</span>
+							{ this.props.conversation.preview && !this.props.selected
+								? <span className='mky-ellipsify mky-typing'> {this.props.conversation.preview} </span>
+								: Object.keys(this.props.conversation.messages).length
+									? ( <span className='mky-ellipsify'>{this.props.conversation.messages[this.props.conversation.lastMessage]
+										? this.props.conversation.messages[this.props.conversation.lastMessage].preview
+										: '' }</span>
+									)
+									: <span className='mky-ellipsify'>Click to open conversation</span>
 							}
 						</div>
 					</div>
