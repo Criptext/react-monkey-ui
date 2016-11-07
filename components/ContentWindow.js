@@ -14,7 +14,6 @@ class ContentWindow extends Component {
 		this.classExpand = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-content-window-with';
 		this.classStateWindow = 'mky-disabled';
 		this.classWithBanner = this.props.showBanner && !this.props.isMobile ? 'content-window-with-divided' : '';
-		
 		this.toggleConversationHeader = this.toggleConversationHeader.bind(this);
 	}
 
@@ -90,13 +89,17 @@ class ContentWindow extends Component {
 		);
 	}
 	
-	toggleConversationHeader(type) {	
+	toggleConversationHeader(type) {
 		if(this.state.showAsideInfo && this.state.typeAsideInfo !== type){
 			if(this.state.typeAsideInfo == "message"){
 				this.props.messageSelectedInfo.close();
 			}
 			this.setState({typeAsideInfo: type});
 		}else {
+			if(type == "conversation" && typeof this.props.getConversationInfo == 'undefined' ){
+				return;
+			}
+			
 			this.setState({
 				showAsideInfo: !this.state.showAsideInfo,
 				typeAsideInfo: type
