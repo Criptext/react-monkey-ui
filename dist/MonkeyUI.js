@@ -741,7 +741,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.state = {
 				editingUsername: false,
 				username: _this.context.userSession.name,
-				urlAvatar: _this.context.userSession.avatar ? _this.context.userSession.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+				urlAvatar: _this.context.userSession.urlAvatar ? _this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 			};
 
 			_this.handleErrorAvatar = _this.handleErrorAvatar.bind(_this);
@@ -37256,7 +37256,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.classExpand = _this.props.isMobile ? 'mky-expand-each-screen' : 'mky-content-window-with';
 			_this.classStateWindow = 'mky-disabled';
 			_this.classWithBanner = _this.props.showBanner && !_this.props.isMobile ? 'content-window-with-divided' : '';
-
 			_this.toggleConversationHeader = _this.toggleConversationHeader.bind(_this);
 			return _this;
 		}
@@ -37336,6 +37335,10 @@ return /******/ (function(modules) { // webpackBootstrap
 					}
 					this.setState({ typeAsideInfo: type });
 				} else {
+					if (type == "conversation" && typeof this.props.getConversationInfo == 'undefined') {
+						return;
+					}
+
 					this.setState({
 						showAsideInfo: !this.state.showAsideInfo,
 						typeAsideInfo: type
