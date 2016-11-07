@@ -677,6 +677,12 @@ TABLE OF CONTENTS
   white-space: nowrap;
 }
 
+.mky-typing{
+  font-style: italic;
+  color: #717171 !important;
+  font-weight: bold;
+}
+
 /* 3.2.- ASIDE: Connection Panel
      ----------------------------- */
 
