@@ -13,7 +13,6 @@ class ConversationList extends Component {
 	constructor(props, context) {
 		super(props, context);
 	    this.state = {
-		    searchTerm: '',
 			conversationArray: undefined,
 			isDeleting: false,
 			deletingConversation: undefined,
@@ -22,7 +21,6 @@ class ConversationList extends Component {
 			loading : false,
 		}
 		this.conversationToDeleteIsGroup;
-	    this.searchUpdated = this.searchUpdated.bind(this);
 	    this.conversationIdSelected = this.conversationIdSelected.bind(this);
 	    this.isSelected = this.isSelected.bind(this);
 	    this.updateScrollTop = this.updateScrollTop.bind(this);
@@ -52,58 +50,36 @@ class ConversationList extends Component {
 	}
 
 	render() {
-		var params = {};
-		if (this.props.panelParams){
-			params = this.props.panelParams;
-		}
 
-		const conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
+		const conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
     	return (
-    		<div className='mky-session-conversations'>
+    		<div style={{display: 'flex', flexDirection : 'column'}}>
     			{ this.state.isDeleting
 	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation}
 	    				handleExitGroup={this.handleExitGroup}
 	    				handleClosePopup={this.handleClosePopup}
 	    				isGroupConversation={this.conversationToDeleteIsGroup} />
-	    			: null }
-
-    			{ (this.props.conversationSelected == null) ?
-    				<AsidePanel panelParams={this.props.asidePanelParams} />
-					:
-					null
-    			}
-
-	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
-	    		{ this.props.conversationsLoading
-		    		? <Loading customLoader={this.props.customLoader} />
-		    		: ( <ul ref='conversationList' className='mky-conversation-list'>
-						{ conversationNameFiltered.map( (conversation, index) => {
-			    			return (
-								<ConversationItem isMobile={this.props.isMobile}
-									index={index}
-									deleteConversation={this.handleAskDeleteConversation}
-									key={conversation.id}
-									conversation={conversation}
-									conversationIdSelected={this.conversationIdSelected}
-									selected={this.isSelected(conversation.id)}/>
-							)
-						})}
-						</ul>
-		    		)
+	    			: null 
 	    		}
+
+
+				<ul ref='conversationList' className='mky-conversation-list'>
+					{ conversationNameFiltered.map( (conversation, index) => {
+		    			return (
+							<ConversationItem isMobile={this.props.isMobile}
+								index={index}
+								deleteConversation={this.handleAskDeleteConversation}
+								key={conversation.id}
+								conversation={conversation}
+								conversationIdSelected={this.conversationIdSelected}
+								selected={this.isSelected(conversation.id)}/>
+						)
+					})}
+				</ul>
+
     			{ this.props.isLoadingConversations ? <Loading customLoader={this.props.customLoader} /> : null}
 			</div>
 		)
-	}
-
-	handleAskDeleteConversation(conversation, index, active) {
-		this.setState({
-			deletingConversation: conversation,
-			deletingIndex: index,
-			deletingActive: active,
-			isDeleting: true
-		});
-		this.conversationToDeleteIsGroup = isConversationGroup(conversation.id);
 	}
 
 	componentDidUpdate() {
@@ -144,19 +120,23 @@ class ConversationList extends Component {
 		return result;
 	}
 
-	searchUpdated(term) {
-    	this.setState({searchTerm: term});
-  	}
-
   	createArray(conversations) {
   		let conversationarray = [];
 		for(var x in conversations){
 		  conversationarray.push(conversations[x]);
 		}
 
-		if(typeof this.context.options.conversation.onSort == 'function'){
-			conversationarray.sort(this.context.options.conversation.onSort);
+		if(this.props.alternativeList){
+			if(typeof this.context.options.conversation.onSecondSort == 'function'){
+				conversationarray.sort(this.context.options.conversation.onSecondSort);
+			}
+		}else{
+			if(typeof this.context.options.conversation.onSort == 'function'){
+				conversationarray.sort(this.context.options.conversation.onSort);
+			}
 		}
+
+		
 		return conversationarray;
   	}
 
@@ -169,8 +149,18 @@ class ConversationList extends Component {
 
   	// PopUp methods
 
+  	handleAskDeleteConversation(conversation, index, active) {
+		this.setState({
+			deletingConversation: conversation,
+			deletingIndex: index,
+			deletingActive: active,
+			isDeleting: true
+		});
+		this.conversationToDeleteIsGroup = isConversationGroup(conversation.id);
+	}
+
   	handleDeleteConversation() {
-		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
+		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
 		var nextConversation = conversationNameFiltered[this.state.deletingIndex + 1];
 		if(!nextConversation) {
 			nextConversation = conversationNameFiltered[this.state.deletingIndex - 1];
@@ -179,7 +169,7 @@ class ConversationList extends Component {
 	}
 
 	handleExitGroup() {
-		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
+		var conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
 		var nextConversation = conversationNameFiltered[this.state.deletingIndex + 1];
 		if(!nextConversation) {
 			nextConversation = conversationNameFiltered[this.state.deletingIndex - 1];

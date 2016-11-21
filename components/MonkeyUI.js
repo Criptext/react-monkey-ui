@@ -170,6 +170,7 @@ class MonkeyUI extends Component {
 	componentWillReceiveProps(nextProps) {
 		this.setState({conversation: nextProps.conversation});
 		this.setState({conversations: nextProps.conversations});
+		this.setState({alternateConversations: nextProps.alternateConversations});
 
 		if (this.props.conversation && nextProps.conversation){
 			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
@@ -231,6 +232,7 @@ class MonkeyUI extends Component {
 											togglePopup={this.togglePopup}
 											userSessionLogout={this.props.onUserSessionLogout}
 											conversations={this.state.conversations}
+											alternateConversations = {this.state.alternateConversations}
 											handleConversationSelected={this.handleConversationSelected}
 											conversationSelected={this.props.conversation}
 											showBanner={this.state.showBanner}
@@ -241,7 +243,8 @@ class MonkeyUI extends Component {
 	                    					viewType={this.props.view.type}
 	                    					customLoader = {this.props.customLoader}
 	                    					usernameEdit = {this.props.onUserSessionEdit}
-	                    					scrollTop = {this.listTopScroll}/>
+	                    					scrollTop = {this.listTopScroll}
+	                    					searchUpdated = {this.props.searchUpdated}/>
 										: null
 									}
 									<ContentWindow ref='contentWindow'
@@ -495,7 +498,9 @@ MonkeyUI.defaultProps = {
 			optionsToDelete: {
 				onExitGroup: undefined,
 				onDelete: undefined
-			}	
+			},
+			header1 : "Conversation List 1",
+			header2 : "Conversation List 2"	
 		},
 		message: {
 			optionsToIncoming: undefined,

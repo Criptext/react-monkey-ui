@@ -82,6 +82,7 @@ class Input extends Component {
     componentWillReceiveProps(nextProps){
     	if(nextProps.conversationSelected.id !== this.props.conversationSelected.id) {
 			this.setState({text: ''});
+			this.focusTextarea();
 		}
     }
 
@@ -178,7 +179,6 @@ class Input extends Component {
 	}
 
 	componentDidUpdate() {
-		this.focusTextarea();
 	}
 
 	focusTextarea(){
