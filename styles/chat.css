@@ -712,7 +712,7 @@ TABLE OF CONTENTS
 }
 
 .mky-connection-hide{
-  max-height: 0;
+  max-height: 0px;
 }
 
 .mky-bold-text{
@@ -860,6 +860,12 @@ TABLE OF CONTENTS
 
   /* 3.2.- ASIDE: Conversation List
      ----------------------------- */
+.mky-conversation-list-header{
+  padding: 15px 10px 10px 10px;
+  border-bottom: solid #EAEAEA 1px;
+  font-weight: bold;
+  font-size: 17px;
+}
 
 .mky-not-pressed{
   background-position: 100%;
@@ -4205,6 +4211,11 @@ input:focus{
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.mky-dflex-dcolumn{
+  display: flex;
+  flex-direction : column
 }
 
 /* 7.- MEDIA QUERIES

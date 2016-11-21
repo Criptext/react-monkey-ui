@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import ConversationList from './ConversationList.js';
+import ConversationListsContainer from './ConversationListsContainer.js';
 import ReactDOM from 'react-dom'
 
 class ContentAside extends Component {
@@ -47,17 +47,19 @@ class ContentAside extends Component {
 						}
 					</div>
 				</header>
-				<ConversationList customLoader = {this.props.customLoader}
+				<ConversationListsContainer customLoader = {this.props.customLoader}
 					isMobile = {this.props.isMobile}
 					asidePanelParams = {this.props.asidePanelParams}
 					connectionStatus={this.props.connectionStatus}
 					isLoadingConversations={this.props.isLoadingConversations}
 					handleLoadMoreConversations={this.props.handleLoadMoreConversations}
 					conversations={this.props.conversations}
+					alternateConversations={this.props.alternateConversations}
 					handleConversationSelected={this.props.handleConversationSelected}
 					conversationSelected={this.props.conversationSelected}
 					conversationsLoading={this.props.conversationsLoading}
-					scrollTop = {this.props.scrollTop}/>
+					scrollTop = {this.props.scrollTop}
+					searchUpdated = {this.props.searchUpdated}/>
 			</aside>
 		)
 	}
