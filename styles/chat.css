@@ -3191,7 +3191,7 @@ TABLE OF CONTENTS
   top: initial;
   z-index: -1;
   max-width: 880px;
-  margin-left: calc(50% - 440px);
+  margin-left: 10px;
   -webkit-transition: all 0.4s ease-in;
   -moz-transition: all 0.4s ease-in;
   -ms-transition: all 0.4s ease-in;
