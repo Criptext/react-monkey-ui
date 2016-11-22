@@ -571,6 +571,22 @@ TABLE OF CONTENTS
   display: block;
 }
 
+.mky-rightside-option{
+  left: 90%;
+  margin-top: 20px;
+  position: absolute;
+  top: 0;
+}
+
+.mky-rightside-option div{
+  cursor: pointer;
+}
+
+.mky-rightside-option i {
+  color: #b2b2b2;
+  font-size: 12px;
+}
+
 /* 3.2.- ASIDE
    ----------------------------- */
 
