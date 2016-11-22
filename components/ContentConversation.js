@@ -19,7 +19,7 @@ class ContentConversation extends Component {
 			urlAvatar: this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.classExpand = '' ;
-		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided':''
+		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided' : ''
 		
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -28,6 +28,7 @@ class ContentConversation extends Component {
 		this.handleConnectionStatus = this.handleConnectionStatus.bind(this);
 		this.closeSide = this.closeSide.bind(this);
 		this.handleToggleConversationHeader = this.handleToggleConversationHeader.bind(this);
+		this.handleEndConversation = this.handleEndConversation.bind(this);
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -75,6 +76,10 @@ class ContentConversation extends Component {
 							)
 						}
 					</div>
+					{ this.context.options.conversation.onEnd
+						? <input className='mky-button-standard' type='submit' value='End Chat' id='mky-end-chat' onClick={this.handleEndConversation}></input>
+						: null
+					}
 					{ this.props.viewType == 'rightside'
 						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
 						: null
@@ -158,10 +163,15 @@ class ContentConversation extends Component {
 	defineUrlAvatar() {
 		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
+	
+	handleEndConversation() {
+		this.context.options.conversation.onEnd(this.props.conversationSelected);
+	}
 }
 
 ContentConversation.contextTypes = {
-	bubblePreviews: React.PropTypes.object.isRequired
+	bubblePreviews: React.PropTypes.object.isRequired,
+	options: React.PropTypes.object.isRequired
 }
 
 export default ContentConversation;

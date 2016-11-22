@@ -57,7 +57,7 @@ class MonkeyUI extends Component {
 		this.notifyTimeout = null;
 		this.listTopScroll = 0;
 		this.toggleTab = this.toggleTab.bind(this);
-		this.openSide = this.openSide.bind(this);
+		this.toggleSide = this.toggleSide.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
 		this.handleConversationSelected = this.handleConversationSelected.bind(this);
 		this.handleMessageCreated = this.handleMessageCreated.bind(this);
@@ -100,7 +100,8 @@ class MonkeyUI extends Component {
 					optionsToDelete: {
 						onExitGroup: undefined,
 						onDelete: undefined
-					}
+					},
+					onEnd: undefined
 				}
 			}else if(!this.props.options.conversation.optionsToDelete){
 				this.props.options.conversation.optionsToDelete = {
@@ -141,7 +142,7 @@ class MonkeyUI extends Component {
 		}else{
 			screenMode = 'partialsize';
 			style.width = this.props.view.type === 'rightside' ? this.props.sideWidth : this.props.view.data.width;
-			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height
+			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height;
 		}
 
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
@@ -164,7 +165,6 @@ class MonkeyUI extends Component {
 		    	wrapperInClass: 'mky-disappear'
 		    });
 	    }
-		
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -176,14 +176,14 @@ class MonkeyUI extends Component {
 			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
 				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
 				if(this.state.wrapperInClass === 'mky-disappear'){
-					this.openSide();
+					this.toggleSide();
 				}
 			}
 		}else if(!this.props.conversation && nextProps.conversation) {
 			if (this.state.isMobile) {
 				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
 				if(this.state.wrapperInClass === 'mky-disappear'){
-					this.openSide();
+					this.toggleSide();
 				}
 			}
 		}
@@ -202,7 +202,7 @@ class MonkeyUI extends Component {
 	                        </div>
 						)
 						: ( this.props.view.type === 'rightside'
-							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.openSide}><i className='icon mky-icon-chats'></i></div>
+							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-chats'></i></div>
 							: null
 						)
 					}
@@ -238,7 +238,7 @@ class MonkeyUI extends Component {
 											showBanner={this.state.showBanner}
 											show={this.showListConversation}
 											isMobile={this.state.isMobile}
-											closeSide={this.openSide}
+											closeSide={this.toggleSide}
 											conversationsLoading={this.props.conversationsLoading}
 	                    					viewType={this.props.view.type}
 	                    					customLoader = {this.props.customLoader}
@@ -267,7 +267,7 @@ class MonkeyUI extends Component {
 	                					version={this.props.view.version}
 	                					customLoader = {this.props.customLoader}
 	        							viewType={this.props.view.type}
-	        							closeSide={this.openSide}
+	        							closeSide={this.toggleSide}
 	        							getConversationInfo = {this.props.onConversationLoadInfo}
 	        							showOptionList = {this.handleShowOptionList}
 	        							messageSelectedInfo = {this.props.messageLoadInfo}/>
@@ -280,9 +280,15 @@ class MonkeyUI extends Component {
 							: null
 						}
 					</div>
+					{ this.props.view.type === 'rightside' && !this.props.userSession
+						? ( <div className='mky-rightside-option'>
+								<div onClick={this.toggleSide}><i className='icon mky-icon-close'></i></div>
+							</div>
+						)
+						: null
+					}
 				</div>
-				{ 
-					this.state.messageOptions 
+				{ this.state.messageOptions 
 					? (() => {
 						let options = null;
 						options = this.state.messageOptions.map( (option) => {
@@ -327,7 +333,7 @@ class MonkeyUI extends Component {
 		}
 	}
 
-	openSide() {
+	toggleSide() {
 		if(this.state.contentStyle.width === 0){
 			this.setState({
 				contentStyle: this.props.view.data,
@@ -499,8 +505,9 @@ MonkeyUI.defaultProps = {
 				onExitGroup: undefined,
 				onDelete: undefined
 			},
-			header1 : "Conversation List 1",
-			header2 : "Conversation List 2"	
+			header1: "Conversation List 1",
+			header2: "Conversation List 2",
+			onEnd: undefined
 		},
 		message: {
 			optionsToIncoming: undefined,
