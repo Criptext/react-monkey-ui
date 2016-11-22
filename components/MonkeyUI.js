@@ -100,7 +100,8 @@ class MonkeyUI extends Component {
 					optionsToDelete: {
 						onExitGroup: undefined,
 						onDelete: undefined
-					}
+					},
+					onEnd: undefined
 				}
 			}else if(!this.props.options.conversation.optionsToDelete){
 				this.props.options.conversation.optionsToDelete = {
@@ -141,7 +142,7 @@ class MonkeyUI extends Component {
 		}else{
 			screenMode = 'partialsize';
 			style.width = this.props.view.type === 'rightside' ? this.props.sideWidth : this.props.view.data.width;
-			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height
+			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height;
 		}
 
 		this.classContent = this.props.prefix+screenMode+' '+this.props.prefix+this.props.view.type;
@@ -499,8 +500,9 @@ MonkeyUI.defaultProps = {
 				onExitGroup: undefined,
 				onDelete: undefined
 			},
-			header1 : "Conversation List 1",
-			header2 : "Conversation List 2"	
+			header1: "Conversation List 1",
+			header2: "Conversation List 2",
+			onEnd: undefined
 		},
 		message: {
 			optionsToIncoming: undefined,
