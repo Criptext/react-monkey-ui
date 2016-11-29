@@ -61,7 +61,7 @@ class ContentConversation extends Component {
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
 				<header className='mky-conversation-selected-header'>
-					{ this.props.isMobile & this.props.haveConversations
+					{ this.props.isMobile && this.props.haveConversations
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back'></i></div>
 						: null
 					}

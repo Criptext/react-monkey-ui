@@ -15,14 +15,6 @@ class ConversationListsContainer extends Component {
 	    this.searchUpdated = this.searchUpdated.bind(this);
 	}
 
-	componentWillMount() {
-
-	}
-
-	componentWillReceiveProps(nextProps) {
-
-	}
-
 	render() {
 		var params = {};
 		if (this.props.panelParams){
@@ -40,17 +32,16 @@ class ConversationListsContainer extends Component {
 	    			: null 
 	    		}
 
-    			{ (this.props.conversationSelected == null) ?
-    				<AsidePanel panelParams={this.props.asidePanelParams} />
-					:
-					null
+    			{ this.props.conversationSelected == null
+	    			? <AsidePanel panelParams={this.props.asidePanelParams} />
+					: null
     			}
 
 	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
 	    		{ this.props.conversationsLoading
 		    		? <Loading customLoader={this.props.customLoader} />
 		    		: <div className="mky-dflex-dcolumn">
-		    			{this.props.alternateConversations != null 
+		    			{ this.props.alternateConversations != null 
 		    			? <div className="mky-conversation-list-header">
 		    				{this.context.options.conversation.header1}
 		    			</div>
@@ -69,13 +60,13 @@ class ConversationListsContainer extends Component {
 							searchTerm = {this.state.searchTerm}
 							alternativeList = {false}/>
 
-						{this.props.alternateConversations != null 
+						{ this.props.alternateConversations != null 
 		    			? <div className="mky-conversation-list-header">
 		    				{this.context.options.conversation.header2}
 		    			</div>
 		    			: null}
 
-		    			{this.props.alternateConversations != null 
+		    			{ this.props.alternateConversations != null 
 		    			? <ConversationList customLoader = {this.props.customLoader}
 							isMobile = {this.props.isMobile}
 							asidePanelParams = {this.props.asidePanelParams}
@@ -89,22 +80,13 @@ class ConversationListsContainer extends Component {
 							scrollTop = {this.props.scrollTop}
 							searchTerm = {this.state.searchTerm}
 							alternativeList = {true}/>
-		    			: null}
+		    			: null }
 						
 					</div>
-		    		
 	    		}
 
 			</div>
 		)
-	}
-
-	componentDidUpdate() {
-
-	}
-
-	componentDidMount() {
-
 	}
 
 	searchUpdated(term) {
