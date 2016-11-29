@@ -877,6 +877,12 @@ TABLE OF CONTENTS
 
   /* 3.2.- ASIDE: Conversation List
      ----------------------------- */
+.mky-content-conversation-list{
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
 .mky-conversation-list-header{
   padding: 15px 10px 10px 10px;
   border-bottom: solid #EAEAEA 1px;
@@ -1262,12 +1268,13 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-selected-image{
-    width: 40px;
-    height: 40px;
-    margin: 13px;
-    float: left;
-    margin-left: 25px;
-    cursor: pointer;
+  cursor: pointer;
+  flex-grow: 0;
+  float: left;
+  height: 40px;
+  margin: 13px;
+  margin-left: 25px;
+  width: 40px;
 }
 
 .mky-conversation-selected-image img{
@@ -1278,10 +1285,10 @@ TABLE OF CONTENTS
 
 .mky-conversation-selected-description{
   height: calc(100% - 18px);
+  flex-grow: 1;
   float: left;
   padding-top: 18px;
   position: relative;
-  width: calc(100% - 93px);
 }
 
 .mky-conversation-selected-description span{
@@ -1322,7 +1329,7 @@ TABLE OF CONTENTS
   cursor: pointer;
   display: inline-table;
   font-size: 15px;
-  margin: 20px 0 0 8px;
+  margin: 20px 10px 0 8px;
 }
 
 #mky-conversation-selected-members{

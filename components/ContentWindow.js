@@ -38,7 +38,9 @@ class ContentWindow extends Component {
 	}
 
 	render() {
-		if(this.props.conversationSelected != undefined){
+		if(this.props.conversationSelected == undefined){
+			this.classStateWindow = 'mky-disabled';
+		}else{
 			this.classStateWindow = '';
 		}
 

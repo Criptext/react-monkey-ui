@@ -45,7 +45,7 @@ class MonkeyUI extends Component {
 			contentStyle: undefined,
 			classTabIcon: 'mky-icon-arrow-up-light',
 			isMobile: isMobile.any() ? true : false,
-			showConversations: true,
+			showConversations: this.props.showConversations,
 			showBanner: false,
 			wrapperInClass: '',
 			showPopUp: false,
@@ -65,7 +65,7 @@ class MonkeyUI extends Component {
 		this.classContent;
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
-		this.haveConversations = true;
+		this.haveConversations = this.props.showConversations;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
 		this.formOptions = this.formOptions.bind(this);
@@ -110,9 +110,8 @@ class MonkeyUI extends Component {
 				}
 			}
 			
-			
 			if(!this.props.options.message){
-				this.props.options.messsage = {
+				this.props.options.message = {
 					optionsToIncoming: undefined,
 					optionsToOutgoing: undefined
 				}
@@ -159,7 +158,7 @@ class MonkeyUI extends Component {
 
 	    if (this.props.view.type === 'rightside') {
 	    	this.setState({
-		    	showConversations: true,
+		    	showConversations: this.props.showConversations,
 		    	isMobile: true,
 		    	contentStyle: style,
 		    	wrapperInClass: 'mky-disappear'
@@ -224,7 +223,7 @@ class MonkeyUI extends Component {
 						}
 						{ this.props.userSession
 							? ( <div id='mky-content-app' className=''>
-									{ this.state.showConversations & this.haveConversations
+									{ this.haveConversations && this.state.showConversations
 										? <ContentAside asidePanelParams={this.props.asidePanelParams}
 											connectionStatus={this.props.connectionStatus}
 											isLoadingConversations={this.props.isLoadingConversations}
@@ -493,6 +492,7 @@ MonkeyUI.defaultProps = {
 	view:{
 		type: 'fullscreen'
 	},
+	showConversations: true,
 	tabHeight: '30px',
 	sideWidth: 0,
 	form: MyForm,

@@ -53,7 +53,7 @@ class ConversationList extends Component {
 
 		const conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
     	return (
-    		<div style={{display: 'flex', flexDirection : 'column'}}>
+    		<div className='mky-content-conversation-list'>
     			{ this.state.isDeleting
 	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation}
 	    				handleExitGroup={this.handleExitGroup}
@@ -61,8 +61,7 @@ class ConversationList extends Component {
 	    				isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null 
 	    		}
-
-
+				
 				<ul ref='conversationList' className='mky-conversation-list'>
 					{ conversationNameFiltered.map( (conversation, index) => {
 		    			return (
