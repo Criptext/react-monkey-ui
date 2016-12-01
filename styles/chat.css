@@ -12,9 +12,10 @@ TABLE OF CONTENTS
   3.2.- ASIDE - header, search panel, search list, conversation list
   3.3.- SECTION - header, chat timeline, preview, chat inputs
   3.4.- BANNER -  banner
-  3.5 - ASIDE INFO
+  3.5.- ASIDE INFO
     3.5.1 - INFO conversation
     3.5.2 - INFO message
+  3.6.- RECONNECT
 4.- MODAL
   4.1.- Image preview
   4.2.- Location preview
@@ -461,7 +462,7 @@ TABLE OF CONTENTS
 /* 3.- CONTENT APP
    ----------------------------- */
 
-#mky-content-app{
+.mky-content-app{
   width: 100%;
   height: 100%;
   background-color: #ffffff;
@@ -1269,12 +1270,15 @@ TABLE OF CONTENTS
 
 .mky-conversation-selected-image{
   cursor: pointer;
-  flex-grow: 0;
+  flex: none;
   float: left;
   height: 40px;
   margin: 13px;
   margin-left: 25px;
   width: 40px;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
 }
 
 .mky-conversation-selected-image img{
@@ -1287,6 +1291,7 @@ TABLE OF CONTENTS
   height: calc(100% - 18px);
   flex-grow: 1;
   float: left;
+  overflow: hidden;
   padding-top: 18px;
   position: relative;
 }
@@ -1310,7 +1315,7 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-selected-status{
-  color:#a2a2a2;
+  color: #a2a2a2;
   font-size: 13px;
   margin-top: 4px;
   white-space: nowrap;
@@ -1322,6 +1327,9 @@ TABLE OF CONTENTS
 .mky-conversation-selected-header .mky-button-standard{
   margin: 12px 20px;
   background-color: #e53935;
+  -webkit-box-flex: 0;
+  -webkit-flex: none;
+  -ms-flex: none;
 }
 
 .mky-conversation-header-exit{
@@ -2649,7 +2657,7 @@ TABLE OF CONTENTS
   transform: translateY(-50%);
 }
 
-  /* 3.4.- SECTION: Chat inputs
+  /* 3.3.- SECTION: Chat inputs
      ----------------------------- */
 
 #mky-chat-input{
@@ -3954,6 +3962,30 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
   margin-top: 4px;
 }
 
+/* 3.6.- RECONNECT
+   ----------------------------- */
+   
+.mky-reconnect{
+  bottom: 0;
+  height: calc(100% - 65px);
+  position: absolute;
+  width: 100%;
+}
+
+.mky-reconnect-form{
+  bottom: 90px;
+  position: absolute;
+  width: 100%;
+}
+
+.mky-reconnect-form form{
+  text-align: center;
+}
+
+.mky-reconnect-description{
+  font-size: 12px;
+} 
+  
 /* 4.- MODAL
    ----------------------------- */
 

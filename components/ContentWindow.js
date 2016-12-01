@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import ContentIntro from './ContentIntro.js';
-import ContentBanner from './ContentBanner.js';
-import ContentConversation from './ContentConversation.js';
-import ContentInfo from './ContentInfo.js';
+import ContentIntro from './ContentIntro.js'
+import ContentBanner from './ContentBanner.js'
+import ContentConversation from './ContentConversation.js'
+import ContentInfo from './ContentInfo.js'
 
 class ContentWindow extends Component {
 	constructor(props){
@@ -12,7 +12,7 @@ class ContentWindow extends Component {
 			typeAsideInfo: ''
 		}
 		this.classExpand = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-content-window-with';
-		this.classStateWindow = 'mky-disabled';
+		this.classStateWindow = '';
 		this.classWithBanner = this.props.showBanner && !this.props.isMobile ? 'content-window-with-divided' : '';
 		this.toggleConversationHeader = this.toggleConversationHeader.bind(this);
 	}
@@ -68,7 +68,8 @@ class ContentWindow extends Component {
 		    		showBanner = {this.props.showBanner}
 		    		haveConversations = {this.props.haveConversations}
 		    		version = {this.props.version}
-		    		showOptionList = {this.props.showOptionList}/>
+		    		showOptionList = {this.props.showOptionList}
+		    		askReconnect = {this.props.askReconnect}/>
 		    	: <ContentIntro isMobile = {this.props.isMobile} showBanner = {this.props.showBanner}/>
 	    	}
 	    	{ this.state.showAsideInfo
@@ -93,12 +94,12 @@ class ContentWindow extends Component {
 	
 	toggleConversationHeader(type) {
 		if(this.state.showAsideInfo && this.state.typeAsideInfo !== type){
-			if(this.state.typeAsideInfo == "message"){
+			if(this.state.typeAsideInfo == 'message'){
 				this.props.messageSelectedInfo.close();
 			}
 			this.setState({typeAsideInfo: type});
 		}else {
-			if(type == "conversation" && typeof this.props.getConversationInfo == 'undefined' ){
+			if(type == 'conversation' && typeof this.props.getConversationInfo == 'undefined' ){
 				return;
 			}
 			

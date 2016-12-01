@@ -7,6 +7,7 @@ import AsidePanel from './AsidePanel.js'
 import { isConversationGroup } from './../utils/monkey-utils.js'
 
 const KEYS_TO_FILTERS = ['name']
+const SCROLL_MARGIN = 70
 
 class ConversationList extends Component {
 
@@ -18,7 +19,7 @@ class ConversationList extends Component {
 			deletingConversation: undefined,
 			deletingIndex: undefined,
 			deletingActive: undefined,
-			loading : false,
+			loading: false
 		}
 		this.conversationToDeleteIsGroup;
 	    this.conversationIdSelected = this.conversationIdSelected.bind(this);
@@ -35,10 +36,14 @@ class ConversationList extends Component {
 	    this.domNode = null;
 	    this.isLoading;
 	    this.scrollToLoad;
+	    this.deleteOption = false;
 	}
 
 	componentWillMount() {
 		this.setState({conversationArray: this.createArray(this.props.conversations)});
+		if(this.context.options.conversation.optionsToDelete.onDelete || this.context.options.conversation.optionsToDelete.onExitGroup){
+			this.deleteOption = true;
+		}
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -71,7 +76,8 @@ class ConversationList extends Component {
 								key={conversation.id}
 								conversation={conversation}
 								conversationIdSelected={this.conversationIdSelected}
-								selected={this.isSelected(conversation.id)}/>
+								selected={this.isSelected(conversation.id)}
+								deleteOption={this.deleteOption}/>
 						)
 					})}
 				</ul>
@@ -186,7 +192,7 @@ class ConversationList extends Component {
 
 	updateScrollTop(){
 		this.domNode = ReactDOM.findDOMNode(this.refs.conversationList);
-		if(this.domNode.scrollTop + this.domNode.clientHeight + 20 >= this.domNode.scrollHeight && this.scrollToLoad){
+		if(this.domNode.scrollTop + this.domNode.clientHeight + SCROLL_MARGIN >= this.domNode.scrollHeight && this.scrollToLoad){
 			var conversationArray = this.state.conversationArray;
 			var timestamp;
 			try{
@@ -199,7 +205,7 @@ class ConversationList extends Component {
 			this.scrollToLoad = false;
 			this.props.handleLoadMoreConversations(timestamp);
 		}
-		if(!this.isLoading && !this.scrollToLoad && this.domNode.scrollTop + this.domNode.clientHeight + 20 < this.domNode.scrollHeight){
+		if(!this.isLoading && !this.scrollToLoad && this.domNode.scrollTop + this.domNode.clientHeight + SCROLL_MARGIN < this.domNode.scrollHeight){
 			this.scrollToLoad = true;
 		}
 	}
@@ -207,7 +213,7 @@ class ConversationList extends Component {
 }
 
 ConversationList.contextTypes = {
-    options: React.PropTypes.object.isRequired,
+    options: React.PropTypes.object.isRequired
 }
 
 const Loading = (props) => <div className='mky-loader-ring'>

@@ -11,10 +11,10 @@ import BubbleAudio from './BubbleAudio.js'
 
 import ContentViewer from './ContentViewer.js'
 
-import MyForm from './MyForm.js';
+import MyForm from './MyForm.js'
 import PopUp from './PopUp.js'
 import ContentLogOut from './ContentLogOut.js'
-import styles from '../styles/chat.css';
+import styles from '../styles/chat.css'
 
 const isMobile = {
     Android: function() {
@@ -116,10 +116,25 @@ class MonkeyUI extends Component {
 					optionsToOutgoing: undefined
 				}
 			}
+			
+			if(!this.props.options.window){
+				this.props.options.window = {
+					reconnect: {
+						onReconnect: undefined,
+						description: undefined
+					}
+				}
+			}else if(!this.props.options.window.reconnect){
+				this.props.options.window.reconnect = {
+					onReconnect: undefined,
+					description: undefined
+				}
+			}
+				
 		}
 		
 		return this.props.options	
-	}		
+	}
 		
 	componentWillMount() {
 		this.setState({conversation: this.props.conversation});
@@ -222,55 +237,56 @@ class MonkeyUI extends Component {
 							: null
 						}
 						{ this.props.userSession
-							? ( <div id='mky-content-app' className=''>
-									{ this.haveConversations && this.state.showConversations
-										? <ContentAside asidePanelParams={this.props.asidePanelParams}
-											connectionStatus={this.props.connectionStatus}
-											isLoadingConversations={this.props.isLoadingConversations}
-											handleLoadMoreConversations={this.props.onLoadMoreConversations}
-											togglePopup={this.togglePopup}
-											userSessionLogout={this.props.onUserSessionLogout}
-											conversations={this.state.conversations}
-											alternateConversations = {this.state.alternateConversations}
-											handleConversationSelected={this.handleConversationSelected}
-											conversationSelected={this.props.conversation}
-											showBanner={this.state.showBanner}
-											show={this.showListConversation}
-											isMobile={this.state.isMobile}
-											closeSide={this.toggleSide}
-											conversationsLoading={this.props.conversationsLoading}
-	                    					viewType={this.props.view.type}
-	                    					customLoader = {this.props.customLoader}
-	                    					usernameEdit = {this.props.onUserSessionEdit}
-	                    					scrollTop = {this.listTopScroll}
-	                    					searchUpdated = {this.props.searchUpdated}/>
-										: null
-									}
-									<ContentWindow ref='contentWindow'
+							? ( <div className='mky-content-app'>					
+								{ this.haveConversations && this.state.showConversations
+									? <ContentAside asidePanelParams={this.props.asidePanelParams}
 										connectionStatus={this.props.connectionStatus}
-										handleNotifyTyping={this.handleNotifyTyping}
-										panelParams={this.props.panelParams}
-										loadMessages={this.props.onMessagesLoad}
+										isLoadingConversations={this.props.isLoadingConversations}
+										handleLoadMoreConversations={this.props.onLoadMoreConversations}
+										togglePopup={this.togglePopup}
+										userSessionLogout={this.props.onUserSessionLogout}
+										conversations={this.state.conversations}
+										alternateConversations = {this.state.alternateConversations}
+										handleConversationSelected={this.handleConversationSelected}
 										conversationSelected={this.props.conversation}
-										conversationClosed={this.props.onConversationClosed}
-										messageCreated={this.handleMessageCreated}
-										expandWindow={this.expandWindow}
-										expandAside={this.handleShowAside}
-										isMobile={this.state.isMobile}
-										isPartialized={this.classContent}
 										showBanner={this.state.showBanner}
-										onClickMessage={this.props.onClickMessage}
-										dataDownloadRequest={this.props.onMessageDownloadData}
-										getUser={this.props.onMessageGetUser}
-										haveConversations={this.haveConversations}
-	                					version={this.props.view.version}
-	                					customLoader = {this.props.customLoader}
-	        							viewType={this.props.view.type}
-	        							closeSide={this.toggleSide}
-	        							getConversationInfo = {this.props.onConversationLoadInfo}
-	        							showOptionList = {this.handleShowOptionList}
-	        							messageSelectedInfo = {this.props.messageLoadInfo}/>
-								</div>
+										show={this.showListConversation}
+										isMobile={this.state.isMobile}
+										closeSide={this.toggleSide}
+										conversationsLoading={this.props.conversationsLoading}
+                    					viewType={this.props.view.type}
+                    					customLoader = {this.props.customLoader}
+                    					usernameEdit = {this.props.onUserSessionEdit}
+                    					scrollTop = {this.listTopScroll}
+                    					searchUpdated = {this.props.searchUpdated}/>
+									: null
+								}
+								<ContentWindow ref='contentWindow'
+									connectionStatus={this.props.connectionStatus}
+									handleNotifyTyping={this.handleNotifyTyping}
+									panelParams={this.props.panelParams}
+									loadMessages={this.props.onMessagesLoad}
+									conversationSelected={this.props.conversation}
+									conversationClosed={this.props.onConversationClosed}
+									messageCreated={this.handleMessageCreated}
+									expandWindow={this.expandWindow}
+									expandAside={this.handleShowAside}
+									isMobile={this.state.isMobile}
+									isPartialized={this.classContent}
+									showBanner={this.state.showBanner}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.onMessageDownloadData}
+									getUser={this.props.onMessageGetUser}
+									haveConversations={this.haveConversations}
+                					version={this.props.view.version}
+                					customLoader = {this.props.customLoader}
+        							viewType={this.props.view.type}
+        							closeSide={this.toggleSide}
+        							getConversationInfo = {this.props.onConversationLoadInfo}
+        							showOptionList = {this.handleShowOptionList}
+        							messageSelectedInfo = {this.props.messageLoadInfo}
+        							askReconnect = {this.props.askReconnect}/>
+							</div>
 							)
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 						}
@@ -512,8 +528,15 @@ MonkeyUI.defaultProps = {
 		message: {
 			optionsToIncoming: undefined,
 			optionsToOutgoing: undefined
+		},
+		window: {
+			reconnect: {
+				onReconnect: undefined,
+				description: undefined
+			}
 		}
 	},
+	askReconnect: false,
 	chatExtraData: {}
 }
 

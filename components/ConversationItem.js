@@ -29,7 +29,7 @@ class ConversationItem extends Component {
 		this.state = {
 			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
 			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
-			pressClass: "mky-not-pressed"
+			pressClass: 'mky-not-pressed'
 		}
 		this.openConversation = this.openConversation.bind(this);
 		this.deleteConversation = this.deleteConversation.bind(this);
@@ -75,7 +75,7 @@ class ConversationItem extends Component {
 							{ Object.keys(this.props.conversation.messages).length
 								? ( this.props.conversation.messages[this.props.conversation.lastMessage]
 									? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 && this.props.conversation.messages[this.props.conversation.lastMessage].senderId === this.context.userSession.id
-										? <div className='mky-message-status mky-status-read' ><i className='icon mky-icon-check-sober mky-message-read'></i></div>
+										? <div className='mky-message-status mky-status-read'><i className='icon mky-icon-check-sober mky-message-read'></i></div>
 										: ''
 									)
 									: null
@@ -95,9 +95,11 @@ class ConversationItem extends Component {
 					</div>
 				</div>
 				<div className='mky-conversation-options'>
-					<div className='mky-conversation-delete' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
+					{ this.props.deleteOption
+						? <div className='mky-conversation-delete' onClick={this.deleteConversation}><i className='icon mky-icon-close animated pulse'></i></div>
+						: null
+					}
 					<Badge value={ (this.props.conversation.unreadMessageCounter && !this.props.selected) ? this.props.conversation.unreadMessageCounter : 0} />
-						
 				</div>
 			</li>
 		)
@@ -128,12 +130,12 @@ class ConversationItem extends Component {
 			return;
 		}
 		this.setState({
-			pressClass : "mky-pressing"
+			pressClass : 'mky-pressing'
 		});
 		this.timer = setTimeout(() => {
 			this.timer = 0;
 			this.setState({
-				pressClass : "mky-not-pressed"
+				pressClass : 'mky-not-pressed'
 			});
 			this.deleteConversation();
 		}, this.longPressDuration);
@@ -143,7 +145,7 @@ class ConversationItem extends Component {
 		clearTimeout(this.timer);
 		this.timer = 0;
 		this.setState({
-			pressClass : "mky-not-pressed"
+			pressClass : 'mky-not-pressed'
 		});
 	}
 
@@ -152,7 +154,7 @@ class ConversationItem extends Component {
 		if(this.timer){
 			clearTimeout(this.timer);
 			this.setState({
-				pressClass : "mky-not-pressed"
+				pressClass : 'mky-not-pressed'
 			});
 			this.props.conversationIdSelected(this.props.conversation.id);
 		}
