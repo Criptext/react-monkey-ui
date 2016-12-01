@@ -2,10 +2,10 @@ import React, { Component } from 'react'
 import TimelineChat from './TimelineChat.js'
 import Input from './Input.js'
 // import LocationInput from './LocationInput.js'
-
 import Modal from './Modal.js'
 import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
+import ContentReconnect from './ContentReconnect'
 import { defineTime, defineTimeByToday, defineTimeByDay, isConversationGroup } from '../utils/monkey-utils.js'
 
 const Modal_ = Modal(ContentViewer);
@@ -19,6 +19,7 @@ class ContentConversation extends Component {
 			urlAvatar: this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.classExpand = '' ;
+		this.classStateChat = '';
 		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided' : ''
 		
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
@@ -56,6 +57,12 @@ class ContentConversation extends Component {
 		var modalComponent = null;
 		if(this.state.messageSelected){
 			modalComponent = <Modal_ message={this.state.messageSelected} closeModal={this.handleCloseModal}/>
+		}
+		
+		if(this.props.askReconnect && this.context.options.window.reconnect.onReconnect){
+			this.classStateChat = 'mky-disabled';
+		}else{
+			this.classStateChat = '';
 		}
 		
 		return (
@@ -96,7 +103,7 @@ class ContentConversation extends Component {
 				</header>
 				{ this.state.showLocationInput
 					? <LocationInput messageCreated={this.props.messageCreated} disableGeoInput={this.disableGeoInput.bind(this)} />
-					: ( <div className='mky-chat-area'>
+					: ( <div className={'mky-chat-area '+this.classStateChat}>
 							<TimelineChat customLoader={this.props.customLoader}
 								loadMessages={this.props.loadMessages}
 								conversationSelected={this.props.conversationSelected}
@@ -113,6 +120,12 @@ class ContentConversation extends Component {
 								messageCreated={this.props.messageCreated}/>
 						</div>
 					)
+				}
+				{ this.props.askReconnect && this.context.options.window.reconnect.onReconnect
+					? <ContentReconnect
+						onReconnect={this.context.options.window.reconnect.onReconnect} 
+						description={this.context.options.window.reconnect.description}/>
+					: null
 				}
 			</div>
 		)
