@@ -58,7 +58,7 @@ TABLE OF CONTENTS
 @charset "UTF-8";
 
 @font-face {
-  font-family: "monkey";
+  font-family: "react-monkey-ui";
   src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot");
   src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot?#iefix") format("embedded-opentype"),
     url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.woff") format("woff"),
@@ -98,50 +98,56 @@ TABLE OF CONTENTS
   -moz-osx-font-smoothing: grayscale;
 }
 
-.mky-icon-pencil:before {
+.mky-icon-arrow-down:before {
   content: "\61";
 }
-.mky-icon-check:before {
-  content: "\63";
+.mky-icon-arrow-up:before {
+  content: "\62";
 }
 .mky-icon-close:before {
+  content: "\63";
+}
+.mky-icon-minimize:before {
   content: "\64";
 }
-.mky-icon-drawer:before {
+.mky-icon-check:before {
   content: "\65";
 }
-.mky-icon-mic:before {
+.mky-icon-drawer:before {
   content: "\66";
 }
-.mky-icon-send:before {
+.mky-icon-pencil:before {
   content: "\67";
 }
-.mky-icon-trashcan:before {
+.mky-icon-mic:before {
   content: "\68";
 }
-.mky-icon-image:before {
+.mky-icon-send:before {
   content: "\69";
 }
-.mky-icon-file:before {
+.mky-icon-image:before {
   content: "\6a";
 }
-.mky-icon-chat:before {
+.mky-icon-file:before {
   content: "\6b";
 }
-.mky-icon-arrow-down:before {
+.mky-icon-chat:before {
   content: "\6c";
 }
-.mky-icon-arrow-up:before {
+.mky-icon-download:before {
   content: "\6d";
 }
 .mky-icon-signout:before {
   content: "\6e";
 }
 .mky-icon-back:before {
-  content: "\62";
-}
-.mky-icon-minimize:before {
   content: "\6f";
+}
+.mky-icon-arrow-down-bold:before {
+  content: "\70";
+}
+.mky-icon-add:before {
+  content: "\71";
 }
 
 /* 1.- CONTENT
@@ -410,7 +416,7 @@ TABLE OF CONTENTS
 
 .mky-rightside-option i {
   color: #b2b2b2;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 /* 3.2.- ASIDE
@@ -482,14 +488,14 @@ TABLE OF CONTENTS
   cursor: pointer;
 }
 
-.mky-header-exit .mky-icon-close-medium{
+.mky-header-exit .mky-icon-close{
   color: #6e8191;
   font-size: 14px;
   position: relative;
   top: 12px;
 }
 
-.mky-header-exit .mky-icon-signout-sober{
+.mky-header-exit .mky-icon-signout{
   color: #F35E58;
   font-size: 32px;
   position: relative;
@@ -1165,8 +1171,8 @@ TABLE OF CONTENTS
   color: #6e8191;
   cursor: pointer;
   display: inline-table;
-  font-size: 15px;
-  margin: 20px 10px 0 8px;
+  font-size: 20px;
+  margin: 12px 15px 0 8px;
 }
 
 #mky-conversation-selected-members{
@@ -1318,7 +1324,7 @@ TABLE OF CONTENTS
 
 .mky-chat-timeline-control i{
   height: 12px;
-  color: #000;	
+  color: #999;	
 }
 
 .mky-chat-timeline-conversation{
@@ -1591,7 +1597,7 @@ TABLE OF CONTENTS
 .mky-bubble-text-out {
     color: #fff;
     min-width: 43px;
-    background: #096EFF;
+    background: #2c74c6;
     border-bottom-right-radius: 1px;
     margin-top: 11px;
 }
@@ -1660,22 +1666,39 @@ TABLE OF CONTENTS
   background-position: 50%;
   background-size: 100%;
 }
+
 .mky-bubble-audio-pause-button{
   width: 60px;
   background-position: 50%;
   background-size: 100%;
 }
+
 .mky-bubble-audio-play-button-green{
   background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');
-      background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
+
 .mky-bubble-audio-pause-button-green{
   background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');
-      background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.mky-bubble-audio-play-button-blue{
+  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-play-button.png');
+  background-position: 50%;
+  background-size: 99%;
+  background-repeat: no-repeat;
+}
+
+.mky-bubble-audio-pause-button-blue{
+  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-pause-button.png');
+  background-position: 50%;
+  background-size: 99%;
+  background-repeat: no-repeat;
 }
 
 /* file bubble */
@@ -2028,7 +2051,7 @@ TABLE OF CONTENTS
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #00BFA5;
+  background-color: #2c74c6;
   opacity: 0.7;
   position: absolute;
   top: 0;
@@ -2490,9 +2513,7 @@ TABLE OF CONTENTS
      ----------------------------- */
 
 #mky-chat-input{
-  width: 100%;
   box-sizing: content-box;
-  border-top: 1px solid rgba(219,219,219,0.7);
   height: auto;
   margin: 0 auto;
   bottom: 0;
@@ -2500,19 +2521,20 @@ TABLE OF CONTENTS
   line-height: 20px;
   position: relative;
   display: table;
-  background: #eee;
+  background: #FAF8F5;
+  width: 100%;
   z-index: 0;
 }
 
 #mky-chat-inner-input{
-  border: none;
   background: #fff;
+  border: 1px solid rgba(219,219,219,0.7);
   max-height: 70px;
   height: auto;
   border-radius: 8px;
   -moz-border-radius: 8px;
   width: calc(100% - 30px);
-  margin: 10px auto;
+  margin: 3px auto 10px;
   -webkit-border-radius: 8px;
 }
 
@@ -2585,31 +2607,31 @@ TABLE OF CONTENTS
   background-position: center;
 }
 
-.mky-button-input .mky-icon-drawer-sober{
+.mky-button-input .mky-icon-drawer{
   background: none;
-  color: #546E7B;
+  color: #0692df;
   font-size: 32px;
   width: auto;
   height: auto;
 }
 
-.mky-button-input .mky-icon-trashcan-regular{
+.mky-button-input .mky-icon-trashcan{
   background: none;
   color: red;
   padding: 0px 0px;
   font-size: 20px;
 }
 
-.mky-button-input .mky-icon-mic-sober{
+.mky-button-input .mky-icon-mic{
   background: none;
-  color: #546E7B;
+  color: #0692df;
   font-size: 28px;
   width: 28px;
 }
 
-.mky-button-input .mky-icon-send-regular{
+.mky-button-input .mky-icon-send{
   background: none;
-  color: #546E7B;
+  color: #0692df;
   padding: 0px 0px;
   font-size: 20px;
   cursor: pointer;
@@ -2648,9 +2670,9 @@ TABLE OF CONTENTS
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);
 }
 
-.mky-button-input .mky-icon-trashcan-regular:hover,
-.mky-button-input .mky-icon-mic-sober:hover,
-.mky-button-input .mky-icon-send-regular:hover{
+.mky-button-input .mky-icon-trashcan:hover,
+.mky-button-input .mky-icon-mic:hover,
+.mky-button-input .mky-icon-send:hover{
   background: none;
 }
 
@@ -2685,7 +2707,7 @@ TABLE OF CONTENTS
   top: initial;
   max-height: 40px;
   border-radius: 0;
-  border-left: 1px solid #ccc;
+  border-left: 1px solid rgba(219,219,219,0.7);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -webkit-border-radius: 0;
@@ -3205,7 +3227,7 @@ TABLE OF CONTENTS
 }
 
 .mky-spinner-input-audio > div {
-  background-color: #2979ff;
+  background-color: #0692df;
   height: 100%;
   width: 3px;
   display: inline-block;

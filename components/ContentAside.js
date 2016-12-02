@@ -39,11 +39,11 @@ class ContentAside extends Component {
 									onBlur={this.handleUsernameBlur}
 									type='text'
 									disabled={this.state.editingUsername ? false : true}/>
-							{!this.props.usernameEdit || this.state.editingUsername ? null : <i className='icon mky-icon-edit-sober' onClick={this.toogleEditUsername}></i>}
+							{!this.props.usernameEdit || this.state.editingUsername ? null : <i className='icon mky-icon-pencil' onClick={this.toogleEditUsername}></i>}
 						</div>
 						{ this.props.viewType == 'rightside'
-							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-close-medium'></i></div>
-							: <div className='mky-header-exit' onClick={this.logout}><i className="icon mky-icon-signout-sober"></i></div>
+							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-minimize'></i></div>
+							: <div className='mky-header-exit' onClick={this.logout}><i className="icon mky-icon-signout"></i></div>
 						}
 					</div>
 				</header>

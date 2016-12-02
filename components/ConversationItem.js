@@ -75,7 +75,7 @@ class ConversationItem extends Component {
 							{ Object.keys(this.props.conversation.messages).length
 								? ( this.props.conversation.messages[this.props.conversation.lastMessage]
 									? (this.props.conversation.messages[this.props.conversation.lastMessage].status == 52 && this.props.conversation.messages[this.props.conversation.lastMessage].senderId === this.context.userSession.id
-										? <div className='mky-message-status mky-status-read'><i className='icon mky-icon-check-sober mky-message-read'></i></div>
+										? <div className='mky-message-status mky-status-read'><i className='icon mky-icon-check mky-message-read'></i></div>
 										: ''
 									)
 									: null

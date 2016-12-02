@@ -59,7 +59,7 @@ class AsideConversationInfo extends Component {
 									onBlur={this.handleNameBlur}
 									type='text'
 									disabled={this.state.editingName ? false : true}/>
-								{ this.objectInfo.renameGroup && !this.state.editingName ? <i className='icon mky-icon-edit-sober' onClick={this.toogleEditName}></i> : null }	
+								{ this.objectInfo.renameGroup && !this.state.editingName ? <i className='icon mky-icon-pencil' onClick={this.toogleEditName}></i> : null }	
 							</div>
 						</div>
 					</div>
@@ -70,7 +70,7 @@ class AsideConversationInfo extends Component {
 							<div className='mky-info-conversation-action'>
 								{ this.objectInfo.canAdd 
 									? <div>
-										<i className='icon mky-icon-add-regular'></i> Add {this.objectInfo.users && this.objectInfo.users.length > 0 ? this.objectInfo.subTitle : null }
+										<i className='icon mky-icon-add'></i> Add {this.objectInfo.users && this.objectInfo.users.length > 0 ? this.objectInfo.subTitle : null }
 									</div>
 									: null
 								}
@@ -85,7 +85,7 @@ class AsideConversationInfo extends Component {
 					{ this.objectInfo.button && this.objectInfo.button.text && this.objectInfo.button.func
 						? <button className="mky-info-button" onClick={ () => { this.objectInfo.button.func(this.props.conversationSelected.id) } }>
 								<span className="mky-info-button-text">{this.objectInfo.button.text}</span>
-								<i className={ this.objectInfo.button.class ? this.objectInfo.button.class : 'icon mky-icon-signout-sober mky-info-button-i'}></i>
+								<i className={ this.objectInfo.button.class ? this.objectInfo.button.class : 'icon mky-icon-signout mky-info-button-i'}></i>
 						</button>
 						: null
 					}
