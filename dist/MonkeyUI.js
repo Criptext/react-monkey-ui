@@ -53769,7 +53769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						_react2.default.createElement(
 							"div",
 							{ className: "mky-bubble-circle-icon" },
-							_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icons mky-icon-image-sober", style: this.props.colorButton })
+							_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icons mky-icon-image", style: this.props.colorButton })
 						),
 						_react2.default.createElement(
 							"div",
@@ -53783,7 +53783,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						_react2.default.createElement(
 							"div",
 							{ className: "mky-bubble-circle-icon" },
-							_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-file-sober", style: this.props.colorButton })
+							_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-file", style: this.props.colorButton })
 						),
 						_react2.default.createElement(
 							"div",
@@ -59070,7 +59070,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			_react2.default.createElement(
 				'div',
 				{ className: props.item.read ? "mky-message-read-check mky-status-read" : "mky-message-read-check mky-status-sent" },
-				_react2.default.createElement('i', { className: 'icon mky-icon-check-sober' })
+				_react2.default.createElement('i', { className: 'icon mky-icon-check' })
 			)
 		);
 	};
