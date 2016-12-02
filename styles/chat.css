@@ -1,6 +1,8 @@
 
 /***
 
+FILE: chat.css
+
 TABLE OF CONTENTS
 
 0.- FONT
@@ -56,12 +58,12 @@ TABLE OF CONTENTS
 @charset "UTF-8";
 
 @font-face {
-  font-family: "monkey";
-  src:url("https://cdn.criptext.com/MonkeyUI/font/monkey.eot");
-  src:url("https://cdn.criptext.com/MonkeyUI/font/monkey.eot?#iefix") format("embedded-opentype"),
-    url("https://cdn.criptext.com/MonkeyUI/font/monkey.woff") format("woff"),
-    url("https://cdn.criptext.com/MonkeyUI/font/monkey.ttf") format("truetype"),
-    url("https://cdn.criptext.com/MonkeyUI/font/monkey.svg#monkey") format("svg");
+  font-family: "react-monkey-ui";
+  src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot");
+  src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.woff") format("woff"),
+    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.ttf") format("truetype"),
+    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.svg#monkey") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -71,7 +73,7 @@ TABLE OF CONTENTS
      ----------------------------- */
 
 [data-icon]:before {
-  font-family: "monkey" !important;
+  font-family: "react-monkey-ui" !important;
   content: attr(data-icon);
   font-style: normal !important;
   font-weight: normal !important;
@@ -85,7 +87,7 @@ TABLE OF CONTENTS
 
 [class^="mky-icon-"]:before,
 [class*=" mky-icon-"]:before {
-  font-family: "monkey" !important;
+  font-family: "react-monkey-ui" !important;
   font-style: normal !important;
   font-weight: normal !important;
   font-variant: normal !important;
@@ -96,227 +98,56 @@ TABLE OF CONTENTS
   -moz-osx-font-smoothing: grayscale;
 }
 
-.mky-icon-add-filled:before {
+.mky-icon-arrow-down:before {
   content: "\61";
 }
-.mky-icon-add-regular:before {
+.mky-icon-arrow-up:before {
   content: "\62";
 }
-.mky-icon-arrowback:before {
+.mky-icon-close:before {
   content: "\63";
 }
-.mky-icon-attach-tilt:before {
+.mky-icon-minimize:before {
   content: "\64";
 }
-.mky-icon-attach-regular:before {
+.mky-icon-check:before {
   content: "\65";
 }
-.mky-icon-audio-ephemeral:before {
+.mky-icon-drawer:before {
   content: "\66";
 }
-.mky-icon-back:before {
+.mky-icon-pencil:before {
   content: "\67";
 }
-.mky-icon-check:before {
-  content: "\69";
-}
-.mky-icon-download:before {
-  content: "\6b";
-}
-.mky-icon-edit:before {
-  content: "\6c";
-}
-.mky-icon-copy:before {
-  content: "\6d";
-}
-.mky-icon-share:before {
-  content: "\6e";
-}
-.mky-icon-align-center:before {
-  content: "\6f";
-}
-.mky-icon-align-left:before {
-  content: "\70";
-}
-.mky-icon-align-right:before {
-  content: "\71";
-}
-.mky-icon-bold:before {
-  content: "\76";
-}
-.mky-icon-bulletlist:before {
-  content: "\77";
-}
-.mky-icon-icon-indentlees:before {
-  content: "\41";
-}
-.mky-icon-indent-more:before {
-  content: "\42";
-}
-.mky-icon-italic:before {
-  content: "\43";
-}
-.mky-icon-numberlist:before {
-  content: "\47";
-}
-.mky-icon-remove-formating:before {
-  content: "\48";
-}
-.mky-icon-icon-size:before {
-  content: "\49";
-}
-.mky-icon-textcolor:before {
-  content: "\4a";
-}
-.mky-icon-underline:before {
-  content: "\4b";
-}
-.mky-icon-info:before {
-  content: "\4c";
-}
-.mky-icon-key:before {
-  content: "\4d";
-}
-.mky-icon-location-filled:before {
-  content: "\4e";
-}
-.mky-icon-lock:before {
-  content: "\4f";
-}
-.mky-icon-logout-left:before {
-  content: "\50";
-}
-.mky-icon-logout-right:before {
-  content: "\51";
-}
-.mky-icon-mail:before {
-  content: "\52";
-}
-.mky-icon-menu-hamburguer:before {
-  content: "\53";
-}
-.mky-icon-arrow-down-regular:before {
-  content: "\54";
-}
-.mky-icon-arrow-up-regular:before {
-  content: "\55";
-}
-.mky-icon-mic-empty:before {
-  content: "\56";
-}
-.mky-icon-mic-filled:before {
-  content: "\57";
-}
-.mky-icon-minimize:before {
-  content: "\58";
-}
-.mky-icon-photo:before {
-  content: "\59";
-}
-.mky-icon-image-square:before {
-  content: "\5a";
-}
-.mky-icon-push:before {
-  content: "\31";
-}
-.mky-icon-search:before {
-  content: "\32";
-}
-.mky-icon-send-regular:before {
-  content: "\33";
-}
-.mky-icon-send-filled:before {
-  content: "\34";
-}
-.mky-icon-text-ephemeral:before {
-  content: "\35";
-}
-.mky-icon-timer-regular:before {
-  content: "\36";
-}
-.mky-icon-timer-regular-1:before {
-  content: "\37";
-}
-.mky-icon-timer-filled:before {
-  content: "\38";
-}
-.mky-icon-trashcan-regular:before {
-  content: "\39";
-}
-.mky-icon-trashcan-filled:before {
-  content: "\21";
-}
-.mky-icon-webhook:before {
-  content: "\22";
-}
-.mky-icon-menu-dots-strong:before {
-  content: "\45";
-}
-.mky-icon-menu-dots:before {
-  content: "\46";
-}
-.mky-icon-localization-regular:before {
-  content: "\79";
-}
-.mky-icon-doc-regular:before {
-  content: "\7a";
-}
-.mky-icon-image-regular:before {
-  content: "\44";
-}
-.mky-icon-chats:before {
+.mky-icon-mic:before {
   content: "\68";
 }
-.mky-icon-arrow-up-light:before {
-  content: "\72";
+.mky-icon-send:before {
+  content: "\69";
 }
-.mky-icon-arrow-up-bold:before {
-  content: "\73";
-}
-.mky-icon-arrow-down-bold:before {
-  content: "\23";
-}
-.mky-icon-arrow-down-light:before {
-  content: "\24";
-}
-.mky-icon-close-light:before {
+.mky-icon-image:before {
   content: "\6a";
 }
-.mky-icon-close:before {
-  content: "\74";
+.mky-icon-file:before {
+  content: "\6b";
 }
-.mky-icon-close-medium:before {
-  content: "\75";
+.mky-icon-chat:before {
+  content: "\6c";
 }
-.mky-icon-picture-ephemeral:before {
-  content: "\78";
+.mky-icon-download:before {
+  content: "\6d";
 }
-.mky-icon-drawer-sober:before {
-  content: "\30";
+.mky-icon-signout:before {
+  content: "\6e";
 }
-.mky-icon-file-sober:before {
-  content: "\25";
+.mky-icon-back:before {
+  content: "\6f";
 }
-.mky-icon-image-sober:before {
-  content: "\26";
+.mky-icon-arrow-down-bold:before {
+  content: "\70";
 }
-.mky-icon-mic-sober:before {
-  content: "\27";
-}
-.mky-icon-send-sober:before {
-  content: "\28";
-}
-.mky-icon-signout-sober:before {
-  content: "\29";
-}
-.mky-icon-edit-sober:before {
-  content: "\2a";
-}
-.mky-icon-close-sober:before {
-  content: "\2b";
-}
-.mky-icon-check-sober:before {
-  content: "\2c";
+.mky-icon-add:before {
+  content: "\71";
 }
 
 /* 1.- CONTENT
@@ -585,7 +416,7 @@ TABLE OF CONTENTS
 
 .mky-rightside-option i {
   color: #b2b2b2;
-  font-size: 12px;
+  font-size: 18px;
 }
 
 /* 3.2.- ASIDE
@@ -657,14 +488,14 @@ TABLE OF CONTENTS
   cursor: pointer;
 }
 
-.mky-header-exit .mky-icon-close-medium{
+.mky-header-exit .mky-icon-close{
   color: #6e8191;
   font-size: 14px;
   position: relative;
   top: 12px;
 }
 
-.mky-header-exit .mky-icon-signout-sober{
+.mky-header-exit .mky-icon-signout{
   color: #F35E58;
   font-size: 32px;
   position: relative;
@@ -885,10 +716,14 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-list-header{
-  padding: 15px 10px 10px 10px;
+  background-color: #fbfbfb;
   border-bottom: solid #EAEAEA 1px;
+  color: black;
+  font-family: 'helvetica-light';
+  font-size: 14px;
   font-weight: bold;
-  font-size: 17px;
+  padding: 15px 10px 10px 20px;   
+  text-transform: uppercase;
 }
 
 .mky-not-pressed{
@@ -1336,8 +1171,8 @@ TABLE OF CONTENTS
   color: #6e8191;
   cursor: pointer;
   display: inline-table;
-  font-size: 15px;
-  margin: 20px 10px 0 8px;
+  font-size: 20px;
+  margin: 12px 15px 0 8px;
 }
 
 #mky-conversation-selected-members{
@@ -1489,7 +1324,7 @@ TABLE OF CONTENTS
 
 .mky-chat-timeline-control i{
   height: 12px;
-  color: #000;	
+  color: #999;	
 }
 
 .mky-chat-timeline-conversation{
@@ -1721,23 +1556,23 @@ TABLE OF CONTENTS
 /* base bubble */
 
 .mky-bubble{
-  	box-sizing: content-box;
-  	max-width: 60%;
-  	margin: 0 auto;
-  	width: auto;
-  	min-width: 42px;
-  	min-height: 16px;
-  	/*padding: 8px 10px 6px 14px;*/
-    padding: 12px 12px 9px 12px;
-  	-webkit-border-radius: 15px;
-  	-moz-border-radius: 15px;
-  	border-radius: 15px;
-  	margin-top: 13px;
-  	position: relative;
-  	line-height: 19px;
-    box-shadow: 1px 1px 4px -2px #ccc;
-    -moz-box-shadow: 1px 1px 4px -2px #ccc;
-    -webkit-box-shadow: 1px 1px 4px -2px #ccc;
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px -2px #ccc;
+  box-sizing: content-box;
+  line-height: 19px;
+  margin: 0 auto;
+  margin-top: 13px;
+  max-width: 60%;
+  min-width: 42px;
+  min-height: 16px;
+  padding: 12px 12px 9px 12px;
+  position: relative;
+  width: auto;
+  -moz-border-radius: 15px;
+  -moz-box-shadow: 1px 1px 4px -2px #ccc;
+  -webkit-border-radius: 15px;
+  -webkit-box-shadow: 1px 1px 4px -2px #ccc;
+  -webkit-font-smoothing: antialiased;
 }
 
 .mky-bubble-out{
@@ -1762,7 +1597,7 @@ TABLE OF CONTENTS
 .mky-bubble-text-out {
     color: #fff;
     min-width: 43px;
-    background: #096EFF;
+    background: #2c74c6;
     border-bottom-right-radius: 1px;
     margin-top: 11px;
 }
@@ -1831,22 +1666,39 @@ TABLE OF CONTENTS
   background-position: 50%;
   background-size: 100%;
 }
+
 .mky-bubble-audio-pause-button{
   width: 60px;
   background-position: 50%;
   background-size: 100%;
 }
+
 .mky-bubble-audio-play-button-green{
   background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');
-      background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
 }
+
 .mky-bubble-audio-pause-button-green{
   background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');
-      background-size: 100%;
-    background-repeat: no-repeat;
-    background-position: 50%;
+  background-position: 50%;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.mky-bubble-audio-play-button-blue{
+  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-play-button.png');
+  background-position: 50%;
+  background-size: 99%;
+  background-repeat: no-repeat;
+}
+
+.mky-bubble-audio-pause-button-blue{
+  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-pause-button.png');
+  background-position: 50%;
+  background-size: 99%;
+  background-repeat: no-repeat;
 }
 
 /* file bubble */
@@ -2199,7 +2051,7 @@ TABLE OF CONTENTS
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #00BFA5;
+  background-color: #2c74c6;
   opacity: 0.7;
   position: absolute;
   top: 0;
@@ -2661,9 +2513,7 @@ TABLE OF CONTENTS
      ----------------------------- */
 
 #mky-chat-input{
-  width: 100%;
   box-sizing: content-box;
-  border-top: 1px solid rgba(219,219,219,0.7);
   height: auto;
   margin: 0 auto;
   bottom: 0;
@@ -2671,19 +2521,20 @@ TABLE OF CONTENTS
   line-height: 20px;
   position: relative;
   display: table;
-  background: #eee;
+  background: #FAF8F5;
+  width: 100%;
   z-index: 0;
 }
 
 #mky-chat-inner-input{
-  border: none;
   background: #fff;
+  border: 1px solid rgba(219,219,219,0.7);
   max-height: 70px;
   height: auto;
   border-radius: 8px;
   -moz-border-radius: 8px;
   width: calc(100% - 30px);
-  margin: 10px auto;
+  margin: 3px auto 10px;
   -webkit-border-radius: 8px;
 }
 
@@ -2756,31 +2607,31 @@ TABLE OF CONTENTS
   background-position: center;
 }
 
-.mky-button-input .mky-icon-drawer-sober{
+.mky-button-input .mky-icon-drawer{
   background: none;
-  color: #546E7B;
+  color: #0692df;
   font-size: 32px;
   width: auto;
   height: auto;
 }
 
-.mky-button-input .mky-icon-trashcan-regular{
+.mky-button-input .mky-icon-trashcan{
   background: none;
   color: red;
   padding: 0px 0px;
   font-size: 20px;
 }
 
-.mky-button-input .mky-icon-mic-sober{
+.mky-button-input .mky-icon-mic{
   background: none;
-  color: #546E7B;
+  color: #0692df;
   font-size: 28px;
   width: 28px;
 }
 
-.mky-button-input .mky-icon-send-regular{
+.mky-button-input .mky-icon-send{
   background: none;
-  color: #546E7B;
+  color: #0692df;
   padding: 0px 0px;
   font-size: 20px;
   cursor: pointer;
@@ -2819,9 +2670,9 @@ TABLE OF CONTENTS
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);
 }
 
-.mky-button-input .mky-icon-trashcan-regular:hover,
-.mky-button-input .mky-icon-mic-sober:hover,
-.mky-button-input .mky-icon-send-regular:hover{
+.mky-button-input .mky-icon-trashcan:hover,
+.mky-button-input .mky-icon-mic:hover,
+.mky-button-input .mky-icon-send:hover{
   background: none;
 }
 
@@ -2856,7 +2707,7 @@ TABLE OF CONTENTS
   top: initial;
   max-height: 40px;
   border-radius: 0;
-  border-left: 1px solid #ccc;
+  border-left: 1px solid rgba(219,219,219,0.7);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -webkit-border-radius: 0;
@@ -3376,7 +3227,7 @@ TABLE OF CONTENTS
 }
 
 .mky-spinner-input-audio > div {
-  background-color: #2979ff;
+  background-color: #0692df;
   height: 100%;
   width: 3px;
   display: inline-block;
@@ -3421,15 +3272,15 @@ TABLE OF CONTENTS
 
 .mky-banner-section{
   width: 400px;
-  /*border: 1px solid #ccc;*/
   height: 100%;
   display: inline-block;
   vertical-align: top;
 }
+
 .mky-banner-section img{
   width: 100%;
-  /*height: 100%;*/
 }
+
 .mnk-converstion-divided{
   width: calc(100% - 401px);
   position: relative;
@@ -3439,6 +3290,7 @@ TABLE OF CONTENTS
 aside.aside-divided{
   width: calc(22% - 1px);
 }
+
 .mky-app-intro-divided{
   display: inline-block;
   position: relative !important;
@@ -3449,32 +3301,25 @@ aside.aside-divided{
   width: 78%;
 }
 
-@media only screen and (max-width: 1330px){
-
-  .mky-menu-bubble{
-    margin-left: calc(50% - 435px);
-  }
-}
-
 @media only screen and (max-width: 1135px){
 
   .mky-banner-section{
     width: 250px;
   }
+  
   .mnk-converstion-divided{
     width: calc(100% - 251px);
   }
+  
   .mky-content-window-with.content-window-with-divided{
     width: calc(100% - 241px);
-  }
-  .mky-menu-bubble{
-    margin-left: calc(50% - 375px);
   }
 }
 @media only screen and (max-width: 740px){
   .mky-banner-section{
     display: none;
   }
+  
   .mnk-converstion-divided{
     width: 100%;
   }

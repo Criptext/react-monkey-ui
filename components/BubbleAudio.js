@@ -23,6 +23,7 @@ class BubbleAudio extends Component {
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.updateAnimationBuble = this.updateAnimationBuble.bind(this);
+		this.radioColor = this.props.styles.bubbleColorOut || '#2c74c6';
 	}
 	
 	componentWillMount() {	
@@ -45,8 +46,8 @@ class BubbleAudio extends Component {
                 { this.props.message.data
 	                ? (
                     	<div className={'mky-content-audio-data'}>
-	                        <div ref="mky_bubble_audio_play_button" id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-green'} onClick={this.playAudioBubble} ></div>
-	                        <div ref="mky_bubble_audio_pause_button" id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-green'} onClick={this.pauseAudioBubble} ></div>
+	                        <div ref="mky_bubble_audio_play_button" id={'mky-bubble-audio-play-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-play-button mky-bubble-audio-play-button-blue'} onClick={this.playAudioBubble} ></div>
+	                        <div ref="mky_bubble_audio_pause_button" id={'mky-bubble-audio-pause-button-'+this.messageId} className={'mky-bubble-audio-button mky-bubble-audio-button-'+this.messageId+' mky-bubble-audio-pause-button mky-bubble-audio-pause-button-blue'} onClick={this.pauseAudioBubble} ></div>
 	                        <input ref="mky_bubble_audio_player" id={'mky-bubble-audio-player-'+this.messageId} className='knob second'></input>
 	                        <div className='mky-bubble-audio-timer'>
 	                            <span>{this.state.minutes}</span><span>:</span><span>{this.state.seconds}</span>
@@ -81,22 +82,22 @@ class BubbleAudio extends Component {
 	createAudioPlayer() {
 		if(this.isLoaded){
 			this.isLoaded = false;
-			this.createAudioHandlerBubble(this.props.message.id, Math.round(this.props.message.length ? this.props.message.length : 1));
+			this.createAudioHandlerBubble(this.props.message.id, Math.round(this.props.message.length ? this.props.message.length : 1), this.radioColor);
 			let mkyAudioBubble = this.refs.mky_audio;
 	        $(this.refs.mky_bubble_audio_play_button).show();
-	        $(this.refs.mky_bubble_audio_play_button).prop( "disabled", true );
+	        $(this.refs.mky_bubble_audio_play_button).prop( 'disabled', true );
 			$(this.refs.mky_bubble_audio_pause_button).hide();
 	        if(mkyAudioBubble){
 		        mkyAudioBubble.oncanplay = function() {
-			        $(this.refs.mky_bubble_audio_play_button).prop( "disabled", false );
-	                this.createAudioHandlerBubble(this.messageId,Math.round(mkyAudioBubble.duration));
+			        $(this.refs.mky_bubble_audio_play_button).prop( 'disabled', false );
+	                this.createAudioHandlerBubble(this.messageId, Math.round(mkyAudioBubble.duration), this.radioColor);
 	                this.setDurationTime(this.messageId);
 	            }.bind(this)
 	        }
 		}
 	}
 	
-	createAudioHandlerBubble(timestamp, duration) {
+	createAudioHandlerBubble(timestamp, duration, radioColor) {
 		$(this.refs.mky_bubble_audio_player).knob({
             'min': 0,
             'max': duration,
@@ -106,7 +107,7 @@ class BubbleAudio extends Component {
             'height': 90,
             'displayInput':false,
             'skin':'tron',
-            'fgColor': '#00BFA5',
+            'fgColor': radioColor,
             'thickness': 0.7,
             change : function (value) {
             }

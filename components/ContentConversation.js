@@ -88,7 +88,7 @@ class ContentConversation extends Component {
 						: null
 					}
 					{ this.props.viewType == 'rightside'
-						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-arrow-down-regular'></i></div>
+						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-minimize'></i></div>
 						: null
 					}
 					<div className='mky-signature'>

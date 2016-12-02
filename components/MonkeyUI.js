@@ -43,7 +43,7 @@ class MonkeyUI extends Component {
 		this.state = {
 			conversation: {},
 			contentStyle: undefined,
-			classTabIcon: 'mky-icon-arrow-up-light',
+			classTabIcon: 'mky-icon-arrow-up',
 			isMobile: isMobile.any() ? true : false,
 			showConversations: this.props.showConversations,
 			showBanner: false,
@@ -216,7 +216,7 @@ class MonkeyUI extends Component {
 	                        </div>
 						)
 						: ( this.props.view.type === 'rightside'
-							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-chats'></i></div>
+							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-chat'></i></div>
 							: null
 						)
 					}
@@ -297,7 +297,7 @@ class MonkeyUI extends Component {
 					</div>
 					{ this.props.view.type === 'rightside' && !this.props.userSession
 						? ( <div className='mky-rightside-option'>
-								<div onClick={this.toggleSide}><i className='icon mky-icon-close'></i></div>
+								<div onClick={this.toggleSide}><i className='icon mky-icon-minimize'></i></div>
 							</div>
 						)
 						: null
@@ -329,10 +329,10 @@ class MonkeyUI extends Component {
 	}
 
 	toggleTab() {
-		if(this.state.classTabIcon === 'mky-icon-arrow-up-light'){
+		if(this.state.classTabIcon === 'mky-icon-arrow-up'){
 			this.setState({
 				contentStyle: this.props.view.data,
-				classTabIcon: 'mky-icon-arrow-down-light',
+				classTabIcon: 'mky-icon-arrow-down',
 				wrapperInClass: ''
 			});
 		}else{
@@ -342,7 +342,7 @@ class MonkeyUI extends Component {
 			}
 			this.setState({
 				contentStyle: style,
-				classTabIcon: 'mky-icon-arrow-up-light',
+				classTabIcon: 'mky-icon-arrow-up',
 				wrapperInClass: 'mky-disappear'
 			});
 		}

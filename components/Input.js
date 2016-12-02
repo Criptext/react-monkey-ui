@@ -107,11 +107,11 @@ class Input extends Component {
 						<div id='mky-divider-chat-input'></div>
 						<div className='mky-button-input'>
 							{ this.state.showAttachButton
-								? <i className='mky-button-icon icon mky-icon-drawer-sober' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+								? <i className='mky-button-icon icon mky-icon-drawer' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
 								: null
 							}
 							{ this.state.showCancelAudioButton
-								? <i className='mky-button-icon icon mky-icon-trashcan-regular' onClick={this.handleCancelAudio}></i>
+								? <i className='mky-button-icon icon mky-icon-trashcan' onClick={this.handleCancelAudio}></i>
 								: null
 							}
 						</div>
@@ -147,7 +147,7 @@ class Input extends Component {
 			    							<div className='mky-rect3'></div>
 			    							<div className='mky-rect4'></div>
 			    						</div> )
-									: ( <i className={'mky-button-icon icon mky-icon-mic-sober'+' '+this.state.classAudioButtonAvailable}
+									: ( <i className={'mky-button-icon icon mky-icon-mic'+' '+this.state.classAudioButtonAvailable}
 											style={styleInput.inputRightButton}
 											onClick={this.handleRecordAudio}>
 											<span className='tooltip'>Browser is incompatible to record audio</span>
@@ -156,7 +156,7 @@ class Input extends Component {
 								: null
 							}
 							{ this.state.showSendButton
-								? <i className='mky-button-icon icon mky-icon-send-regular' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
+								? <i className='mky-button-icon icon mky-icon-send' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
 								: null
 							}
 						</div>
