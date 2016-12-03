@@ -1849,10 +1849,10 @@ TABLE OF CONTENTS
 }
 
 .mky-bubble-out .mky-message-option{
-  background: #096EFF; /* For browsers that do not support gradients */
-  background: -moz-linear-gradient(45deg, rgba(9,110,255,0) 0%, rgb(9, 110, 255) 99%); 
-  background: -webkit-linear-gradient(45deg, rgba(9,110,255,0) 0%,rgb(9, 110, 255) 99%); 
-  background: linear-gradient(45deg, rgba(9,110,255,0) 0%,rgb(9, 110, 255) 99%); 
+  background: #2c74c6; /* For browsers that do not support gradients */
+  background: -moz-linear-gradient(45deg, rgba(44, 116, 198,0) 0%, rgb(44, 116, 198) 99%); 
+  background: -webkit-linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); 
+  background: linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); 
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00096eff', endColorstr='#1e5799',GradientType=1 );
   border-top-right-radius: 15px;
 }
@@ -2316,9 +2316,11 @@ TABLE OF CONTENTS
   background-size: 100%;
 }
 
+/*
 .mky-icon-image{
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);
 }
+*/
 
 .mky-icon-audio{
   background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);
