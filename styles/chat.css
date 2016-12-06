@@ -3812,26 +3812,12 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
 /* 3.6.- RECONNECT
    ----------------------------- */
    
-.mky-reconnect{
+.mky-content-overlay{
   bottom: 0;
   height: calc(100% - 65px);
   position: absolute;
   width: 100%;
 }
-
-.mky-reconnect-form{
-  bottom: 90px;
-  position: absolute;
-  width: 100%;
-}
-
-.mky-reconnect-form form{
-  text-align: center;
-}
-
-.mky-reconnect-description{
-  font-size: 12px;
-} 
   
 /* 4.- MODAL
    ----------------------------- */

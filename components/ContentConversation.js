@@ -121,10 +121,10 @@ class ContentConversation extends Component {
 						</div>
 					)
 				}
-				{ this.props.askReconnect && this.context.options.window.reconnect.onReconnect
-					? <ContentReconnect
-						onReconnect={this.context.options.window.reconnect.onReconnect} 
-						description={this.context.options.window.reconnect.description}/>
+				{ this.props.askReconnect
+					? <div className='mky-content-overlay'> 
+						{this.props.askReconnect}
+					</div>
 					: null
 				}
 			</div>
