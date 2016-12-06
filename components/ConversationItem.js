@@ -2,27 +2,6 @@ import React, { Component } from 'react'
 import Badge from './Badge.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
 
-const isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-}
-
 class ConversationItem extends Component {
 	constructor(props, context) {
 		super(props, context);
@@ -110,7 +89,7 @@ class ConversationItem extends Component {
 	}
 
 	openConversation() {
-		if(isMobile.any()){
+		if(this.props.isMobile){
 			return;
 		}
 		this.props.conversationIdSelected(this.props.conversation.id);
@@ -126,7 +105,7 @@ class ConversationItem extends Component {
 
 	handleTouchStart(event){
 		event.stopPropagation();
-		if(!isMobile.any()){
+		if(!this.props.isMobile){
 			return;
 		}
 		this.setState({

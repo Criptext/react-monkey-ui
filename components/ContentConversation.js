@@ -20,7 +20,7 @@ class ContentConversation extends Component {
 		}
 		this.classExpand = '' ;
 		this.classStateChat = '';
-		this.conversationBannerClass= this.props.showBanner && !this.props.isMobile ? 'mnk-converstion-divided' : ''
+		this.conversationBannerClass= this.props.showBanner && !this.props.compactView ? 'mnk-converstion-divided' : ''
 		
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -45,7 +45,7 @@ class ContentConversation extends Component {
 	render() {
 
 		if(this.props.showAsideInfo){
-			if(this.props.isMobile || this.props.viewType != 'fullscreen'){
+			if(this.props.compactView || this.props.viewType != 'fullscreen'){
 				this.classExpand = 'mky-disappear';
 			}else{
 				this.classExpand = 'mky-content-conversation-no-expand';
@@ -68,7 +68,7 @@ class ContentConversation extends Component {
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
 				<header className='mky-conversation-selected-header'>
-					{ this.props.isMobile && this.props.haveConversations
+					{ this.props.compactView && this.props.haveConversations
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back'></i></div>
 						: null
 					}
@@ -159,7 +159,7 @@ class ContentConversation extends Component {
 	}
 
 	showAside() {
-		if (this.props.isMobile) {
+		if (this.props.compactView) {
 			this.props.expandAside(true);
 			this.props.conversationClosed();
 		}
