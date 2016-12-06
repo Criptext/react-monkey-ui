@@ -59,7 +59,7 @@ class ContentConversation extends Component {
 			modalComponent = <Modal_ message={this.state.messageSelected} closeModal={this.handleCloseModal}/>
 		}
 		
-		if(this.props.askReconnect && this.context.options.window.reconnect.onReconnect){
+		if(this.props.overlayView){
 			this.classStateChat = 'mky-disabled';
 		}else{
 			this.classStateChat = '';
@@ -121,9 +121,9 @@ class ContentConversation extends Component {
 						</div>
 					)
 				}
-				{ this.props.askReconnect
+				{ this.props.overlayView
 					? <div className='mky-content-overlay'> 
-						{this.props.askReconnect}
+						{this.props.overlayView}
 					</div>
 					: null
 				}

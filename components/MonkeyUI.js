@@ -116,20 +116,6 @@ class MonkeyUI extends Component {
 					optionsToOutgoing: undefined
 				}
 			}
-			
-			if(!this.props.options.window){
-				this.props.options.window = {
-					reconnect: {
-						onReconnect: undefined,
-						description: undefined
-					}
-				}
-			}else if(!this.props.options.window.reconnect){
-				this.props.options.window.reconnect = {
-					onReconnect: undefined,
-					description: undefined
-				}
-			}
 				
 		}
 		
@@ -285,7 +271,7 @@ class MonkeyUI extends Component {
         							getConversationInfo = {this.props.onConversationLoadInfo}
         							showOptionList = {this.handleShowOptionList}
         							messageSelectedInfo = {this.props.messageLoadInfo}
-        							askReconnect = {this.props.askReconnect}/>
+        							overlayView = {this.props.overlayView}/>
 							</div>
 							)
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -528,12 +514,6 @@ MonkeyUI.defaultProps = {
 		message: {
 			optionsToIncoming: undefined,
 			optionsToOutgoing: undefined
-		},
-		window: {
-			reconnect: {
-				onReconnect: undefined,
-				description: undefined
-			}
 		}
 	},
 	askReconnect: false,
