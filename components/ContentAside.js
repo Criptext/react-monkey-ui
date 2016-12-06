@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom'
 class ContentAside extends Component {
 	constructor(props, context) {
 		super(props, context);
-		this.classContent = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-no-expand';
+		this.classContent = this.props.compactView ? 'mky-expand-each-screen' : 'mky-no-expand';
 		this.classContentt = this.props.showBanner ? 'aside-divided' : '';
 		this.state = {
 			editingUsername: false, 
@@ -48,6 +48,7 @@ class ContentAside extends Component {
 					</div>
 				</header>
 				<ConversationListsContainer customLoader = {this.props.customLoader}
+					compactView = {this.props.compactView}
 					isMobile = {this.props.isMobile}
 					asidePanelParams = {this.props.asidePanelParams}
 					connectionStatus={this.props.connectionStatus}

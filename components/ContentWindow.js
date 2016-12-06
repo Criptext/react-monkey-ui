@@ -11,9 +11,9 @@ class ContentWindow extends Component {
 			showAsideInfo: false,
 			typeAsideInfo: ''
 		}
-		this.classExpand = this.props.isMobile ? 'mky-expand-each-screen' : 'mky-content-window-with';
+		this.classExpand = this.props.compactView ? 'mky-expand-each-screen' : 'mky-content-window-with';
 		this.classStateWindow = '';
-		this.classWithBanner = this.props.showBanner && !this.props.isMobile ? 'content-window-with-divided' : '';
+		this.classWithBanner = this.props.showBanner && !this.props.compactView ? 'content-window-with-divided' : '';
 		this.toggleConversationHeader = this.toggleConversationHeader.bind(this);
 	}
 
@@ -59,7 +59,7 @@ class ContentWindow extends Component {
 		    		conversationSelected = {this.props.conversationSelected}
 		    		conversationClosed = {this.props.conversationClosed}
 		    		messageCreated = {this.props.messageCreated}
-		    		isMobile = {this.props.isMobile}
+		    		compactView = {this.props.compactView}
 		    		isPartialized = {this.props.isPartialized}
 		    		expandAside = {this.props.expandAside}
 		    		onClickMessage = {this.props.onClickMessage}
@@ -70,12 +70,12 @@ class ContentWindow extends Component {
 		    		version = {this.props.version}
 		    		showOptionList = {this.props.showOptionList}
 		    		overlayView = {this.props.overlayView}/>
-		    	: <ContentIntro isMobile = {this.props.isMobile} showBanner = {this.props.showBanner}/>
+		    	: <ContentIntro isMobile = {this.props.compactView} showBanner = {this.props.showBanner}/>
 	    	}
 	    	{ this.state.showAsideInfo
 		    	? <ContentInfo toggleConversationHeader = {this.toggleConversationHeader}
 		    		viewType = {this.props.viewType}
-		    		isMobile = {this.props.isMobile}
+		    		compactView = {this.props.compactView}
 		    		conversationSelected = {this.props.conversationSelected}
 		    		typeAsideInfo = {this.state.typeAsideInfo}
             		getConversationInfo = {this.props.getConversationInfo}
@@ -84,7 +84,7 @@ class ContentWindow extends Component {
 		    		getUser = {this.props.getUser}/>
             	: null
 	    	}
-			{ this.props.showBanner && !this.props.isMobile ?
+			{ this.props.showBanner && !this.props.compactView ?
 				<ContentBanner />
 				: null
 			}

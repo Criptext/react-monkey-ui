@@ -47,6 +47,7 @@ class ConversationListsContainer extends Component {
 		    			</div>
 		    			: null}
 		    			<ConversationList customLoader = {this.props.customLoader}
+							compactView = {this.props.compactView}
 							isMobile = {this.props.isMobile}
 							asidePanelParams = {this.props.asidePanelParams}
 							connectionStatus={this.props.connectionStatus}
@@ -68,7 +69,7 @@ class ConversationListsContainer extends Component {
 
 		    			{ this.props.alternateConversations != null 
 		    			? <ConversationList customLoader = {this.props.customLoader}
-							isMobile = {this.props.isMobile}
+							compactView = {this.props.compactView}
 							asidePanelParams = {this.props.asidePanelParams}
 							connectionStatus={this.props.connectionStatus}
 							isLoadingConversations={this.props.isLoadingConversations}

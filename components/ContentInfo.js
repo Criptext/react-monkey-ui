@@ -7,7 +7,7 @@ import { isConversationGroup } from '../utils/monkey-utils.js'
 class ContentInfo extends Component {
 	constructor(props) {
 		super(props);
-		this.classExpand = this.props.isMobile || this.props.viewType != "fullscreen" ? 'mky-content-info-expand' : 'mky-content-info-no-expand';
+		this.classExpand = this.props.compactView || this.props.viewType != 'fullscreen' ? 'mky-content-info-expand' : 'mky-content-info-no-expand';
 	}
 
 	componentWillMount() {

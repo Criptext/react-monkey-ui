@@ -44,14 +44,15 @@ class MonkeyUI extends Component {
 			conversation: {},
 			contentStyle: undefined,
 			classTabIcon: 'mky-icon-arrow-up',
-			isMobile: isMobile.any() ? true : false,
 			showConversations: this.props.showConversations,
 			showBanner: false,
 			wrapperInClass: '',
 			showPopUp: false,
 			showAsideInfo: false,
-			typeAsideInfo: ''
+			typeAsideInfo: '',
+			compactView: isMobile.any() ? true : false
 		}
+		this.isMobile = isMobile.any() ? true : false;
 		this.lastNotifyTime = 0;
 		this.firstNotifyTime = 0;
 		this.notifyTimeout = null;
@@ -141,7 +142,7 @@ class MonkeyUI extends Component {
 		    }
 		}else{
 			screenMode = 'partialsize';
-			style.width = this.props.view.type === 'rightside' ? this.props.sideWidth : this.props.view.data.width;
+			style.width = this.props.view.type === 'rightside' ? this.props.sideWidth : (this.isMobile ? 'calc(100% - 20px)' : this.props.view.data.width);
 			style.height = this.props.view.type === 'classic' ? this.props.tabHeight : this.props.view.data.height;
 		}
 
@@ -151,6 +152,7 @@ class MonkeyUI extends Component {
 			this.haveConversations = false;
 			this.setState({
 				showConversations: false,
+				compactView: true,
 				contentStyle: style,
 				wrapperInClass: 'mky-disappear'
 			});
@@ -160,7 +162,7 @@ class MonkeyUI extends Component {
 	    if (this.props.view.type === 'rightside') {
 	    	this.setState({
 		    	showConversations: this.props.showConversations,
-		    	isMobile: true,
+		    	compactView: true,
 		    	contentStyle: style,
 		    	wrapperInClass: 'mky-disappear'
 		    });
@@ -173,16 +175,16 @@ class MonkeyUI extends Component {
 		this.setState({alternateConversations: nextProps.alternateConversations});
 
 		if (this.props.conversation && nextProps.conversation){
-			if (this.state.isMobile && this.props.conversation.id !== nextProps.conversation.id) {
-				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
+			if (this.state.compactView && this.props.conversation.id !== nextProps.conversation.id) {
+				this.setState({showConversations: false}); //escondiendo el aside(list conversation) solo cuando esta en compact view
 				if(this.state.wrapperInClass === 'mky-disappear'){
 					this.toggleSide();
 				}
 			}
 		}else if(!this.props.conversation && nextProps.conversation) {
-			if (this.state.isMobile) {
-				this.setState({showConversations:false}); //escondiendo el aside solo cuando esta en mobile
-				if(this.state.wrapperInClass === 'mky-disappear'){
+			if (this.state.compactView) {
+				this.setState({showConversations: false}); //escondiendo el aside(list conversation) solo cuando esta en compact view
+				if(this.state.wrapperInClass === 'mky-disappear' && this.props.view.type === 'rightside'){
 					this.toggleSide();
 				}
 			}
@@ -237,7 +239,8 @@ class MonkeyUI extends Component {
 										conversationSelected={this.props.conversation}
 										showBanner={this.state.showBanner}
 										show={this.showListConversation}
-										isMobile={this.state.isMobile}
+										compactView={this.state.compactView}
+										isMobile={this.isMobile}
 										closeSide={this.toggleSide}
 										conversationsLoading={this.props.conversationsLoading}
                     					viewType={this.props.view.type}
@@ -257,7 +260,7 @@ class MonkeyUI extends Component {
 									messageCreated={this.handleMessageCreated}
 									expandWindow={this.expandWindow}
 									expandAside={this.handleShowAside}
-									isMobile={this.state.isMobile}
+									compactView={this.state.compactView}
 									isPartialized={this.classContent}
 									showBanner={this.state.showBanner}
 									onClickMessage={this.props.onClickMessage}
@@ -316,14 +319,18 @@ class MonkeyUI extends Component {
 
 	toggleTab() {
 		if(this.state.classTabIcon === 'mky-icon-arrow-up'){
+			let style = {
+				width: this.isMobile ? 'calc(100% - 20px)' : this.props.view.data.width,
+				height: this.isMobile ? 'calc(100% - 10px)' : this.props.view.data.height
+			}
 			this.setState({
-				contentStyle: this.props.view.data,
+				contentStyle: style,
 				classTabIcon: 'mky-icon-arrow-down',
 				wrapperInClass: ''
 			});
 		}else{
 			let style = {
-				width: this.props.view.data.width,
+				width: this.isMobile ? 'calc(100% - 20px)' : this.props.view.data.width,
 				height: this.props.tabHeight
 			}
 			this.setState({
@@ -336,8 +343,12 @@ class MonkeyUI extends Component {
 
 	toggleSide() {
 		if(this.state.contentStyle.width === 0){
+			let style = {
+				width: this.isMobile ? '100%' : this.props.view.data.width,
+				height: this.isMobile ? '100%' : this.props.view.data.height
+			}
 			this.setState({
-				contentStyle: this.props.view.data,
+				contentStyle: style,
 				wrapperInClass: ''
 			});
 		}else{
@@ -398,8 +409,8 @@ class MonkeyUI extends Component {
 	}
 
 	handleShowAside(){
-		if (this.state.isMobile) {
-			this.setState({ showConversations: true }); //mostrando el aside solo cuando esta en mobile
+		if (this.state.compactView) {
+			this.setState({ showConversations: true }); //mostrando el aside(list conversation) solo cuando esta en compact view
 		}
 	}
 

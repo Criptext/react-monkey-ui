@@ -488,11 +488,9 @@ TABLE OF CONTENTS
   cursor: pointer;
 }
 
-.mky-header-exit .mky-icon-close{
+.mky-header-exit .mky-icon-minimize{
   color: #6e8191;
-  font-size: 14px;
-  position: relative;
-  top: 12px;
+  font-size: 20px;
 }
 
 .mky-header-exit .mky-icon-signout{
@@ -4273,7 +4271,7 @@ input:focus{
   .mky-signature{
     margin-right: 9px;
   }
-  .mky-conversation-selected-header div{
+  .mky-conversation-selected-header .mky-signature{
     font-size: 10px;
   }
 }
