@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AsidePanel from './AsidePanel.js'
 import ConversationList from './ConversationList.js';
 import SearchInput, {createFilter} from 'react-search-input'
-import ReactDOM from 'react-dom'
+import {IntlProvider, FormattedMessage} from 'react-intl'
 
 class ConversationListsContainer extends Component {
 
@@ -23,7 +23,6 @@ class ConversationListsContainer extends Component {
 
     	return (
     		<div className='mky-session-conversations'>
-
     			{ this.state.isDeleting
 	    			? <DeleteConversation handleDeleteConversation={this.handleDeleteConversation}
 	    				handleExitGroup={this.handleExitGroup}
@@ -31,12 +30,10 @@ class ConversationListsContainer extends Component {
 	    				isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null 
 	    		}
-
     			{ this.props.conversationSelected == null
 	    			? <AsidePanel panelParams={this.props.asidePanelParams} />
 					: null
     			}
-
 	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
 	    		{ this.props.conversationsLoading
 		    		? <Loading customLoader={this.props.customLoader} />
@@ -82,10 +79,8 @@ class ConversationListsContainer extends Component {
 							searchTerm = {this.state.searchTerm}
 							alternativeList = {true}/>
 		    			: null }
-						
 					</div>
 	    		}
-
 			</div>
 		)
 	}
@@ -95,7 +90,7 @@ class ConversationListsContainer extends Component {
     	if(typeof this.props.searchUpdated != "undefined"){
     		this.props.searchUpdated(term)
     	}
-  	}
+	}
 
 }
 
@@ -124,10 +119,5 @@ const Loading = (props) => <div className='mky-loader-ring'>
 		</div>
 	}
 </div>
-
-/*const Loading = () => <div className='mky-loader-ring'>
-	<div className='mky-loader-ring-light'></div>
-	<img className='mky-loading-icon-inside' src='http://cdn.criptext.com/messenger/criptextGradientLogo.png'></img>
-</div>*/
 
 export default ConversationListsContainer;
