@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import Lang from '../lang'
 
 class InputMenu extends React.Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 	}
 
 	render() {
@@ -13,21 +14,23 @@ class InputMenu extends React.Component {
 				<div className="mky-menu-bubble-item" onClick={this.props.handleAttach}>
 					<div className="mky-bubble-circle-icon">
 						<i id="mky-menu-attach-icon" className="icons mky-icon-image" style={this.props.colorButton}></i>
-
 					</div>
-					<div className="mky-bubble-title">Image</div>
+					<div className="mky-bubble-title">{Lang[this.context.lang]['button.image.text']}</div>
 				</div>
 				<div className="mky-menu-bubble-item" onClick={this.props.handleAttachFile}>
 					<div className="mky-bubble-circle-icon">
 						<i id="mky-menu-attach-file" className="icon mky-icon-file" style={this.props.colorButton}></i>
-
 					</div>
-					<div className="mky-bubble-title">File</div>
+					<div className="mky-bubble-title">{Lang[this.context.lang]['button.file.text']}</div>
 				</div>
 				<div id="mky-layer-menu" onClick={this.props.toggleVisibility} ></div>
 			</div>
 		)
 	}
+}
+
+InputMenu.contextTypes = {
+    lang: React.PropTypes.string.isRequired
 }
 
 export default InputMenu;

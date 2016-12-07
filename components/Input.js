@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom'
 import { getExtention } from '../utils/monkey-utils.js'
 import styles from '../styles/animate.min.css' // from ReactToastr
 import Textarea from 'react-autosize-textarea'
+import Lang from '../lang'
 
 import { ToastContainer, ToastMessage } from 'react-toastr'
 const ToastMessageFactory = React.createFactory(ToastMessage.animation);
@@ -119,7 +120,7 @@ class Input extends Component {
 							? ( <Textarea ref='textareaInput'
 									className='mky-textarea-input'
 									value={this.state.text}
-									placeholder='Write a secure message'
+									placeholder={Lang[this.context.lang]['input.textarea.placeholder']}
 									onKeyDown={this.handleOnKeyDownTextArea}
 									onChange={this.handleOnChangeTextArea}>
 								</Textarea> )
@@ -150,7 +151,7 @@ class Input extends Component {
 									: ( <i className={'mky-button-icon icon mky-icon-mic'+' '+this.state.classAudioButtonAvailable}
 											style={styleInput.inputRightButton}
 											onClick={this.handleRecordAudio}>
-											<span className='tooltip'>Browser is incompatible to record audio</span>
+											<span className='tooltip'>{Lang[this.context.lang]['button.recordaudio.tooltip']}</span>
 										</i> )
 								)
 								: null
@@ -586,7 +587,8 @@ class Input extends Component {
 }
 
 Input.contextTypes = {
-    styles: React.PropTypes.object.isRequired
+    styles: React.PropTypes.object.isRequired,
+    lang: React.PropTypes.string.isRequired
 }
 
 export default Input;

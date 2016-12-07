@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import InfoItem from './InfoItem.js';
+import InfoItem from './InfoItem.js'
 import { isConversationGroup } from '../utils/monkey-utils.js'
+import Lang from '../lang'
 
 class AsideConversationInfo extends Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.objectInfo = {};
 		this.state = {
 			editingName: false, 
@@ -39,7 +40,7 @@ class AsideConversationInfo extends Component {
 				<header className='mky-info-header'>
 					<div className='mky-info-close' onClick={ () => {this.props.toggleConversationHeader('conversation')} }><i className='icon mky-icon-close'></i></div>
 					<div className='mky-info-header-description'>
-						<span className='mky-info-header-title mky-ellipsify'>{this.objectInfo.title ? this.objectInfo.title : 'Information'}</span>
+						<span className='mky-info-header-title mky-ellipsify'>{this.objectInfo.title ? this.objectInfo.title : Lang[this.context.lang]['title.information']}</span>
 						<span className='mky-info-header-subtitle'></span>
 					</div>
 				</header>
@@ -49,7 +50,7 @@ class AsideConversationInfo extends Component {
 					</div>
 					<div className='mky-info-conversation-description mky-info-conversation-data'>
 						<div className='mky-info-conversation-header'>
-							<label className='mky-info-conversation-title'>{isConversationGroup(this.props.conversationSelected.id) ? 'Group name' : 'Name'}</label>
+							<label className='mky-info-conversation-title'>{isConversationGroup(this.props.conversationSelected.id) ? Lang[this.context.lang]['title.groupname'] : Lang[this.context.lang]['title.name']}</label>
 							<div className='mky-info-conversation-action'>
 								<input ref='nameChange'
 									className='mky-info-input'
@@ -143,6 +144,10 @@ class AsideConversationInfo extends Component {
 	handleErrorAvatar() {
 		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
+}
+
+AsideConversationInfo.contextTypes = {
+    lang: React.PropTypes.string.isRequired
 }
 
 export default AsideConversationInfo;

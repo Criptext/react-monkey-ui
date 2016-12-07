@@ -89,6 +89,7 @@ class MonkeyUI extends Component {
 		    },
 		    styles: this.props.styles != null ? this.props.styles : {},
 		    options: this.formOptions(),
+		    lang: this.props.lang,
 		    extraChat: this.props.chatExtraData
 		}
 	}
@@ -527,7 +528,7 @@ MonkeyUI.defaultProps = {
 			optionsToOutgoing: undefined
 		}
 	},
-	askReconnect: false,
+	lang: 'en',
 	chatExtraData: {}
 }
 
@@ -536,6 +537,7 @@ MonkeyUI.childContextTypes = {
 	bubbles: React.PropTypes.object,
 	bubblePreviews: React.PropTypes.object,
 	styles: React.PropTypes.object,
+	lang: React.PropTypes.string,
 	options: React.PropTypes.object,
 	extraChat: React.PropTypes.object
 }

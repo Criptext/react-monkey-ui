@@ -47,8 +47,5 @@
   },
   "peerDependencies": {
     "react": "^0.14.0 || ^15.2.1"
-  },
-  "dependencies": {
-    "react-intl": "^2.1.5"
   }
 }

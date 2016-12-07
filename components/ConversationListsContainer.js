@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import AsidePanel from './AsidePanel.js'
-import ConversationList from './ConversationList.js';
+import ConversationList from './ConversationList.js'
 import SearchInput, {createFilter} from 'react-search-input'
-import {IntlProvider, FormattedMessage} from 'react-intl'
+import Lang from '../lang'
 
 class ConversationListsContainer extends Component {
 
@@ -34,12 +34,12 @@ class ConversationListsContainer extends Component {
 	    			? <AsidePanel panelParams={this.props.asidePanelParams} />
 					: null
     			}
-	    		<SearchInput className='mky-search-input' placeholder='Search for existing conversation' onChange={this.searchUpdated} />
+	    		<SearchInput className='mky-search-input' placeholder={Lang[this.context.lang]['input.search.placeholder']} onChange={this.searchUpdated} />
 	    		{ this.props.conversationsLoading
 		    		? <Loading customLoader={this.props.customLoader} />
-		    		: <div className="mky-dflex-dcolumn">
+		    		: <div className='mky-dflex-dcolumn'>
 		    			{ this.props.alternateConversations != null 
-		    			? <div className="mky-conversation-list-header">
+		    			? <div className='mky-conversation-list-header'>
 		    				{this.context.options.conversation.header1}
 		    			</div>
 		    			: null}
@@ -59,7 +59,7 @@ class ConversationListsContainer extends Component {
 							alternativeList = {false}/>
 
 						{ this.props.alternateConversations != null 
-		    			? <div className="mky-conversation-list-header">
+		    			? <div className='mky-conversation-list-header'>
 		    				{this.context.options.conversation.header2}
 		    			</div>
 		    			: null}
@@ -87,7 +87,7 @@ class ConversationListsContainer extends Component {
 
 	searchUpdated(term) {
     	this.setState({searchTerm: term});
-    	if(typeof this.props.searchUpdated != "undefined"){
+    	if(typeof this.props.searchUpdated != 'undefined'){
     		this.props.searchUpdated(term)
     	}
 	}
@@ -96,6 +96,7 @@ class ConversationListsContainer extends Component {
 
 ConversationListsContainer.contextTypes = {
     options: React.PropTypes.object.isRequired,
+    lang: React.PropTypes.string.isRequired
 }
 
 const Loading = (props) => <div className='mky-loader-ring'>

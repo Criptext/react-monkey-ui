@@ -7,6 +7,7 @@ import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
 import ContentReconnect from './ContentReconnect'
 import { defineTime, defineTimeByToday, defineTimeByDay, isConversationGroup } from '../utils/monkey-utils.js'
+import Lang from '../lang'
 
 const Modal_ = Modal(ContentViewer);
 
@@ -78,13 +79,13 @@ class ContentConversation extends Component {
 						{ this.props.conversationSelected.description != null
 							? <span className='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
 							: ( !this.props.conversationSelected.online
-								? <span className='mky-conversation-selected-status'> {'Last seen ' + defineTimeByDay(this.props.conversationSelected.lastSeen)}</span>
-								: <span className='mky-conversation-selected-status'> Online </span>
+								? <span className='mky-conversation-selected-status'> {Lang[this.context.lang]['status.lastseen'] +' ' + defineTimeByDay(this.props.conversationSelected.lastSeen)}</span>
+								: <span className='mky-conversation-selected-status'>{Lang[this.context.lang]['status.online']}</span>
 							)
 						}
 					</div>
 					{ this.context.options.conversation.onEnd
-						? <input className='mky-button-standard' type='submit' value='End Chat' id='mky-end-chat' onClick={this.handleEndConversation}></input>
+						? <input className='mky-button-standard' type='submit' value={Lang[this.context.lang]['button.endchat.text']} id='mky-end-chat' onClick={this.handleEndConversation}></input>
 						: null
 					}
 					{ this.props.viewType == 'rightside'
@@ -184,7 +185,8 @@ class ContentConversation extends Component {
 
 ContentConversation.contextTypes = {
 	bubblePreviews: React.PropTypes.object.isRequired,
-	options: React.PropTypes.object.isRequired
+	options: React.PropTypes.object.isRequired,
+	lang: React.PropTypes.string.isRequired
 }
 
 export default ContentConversation;

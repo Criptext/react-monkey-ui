@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import InfoItem from './InfoItem.js';
+import InfoItem from './InfoItem.js'
 import { defineDate, isConversationGroup, defineTime } from '../utils/monkey-utils.js'
+import Lang from '../lang'
 
 import Bubble from './Bubble.js';
 import BubbleText from './BubbleText.js';
@@ -17,8 +18,8 @@ const BubbleAudio_ = Bubble(BubbleAudio);
 const BubbleContact_ = Bubble(BubbleContact);
 
 class AsideMessageInfo extends Component {
-	constructor(props) {
-		super(props);
+	constructor(props, context) {
+		super(props, context);
 		this.objectInfo = {};
 		this.state = {
 			editingName: false, 
@@ -28,14 +29,6 @@ class AsideMessageInfo extends Component {
 		this.closeAside = this.closeAside.bind(this);
 	}
 
-	componentWillMount(){
-
-	}
-
-	componentWillReceiveProps(nextProps) {
-
-	}
-
 	render() {
     	return (
 			<div className='mky-info-conversation'>
@@ -43,7 +36,7 @@ class AsideMessageInfo extends Component {
 					<div className='mky-info-close' onClick={this.closeAside}><i className='icon mky-icon-close'></i></div>
 					<div className='mky-info-header-message'>
 						<span className='mky-info-message-title mky-ellipsify'>Message Info</span>
-						<span className='mky-info-message-subtitle'>Sent {defineDate(this.props.messageSelectedInfo.message.datetimeCreation)} at {defineTime(this.props.messageSelectedInfo.message.datetimeCreation)}</span>
+						<span className='mky-info-message-subtitle'>{ Lang[this.context.lang]['title.sent'] + ' ' + defineDate(this.props.messageSelectedInfo.message.datetimeCreation) + ' ' + Lang[this.context.lang]['text.at'] + ' ' + defineTime(this.props.messageSelectedInfo.message.datetimeCreation)}</span>
 					</div>
 				</header>
 				<div className='mky-info-container'>
@@ -52,7 +45,7 @@ class AsideMessageInfo extends Component {
 					</div>
 					<div className='mky-info-conversation-description mky-info-conversation-members'>
 						<div className='mky-info-conversation-header'>
-							<label className='mky-info-conversation-title mky-ellipsify'>Read by:</label>
+							<label className='mky-info-conversation-title mky-ellipsify'>{Lang[this.context.lang]['title.readby'] + ':'}</label>
 						</div>
 						<div className='mky-info-conversation-container'>
 							<ul className='mky-info-conversation-list'>
@@ -142,9 +135,8 @@ class AsideMessageInfo extends Component {
 
 AsideMessageInfo.contextTypes = {
     userSession: React.PropTypes.object.isRequired,
-    bubbles: React.PropTypes.object.isRequired,
     styles: React.PropTypes.object.isRequired,
-    options: React.PropTypes.object.isRequired
+	lang: React.PropTypes.string.isRequired
 }
 
 const MessageInfoUser = (props) => <li className='mky-info-conversation-member'>

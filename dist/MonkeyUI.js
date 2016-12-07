@@ -97,51 +97,51 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ContentAside2 = _interopRequireDefault(_ContentAside);
 
-	var _ContentWindow = __webpack_require__(283);
+	var _ContentWindow = __webpack_require__(284);
 
 	var _ContentWindow2 = _interopRequireDefault(_ContentWindow);
 
-	var _ContentLogin = __webpack_require__(339);
+	var _ContentLogin = __webpack_require__(340);
 
 	var _ContentLogin2 = _interopRequireDefault(_ContentLogin);
 
-	var _Bubble = __webpack_require__(288);
+	var _Bubble = __webpack_require__(289);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _BubbleText = __webpack_require__(289);
+	var _BubbleText = __webpack_require__(290);
 
 	var _BubbleText2 = _interopRequireDefault(_BubbleText);
 
-	var _BubbleImage = __webpack_require__(298);
+	var _BubbleImage = __webpack_require__(299);
 
 	var _BubbleImage2 = _interopRequireDefault(_BubbleImage);
 
-	var _BubbleFile = __webpack_require__(300);
+	var _BubbleFile = __webpack_require__(301);
 
 	var _BubbleFile2 = _interopRequireDefault(_BubbleFile);
 
-	var _BubbleAudio = __webpack_require__(301);
+	var _BubbleAudio = __webpack_require__(302);
 
 	var _BubbleAudio2 = _interopRequireDefault(_BubbleAudio);
 
-	var _ContentViewer = __webpack_require__(331);
+	var _ContentViewer = __webpack_require__(332);
 
 	var _ContentViewer2 = _interopRequireDefault(_ContentViewer);
 
-	var _MyForm = __webpack_require__(340);
+	var _MyForm = __webpack_require__(341);
 
 	var _MyForm2 = _interopRequireDefault(_MyForm);
 
-	var _PopUp = __webpack_require__(336);
+	var _PopUp = __webpack_require__(337);
 
 	var _PopUp2 = _interopRequireDefault(_PopUp);
 
-	var _ContentLogOut = __webpack_require__(337);
+	var _ContentLogOut = __webpack_require__(338);
 
 	var _ContentLogOut2 = _interopRequireDefault(_ContentLogOut);
 
-	var _chat = __webpack_require__(343);
+	var _chat = __webpack_require__(344);
 
 	var _chat2 = _interopRequireDefault(_chat);
 
@@ -234,6 +234,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					},
 					styles: this.props.styles != null ? this.props.styles : {},
 					options: this.formOptions(),
+					lang: this.props.lang,
 					extraChat: this.props.chatExtraData
 				};
 			}
@@ -705,7 +706,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				optionsToOutgoing: undefined
 			}
 		},
-		askReconnect: false,
+		lang: 'en',
 		chatExtraData: {}
 	};
 
@@ -714,6 +715,7 @@ return /******/ (function(modules) { // webpackBootstrap
 		bubbles: _react2.default.PropTypes.object,
 		bubblePreviews: _react2.default.PropTypes.object,
 		styles: _react2.default.PropTypes.object,
+		lang: _react2.default.PropTypes.string,
 		options: _react2.default.PropTypes.object,
 		extraChat: _react2.default.PropTypes.object
 	};
@@ -746,7 +748,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ConversationListsContainer2 = _interopRequireDefault(_ConversationListsContainer);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -938,13 +940,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ConversationList2 = _interopRequireDefault(_ConversationList);
 
-	var _reactSearchInput = __webpack_require__(114);
+	var _reactSearchInput = __webpack_require__(115);
 
 	var _reactSearchInput2 = _interopRequireDefault(_reactSearchInput);
 
-	var _reactDom = __webpack_require__(117);
+	var _lang = __webpack_require__(114);
 
-	var _reactDom2 = _interopRequireDefault(_reactDom);
+	var _lang2 = _interopRequireDefault(_lang);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -986,7 +988,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						handleClosePopup: this.handleClosePopup,
 						isGroupConversation: this.conversationToDeleteIsGroup }) : null,
 					this.props.conversationSelected == null ? _react2.default.createElement(_AsidePanel2.default, { panelParams: this.props.asidePanelParams }) : null,
-					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', placeholder: 'Search for existing conversation', onChange: this.searchUpdated }),
+					_react2.default.createElement(_reactSearchInput2.default, { className: 'mky-search-input', placeholder: _lang2.default[this.context.lang]['input.search.placeholder'], onChange: this.searchUpdated }),
 					this.props.conversationsLoading ? _react2.default.createElement(Loading, { customLoader: this.props.customLoader }) : _react2.default.createElement(
 						'div',
 						{ className: 'mky-dflex-dcolumn' },
@@ -1034,7 +1036,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'searchUpdated',
 			value: function searchUpdated(term) {
 				this.setState({ searchTerm: term });
-				if (typeof this.props.searchUpdated != "undefined") {
+				if (typeof this.props.searchUpdated != 'undefined') {
 					this.props.searchUpdated(term);
 				}
 			}
@@ -1044,7 +1046,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 
 	ConversationListsContainer.contextTypes = {
-		options: _react2.default.PropTypes.object.isRequired
+		options: _react2.default.PropTypes.object.isRequired,
+		lang: _react2.default.PropTypes.string.isRequired
 	};
 
 	var Loading = function Loading(props) {
@@ -1069,11 +1072,6 @@ return /******/ (function(modules) { // webpackBootstrap
 			)
 		);
 	};
-
-	/*const Loading = () => <div className='mky-loader-ring'>
-		<div className='mky-loader-ring-light'></div>
-		<img className='mky-loading-icon-inside' src='http://cdn.criptext.com/messenger/criptextGradientLogo.png'></img>
-	</div>*/
 
 	exports.default = ConversationListsContainer;
 
@@ -1148,15 +1146,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _ConversationItem2 = _interopRequireDefault(_ConversationItem);
 
-	var _reactSearchInput = __webpack_require__(114);
+	var _reactSearchInput = __webpack_require__(115);
 
 	var _reactSearchInput2 = _interopRequireDefault(_reactSearchInput);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _DeleteConversation = __webpack_require__(282);
+	var _DeleteConversation = __webpack_require__(283);
 
 	var _DeleteConversation2 = _interopRequireDefault(_DeleteConversation);
 
@@ -1455,6 +1453,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _monkeyUtils = __webpack_require__(9);
 
+	var _lang = __webpack_require__(114);
+
+	var _lang2 = _interopRequireDefault(_lang);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -1565,7 +1567,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								) : _react2.default.createElement(
 									'span',
 									{ className: 'mky-ellipsify' },
-									'Click to open conversation'
+									_lang2.default[this.context.lang]['conversation.lastmessage.emptypreview']
 								)
 							)
 						)
@@ -1651,7 +1653,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 
 	ConversationItem.contextTypes = {
-		userSession: _react2.default.PropTypes.object.isRequired
+		userSession: _react2.default.PropTypes.object.isRequired,
+		lang: _react2.default.PropTypes.string.isRequired
 	};
 
 	exports.default = ConversationItem;
@@ -15866,6 +15869,52 @@ return /******/ (function(modules) { // webpackBootstrap
 
 /***/ },
 /* 114 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = {
+	  "en": {
+	    "button.image.text": "Image",
+	    "button.endchat.text": "End Chat",
+	    "button.file.text": "File",
+	    "button.recordaudio.tooltip": "Browser is incompatible to record audio",
+	    "input.search.placeholder": "Search for existing conversation",
+	    "input.textarea.placeholder": "Write a secure message",
+	    "conversation.lastmessage.emptypreview": "Click to open conversation",
+	    "status.lastseen": "Last seen",
+	    "status.online": "Online",
+	    "text.at": "at",
+	    "title.information": "Information",
+	    "title.groupname": "Group name",
+	    "title.name": "Name",
+	    "title.readby": "Read by",
+	    "title.sent": "Sent"
+	  },
+	  "es": {
+	    "button.image.text": "Imagen",
+	    "button.endchat.text": "Cerrar Chat",
+	    "button.file.text": "Archivo",
+	    "button.recordaudio.tooltip": "El navegador es incompatible para grabar audio",
+	    "input.search.placeholder": "Buscar conversaciones existentes",
+	    "input.textarea.placeholder": "Escribe un mensaje seguro",
+	    "conversation.lastmessage.emptypreview": "Click para abrir conversación",
+	    "status.lastseen": "Última vez visto",
+	    "status.online": "En línea",
+	    "text.at": "a las",
+	    "title.information": "Información",
+	    "title.groupname": "Nombre del grupo",
+	    "title.name": "Nombre",
+	    "title.readby": "Leído por",
+	    "title.sent": "Enviado"
+	  }
+	};
+
+/***/ },
+/* 115 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15879,7 +15928,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _util = __webpack_require__(115);
+	var _util = __webpack_require__(116);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -15970,7 +16019,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.createFilter = _util.createFilter;
 
 /***/ },
-/* 115 */
+/* 116 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -15982,7 +16031,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.searchStrings = searchStrings;
 	exports.createFilter = createFilter;
 
-	var _fuse = __webpack_require__(116);
+	var _fuse = __webpack_require__(117);
 
 	var _fuse2 = _interopRequireDefault(_fuse);
 
@@ -16098,7 +16147,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 116 */
+/* 117 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -16879,16 +16928,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 117 */
+/* 118 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	module.exports = __webpack_require__(118);
+	module.exports = __webpack_require__(119);
 
 
 /***/ },
-/* 118 */
+/* 119 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -16906,17 +16955,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactDefaultInjection = __webpack_require__(125);
-	var ReactMount = __webpack_require__(273);
-	var ReactReconciler = __webpack_require__(151);
-	var ReactUpdates = __webpack_require__(148);
-	var ReactVersion = __webpack_require__(278);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactDefaultInjection = __webpack_require__(126);
+	var ReactMount = __webpack_require__(274);
+	var ReactReconciler = __webpack_require__(152);
+	var ReactUpdates = __webpack_require__(149);
+	var ReactVersion = __webpack_require__(279);
 
-	var findDOMNode = __webpack_require__(279);
-	var getHostComponentFromComposite = __webpack_require__(280);
-	var renderSubtreeIntoContainer = __webpack_require__(281);
-	var warning = __webpack_require__(134);
+	var findDOMNode = __webpack_require__(280);
+	var getHostComponentFromComposite = __webpack_require__(281);
+	var renderSubtreeIntoContainer = __webpack_require__(282);
+	var warning = __webpack_require__(135);
 
 	ReactDefaultInjection.inject();
 
@@ -16956,7 +17005,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	if (process.env.NODE_ENV !== 'production') {
-	  var ExecutionEnvironment = __webpack_require__(138);
+	  var ExecutionEnvironment = __webpack_require__(139);
 	  if (ExecutionEnvironment.canUseDOM && window.top === window.self) {
 
 	    // First check if devtools is not installed
@@ -16992,10 +17041,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = React;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 119 */
+/* 120 */
 /***/ function(module, exports) {
 
 	// shim for using process in browser
@@ -17120,7 +17169,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 120 */
+/* 121 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -17136,12 +17185,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var DOMProperty = __webpack_require__(122);
-	var ReactDOMComponentFlags = __webpack_require__(124);
+	var DOMProperty = __webpack_require__(123);
+	var ReactDOMComponentFlags = __webpack_require__(125);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
 	var Flags = ReactDOMComponentFlags;
@@ -17311,10 +17360,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactDOMComponentTree;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 121 */
+/* 122 */
 /***/ function(module, exports) {
 
 	/**
@@ -17358,7 +17407,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = reactProdInvariant;
 
 /***/ },
-/* 122 */
+/* 123 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -17374,9 +17423,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	function checkMask(value, bitmask) {
 	  return (value & bitmask) === bitmask;
@@ -17567,10 +17616,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = DOMProperty;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 123 */
+/* 124 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -17622,10 +17671,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = invariant;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 124 */
+/* 125 */
 /***/ function(module, exports) {
 
 	/**
@@ -17648,7 +17697,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDOMComponentFlags;
 
 /***/ },
-/* 125 */
+/* 126 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17664,24 +17713,24 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var BeforeInputEventPlugin = __webpack_require__(126);
-	var ChangeEventPlugin = __webpack_require__(147);
-	var DefaultEventPluginOrder = __webpack_require__(166);
-	var EnterLeaveEventPlugin = __webpack_require__(167);
-	var HTMLDOMPropertyConfig = __webpack_require__(172);
-	var ReactComponentBrowserEnvironment = __webpack_require__(173);
-	var ReactDOMComponent = __webpack_require__(187);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactDOMEmptyComponent = __webpack_require__(241);
-	var ReactDOMTreeTraversal = __webpack_require__(242);
-	var ReactDOMTextComponent = __webpack_require__(243);
-	var ReactDefaultBatchingStrategy = __webpack_require__(244);
-	var ReactEventListener = __webpack_require__(245);
-	var ReactInjection = __webpack_require__(248);
-	var ReactReconcileTransaction = __webpack_require__(252);
-	var SVGDOMPropertyConfig = __webpack_require__(260);
-	var SelectEventPlugin = __webpack_require__(261);
-	var SimpleEventPlugin = __webpack_require__(262);
+	var BeforeInputEventPlugin = __webpack_require__(127);
+	var ChangeEventPlugin = __webpack_require__(148);
+	var DefaultEventPluginOrder = __webpack_require__(167);
+	var EnterLeaveEventPlugin = __webpack_require__(168);
+	var HTMLDOMPropertyConfig = __webpack_require__(173);
+	var ReactComponentBrowserEnvironment = __webpack_require__(174);
+	var ReactDOMComponent = __webpack_require__(188);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactDOMEmptyComponent = __webpack_require__(242);
+	var ReactDOMTreeTraversal = __webpack_require__(243);
+	var ReactDOMTextComponent = __webpack_require__(244);
+	var ReactDefaultBatchingStrategy = __webpack_require__(245);
+	var ReactEventListener = __webpack_require__(246);
+	var ReactInjection = __webpack_require__(249);
+	var ReactReconcileTransaction = __webpack_require__(253);
+	var SVGDOMPropertyConfig = __webpack_require__(261);
+	var SelectEventPlugin = __webpack_require__(262);
+	var SimpleEventPlugin = __webpack_require__(263);
 
 	var alreadyInjected = false;
 
@@ -17737,7 +17786,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 126 */
+/* 127 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -17753,14 +17802,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(127);
-	var EventPropagators = __webpack_require__(129);
-	var ExecutionEnvironment = __webpack_require__(138);
-	var FallbackCompositionState = __webpack_require__(139);
-	var SyntheticCompositionEvent = __webpack_require__(143);
-	var SyntheticInputEvent = __webpack_require__(145);
+	var EventConstants = __webpack_require__(128);
+	var EventPropagators = __webpack_require__(130);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var FallbackCompositionState = __webpack_require__(140);
+	var SyntheticCompositionEvent = __webpack_require__(144);
+	var SyntheticInputEvent = __webpack_require__(146);
 
-	var keyOf = __webpack_require__(146);
+	var keyOf = __webpack_require__(147);
 
 	var END_KEYCODES = [9, 13, 27, 32]; // Tab, Return, Esc, Space
 	var START_KEYCODE = 229;
@@ -18130,7 +18179,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = BeforeInputEventPlugin;
 
 /***/ },
-/* 127 */
+/* 128 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -18146,7 +18195,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(128);
+	var keyMirror = __webpack_require__(129);
 
 	var PropagationPhases = keyMirror({ bubbled: null, captured: null });
 
@@ -18232,7 +18281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = EventConstants;
 
 /***/ },
-/* 128 */
+/* 129 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -18248,7 +18297,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Constructs an enumeration with keys equal to their value.
@@ -18282,10 +18331,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = keyMirror;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 129 */
+/* 130 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -18301,13 +18350,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(127);
-	var EventPluginHub = __webpack_require__(130);
-	var EventPluginUtils = __webpack_require__(132);
+	var EventConstants = __webpack_require__(128);
+	var EventPluginHub = __webpack_require__(131);
+	var EventPluginUtils = __webpack_require__(133);
 
-	var accumulateInto = __webpack_require__(136);
-	var forEachAccumulated = __webpack_require__(137);
-	var warning = __webpack_require__(134);
+	var accumulateInto = __webpack_require__(137);
+	var forEachAccumulated = __webpack_require__(138);
+	var warning = __webpack_require__(135);
 
 	var PropagationPhases = EventConstants.PropagationPhases;
 	var getListener = EventPluginHub.getListener;
@@ -18425,10 +18474,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = EventPropagators;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 130 */
+/* 131 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -18444,15 +18493,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var EventPluginRegistry = __webpack_require__(131);
-	var EventPluginUtils = __webpack_require__(132);
-	var ReactErrorUtils = __webpack_require__(133);
+	var EventPluginRegistry = __webpack_require__(132);
+	var EventPluginUtils = __webpack_require__(133);
+	var ReactErrorUtils = __webpack_require__(134);
 
-	var accumulateInto = __webpack_require__(136);
-	var forEachAccumulated = __webpack_require__(137);
-	var invariant = __webpack_require__(123);
+	var accumulateInto = __webpack_require__(137);
+	var forEachAccumulated = __webpack_require__(138);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Internal store for event listeners
@@ -18672,10 +18721,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = EventPluginHub;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 131 */
+/* 132 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -18691,9 +18740,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Injectable ordering of event plugins.
@@ -18925,10 +18974,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = EventPluginRegistry;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 132 */
+/* 133 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -18944,13 +18993,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var EventConstants = __webpack_require__(127);
-	var ReactErrorUtils = __webpack_require__(133);
+	var EventConstants = __webpack_require__(128);
+	var ReactErrorUtils = __webpack_require__(134);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	/**
 	 * Injected dependencies:
@@ -19160,10 +19209,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = EventPluginUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 133 */
+/* 134 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -19242,10 +19291,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactErrorUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 134 */
+/* 135 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -19260,7 +19309,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var emptyFunction = __webpack_require__(135);
+	var emptyFunction = __webpack_require__(136);
 
 	/**
 	 * Similar to invariant but only logs a warning if the condition is not met.
@@ -19304,10 +19353,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = warning;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 135 */
+/* 136 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -19350,7 +19399,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = emptyFunction;
 
 /***/ },
-/* 136 */
+/* 137 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -19367,9 +19416,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Accumulates items that must not be null or undefined into the first one. This
@@ -19411,10 +19460,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = accumulateInto;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 137 */
+/* 138 */
 /***/ function(module, exports) {
 
 	/**
@@ -19450,7 +19499,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = forEachAccumulated;
 
 /***/ },
-/* 138 */
+/* 139 */
 /***/ function(module, exports) {
 
 	/**
@@ -19490,7 +19539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ExecutionEnvironment;
 
 /***/ },
-/* 139 */
+/* 140 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19506,11 +19555,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var PooledClass = __webpack_require__(141);
+	var PooledClass = __webpack_require__(142);
 
-	var getTextContentAccessor = __webpack_require__(142);
+	var getTextContentAccessor = __webpack_require__(143);
 
 	/**
 	 * This helper class stores information about text content of a target node,
@@ -19590,7 +19639,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = FallbackCompositionState;
 
 /***/ },
-/* 140 */
+/* 141 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -19679,7 +19728,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 141 */
+/* 142 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -19695,9 +19744,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Static poolers. Several custom versions for each potential number of
@@ -19803,10 +19852,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = PooledClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 142 */
+/* 143 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19822,7 +19871,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
 	var contentKey = null;
 
@@ -19844,7 +19893,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getTextContentAccessor;
 
 /***/ },
-/* 143 */
+/* 144 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -19860,7 +19909,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(144);
+	var SyntheticEvent = __webpack_require__(145);
 
 	/**
 	 * @interface Event
@@ -19885,7 +19934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticCompositionEvent;
 
 /***/ },
-/* 144 */
+/* 145 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -19901,12 +19950,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var PooledClass = __webpack_require__(141);
+	var PooledClass = __webpack_require__(142);
 
-	var emptyFunction = __webpack_require__(135);
-	var warning = __webpack_require__(134);
+	var emptyFunction = __webpack_require__(136);
+	var warning = __webpack_require__(135);
 
 	var didWarnForAddedNewProperty = false;
 	var isProxySupported = typeof Proxy === 'function';
@@ -20148,10 +20197,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    process.env.NODE_ENV !== 'production' ? warning(warningCondition, 'This synthetic event is reused for performance reasons. If you\'re seeing this, ' + 'you\'re %s `%s` on a released/nullified synthetic event. %s. ' + 'If you must keep the original synthetic event around, use event.persist(). ' + 'See https://fb.me/react-event-pooling for more information.', action, propName, result) : void 0;
 	  }
 	}
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 145 */
+/* 146 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20167,7 +20216,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(144);
+	var SyntheticEvent = __webpack_require__(145);
 
 	/**
 	 * @interface Event
@@ -20193,7 +20242,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticInputEvent;
 
 /***/ },
-/* 146 */
+/* 147 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -20232,7 +20281,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = keyOf;
 
 /***/ },
-/* 147 */
+/* 148 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -20248,18 +20297,18 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(127);
-	var EventPluginHub = __webpack_require__(130);
-	var EventPropagators = __webpack_require__(129);
-	var ExecutionEnvironment = __webpack_require__(138);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactUpdates = __webpack_require__(148);
-	var SyntheticEvent = __webpack_require__(144);
+	var EventConstants = __webpack_require__(128);
+	var EventPluginHub = __webpack_require__(131);
+	var EventPropagators = __webpack_require__(130);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactUpdates = __webpack_require__(149);
+	var SyntheticEvent = __webpack_require__(145);
 
-	var getEventTarget = __webpack_require__(163);
-	var isEventSupported = __webpack_require__(164);
-	var isTextInputElement = __webpack_require__(165);
-	var keyOf = __webpack_require__(146);
+	var getEventTarget = __webpack_require__(164);
+	var isEventSupported = __webpack_require__(165);
+	var isTextInputElement = __webpack_require__(166);
+	var keyOf = __webpack_require__(147);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -20562,7 +20611,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ChangeEventPlugin;
 
 /***/ },
-/* 148 */
+/* 149 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20578,16 +20627,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var CallbackQueue = __webpack_require__(149);
-	var PooledClass = __webpack_require__(141);
-	var ReactFeatureFlags = __webpack_require__(150);
-	var ReactReconciler = __webpack_require__(151);
-	var Transaction = __webpack_require__(162);
+	var CallbackQueue = __webpack_require__(150);
+	var PooledClass = __webpack_require__(142);
+	var ReactFeatureFlags = __webpack_require__(151);
+	var ReactReconciler = __webpack_require__(152);
+	var Transaction = __webpack_require__(163);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	var dirtyComponents = [];
 	var updateBatchNumber = 0;
@@ -20816,10 +20865,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactUpdates;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 149 */
+/* 150 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20835,12 +20884,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var PooledClass = __webpack_require__(141);
+	var PooledClass = __webpack_require__(142);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * A specialized pseudo-event module to help keep track of components waiting to
@@ -20928,10 +20977,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	PooledClass.addPoolingTo(CallbackQueue);
 
 	module.exports = CallbackQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 150 */
+/* 151 */
 /***/ function(module, exports) {
 
 	/**
@@ -20958,7 +21007,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactFeatureFlags;
 
 /***/ },
-/* 151 */
+/* 152 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -20974,12 +21023,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactRef = __webpack_require__(152);
-	var ReactInstrumentation = __webpack_require__(154);
+	var ReactRef = __webpack_require__(153);
+	var ReactInstrumentation = __webpack_require__(155);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Helper to call ReactRef.attachRefs with this composite component, split out
@@ -21137,10 +21186,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactReconciler;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 152 */
+/* 153 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -21156,7 +21205,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactOwner = __webpack_require__(153);
+	var ReactOwner = __webpack_require__(154);
 
 	var ReactRef = {};
 
@@ -21223,7 +21272,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactRef;
 
 /***/ },
-/* 153 */
+/* 154 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21239,9 +21288,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * ReactOwners are capable of storing references to owned components.
@@ -21320,10 +21369,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactOwner;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 154 */
+/* 155 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21342,15 +21391,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var debugTool = null;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  var ReactDebugTool = __webpack_require__(155);
+	  var ReactDebugTool = __webpack_require__(156);
 	  debugTool = ReactDebugTool;
 	}
 
 	module.exports = { debugTool: debugTool };
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 155 */
+/* 156 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21366,13 +21415,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactInvalidSetStateWarningDevTool = __webpack_require__(156);
-	var ReactHostOperationHistoryDevtool = __webpack_require__(157);
-	var ReactComponentTreeDevtool = __webpack_require__(158);
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ReactInvalidSetStateWarningDevTool = __webpack_require__(157);
+	var ReactHostOperationHistoryDevtool = __webpack_require__(158);
+	var ReactComponentTreeDevtool = __webpack_require__(159);
+	var ExecutionEnvironment = __webpack_require__(139);
 
-	var performanceNow = __webpack_require__(160);
-	var warning = __webpack_require__(134);
+	var performanceNow = __webpack_require__(161);
+	var warning = __webpack_require__(135);
 
 	var eventHandlers = [];
 	var handlerDoesThrowForEvent = {};
@@ -21656,10 +21705,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactDebugTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 156 */
+/* 157 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21675,7 +21724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 
 	if (process.env.NODE_ENV !== 'production') {
 	  var processingChildContext = false;
@@ -21698,10 +21747,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactInvalidSetStateWarningDevTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 157 */
+/* 158 */
 /***/ function(module, exports) {
 
 	/**
@@ -21743,7 +21792,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactHostOperationHistoryDevtool;
 
 /***/ },
-/* 158 */
+/* 159 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -21759,12 +21808,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactCurrentOwner = __webpack_require__(159);
+	var ReactCurrentOwner = __webpack_require__(160);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	var tree = {};
 	var unmountedIDs = {};
@@ -21964,10 +22013,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactComponentTreeDevtool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 159 */
+/* 160 */
 /***/ function(module, exports) {
 
 	/**
@@ -22003,7 +22052,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactCurrentOwner;
 
 /***/ },
-/* 160 */
+/* 161 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -22019,7 +22068,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
-	var performance = __webpack_require__(161);
+	var performance = __webpack_require__(162);
 
 	var performanceNow;
 
@@ -22041,7 +22090,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = performanceNow;
 
 /***/ },
-/* 161 */
+/* 162 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22057,7 +22106,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
 	var performance;
 
@@ -22068,7 +22117,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = performance || {};
 
 /***/ },
-/* 162 */
+/* 163 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -22084,9 +22133,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * `Transaction` creates a black box that is able to wrap any method such that
@@ -22304,10 +22353,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = Transaction;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 163 */
+/* 164 */
 /***/ function(module, exports) {
 
 	/**
@@ -22347,7 +22396,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getEventTarget;
 
 /***/ },
-/* 164 */
+/* 165 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22363,7 +22412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
 	var useHasFeature;
 	if (ExecutionEnvironment.canUseDOM) {
@@ -22412,7 +22461,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = isEventSupported;
 
 /***/ },
-/* 165 */
+/* 166 */
 /***/ function(module, exports) {
 
 	/**
@@ -22468,7 +22517,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = isTextInputElement;
 
 /***/ },
-/* 166 */
+/* 167 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22484,7 +22533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var keyOf = __webpack_require__(146);
+	var keyOf = __webpack_require__(147);
 
 	/**
 	 * Module that is injectable into `EventPluginHub`, that specifies a
@@ -22500,7 +22549,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DefaultEventPluginOrder;
 
 /***/ },
-/* 167 */
+/* 168 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22516,12 +22565,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(127);
-	var EventPropagators = __webpack_require__(129);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var SyntheticMouseEvent = __webpack_require__(168);
+	var EventConstants = __webpack_require__(128);
+	var EventPropagators = __webpack_require__(130);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var SyntheticMouseEvent = __webpack_require__(169);
 
-	var keyOf = __webpack_require__(146);
+	var keyOf = __webpack_require__(147);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -22610,7 +22659,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = EnterLeaveEventPlugin;
 
 /***/ },
-/* 168 */
+/* 169 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22626,10 +22675,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(169);
-	var ViewportMetrics = __webpack_require__(170);
+	var SyntheticUIEvent = __webpack_require__(170);
+	var ViewportMetrics = __webpack_require__(171);
 
-	var getEventModifierState = __webpack_require__(171);
+	var getEventModifierState = __webpack_require__(172);
 
 	/**
 	 * @interface MouseEvent
@@ -22687,7 +22736,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticMouseEvent;
 
 /***/ },
-/* 169 */
+/* 170 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22703,9 +22752,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(144);
+	var SyntheticEvent = __webpack_require__(145);
 
-	var getEventTarget = __webpack_require__(163);
+	var getEventTarget = __webpack_require__(164);
 
 	/**
 	 * @interface UIEvent
@@ -22751,7 +22800,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticUIEvent;
 
 /***/ },
-/* 170 */
+/* 171 */
 /***/ function(module, exports) {
 
 	/**
@@ -22783,7 +22832,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ViewportMetrics;
 
 /***/ },
-/* 171 */
+/* 172 */
 /***/ function(module, exports) {
 
 	/**
@@ -22831,7 +22880,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getEventModifierState;
 
 /***/ },
-/* 172 */
+/* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -22847,7 +22896,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
+	var DOMProperty = __webpack_require__(123);
 
 	var MUST_USE_PROPERTY = DOMProperty.injection.MUST_USE_PROPERTY;
 	var HAS_BOOLEAN_VALUE = DOMProperty.injection.HAS_BOOLEAN_VALUE;
@@ -23044,7 +23093,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = HTMLDOMPropertyConfig;
 
 /***/ },
-/* 173 */
+/* 174 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23060,8 +23109,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMChildrenOperations = __webpack_require__(174);
-	var ReactDOMIDOperations = __webpack_require__(186);
+	var DOMChildrenOperations = __webpack_require__(175);
+	var ReactDOMIDOperations = __webpack_require__(187);
 
 	/**
 	 * Abstracts away all functionality of the reconciler that requires knowledge of
@@ -23088,7 +23137,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactComponentBrowserEnvironment;
 
 /***/ },
-/* 174 */
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23104,15 +23153,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMLazyTree = __webpack_require__(175);
-	var Danger = __webpack_require__(181);
-	var ReactMultiChildUpdateTypes = __webpack_require__(185);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactInstrumentation = __webpack_require__(154);
+	var DOMLazyTree = __webpack_require__(176);
+	var Danger = __webpack_require__(182);
+	var ReactMultiChildUpdateTypes = __webpack_require__(186);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactInstrumentation = __webpack_require__(155);
 
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(178);
-	var setInnerHTML = __webpack_require__(177);
-	var setTextContent = __webpack_require__(179);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(179);
+	var setInnerHTML = __webpack_require__(178);
+	var setTextContent = __webpack_require__(180);
 
 	function getNodeAfter(parentNode, node) {
 	  // Special case for text components, which return [open, close] comments
@@ -23285,10 +23334,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = DOMChildrenOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 175 */
+/* 176 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23304,11 +23353,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMNamespaces = __webpack_require__(176);
-	var setInnerHTML = __webpack_require__(177);
+	var DOMNamespaces = __webpack_require__(177);
+	var setInnerHTML = __webpack_require__(178);
 
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(178);
-	var setTextContent = __webpack_require__(179);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(179);
+	var setTextContent = __webpack_require__(180);
 
 	var ELEMENT_NODE_TYPE = 1;
 	var DOCUMENT_FRAGMENT_NODE_TYPE = 11;
@@ -23411,7 +23460,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DOMLazyTree;
 
 /***/ },
-/* 176 */
+/* 177 */
 /***/ function(module, exports) {
 
 	/**
@@ -23436,7 +23485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DOMNamespaces;
 
 /***/ },
-/* 177 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23452,13 +23501,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
-	var DOMNamespaces = __webpack_require__(176);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var DOMNamespaces = __webpack_require__(177);
 
 	var WHITESPACE_TEST = /^[ \r\n\t\f]/;
 	var NONVISIBLE_TEST = /<(!--|link|noscript|meta|script|style)[ \r\n\t\f\/>]/;
 
-	var createMicrosoftUnsafeLocalFunction = __webpack_require__(178);
+	var createMicrosoftUnsafeLocalFunction = __webpack_require__(179);
 
 	// SVG temp container for IE lacking innerHTML
 	var reusableSVGContainer;
@@ -23539,7 +23588,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = setInnerHTML;
 
 /***/ },
-/* 178 */
+/* 179 */
 /***/ function(module, exports) {
 
 	/**
@@ -23576,7 +23625,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = createMicrosoftUnsafeLocalFunction;
 
 /***/ },
-/* 179 */
+/* 180 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -23592,9 +23641,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
-	var escapeTextContentForBrowser = __webpack_require__(180);
-	var setInnerHTML = __webpack_require__(177);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var escapeTextContentForBrowser = __webpack_require__(181);
+	var setInnerHTML = __webpack_require__(178);
 
 	/**
 	 * Set the textContent property of a node, ensuring that whitespace is preserved
@@ -23629,7 +23678,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = setTextContent;
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports) {
 
 	/**
@@ -23756,7 +23805,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = escapeTextContentForBrowser;
 
 /***/ },
-/* 181 */
+/* 182 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -23772,14 +23821,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var DOMLazyTree = __webpack_require__(175);
-	var ExecutionEnvironment = __webpack_require__(138);
+	var DOMLazyTree = __webpack_require__(176);
+	var ExecutionEnvironment = __webpack_require__(139);
 
-	var createNodesFromMarkup = __webpack_require__(182);
-	var emptyFunction = __webpack_require__(135);
-	var invariant = __webpack_require__(123);
+	var createNodesFromMarkup = __webpack_require__(183);
+	var emptyFunction = __webpack_require__(136);
+	var invariant = __webpack_require__(124);
 
 	var Danger = {
 
@@ -23807,10 +23856,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = Danger;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 182 */
+/* 183 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23828,11 +23877,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*eslint-disable fb-www/unsafe-html*/
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
-	var createArrayFromMixed = __webpack_require__(183);
-	var getMarkupWrap = __webpack_require__(184);
-	var invariant = __webpack_require__(123);
+	var createArrayFromMixed = __webpack_require__(184);
+	var getMarkupWrap = __webpack_require__(185);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Dummy container used to render all markup.
@@ -23896,10 +23945,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = createNodesFromMarkup;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 183 */
+/* 184 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -23915,7 +23964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Convert array-like objects to arrays.
@@ -24028,10 +24077,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = createArrayFromMixed;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 184 */
+/* 185 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -24048,9 +24097,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	/*eslint-disable fb-www/unsafe-html */
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Dummy container used to detect which wraps are necessary.
@@ -24128,10 +24177,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = getMarkupWrap;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 185 */
+/* 186 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24147,7 +24196,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(128);
+	var keyMirror = __webpack_require__(129);
 
 	/**
 	 * When a component's children are updated, a series of update configuration
@@ -24168,7 +24217,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactMultiChildUpdateTypes;
 
 /***/ },
-/* 186 */
+/* 187 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -24184,8 +24233,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMChildrenOperations = __webpack_require__(174);
-	var ReactDOMComponentTree = __webpack_require__(120);
+	var DOMChildrenOperations = __webpack_require__(175);
+	var ReactDOMComponentTree = __webpack_require__(121);
 
 	/**
 	 * Operations used to process updates to DOM nodes.
@@ -24207,7 +24256,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDOMIDOperations;
 
 /***/ },
-/* 187 */
+/* 188 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -24225,39 +24274,39 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var AutoFocusUtils = __webpack_require__(188);
-	var CSSPropertyOperations = __webpack_require__(190);
-	var DOMLazyTree = __webpack_require__(175);
-	var DOMNamespaces = __webpack_require__(176);
-	var DOMProperty = __webpack_require__(122);
-	var DOMPropertyOperations = __webpack_require__(198);
-	var EventConstants = __webpack_require__(127);
-	var EventPluginHub = __webpack_require__(130);
-	var EventPluginRegistry = __webpack_require__(131);
-	var ReactBrowserEventEmitter = __webpack_require__(204);
-	var ReactComponentBrowserEnvironment = __webpack_require__(173);
-	var ReactDOMButton = __webpack_require__(207);
-	var ReactDOMComponentFlags = __webpack_require__(124);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactDOMInput = __webpack_require__(209);
-	var ReactDOMOption = __webpack_require__(217);
-	var ReactDOMSelect = __webpack_require__(221);
-	var ReactDOMTextarea = __webpack_require__(222);
-	var ReactInstrumentation = __webpack_require__(154);
-	var ReactMultiChild = __webpack_require__(223);
-	var ReactServerRenderingTransaction = __webpack_require__(236);
+	var AutoFocusUtils = __webpack_require__(189);
+	var CSSPropertyOperations = __webpack_require__(191);
+	var DOMLazyTree = __webpack_require__(176);
+	var DOMNamespaces = __webpack_require__(177);
+	var DOMProperty = __webpack_require__(123);
+	var DOMPropertyOperations = __webpack_require__(199);
+	var EventConstants = __webpack_require__(128);
+	var EventPluginHub = __webpack_require__(131);
+	var EventPluginRegistry = __webpack_require__(132);
+	var ReactBrowserEventEmitter = __webpack_require__(205);
+	var ReactComponentBrowserEnvironment = __webpack_require__(174);
+	var ReactDOMButton = __webpack_require__(208);
+	var ReactDOMComponentFlags = __webpack_require__(125);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactDOMInput = __webpack_require__(210);
+	var ReactDOMOption = __webpack_require__(218);
+	var ReactDOMSelect = __webpack_require__(222);
+	var ReactDOMTextarea = __webpack_require__(223);
+	var ReactInstrumentation = __webpack_require__(155);
+	var ReactMultiChild = __webpack_require__(224);
+	var ReactServerRenderingTransaction = __webpack_require__(237);
 
-	var emptyFunction = __webpack_require__(135);
-	var escapeTextContentForBrowser = __webpack_require__(180);
-	var invariant = __webpack_require__(123);
-	var isEventSupported = __webpack_require__(164);
-	var keyOf = __webpack_require__(146);
-	var shallowEqual = __webpack_require__(239);
-	var validateDOMNesting = __webpack_require__(240);
-	var warning = __webpack_require__(134);
+	var emptyFunction = __webpack_require__(136);
+	var escapeTextContentForBrowser = __webpack_require__(181);
+	var invariant = __webpack_require__(124);
+	var isEventSupported = __webpack_require__(165);
+	var keyOf = __webpack_require__(147);
+	var shallowEqual = __webpack_require__(240);
+	var validateDOMNesting = __webpack_require__(241);
+	var warning = __webpack_require__(135);
 
 	var Flags = ReactDOMComponentFlags;
 	var deleteListener = EventPluginHub.deleteListener;
@@ -25213,10 +25262,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	_assign(ReactDOMComponent.prototype, ReactDOMComponent.Mixin, ReactMultiChild.Mixin);
 
 	module.exports = ReactDOMComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 188 */
+/* 189 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25232,9 +25281,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactDOMComponentTree = __webpack_require__(120);
+	var ReactDOMComponentTree = __webpack_require__(121);
 
-	var focusNode = __webpack_require__(189);
+	var focusNode = __webpack_require__(190);
 
 	var AutoFocusUtils = {
 	  focusDOMComponent: function () {
@@ -25245,7 +25294,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = AutoFocusUtils;
 
 /***/ },
-/* 189 */
+/* 190 */
 /***/ function(module, exports) {
 
 	/**
@@ -25276,7 +25325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = focusNode;
 
 /***/ },
-/* 190 */
+/* 191 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25292,15 +25341,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var CSSProperty = __webpack_require__(191);
-	var ExecutionEnvironment = __webpack_require__(138);
-	var ReactInstrumentation = __webpack_require__(154);
+	var CSSProperty = __webpack_require__(192);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var ReactInstrumentation = __webpack_require__(155);
 
-	var camelizeStyleName = __webpack_require__(192);
-	var dangerousStyleValue = __webpack_require__(194);
-	var hyphenateStyleName = __webpack_require__(195);
-	var memoizeStringOnly = __webpack_require__(197);
-	var warning = __webpack_require__(134);
+	var camelizeStyleName = __webpack_require__(193);
+	var dangerousStyleValue = __webpack_require__(195);
+	var hyphenateStyleName = __webpack_require__(196);
+	var memoizeStringOnly = __webpack_require__(198);
+	var warning = __webpack_require__(135);
 
 	var processStyleName = memoizeStringOnly(function (styleName) {
 	  return hyphenateStyleName(styleName);
@@ -25484,10 +25533,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = CSSPropertyOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 191 */
+/* 192 */
 /***/ function(module, exports) {
 
 	/**
@@ -25640,7 +25689,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = CSSProperty;
 
 /***/ },
-/* 192 */
+/* 193 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25656,7 +25705,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var camelize = __webpack_require__(193);
+	var camelize = __webpack_require__(194);
 
 	var msPattern = /^-ms-/;
 
@@ -25684,7 +25733,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = camelizeStyleName;
 
 /***/ },
-/* 193 */
+/* 194 */
 /***/ function(module, exports) {
 
 	"use strict";
@@ -25720,7 +25769,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = camelize;
 
 /***/ },
-/* 194 */
+/* 195 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25736,8 +25785,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var CSSProperty = __webpack_require__(191);
-	var warning = __webpack_require__(134);
+	var CSSProperty = __webpack_require__(192);
+	var warning = __webpack_require__(135);
 
 	var isUnitlessNumber = CSSProperty.isUnitlessNumber;
 	var styleWarnings = {};
@@ -25802,10 +25851,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = dangerousStyleValue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 195 */
+/* 196 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -25821,7 +25870,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var hyphenate = __webpack_require__(196);
+	var hyphenate = __webpack_require__(197);
 
 	var msPattern = /^ms-/;
 
@@ -25848,7 +25897,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = hyphenateStyleName;
 
 /***/ },
-/* 196 */
+/* 197 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -25885,7 +25934,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = hyphenate;
 
 /***/ },
-/* 197 */
+/* 198 */
 /***/ function(module, exports) {
 
 	/**
@@ -25919,7 +25968,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = memoizeStringOnly;
 
 /***/ },
-/* 198 */
+/* 199 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -25935,13 +25984,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactDOMInstrumentation = __webpack_require__(199);
-	var ReactInstrumentation = __webpack_require__(154);
+	var DOMProperty = __webpack_require__(123);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactDOMInstrumentation = __webpack_require__(200);
+	var ReactInstrumentation = __webpack_require__(155);
 
-	var quoteAttributeValueForBrowser = __webpack_require__(203);
-	var warning = __webpack_require__(134);
+	var quoteAttributeValueForBrowser = __webpack_require__(204);
+	var warning = __webpack_require__(135);
 
 	var VALID_ATTRIBUTE_NAME_REGEX = new RegExp('^[' + DOMProperty.ATTRIBUTE_NAME_START_CHAR + '][' + DOMProperty.ATTRIBUTE_NAME_CHAR + ']*$');
 	var illegalAttributeNameCache = {};
@@ -26150,10 +26199,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = DOMPropertyOperations;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 199 */
+/* 200 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26172,15 +26221,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	var debugTool = null;
 
 	if (process.env.NODE_ENV !== 'production') {
-	  var ReactDOMDebugTool = __webpack_require__(200);
+	  var ReactDOMDebugTool = __webpack_require__(201);
 	  debugTool = ReactDOMDebugTool;
 	}
 
 	module.exports = { debugTool: debugTool };
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 200 */
+/* 201 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26196,11 +26245,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactDOMNullInputValuePropDevtool = __webpack_require__(201);
-	var ReactDOMUnknownPropertyDevtool = __webpack_require__(202);
-	var ReactDebugTool = __webpack_require__(155);
+	var ReactDOMNullInputValuePropDevtool = __webpack_require__(202);
+	var ReactDOMUnknownPropertyDevtool = __webpack_require__(203);
+	var ReactDebugTool = __webpack_require__(156);
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 
 	var eventHandlers = [];
 	var handlerDoesThrowForEvent = {};
@@ -26250,10 +26299,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	ReactDOMDebugTool.addDevtool(ReactDOMNullInputValuePropDevtool);
 
 	module.exports = ReactDOMDebugTool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 201 */
+/* 202 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26269,9 +26318,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactComponentTreeDevtool = __webpack_require__(158);
+	var ReactComponentTreeDevtool = __webpack_require__(159);
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 
 	var didWarnValueNull = false;
 
@@ -26299,10 +26348,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactDOMUnknownPropertyDevtool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 202 */
+/* 203 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -26318,11 +26367,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
-	var EventPluginRegistry = __webpack_require__(131);
-	var ReactComponentTreeDevtool = __webpack_require__(158);
+	var DOMProperty = __webpack_require__(123);
+	var EventPluginRegistry = __webpack_require__(132);
+	var ReactComponentTreeDevtool = __webpack_require__(159);
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 
 	if (process.env.NODE_ENV !== 'production') {
 	  var reactProps = {
@@ -26417,10 +26466,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactDOMUnknownPropertyDevtool;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 203 */
+/* 204 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26436,7 +26485,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var escapeTextContentForBrowser = __webpack_require__(180);
+	var escapeTextContentForBrowser = __webpack_require__(181);
 
 	/**
 	 * Escapes attribute value to prevent scripting attacks.
@@ -26451,7 +26500,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = quoteAttributeValueForBrowser;
 
 /***/ },
-/* 204 */
+/* 205 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26467,15 +26516,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var EventConstants = __webpack_require__(127);
-	var EventPluginRegistry = __webpack_require__(131);
-	var ReactEventEmitterMixin = __webpack_require__(205);
-	var ViewportMetrics = __webpack_require__(170);
+	var EventConstants = __webpack_require__(128);
+	var EventPluginRegistry = __webpack_require__(132);
+	var ReactEventEmitterMixin = __webpack_require__(206);
+	var ViewportMetrics = __webpack_require__(171);
 
-	var getVendorPrefixedEventName = __webpack_require__(206);
-	var isEventSupported = __webpack_require__(164);
+	var getVendorPrefixedEventName = __webpack_require__(207);
+	var isEventSupported = __webpack_require__(165);
 
 	/**
 	 * Summary of `ReactBrowserEventEmitter` event handling:
@@ -26773,7 +26822,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactBrowserEventEmitter;
 
 /***/ },
-/* 205 */
+/* 206 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26789,7 +26838,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var EventPluginHub = __webpack_require__(130);
+	var EventPluginHub = __webpack_require__(131);
 
 	function runEventQueueInBatch(events) {
 	  EventPluginHub.enqueueEvents(events);
@@ -26811,7 +26860,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactEventEmitterMixin;
 
 /***/ },
-/* 206 */
+/* 207 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26827,7 +26876,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
 	/**
 	 * Generate a mapping of standard vendor prefixes using the defined style property and event name.
@@ -26917,7 +26966,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getVendorPrefixedEventName;
 
 /***/ },
-/* 207 */
+/* 208 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -26933,7 +26982,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DisabledInputUtils = __webpack_require__(208);
+	var DisabledInputUtils = __webpack_require__(209);
 
 	/**
 	 * Implements a <button> host component that does not receive mouse events
@@ -26946,7 +26995,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDOMButton;
 
 /***/ },
-/* 208 */
+/* 209 */
 /***/ function(module, exports) {
 
 	/**
@@ -27001,7 +27050,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = DisabledInputUtils;
 
 /***/ },
-/* 209 */
+/* 210 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27017,17 +27066,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var DisabledInputUtils = __webpack_require__(208);
-	var DOMPropertyOperations = __webpack_require__(198);
-	var LinkedValueUtils = __webpack_require__(210);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactUpdates = __webpack_require__(148);
+	var DisabledInputUtils = __webpack_require__(209);
+	var DOMPropertyOperations = __webpack_require__(199);
+	var LinkedValueUtils = __webpack_require__(211);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactUpdates = __webpack_require__(149);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	var didWarnValueLink = false;
 	var didWarnCheckedLink = false;
@@ -27248,10 +27297,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactDOMInput;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 210 */
+/* 211 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27267,13 +27316,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactPropTypes = __webpack_require__(211);
-	var ReactPropTypeLocations = __webpack_require__(216);
+	var ReactPropTypes = __webpack_require__(212);
+	var ReactPropTypeLocations = __webpack_require__(217);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	var hasReadOnlyValue = {
 	  'button': true,
@@ -27389,10 +27438,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = LinkedValueUtils;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 211 */
+/* 212 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -27408,11 +27457,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactElement = __webpack_require__(212);
-	var ReactPropTypeLocationNames = __webpack_require__(214);
+	var ReactElement = __webpack_require__(213);
+	var ReactPropTypeLocationNames = __webpack_require__(215);
 
-	var emptyFunction = __webpack_require__(135);
-	var getIteratorFn = __webpack_require__(215);
+	var emptyFunction = __webpack_require__(136);
+	var getIteratorFn = __webpack_require__(216);
 
 	/**
 	 * Collection of methods that allow declaration and validation of props that are
@@ -27800,7 +27849,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactPropTypes;
 
 /***/ },
-/* 212 */
+/* 213 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -27816,12 +27865,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var ReactCurrentOwner = __webpack_require__(159);
+	var ReactCurrentOwner = __webpack_require__(160);
 
-	var warning = __webpack_require__(134);
-	var canDefineProperty = __webpack_require__(213);
+	var warning = __webpack_require__(135);
+	var canDefineProperty = __webpack_require__(214);
 	var hasOwnProperty = Object.prototype.hasOwnProperty;
 
 	// The Symbol used to tag the ReactElement type. If there is no native Symbol
@@ -28155,10 +28204,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	ReactElement.REACT_ELEMENT_TYPE = REACT_ELEMENT_TYPE;
 
 	module.exports = ReactElement;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 213 */
+/* 214 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28185,10 +28234,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = canDefineProperty;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 214 */
+/* 215 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28215,10 +28264,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactPropTypeLocationNames;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 215 */
+/* 216 */
 /***/ function(module, exports) {
 
 	/**
@@ -28264,7 +28313,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getIteratorFn;
 
 /***/ },
-/* 216 */
+/* 217 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28280,7 +28329,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var keyMirror = __webpack_require__(128);
+	var keyMirror = __webpack_require__(129);
 
 	var ReactPropTypeLocations = keyMirror({
 	  prop: null,
@@ -28291,7 +28340,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactPropTypeLocations;
 
 /***/ },
-/* 217 */
+/* 218 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28307,13 +28356,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var ReactChildren = __webpack_require__(218);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactDOMSelect = __webpack_require__(221);
+	var ReactChildren = __webpack_require__(219);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactDOMSelect = __webpack_require__(222);
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 	var didWarnInvalidOptionChildren = false;
 
 	function flattenChildren(children) {
@@ -28417,10 +28466,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactDOMOption;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 218 */
+/* 219 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -28436,11 +28485,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var PooledClass = __webpack_require__(141);
-	var ReactElement = __webpack_require__(212);
+	var PooledClass = __webpack_require__(142);
+	var ReactElement = __webpack_require__(213);
 
-	var emptyFunction = __webpack_require__(135);
-	var traverseAllChildren = __webpack_require__(219);
+	var emptyFunction = __webpack_require__(136);
+	var traverseAllChildren = __webpack_require__(220);
 
 	var twoArgumentPooler = PooledClass.twoArgumentPooler;
 	var fourArgumentPooler = PooledClass.fourArgumentPooler;
@@ -28616,7 +28665,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactChildren;
 
 /***/ },
-/* 219 */
+/* 220 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28632,15 +28681,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactCurrentOwner = __webpack_require__(159);
-	var ReactElement = __webpack_require__(212);
+	var ReactCurrentOwner = __webpack_require__(160);
+	var ReactElement = __webpack_require__(213);
 
-	var getIteratorFn = __webpack_require__(215);
-	var invariant = __webpack_require__(123);
-	var KeyEscapeUtils = __webpack_require__(220);
-	var warning = __webpack_require__(134);
+	var getIteratorFn = __webpack_require__(216);
+	var invariant = __webpack_require__(124);
+	var KeyEscapeUtils = __webpack_require__(221);
+	var warning = __webpack_require__(135);
 
 	var SEPARATOR = '.';
 	var SUBSEPARATOR = ':';
@@ -28779,10 +28828,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = traverseAllChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 220 */
+/* 221 */
 /***/ function(module, exports) {
 
 	/**
@@ -28846,7 +28895,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = KeyEscapeUtils;
 
 /***/ },
-/* 221 */
+/* 222 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -28862,14 +28911,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var DisabledInputUtils = __webpack_require__(208);
-	var LinkedValueUtils = __webpack_require__(210);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactUpdates = __webpack_require__(148);
+	var DisabledInputUtils = __webpack_require__(209);
+	var LinkedValueUtils = __webpack_require__(211);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactUpdates = __webpack_require__(149);
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 
 	var didWarnValueLink = false;
 	var didWarnValueDefaultValue = false;
@@ -29049,10 +29098,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactDOMSelect;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 222 */
+/* 223 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -29068,16 +29117,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var DisabledInputUtils = __webpack_require__(208);
-	var LinkedValueUtils = __webpack_require__(210);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactUpdates = __webpack_require__(148);
+	var DisabledInputUtils = __webpack_require__(209);
+	var LinkedValueUtils = __webpack_require__(211);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactUpdates = __webpack_require__(149);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	var didWarnValueLink = false;
 	var didWarnValDefaultVal = false;
@@ -29210,10 +29259,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactDOMTextarea;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 223 */
+/* 224 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -29229,20 +29278,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactComponentEnvironment = __webpack_require__(224);
-	var ReactInstanceMap = __webpack_require__(225);
-	var ReactInstrumentation = __webpack_require__(154);
-	var ReactMultiChildUpdateTypes = __webpack_require__(185);
+	var ReactComponentEnvironment = __webpack_require__(225);
+	var ReactInstanceMap = __webpack_require__(226);
+	var ReactInstrumentation = __webpack_require__(155);
+	var ReactMultiChildUpdateTypes = __webpack_require__(186);
 
-	var ReactCurrentOwner = __webpack_require__(159);
-	var ReactReconciler = __webpack_require__(151);
-	var ReactChildReconciler = __webpack_require__(226);
+	var ReactCurrentOwner = __webpack_require__(160);
+	var ReactReconciler = __webpack_require__(152);
+	var ReactChildReconciler = __webpack_require__(227);
 
-	var emptyFunction = __webpack_require__(135);
-	var flattenChildren = __webpack_require__(235);
-	var invariant = __webpack_require__(123);
+	var emptyFunction = __webpack_require__(136);
+	var flattenChildren = __webpack_require__(236);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Make an update for markup to be rendered and inserted at a supplied index.
@@ -29666,10 +29715,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactMultiChild;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 224 */
+/* 225 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -29685,9 +29734,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	var injected = false;
 
@@ -29725,10 +29774,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactComponentEnvironment;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 225 */
+/* 226 */
 /***/ function(module, exports) {
 
 	/**
@@ -29781,7 +29830,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactInstanceMap;
 
 /***/ },
-/* 226 */
+/* 227 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -29797,19 +29846,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactReconciler = __webpack_require__(151);
+	var ReactReconciler = __webpack_require__(152);
 
-	var instantiateReactComponent = __webpack_require__(227);
-	var KeyEscapeUtils = __webpack_require__(220);
-	var shouldUpdateReactComponent = __webpack_require__(232);
-	var traverseAllChildren = __webpack_require__(219);
-	var warning = __webpack_require__(134);
+	var instantiateReactComponent = __webpack_require__(228);
+	var KeyEscapeUtils = __webpack_require__(221);
+	var shouldUpdateReactComponent = __webpack_require__(233);
+	var traverseAllChildren = __webpack_require__(220);
+	var warning = __webpack_require__(135);
 
 	function instantiateChild(childInstances, child, name, selfDebugID) {
 	  // We found a component instance.
 	  var keyUnique = childInstances[name] === undefined;
 	  if (process.env.NODE_ENV !== 'production') {
-	    var ReactComponentTreeDevtool = __webpack_require__(158);
+	    var ReactComponentTreeDevtool = __webpack_require__(159);
 	    process.env.NODE_ENV !== 'production' ? warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeDevtool.getStackAddendumByID(selfDebugID)) : void 0;
 	  }
 	  if (child != null && keyUnique) {
@@ -29918,10 +29967,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactChildReconciler;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 227 */
+/* 228 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -29937,16 +29986,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var ReactCompositeComponent = __webpack_require__(228);
-	var ReactEmptyComponent = __webpack_require__(233);
-	var ReactHostComponent = __webpack_require__(234);
-	var ReactInstrumentation = __webpack_require__(154);
+	var ReactCompositeComponent = __webpack_require__(229);
+	var ReactEmptyComponent = __webpack_require__(234);
+	var ReactHostComponent = __webpack_require__(235);
+	var ReactInstrumentation = __webpack_require__(155);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	// To avoid a cyclic dependency, we create the final class in this module
 	var ReactCompositeComponentWrapper = function (element) {
@@ -30070,10 +30119,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = instantiateReactComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 228 */
+/* 229 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -30089,25 +30138,25 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var ReactComponentEnvironment = __webpack_require__(224);
-	var ReactCurrentOwner = __webpack_require__(159);
-	var ReactElement = __webpack_require__(212);
-	var ReactErrorUtils = __webpack_require__(133);
-	var ReactInstanceMap = __webpack_require__(225);
-	var ReactInstrumentation = __webpack_require__(154);
-	var ReactNodeTypes = __webpack_require__(229);
-	var ReactPropTypeLocations = __webpack_require__(216);
-	var ReactReconciler = __webpack_require__(151);
+	var ReactComponentEnvironment = __webpack_require__(225);
+	var ReactCurrentOwner = __webpack_require__(160);
+	var ReactElement = __webpack_require__(213);
+	var ReactErrorUtils = __webpack_require__(134);
+	var ReactInstanceMap = __webpack_require__(226);
+	var ReactInstrumentation = __webpack_require__(155);
+	var ReactNodeTypes = __webpack_require__(230);
+	var ReactPropTypeLocations = __webpack_require__(217);
+	var ReactReconciler = __webpack_require__(152);
 
-	var checkReactTypeSpec = __webpack_require__(230);
+	var checkReactTypeSpec = __webpack_require__(231);
 
-	var emptyObject = __webpack_require__(231);
-	var invariant = __webpack_require__(123);
-	var shouldUpdateReactComponent = __webpack_require__(232);
-	var warning = __webpack_require__(134);
+	var emptyObject = __webpack_require__(232);
+	var invariant = __webpack_require__(124);
+	var shouldUpdateReactComponent = __webpack_require__(233);
+	var warning = __webpack_require__(135);
 
 	function StatelessComponent(Component) {}
 	StatelessComponent.prototype.render = function () {
@@ -30969,10 +31018,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactCompositeComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 229 */
+/* 230 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -30989,11 +31038,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactElement = __webpack_require__(212);
+	var ReactElement = __webpack_require__(213);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	var ReactNodeTypes = {
 	  HOST: 0,
@@ -31015,10 +31064,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactNodeTypes;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 230 */
+/* 231 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31034,12 +31083,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactPropTypeLocationNames = __webpack_require__(214);
+	var ReactPropTypeLocationNames = __webpack_require__(215);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	var loggedTypeFailures = {};
 
@@ -31079,7 +31128,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	        var componentStackInfo = '';
 
 	        if (process.env.NODE_ENV !== 'production') {
-	          var ReactComponentTreeDevtool = __webpack_require__(158);
+	          var ReactComponentTreeDevtool = __webpack_require__(159);
 	          if (debugID !== null) {
 	            componentStackInfo = ReactComponentTreeDevtool.getStackAddendumByID(debugID);
 	          } else if (element !== null) {
@@ -31094,10 +31143,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = checkReactTypeSpec;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 231 */
+/* 232 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31119,10 +31168,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = emptyObject;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 232 */
+/* 233 */
 /***/ function(module, exports) {
 
 	/**
@@ -31169,7 +31218,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = shouldUpdateReactComponent;
 
 /***/ },
-/* 233 */
+/* 234 */
 /***/ function(module, exports) {
 
 	/**
@@ -31204,7 +31253,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactEmptyComponent;
 
 /***/ },
-/* 234 */
+/* 235 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31220,10 +31269,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	var genericComponentClass = null;
 	// This registry keeps track of wrapper classes around host tags.
@@ -31283,10 +31332,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactHostComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 235 */
+/* 236 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31303,9 +31352,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var KeyEscapeUtils = __webpack_require__(220);
-	var traverseAllChildren = __webpack_require__(219);
-	var warning = __webpack_require__(134);
+	var KeyEscapeUtils = __webpack_require__(221);
+	var traverseAllChildren = __webpack_require__(220);
+	var warning = __webpack_require__(135);
 
 	/**
 	 * @param {function} traverseContext Context passed through traversal.
@@ -31319,7 +31368,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var result = traverseContext;
 	    var keyUnique = result[name] === undefined;
 	    if (process.env.NODE_ENV !== 'production') {
-	      var ReactComponentTreeDevtool = __webpack_require__(158);
+	      var ReactComponentTreeDevtool = __webpack_require__(159);
 	      process.env.NODE_ENV !== 'production' ? warning(keyUnique, 'flattenChildren(...): Encountered two children with the same key, ' + '`%s`. Child keys must be unique; when two children share a key, only ' + 'the first child will be used.%s', KeyEscapeUtils.unescape(name), ReactComponentTreeDevtool.getStackAddendumByID(selfDebugID)) : void 0;
 	    }
 	    if (keyUnique && child != null) {
@@ -31350,10 +31399,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = flattenChildren;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 236 */
+/* 237 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31369,12 +31418,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var PooledClass = __webpack_require__(141);
-	var Transaction = __webpack_require__(162);
-	var ReactInstrumentation = __webpack_require__(154);
-	var ReactServerUpdateQueue = __webpack_require__(237);
+	var PooledClass = __webpack_require__(142);
+	var Transaction = __webpack_require__(163);
+	var ReactInstrumentation = __webpack_require__(155);
+	var ReactServerUpdateQueue = __webpack_require__(238);
 
 	/**
 	 * Executed within the scope of the `Transaction` instance. Consider these as
@@ -31446,10 +31495,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	PooledClass.addPoolingTo(ReactServerRenderingTransaction);
 
 	module.exports = ReactServerRenderingTransaction;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 237 */
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31468,9 +31517,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var ReactUpdateQueue = __webpack_require__(238);
-	var Transaction = __webpack_require__(162);
-	var warning = __webpack_require__(134);
+	var ReactUpdateQueue = __webpack_require__(239);
+	var Transaction = __webpack_require__(163);
+	var warning = __webpack_require__(135);
 
 	function warnNoop(publicInstance, callerName) {
 	  if (process.env.NODE_ENV !== 'production') {
@@ -31593,10 +31642,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}();
 
 	module.exports = ReactServerUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31612,15 +31661,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactCurrentOwner = __webpack_require__(159);
-	var ReactInstanceMap = __webpack_require__(225);
-	var ReactInstrumentation = __webpack_require__(154);
-	var ReactUpdates = __webpack_require__(148);
+	var ReactCurrentOwner = __webpack_require__(160);
+	var ReactInstanceMap = __webpack_require__(226);
+	var ReactInstrumentation = __webpack_require__(155);
+	var ReactUpdates = __webpack_require__(149);
 
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	function enqueueUpdate(internalInstance) {
 	  ReactUpdates.enqueueUpdate(internalInstance);
@@ -31824,10 +31873,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 239 */
+/* 240 */
 /***/ function(module, exports) {
 
 	/**
@@ -31898,7 +31947,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = shallowEqual;
 
 /***/ },
-/* 240 */
+/* 241 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -31914,10 +31963,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var emptyFunction = __webpack_require__(135);
-	var warning = __webpack_require__(134);
+	var emptyFunction = __webpack_require__(136);
+	var warning = __webpack_require__(135);
 
 	var validateDOMNesting = emptyFunction;
 
@@ -32270,10 +32319,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = validateDOMNesting;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 241 */
+/* 242 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32289,10 +32338,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var DOMLazyTree = __webpack_require__(175);
-	var ReactDOMComponentTree = __webpack_require__(120);
+	var DOMLazyTree = __webpack_require__(176);
+	var ReactDOMComponentTree = __webpack_require__(121);
 
 	var ReactDOMEmptyComponent = function (instantiate) {
 	  // ReactCompositeComponent uses this:
@@ -32338,7 +32387,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDOMEmptyComponent;
 
 /***/ },
-/* 242 */
+/* 243 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -32354,9 +32403,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var invariant = __webpack_require__(123);
+	var invariant = __webpack_require__(124);
 
 	/**
 	 * Return the lowest common ancestor of A and B, or null if they are in
@@ -32477,10 +32526,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	  traverseTwoPhase: traverseTwoPhase,
 	  traverseEnterLeave: traverseEnterLeave
 	};
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 243 */
+/* 244 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -32496,17 +32545,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var DOMChildrenOperations = __webpack_require__(174);
-	var DOMLazyTree = __webpack_require__(175);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactInstrumentation = __webpack_require__(154);
+	var DOMChildrenOperations = __webpack_require__(175);
+	var DOMLazyTree = __webpack_require__(176);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactInstrumentation = __webpack_require__(155);
 
-	var escapeTextContentForBrowser = __webpack_require__(180);
-	var invariant = __webpack_require__(123);
-	var validateDOMNesting = __webpack_require__(240);
+	var escapeTextContentForBrowser = __webpack_require__(181);
+	var invariant = __webpack_require__(124);
+	var validateDOMNesting = __webpack_require__(241);
 
 	/**
 	 * Text nodes violate a couple assumptions that React makes about components:
@@ -32654,10 +32703,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 	module.exports = ReactDOMTextComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 244 */
+/* 245 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32673,12 +32722,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var ReactUpdates = __webpack_require__(148);
-	var Transaction = __webpack_require__(162);
+	var ReactUpdates = __webpack_require__(149);
+	var Transaction = __webpack_require__(163);
 
-	var emptyFunction = __webpack_require__(135);
+	var emptyFunction = __webpack_require__(136);
 
 	var RESET_BATCHED_UPDATES = {
 	  initialize: emptyFunction,
@@ -32730,7 +32779,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDefaultBatchingStrategy;
 
 /***/ },
-/* 245 */
+/* 246 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -32746,16 +32795,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var EventListener = __webpack_require__(246);
-	var ExecutionEnvironment = __webpack_require__(138);
-	var PooledClass = __webpack_require__(141);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactUpdates = __webpack_require__(148);
+	var EventListener = __webpack_require__(247);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var PooledClass = __webpack_require__(142);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactUpdates = __webpack_require__(149);
 
-	var getEventTarget = __webpack_require__(163);
-	var getUnboundedScrollPosition = __webpack_require__(247);
+	var getEventTarget = __webpack_require__(164);
+	var getUnboundedScrollPosition = __webpack_require__(248);
 
 	/**
 	 * Find the deepest React component completely containing the root of the
@@ -32892,7 +32941,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactEventListener;
 
 /***/ },
-/* 246 */
+/* 247 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {'use strict';
@@ -32915,7 +32964,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
-	var emptyFunction = __webpack_require__(135);
+	var emptyFunction = __webpack_require__(136);
 
 	/**
 	 * Upstream version of event listener. Does not take into account specific
@@ -32978,10 +33027,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = EventListener;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 247 */
+/* 248 */
 /***/ function(module, exports) {
 
 	/**
@@ -33024,7 +33073,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getUnboundedScrollPosition;
 
 /***/ },
-/* 248 */
+/* 249 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -33040,15 +33089,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var DOMProperty = __webpack_require__(122);
-	var EventPluginHub = __webpack_require__(130);
-	var EventPluginUtils = __webpack_require__(132);
-	var ReactComponentEnvironment = __webpack_require__(224);
-	var ReactClass = __webpack_require__(249);
-	var ReactEmptyComponent = __webpack_require__(233);
-	var ReactBrowserEventEmitter = __webpack_require__(204);
-	var ReactHostComponent = __webpack_require__(234);
-	var ReactUpdates = __webpack_require__(148);
+	var DOMProperty = __webpack_require__(123);
+	var EventPluginHub = __webpack_require__(131);
+	var EventPluginUtils = __webpack_require__(133);
+	var ReactComponentEnvironment = __webpack_require__(225);
+	var ReactClass = __webpack_require__(250);
+	var ReactEmptyComponent = __webpack_require__(234);
+	var ReactBrowserEventEmitter = __webpack_require__(205);
+	var ReactHostComponent = __webpack_require__(235);
+	var ReactUpdates = __webpack_require__(149);
 
 	var ReactInjection = {
 	  Component: ReactComponentEnvironment.injection,
@@ -33065,7 +33114,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactInjection;
 
 /***/ },
-/* 249 */
+/* 250 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -33081,20 +33130,20 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var ReactComponent = __webpack_require__(250);
-	var ReactElement = __webpack_require__(212);
-	var ReactPropTypeLocations = __webpack_require__(216);
-	var ReactPropTypeLocationNames = __webpack_require__(214);
-	var ReactNoopUpdateQueue = __webpack_require__(251);
+	var ReactComponent = __webpack_require__(251);
+	var ReactElement = __webpack_require__(213);
+	var ReactPropTypeLocations = __webpack_require__(217);
+	var ReactPropTypeLocationNames = __webpack_require__(215);
+	var ReactNoopUpdateQueue = __webpack_require__(252);
 
-	var emptyObject = __webpack_require__(231);
-	var invariant = __webpack_require__(123);
-	var keyMirror = __webpack_require__(128);
-	var keyOf = __webpack_require__(146);
-	var warning = __webpack_require__(134);
+	var emptyObject = __webpack_require__(232);
+	var invariant = __webpack_require__(124);
+	var keyMirror = __webpack_require__(129);
+	var keyOf = __webpack_require__(147);
+	var warning = __webpack_require__(135);
 
 	var MIXINS_KEY = keyOf({ mixins: null });
 
@@ -33793,10 +33842,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactClass;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 250 */
+/* 251 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -33812,14 +33861,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactNoopUpdateQueue = __webpack_require__(251);
+	var ReactNoopUpdateQueue = __webpack_require__(252);
 
-	var canDefineProperty = __webpack_require__(213);
-	var emptyObject = __webpack_require__(231);
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var canDefineProperty = __webpack_require__(214);
+	var emptyObject = __webpack_require__(232);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	/**
 	 * Base class helpers for the updating state of a component.
@@ -33917,10 +33966,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactComponent;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 251 */
+/* 252 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -33936,7 +33985,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var warning = __webpack_require__(134);
+	var warning = __webpack_require__(135);
 
 	function warnNoop(publicInstance, callerName) {
 	  if (process.env.NODE_ENV !== 'production') {
@@ -34019,10 +34068,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactNoopUpdateQueue;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 252 */
+/* 253 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -34038,15 +34087,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _assign = __webpack_require__(140);
+	var _assign = __webpack_require__(141);
 
-	var CallbackQueue = __webpack_require__(149);
-	var PooledClass = __webpack_require__(141);
-	var ReactBrowserEventEmitter = __webpack_require__(204);
-	var ReactInputSelection = __webpack_require__(253);
-	var ReactInstrumentation = __webpack_require__(154);
-	var Transaction = __webpack_require__(162);
-	var ReactUpdateQueue = __webpack_require__(238);
+	var CallbackQueue = __webpack_require__(150);
+	var PooledClass = __webpack_require__(142);
+	var ReactBrowserEventEmitter = __webpack_require__(205);
+	var ReactInputSelection = __webpack_require__(254);
+	var ReactInstrumentation = __webpack_require__(155);
+	var Transaction = __webpack_require__(163);
+	var ReactUpdateQueue = __webpack_require__(239);
 
 	/**
 	 * Ensures that, when possible, the selection range (currently selected text
@@ -34203,10 +34252,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	PooledClass.addPoolingTo(ReactReconcileTransaction);
 
 	module.exports = ReactReconcileTransaction;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 253 */
+/* 254 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34222,11 +34271,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactDOMSelection = __webpack_require__(254);
+	var ReactDOMSelection = __webpack_require__(255);
 
-	var containsNode = __webpack_require__(256);
-	var focusNode = __webpack_require__(189);
-	var getActiveElement = __webpack_require__(259);
+	var containsNode = __webpack_require__(257);
+	var focusNode = __webpack_require__(190);
+	var getActiveElement = __webpack_require__(260);
 
 	function isInDocument(node) {
 	  return containsNode(document.documentElement, node);
@@ -34335,7 +34384,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactInputSelection;
 
 /***/ },
-/* 254 */
+/* 255 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -34351,10 +34400,10 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
-	var getNodeForCharacterOffset = __webpack_require__(255);
-	var getTextContentAccessor = __webpack_require__(142);
+	var getNodeForCharacterOffset = __webpack_require__(256);
+	var getTextContentAccessor = __webpack_require__(143);
 
 	/**
 	 * While `isCollapsed` is available on the Selection object and `collapsed`
@@ -34552,7 +34601,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDOMSelection;
 
 /***/ },
-/* 255 */
+/* 256 */
 /***/ function(module, exports) {
 
 	/**
@@ -34631,7 +34680,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getNodeForCharacterOffset;
 
 /***/ },
-/* 256 */
+/* 257 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34647,7 +34696,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * 
 	 */
 
-	var isTextNode = __webpack_require__(257);
+	var isTextNode = __webpack_require__(258);
 
 	/*eslint-disable no-bitwise */
 
@@ -34675,7 +34724,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = containsNode;
 
 /***/ },
-/* 257 */
+/* 258 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -34691,7 +34740,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	 * @typechecks
 	 */
 
-	var isNode = __webpack_require__(258);
+	var isNode = __webpack_require__(259);
 
 	/**
 	 * @param {*} object The object to check.
@@ -34704,7 +34753,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = isTextNode;
 
 /***/ },
-/* 258 */
+/* 259 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -34731,7 +34780,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = isNode;
 
 /***/ },
-/* 259 */
+/* 260 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -34770,7 +34819,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getActiveElement;
 
 /***/ },
-/* 260 */
+/* 261 */
 /***/ function(module, exports) {
 
 	/**
@@ -35075,7 +35124,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SVGDOMPropertyConfig;
 
 /***/ },
-/* 261 */
+/* 262 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35091,17 +35140,17 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var EventConstants = __webpack_require__(127);
-	var EventPropagators = __webpack_require__(129);
-	var ExecutionEnvironment = __webpack_require__(138);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactInputSelection = __webpack_require__(253);
-	var SyntheticEvent = __webpack_require__(144);
+	var EventConstants = __webpack_require__(128);
+	var EventPropagators = __webpack_require__(130);
+	var ExecutionEnvironment = __webpack_require__(139);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactInputSelection = __webpack_require__(254);
+	var SyntheticEvent = __webpack_require__(145);
 
-	var getActiveElement = __webpack_require__(259);
-	var isTextInputElement = __webpack_require__(165);
-	var keyOf = __webpack_require__(146);
-	var shallowEqual = __webpack_require__(239);
+	var getActiveElement = __webpack_require__(260);
+	var isTextInputElement = __webpack_require__(166);
+	var keyOf = __webpack_require__(147);
+	var shallowEqual = __webpack_require__(240);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -35276,7 +35325,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SelectEventPlugin;
 
 /***/ },
-/* 262 */
+/* 263 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -35292,28 +35341,28 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var EventConstants = __webpack_require__(127);
-	var EventListener = __webpack_require__(246);
-	var EventPropagators = __webpack_require__(129);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var SyntheticAnimationEvent = __webpack_require__(263);
-	var SyntheticClipboardEvent = __webpack_require__(264);
-	var SyntheticEvent = __webpack_require__(144);
-	var SyntheticFocusEvent = __webpack_require__(265);
-	var SyntheticKeyboardEvent = __webpack_require__(266);
-	var SyntheticMouseEvent = __webpack_require__(168);
-	var SyntheticDragEvent = __webpack_require__(269);
-	var SyntheticTouchEvent = __webpack_require__(270);
-	var SyntheticTransitionEvent = __webpack_require__(271);
-	var SyntheticUIEvent = __webpack_require__(169);
-	var SyntheticWheelEvent = __webpack_require__(272);
+	var EventConstants = __webpack_require__(128);
+	var EventListener = __webpack_require__(247);
+	var EventPropagators = __webpack_require__(130);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var SyntheticAnimationEvent = __webpack_require__(264);
+	var SyntheticClipboardEvent = __webpack_require__(265);
+	var SyntheticEvent = __webpack_require__(145);
+	var SyntheticFocusEvent = __webpack_require__(266);
+	var SyntheticKeyboardEvent = __webpack_require__(267);
+	var SyntheticMouseEvent = __webpack_require__(169);
+	var SyntheticDragEvent = __webpack_require__(270);
+	var SyntheticTouchEvent = __webpack_require__(271);
+	var SyntheticTransitionEvent = __webpack_require__(272);
+	var SyntheticUIEvent = __webpack_require__(170);
+	var SyntheticWheelEvent = __webpack_require__(273);
 
-	var emptyFunction = __webpack_require__(135);
-	var getEventCharCode = __webpack_require__(267);
-	var invariant = __webpack_require__(123);
-	var keyOf = __webpack_require__(146);
+	var emptyFunction = __webpack_require__(136);
+	var getEventCharCode = __webpack_require__(268);
+	var invariant = __webpack_require__(124);
+	var keyOf = __webpack_require__(147);
 
 	var topLevelTypes = EventConstants.topLevelTypes;
 
@@ -35908,10 +35957,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = SimpleEventPlugin;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 263 */
+/* 264 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35927,7 +35976,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(144);
+	var SyntheticEvent = __webpack_require__(145);
 
 	/**
 	 * @interface Event
@@ -35955,7 +36004,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticAnimationEvent;
 
 /***/ },
-/* 264 */
+/* 265 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -35971,7 +36020,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(144);
+	var SyntheticEvent = __webpack_require__(145);
 
 	/**
 	 * @interface Event
@@ -35998,7 +36047,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticClipboardEvent;
 
 /***/ },
-/* 265 */
+/* 266 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36014,7 +36063,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(169);
+	var SyntheticUIEvent = __webpack_require__(170);
 
 	/**
 	 * @interface FocusEvent
@@ -36039,7 +36088,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticFocusEvent;
 
 /***/ },
-/* 266 */
+/* 267 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36055,11 +36104,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(169);
+	var SyntheticUIEvent = __webpack_require__(170);
 
-	var getEventCharCode = __webpack_require__(267);
-	var getEventKey = __webpack_require__(268);
-	var getEventModifierState = __webpack_require__(171);
+	var getEventCharCode = __webpack_require__(268);
+	var getEventKey = __webpack_require__(269);
+	var getEventModifierState = __webpack_require__(172);
 
 	/**
 	 * @interface KeyboardEvent
@@ -36128,7 +36177,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticKeyboardEvent;
 
 /***/ },
-/* 267 */
+/* 268 */
 /***/ function(module, exports) {
 
 	/**
@@ -36183,7 +36232,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getEventCharCode;
 
 /***/ },
-/* 268 */
+/* 269 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36199,7 +36248,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var getEventCharCode = __webpack_require__(267);
+	var getEventCharCode = __webpack_require__(268);
 
 	/**
 	 * Normalization of deprecated HTML5 `key` values
@@ -36290,7 +36339,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getEventKey;
 
 /***/ },
-/* 269 */
+/* 270 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36306,7 +36355,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticMouseEvent = __webpack_require__(168);
+	var SyntheticMouseEvent = __webpack_require__(169);
 
 	/**
 	 * @interface DragEvent
@@ -36331,7 +36380,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticDragEvent;
 
 /***/ },
-/* 270 */
+/* 271 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36347,9 +36396,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticUIEvent = __webpack_require__(169);
+	var SyntheticUIEvent = __webpack_require__(170);
 
-	var getEventModifierState = __webpack_require__(171);
+	var getEventModifierState = __webpack_require__(172);
 
 	/**
 	 * @interface TouchEvent
@@ -36381,7 +36430,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticTouchEvent;
 
 /***/ },
-/* 271 */
+/* 272 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36397,7 +36446,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticEvent = __webpack_require__(144);
+	var SyntheticEvent = __webpack_require__(145);
 
 	/**
 	 * @interface Event
@@ -36425,7 +36474,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticTransitionEvent;
 
 /***/ },
-/* 272 */
+/* 273 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -36441,7 +36490,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var SyntheticMouseEvent = __webpack_require__(168);
+	var SyntheticMouseEvent = __webpack_require__(169);
 
 	/**
 	 * @interface WheelEvent
@@ -36484,7 +36533,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = SyntheticWheelEvent;
 
 /***/ },
-/* 273 */
+/* 274 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -36500,30 +36549,30 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var DOMLazyTree = __webpack_require__(175);
-	var DOMProperty = __webpack_require__(122);
-	var ReactBrowserEventEmitter = __webpack_require__(204);
-	var ReactCurrentOwner = __webpack_require__(159);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactDOMContainerInfo = __webpack_require__(274);
-	var ReactDOMFeatureFlags = __webpack_require__(275);
-	var ReactElement = __webpack_require__(212);
-	var ReactFeatureFlags = __webpack_require__(150);
-	var ReactInstanceMap = __webpack_require__(225);
-	var ReactInstrumentation = __webpack_require__(154);
-	var ReactMarkupChecksum = __webpack_require__(276);
-	var ReactReconciler = __webpack_require__(151);
-	var ReactUpdateQueue = __webpack_require__(238);
-	var ReactUpdates = __webpack_require__(148);
+	var DOMLazyTree = __webpack_require__(176);
+	var DOMProperty = __webpack_require__(123);
+	var ReactBrowserEventEmitter = __webpack_require__(205);
+	var ReactCurrentOwner = __webpack_require__(160);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactDOMContainerInfo = __webpack_require__(275);
+	var ReactDOMFeatureFlags = __webpack_require__(276);
+	var ReactElement = __webpack_require__(213);
+	var ReactFeatureFlags = __webpack_require__(151);
+	var ReactInstanceMap = __webpack_require__(226);
+	var ReactInstrumentation = __webpack_require__(155);
+	var ReactMarkupChecksum = __webpack_require__(277);
+	var ReactReconciler = __webpack_require__(152);
+	var ReactUpdateQueue = __webpack_require__(239);
+	var ReactUpdates = __webpack_require__(149);
 
-	var emptyObject = __webpack_require__(231);
-	var instantiateReactComponent = __webpack_require__(227);
-	var invariant = __webpack_require__(123);
-	var setInnerHTML = __webpack_require__(177);
-	var shouldUpdateReactComponent = __webpack_require__(232);
-	var warning = __webpack_require__(134);
+	var emptyObject = __webpack_require__(232);
+	var instantiateReactComponent = __webpack_require__(228);
+	var invariant = __webpack_require__(124);
+	var setInnerHTML = __webpack_require__(178);
+	var shouldUpdateReactComponent = __webpack_require__(233);
+	var warning = __webpack_require__(135);
 
 	var ATTR_NAME = DOMProperty.ID_ATTRIBUTE_NAME;
 	var ROOT_ATTR_NAME = DOMProperty.ROOT_ATTRIBUTE_NAME;
@@ -36986,10 +37035,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 	module.exports = ReactMount;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 274 */
+/* 275 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -37005,7 +37054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var validateDOMNesting = __webpack_require__(240);
+	var validateDOMNesting = __webpack_require__(241);
 
 	var DOC_NODE_TYPE = 9;
 
@@ -37025,10 +37074,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = ReactDOMContainerInfo;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 275 */
+/* 276 */
 /***/ function(module, exports) {
 
 	/**
@@ -37051,7 +37100,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactDOMFeatureFlags;
 
 /***/ },
-/* 276 */
+/* 277 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37067,7 +37116,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var adler32 = __webpack_require__(277);
+	var adler32 = __webpack_require__(278);
 
 	var TAG_END = /\/?>/;
 	var COMMENT_START = /^<\!\-\-/;
@@ -37106,7 +37155,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactMarkupChecksum;
 
 /***/ },
-/* 277 */
+/* 278 */
 /***/ function(module, exports) {
 
 	/**
@@ -37155,7 +37204,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = adler32;
 
 /***/ },
-/* 278 */
+/* 279 */
 /***/ function(module, exports) {
 
 	/**
@@ -37174,7 +37223,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = '15.2.1';
 
 /***/ },
-/* 279 */
+/* 280 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -37190,15 +37239,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121);
+	var _prodInvariant = __webpack_require__(122);
 
-	var ReactCurrentOwner = __webpack_require__(159);
-	var ReactDOMComponentTree = __webpack_require__(120);
-	var ReactInstanceMap = __webpack_require__(225);
+	var ReactCurrentOwner = __webpack_require__(160);
+	var ReactDOMComponentTree = __webpack_require__(121);
+	var ReactInstanceMap = __webpack_require__(226);
 
-	var getHostComponentFromComposite = __webpack_require__(280);
-	var invariant = __webpack_require__(123);
-	var warning = __webpack_require__(134);
+	var getHostComponentFromComposite = __webpack_require__(281);
+	var invariant = __webpack_require__(124);
+	var warning = __webpack_require__(135);
 
 	/**
 	 * Returns the DOM node rendered by this element.
@@ -37237,10 +37286,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = findDOMNode;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 280 */
+/* 281 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37256,7 +37305,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactNodeTypes = __webpack_require__(229);
+	var ReactNodeTypes = __webpack_require__(230);
 
 	function getHostComponentFromComposite(inst) {
 	  var type;
@@ -37275,7 +37324,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = getHostComponentFromComposite;
 
 /***/ },
-/* 281 */
+/* 282 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -37291,12 +37340,12 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ReactMount = __webpack_require__(273);
+	var ReactMount = __webpack_require__(274);
 
 	module.exports = ReactMount.renderSubtreeIntoContainer;
 
 /***/ },
-/* 282 */
+/* 283 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37376,7 +37425,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = DeleteConversation;
 
 /***/ },
-/* 283 */
+/* 284 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37391,19 +37440,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _ContentIntro = __webpack_require__(284);
+	var _ContentIntro = __webpack_require__(285);
 
 	var _ContentIntro2 = _interopRequireDefault(_ContentIntro);
 
-	var _ContentBanner = __webpack_require__(285);
+	var _ContentBanner = __webpack_require__(286);
 
 	var _ContentBanner2 = _interopRequireDefault(_ContentBanner);
 
-	var _ContentConversation = __webpack_require__(286);
+	var _ContentConversation = __webpack_require__(287);
 
 	var _ContentConversation2 = _interopRequireDefault(_ContentConversation);
 
-	var _ContentInfo = __webpack_require__(333);
+	var _ContentInfo = __webpack_require__(334);
 
 	var _ContentInfo2 = _interopRequireDefault(_ContentInfo);
 
@@ -37490,11 +37539,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						haveConversations: this.props.haveConversations,
 						version: this.props.version,
 						showOptionList: this.props.showOptionList,
-<<<<<<< 5a70d7d261afb37e088196e246d79cbb163f8d35
-						overlayView: this.props.overlayView }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.isMobile, showBanner: this.props.showBanner }),
-=======
-						askReconnect: this.props.askReconnect }) : _react2.default.createElement(_ContentIntro2.default, { compactView: this.props.compactView, showBanner: this.props.showBanner }),
->>>>>>> Fix mobile view
+						overlayView: this.props.overlayView }) : _react2.default.createElement(_ContentIntro2.default, { isMobile: this.props.compactView, showBanner: this.props.showBanner }),
 					this.state.showAsideInfo ? _react2.default.createElement(_ContentInfo2.default, { toggleConversationHeader: this.toggleConversationHeader,
 						viewType: this.props.viewType,
 						compactView: this.props.compactView,
@@ -37534,7 +37579,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentWindow;
 
 /***/ },
-/* 284 */
+/* 285 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37582,7 +37627,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentIntro;
 
 /***/ },
-/* 285 */
+/* 286 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37627,7 +37672,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentBanner;
 
 /***/ },
-/* 286 */
+/* 287 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37642,31 +37687,35 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _TimelineChat = __webpack_require__(287);
+	var _TimelineChat = __webpack_require__(288);
 
 	var _TimelineChat2 = _interopRequireDefault(_TimelineChat);
 
-	var _Input = __webpack_require__(305);
+	var _Input = __webpack_require__(306);
 
 	var _Input2 = _interopRequireDefault(_Input);
 
-	var _Modal = __webpack_require__(329);
+	var _Modal = __webpack_require__(330);
 
 	var _Modal2 = _interopRequireDefault(_Modal);
 
-	var _Panel = __webpack_require__(330);
+	var _Panel = __webpack_require__(331);
 
 	var _Panel2 = _interopRequireDefault(_Panel);
 
-	var _ContentViewer = __webpack_require__(331);
+	var _ContentViewer = __webpack_require__(332);
 
 	var _ContentViewer2 = _interopRequireDefault(_ContentViewer);
 
-	var _ContentReconnect = __webpack_require__(332);
+	var _ContentReconnect = __webpack_require__(333);
 
 	var _ContentReconnect2 = _interopRequireDefault(_ContentReconnect);
 
 	var _monkeyUtils = __webpack_require__(9);
+
+	var _lang = __webpack_require__(114);
+
+	var _lang2 = _interopRequireDefault(_lang);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37776,14 +37825,14 @@ return /******/ (function(modules) { // webpackBootstrap
 								'span',
 								{ className: 'mky-conversation-selected-status' },
 								' ',
-								'Last seen ' + (0, _monkeyUtils.defineTimeByDay)(this.props.conversationSelected.lastSeen)
+								_lang2.default[this.context.lang]['status.lastseen'] + ' ' + (0, _monkeyUtils.defineTimeByDay)(this.props.conversationSelected.lastSeen)
 							) : _react2.default.createElement(
 								'span',
 								{ className: 'mky-conversation-selected-status' },
-								' Online '
+								_lang2.default[this.context.lang]['status.online']
 							)
 						),
-						this.context.options.conversation.onEnd ? _react2.default.createElement('input', { className: 'mky-button-standard', type: 'submit', value: 'End Chat', id: 'mky-end-chat', onClick: this.handleEndConversation }) : null,
+						this.context.options.conversation.onEnd ? _react2.default.createElement('input', { className: 'mky-button-standard', type: 'submit', value: _lang2.default[this.context.lang]['button.endchat.text'], id: 'mky-end-chat', onClick: this.handleEndConversation }) : null,
 						this.props.viewType == 'rightside' ? _react2.default.createElement(
 							'div',
 							{ className: 'mky-conversation-header-exit', onClick: this.closeSide },
@@ -37907,13 +37956,14 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	ContentConversation.contextTypes = {
 		bubblePreviews: _react2.default.PropTypes.object.isRequired,
-		options: _react2.default.PropTypes.object.isRequired
+		options: _react2.default.PropTypes.object.isRequired,
+		lang: _react2.default.PropTypes.string.isRequired
 	};
 
 	exports.default = ContentConversation;
 
 /***/ },
-/* 287 */
+/* 288 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -37928,33 +37978,33 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var _monkeyUtils = __webpack_require__(9);
 
-	var _Bubble = __webpack_require__(288);
+	var _Bubble = __webpack_require__(289);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _BubbleText = __webpack_require__(289);
+	var _BubbleText = __webpack_require__(290);
 
 	var _BubbleText2 = _interopRequireDefault(_BubbleText);
 
-	var _BubbleImage = __webpack_require__(298);
+	var _BubbleImage = __webpack_require__(299);
 
 	var _BubbleImage2 = _interopRequireDefault(_BubbleImage);
 
-	var _BubbleFile = __webpack_require__(300);
+	var _BubbleFile = __webpack_require__(301);
 
 	var _BubbleFile2 = _interopRequireDefault(_BubbleFile);
 
-	var _BubbleAudio = __webpack_require__(301);
+	var _BubbleAudio = __webpack_require__(302);
 
 	var _BubbleAudio2 = _interopRequireDefault(_BubbleAudio);
 
-	var _BubbleContact = __webpack_require__(304);
+	var _BubbleContact = __webpack_require__(305);
 
 	var _BubbleContact2 = _interopRequireDefault(_BubbleContact);
 
@@ -38374,7 +38424,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = TimelineChat;
 
 /***/ },
-/* 288 */
+/* 289 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38559,7 +38609,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Bubble;
 
 /***/ },
-/* 289 */
+/* 290 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38574,7 +38624,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactLinkify = __webpack_require__(290);
+	var _reactLinkify = __webpack_require__(291);
 
 	var _reactLinkify2 = _interopRequireDefault(_reactLinkify);
 
@@ -38616,7 +38666,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleText;
 
 /***/ },
-/* 290 */
+/* 291 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38637,11 +38687,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _linkifyIt = __webpack_require__(291);
+	var _linkifyIt = __webpack_require__(292);
 
 	var _linkifyIt2 = _interopRequireDefault(_linkifyIt);
 
-	var _tlds = __webpack_require__(297);
+	var _tlds = __webpack_require__(298);
 
 	var _tlds2 = _interopRequireDefault(_tlds);
 
@@ -38787,7 +38837,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 291 */
+/* 292 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -38942,7 +38992,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function compile(self) {
 
 	  // Load & clone RE patterns.
-	  var re = self.re = assign({}, __webpack_require__(292));
+	  var re = self.re = assign({}, __webpack_require__(293));
 
 	  // Define dynamic patterns
 	  var tlds = self.__tlds__.slice();
@@ -39419,16 +39469,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 292 */
+/* 293 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
 	// Use direct extract instead of `regenerate` to reduse browserified size
-	var src_Any = exports.src_Any = __webpack_require__(293).source;
-	var src_Cc  = exports.src_Cc = __webpack_require__(294).source;
-	var src_Z   = exports.src_Z  = __webpack_require__(295).source;
-	var src_P   = exports.src_P  = __webpack_require__(296).source;
+	var src_Any = exports.src_Any = __webpack_require__(294).source;
+	var src_Cc  = exports.src_Cc = __webpack_require__(295).source;
+	var src_Z   = exports.src_Z  = __webpack_require__(296).source;
+	var src_P   = exports.src_P  = __webpack_require__(297).source;
 
 	// \p{\Z\P\Cc\CF} (white spaces + control + format + punctuation)
 	var src_ZPCc = exports.src_ZPCc = [ src_Z, src_P, src_Cc ].join('|');
@@ -39587,31 +39637,31 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 293 */
+/* 294 */
 /***/ function(module, exports) {
 
 	module.exports=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/
 
 /***/ },
-/* 294 */
+/* 295 */
 /***/ function(module, exports) {
 
 	module.exports=/[\0-\x1F\x7F-\x9F]/
 
 /***/ },
-/* 295 */
+/* 296 */
 /***/ function(module, exports) {
 
 	module.exports=/[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/
 
 /***/ },
-/* 296 */
+/* 297 */
 /***/ function(module, exports) {
 
 	module.exports=/[!-#%-\*,-/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u0AF0\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E42\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC9\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDF3C-\uDF3E]|\uD809[\uDC70-\uDC74]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]/
 
 /***/ },
-/* 297 */
+/* 298 */
 /***/ function(module, exports) {
 
 	module.exports = [
@@ -39725,6 +39775,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
+	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -40296,6 +40347,8 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
+	  "lpl",
+	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -41024,7 +41077,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 298 */
+/* 299 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -41048,7 +41101,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 	var isFirefox = typeof InstallTrigger !== 'undefined';
-	var EXIF = __webpack_require__(299);
+	var EXIF = __webpack_require__(300);
 
 	var BubbleImage = function (_Component) {
 		_inherits(BubbleImage, _Component);
@@ -41175,7 +41228,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleImage;
 
 /***/ },
-/* 299 */
+/* 300 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function() {
@@ -41986,7 +42039,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 300 */
+/* 301 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42001,7 +42054,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -42162,7 +42215,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleFile;
 
 /***/ },
-/* 301 */
+/* 302 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -42187,8 +42240,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// ======================
 	// jquery.knob.js
-	__webpack_require__(302);
-	var $ = __webpack_require__(303);
+	__webpack_require__(303);
+	var $ = __webpack_require__(304);
 
 	var playIntervalBubble;
 	var $bubblePlayer;
@@ -42423,13 +42476,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleAudio;
 
 /***/ },
-/* 302 */
+/* 303 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(e){if(true){!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(303)], __WEBPACK_AMD_DEFINE_FACTORY__ = (e), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}else{e(jQuery)}})(function(e){"use strict";var t={},n=Math.max,r=Math.min;t.c={};t.c.d=e(document);t.c.t=function(e){return e.originalEvent.touches.length-1};t.o=function(){var n=this;this.o=null;this.$=null;this.i=null;this.g=null;this.v=null;this.cv=null;this.x=0;this.y=0;this.w=0;this.h=0;this.$c=null;this.c=null;this.t=0;this.isInit=false;this.fgColor=null;this.pColor=null;this.dH=null;this.cH=null;this.eH=null;this.rH=null;this.scale=1;this.relative=false;this.relativeWidth=false;this.relativeHeight=false;this.$div=null;this.run=function(){var t=function(e,t){var r;for(r in t){n.o[r]=t[r]}n._carve().init();n._configure()._draw()};if(this.$.data("kontroled"))return;this.$.data("kontroled",true);this.extend();this.o=e.extend({min:this.$.data("min")!==undefined?this.$.data("min"):0,max:this.$.data("max")!==undefined?this.$.data("max"):100,stopper:true,readOnly:this.$.data("readonly")||this.$.attr("readonly")==="readonly",cursor:this.$.data("cursor")===true&&30||this.$.data("cursor")||0,thickness:this.$.data("thickness")&&Math.max(Math.min(this.$.data("thickness"),1),.01)||.35,lineCap:this.$.data("linecap")||"butt",width:this.$.data("width")||200,height:this.$.data("height")||200,displayInput:this.$.data("displayinput")==null||this.$.data("displayinput"),displayPrevious:this.$.data("displayprevious"),fgColor:this.$.data("fgcolor")||"#87CEEB",inputColor:this.$.data("inputcolor"),font:this.$.data("font")||"Arial",fontWeight:this.$.data("font-weight")||"bold",inline:false,step:this.$.data("step")||1,rotation:this.$.data("rotation"),draw:null,change:null,cancel:null,release:null,format:function(e){return e},parse:function(e){return parseFloat(e)}},this.o);this.o.flip=this.o.rotation==="anticlockwise"||this.o.rotation==="acw";if(!this.o.inputColor){this.o.inputColor=this.o.fgColor}if(this.$.is("fieldset")){this.v={};this.i=this.$.find("input");this.i.each(function(t){var r=e(this);n.i[t]=r;n.v[t]=n.o.parse(r.val());r.bind("change blur",function(){var e={};e[t]=r.val();n.val(n._validate(e))})});this.$.find("legend").remove()}else{this.i=this.$;this.v=this.o.parse(this.$.val());this.v===""&&(this.v=this.o.min);this.$.bind("change blur",function(){n.val(n._validate(n.o.parse(n.$.val())))})}!this.o.displayInput&&this.$.hide();this.$c=e(document.createElement("canvas")).attr({width:this.o.width,height:this.o.height});this.$div=e('<div style="'+(this.o.inline?"display:inline;":"")+"width:"+this.o.width+"px;height:"+this.o.height+"px;"+'"></div>');this.$.wrap(this.$div).before(this.$c);this.$div=this.$.parent();if(typeof G_vmlCanvasManager!=="undefined"){G_vmlCanvasManager.initElement(this.$c[0])}this.c=this.$c[0].getContext?this.$c[0].getContext("2d"):null;if(!this.c){throw{name:"CanvasNotSupportedException",message:"Canvas not supported. Please use excanvas on IE8.0.",toString:function(){return this.name+": "+this.message}}}this.scale=(window.devicePixelRatio||1)/(this.c.webkitBackingStorePixelRatio||this.c.mozBackingStorePixelRatio||this.c.msBackingStorePixelRatio||this.c.oBackingStorePixelRatio||this.c.backingStorePixelRatio||1);this.relativeWidth=this.o.width%1!==0&&this.o.width.indexOf("%");this.relativeHeight=this.o.height%1!==0&&this.o.height.indexOf("%");this.relative=this.relativeWidth||this.relativeHeight;this._carve();if(this.v instanceof Object){this.cv={};this.copy(this.v,this.cv)}else{this.cv=this.v}this.$.bind("configure",t).parent().bind("configure",t);this._listen()._configure()._xy().init();this.isInit=true;this.$.val(this.o.format(this.v));this._draw();return this};this._carve=function(){if(this.relative){var e=this.relativeWidth?this.$div.parent().width()*parseInt(this.o.width)/100:this.$div.parent().width(),t=this.relativeHeight?this.$div.parent().height()*parseInt(this.o.height)/100:this.$div.parent().height();this.w=this.h=Math.min(e,t)}else{this.w=this.o.width;this.h=this.o.height}this.$div.css({width:this.w+"px",height:this.h+"px"});this.$c.attr({width:this.w,height:this.h});if(this.scale!==1){this.$c[0].width=this.$c[0].width*this.scale;this.$c[0].height=this.$c[0].height*this.scale;this.$c.width(this.w);this.$c.height(this.h)}return this};this._draw=function(){var e=true;n.g=n.c;n.clear();n.dH&&(e=n.dH());e!==false&&n.draw()};this._touch=function(e){var r=function(e){var t=n.xy2val(e.originalEvent.touches[n.t].pageX,e.originalEvent.touches[n.t].pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};this.t=t.c.t(e);r(e);t.c.d.bind("touchmove.k",r).bind("touchend.k",function(){t.c.d.unbind("touchmove.k touchend.k");n.val(n.cv)});return this};this._mouse=function(e){var r=function(e){var t=n.xy2val(e.pageX,e.pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};r(e);t.c.d.bind("mousemove.k",r).bind("keyup.k",function(e){if(e.keyCode===27){t.c.d.unbind("mouseup.k mousemove.k keyup.k");if(n.eH&&n.eH()===false)return;n.cancel()}}).bind("mouseup.k",function(e){t.c.d.unbind("mousemove.k mouseup.k keyup.k");n.val(n.cv)});return this};this._xy=function(){var e=this.$c.offset();this.x=e.left;this.y=e.top;return this};this._listen=function(){if(!this.o.readOnly){this.$c.bind("mousedown",function(e){e.preventDefault();n._xy()._mouse(e)}).bind("touchstart",function(e){e.preventDefault();n._xy()._touch(e)});this.listen()}else{this.$.attr("readonly","readonly")}if(this.relative){e(window).resize(function(){n._carve().init();n._draw()})}return this};this._configure=function(){if(this.o.draw)this.dH=this.o.draw;if(this.o.change)this.cH=this.o.change;if(this.o.cancel)this.eH=this.o.cancel;if(this.o.release)this.rH=this.o.release;if(this.o.displayPrevious){this.pColor=this.h2rgba(this.o.fgColor,"0.4");this.fgColor=this.h2rgba(this.o.fgColor,"0.6")}else{this.fgColor=this.o.fgColor}return this};this._clear=function(){this.$c[0].width=this.$c[0].width};this._validate=function(e){var t=~~((e<0?-.5:.5)+e/this.o.step)*this.o.step;return Math.round(t*100)/100};this.listen=function(){};this.extend=function(){};this.init=function(){};this.change=function(e){};this.val=function(e){};this.xy2val=function(e,t){};this.draw=function(){};this.clear=function(){this._clear()};this.h2rgba=function(e,t){var n;e=e.substring(1,7);n=[parseInt(e.substring(0,2),16),parseInt(e.substring(2,4),16),parseInt(e.substring(4,6),16)];return"rgba("+n[0]+","+n[1]+","+n[2]+","+t+")"};this.copy=function(e,t){for(var n in e){t[n]=e[n]}}};t.Dial=function(){t.o.call(this);this.startAngle=null;this.xy=null;this.radius=null;this.lineWidth=null;this.cursorExt=null;this.w2=null;this.PI2=2*Math.PI;this.extend=function(){this.o=e.extend({bgColor:this.$.data("bgcolor")||"#EEEEEE",angleOffset:this.$.data("angleoffset")||0,angleArc:this.$.data("anglearc")||360,inline:true},this.o)};this.val=function(e,t){if(null!=e){e=this.o.parse(e);if(t!==false&&e!=this.v&&this.rH&&this.rH(e)===false){return}this.cv=this.o.stopper?n(r(e,this.o.max),this.o.min):e;this.v=this.cv;this.$.val(this.o.format(this.v));this._draw()}else{return this.v}};this.xy2val=function(e,t){var i,s;i=Math.atan2(e-(this.x+this.w2),-(t-this.y-this.w2))-this.angleOffset;if(this.o.flip){i=this.angleArc-i-this.PI2}if(this.angleArc!=this.PI2&&i<0&&i>-.5){i=0}else if(i<0){i+=this.PI2}s=i*(this.o.max-this.o.min)/this.angleArc+this.o.min;this.o.stopper&&(s=n(r(s,this.o.max),this.o.min));return s};this.listen=function(){var t=this,i,s,o=function(e){e.preventDefault();var o=e.originalEvent,u=o.detail||o.wheelDeltaX,a=o.detail||o.wheelDeltaY,f=t._validate(t.o.parse(t.$.val()))+(u>0||a>0?t.o.step:u<0||a<0?-t.o.step:0);f=n(r(f,t.o.max),t.o.min);t.val(f,false);if(t.rH){clearTimeout(i);i=setTimeout(function(){t.rH(f);i=null},100);if(!s){s=setTimeout(function(){if(i)t.rH(f);s=null},200)}}},u,a,f=1,l={37:-t.o.step,38:t.o.step,39:t.o.step,40:-t.o.step};this.$.bind("keydown",function(i){var s=i.keyCode;if(s>=96&&s<=105){s=i.keyCode=s-48}u=parseInt(String.fromCharCode(s));if(isNaN(u)){s!==13&&s!==8&&s!==9&&s!==189&&(s!==190||t.$.val().match(/\./))&&i.preventDefault();if(e.inArray(s,[37,38,39,40])>-1){i.preventDefault();var o=t.o.parse(t.$.val())+l[s]*f;t.o.stopper&&(o=n(r(o,t.o.max),t.o.min));t.change(t._validate(o));t._draw();a=window.setTimeout(function(){f*=2},30)}}}).bind("keyup",function(e){if(isNaN(u)){if(a){window.clearTimeout(a);a=null;f=1;t.val(t.$.val())}}else{t.$.val()>t.o.max&&t.$.val(t.o.max)||t.$.val()<t.o.min&&t.$.val(t.o.min)}});this.$c.bind("mousewheel DOMMouseScroll",o);this.$.bind("mousewheel DOMMouseScroll",o)};this.init=function(){if(this.v<this.o.min||this.v>this.o.max){this.v=this.o.min}this.$.val(this.v);this.w2=this.w/2;this.cursorExt=this.o.cursor/100;this.xy=this.w2*this.scale;this.lineWidth=this.xy*this.o.thickness;this.lineCap=this.o.lineCap;this.radius=this.xy-this.lineWidth/2;this.o.angleOffset&&(this.o.angleOffset=isNaN(this.o.angleOffset)?0:this.o.angleOffset);this.o.angleArc&&(this.o.angleArc=isNaN(this.o.angleArc)?this.PI2:this.o.angleArc);this.angleOffset=this.o.angleOffset*Math.PI/180;this.angleArc=this.o.angleArc*Math.PI/180;this.startAngle=1.5*Math.PI+this.angleOffset;this.endAngle=1.5*Math.PI+this.angleOffset+this.angleArc;var e=n(String(Math.abs(this.o.max)).length,String(Math.abs(this.o.min)).length,2)+2;this.o.displayInput&&this.i.css({width:(this.w/2+4>>0)+"px",height:(this.w/3>>0)+"px",position:"absolute","vertical-align":"middle","margin-top":(this.w/3>>0)+"px","margin-left":"-"+(this.w*3/4+2>>0)+"px",border:0,background:"none",font:this.o.fontWeight+" "+(this.w/e>>0)+"px "+this.o.font,"text-align":"center",color:this.o.inputColor||this.o.fgColor,padding:"0px","-webkit-appearance":"none"})||this.i.css({width:"0px",visibility:"hidden"})};this.change=function(e){this.cv=e;this.$.val(this.o.format(e))};this.angle=function(e){return(e-this.o.min)*this.angleArc/(this.o.max-this.o.min)};this.arc=function(e){var t,n;e=this.angle(e);if(this.o.flip){t=this.endAngle+1e-5;n=t-e-1e-5}else{t=this.startAngle-1e-5;n=t+e+1e-5}this.o.cursor&&(t=n-this.cursorExt)&&(n=n+this.cursorExt);return{s:t,e:n,d:this.o.flip&&!this.o.cursor}};this.draw=function(){var e=this.g,t=this.arc(this.cv),n,r=1;e.lineWidth=this.lineWidth;e.lineCap=this.lineCap;if(this.o.bgColor!=="none"){e.beginPath();e.strokeStyle=this.o.bgColor;e.arc(this.xy,this.xy,this.radius,this.endAngle-1e-5,this.startAngle+1e-5,true);e.stroke()}if(this.o.displayPrevious){n=this.arc(this.v);e.beginPath();e.strokeStyle=this.pColor;e.arc(this.xy,this.xy,this.radius,n.s,n.e,n.d);e.stroke();r=this.cv==this.v}e.beginPath();e.strokeStyle=r?this.o.fgColor:this.fgColor;e.arc(this.xy,this.xy,this.radius,t.s,t.e,t.d);e.stroke()};this.cancel=function(){this.val(this.v)}};e.fn.dial=e.fn.knob=function(n){return this.each(function(){var r=new t.Dial;r.o=n;r.$=e(this);r.run()}).parent()}})
+	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;(function(e){if(true){!(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(304)], __WEBPACK_AMD_DEFINE_FACTORY__ = (e), __WEBPACK_AMD_DEFINE_RESULT__ = (typeof __WEBPACK_AMD_DEFINE_FACTORY__ === 'function' ? (__WEBPACK_AMD_DEFINE_FACTORY__.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__)) : __WEBPACK_AMD_DEFINE_FACTORY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__))}else{e(jQuery)}})(function(e){"use strict";var t={},n=Math.max,r=Math.min;t.c={};t.c.d=e(document);t.c.t=function(e){return e.originalEvent.touches.length-1};t.o=function(){var n=this;this.o=null;this.$=null;this.i=null;this.g=null;this.v=null;this.cv=null;this.x=0;this.y=0;this.w=0;this.h=0;this.$c=null;this.c=null;this.t=0;this.isInit=false;this.fgColor=null;this.pColor=null;this.dH=null;this.cH=null;this.eH=null;this.rH=null;this.scale=1;this.relative=false;this.relativeWidth=false;this.relativeHeight=false;this.$div=null;this.run=function(){var t=function(e,t){var r;for(r in t){n.o[r]=t[r]}n._carve().init();n._configure()._draw()};if(this.$.data("kontroled"))return;this.$.data("kontroled",true);this.extend();this.o=e.extend({min:this.$.data("min")!==undefined?this.$.data("min"):0,max:this.$.data("max")!==undefined?this.$.data("max"):100,stopper:true,readOnly:this.$.data("readonly")||this.$.attr("readonly")==="readonly",cursor:this.$.data("cursor")===true&&30||this.$.data("cursor")||0,thickness:this.$.data("thickness")&&Math.max(Math.min(this.$.data("thickness"),1),.01)||.35,lineCap:this.$.data("linecap")||"butt",width:this.$.data("width")||200,height:this.$.data("height")||200,displayInput:this.$.data("displayinput")==null||this.$.data("displayinput"),displayPrevious:this.$.data("displayprevious"),fgColor:this.$.data("fgcolor")||"#87CEEB",inputColor:this.$.data("inputcolor"),font:this.$.data("font")||"Arial",fontWeight:this.$.data("font-weight")||"bold",inline:false,step:this.$.data("step")||1,rotation:this.$.data("rotation"),draw:null,change:null,cancel:null,release:null,format:function(e){return e},parse:function(e){return parseFloat(e)}},this.o);this.o.flip=this.o.rotation==="anticlockwise"||this.o.rotation==="acw";if(!this.o.inputColor){this.o.inputColor=this.o.fgColor}if(this.$.is("fieldset")){this.v={};this.i=this.$.find("input");this.i.each(function(t){var r=e(this);n.i[t]=r;n.v[t]=n.o.parse(r.val());r.bind("change blur",function(){var e={};e[t]=r.val();n.val(n._validate(e))})});this.$.find("legend").remove()}else{this.i=this.$;this.v=this.o.parse(this.$.val());this.v===""&&(this.v=this.o.min);this.$.bind("change blur",function(){n.val(n._validate(n.o.parse(n.$.val())))})}!this.o.displayInput&&this.$.hide();this.$c=e(document.createElement("canvas")).attr({width:this.o.width,height:this.o.height});this.$div=e('<div style="'+(this.o.inline?"display:inline;":"")+"width:"+this.o.width+"px;height:"+this.o.height+"px;"+'"></div>');this.$.wrap(this.$div).before(this.$c);this.$div=this.$.parent();if(typeof G_vmlCanvasManager!=="undefined"){G_vmlCanvasManager.initElement(this.$c[0])}this.c=this.$c[0].getContext?this.$c[0].getContext("2d"):null;if(!this.c){throw{name:"CanvasNotSupportedException",message:"Canvas not supported. Please use excanvas on IE8.0.",toString:function(){return this.name+": "+this.message}}}this.scale=(window.devicePixelRatio||1)/(this.c.webkitBackingStorePixelRatio||this.c.mozBackingStorePixelRatio||this.c.msBackingStorePixelRatio||this.c.oBackingStorePixelRatio||this.c.backingStorePixelRatio||1);this.relativeWidth=this.o.width%1!==0&&this.o.width.indexOf("%");this.relativeHeight=this.o.height%1!==0&&this.o.height.indexOf("%");this.relative=this.relativeWidth||this.relativeHeight;this._carve();if(this.v instanceof Object){this.cv={};this.copy(this.v,this.cv)}else{this.cv=this.v}this.$.bind("configure",t).parent().bind("configure",t);this._listen()._configure()._xy().init();this.isInit=true;this.$.val(this.o.format(this.v));this._draw();return this};this._carve=function(){if(this.relative){var e=this.relativeWidth?this.$div.parent().width()*parseInt(this.o.width)/100:this.$div.parent().width(),t=this.relativeHeight?this.$div.parent().height()*parseInt(this.o.height)/100:this.$div.parent().height();this.w=this.h=Math.min(e,t)}else{this.w=this.o.width;this.h=this.o.height}this.$div.css({width:this.w+"px",height:this.h+"px"});this.$c.attr({width:this.w,height:this.h});if(this.scale!==1){this.$c[0].width=this.$c[0].width*this.scale;this.$c[0].height=this.$c[0].height*this.scale;this.$c.width(this.w);this.$c.height(this.h)}return this};this._draw=function(){var e=true;n.g=n.c;n.clear();n.dH&&(e=n.dH());e!==false&&n.draw()};this._touch=function(e){var r=function(e){var t=n.xy2val(e.originalEvent.touches[n.t].pageX,e.originalEvent.touches[n.t].pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};this.t=t.c.t(e);r(e);t.c.d.bind("touchmove.k",r).bind("touchend.k",function(){t.c.d.unbind("touchmove.k touchend.k");n.val(n.cv)});return this};this._mouse=function(e){var r=function(e){var t=n.xy2val(e.pageX,e.pageY);if(t==n.cv)return;if(n.cH&&n.cH(t)===false)return;n.change(n._validate(t));n._draw()};r(e);t.c.d.bind("mousemove.k",r).bind("keyup.k",function(e){if(e.keyCode===27){t.c.d.unbind("mouseup.k mousemove.k keyup.k");if(n.eH&&n.eH()===false)return;n.cancel()}}).bind("mouseup.k",function(e){t.c.d.unbind("mousemove.k mouseup.k keyup.k");n.val(n.cv)});return this};this._xy=function(){var e=this.$c.offset();this.x=e.left;this.y=e.top;return this};this._listen=function(){if(!this.o.readOnly){this.$c.bind("mousedown",function(e){e.preventDefault();n._xy()._mouse(e)}).bind("touchstart",function(e){e.preventDefault();n._xy()._touch(e)});this.listen()}else{this.$.attr("readonly","readonly")}if(this.relative){e(window).resize(function(){n._carve().init();n._draw()})}return this};this._configure=function(){if(this.o.draw)this.dH=this.o.draw;if(this.o.change)this.cH=this.o.change;if(this.o.cancel)this.eH=this.o.cancel;if(this.o.release)this.rH=this.o.release;if(this.o.displayPrevious){this.pColor=this.h2rgba(this.o.fgColor,"0.4");this.fgColor=this.h2rgba(this.o.fgColor,"0.6")}else{this.fgColor=this.o.fgColor}return this};this._clear=function(){this.$c[0].width=this.$c[0].width};this._validate=function(e){var t=~~((e<0?-.5:.5)+e/this.o.step)*this.o.step;return Math.round(t*100)/100};this.listen=function(){};this.extend=function(){};this.init=function(){};this.change=function(e){};this.val=function(e){};this.xy2val=function(e,t){};this.draw=function(){};this.clear=function(){this._clear()};this.h2rgba=function(e,t){var n;e=e.substring(1,7);n=[parseInt(e.substring(0,2),16),parseInt(e.substring(2,4),16),parseInt(e.substring(4,6),16)];return"rgba("+n[0]+","+n[1]+","+n[2]+","+t+")"};this.copy=function(e,t){for(var n in e){t[n]=e[n]}}};t.Dial=function(){t.o.call(this);this.startAngle=null;this.xy=null;this.radius=null;this.lineWidth=null;this.cursorExt=null;this.w2=null;this.PI2=2*Math.PI;this.extend=function(){this.o=e.extend({bgColor:this.$.data("bgcolor")||"#EEEEEE",angleOffset:this.$.data("angleoffset")||0,angleArc:this.$.data("anglearc")||360,inline:true},this.o)};this.val=function(e,t){if(null!=e){e=this.o.parse(e);if(t!==false&&e!=this.v&&this.rH&&this.rH(e)===false){return}this.cv=this.o.stopper?n(r(e,this.o.max),this.o.min):e;this.v=this.cv;this.$.val(this.o.format(this.v));this._draw()}else{return this.v}};this.xy2val=function(e,t){var i,s;i=Math.atan2(e-(this.x+this.w2),-(t-this.y-this.w2))-this.angleOffset;if(this.o.flip){i=this.angleArc-i-this.PI2}if(this.angleArc!=this.PI2&&i<0&&i>-.5){i=0}else if(i<0){i+=this.PI2}s=i*(this.o.max-this.o.min)/this.angleArc+this.o.min;this.o.stopper&&(s=n(r(s,this.o.max),this.o.min));return s};this.listen=function(){var t=this,i,s,o=function(e){e.preventDefault();var o=e.originalEvent,u=o.detail||o.wheelDeltaX,a=o.detail||o.wheelDeltaY,f=t._validate(t.o.parse(t.$.val()))+(u>0||a>0?t.o.step:u<0||a<0?-t.o.step:0);f=n(r(f,t.o.max),t.o.min);t.val(f,false);if(t.rH){clearTimeout(i);i=setTimeout(function(){t.rH(f);i=null},100);if(!s){s=setTimeout(function(){if(i)t.rH(f);s=null},200)}}},u,a,f=1,l={37:-t.o.step,38:t.o.step,39:t.o.step,40:-t.o.step};this.$.bind("keydown",function(i){var s=i.keyCode;if(s>=96&&s<=105){s=i.keyCode=s-48}u=parseInt(String.fromCharCode(s));if(isNaN(u)){s!==13&&s!==8&&s!==9&&s!==189&&(s!==190||t.$.val().match(/\./))&&i.preventDefault();if(e.inArray(s,[37,38,39,40])>-1){i.preventDefault();var o=t.o.parse(t.$.val())+l[s]*f;t.o.stopper&&(o=n(r(o,t.o.max),t.o.min));t.change(t._validate(o));t._draw();a=window.setTimeout(function(){f*=2},30)}}}).bind("keyup",function(e){if(isNaN(u)){if(a){window.clearTimeout(a);a=null;f=1;t.val(t.$.val())}}else{t.$.val()>t.o.max&&t.$.val(t.o.max)||t.$.val()<t.o.min&&t.$.val(t.o.min)}});this.$c.bind("mousewheel DOMMouseScroll",o);this.$.bind("mousewheel DOMMouseScroll",o)};this.init=function(){if(this.v<this.o.min||this.v>this.o.max){this.v=this.o.min}this.$.val(this.v);this.w2=this.w/2;this.cursorExt=this.o.cursor/100;this.xy=this.w2*this.scale;this.lineWidth=this.xy*this.o.thickness;this.lineCap=this.o.lineCap;this.radius=this.xy-this.lineWidth/2;this.o.angleOffset&&(this.o.angleOffset=isNaN(this.o.angleOffset)?0:this.o.angleOffset);this.o.angleArc&&(this.o.angleArc=isNaN(this.o.angleArc)?this.PI2:this.o.angleArc);this.angleOffset=this.o.angleOffset*Math.PI/180;this.angleArc=this.o.angleArc*Math.PI/180;this.startAngle=1.5*Math.PI+this.angleOffset;this.endAngle=1.5*Math.PI+this.angleOffset+this.angleArc;var e=n(String(Math.abs(this.o.max)).length,String(Math.abs(this.o.min)).length,2)+2;this.o.displayInput&&this.i.css({width:(this.w/2+4>>0)+"px",height:(this.w/3>>0)+"px",position:"absolute","vertical-align":"middle","margin-top":(this.w/3>>0)+"px","margin-left":"-"+(this.w*3/4+2>>0)+"px",border:0,background:"none",font:this.o.fontWeight+" "+(this.w/e>>0)+"px "+this.o.font,"text-align":"center",color:this.o.inputColor||this.o.fgColor,padding:"0px","-webkit-appearance":"none"})||this.i.css({width:"0px",visibility:"hidden"})};this.change=function(e){this.cv=e;this.$.val(this.o.format(e))};this.angle=function(e){return(e-this.o.min)*this.angleArc/(this.o.max-this.o.min)};this.arc=function(e){var t,n;e=this.angle(e);if(this.o.flip){t=this.endAngle+1e-5;n=t-e-1e-5}else{t=this.startAngle-1e-5;n=t+e+1e-5}this.o.cursor&&(t=n-this.cursorExt)&&(n=n+this.cursorExt);return{s:t,e:n,d:this.o.flip&&!this.o.cursor}};this.draw=function(){var e=this.g,t=this.arc(this.cv),n,r=1;e.lineWidth=this.lineWidth;e.lineCap=this.lineCap;if(this.o.bgColor!=="none"){e.beginPath();e.strokeStyle=this.o.bgColor;e.arc(this.xy,this.xy,this.radius,this.endAngle-1e-5,this.startAngle+1e-5,true);e.stroke()}if(this.o.displayPrevious){n=this.arc(this.v);e.beginPath();e.strokeStyle=this.pColor;e.arc(this.xy,this.xy,this.radius,n.s,n.e,n.d);e.stroke();r=this.cv==this.v}e.beginPath();e.strokeStyle=r?this.o.fgColor:this.fgColor;e.arc(this.xy,this.xy,this.radius,t.s,t.e,t.d);e.stroke()};this.cancel=function(){this.val(this.v)}};e.fn.dial=e.fn.knob=function(n){return this.each(function(){var r=new t.Dial;r.o=n;r.$=e(this);r.run()}).parent()}})
 
 /***/ },
-/* 303 */
+/* 304 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*eslint-disable no-unused-vars*/
@@ -52509,7 +52562,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 304 */
+/* 305 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52524,7 +52577,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -52597,7 +52650,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = BubbleContact;
 
 /***/ },
-/* 305 */
+/* 306 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -52612,29 +52665,33 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDropzone = __webpack_require__(306);
+	var _reactDropzone = __webpack_require__(307);
 
 	var _reactDropzone2 = _interopRequireDefault(_reactDropzone);
 
-	var _InputMenu = __webpack_require__(307);
+	var _InputMenu = __webpack_require__(308);
 
 	var _InputMenu2 = _interopRequireDefault(_InputMenu);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
 	var _monkeyUtils = __webpack_require__(9);
 
-	var _animateMin = __webpack_require__(308);
+	var _animateMin = __webpack_require__(309);
 
 	var _animateMin2 = _interopRequireDefault(_animateMin);
 
-	var _reactAutosizeTextarea = __webpack_require__(312);
+	var _reactAutosizeTextarea = __webpack_require__(313);
 
 	var _reactAutosizeTextarea2 = _interopRequireDefault(_reactAutosizeTextarea);
 
-	var _reactToastr = __webpack_require__(316);
+	var _lang = __webpack_require__(114);
+
+	var _lang2 = _interopRequireDefault(_lang);
+
+	var _reactToastr = __webpack_require__(317);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -52649,16 +52706,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	// ======================
 	// MediaStreamRecorder.js
-	var MediaStreamRecorder = __webpack_require__(326);
+	var MediaStreamRecorder = __webpack_require__(327);
 
 	// ======================
 	// FileAPI.js
-	__webpack_require__(327);
+	__webpack_require__(328);
 
 	// ======================
 	// jquery.knob.js
-	__webpack_require__(302);
-	var $ = __webpack_require__(303);
+	__webpack_require__(303);
+	var $ = __webpack_require__(304);
 
 	var Input = function (_Component) {
 	  _inherits(Input, _Component);
@@ -52767,7 +52824,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	            this.state.showTextArea ? _react2.default.createElement(_reactAutosizeTextarea2.default, { ref: 'textareaInput',
 	              className: 'mky-textarea-input',
 	              value: this.state.text,
-	              placeholder: 'Write a secure message',
+	              placeholder: _lang2.default[this.context.lang]['input.textarea.placeholder'],
 	              onKeyDown: this.handleOnKeyDownTextArea,
 	              onChange: this.handleOnChangeTextArea }) : null,
 	            this.state.showAudioArea ? _react2.default.createElement(
@@ -52820,7 +52877,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	                _react2.default.createElement(
 	                  'span',
 	                  { className: 'tooltip' },
-	                  'Browser is incompatible to record audio'
+	                  _lang2.default[this.context.lang]['button.recordaudio.tooltip']
 	                )
 	              ) : null,
 	              this.state.showSendButton ? _react2.default.createElement('i', { className: 'mky-button-icon icon mky-icon-send', style: styleInput.inputRightButton, onClick: this.handleSendMessage }) : null
@@ -53141,20 +53198,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	          // console.log(message.data);
 	        } else if (message.type == "stderr") {} else if (message.type == "done") {
-	          var code = message.data.code;
-	          var outFileNames = Object.keys(message.data.outputFiles);
+	            var code = message.data.code;
+	            var outFileNames = Object.keys(message.data.outputFiles);
 
-	          if (code == 0 && outFileNames.length) {
+	            if (code == 0 && outFileNames.length) {
 
-	            var outFileName = outFileNames[0];
-	            var outFileBuffer = message.data.outputFiles[outFileName];
-	            var mp3Blob = new Blob([outFileBuffer]);
-	            // var src = window.URL.createObjectURL(mp3Blob);
-	            that.readData(mp3Blob);
-	          } else {
-	            /*Error*/
+	              var outFileName = outFileNames[0];
+	              var outFileBuffer = message.data.outputFiles[outFileName];
+	              var mp3Blob = new Blob([outFileBuffer]);
+	              // var src = window.URL.createObjectURL(mp3Blob);
+	              that.readData(mp3Blob);
+	            } else {
+	              /*Error*/
+	            }
 	          }
-	        }
 	      };
 	      return ffmpegWorker;
 	    }
@@ -53295,13 +53352,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	}(_react.Component);
 
 	Input.contextTypes = {
-	  styles: _react2.default.PropTypes.object.isRequired
+	  styles: _react2.default.PropTypes.object.isRequired,
+	  lang: _react2.default.PropTypes.string.isRequired
 	};
 
 	exports.default = Input;
 
 /***/ },
-/* 306 */
+/* 307 */
 /***/ function(module, exports, __webpack_require__) {
 
 	(function webpackUniversalModuleDefinition(root, factory) {
@@ -53699,10 +53757,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	//# sourceMappingURL=index.js.map
 
 /***/ },
-/* 307 */
+/* 308 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 		value: true
@@ -53713,6 +53771,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var _react = __webpack_require__(2);
 
 	var _react2 = _interopRequireDefault(_react);
+
+	var _lang = __webpack_require__(114);
+
+	var _lang2 = _interopRequireDefault(_lang);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53725,48 +53787,48 @@ return /******/ (function(modules) { // webpackBootstrap
 	var InputMenu = function (_React$Component) {
 		_inherits(InputMenu, _React$Component);
 
-		function InputMenu(props) {
+		function InputMenu(props, context) {
 			_classCallCheck(this, InputMenu);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(InputMenu).call(this, props));
+			return _possibleConstructorReturn(this, Object.getPrototypeOf(InputMenu).call(this, props, context));
 		}
 
 		_createClass(InputMenu, [{
-			key: "render",
+			key: 'render',
 			value: function render() {
 				var animationClass = this.props.visible ? "mky-menu-bubble-show" : "mky-menu-bubble-hide";
 				return _react2.default.createElement(
-					"div",
-					{ id: "mky-menu-bubble", className: "mky-menu-bubble " + animationClass },
+					'div',
+					{ id: 'mky-menu-bubble', className: "mky-menu-bubble " + animationClass },
 					_react2.default.createElement(
-						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttach },
+						'div',
+						{ className: 'mky-menu-bubble-item', onClick: this.props.handleAttach },
 						_react2.default.createElement(
-							"div",
-							{ className: "mky-bubble-circle-icon" },
-							_react2.default.createElement("i", { id: "mky-menu-attach-icon", className: "icons mky-icon-image", style: this.props.colorButton })
+							'div',
+							{ className: 'mky-bubble-circle-icon' },
+							_react2.default.createElement('i', { id: 'mky-menu-attach-icon', className: 'icons mky-icon-image', style: this.props.colorButton })
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "mky-bubble-title" },
-							"Image"
+							'div',
+							{ className: 'mky-bubble-title' },
+							_lang2.default[this.context.lang]['button.image.text']
 						)
 					),
 					_react2.default.createElement(
-						"div",
-						{ className: "mky-menu-bubble-item", onClick: this.props.handleAttachFile },
+						'div',
+						{ className: 'mky-menu-bubble-item', onClick: this.props.handleAttachFile },
 						_react2.default.createElement(
-							"div",
-							{ className: "mky-bubble-circle-icon" },
-							_react2.default.createElement("i", { id: "mky-menu-attach-file", className: "icon mky-icon-file", style: this.props.colorButton })
+							'div',
+							{ className: 'mky-bubble-circle-icon' },
+							_react2.default.createElement('i', { id: 'mky-menu-attach-file', className: 'icon mky-icon-file', style: this.props.colorButton })
 						),
 						_react2.default.createElement(
-							"div",
-							{ className: "mky-bubble-title" },
-							"File"
+							'div',
+							{ className: 'mky-bubble-title' },
+							_lang2.default[this.context.lang]['button.file.text']
 						)
 					),
-					_react2.default.createElement("div", { id: "mky-layer-menu", onClick: this.props.toggleVisibility })
+					_react2.default.createElement('div', { id: 'mky-layer-menu', onClick: this.props.toggleVisibility })
 				);
 			}
 		}]);
@@ -53774,19 +53836,23 @@ return /******/ (function(modules) { // webpackBootstrap
 		return InputMenu;
 	}(_react2.default.Component);
 
+	InputMenu.contextTypes = {
+		lang: _react2.default.PropTypes.string.isRequired
+	};
+
 	exports.default = InputMenu;
 
 /***/ },
-/* 308 */
+/* 309 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(309);
+	var content = __webpack_require__(310);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(311)(content, {});
+	var update = __webpack_require__(312)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -53803,10 +53869,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 309 */
+/* 310 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(310)();
+	exports = module.exports = __webpack_require__(311)();
 	// imports
 
 
@@ -53817,7 +53883,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 310 */
+/* 311 */
 /***/ function(module, exports) {
 
 	/*
@@ -53873,7 +53939,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 311 */
+/* 312 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*
@@ -54125,13 +54191,13 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 312 */
+/* 313 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(313);
+	module.exports = __webpack_require__(314);
 
 /***/ },
-/* 313 */
+/* 314 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54140,7 +54206,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
-	var _TextareaAutosizeJs = __webpack_require__(314);
+	var _TextareaAutosizeJs = __webpack_require__(315);
 
 	var _TextareaAutosizeJs2 = _interopRequireDefault(_TextareaAutosizeJs);
 
@@ -54148,7 +54214,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 314 */
+/* 315 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -54171,11 +54237,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _autosize = __webpack_require__(315);
+	var _autosize = __webpack_require__(316);
 
 	var _autosize2 = _interopRequireDefault(_autosize);
 
@@ -54271,7 +54337,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = exports['default'];
 
 /***/ },
-/* 315 */
+/* 316 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -54550,7 +54616,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 
 /***/ },
-/* 316 */
+/* 317 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54560,11 +54626,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	});
 	exports.ToastMessage = exports.ToastContainer = undefined;
 
-	var _ToastContainer = __webpack_require__(317);
+	var _ToastContainer = __webpack_require__(318);
 
 	var _ToastContainer2 = _interopRequireDefault(_ToastContainer);
 
-	var _ToastMessage = __webpack_require__(320);
+	var _ToastMessage = __webpack_require__(321);
 
 	var _ToastMessage2 = _interopRequireDefault(_ToastMessage);
 
@@ -54574,7 +54640,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.ToastMessage = _ToastMessage2.default;
 
 /***/ },
-/* 317 */
+/* 318 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54591,11 +54657,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsUpdate = __webpack_require__(318);
+	var _reactAddonsUpdate = __webpack_require__(319);
 
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
 
-	var _ToastMessage = __webpack_require__(320);
+	var _ToastMessage = __webpack_require__(321);
 
 	var _ToastMessage2 = _interopRequireDefault(_ToastMessage);
 
@@ -54771,13 +54837,13 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ToastContainer;
 
 /***/ },
-/* 318 */
+/* 319 */
 /***/ function(module, exports, __webpack_require__) {
 
-	module.exports = __webpack_require__(319);
+	module.exports = __webpack_require__(320);
 
 /***/ },
-/* 319 */
+/* 320 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(process) {/**
@@ -54795,11 +54861,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var _prodInvariant = __webpack_require__(121),
-	    _assign = __webpack_require__(140);
+	var _prodInvariant = __webpack_require__(122),
+	    _assign = __webpack_require__(141);
 
-	var keyOf = __webpack_require__(146);
-	var invariant = __webpack_require__(123);
+	var keyOf = __webpack_require__(147);
+	var invariant = __webpack_require__(124);
 	var hasOwnProperty = {}.hasOwnProperty;
 
 	function shallowCopy(x) {
@@ -54893,10 +54959,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 	module.exports = update;
-	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(119)))
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(120)))
 
 /***/ },
-/* 320 */
+/* 321 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -54910,19 +54976,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactAddonsUpdate = __webpack_require__(318);
+	var _reactAddonsUpdate = __webpack_require__(319);
 
 	var _reactAddonsUpdate2 = _interopRequireDefault(_reactAddonsUpdate);
 
-	var _classnames = __webpack_require__(321);
+	var _classnames = __webpack_require__(322);
 
 	var _classnames2 = _interopRequireDefault(_classnames);
 
-	var _animationMixin = __webpack_require__(322);
+	var _animationMixin = __webpack_require__(323);
 
 	var _animationMixin2 = _interopRequireDefault(_animationMixin);
 
-	var _jQueryMixin = __webpack_require__(325);
+	var _jQueryMixin = __webpack_require__(326);
 
 	var _jQueryMixin2 = _interopRequireDefault(_jQueryMixin);
 
@@ -55028,7 +55094,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ToastMessage;
 
 /***/ },
-/* 321 */
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -55082,7 +55148,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55091,15 +55157,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _ReactTransitionEvents = __webpack_require__(323);
+	var _ReactTransitionEvents = __webpack_require__(324);
 
 	var _ReactTransitionEvents2 = _interopRequireDefault(_ReactTransitionEvents);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _elementClass = __webpack_require__(324);
+	var _elementClass = __webpack_require__(325);
 
 	var _elementClass2 = _interopRequireDefault(_elementClass);
 
@@ -55288,7 +55354,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 323 */
+/* 324 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/**
@@ -55304,9 +55370,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	'use strict';
 
-	var ExecutionEnvironment = __webpack_require__(138);
+	var ExecutionEnvironment = __webpack_require__(139);
 
-	var getVendorPrefixedEventName = __webpack_require__(206);
+	var getVendorPrefixedEventName = __webpack_require__(207);
 
 	var endEvents = [];
 
@@ -55366,7 +55432,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	module.exports = ReactTransitionEvents;
 
 /***/ },
-/* 324 */
+/* 325 */
 /***/ function(module, exports) {
 
 	module.exports = function(opts) {
@@ -55431,7 +55497,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 325 */
+/* 326 */
 /***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
@@ -55440,7 +55506,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -55524,7 +55590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	};
 
 /***/ },
-/* 326 */
+/* 327 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {// Last time updated: 2016-07-03 8:51:35 AM UTC
@@ -57776,15 +57842,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 327 */
+/* 328 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*! FileAPI 2.0.19 - BSD | git://github.com/mailru/FileAPI.git */
 	!function(a){"use strict";var b=a.HTMLCanvasElement&&a.HTMLCanvasElement.prototype,c=a.Blob&&function(){try{return Boolean(new Blob)}catch(a){return!1}}(),d=c&&a.Uint8Array&&function(){try{return 100===new Blob([new Uint8Array(100)]).size}catch(a){return!1}}(),e=a.BlobBuilder||a.WebKitBlobBuilder||a.MozBlobBuilder||a.MSBlobBuilder,f=(c||e)&&a.atob&&a.ArrayBuffer&&a.Uint8Array&&function(a){var b,f,g,h,i,j;for(b=a.split(",")[0].indexOf("base64")>=0?atob(a.split(",")[1]):decodeURIComponent(a.split(",")[1]),f=new ArrayBuffer(b.length),g=new Uint8Array(f),h=0;h<b.length;h+=1)g[h]=b.charCodeAt(h);return i=a.split(",")[0].split(":")[1].split(";")[0],c?new Blob([d?g:f],{type:i}):(j=new e,j.append(f),j.getBlob(i))};a.HTMLCanvasElement&&!b.toBlob&&(b.mozGetAsFile?b.toBlob=function(a,c,d){a(d&&b.toDataURL&&f?f(this.toDataURL(c,d)):this.mozGetAsFile("blob",c))}:b.toDataURL&&f&&(b.toBlob=function(a,b,c){a(f(this.toDataURL(b,c)))})),a.dataURLtoBlob=f}(window),function(a,b){"use strict";function c(a,b,c,d,e){var f={type:c.type||c,target:a,result:d};Y(f,e),b(f)}function d(a){return z&&!!z.prototype["readAs"+a]}function e(a,e,f,g){if(ca.isBlob(a)&&d(f)){var h=new z;Z(h,S,function j(b){var d=b.type;"progress"==d?c(a,e,b,b.target.result,{loaded:b.loaded,total:b.total}):"loadend"==d?($(h,S,j),h=null):c(a,e,b,b.target.result)});try{g?h["readAs"+f](a,g):h["readAs"+f](a)}catch(i){c(a,e,"error",b,{error:i.toString()})}}else c(a,e,"error",b,{error:"filreader_not_support_"+f})}function f(a,b){if(!a.type&&(u||a.size%4096===0&&a.size<=102400))if(z)try{var c=new z;_(c,S,function(a){var d="error"!=a.type;d?((null==c.readyState||c.readyState===c.LOADING)&&c.abort(),b(d)):b(!1,c.error)}),c.readAsDataURL(a)}catch(d){b(!1,d)}else b(null,new Error("FileReader is not supported"));else b(!0)}function g(a){return a&&(a.isFile||a.isDirectory)}function h(a){var b;return a.getAsEntry?b=a.getAsEntry():a.webkitGetAsEntry&&(b=a.webkitGetAsEntry()),b}function i(a,b){if(a)if(a.isFile)a.file(function(c){c.fullPath=a.fullPath,b(!1,[c],[c])},function(c){a.error=c,b("FileError.code: "+c.code,[],[a])});else if(a.isDirectory){var c=a.createReader(),d=!0,e=[],f=[a],g=function(c){a.error=c,b("DirectoryError.code: "+c.code,e,f)},j=function l(h){d&&(d=!1,h.length||(a.error=new Error("directory is empty"))),h.length?ca.afor(h,function(a,b){i(b,function(b,d,h){b||(e=e.concat(d)),f=f.concat(h),a?a():c.readEntries(l,g)})}):b(!1,e,f)};c.readEntries(j,g)}else i(h(a),b);else{var k=new Error("invalid entry");a=new Object(a),a.error=k,b(k.message,[],[a])}}function j(a){var b={};return X(a,function(a,c){a&&"object"==typeof a&&void 0===a.nodeType&&(a=Y({},a)),b[c]=a}),b}function k(a){return L.test(a&&a.tagName)}function l(a){return(a.originalEvent||a||"").dataTransfer||{}}function m(a){var b;for(b in a)if(a.hasOwnProperty(b)&&!(a[b]instanceof Object||"overlay"===b||"filter"===b))return!0;return!1}var n,o,p=1,q=function(){},r=a.document,s=r.doctype||{},t=a.navigator.userAgent,u=/safari\//i.test(t)&&!/chrome\//i.test(t),v=/iemobile\//i.test(t),w=a.createObjectURL&&a||a.URL&&URL.revokeObjectURL&&URL||a.webkitURL&&webkitURL,x=a.Blob,y=a.File,z=a.FileReader,A=a.FormData,B=a.XMLHttpRequest,C=a.jQuery,D=!(!(y&&z&&(a.Uint8Array||A||B.prototype.sendAsBinary))||u&&/windows/i.test(t)&&!v),E=D&&"withCredentials"in new B,F=D&&!!x&&!!(x.prototype.webkitSlice||x.prototype.mozSlice||x.prototype.slice),G=(""+"".normalize).indexOf("[native code]")>0,H=a.dataURLtoBlob,I=/img/i,J=/canvas/i,K=/img|canvas/i,L=/input/i,M=/^data:[^,]+,/,N={}.toString,O=a.Math,P=function(b){return b=new a.Number(O.pow(1024,b)),b.from=function(a){return O.round(a*this)},b},Q={},R=[],S="abort progress error load loadend",T="status statusText readyState response responseXML responseText responseBody".split(" "),U="currentTarget",V="preventDefault",W=function(a){return a&&"length"in a},X=function(a,b,c){if(a)if(W(a))for(var d=0,e=a.length;e>d;d++)d in a&&b.call(c,a[d],d,a);else for(var f in a)a.hasOwnProperty(f)&&b.call(c,a[f],f,a)},Y=function(a){for(var b=arguments,c=1,d=function(b,c){a[c]=b};c<b.length;c++)X(b[c],d);return a},Z=function(a,b,c){if(a){var d=ca.uid(a);Q[d]||(Q[d]={});var e=z&&a&&a instanceof z;X(b.split(/\s+/),function(b){C&&!e?C.event.add(a,b,c):(Q[d][b]||(Q[d][b]=[]),Q[d][b].push(c),a.addEventListener?a.addEventListener(b,c,!1):a.attachEvent?a.attachEvent("on"+b,c):a["on"+b]=c)})}},$=function(a,b,c){if(a){var d=ca.uid(a),e=Q[d]||{},f=z&&a&&a instanceof z;X(b.split(/\s+/),function(b){if(C&&!f)C.event.remove(a,b,c);else{for(var d=e[b]||[],g=d.length;g--;)if(d[g]===c){d.splice(g,1);break}a.addEventListener?a.removeEventListener(b,c,!1):a.detachEvent?a.detachEvent("on"+b,c):a["on"+b]=null}})}},_=function(a,b,c){Z(a,b,function d(e){$(a,b,d),c(e)})},aa=function(b){return b.target||(b.target=a.event&&a.event.srcElement||r),3===b.target.nodeType&&(b.target=b.target.parentNode),b},ba=function(a){var b=r.createElement("input");return b.setAttribute("type","file"),a in b},ca={version:"2.0.19",cors:!1,html5:!0,media:!1,formData:!0,multiPassResize:!0,debug:!1,pingUrl:!1,multiFlash:!1,flashAbortTimeout:0,withCredentials:!0,staticPath:"./dist/",flashUrl:0,flashImageUrl:0,postNameConcat:function(a,b){return a+(null!=b?"["+b+"]":"")},ext2mime:{jpg:"image/jpeg",tif:"image/tiff",txt:"text/plain"},accept:{"image/*":"art bm bmp dwg dxf cbr cbz fif fpx gif ico iefs jfif jpe jpeg jpg jps jut mcf nap nif pbm pcx pgm pict pm png pnm qif qtif ras rast rf rp svf tga tif tiff xbm xbm xpm xwd","audio/*":"m4a flac aac rm mpa wav wma ogg mp3 mp2 m3u mod amf dmf dsm far gdm imf it m15 med okt s3m stm sfx ult uni xm sid ac3 dts cue aif aiff wpl ape mac mpc mpp shn wv nsf spc gym adplug adx dsp adp ymf ast afc hps xs","video/*":"m4v 3gp nsv ts ty strm rm rmvb m3u ifo mov qt divx xvid bivx vob nrg img iso pva wmv asf asx ogm m2v avi bin dat dvr-ms mpg mpeg mp4 mkv avc vp3 svq3 nuv viv dv fli flv wpl"},uploadRetry:0,networkDownRetryTimeout:5e3,chunkSize:0,chunkUploadRetry:0,chunkNetworkDownRetryTimeout:2e3,KB:P(1),MB:P(2),GB:P(3),TB:P(4),EMPTY_PNG:"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQIW2NkAAIAAAoAAggA9GkAAAAASUVORK5CYII=",expando:"fileapi"+(new Date).getTime(),uid:function(a){return a?a[ca.expando]=a[ca.expando]||ca.uid():(++p,ca.expando+p)},log:function(){ca.debug&&n&&(o?console.log.apply(console,arguments):console.log([].join.call(arguments," ")))},newImage:function(a,b){var c=r.createElement("img");return b&&ca.event.one(c,"error load",function(a){b("error"==a.type,c),c=null}),c.src=a,c},getXHR:function(){var b;if(B)b=new B;else if(a.ActiveXObject)try{b=new ActiveXObject("MSXML2.XMLHttp.3.0")}catch(c){b=new ActiveXObject("Microsoft.XMLHTTP")}return b},isArray:W,support:{dnd:E&&"ondrop"in r.createElement("div"),cors:E,html5:D,chunked:F,dataURI:!0,accept:ba("accept"),multiple:ba("multiple")},event:{on:Z,off:$,one:_,fix:aa},throttle:function(b,c){var d,e;return function(){e=arguments,d||(b.apply(a,e),d=setTimeout(function(){d=0,b.apply(a,e)},c))}},F:function(){},parseJSON:function(b){var c;return c=a.JSON&&JSON.parse?JSON.parse(b):new Function("return ("+b.replace(/([\r\n])/g,"\\$1")+");")()},trim:function(a){return a=String(a),a.trim?a.trim():a.replace(/^\s+|\s+$/g,"")},defer:function(){var a,c,d=[],e={resolve:function(b,f){for(e.resolve=q,c=b||!1,a=f;f=d.shift();)f(c,a)},then:function(e){c!==b?e(c,a):d.push(e)}};return e},queue:function(a){var b=0,c=0,d=!1,e=!1,f={inc:function(){c++},next:function(){b++,setTimeout(f.check,0)},check:function(){b>=c&&!d&&f.end()},isFail:function(){return d},fail:function(){!d&&a(d=!0)},end:function(){e||(e=!0,a())}};return f},each:X,afor:function(a,b){var c=0,d=a.length;W(a)&&d--?!function e(){b(d!=c&&e,a[c],c++)}():b(!1)},extend:Y,isFile:function(a){return"[object File]"===N.call(a)},isBlob:function(a){return this.isFile(a)||"[object Blob]"===N.call(a)},isCanvas:function(a){return a&&J.test(a.nodeName)},getFilesFilter:function(a){return a="string"==typeof a?a:a.getAttribute&&a.getAttribute("accept")||"",a?new RegExp("("+a.replace(/\./g,"\\.").replace(/,/g,"|")+")$","i"):/./},readAsDataURL:function(a,b){ca.isCanvas(a)?c(a,b,"load",ca.toDataURL(a)):e(a,b,"DataURL")},readAsBinaryString:function(a,b){d("BinaryString")?e(a,b,"BinaryString"):e(a,function(a){if("load"==a.type)try{a.result=ca.toBinaryString(a.result)}catch(c){a.type="error",a.message=c.toString()}b(a)},"DataURL")},readAsArrayBuffer:function(a,b){e(a,b,"ArrayBuffer")},readAsText:function(a,b,c){c||(c=b,b="utf-8"),e(a,c,"Text",b)},toDataURL:function(a,b){return"string"==typeof a?a:a.toDataURL?a.toDataURL(b||"image/png"):void 0},toBinaryString:function(b){return a.atob(ca.toDataURL(b).replace(M,""))},readAsImage:function(a,d,e){if(ca.isBlob(a))if(w){var f=w.createObjectURL(a);f===b?c(a,d,"error"):ca.readAsImage(f,d,e)}else ca.readAsDataURL(a,function(b){"load"==b.type?ca.readAsImage(b.result,d,e):(e||"error"==b.type)&&c(a,d,b,null,{loaded:b.loaded,total:b.total})});else if(ca.isCanvas(a))c(a,d,"load",a);else if(I.test(a.nodeName))if(a.complete)c(a,d,"load",a);else{var g="error abort load";_(a,g,function i(b){"load"==b.type&&w&&w.revokeObjectURL(a.src),$(a,g,i),c(a,d,b,a)})}else if(a.iframe)c(a,d,{type:"error"});else{var h=ca.newImage(a.dataURL||a);ca.readAsImage(h,d,e)}},checkFileObj:function(a){var b={},c=ca.accept;return"object"==typeof a?b=a:b.name=(a+"").split(/\\|\//g).pop(),null==b.type&&(b.type=b.name.split(".").pop()),X(c,function(a,c){a=new RegExp(a.replace(/\s/g,"|"),"i"),(a.test(b.type)||ca.ext2mime[b.type])&&(b.type=ca.ext2mime[b.type]||c.split("/")[0]+"/"+b.type)}),b},getDropFiles:function(a,b){var c,d=[],e=[],j=l(a),k=j.files,m=j.items,n=W(m)&&m[0]&&h(m[0]),o=ca.queue(function(){b(d,e)});if(n)if(G&&k){var p,q,r=k.length;for(c=new Array(r);r--;){p=k[r];try{q=h(m[r])}catch(s){ca.log("[err] getDropFiles: ",s),q=null}g(q)&&(q.isDirectory||q.isFile&&p.name==p.name.normalize("NFC"))?c[r]=q:c[r]=p}}else c=m;else c=k;X(c||[],function(a){o.inc();try{n&&g(a)?i(a,function(a,b,c){a?ca.log("[err] getDropFiles:",a):d.push.apply(d,b),e.push.apply(e,c),o.next()}):f(a,function(b,c){b?d.push(a):a.error=c,e.push(a),o.next()})}catch(b){o.next(),ca.log("[err] getDropFiles: ",b)}}),o.check()},getFiles:function(a,b,c){var d=[];return c?(ca.filterFiles(ca.getFiles(a),b,c),null):(a.jquery&&(a.each(function(){d=d.concat(ca.getFiles(this))}),a=d,d=[]),"string"==typeof b&&(b=ca.getFilesFilter(b)),a.originalEvent?a=aa(a.originalEvent):a.srcElement&&(a=aa(a)),a.dataTransfer?a=a.dataTransfer:a.target&&(a=a.target),a.files?(d=a.files,D||(d[0].blob=a,d[0].iframe=!0)):!D&&k(a)?ca.trim(a.value)&&(d=[ca.checkFileObj(a.value)],d[0].blob=a,d[0].iframe=!0):W(a)&&(d=a),ca.filter(d,function(a){return!b||b.test(a.name)}))},getTotalSize:function(a){for(var b=0,c=a&&a.length;c--;)b+=a[c].size;return b},getInfo:function(a,b){var c={},d=R.concat();ca.isBlob(a)?!function e(){var f=d.shift();f?f.test(a.type)?f(a,function(a,d){a?b(a):(Y(c,d),e())}):e():b(!1,c)}():b("not_support_info",c)},addInfoReader:function(a,b){b.test=function(b){return a.test(b)},R.push(b)},filter:function(a,b){for(var c,d=[],e=0,f=a.length;f>e;e++)e in a&&(c=a[e],b.call(c,c,e,a)&&d.push(c));return d},filterFiles:function(a,b,c){if(a.length){var d,e=a.concat(),f=[],g=[];!function h(){e.length?(d=e.shift(),ca.getInfo(d,function(a,c){(b(d,a?!1:c)?f:g).push(d),h()})):c(f,g)}()}else c([],a)},upload:function(a){a=Y({jsonp:"callback",prepare:ca.F,beforeupload:ca.F,upload:ca.F,fileupload:ca.F,fileprogress:ca.F,filecomplete:ca.F,progress:ca.F,complete:ca.F,pause:ca.F,imageOriginal:!0,chunkSize:ca.chunkSize,chunkUploadRetry:ca.chunkUploadRetry,uploadRetry:ca.uploadRetry},a),a.imageAutoOrientation&&!a.imageTransform&&(a.imageTransform={rotate:"auto"});var b,c=new ca.XHR(a),d=this._getFilesDataArray(a.files),e=this,f=0,g=0,h=!1;return X(d,function(a){f+=a.size}),c.files=[],X(d,function(a){c.files.push(a.file)}),c.total=f,c.loaded=0,c.filesLeft=d.length,a.beforeupload(c,a),b=function(){var i=d.shift(),k=i&&i.file,l=!1,m=j(a);if(c.filesLeft=d.length,k&&k.name===ca.expando&&(k=null,ca.log("[warn] FileAPI.upload() — called without files")),("abort"!=c.statusText||c.current)&&i){if(h=!1,c.currentFile=k,k&&a.prepare(k,m)===!1)return void b.call(e);m.file=k,e._getFormData(m,i,function(h){g||a.upload(c,a);var j=new ca.XHR(Y({},m,{upload:k?function(){a.fileupload(k,j,m)}:q,progress:k?function(b){l||(l=b.loaded===b.total,a.fileprogress({type:"progress",total:i.total=b.total,loaded:i.loaded=b.loaded},k,j,m),a.progress({type:"progress",total:f,loaded:c.loaded=g+i.size*(b.loaded/b.total)||0},k,j,m))}:q,complete:function(d){X(T,function(a){c[a]=j[a]}),k&&(i.total=i.total||i.size,i.loaded=i.total,d||(this.progress(i),l=!0,g+=i.size,c.loaded=g),a.filecomplete(d,j,k,m)),setTimeout(function(){b.call(e)},0)}}));c.abort=function(a){a||(d.length=0),this.current=a,j.abort()},j.send(h)})}else{var n=200==c.status||201==c.status||204==c.status;a.complete(n?!1:c.statusText||"error",c,a),h=!0}},setTimeout(b,0),c.append=function(a,g){a=ca._getFilesDataArray([].concat(a)),X(a,function(a){f+=a.size,c.files.push(a.file),g?d.unshift(a):d.push(a)}),c.statusText="",h&&b.call(e)},c.remove=function(a){for(var b,c=d.length;c--;)d[c].file==a&&(b=d.splice(c,1),f-=b.size);return b},c},_getFilesDataArray:function(a){var b=[],c={};if(k(a)){var d=ca.getFiles(a);c[a.name||"file"]=null!==a.getAttribute("multiple")?d:d[0]}else W(a)&&k(a[0])?X(a,function(a){c[a.name||"file"]=ca.getFiles(a)}):c=a;return X(c,function e(a,c){W(a)?X(a,function(a){e(a,c)}):a&&(a.name||a.image)&&b.push({name:c,file:a,size:a.size,total:a.size,loaded:0})}),b.length||b.push({file:{name:ca.expando}}),b},_getFormData:function(a,b,c){var d=b.file,e=b.name,f=d.name,g=d.type,h=ca.support.transform&&a.imageTransform,i=new ca.Form,j=ca.queue(function(){c(i)}),k=h&&m(h),l=ca.postNameConcat;X(a.data,function n(a,b){"object"==typeof a?X(a,function(a,c){n(a,l(b,c))}):i.append(b,a)}),function o(b){b.image?(j.inc(),b.toData(function(a,c){b.file&&(c.type=b.file.type,c.quality=b.matrix.quality,f=b.file&&b.file.name),f=f||(new Date).getTime()+".png",o(c),j.next()})):ca.Image&&h&&(/^image/.test(b.type)||K.test(b.nodeName))?(j.inc(),k&&(h=[h]),ca.Image.transform(b,h,a.imageAutoOrientation,function(c,d){if(k&&!c)H||ca.flashEngine||(i.multipart=!0),i.append(e,d[0],f,h[0].type||g);else{var m=0;c||X(d,function(a,b){H||ca.flashEngine||(i.multipart=!0),h[b].postName||(m=1),i.append(h[b].postName||l(e,b),a,f,h[b].type||g)}),(c||a.imageOriginal)&&i.append(l(e,m?"original":null),b,f,g)}j.next()})):f!==ca.expando&&i.append(e,b,f)}(d),j.check()},reset:function(a,b){var c,d;return C?(d=C(a).clone(!0).insertBefore(a).val("")[0],b||C(a).remove()):(c=a.parentNode,d=c.insertBefore(a.cloneNode(!0),a),d.value="",b||c.removeChild(a),X(Q[ca.uid(a)],function(b,c){X(b,function(b){$(a,c,b),Z(d,c,b)})})),d},load:function(a,b){var c=ca.getXHR();return c?(c.open("GET",a,!0),c.overrideMimeType&&c.overrideMimeType("text/plain; charset=x-user-defined"),Z(c,"progress",function(a){a.lengthComputable&&b({type:a.type,loaded:a.loaded,total:a.total},c)}),c.onreadystatechange=function(){if(4==c.readyState)if(c.onreadystatechange=null,200==c.status){a=a.split("/");var d={name:a[a.length-1],size:c.getResponseHeader("Content-Length"),type:c.getResponseHeader("Content-Type")};d.dataURL="data:"+d.type+";base64,"+ca.encode64(c.responseBody||c.responseText),b({type:"load",result:d},c)}else b({type:"error"},c)},c.send(null)):b({type:"error"}),c},encode64:function(a){var b="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",c="",d=0;for("string"!=typeof a&&(a=String(a));d<a.length;){var e,f,g=255&a.charCodeAt(d++),h=255&a.charCodeAt(d++),i=255&a.charCodeAt(d++),j=g>>2,k=(3&g)<<4|h>>4;isNaN(h)?e=f=64:(e=(15&h)<<2|i>>6,f=isNaN(i)?64:63&i),c+=b.charAt(j)+b.charAt(k)+b.charAt(e)+b.charAt(f)}return c}};ca.addInfoReader(/^image/,function(a,b){if(!a.__dimensions){var c=a.__dimensions=ca.defer();ca.readAsImage(a,function(a){var b=a.target;c.resolve("load"==a.type?!1:"error",{width:b.width,height:b.height}),b.src=ca.EMPTY_PNG,b=null})}a.__dimensions.then(b)}),ca.event.dnd=function(a,b,c){var d,e;c||(c=b,b=ca.F),z?(Z(a,"dragenter dragleave dragover",b.ff=b.ff||function(a){for(var c=l(a).types,f=c&&c.length,g=!1;f--;)if(~c[f].indexOf("File")){a[V](),e!==a.type&&(e=a.type,"dragleave"!=e&&b.call(a[U],!0,a),g=!0);break}g&&(clearTimeout(d),d=setTimeout(function(){b.call(a[U],"dragleave"!=e,a)},50))}),Z(a,"drop",c.ff=c.ff||function(a){a[V](),e=0,b.call(a[U],!1,a),ca.getDropFiles(a,function(b,d){c.call(a[U],b,d,a)})})):ca.log("Drag'n'Drop -- not supported")},ca.event.dnd.off=function(a,b,c){$(a,"dragenter dragleave dragover",b.ff),$(a,"drop",c.ff)},C&&!C.fn.dnd&&(C.fn.dnd=function(a,b){return this.each(function(){ca.event.dnd(this,a,b)})},C.fn.offdnd=function(a,b){return this.each(function(){ca.event.dnd.off(this,a,b)})}),a.FileAPI=Y(ca,a.FileAPI),ca.log("FileAPI: "+ca.version),ca.log("protocol: "+a.location.protocol),ca.log("doctype: ["+s.name+"] "+s.publicId+" "+s.systemId),X(r.getElementsByTagName("meta"),function(a){/x-ua-compatible/i.test(a.getAttribute("http-equiv"))&&ca.log("meta.http-equiv: "+a.getAttribute("content"))});try{n=!!console.log,o=!!console.log.apply}catch(da){}ca.flashUrl||(ca.flashUrl=ca.staticPath+"FileAPI.flash.swf"),ca.flashImageUrl||(ca.flashImageUrl=ca.staticPath+"FileAPI.flash.image.swf"),ca.flashWebcamUrl||(ca.flashWebcamUrl=ca.staticPath+"FileAPI.flash.camera.swf")}(window,void 0),function(a,b,c){"use strict";function d(b){if(b instanceof d){var c=new d(b.file);return a.extend(c.matrix,b.matrix),c}return this instanceof d?(this.file=b,this.size=b.size||100,void(this.matrix={sx:0,sy:0,sw:0,sh:0,dx:0,dy:0,dw:0,dh:0,resize:0,deg:0,quality:1,filter:0})):new d(b)}var e=Math.min,f=Math.round,g=function(){return b.createElement("canvas")},h=!1,i={8:270,3:180,6:90,7:270,4:180,5:90};try{h=g().toDataURL("image/png").indexOf("data:image/png")>-1}catch(j){}d.prototype={image:!0,constructor:d,set:function(b){return a.extend(this.matrix,b),this},crop:function(a,b,d,e){return d===c&&(d=a,e=b,a=b=0),this.set({sx:a,sy:b,sw:d,sh:e||d})},resize:function(a,b,c){return/min|max|height|width/.test(b)&&(c=b,b=a),this.set({dw:a,dh:b||a,resize:c})},preview:function(a,b){return this.resize(a,b||a,"preview")},rotate:function(a){return this.set({deg:a})},filter:function(a){return this.set({filter:a})},overlay:function(a){return this.set({overlay:a})},clone:function(){return new d(this)},_load:function(b,c){var d=this;/img|video/i.test(b.nodeName)?c.call(d,null,b):a.readAsImage(b,function(a){c.call(d,"load"!=a.type,a.result)})},_apply:function(b,c){var f,h=g(),i=this.getMatrix(b),j=h.getContext("2d"),k=b.videoWidth||b.width,l=b.videoHeight||b.height,m=i.deg,n=i.dw,o=i.dh,p=k,q=l,r=i.filter,s=b,t=i.overlay,u=a.queue(function(){b.src=a.EMPTY_PNG,c(!1,h)}),v=a.renderImageToCanvas;for(m-=360*Math.floor(m/360),b._type=this.file.type;i.multipass&&e(p/n,q/o)>2;)p=p/2+.5|0,q=q/2+.5|0,f=g(),f.width=p,f.height=q,s!==b?(v(f,s,0,0,s.width,s.height,0,0,p,q),s=f):(s=f,v(s,b,i.sx,i.sy,i.sw,i.sh,0,0,p,q),i.sx=i.sy=i.sw=i.sh=0);h.width=m%180?o:n,h.height=m%180?n:o,h.type=i.type,h.quality=i.quality,j.rotate(m*Math.PI/180),v(j.canvas,s,i.sx,i.sy,i.sw||s.width,i.sh||s.height,180==m||270==m?-n:0,90==m||180==m?-o:0,n,o),n=h.width,o=h.height,t&&a.each([].concat(t),function(b){u.inc();var c=new window.Image,d=function(){var e=0|b.x,f=0|b.y,g=b.w||c.width,h=b.h||c.height,i=b.rel;e=1==i||4==i||7==i?(n-g+e)/2:2==i||5==i||8==i?n-(g+e):e,f=3==i||4==i||5==i?(o-h+f)/2:i>=6?o-(h+f):f,a.event.off(c,"error load abort",d);try{j.globalAlpha=b.opacity||1,j.drawImage(c,e,f,g,h)}catch(k){}u.next()};a.event.on(c,"error load abort",d),c.src=b.src,c.complete&&d()}),r&&(u.inc(),d.applyFilter(h,r,u.next)),u.check()},getMatrix:function(b){var c=a.extend({},this.matrix),d=c.sw=c.sw||b.videoWidth||b.naturalWidth||b.width,g=c.sh=c.sh||b.videoHeight||b.naturalHeight||b.height,h=c.dw=c.dw||d,i=c.dh=c.dh||g,j=d/g,k=h/i,l=c.resize;if("preview"==l){if(h!=d||i!=g){var m,n;k>=j?(m=d,n=m/k):(n=g,m=n*k),(m!=d||n!=g)&&(c.sx=~~((d-m)/2),c.sy=~~((g-n)/2),d=m,g=n)}}else"height"==l?h=i*j:"width"==l?i=h/j:l&&(d>h||g>i?"min"==l?(h=f(k>j?e(d,h):i*j),i=f(k>j?h/j:e(g,i))):(h=f(j>=k?e(d,h):i*j),i=f(j>=k?h/j:e(g,i))):(h=d,i=g));return c.sw=d,c.sh=g,c.dw=h,c.dh=i,c.multipass=a.multiPassResize,c},_trans:function(b){this._load(this.file,function(c,d){if(c)b(c);else try{this._apply(d,b)}catch(c){a.log("[err] FileAPI.Image.fn._apply:",c),b(c)}})},get:function(b){if(a.support.transform){var c=this,d=c.matrix;"auto"==d.deg?a.getInfo(c.file,function(a,e){d.deg=i[e&&e.exif&&e.exif.Orientation]||0,c._trans(b)}):c._trans(b)}else b("not_support_transform");return this},toData:function(a){return this.get(a)}},d.exifOrientation=i,d.transform=function(b,e,f,g){function h(h,i){var j={},k=a.queue(function(a){g(a,j)});h?k.fail():a.each(e,function(a,e){if(!k.isFail()){var g=new d(i.nodeType?i:b),h="function"==typeof a;if(h?a(i,g):a.width?g[a.preview?"preview":"resize"](a.width,a.height,a.strategy):a.maxWidth&&(i.width>a.maxWidth||i.height>a.maxHeight)&&g.resize(a.maxWidth,a.maxHeight,"max"),a.crop){var l=a.crop;g.crop(0|l.x,0|l.y,l.w||l.width,l.h||l.height)}a.rotate===c&&f&&(a.rotate="auto"),g.set({type:g.matrix.type||a.type||b.type||"image/png"}),h||g.set({deg:a.rotate,overlay:a.overlay,filter:a.filter,quality:a.quality||1}),k.inc(),g.toData(function(a,b){a?k.fail():(j[e]=b,k.next())})}})}b.width?h(!1,b):a.getInfo(b,h)},a.each(["TOP","CENTER","BOTTOM"],function(b,c){a.each(["LEFT","CENTER","RIGHT"],function(a,e){d[b+"_"+a]=3*c+e,d[a+"_"+b]=3*c+e})}),d.toCanvas=function(a){var c=b.createElement("canvas");return c.width=a.videoWidth||a.width,c.height=a.videoHeight||a.height,c.getContext("2d").drawImage(a,0,0),c},d.fromDataURL=function(b,c,d){var e=a.newImage(b);a.extend(e,c),d(e)},d.applyFilter=function(b,c,e){"function"==typeof c?c(b,e):window.Caman&&window.Caman("IMG"==b.tagName?d.toCanvas(b):b,function(){"string"==typeof c?this[c]():a.each(c,function(a,b){this[b](a)},this),this.render(e)})},a.renderImageToCanvas=function(b,c,d,e,f,g,h,i,j,k){try{return b.getContext("2d").drawImage(c,d,e,f,g,h,i,j,k)}catch(l){throw a.log("renderImageToCanvas failed"),l}},a.support.canvas=a.support.transform=h,a.Image=d}(FileAPI,document),function(a){"use strict";a(FileAPI)}(function(a){"use strict";if(window.navigator&&window.navigator.platform&&/iP(hone|od|ad)/.test(window.navigator.platform)){var b=a.renderImageToCanvas;a.detectSubsampling=function(a){var b,c;return a.width*a.height>1048576?(b=document.createElement("canvas"),b.width=b.height=1,c=b.getContext("2d"),c.drawImage(a,-a.width+1,0),0===c.getImageData(0,0,1,1).data[3]):!1},a.detectVerticalSquash=function(a,b){var c,d,e,f,g,h=a.naturalHeight||a.height,i=document.createElement("canvas"),j=i.getContext("2d");for(b&&(h/=2),i.width=1,i.height=h,j.drawImage(a,0,0),c=j.getImageData(0,0,1,h).data,d=0,e=h,f=h;f>d;)g=c[4*(f-1)+3],0===g?e=f:d=f,f=e+d>>1;return f/h||1},a.renderImageToCanvas=function(c,d,e,f,g,h,i,j,k,l){if("image/jpeg"===d._type){var m,n,o,p,q=c.getContext("2d"),r=document.createElement("canvas"),s=1024,t=r.getContext("2d");if(r.width=s,r.height=s,q.save(),m=a.detectSubsampling(d),m&&(e/=2,f/=2,g/=2,h/=2),n=a.detectVerticalSquash(d,m),m||1!==n){for(f*=n,k=Math.ceil(s*k/g),l=Math.ceil(s*l/h/n),j=0,p=0;h>p;){for(i=0,o=0;g>o;)t.clearRect(0,0,s,s),t.drawImage(d,e,f,g,h,-o,-p,g,h),q.drawImage(r,0,0,s,s,i,j,k,l),o+=s,i+=k;p+=s,j+=l}return q.restore(),c}}return b(c,d,e,f,g,h,i,j,k,l)}}}),function(a,b){"use strict";function c(b,c,d){var e=b.blob,f=b.file;if(f){if(!e.toDataURL)return void a.readAsBinaryString(e,function(a){"load"==a.type&&c(b,a.result)});var g={"image/jpeg":".jpe?g","image/png":".png"},h=g[b.type]?b.type:"image/png",i=g[h]||".png",j=e.quality||1;f.match(new RegExp(i+"$","i"))||(f+=i.replace("?","")),b.file=f,b.type=h,!d&&e.toBlob?e.toBlob(function(a){c(b,a)},h,j):c(b,a.toBinaryString(e.toDataURL(h,j)))}else c(b,e)}var d=b.document,e=b.FormData,f=function(){this.items=[]},g=b.encodeURIComponent;f.prototype={append:function(a,b,c,d){this.items.push({name:a,blob:b&&b.blob||(void 0==b?"":b),file:b&&(c||b.name),type:b&&(d||b.type)})},each:function(a){for(var b=0,c=this.items.length;c>b;b++)a.call(this,this.items[b])},toData:function(b,c){c._chunked=a.support.chunked&&c.chunkSize>0&&1==a.filter(this.items,function(a){return a.file}).length,a.support.html5?a.formData&&!this.multipart&&e?c._chunked?(a.log("FileAPI.Form.toPlainData"),this.toPlainData(b)):(a.log("FileAPI.Form.toFormData"),this.toFormData(b)):(a.log("FileAPI.Form.toMultipartData"),this.toMultipartData(b)):(a.log("FileAPI.Form.toHtmlData"),this.toHtmlData(b))},_to:function(b,c,d,e){var f=a.queue(function(){c(b)});this.each(function(g){try{d(g,b,f,e)}catch(h){a.log("FileAPI.Form._to: "+h.message),c(h)}}),f.check()},toHtmlData:function(b){this._to(d.createDocumentFragment(),b,function(b,c){var e,f=b.blob;b.file?(a.reset(f,!0),f.name=b.name,f.disabled=!1,c.appendChild(f)):(e=d.createElement("input"),e.name=b.name,e.type="hidden",e.value=f,c.appendChild(e))})},toPlainData:function(a){this._to({},a,function(a,b,d){a.file&&(b.type=a.file),a.blob.toBlob?(d.inc(),c(a,function(a,c){b.name=a.name,b.file=c,b.size=c.length,b.type=a.type,d.next()})):a.file?(b.name=a.blob.name,b.file=a.blob,b.size=a.blob.size,b.type=a.type):(b.params||(b.params=[]),b.params.push(g(a.name)+"="+g(a.blob))),b.start=-1,b.end=b.file&&b.file.FileAPIReadPosition||-1,b.retry=0})},toFormData:function(a){this._to(new e,a,function(a,b,d){a.blob&&a.blob.toBlob?(d.inc(),c(a,function(a,c){b.append(a.name,c,a.file),d.next()})):a.file?b.append(a.name,a.blob,a.file):b.append(a.name,a.blob),a.file&&b.append("_"+a.name,a.file)})},toMultipartData:function(b){this._to([],b,function(a,b,d,e){d.inc(),c(a,function(a,c){b.push("--_"+e+('\r\nContent-Disposition: form-data; name="'+a.name+'"'+(a.file?'; filename="'+g(a.file)+'"':"")+(a.file?"\r\nContent-Type: "+(a.type||"application/octet-stream"):"")+"\r\n\r\n"+(a.file?c:g(c))+"\r\n")),d.next()},!0)},a.expando)}},a.Form=f}(FileAPI,window),function(a,b){"use strict";var c=function(){},d=a.document,e=function(a){this.uid=b.uid(),this.xhr={abort:c,getResponseHeader:c,getAllResponseHeaders:c},this.options=a},f={"":1,XML:1,Text:1,Body:1};e.prototype={status:0,statusText:"",constructor:e,getResponseHeader:function(a){return this.xhr.getResponseHeader(a)},getAllResponseHeaders:function(){return this.xhr.getAllResponseHeaders()||{}},end:function(d,e){var f=this,g=f.options;f.end=f.abort=c,f.status=d,e&&(f.statusText=e),b.log("xhr.end:",d,e),g.complete(200==d||201==d?!1:f.statusText||"unknown",f),f.xhr&&f.xhr.node&&setTimeout(function(){var b=f.xhr.node;try{b.parentNode.removeChild(b)}catch(c){}try{delete a[f.uid]}catch(c){}a[f.uid]=f.xhr.node=null},9)},abort:function(){this.end(0,"abort"),this.xhr&&(this.xhr.aborted=!0,this.xhr.abort())},send:function(a){var b=this,c=this.options;a.toData(function(a){a instanceof Error?b.end(0,a.message):(c.upload(c,b),b._send.call(b,c,a))},c)},_send:function(c,e){var g,h=this,i=h.uid,j=h.uid+"Load",k=c.url;if(b.log("XHR._send:",e),c.cache||(k+=(~k.indexOf("?")?"&":"?")+b.uid()),e.nodeName){var l=c.jsonp;k=k.replace(/([a-z]+)=(\?)/i,"$1="+i),c.upload(c,h);var m=function(a){if(~k.indexOf(a.origin))try{var c=b.parseJSON(a.data);c.id==i&&n(c.status,c.statusText,c.response)}catch(d){n(0,d.message)}},n=a[i]=function(c,d,e){h.readyState=4,h.responseText=e,h.end(c,d),b.event.off(a,"message",m),a[i]=g=p=a[j]=null};h.xhr.abort=function(){try{p.stop?p.stop():p.contentWindow.stop?p.contentWindow.stop():p.contentWindow.document.execCommand("Stop")}catch(a){}n(0,"abort")},b.event.on(a,"message",m),a[j]=function(){try{var a=p.contentWindow,c=a.document,d=a.result||b.parseJSON(c.body.innerHTML);n(d.status,d.statusText,d.response)}catch(e){b.log("[transport.onload]",e)}},g=d.createElement("div"),g.innerHTML='<form target="'+i+'" action="'+k+'" method="POST" enctype="multipart/form-data" style="position: absolute; top: -1000px; overflow: hidden; width: 1px; height: 1px;"><iframe name="'+i+'" src="javascript:false;" onload="window.'+j+" && "+j+'();"></iframe>'+(l&&c.url.indexOf("=?")<0?'<input value="'+i+'" name="'+l+'" type="hidden"/>':"")+"</form>";var o=g.getElementsByTagName("form")[0],p=g.getElementsByTagName("iframe")[0];o.appendChild(e),b.log(o.parentNode.innerHTML),d.body.appendChild(g),h.xhr.node=g,h.readyState=2;try{o.submit()}catch(q){b.log("iframe.error: "+q)}o=null}else{if(k=k.replace(/([a-z]+)=(\?)&?/i,""),this.xhr&&this.xhr.aborted)return void b.log("Error: already aborted");if(g=h.xhr=b.getXHR(),e.params&&(k+=(k.indexOf("?")<0?"?":"&")+e.params.join("&")),g.open("POST",k,!0),b.withCredentials&&(g.withCredentials="true"),c.headers&&c.headers["X-Requested-With"]||g.setRequestHeader("X-Requested-With","XMLHttpRequest"),b.each(c.headers,function(a,b){g.setRequestHeader(b,a)}),c._chunked){g.upload&&g.upload.addEventListener("progress",b.throttle(function(a){e.retry||c.progress({type:a.type,total:e.size,loaded:e.start+a.loaded,totalSize:e.size},h,c)},100),!1),g.onreadystatechange=function(){var a=parseInt(g.getResponseHeader("X-Last-Known-Byte"),10);if(h.status=g.status,h.statusText=g.statusText,h.readyState=g.readyState,4==g.readyState){for(var d in f)h["response"+d]=g["response"+d];if(g.onreadystatechange=null,!g.status||g.status-201>0)if(b.log("Error: "+g.status),(!g.status&&!g.aborted||500==g.status||416==g.status)&&++e.retry<=c.chunkUploadRetry){var i=g.status?0:b.chunkNetworkDownRetryTimeout;c.pause(e.file,c),b.log("X-Last-Known-Byte: "+a),a?e.end=a:(e.end=e.start-1,416==g.status&&(e.end=e.end-c.chunkSize)),setTimeout(function(){h._send(c,e)},i)}else h.end(g.status);else e.retry=0,e.end==e.size-1?h.end(g.status):(b.log("X-Last-Known-Byte: "+a),a&&(e.end=a),e.file.FileAPIReadPosition=e.end,setTimeout(function(){h._send(c,e)},0));g=null}},e.start=e.end+1,e.end=Math.max(Math.min(e.start+c.chunkSize,e.size)-1,e.start);var r=e.file,s=(r.slice||r.mozSlice||r.webkitSlice).call(r,e.start,e.end+1);e.size&&!s.size?setTimeout(function(){h.end(-1)}):(g.setRequestHeader("Content-Range","bytes "+e.start+"-"+e.end+"/"+e.size),g.setRequestHeader("Content-Disposition","attachment; filename="+encodeURIComponent(e.name)),g.setRequestHeader("Content-Type",e.type||"application/octet-stream"),g.send(s)),r=s=null}else if(g.upload&&g.upload.addEventListener("progress",b.throttle(function(a){c.progress(a,h,c)},100),!1),g.onreadystatechange=function(){if(h.status=g.status,h.statusText=g.statusText,h.readyState=g.readyState,4==g.readyState){for(var a in f)h["response"+a]=g["response"+a];if(g.onreadystatechange=null,!g.status||g.status>201)if(b.log("Error: "+g.status),(!g.status&&!g.aborted||500==g.status)&&(c.retry||0)<c.uploadRetry){c.retry=(c.retry||0)+1;var d=b.networkDownRetryTimeout;c.pause(c.file,c),setTimeout(function(){h._send(c,e)},d)}else h.end(g.status);else h.end(g.status);g=null}},b.isArray(e)){g.setRequestHeader("Content-Type","multipart/form-data; boundary=_"+b.expando);var t=e.join("")+"--_"+b.expando+"--";if(g.sendAsBinary)g.sendAsBinary(t);else{var u=Array.prototype.map.call(t,function(a){return 255&a.charCodeAt(0)});g.send(new Uint8Array(u).buffer)}}else g.send(e)}}},b.XHR=e}(window,FileAPI),function(a,b){"use strict";function c(a){return a>=0?a+"px":a}function d(a){var c,d=f.createElement("canvas"),e=!1;try{c=d.getContext("2d"),c.drawImage(a,0,0,1,1),e=255!=c.getImageData(0,0,1,1).data[4]}catch(g){b.log("[FileAPI.Camera] detectVideoSignal:",g)}return e}var e=a.URL||a.webkitURL,f=a.document,g=a.navigator,h=g.getUserMedia||g.webkitGetUserMedia||g.mozGetUserMedia||g.msGetUserMedia,i=!!h;b.support.media=i;var j=function(a){this.video=a};j.prototype={isActive:function(){return!!this._active},start:function(a){var b,c,f=this,i=f.video,j=function(d){f._active=!d,clearTimeout(c),clearTimeout(b),a&&a(d,f)};h.call(g,{video:!0},function(a){f.stream=a,i.src=e.createObjectURL(a),b=setInterval(function(){d(i)&&j(null)},1e3),c=setTimeout(function(){j("timeout");
-	},5e3),i.play()},j)},stop:function(){try{this._active=!1,this.video.pause();try{this.stream.stop()}catch(a){b.each(this.stream.getTracks(),function(a){a.stop()})}this.stream=null}catch(a){b.log("[FileAPI.Camera] stop:",a)}},shot:function(){return new k(this.video)}},j.get=function(a){return new j(a.firstChild)},j.publish=function(d,e,g){"function"==typeof e&&(g=e,e={}),e=b.extend({},{width:"100%",height:"100%",start:!0},e),d.jquery&&(d=d[0]);var h=function(a){if(a)g(a);else{var b=j.get(d);e.start?b.start(g):g(null,b)}};if(d.style.width=c(e.width),d.style.height=c(e.height),b.html5&&i){var k=f.createElement("video");k.style.width=c(e.width),k.style.height=c(e.height),a.jQuery?jQuery(d).empty():d.innerHTML="",d.appendChild(k),h()}else j.fallback(d,e,h)},j.fallback=function(a,b,c){c("not_support_camera")};var k=function(a){var c=a.nodeName?b.Image.toCanvas(a):a,d=b.Image(c);return d.type="image/png",d.width=c.width,d.height=c.height,d.size=c.width*c.height*4,d};j.Shot=k,b.Camera=j}(window,FileAPI),function(a,b,c){"use strict";var d=a.document,e=a.location,f=a.navigator,g=c.each;c.support.flash=function(){var b=f.mimeTypes,d=!1;if(f.plugins&&"object"==typeof f.plugins["Shockwave Flash"])d=f.plugins["Shockwave Flash"].description&&!(b&&b["application/x-shockwave-flash"]&&!b["application/x-shockwave-flash"].enabledPlugin);else try{d=!(!a.ActiveXObject||!new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))}catch(g){c.log("Flash -- does not supported.")}return d&&/^file:/i.test(e)&&c.log("[warn] Flash does not work on `file:` protocol."),d}(),c.support.flash&&(!c.html5||!c.support.html5||c.cors&&!c.support.cors||c.media&&!c.support.media)&&function(){function h(a){return('<object id="#id#" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'"><param name="movie" value="#src#" /><param name="flashvars" value="#flashvars#" /><param name="swliveconnect" value="true" /><param name="allowscriptaccess" value="always" /><param name="allownetworking" value="all" /><param name="menu" value="false" /><param name="wmode" value="#wmode#" /><embed flashvars="#flashvars#" swliveconnect="true" allownetworking="all" allowscriptaccess="always" name="#id#" src="#src#" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'" menu="false" wmode="transparent" type="application/x-shockwave-flash"></embed></object>').replace(/#(\w+)#/gi,function(b,c){return a[c]})}function i(a,b){if(a&&a.style){var c,d;for(c in b){d=b[c],"number"==typeof d&&(d+="px");try{a.style[c]=d}catch(e){}}}}function j(a,b){g(b,function(b,c){var d=a[c];a[c]=function(){return this.parent=d,b.apply(this,arguments)}})}function k(a){return a&&!a.flashId}function l(a){var b=a.wid=c.uid();return v._fn[b]=a,"FileAPI.Flash._fn."+b}function m(a){try{v._fn[a.wid]=null,delete v._fn[a.wid]}catch(b){}}function n(a,b){if(!u.test(a)){if(/^\.\//.test(a)||"/"!=a.charAt(0)){var c=e.pathname;c=c.substr(0,c.lastIndexOf("/")),a=(c+"/"+a).replace("/./","/")}"//"!=a.substr(0,2)&&(a="//"+e.host+a),u.test(a)||(a=e.protocol+a)}return b&&(a+=(/\?/.test(a)?"&":"?")+b),a}function o(a,b,e){function f(){try{var a=v.get(j);a.setImage(b)}catch(d){c.log('[err] FlashAPI.Preview.setImage -- can not set "base64":',d)}}var g,j=c.uid(),k=d.createElement("div"),o=10;for(g in a)k.setAttribute(g,a[g]),k[g]=a[g];i(k,a),a.width="100%",a.height="100%",k.innerHTML=h(c.extend({id:j,src:n(c.flashImageUrl,"r="+c.uid()),wmode:"opaque",flashvars:"scale="+a.scale+"&callback="+l(function p(){return m(p),--o>0&&f(),!0})},a)),e(!1,k),k=null}function p(a){return{id:a.id,name:a.name,matrix:a.matrix,flashId:a.flashId}}function q(b){var c=b.getBoundingClientRect(),e=d.body,f=(b&&b.ownerDocument).documentElement;return{top:c.top+(a.pageYOffset||f.scrollTop)-(f.clientTop||e.clientTop||0),left:c.left+(a.pageXOffset||f.scrollLeft)-(f.clientLeft||e.clientLeft||0),width:c.right-c.left,height:c.bottom-c.top}}var r=c.uid(),s=0,t={},u=/^https?:/i,v={_fn:{},init:function(){var a=d.body&&d.body.firstChild;if(a)do if(1==a.nodeType){c.log("FlashAPI.state: awaiting");var b=d.createElement("div");return b.id="_"+r,i(b,{top:1,right:1,width:5,height:5,position:"absolute",zIndex:"2147483647"}),a.parentNode.insertBefore(b,a),void v.publish(b,r)}while(a=a.nextSibling);10>s&&setTimeout(v.init,50*++s)},publish:function(a,b,d){d=d||{},a.innerHTML=h({id:b,src:n(c.flashUrl,"r="+c.version),wmode:d.camera?"":"transparent",flashvars:"callback="+(d.onEvent||"FileAPI.Flash.onEvent")+"&flashId="+b+"&storeKey="+f.userAgent.match(/\d/gi).join("")+"_"+c.version+(v.isReady||(c.pingUrl?"&ping="+c.pingUrl:""))+"&timeout="+c.flashAbortTimeout+(d.camera?"&useCamera="+n(c.flashWebcamUrl):"")+"&debug="+(c.debug?"1":"")},d)},ready:function(){c.log("FlashAPI.state: ready"),v.ready=c.F,v.isReady=!0,v.patch(),v.patchCamera&&v.patchCamera(),c.event.on(d,"mouseover",v.mouseover),c.event.on(d,"click",function(a){v.mouseover(a)&&(a.preventDefault?a.preventDefault():a.returnValue=!0)})},getEl:function(){return d.getElementById("_"+r)},getWrapper:function(a){do if(/js-fileapi-wrapper/.test(a.className))return a;while((a=a.parentNode)&&a!==d.body)},mouseover:function(a){var b=c.event.fix(a).target;if(/input/i.test(b.nodeName)&&"file"==b.type&&!b.disabled){var e=b.getAttribute(r),f=v.getWrapper(b);if(c.multiFlash){if("i"==e||"r"==e)return!1;if("p"!=e){b.setAttribute(r,"i");var g=d.createElement("div");if(!f)return void c.log("[err] FlashAPI.mouseover: js-fileapi-wrapper not found");i(g,{top:0,left:0,width:b.offsetWidth,height:b.offsetHeight,zIndex:"2147483647",position:"absolute"}),f.appendChild(g),v.publish(g,c.uid()),b.setAttribute(r,"p")}return!0}if(f){var h=q(f);i(v.getEl(),h),v.curInp=b}}else/object|embed/i.test(b.nodeName)||i(v.getEl(),{top:1,left:1,width:5,height:5})},onEvent:function(a){var b=a.type;if("ready"==b){try{v.getInput(a.flashId).setAttribute(r,"r")}catch(d){}return v.ready(),setTimeout(function(){v.mouseenter(a)},50),!0}"ping"===b?c.log("(flash -> js).ping:",[a.status,a.savedStatus],a.error):"log"===b?c.log("(flash -> js).log:",a.target):b in v&&setTimeout(function(){c.log("FlashAPI.event."+a.type+":",a),v[b](a)},1)},mouseenter:function(a){var b=v.getInput(a.flashId);if(b){v.cmd(a,"multiple",null!=b.getAttribute("multiple"));var d=[],e={};g((b.getAttribute("accept")||"").split(/,\s*/),function(a){c.accept[a]&&g(c.accept[a].split(" "),function(a){e[a]=1})}),g(e,function(a,b){d.push(b)}),v.cmd(a,"accept",d.length?d.join(",")+","+d.join(",").toUpperCase():"*")}},get:function(b){return d[b]||a[b]||d.embeds[b]},getInput:function(a){if(!c.multiFlash)return v.curInp;try{var b=v.getWrapper(v.get(a));if(b)return b.getElementsByTagName("input")[0]}catch(d){c.log('[err] Can not find "input" by flashId:',a,d)}},select:function(a){var e,f=v.getInput(a.flashId),h=c.uid(f),i=a.target.files;g(i,function(a){c.checkFileObj(a)}),t[h]=i,d.createEvent?(e=d.createEvent("Event"),e.files=i,e.initEvent("change",!0,!0),f.dispatchEvent(e)):b?b(f).trigger({type:"change",files:i}):(e=d.createEventObject(),e.files=i,f.fireEvent("onchange",e))},cmd:function(a,b,d,e){try{return c.log("(js -> flash)."+b+":",d),v.get(a.flashId||a).cmd(b,d)}catch(f){c.log("(js -> flash).onError:",f.toString()),e||setTimeout(function(){v.cmd(a,b,d,!0)},50)}},patch:function(){c.flashEngine=!0,j(c,{getFiles:function(a,b,d){if(d)return c.filterFiles(c.getFiles(a),b,d),null;var e=c.isArray(a)?a:t[c.uid(a.target||a.srcElement||a)];return e?(b&&(b=c.getFilesFilter(b),e=c.filter(e,function(a){return b.test(a.name)})),e):this.parent.apply(this,arguments)},getInfo:function(a,b){if(k(a))this.parent.apply(this,arguments);else if(a.isShot)b(null,a.info={width:a.width,height:a.height});else{if(!a.__info){var d=a.__info=c.defer();v.cmd(a,"getFileInfo",{id:a.id,callback:l(function e(b,c){m(e),d.resolve(b,a.info=c)})})}a.__info.then(b)}}}),c.support.transform=!0,c.Image&&j(c.Image.prototype,{get:function(a,b){return this.set({scaleMode:b||"noScale"}),this.parent(a)},_load:function(a,b){if(c.log("FlashAPI.Image._load:",a),k(a))this.parent.apply(this,arguments);else{var d=this;c.getInfo(a,function(c){b.call(d,c,a)})}},_apply:function(a,b){if(c.log("FlashAPI.Image._apply:",a),k(a))this.parent.apply(this,arguments);else{var d=this.getMatrix(a.info),e=b;v.cmd(a,"imageTransform",{id:a.id,matrix:d,callback:l(function f(g,h){c.log("FlashAPI.Image._apply.callback:",g),m(f),g?e(g):c.support.html5||c.support.dataURI&&!(h.length>3e4)?(d.filter&&(e=function(a,e){a?b(a):c.Image.applyFilter(e,d.filter,function(){b(a,this.canvas)})}),c.newImage("data:"+a.type+";base64,"+h,e)):o({width:d.deg%180?d.dh:d.dw,height:d.deg%180?d.dw:d.dh,scale:d.scaleMode},h,e)})})}},toData:function(a){var b=this.file,d=b.info,e=this.getMatrix(d);c.log("FlashAPI.Image.toData"),k(b)?this.parent.apply(this,arguments):("auto"==e.deg&&(e.deg=c.Image.exifOrientation[d&&d.exif&&d.exif.Orientation]||0),a.call(this,!b.info,{id:b.id,flashId:b.flashId,name:b.name,type:b.type,matrix:e}))}}),c.Image&&j(c.Image,{fromDataURL:function(a,b,d){!c.support.dataURI||a.length>3e4?o(c.extend({scale:"exactFit"},b),a.replace(/^data:[^,]+,/,""),function(a,b){d(b)}):this.parent(a,b,d)}}),j(c.Form.prototype,{toData:function(a){for(var b=this.items,d=b.length;d--;)if(b[d].file&&k(b[d].blob))return this.parent.apply(this,arguments);c.log("FlashAPI.Form.toData"),a(b)}}),j(c.XHR.prototype,{_send:function(a,b){if(b.nodeName||b.append&&c.support.html5||c.isArray(b)&&"string"==typeof b[0])return this.parent.apply(this,arguments);var d,e,f={},h={},i=this;if(g(b,function(a){a.file?(h[a.name]=a=p(a.blob),e=a.id,d=a.flashId):f[a.name]=a.blob}),e||(d=r),!d)return c.log("[err] FlashAPI._send: flashId -- undefined"),this.parent.apply(this,arguments);c.log("FlashAPI.XHR._send: "+d+" -> "+e),i.xhr={headers:{},abort:function(){v.cmd(d,"abort",{id:e})},getResponseHeader:function(a){return this.headers[a]},getAllResponseHeaders:function(){return this.headers}};var j=c.queue(function(){v.cmd(d,"upload",{url:n(a.url.replace(/([a-z]+)=(\?)&?/i,"")),data:f,files:e?h:null,headers:a.headers||{},callback:l(function b(d){var e=d.type,f=d.result;c.log("FlashAPI.upload."+e),"progress"==e?(d.loaded=Math.min(d.loaded,d.total),d.lengthComputable=!0,a.progress(d)):"complete"==e?(m(b),"string"==typeof f&&(i.responseText=f.replace(/%22/g,'"').replace(/%5c/g,"\\").replace(/%26/g,"&").replace(/%25/g,"%")),i.end(d.status||200)):("abort"==e||"error"==e)&&(i.end(d.status||0,d.message),m(b))})})});g(h,function(a){j.inc(),c.getInfo(a,j.next)}),j.check()}})}};c.Flash=v,c.newImage("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",function(a,b){c.support.dataURI=!(1!=b.width||1!=b.height),v.init()})}()}(window,window.jQuery,FileAPI),function(a,b,c){"use strict";var d=c.each,e=[];!c.support.flash||!c.media||c.support.media&&c.html5||!function(){function a(a){var b=a.wid=c.uid();return c.Flash._fn[b]=a,"FileAPI.Flash._fn."+b}function b(a){try{c.Flash._fn[a.wid]=null,delete c.Flash._fn[a.wid]}catch(b){}}var f=c.Flash;c.extend(c.Flash,{patchCamera:function(){c.Camera.fallback=function(d,e,g){var h=c.uid();c.log("FlashAPI.Camera.publish: "+h),f.publish(d,h,c.extend(e,{camera:!0,onEvent:a(function i(a){"camera"===a.type&&(b(i),a.error?(c.log("FlashAPI.Camera.publish.error: "+a.error),g(a.error)):(c.log("FlashAPI.Camera.publish.success: "+h),g(null)))})}))},d(e,function(a){c.Camera.fallback.apply(c.Camera,a)}),e=[],c.extend(c.Camera.prototype,{_id:function(){return this.video.id},start:function(d){var e=this;f.cmd(this._id(),"camera.on",{callback:a(function g(a){b(g),a.error?(c.log("FlashAPI.camera.on.error: "+a.error),d(a.error,e)):(c.log("FlashAPI.camera.on.success: "+e._id()),e._active=!0,d(null,e))})})},stop:function(){this._active=!1,f.cmd(this._id(),"camera.off")},shot:function(){c.log("FlashAPI.Camera.shot:",this._id());var a=c.Flash.cmd(this._id(),"shot",{});return a.type="image/png",a.flashId=this._id(),a.isShot=!0,new c.Camera.Shot(a)}})}}),c.Camera.fallback=function(){e.push(arguments)}}()}(window,window.jQuery,FileAPI),"function"=="function"&&__webpack_require__(328)&&!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){return FileAPI}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	},5e3),i.play()},j)},stop:function(){try{this._active=!1,this.video.pause();try{this.stream.stop()}catch(a){b.each(this.stream.getTracks(),function(a){a.stop()})}this.stream=null}catch(a){b.log("[FileAPI.Camera] stop:",a)}},shot:function(){return new k(this.video)}},j.get=function(a){return new j(a.firstChild)},j.publish=function(d,e,g){"function"==typeof e&&(g=e,e={}),e=b.extend({},{width:"100%",height:"100%",start:!0},e),d.jquery&&(d=d[0]);var h=function(a){if(a)g(a);else{var b=j.get(d);e.start?b.start(g):g(null,b)}};if(d.style.width=c(e.width),d.style.height=c(e.height),b.html5&&i){var k=f.createElement("video");k.style.width=c(e.width),k.style.height=c(e.height),a.jQuery?jQuery(d).empty():d.innerHTML="",d.appendChild(k),h()}else j.fallback(d,e,h)},j.fallback=function(a,b,c){c("not_support_camera")};var k=function(a){var c=a.nodeName?b.Image.toCanvas(a):a,d=b.Image(c);return d.type="image/png",d.width=c.width,d.height=c.height,d.size=c.width*c.height*4,d};j.Shot=k,b.Camera=j}(window,FileAPI),function(a,b,c){"use strict";var d=a.document,e=a.location,f=a.navigator,g=c.each;c.support.flash=function(){var b=f.mimeTypes,d=!1;if(f.plugins&&"object"==typeof f.plugins["Shockwave Flash"])d=f.plugins["Shockwave Flash"].description&&!(b&&b["application/x-shockwave-flash"]&&!b["application/x-shockwave-flash"].enabledPlugin);else try{d=!(!a.ActiveXObject||!new ActiveXObject("ShockwaveFlash.ShockwaveFlash"))}catch(g){c.log("Flash -- does not supported.")}return d&&/^file:/i.test(e)&&c.log("[warn] Flash does not work on `file:` protocol."),d}(),c.support.flash&&(!c.html5||!c.support.html5||c.cors&&!c.support.cors||c.media&&!c.support.media)&&function(){function h(a){return('<object id="#id#" classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'"><param name="movie" value="#src#" /><param name="flashvars" value="#flashvars#" /><param name="swliveconnect" value="true" /><param name="allowscriptaccess" value="always" /><param name="allownetworking" value="all" /><param name="menu" value="false" /><param name="wmode" value="#wmode#" /><embed flashvars="#flashvars#" swliveconnect="true" allownetworking="all" allowscriptaccess="always" name="#id#" src="#src#" width="'+(a.width||"100%")+'" height="'+(a.height||"100%")+'" menu="false" wmode="transparent" type="application/x-shockwave-flash"></embed></object>').replace(/#(\w+)#/gi,function(b,c){return a[c]})}function i(a,b){if(a&&a.style){var c,d;for(c in b){d=b[c],"number"==typeof d&&(d+="px");try{a.style[c]=d}catch(e){}}}}function j(a,b){g(b,function(b,c){var d=a[c];a[c]=function(){return this.parent=d,b.apply(this,arguments)}})}function k(a){return a&&!a.flashId}function l(a){var b=a.wid=c.uid();return v._fn[b]=a,"FileAPI.Flash._fn."+b}function m(a){try{v._fn[a.wid]=null,delete v._fn[a.wid]}catch(b){}}function n(a,b){if(!u.test(a)){if(/^\.\//.test(a)||"/"!=a.charAt(0)){var c=e.pathname;c=c.substr(0,c.lastIndexOf("/")),a=(c+"/"+a).replace("/./","/")}"//"!=a.substr(0,2)&&(a="//"+e.host+a),u.test(a)||(a=e.protocol+a)}return b&&(a+=(/\?/.test(a)?"&":"?")+b),a}function o(a,b,e){function f(){try{var a=v.get(j);a.setImage(b)}catch(d){c.log('[err] FlashAPI.Preview.setImage -- can not set "base64":',d)}}var g,j=c.uid(),k=d.createElement("div"),o=10;for(g in a)k.setAttribute(g,a[g]),k[g]=a[g];i(k,a),a.width="100%",a.height="100%",k.innerHTML=h(c.extend({id:j,src:n(c.flashImageUrl,"r="+c.uid()),wmode:"opaque",flashvars:"scale="+a.scale+"&callback="+l(function p(){return m(p),--o>0&&f(),!0})},a)),e(!1,k),k=null}function p(a){return{id:a.id,name:a.name,matrix:a.matrix,flashId:a.flashId}}function q(b){var c=b.getBoundingClientRect(),e=d.body,f=(b&&b.ownerDocument).documentElement;return{top:c.top+(a.pageYOffset||f.scrollTop)-(f.clientTop||e.clientTop||0),left:c.left+(a.pageXOffset||f.scrollLeft)-(f.clientLeft||e.clientLeft||0),width:c.right-c.left,height:c.bottom-c.top}}var r=c.uid(),s=0,t={},u=/^https?:/i,v={_fn:{},init:function(){var a=d.body&&d.body.firstChild;if(a)do if(1==a.nodeType){c.log("FlashAPI.state: awaiting");var b=d.createElement("div");return b.id="_"+r,i(b,{top:1,right:1,width:5,height:5,position:"absolute",zIndex:"2147483647"}),a.parentNode.insertBefore(b,a),void v.publish(b,r)}while(a=a.nextSibling);10>s&&setTimeout(v.init,50*++s)},publish:function(a,b,d){d=d||{},a.innerHTML=h({id:b,src:n(c.flashUrl,"r="+c.version),wmode:d.camera?"":"transparent",flashvars:"callback="+(d.onEvent||"FileAPI.Flash.onEvent")+"&flashId="+b+"&storeKey="+f.userAgent.match(/\d/gi).join("")+"_"+c.version+(v.isReady||(c.pingUrl?"&ping="+c.pingUrl:""))+"&timeout="+c.flashAbortTimeout+(d.camera?"&useCamera="+n(c.flashWebcamUrl):"")+"&debug="+(c.debug?"1":"")},d)},ready:function(){c.log("FlashAPI.state: ready"),v.ready=c.F,v.isReady=!0,v.patch(),v.patchCamera&&v.patchCamera(),c.event.on(d,"mouseover",v.mouseover),c.event.on(d,"click",function(a){v.mouseover(a)&&(a.preventDefault?a.preventDefault():a.returnValue=!0)})},getEl:function(){return d.getElementById("_"+r)},getWrapper:function(a){do if(/js-fileapi-wrapper/.test(a.className))return a;while((a=a.parentNode)&&a!==d.body)},mouseover:function(a){var b=c.event.fix(a).target;if(/input/i.test(b.nodeName)&&"file"==b.type&&!b.disabled){var e=b.getAttribute(r),f=v.getWrapper(b);if(c.multiFlash){if("i"==e||"r"==e)return!1;if("p"!=e){b.setAttribute(r,"i");var g=d.createElement("div");if(!f)return void c.log("[err] FlashAPI.mouseover: js-fileapi-wrapper not found");i(g,{top:0,left:0,width:b.offsetWidth,height:b.offsetHeight,zIndex:"2147483647",position:"absolute"}),f.appendChild(g),v.publish(g,c.uid()),b.setAttribute(r,"p")}return!0}if(f){var h=q(f);i(v.getEl(),h),v.curInp=b}}else/object|embed/i.test(b.nodeName)||i(v.getEl(),{top:1,left:1,width:5,height:5})},onEvent:function(a){var b=a.type;if("ready"==b){try{v.getInput(a.flashId).setAttribute(r,"r")}catch(d){}return v.ready(),setTimeout(function(){v.mouseenter(a)},50),!0}"ping"===b?c.log("(flash -> js).ping:",[a.status,a.savedStatus],a.error):"log"===b?c.log("(flash -> js).log:",a.target):b in v&&setTimeout(function(){c.log("FlashAPI.event."+a.type+":",a),v[b](a)},1)},mouseenter:function(a){var b=v.getInput(a.flashId);if(b){v.cmd(a,"multiple",null!=b.getAttribute("multiple"));var d=[],e={};g((b.getAttribute("accept")||"").split(/,\s*/),function(a){c.accept[a]&&g(c.accept[a].split(" "),function(a){e[a]=1})}),g(e,function(a,b){d.push(b)}),v.cmd(a,"accept",d.length?d.join(",")+","+d.join(",").toUpperCase():"*")}},get:function(b){return d[b]||a[b]||d.embeds[b]},getInput:function(a){if(!c.multiFlash)return v.curInp;try{var b=v.getWrapper(v.get(a));if(b)return b.getElementsByTagName("input")[0]}catch(d){c.log('[err] Can not find "input" by flashId:',a,d)}},select:function(a){var e,f=v.getInput(a.flashId),h=c.uid(f),i=a.target.files;g(i,function(a){c.checkFileObj(a)}),t[h]=i,d.createEvent?(e=d.createEvent("Event"),e.files=i,e.initEvent("change",!0,!0),f.dispatchEvent(e)):b?b(f).trigger({type:"change",files:i}):(e=d.createEventObject(),e.files=i,f.fireEvent("onchange",e))},cmd:function(a,b,d,e){try{return c.log("(js -> flash)."+b+":",d),v.get(a.flashId||a).cmd(b,d)}catch(f){c.log("(js -> flash).onError:",f.toString()),e||setTimeout(function(){v.cmd(a,b,d,!0)},50)}},patch:function(){c.flashEngine=!0,j(c,{getFiles:function(a,b,d){if(d)return c.filterFiles(c.getFiles(a),b,d),null;var e=c.isArray(a)?a:t[c.uid(a.target||a.srcElement||a)];return e?(b&&(b=c.getFilesFilter(b),e=c.filter(e,function(a){return b.test(a.name)})),e):this.parent.apply(this,arguments)},getInfo:function(a,b){if(k(a))this.parent.apply(this,arguments);else if(a.isShot)b(null,a.info={width:a.width,height:a.height});else{if(!a.__info){var d=a.__info=c.defer();v.cmd(a,"getFileInfo",{id:a.id,callback:l(function e(b,c){m(e),d.resolve(b,a.info=c)})})}a.__info.then(b)}}}),c.support.transform=!0,c.Image&&j(c.Image.prototype,{get:function(a,b){return this.set({scaleMode:b||"noScale"}),this.parent(a)},_load:function(a,b){if(c.log("FlashAPI.Image._load:",a),k(a))this.parent.apply(this,arguments);else{var d=this;c.getInfo(a,function(c){b.call(d,c,a)})}},_apply:function(a,b){if(c.log("FlashAPI.Image._apply:",a),k(a))this.parent.apply(this,arguments);else{var d=this.getMatrix(a.info),e=b;v.cmd(a,"imageTransform",{id:a.id,matrix:d,callback:l(function f(g,h){c.log("FlashAPI.Image._apply.callback:",g),m(f),g?e(g):c.support.html5||c.support.dataURI&&!(h.length>3e4)?(d.filter&&(e=function(a,e){a?b(a):c.Image.applyFilter(e,d.filter,function(){b(a,this.canvas)})}),c.newImage("data:"+a.type+";base64,"+h,e)):o({width:d.deg%180?d.dh:d.dw,height:d.deg%180?d.dw:d.dh,scale:d.scaleMode},h,e)})})}},toData:function(a){var b=this.file,d=b.info,e=this.getMatrix(d);c.log("FlashAPI.Image.toData"),k(b)?this.parent.apply(this,arguments):("auto"==e.deg&&(e.deg=c.Image.exifOrientation[d&&d.exif&&d.exif.Orientation]||0),a.call(this,!b.info,{id:b.id,flashId:b.flashId,name:b.name,type:b.type,matrix:e}))}}),c.Image&&j(c.Image,{fromDataURL:function(a,b,d){!c.support.dataURI||a.length>3e4?o(c.extend({scale:"exactFit"},b),a.replace(/^data:[^,]+,/,""),function(a,b){d(b)}):this.parent(a,b,d)}}),j(c.Form.prototype,{toData:function(a){for(var b=this.items,d=b.length;d--;)if(b[d].file&&k(b[d].blob))return this.parent.apply(this,arguments);c.log("FlashAPI.Form.toData"),a(b)}}),j(c.XHR.prototype,{_send:function(a,b){if(b.nodeName||b.append&&c.support.html5||c.isArray(b)&&"string"==typeof b[0])return this.parent.apply(this,arguments);var d,e,f={},h={},i=this;if(g(b,function(a){a.file?(h[a.name]=a=p(a.blob),e=a.id,d=a.flashId):f[a.name]=a.blob}),e||(d=r),!d)return c.log("[err] FlashAPI._send: flashId -- undefined"),this.parent.apply(this,arguments);c.log("FlashAPI.XHR._send: "+d+" -> "+e),i.xhr={headers:{},abort:function(){v.cmd(d,"abort",{id:e})},getResponseHeader:function(a){return this.headers[a]},getAllResponseHeaders:function(){return this.headers}};var j=c.queue(function(){v.cmd(d,"upload",{url:n(a.url.replace(/([a-z]+)=(\?)&?/i,"")),data:f,files:e?h:null,headers:a.headers||{},callback:l(function b(d){var e=d.type,f=d.result;c.log("FlashAPI.upload."+e),"progress"==e?(d.loaded=Math.min(d.loaded,d.total),d.lengthComputable=!0,a.progress(d)):"complete"==e?(m(b),"string"==typeof f&&(i.responseText=f.replace(/%22/g,'"').replace(/%5c/g,"\\").replace(/%26/g,"&").replace(/%25/g,"%")),i.end(d.status||200)):("abort"==e||"error"==e)&&(i.end(d.status||0,d.message),m(b))})})});g(h,function(a){j.inc(),c.getInfo(a,j.next)}),j.check()}})}};c.Flash=v,c.newImage("data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==",function(a,b){c.support.dataURI=!(1!=b.width||1!=b.height),v.init()})}()}(window,window.jQuery,FileAPI),function(a,b,c){"use strict";var d=c.each,e=[];!c.support.flash||!c.media||c.support.media&&c.html5||!function(){function a(a){var b=a.wid=c.uid();return c.Flash._fn[b]=a,"FileAPI.Flash._fn."+b}function b(a){try{c.Flash._fn[a.wid]=null,delete c.Flash._fn[a.wid]}catch(b){}}var f=c.Flash;c.extend(c.Flash,{patchCamera:function(){c.Camera.fallback=function(d,e,g){var h=c.uid();c.log("FlashAPI.Camera.publish: "+h),f.publish(d,h,c.extend(e,{camera:!0,onEvent:a(function i(a){"camera"===a.type&&(b(i),a.error?(c.log("FlashAPI.Camera.publish.error: "+a.error),g(a.error)):(c.log("FlashAPI.Camera.publish.success: "+h),g(null)))})}))},d(e,function(a){c.Camera.fallback.apply(c.Camera,a)}),e=[],c.extend(c.Camera.prototype,{_id:function(){return this.video.id},start:function(d){var e=this;f.cmd(this._id(),"camera.on",{callback:a(function g(a){b(g),a.error?(c.log("FlashAPI.camera.on.error: "+a.error),d(a.error,e)):(c.log("FlashAPI.camera.on.success: "+e._id()),e._active=!0,d(null,e))})})},stop:function(){this._active=!1,f.cmd(this._id(),"camera.off")},shot:function(){c.log("FlashAPI.Camera.shot:",this._id());var a=c.Flash.cmd(this._id(),"shot",{});return a.type="image/png",a.flashId=this._id(),a.isShot=!0,new c.Camera.Shot(a)}})}}),c.Camera.fallback=function(){e.push(arguments)}}()}(window,window.jQuery,FileAPI),"function"=="function"&&__webpack_require__(329)&&!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = function(){return FileAPI}.apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__), __WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
 
 /***/ },
-/* 328 */
+/* 329 */
 /***/ function(module, exports) {
 
 	/* WEBPACK VAR INJECTION */(function(__webpack_amd_options__) {module.exports = __webpack_amd_options__;
@@ -57792,7 +57858,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	/* WEBPACK VAR INJECTION */}.call(exports, {}))
 
 /***/ },
-/* 329 */
+/* 330 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57858,7 +57924,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Modal;
 
 /***/ },
-/* 330 */
+/* 331 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57909,7 +57975,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = Panel;
 
 /***/ },
-/* 331 */
+/* 332 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -57932,9 +57998,9 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var EXIF = __webpack_require__(299);
-	__webpack_require__(302);
-	var $ = __webpack_require__(303);
+	var EXIF = __webpack_require__(300);
+	__webpack_require__(303);
+	var $ = __webpack_require__(304);
 
 	var ContentViewer = function (_Component) {
 		_inherits(ContentViewer, _Component);
@@ -58041,7 +58107,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentViewer;
 
 /***/ },
-/* 332 */
+/* 333 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58133,7 +58199,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = MyForm;
 
 /***/ },
-/* 333 */
+/* 334 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58148,15 +58214,15 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _AsideConversationInfo = __webpack_require__(334);
+	var _AsideConversationInfo = __webpack_require__(335);
 
 	var _AsideConversationInfo2 = _interopRequireDefault(_AsideConversationInfo);
 
-	var _AsideMessageInfo = __webpack_require__(338);
+	var _AsideMessageInfo = __webpack_require__(339);
 
 	var _AsideMessageInfo2 = _interopRequireDefault(_AsideMessageInfo);
 
@@ -58225,7 +58291,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentInfo;
 
 /***/ },
-/* 334 */
+/* 335 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58240,15 +58306,19 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _InfoItem = __webpack_require__(335);
+	var _InfoItem = __webpack_require__(336);
 
 	var _InfoItem2 = _interopRequireDefault(_InfoItem);
 
 	var _monkeyUtils = __webpack_require__(9);
+
+	var _lang = __webpack_require__(114);
+
+	var _lang2 = _interopRequireDefault(_lang);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -58261,10 +58331,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var AsideConversationInfo = function (_Component) {
 		_inherits(AsideConversationInfo, _Component);
 
-		function AsideConversationInfo(props) {
+		function AsideConversationInfo(props, context) {
 			_classCallCheck(this, AsideConversationInfo);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AsideConversationInfo).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AsideConversationInfo).call(this, props, context));
 
 			_this.objectInfo = {};
 			_this.state = {
@@ -58320,7 +58390,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							_react2.default.createElement(
 								'span',
 								{ className: 'mky-info-header-title mky-ellipsify' },
-								this.objectInfo.title ? this.objectInfo.title : 'Information'
+								this.objectInfo.title ? this.objectInfo.title : _lang2.default[this.context.lang]['title.information']
 							),
 							_react2.default.createElement('span', { className: 'mky-info-header-subtitle' })
 						)
@@ -58342,7 +58412,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								_react2.default.createElement(
 									'label',
 									{ className: 'mky-info-conversation-title' },
-									(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? 'Group name' : 'Name'
+									(0, _monkeyUtils.isConversationGroup)(this.props.conversationSelected.id) ? _lang2.default[this.context.lang]['title.groupname'] : _lang2.default[this.context.lang]['title.name']
 								),
 								_react2.default.createElement(
 									'div',
@@ -58476,10 +58546,14 @@ return /******/ (function(modules) { // webpackBootstrap
 		return AsideConversationInfo;
 	}(_react.Component);
 
+	AsideConversationInfo.contextTypes = {
+		lang: _react2.default.PropTypes.string.isRequired
+	};
+
 	exports.default = AsideConversationInfo;
 
 /***/ },
-/* 335 */
+/* 336 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58494,11 +58568,11 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _PopUp = __webpack_require__(336);
+	var _PopUp = __webpack_require__(337);
 
 	var _PopUp2 = _interopRequireDefault(_PopUp);
 
-	var _ContentLogOut = __webpack_require__(337);
+	var _ContentLogOut = __webpack_require__(338);
 
 	var _ContentLogOut2 = _interopRequireDefault(_ContentLogOut);
 
@@ -58660,7 +58734,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = InfoItem;
 
 /***/ },
-/* 336 */
+/* 337 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58729,7 +58803,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = PopUp;
 
 /***/ },
-/* 337 */
+/* 338 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58778,7 +58852,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentLogOut;
 
 /***/ },
-/* 338 */
+/* 339 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -58793,37 +58867,41 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _reactDom = __webpack_require__(117);
+	var _reactDom = __webpack_require__(118);
 
 	var _reactDom2 = _interopRequireDefault(_reactDom);
 
-	var _InfoItem = __webpack_require__(335);
+	var _InfoItem = __webpack_require__(336);
 
 	var _InfoItem2 = _interopRequireDefault(_InfoItem);
 
 	var _monkeyUtils = __webpack_require__(9);
 
-	var _Bubble = __webpack_require__(288);
+	var _lang = __webpack_require__(114);
+
+	var _lang2 = _interopRequireDefault(_lang);
+
+	var _Bubble = __webpack_require__(289);
 
 	var _Bubble2 = _interopRequireDefault(_Bubble);
 
-	var _BubbleText = __webpack_require__(289);
+	var _BubbleText = __webpack_require__(290);
 
 	var _BubbleText2 = _interopRequireDefault(_BubbleText);
 
-	var _BubbleImage = __webpack_require__(298);
+	var _BubbleImage = __webpack_require__(299);
 
 	var _BubbleImage2 = _interopRequireDefault(_BubbleImage);
 
-	var _BubbleFile = __webpack_require__(300);
+	var _BubbleFile = __webpack_require__(301);
 
 	var _BubbleFile2 = _interopRequireDefault(_BubbleFile);
 
-	var _BubbleAudio = __webpack_require__(301);
+	var _BubbleAudio = __webpack_require__(302);
 
 	var _BubbleAudio2 = _interopRequireDefault(_BubbleAudio);
 
-	var _BubbleContact = __webpack_require__(304);
+	var _BubbleContact = __webpack_require__(305);
 
 	var _BubbleContact2 = _interopRequireDefault(_BubbleContact);
 
@@ -58844,10 +58922,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	var AsideMessageInfo = function (_Component) {
 		_inherits(AsideMessageInfo, _Component);
 
-		function AsideMessageInfo(props) {
+		function AsideMessageInfo(props, context) {
 			_classCallCheck(this, AsideMessageInfo);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AsideMessageInfo).call(this, props));
+			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(AsideMessageInfo).call(this, props, context));
 
 			_this.objectInfo = {};
 			_this.state = {
@@ -58860,12 +58938,6 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		_createClass(AsideMessageInfo, [{
-			key: 'componentWillMount',
-			value: function componentWillMount() {}
-		}, {
-			key: 'componentWillReceiveProps',
-			value: function componentWillReceiveProps(nextProps) {}
-		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -58890,10 +58962,7 @@ return /******/ (function(modules) { // webpackBootstrap
 							_react2.default.createElement(
 								'span',
 								{ className: 'mky-info-message-subtitle' },
-								'Sent ',
-								(0, _monkeyUtils.defineDate)(this.props.messageSelectedInfo.message.datetimeCreation),
-								' at ',
-								(0, _monkeyUtils.defineTime)(this.props.messageSelectedInfo.message.datetimeCreation)
+								_lang2.default[this.context.lang]['title.sent'] + ' ' + (0, _monkeyUtils.defineDate)(this.props.messageSelectedInfo.message.datetimeCreation) + ' ' + _lang2.default[this.context.lang]['text.at'] + ' ' + (0, _monkeyUtils.defineTime)(this.props.messageSelectedInfo.message.datetimeCreation)
 							)
 						)
 					),
@@ -58914,7 +58983,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								_react2.default.createElement(
 									'label',
 									{ className: 'mky-info-conversation-title mky-ellipsify' },
-									'Read by:'
+									_lang2.default[this.context.lang]['title.readby'] + ':'
 								)
 							),
 							_react2.default.createElement(
@@ -59014,9 +59083,8 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	AsideMessageInfo.contextTypes = {
 		userSession: _react2.default.PropTypes.object.isRequired,
-		bubbles: _react2.default.PropTypes.object.isRequired,
 		styles: _react2.default.PropTypes.object.isRequired,
-		options: _react2.default.PropTypes.object.isRequired
+		lang: _react2.default.PropTypes.string.isRequired
 	};
 
 	var MessageInfoUser = function MessageInfoUser(props) {
@@ -59053,7 +59121,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = AsideMessageInfo;
 
 /***/ },
-/* 339 */
+/* 340 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59104,7 +59172,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = ContentLogin;
 
 /***/ },
-/* 340 */
+/* 341 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -59119,7 +59187,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _myform = __webpack_require__(341);
+	var _myform = __webpack_require__(342);
 
 	var _myform2 = _interopRequireDefault(_myform);
 
@@ -59251,16 +59319,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = MyForm;
 
 /***/ },
-/* 341 */
+/* 342 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(342);
+	var content = __webpack_require__(343);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(311)(content, {});
+	var update = __webpack_require__(312)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -59277,10 +59345,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 342 */
+/* 343 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(310)();
+	exports = module.exports = __webpack_require__(311)();
 	// imports
 
 
@@ -59291,16 +59359,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 
 /***/ },
-/* 343 */
+/* 344 */
 /***/ function(module, exports, __webpack_require__) {
 
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(344);
+	var content = __webpack_require__(345);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(311)(content, {});
+	var update = __webpack_require__(312)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -59317,19 +59385,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	}
 
 /***/ },
-/* 344 */
+/* 345 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(310)();
+	exports = module.exports = __webpack_require__(311)();
 	// imports
 
 
 	// module
-<<<<<<< 5a70d7d261afb37e088196e246d79cbb163f8d35
-	exports.push([module.id, "\n/***\n\nFILE: chat.css\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n  3.5.- ASIDE INFO\n    3.5.1 - INFO conversation\n    3.5.2 - INFO message\n  3.6.- RECONNECT\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- POP UP\n6.- GLOBAL SETTINGS\n7.- MEDIA QUERIES\n\n***/\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n    font-family: 'helvetica-light';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaLTStd-Light.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@charset \"UTF-8\";\n\n@font-face {\n  font-family: \"react-monkey-ui\";\n  src:url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot\");\n  src:url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.woff\") format(\"woff\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.ttf\") format(\"truetype\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.svg#monkey\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"react-monkey-ui\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"react-monkey-ui\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-arrow-down:before {\n  content: \"a\";\n}\n.mky-icon-arrow-up:before {\n  content: \"b\";\n}\n.mky-icon-close:before {\n  content: \"c\";\n}\n.mky-icon-minimize:before {\n  content: \"d\";\n}\n.mky-icon-check:before {\n  content: \"e\";\n}\n.mky-icon-drawer:before {\n  content: \"f\";\n}\n.mky-icon-pencil:before {\n  content: \"g\";\n}\n.mky-icon-mic:before {\n  content: \"h\";\n}\n.mky-icon-send:before {\n  content: \"i\";\n}\n.mky-icon-image:before {\n  content: \"j\";\n}\n.mky-icon-file:before {\n  content: \"k\";\n}\n.mky-icon-chat:before {\n  content: \"l\";\n}\n.mky-icon-download:before {\n  content: \"m\";\n}\n.mky-icon-signout:before {\n  content: \"n\";\n}\n.mky-icon-back:before {\n  content: \"o\";\n}\n.mky-icon-arrow-down-bold:before {\n  content: \"p\";\n}\n.mky-icon-add:before {\n  content: \"q\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  background: transparent;\n  border: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  /*-webkit-font-smoothing: antialiased;*/\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n\n}\n\n.mky-fullsize{\n\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 1100;\n}\n\n.mky-classic{\n  bottom: 0;\n  box-shadow: rgb(176, 176, 176) 0px 0px 15px;\n  right: 10px;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-classic .mky-wrapper-in{\n  box-shadow: none;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n.mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner > div{\n\t\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n.mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  width: 100%;\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n  line-height: 25px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, .mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n.mky-tab i{\n  display: block;\n  margin: 0;\n}\n\n.mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n.mky-rightside-option{\n  left: 90%;\n  margin-top: 20px;\n  position: absolute;\n  top: 0;\n}\n\n.mky-rightside-option div{\n  cursor: pointer;\n}\n\n.mky-rightside-option i {\n  color: #b2b2b2;\n  font-size: 18px;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-content-aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid rgba(219,219,219,0.7);\n\n  display: flex;\n  flex-direction: column;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n  background-color: #eee;\n  border-bottom: 1px solid rgba(219,219,219,0.7);\n  display: flex;\n  height: 65px;\n  width: 100%;\n}\n\n.mky-session-header{\n  display: flex;\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-session-image{\n  width: 40px;\n  height: 40px;\n  margin: 12px 10px 0 20px;\n  display: inline-table;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n.mky-session-description{\n\twidth: calc(100% - 70px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 12px;\n  margin-right: 16px;\n  cursor: pointer;\n}\n\n.mky-header-exit .mky-icon-close{\n  color: #6e8191;\n  font-size: 14px;\n  position: relative;\n  top: 12px;\n}\n\n.mky-header-exit .mky-icon-signout{\n  color: #F35E58;\n  font-size: 32px;\n  position: relative;\n  top: 4px;\n}\n\n.mky-session-name{\n    margin-top: 23px;\n    float: left;\n    display: flex;\n    white-space: nowrap;\n    width: calc(100% - 50px);\n    justify-content: space-between;\n    align-items: center;\n}\n\n.mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-typing{\n  font-style: italic;\n  color: #717171 !important;\n  font-weight: bold;\n}\n\n/* 3.2.- ASIDE: Connection Panel\n     ----------------------------- */\n\n.mky-connection-div{\n  width: 100%;\n  background: red;\n  color: white;\n  height: auto;\n  font-weight: bold;\n  -webkit-transition: max-height 2s ease, background-color 0.5s ease;\n  -moz-transition: max-height 2s ease, background-color 0.5s ease;\n  -o-transition: max-height 2s ease, background-color 0.5s ease;\n  transition: max-height 2s ease, background-color 0.5s ease;\n}\n\n.mky-connection-content{\n  margin: 0 auto;\n  padding: 12px 10px 10px 10px;\n}\n\n.mky-connection-content p{\n  margin: 0.2em 0 0 0;\n}\n\n.mky-connection-height{\n  max-height: 200px;\n}\n\n.mky-connection-hide{\n  max-height: 0px;\n}\n\n.mky-bold-text{\n    /*font-family: Verdana Pro W01 SemiBold;*/\n    font-family: helvetica;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n  position: relative;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #ededed;\n  background: #fbfbfb;\n}\n\n.mky-search-input > input, .mky-search-input > input:valid {\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n  background-repeat: no-repeat;\n  background-position: 5%;\n  background-size: 16px 16px;\n  border-radius: 10px;\n  border: 1px solid #EFF0F2;\n  font-size: 12px;\n  line-height: normal;\n  -webkit-appearance: none;\n  width: 100%;\n  padding: 7px 4px 7px 40px;\n  position: relative;\n  outline: 0;\n  text-align: left;\n  -webkit-font-smoothing: antialiased;\n  text-overflow: ellipsis;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  height: 32px;\n\n}\n\n.mky-search-input > input::-webkit-search-cancel-button{\n  position: absolute;\n  right: 10px;\n  top: 31%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-item{\n  background-color: #fff;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n.mky-content-conversation-list{\n  display: flex;\n  flex-direction: column;\n  overflow: auto;\n}\n\n.mky-conversation-list-header{\n  background-color: #fbfbfb;\n  border-bottom: solid #EAEAEA 1px;\n  color: black;\n  font-family: 'helvetica-light';\n  font-size: 14px;\n  font-weight: bold;\n  padding: 15px 10px 10px 20px;   \n  text-transform: uppercase;\n}\n\n.mky-not-pressed{\n  background-position: 100%;\n  background-size: 200%;\n}\n\n.mky-pressing{\n  background: linear-gradient(270deg, #fff 50%, #D8D8D8 50%);\n  transition: all 0.9s ease;\n  background-size: 200%;\n  background-position: 0%;\n}\n\n.mky-conversation-list {\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  overflow: auto;\n  background: #fff;\n  position: relative;\n  flex: 1;\n  flex-direction: column;\n  -webkit-box-flex: 1;\n}\n\n.mky-conversation-list::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-conversation-list::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-conversation-list::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-conversation-item{\n  width: 100%;\n  height: 58px;\n  position: relative;\n  border-bottom: none;\n  background-color: transparent;\n}\n\n.mky-conversation-item:hover{\n  background-color: #f9fbfd;\n  cursor: pointer;\n}\n\n.mky-conversation-item-content{\n  width: 100%;\n  height: 100%;\n}\n\n.mky-conversation-item .mky-message-status{\n  margin-left: 0px;\n  margin-right: 3px;\n}\n\n.mky-conversation-image{\n  height: 38px;\n  margin: 0px;\n  width: 38px;\n  padding: 10px 15px 10px 20px;\n  margin-top: -1px;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 90px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 10px;\n  margin-right: 0px;\n  margin-left: 0px;\n  padding-right: 8px;\n  padding-left: 8px;\n  padding-bottom: 4px;\n  border-bottom: 1px solid #EFEFEF;\n  box-sizing: content-box;\n  height: 43px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n  color: black;\n  font-family: 'helvetica-light';\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-name span{\n  font-family: helvetica;\n  font-size: 14px;\n  margin-top: 2px;\n  line-height: 16px;\n}\n\n.mky-conversation-time{\n  width: 65px;\n  float: right;\n  margin-left: 5px;\n  text-align: right;\n}\n\n.mky-conversation-time span{\n  color: #a5a5a5;\n  font-size: 11px;\n  position: relative;\n}\n\n.mky-conversation-state{\n  color: #a5a5a5;\n  display: flex;\n  width:80%;\n  font-family: 'helvetica-normal', helvetica;\n}\n\n.mky-conversation-state span{\n  margin-top: 4px;\n  line-height: 20px;\n}\n\n.mky-conversation-options{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n}\n\n.mky-conversation-delete{\n  opacity: 0;\n}\n\n.mky-conversation-delete i{\n  background: none;\n  border: none;\n  font-size: 10px;\n  margin-left: 10px;\n  color: #FC464E;\n  position: relative;\n  top: 5px;\n}\n\n.mky-conversation-item:hover .mky-conversation-delete{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    opacity: 1;\n    -webkit-transition: opacity 0.2s ease-in-out;\n    -moz-transition: opacity 0.2s ease-in-out;\n    -ms-transition: opacity 0.2s ease-in-out;\n    -o-transition: opacity 0.2s ease-in-out;\n    transition: opacity 0.2s ease-in-out;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-conversation-notification{\n  position: absolute;\n  right: 0px;\n  bottom: -3px;\n  display: inline-block;\n  vertical-align: top;\n  z-index: 1;\n  -webkit-font-smoothing: antialiased;\n  font-family: 'helvetica-normal';\n}\n\n.mky-conversation-item:hover .mky-conversation-notification{\n  right: 18px;\n  -webkit-transition: right 0.3s;\n  -moz-transition: right 0.3s;\n  -ms-transition: right 0.3s;\n  -o-transition: right 0.3s;\n  transition: right 0.3s;\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border: none;\n  border-radius: 20px;\n  background: #1982E8;\n  color: #fff;\n  font-size: 12px;\n  font-weight: bold;\n  padding: 5px 6px 2px 5px;\n  text-align: center;\n}\n\n.mky-notification-amount-1{\n  padding: 5px 5px 2px 6px;\n}\n\n.mky-notification-amount-2{\n  padding: 5px 6px 2px 6px;\n}\n\n.mky-conversation-item:hover .mky-message-read{\n  right: 18px;\n  -webkit-transition: right 0.3s;\n  -moz-transition: right 0.3s;\n  -ms-transition: right 0.3s;\n  -o-transition: right 0.3s;\n  transition: right 0.3s;\n}\n\n.mky-status-read .mky-message-read{\n  font-size: 15px;\n  margin-top: 5px;\n/*  right: 0px;\n  position: absolute;*/\n}\n\n/* Conversation item selected */\n\n.mky-conversation-selected{\n  background-color: #ededed;\n  border-top: 1px solid #ededed;\n  margin-top:-1px;\n}\n\n/* Conversation item unread */\n\n.mky-conversation-unread .mky-conversation-state span{\n  color: #000;\n  font-family: 'helvetica-light';\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n  height: 100%;\n  margin: 0;\n  vertical-align: top;\n  float: left;\n  position: relative;\n  background-color: #ffffff;\n  padding: 0;\n}\n\n.mky-content-window-only{\n  width: 100%;\n  border:none;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n  height: 100%;\n  float: left;\n}\n\n.mky-content-conversation-no-expand{\n  width: 65%;\n}\n\n.mky-content-conversation-expand{\n  width: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n.mky-session-name i{\n  color: #535353;\n  float: right;\n  font-size: 20px;\n  margin-right: 2px;\n  cursor: pointer;\n}\n\n.mky-edit-input{\n  border: none;\n  -webkit-box-shadow: none;\n  -moz-box-shadow: none;\n  box-shadow: none;\n  background: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  font-size: 16px;\n  float: left;\n  color: black;\n  margin: 0;\n  text-overflow: ellipsis;\n  width: calc(100% - 45px);\n}\n\n.mky-edit-input:focus{\n  outline-width: 0;\n  border: none !important;\n  box-shadow: none;\n  border-bottom: 1px solid #CECECE !important;\n}\n\n.mky-conversation-selected-header{\n    background: #eee;\n    position: relative;\n    z-index: 1;\n}\n\n.mky-conversation-selected-header div{\n  vertical-align: top;\n}\n\n.mky-conversation-back{\n  float: left;\n  margin: 21px -10px 0 12px;\n  width: auto;\n  cursor: pointer;\n}\n\n.mky-conversation-back i{\n\tcolor: #6e8191;\n    font-size: 24px;\n}\n\n.mky-conversation-selected-image{\n  cursor: pointer;\n  flex: none;\n  float: left;\n  height: 40px;\n  margin: 13px;\n  margin-left: 25px;\n  width: 40px;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n.mky-conversation-selected-description{\n  height: calc(100% - 18px);\n  flex-grow: 1;\n  float: left;\n  overflow: hidden;\n  padding-top: 18px;\n  position: relative;\n}\n\n.mky-conversation-selected-description span{\n  display: block;\n  text-align: left;\n  font-weigth: normal;\n  line-height: 16px;\n  cursor: pointer;\n}\n\n.mky-rightside .mky-conversation-selected-description{\n  width: calc(100% - 140px);\n}\n\n.mky-conversation-selected-name{\n  font-family: 'helvetica';\n  font-size: 14px;\n  color: #353535;\n}\n\n.mky-conversation-selected-status{\n  color: #a2a2a2;\n  font-size: 13px;\n  margin-top: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n}\n\n.mky-conversation-selected-header .mky-button-standard{\n  margin: 12px 20px;\n  background-color: #e53935;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-conversation-header-exit{\n  color: #6e8191;\n  cursor: pointer;\n  display: inline-table;\n  font-size: 20px;\n  margin: 12px 15px 0 8px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n.mky-not-connected{\n    width: 100%;\n    position: absolute;\n    top: 66px;\n    left: 0;\n    line-height: 40px;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    overflow: hidden;\n    text-align: center;\n    background-color: red;\n    -webkit-transition: all 0.5s ease;\n    -moz-transition: all 0.5s ease;\n    -o-transition: all 0.5s ease;\n    transition: all 0.5s ease;\n}\n\n.mky-not-connected span{\n    text-overflow: ellipsis;\n    overflow: hidden;\n    color : white;\n    font-weight: bold;\n}\n\n.mky-status-connecting{\n    color: black !important;\n    animation:mky-connecting 5s linear infinite;\n    -moz-animation:mky-connecting 5s linear infinite; /* Firefox */\n    -webkit-animation:mky-connecting 5s linear infinite; /* Safari and Chrome */\n    -o-animation:mky-connecting 5s linear infinite; /* Opera */\n\n}\n\n.mky-status-connecting span{\n    color: black !important;\n}\n\n@keyframes mky-connecting{\n    0% 100%  {background-color:yellow;}\n    50%  {background:#FFC107;}\n}\n\n.mky-reconnect-link{\n    color: white;\n    font-weight: bold;\n}\n\n.mky-reconnect-link:hover{\n    color: #83F4FF;\n    cursor: pointer;\n}\n\n.mky-panel-show{\n    position: absolute;\n    top: 66px;\n    left: 0;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    text-align: center;\n    width: calc(100% - 20px);\n    font-weight: bold;\n    padding: 0 10px;\n    background-color: red;\n    -webkit-transition: max-height 2s ease, background-color 0.5s ease;\n    -moz-transition: max-height 2s ease, background-color 0.5s ease;\n    -o-transition: max-height 2s ease, background-color 0.5s ease;\n    transition: max-height 2s ease, background-color 0.5s ease;\n}\n\n.mky-panel-show p{\n    margin: 0.7em 0.5em 0.5em 0.5em;\n}\n\n.mky-panel-height{\n    max-height: 100%;\n}\n\n.mky-panel-height-hide{\n    max-height: 0;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: calc(100% - 65px);\n  position: relative;\n  background: #eee;\n}\n\n.mky-chat-timeline-content{\n  background-color: #FAF8F5;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  width: 100%;\n  height: calc(100% - 71px);\n  position: relative;\n}\n\n#mky-chat-timeline {\n  flex-direction: column;\n  flex: 1px;\n  width: 100%;\n  position: relative;\n  overflow: auto;\n  overflow-x: hidden;\n  padding-bottom: 12px;\n}\n\n#mky-chat-timeline::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n#mky-chat-timeline::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n#mky-chat-timeline::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-chat-timeline-control{\n  cursor: pointer;\n  bottom: 10px;\n  position: absolute;\n  right: 10px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  background-color: white;\n  height: 40px;\n  width: 40px;\n  -webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n  -moz-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n  box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n}\n\n.mky-chat-timeline-control i{\n  height: 12px;\n  color: #999;\t\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 70px);\n    height: auto;\n    margin: 0px auto;\n    padding: 5px 0px 4px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n    margin: 10px 0px;\n}\n\n/* Loading Messages Animation */\n.mky-absolute-circle{\n    position: absolute !important;\n    bottom: 0;\n    left: calc(50% - 23px);\n    background: #F3F3F3;\n    border-radius: 50%;\n    border: solid 6px #F3F3F3;\n}\n\n.mky-loader-ring {\n  position: absolute;\n  top: calc(50% - 50px);\n  left: calc(50% - 50px);\n  width: 100px;\n  height: 100px;\n  z-index: 100000;\n}\n\n.mky-loader-ring .mky-circle {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.mky-loader-ring .mky-circle:before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 10%;\n  height: 10%;\n  background-color: #333;\n  border-radius: 100%;\n  -webkit-animation: mky-circleFadeDelay 1.2s infinite ease-in-out both;\n          animation: mky-circleFadeDelay 1.2s infinite ease-in-out both;\n}\n.mky-loader-ring .mky-circle2 {\n  -webkit-transform: rotate(30deg);\n      -ms-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.mky-loader-ring .mky-circle3 {\n  -webkit-transform: rotate(60deg);\n      -ms-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.mky-loader-ring .mky-circle4 {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.mky-loader-ring .mky-circle5 {\n  -webkit-transform: rotate(120deg);\n      -ms-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.mky-loader-ring .mky-circle6 {\n  -webkit-transform: rotate(150deg);\n      -ms-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.mky-loader-ring .mky-circle7 {\n  -webkit-transform: rotate(180deg);\n      -ms-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.mky-loader-ring .mky-circle8 {\n  -webkit-transform: rotate(210deg);\n      -ms-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.mky-loader-ring .mky-circle9 {\n  -webkit-transform: rotate(240deg);\n      -ms-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.mky-loader-ring .mky-circle10 {\n  -webkit-transform: rotate(270deg);\n      -ms-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.mky-loader-ring .mky-circle11 {\n  -webkit-transform: rotate(300deg);\n      -ms-transform: rotate(300deg);\n          transform: rotate(300deg);\n}\n.mky-loader-ring .mky-circle12 {\n  -webkit-transform: rotate(330deg);\n      -ms-transform: rotate(330deg);\n          transform: rotate(330deg);\n}\n.mky-loader-ring .mky-circle2:before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s;\n}\n.mky-loader-ring .mky-circle3:before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s;\n}\n.mky-loader-ring .mky-circle4:before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s;\n}\n.mky-loader-ring .mky-circle5:before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s;\n}\n.mky-loader-ring .mky-circle6:before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s;\n}\n.mky-loader-ring .mky-circle7:before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s;\n}\n.mky-loader-ring .mky-circle8:before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s;\n}\n.mky-loader-ring .mky-circle9:before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.mky-loader-ring .mky-circle10:before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.mky-loader-ring .mky-circle11:before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.mky-loader-ring .mky-circle12:before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n\n@-webkit-keyframes mky-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n@keyframes mky-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n/* System Bubble Panel */\n\n.mky-system-panel{\n  display: inline-table;\n  height: 20px;\n  margin: 10px auto;\n  position: relative;\n  width: calc(100% - 40px);\n  text-align: center;\n  background: none;\n  padding: 8px 20px 5px 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 13px;\n  color: #6a8d9e;\n  font-family: 'helvetica-light';\n}\n.mky-devider-dots{\n  border-top: 1px dotted #ccc;\n  position: relative;\n  top: 8px;\n  width: 85%;\n  max-width: 840px;\n  margin: 0 auto;\n}\n.mky-system-panel-date{\n  position: relative;\n  width: 130px;\n  margin: 0 auto;\n  background: #FAF8F5;\n}\n\n/* New Messages Panel */\n.mky-messages-panel {\n    display: inline-table;\n    height: 20px;\n    margin: 10px auto;\n    position: relative;\n    width: calc(100% - 40px);\n    text-align: center;\n    background: none;\n    padding: 8px 20px 5px 20px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    font-size: 13px;\n    color: #6a8d9e;\n    font-family: 'helvetica-normal';\n    border-top: grey;\n    -webkit-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);\n    -moz-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);\n    box-shadow: 0 -15px 15px -15px rgba(125, 125, 125, 0.75);\n}\n\n/* base bubble */\n\n.mky-bubble{\n  border-radius: 15px;\n  box-shadow: 1px 1px 4px -2px #ccc;\n  box-sizing: content-box;\n  line-height: 19px;\n  margin: 0 auto;\n  margin-top: 13px;\n  max-width: 60%;\n  min-width: 42px;\n  min-height: 16px;\n  padding: 12px 12px 9px 12px;\n  position: relative;\n  width: auto;\n  -moz-border-radius: 15px;\n  -moz-box-shadow: 1px 1px 4px -2px #ccc;\n  -webkit-border-radius: 15px;\n  -webkit-box-shadow: 1px 1px 4px -2px #ccc;\n  -webkit-font-smoothing: antialiased;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #2c74c6;\n    border-bottom-right-radius: 1px;\n    margin-top: 11px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: inherit;\n    text-decoration: underline;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #000;\n  \tmin-width: 112px;\n  \tbackground: #fff;\n  \tborder-bottom-left-radius: 1px;\n    border: 1px solid transparent;\n    padding-bottom: 8px;\n    margin-top: 13px;\n    box-shadow: 1px 1px 1px #a7a7a7;\n    -moz-box-shadow: 1px 1px 1px #a7a7a7;\n    -webkit-box-shadow: 1px 1px 1px #a7a7a7;\n    -o-box-shadow: 1px 1px 1px #a7a7a7;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #1e88e5;\n    text-decoration: underline;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #f2f2f2;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n    box-shadow: none;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n  background-position: 50%;\n  background-size: 100%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n  background-position: 50%;\n  background-size: 100%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-play-button-blue{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-play-button.png');\n  background-position: 50%;\n  background-size: 99%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-pause-button-blue{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-pause-button.png');\n  background-position: 50%;\n  background-size: 99%;\n  background-repeat: no-repeat;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #eee;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n\n\n.mky-bubble-file-out {\n  text-align: right;\n}\n\n.mky-bubble-file-in {\n  text-align: left;\n}\n\n/*contact buble*/\n.mky-bubble-contact{\n  background: #fff;\n  border: 1px solid #eee;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-contact-out {\n    text-align: right;\n}\n\n.mky-bubble-contact-in {\n    text-align: left;\n}\n\n.mky-contact-name{\n  margin-top: 8px;\n}\n\n.mky-contact-photo{\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n  width: 50px;\n  height: 50px;\n  position: relative;\n  margin-left: 3px;\n}\n\n.mky-contact-photo img{\n  height: 100%;\n  width: 100%;\n  border-radius: 50%;\n}\n\n.mky-contact-detail{\n  width: calc(100% - 68px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-contact-detail span{\n    font-size: 13px;\n    line-height: 15px;\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-content-contact{\n  text-align: left;\n}\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 12px;\n    position: absolute;\n    top: -12px;\n}\n\n.mky-message-detail span{\n    font-size: 11px;\n    color: #8c8c8c;\n    line-height: 12px;\n    position: relative;\n    top:-1px;\n    margin-right: 2px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 11px !important;\n    top: 1px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-message-option{\n  display: none;\n  height: 40px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  width: 40px;\n}\n\n.mky-bubble:hover .mky-message-option{\n  display: block;\n}\n\n.mky-bubble-out .mky-message-option{\n  background: #2c74c6; /* For browsers that do not support gradients */\n  background: -moz-linear-gradient(45deg, rgba(44, 116, 198,0) 0%, rgb(44, 116, 198) 99%); \n  background: -webkit-linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); \n  background: linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); \n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00096eff', endColorstr='#1e5799',GradientType=1 );\n  border-top-right-radius: 15px;\n}\n\n.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option, .mky-bubble-contact .mky-message-option{\n  background: #096EFF; /* For browsers that do not support gradients */\n  background: -webkit-linear-gradient(right top, #fff 50%, transparent); /* For Safari 5.1 to 6.0 */\n  background: -o-linear-gradient(bottom left, #fff 50%, transparent); /* For Opera 11.1 to 12.0 */\n  background: -moz-linear-gradient(bottom left, #fff 50%, transparent); /* For Firefox 3.6 to 15 */\n  background: linear-gradient(to bottom left, #fff 50%, transparent); /* Standard syntax */\n  border-top-right-radius: 15px;\n  border-bottom-right-radius: 15px;\n}\n\n.mky-bubble-image .mky-message-option{\n  background: none;\n}\n\n.mky-bubble-audio .mky-message-option{\n  background: none;\n}\n\n.mky-message-option-plus{\n  border-radius: 50%;\n  height: 15px;\n  position: absolute;\n  right: 8px;\n  top: 5px;\t\n  width: 15px;\n}\n\n.mky-bubble-out .mky-message-option-plus{\n  background-color: #fff\n}\n\n.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus, .mky-bubble-contact .mky-message-option-plus{\n  background-color: #000\n}\n\n.mky-message-option-plus i{\n  display: block;\n  font-size: 8px;\n  line-height: 5px;\n  position: absolute;\n  right: 3px;\n  top: 4px;\n}\n\n.mky-bubble-out .mky-message-option-plus i{\n  color: #096EFF\n}\n\n.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i, .mky-bubble-contact .mky-message-option-plus i{\n  color: #fff\n}\n\n.mky-bubble-out .mky-message-detail{\n  right: 0;\n  text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n  right: 0;\n  text-align: right;\n}\n\n.mky-button-message-unsend{\n  position: absolute;\n  color: blue;\n  font-size: 12px;\n  top: 1px;\n  font-weight: bold;\n  right: 6px;\n  z-index: 1;\n  width: 15px;\n  height: 15px;\n  opacity: 0;\n  cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #096EFF;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/* content text bubble */\n\n.mky-content-text{\n  font-size: 14px;\n  word-break: break-word\n}\n\n/* content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #2c74c6;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: 250px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n  height: 100%;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n  justify-content: center;\n}\n\n.mky-content-image-data img{\n  height: 250px;\n  width: auto;\n  cursor: pointer;\n\n  transform-origin: top left;\n  /* IE 10+, Firefox, etc. */\n  -webkit-transform-origin: top left;\n  /* Chrome */\n  -ms-transform-origin: top left;\n  /* IE 9 */\n}\n\n.mky-content-image-data-staic img{\n  height: auto;\n}\n\n/*Classes to rotate bubble */\n\n.mky-content-image-data.rotate90,\n.mky-content-image-data.rotate270 {\n  height: auto;\n  width: 250px;\n}\n\n.mky-content-image-data.rotate90 img {\n  transform: rotate(90deg) translateY(-100%);\n  -webkit-transform: rotate(90deg) translateY(-100%);\n  -ms-transform: rotate(90deg) translateY(-100%);\n}\n.mky-content-image-data.rotate180 img {\n  transform: rotate(180deg) translate(-100%, -100%);\n  -webkit-transform: rotate(180deg) translate(-100%, -100%);\n  -ms-transform: rotate(180deg) translateX(-100%, -100%);\n}\n.mky-content-image-data.rotate270 img {\n  transform: rotate(270deg) translateX(-100%);\n  -webkit-transform: rotate(270deg) translateX(-100%);\n  -ms-transform: rotate(270deg) translateX(-100%);\n}\n\n/*content file bubble */\n\n.mky-content-file{\n  text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 43px;\n  margin-top: 6px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-download{\n    margin-top: 6px;\n    background-repeat: no-repeat;\n    background-size: 100%;\n    vertical-align: top;\n    float: left;\n    width: 40px;\n    height: 40px;\n    position: relative;\n    margin-bottom: 3px;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-doc-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/doc-icon.png);\n}\n\n.mky-file-xls-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-ext-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ext-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n/*\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n*/\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 0;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.3.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  box-sizing: content-box;\n  height: auto;\n  margin: 0 auto;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n  display: table;\n  background: #FAF8F5;\n  width: 100%;\n  z-index: 0;\n}\n\n#mky-chat-inner-input{\n  background: #fff;\n  border: 1px solid rgba(219,219,219,0.7);\n  max-height: 70px;\n  height: auto;\n  border-radius: 8px;\n  -moz-border-radius: 8px;\n  width: calc(100% - 30px);\n  margin: 3px auto 10px;\n  -webkit-border-radius: 8px;\n}\n\n.mky-partialsize #mky-chat-inner-input{\n  width: calc(100% - 20px);\n}\n\n.mky-inner-chat-input{\n  align-items: center;\n  display: flex;\n  flex-direction: row;\n  height: 100%;\n  justify-content: center;\n  margin: 0 auto;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  /*border: 1px solid #E0E0E0;*/\n  width: 100%;\n  border: none;\n}\n\n.mky-partialsize .mky-textarea-input{\n  width: calc(100% - 110px);\n  margin-left: 0;\n  margin-right: 0;\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: 33px;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n}\n\n.mky-partialsize .mky-button-input{\n  top: 0px;\n}\n\n.mky-button-icon{\n  background-size: contain;\n  border: 0 none;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.mky-button-input .mky-icon-drawer{\n  background: none;\n  color: #0692df;\n  font-size: 32px;\n  width: auto;\n  height: auto;\n}\n\n.mky-button-input .mky-icon-trashcan{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n.mky-button-input .mky-icon-mic{\n  background: none;\n  color: #0692df;\n  font-size: 28px;\n  width: 28px;\n}\n\n.mky-button-input .mky-icon-send{\n  background: none;\n  color: #0692df;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n.tooltip{\n  visibility: hidden;\n  background-color: black;\n  color: #fff;\n  text-align: center;\n  border-radius: 6px;\n  padding: 5px 0;\n  /* Position the tooltip */\n  position: absolute;\n  z-index: 1;\n}\n\n.mky-button-input .tooltip{\n  font-size: 12px;\n  left: -190px;\n  line-height: 12px;\n  top: -24px;\n  width: 235px;\n}\n\n.mky-button-input:hover .mky-disabled .tooltip {\n    visibility: visible;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n.mky-button-input .mky-icon-trashcan:hover,\n.mky-button-input .mky-icon-mic:hover,\n.mky-button-input .mky-icon-send:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n.mky-textarea-input{\n  background: #fff;\n  border: none;\n  box-sizing: content-box;\n  color: #000;\n  height: auto;\n  line-height: 17px;\n  margin: 8px 5px 8px 5px;\n  padding: 8px 10px 6px 10px;\n  resize: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif !important;\n  top: initial;\n  max-height: 40px;\n  border-radius: 0;\n  border-left: 1px solid rgba(219,219,219,0.7);\n  -webkit-box-shadow: none;\n  -moz-box-shadow: none;\n  -webkit-border-radius: 0;\n  letter-spacing: 0px;\n  font-style: normal;\n  width: calc(100% - 114px);\n}\n\n.mky-textarea-input:focus{\n  border-left: 1px solid #ccc;\n  box-shadow: none;\n}\n\n.mky-chat-input-file .mky-textarea-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 111px);\n  height: 33px;\n  padding: 5px;\n  margin: 2px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  margin-top: 10px;\n  text-align: center;\n  width: 97%;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  color: transparent;\n  border: 1px solid;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat: no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n  position: relative;\n  top: -3px;\n  padding: 5px;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-signature-logo{\n    display: none;\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n    opacity: 0.4;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n  color: #42A5F5;\n  text-alignt-decoration-line: dotted;\n}\n\n.mky-signature-link img{\n  height: 15px;\n  margin-right: 5px;\n  margin-bottom: -3px;\n  opacity: 0.4;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 31px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #096EFF;\n  opacity: 0.8;\n  display: inline;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 350px;\n  bottom: 69px;\n  border: none;\n  border-radius: 0;\n  height: 85px;\n  color: #8a8a8a;\n  left: 0;\n  top: initial;\n  z-index: -1;\n  max-width: 880px;\n  margin-left: 10px;\n  -webkit-transition: all 0.4s ease-in;\n  -moz-transition: all 0.4s ease-in;\n  -ms-transition: all 0.4s ease-in;\n  -o-transition: all 0.4s ease-in;\n}\n\n.mky-menu-bubble-show{\n  opacity: 1;\n  -webkit-transform: none;\n  transform: none;\n}\n\n.mky-menu-bubble-hide{\n  opacity: 0;\n  -webkit-transform: translate3d(0, 100%, 0);\n  transform: translate3d(0, 100%, 0);\n  pointer-events: none;\n}\n\n.mky-menu-bubble.fadeInUp, .mky-menu-bubble.fadeOutDown{\n  -webkit-animation-duration: 0.4s;\n  -moz-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n}\n\n.mky-partialsize .mky-menu-bubble{\n  z-index: 0;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: left;\n  cursor: pointer;\n  width: 175px;\n  float: left;\n  opacity: 1;\n}\n\n.mky-menu-bubble-item i{\n  /*display: inline-block;*/\n}\n\n.mky-menu-bubble-item:first-child{\n  /*border-right: 1px solid #ccc;*/\n}\n\n.mky-menu-bubble-item:hover{\n  /*background: #F0f4fc;*/\n  /*color: #8a8a8a;*/\n  opacity: 0.9;\n  -webkit-transition: all 0.2s ease-in-out;\n  -moz-transition: all 0.2s ease-in-out;\n  -ms-transition: all 0.2s ease-in-out;\n  -o-transition: all 0.2s ease-in-out;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n.mky-bubble-circle-icon{\n  background: #FFFFFF;\n  /* width: 60px; */\n  /* height: 60px; */\n  border-radius: 50%;\n  display: inline-block;\n  text-align: center;\n  padding: 19px 19px 12px 19px;\n  box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -moz-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -webkit-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -o-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  margin: 7px;\n}\n.mky-bubble-title{\n  display: inline-block;\n  position: relative;\n  bottom: 10px;\n  padding: 11px 19px 8px 19px;\n  margin-left: -15px;\n  background: #1496E7;\n  color: #fff;\n  border-top-right-radius: 18px;\n  border-bottom-right-radius: 19px;\n  z-index: -1;\n  font-size: 14px;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n  padding-top: 6px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #0692df;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n  /* 3.4.- BANNER\n     ----------------------------- */\n\n.mky-banner-section{\n  width: 400px;\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.mky-banner-section img{\n  width: 100%;\n}\n\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  \n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  \n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  \n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n  /* 3.5.- ASIDE INFO\n     ----------------------------- */\n\n.mky-content-info{\n  height: 100%;\n}\n\n.mky-content-info-expand{\n  width: 100%;\n}\n\n.mky-content-info-no-expand{\n  border-left: 1px solid #E8E8E8;\n  float: left;\n  width: calc(35% - 1px);\n}\n\n.mky-info-header{\n  background: #eee;\n  position: relative;\n  z-index: 1;\n}\n\n.mky-info-header div{\n  vertical-align: top;\n}\n\n.mky-info-close{\n  float: left;\n  margin: 26px 12px 0 15px;\n  width: auto;\n  cursor: pointer;\n}\n\n.mky-info-close i{\n  color: #535353;\n  font-size: 12px;\n}\n\n.mky-info-header-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n.mky-info-header-title{\n  font-family: 'helvetica';\n  font-size: 16px;\n  color: #353535;\n  display: block;\n  text-align: left;\n  line-height: 16px;  \n  margin-top: 8px;\n}\n\n.mky-info-header-subtitle{\n  display: block;\n  text-align: left;\n  color: #a2a2a2;\n  line-height: 16px;  \n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n}\n\n.mky-info-container{\n    width: 100%;\n    height: calc(100% - 65px);\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    background-color: white;\n    overflow: auto;\n}\n\n.mky-info-container::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-info-container::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-info-container::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n  /* 3.5.1.- INFO: conversation\n     ----------------------------- */\n     \n.mky-info-conversation{\n  width: 100%;\n  height: 100%;\n  position: relative;\t\n}\n\n.mky-info-conversation-image{\n  flex: none;\n  width: 150px;\n  height: 150px;\n  margin: 25px auto 10px auto;\n}\n\n.mky-info-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  margin: 0 auto;\n}\n\n.mky-info-conversation-description{\n  flex: none;\n  margin: 8px auto;\n  border: 1px solid #EFEFEF;\n  border-radius: 10px;\n  width: 88%;\n}\n\n.mky-info-conversation-header{\n  border-bottom: 1px solid #EFEFEF;\n  flex: none;\n}\n\n.mky-info-conversation-data .mky-info-conversation-header{\n  border: none;\n}\n\n.mky-info-conversation-title{\n  color: #a5a5a5;\n  float: left;\n  font-family: 'helvetica-normal', helvetica;\n  font-size: 14px;\n  font-weight: 100;\n  line-height: 1;\n  margin: 0;\n  padding: 10px;\n  text-align: left;\n  width: calc(100% - 95px);\n}\n\n.mky-info-conversation-action{\n  display: flex;\n  width: 100%;\n}\n\ninput.mky-info-input{\n  background: none;\n  border: none;\n  box-shadow: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  font-size: 16px;\n  float: left;\n  color: black;\n  margin: 0 0 5px 10px;\n  padding: 1px;\n  text-overflow: ellipsis;\n  width: calc(100% - 45px);\n}\n\n.mky-info-input:focus{\n  outline-width: 0;\n  border: none !important;\n  box-shadow: none;\n  border-bottom: 1px solid #CECECE !important;\n}\n\n.mky-info-conversation-action i{\n  cursor: pointer;\n  float: right;\n  font-size: 16px;\n  margin-right: 8px;\n}\n\n.mky-info-conversation-action i:hover{\n  color : #0077C1;\n}\n\n.mky-info-conversation-container{\n  overflow: auto;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-info-conversation-members{\n  display: flex;\n  position: relative;\n  flex: 0 1 auto;\n  flex-direction: column;\n  min-height: 154px;\n}\n\n.mky-info-conversation-amount{\n  color: #8297a2;\n  float: right;\n  font-family: 'helvetica-light', helvetica;\n  font-size: 14px;\n  line-height: 17px;\n  margin: 10px;\n}\n\n.mky-info-conversation-list{\n  list-style: none;\n  margin: 0;\n  padding: 0px;\n}\n\nul.mky-info-conversation-list li.mky-info-conversation-member{\n  border: none;\n  box-sizing: content-box;\n  height: 48px;\n  width: 100%;\n  clear: both;\n  position: relative;\n  padding: 5px 0;\n  -webkit-box-sizing: content-box;\n}\n\n.mky-info-conversation-member:after {\n    content: '';\n    width: calc(100% - 60px);\n    height: 1px;\n    background: #EFEFEF;\n    position: absolute;\n    bottom: 0;\n    left: 60px;\n}\n\n.mky-info-conversation-member img{\n  box-sizing: content-box;\n  height: 36px;\n  width: 36px;\n  float: left;\n  border-radius: 50%;\n  padding: 5px;\n  margin-left: 10px;\n  -webkit-box-sizing: content-box;\n}\n\n.mky-info-member-description{\n  float: left;\n  overflow: hidden;\n  height: 35px;\n  padding: 8px 5px 0px 5px;\n  text-align: left;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  width: calc(100% - 70px);\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.mky-info-member-detail{\n  display: -webkit-box;\n  display: -webkit-flex; \n  display: -ms-flexbox;\n  display: flex;\n  font-family: helvetica;\n  font-size: 14px;\n  font-weight: 400;\n  -ms-flex-direction: row;\n  flex-direction: row; \n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  width: 100%;\n}\n\n.mky-info-member-name{\n  color: #000;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n  line-height: 18px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-info-member-rol{\n  color: #8ac34a;\n  flex: none;\n  line-height: 18px;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-info-member-status{\n  color: #a5a5a5;\n  font-family: 'helvetica';\n  font-size: 14px;\n  margin-top: 2px;\n}\n\n.mky-info-member-online{\n  color: #8ac34a;\n}\n\n.mky-info-member-actions{\n  position: absolute;\n  right: 12px;\n  top: 35px;\n  cursor: pointer;\n}\n\n.mky-info-member-actions i{\n  color: #b1b1b1;\n}\n\n.mky-info-button{\n  cursor: pointer;\n  display: flex;\n  margin: 8px auto;\n  height: 50px;\n  background: #ee5350;\n  border: none;\n  border-radius: 8px;\n  color: white;\n  font-weight: bold;\n  flex: none;\n  justify-content: center;\n  position: relative;\n  width: 88%;\n}\n\n.mky-info-button-text{\n  display: block;\n  font-family: 'helvetica-light';\n  font-size: 15px;\n  padding: 4px 4px 0 0;\n  text-shadow: 2px 2px #bd5353;\n  text-transform: uppercase;\n  text-align: center;\n  width: 100%\n}\n\n.mky-info-button i{\n  font-size: 28px;\n  position: absolute;\n  right: 10px;\n  top: 10px;\n  width: 28px;\n}\n\n.mky-info-actions{\n  animation-name: actionMenu;\n  animation-duration: 0.5s;\n  position: fixed;\n  max-height: 150px;\n  width: 200px;\n  z-index: 1000;\n  background-color: white;\n  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);\n  -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);\n  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);\n  border-radius: 3px;\n  max-width: 85%;\n  overflow: auto;\n}\n\n.mky-info-actions::-webkit-scrollbar { width: 0 !important }\n.mky-info-actions{ -ms-overflow-style: none; }\n.mky-info-actions{ overflow: -moz-scrollbars-none; }\n\n@keyframes actionMenu{\n    0%   {max-height: 0;}\n    100% {max-height: 150px;}\n}\n\n.mky-info-action{\n  color: #000;\n  cursor: pointer;\n  padding: 10px 20px;\n}\n\n.mky-info-action:hover{\n    background-color: #EEEEEE;\n}\n\n.mky-info-actions-back{\n    position: fixed;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n}\n\n.mky-content-info .mky-space{\n  padding-top: 10px;\n}\n\n/* 3.5.2.- INFO: messages\n     ----------------------------- */\n\n.mky-info-header-message{\n  width: calc(100% - 55px);\n  height: calc(100% - 18px);\n  float: left;\n  padding-top: 18px;\n}\n\n.mky-info-message-container{\n  flex: none;\n  margin: 25px 0;\n}\n\n.mky-message-option-item{\n  padding: 15px 20px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n\n.mky-message-option-item:hover{\n  background-color: #ededed;\n}\n\n.mky-message-info-desc{\n    float: left;\n    overflow: hidden;\n    height: 35px;\n    padding: 8px 5px 0px 5px;\n    text-align: left;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    width: calc(100% - 120px);\n    -webkit-box-sizing: content-box;\n    box-sizing: content-box;\n    max-width: 150px;\n}\n\n.mky-message-read-check{\n  font-size: 20px;\n  display: block;\n  width: 20px;\n  float: right;\n  margin: 1px;\n  padding: 12px 20px 0px 5px;\n}\n\n.mky-info-message-title{\n  font-family: 'helvetica';\n  font-size: 16px;\n  color: #353535;\n  display: block;\n  text-align: left;\n  line-height: 16px;  \n}\n\n.mky-info-message-subtitle{\n  display: block;\n  text-align: left;\n  color: #a2a2a2;\n  line-height: 16px;  \n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n  margin-top: 4px;\n}\n\n/* 3.6.- RECONNECT\n   ----------------------------- */\n   \n.mky-content-overlay{\n  bottom: 0;\n  height: calc(100% - 65px);\n  position: absolute;\n  width: 100%;\n}\n  \n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button, .mky-button-modal{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-viewer-back-close {\n  position: absolute;\n  top: 36px;\n  width: 100%;\n  height: calc(100% - 36px);\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-viewer-image.rotate90 img {\n  transform: rotate(90deg);\n  -webkit-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  top:0;\n}\n.mky-viewer-image.rotate180 img {\n  transform: rotate(180deg);\n  -webkit-transform: rotate(180deg);\n  -ms-transform: rotate(180deg) ;\n  top:0;\n}\n.mky-viewer-image.rotate270 img {\n  transform: rotate(270deg);\n  -webkit-transform: rotate(270deg);\n  -ms-transform: rotate(270deg);\n  top:0;\n}\n\n/* 5.- POP UP\n   ----------------------------- */\n\n.mky-inner-modal{\n  max-width: 400px;\n  height: 200px;\n  background: white;\n  margin: auto;\n  top: 38%;\n  position: relative;\n  z-index: 200;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  width: 90%;\n}\n\n.mky-popup-message{\n  color: black;\n  height: 20%;\n  text-align: center;\n  padding-top: 45px;\n  margin: 0 5%;\n  position: relative;\n  width: 90%;\n}\n\n.mky-popup-buttons{\n  margin-top: 30px;\n  text-align: center;\n}\n\n.mky-popup-button{\n  cursor: pointer;\n  height: 25px;\n  width: auto;\n  margin: 0 10px;\n  background: white;\n  border-style: none;\n  color: #2196f3;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n  /* 5.1.- OUTSIDE DIVS\n    -------------------------------*/\n\n  .mky-out-message-options{\n    animation-name: actionMenu2;\n    animation-duration: 0.5s;\n    font-size: 14px;\n    font-family: helvetica-light, Helvetica, sans-serif;\n    position: fixed;\n    max-height: 200px;\n    max-width: 200px;\n    background-color: white;\n    -webkit-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    -moz-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    z-index: 2;\n    padding: 5px 0px;\n    border-radius: 3px;\n    overflow: auto;\n  }\n\n  .mky-out-options-back{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    z-index: 1;\n  }\n\n  @keyframes actionMenu2{\n      0%   {max-height: 0; max-width: 0;}\n      100% {max-height: 200px; max-width: 200px;}\n  }\n\n  .mky-out-message-options::-webkit-scrollbar { width: 0 !important }\n  .mky-out-message-options{ -ms-overflow-style: none; }\n\n\n\n/* 6.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n.mky-button-standard {\n  border: 0px;\n  border-radius: 2px;\n  color: white;\n  cursor: pointer;\n  height: 25px;\n  padding: 2px 10px 3px 10px;\n}\n\n.mky-button-standard:focus {\n  border: none !important;\n  box-shadow: none;\n  outline:0;\n}\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n.mky-wrapper-out.animated.pulse{\n  animation-duration: 0.5s;\n  animation-iteration-count: initial;\n  -webkit-animation-iteration-count: initial;\n  -moz-animation-iteration-count: initial;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n.mky-dflex-dcolumn{\n  display: flex;\n  flex-direction : column\n}\n\n/* 7.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 900px){\n\n  /* Disappear content conversation */\n  .mky-content-window-with .mky-content-conversation-no-expand{\n\tdisplay: none;\n  }\n  \n  /* Expand content info */\n  .mky-content-window-with .mky-content-info-no-expand{\n\twidth: 100%;\n  }\n  .mky-menu-bubble{\n    margin-left: 20px;\n  }\n}\n\n@media only screen and (max-width: 600px){\n\n  /* Disappear description user session */\n  .mky-no-expand .mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-content-aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-content-aside{\n    \tdisplay: none;\n\t}\n\t\n\t/* Input */\n\t.mky-textarea-input{\n\t  width: calc(100% - 109px);\n\t}\n\t\n\t.mky-record-area{\n\t  width: calc(100% - 106px);\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-content-aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  .mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n  .mky-signature{\n    margin-right: 9px;\n  }\n  .mky-conversation-selected-header div{\n    font-size: 10px;\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/", ""]);
-=======
-	exports.push([module.id, "\n/***\n\nFILE: chat.css\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n  3.5.- ASIDE INFO\n    3.5.1 - INFO conversation\n    3.5.2 - INFO message\n  3.6.- RECONNECT\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- POP UP\n6.- GLOBAL SETTINGS\n7.- MEDIA QUERIES\n\n***/\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n    font-family: 'helvetica-light';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaLTStd-Light.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@charset \"UTF-8\";\n\n@font-face {\n  font-family: \"react-monkey-ui\";\n  src:url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot\");\n  src:url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.woff\") format(\"woff\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.ttf\") format(\"truetype\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.svg#monkey\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"react-monkey-ui\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"react-monkey-ui\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-arrow-down:before {\n  content: \"a\";\n}\n.mky-icon-arrow-up:before {\n  content: \"b\";\n}\n.mky-icon-close:before {\n  content: \"c\";\n}\n.mky-icon-minimize:before {\n  content: \"d\";\n}\n.mky-icon-check:before {\n  content: \"e\";\n}\n.mky-icon-drawer:before {\n  content: \"f\";\n}\n.mky-icon-pencil:before {\n  content: \"g\";\n}\n.mky-icon-mic:before {\n  content: \"h\";\n}\n.mky-icon-send:before {\n  content: \"i\";\n}\n.mky-icon-image:before {\n  content: \"j\";\n}\n.mky-icon-file:before {\n  content: \"k\";\n}\n.mky-icon-chat:before {\n  content: \"l\";\n}\n.mky-icon-download:before {\n  content: \"m\";\n}\n.mky-icon-signout:before {\n  content: \"n\";\n}\n.mky-icon-back:before {\n  content: \"o\";\n}\n.mky-icon-arrow-down-bold:before {\n  content: \"p\";\n}\n.mky-icon-add:before {\n  content: \"q\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  background: transparent;\n  border: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  /*-webkit-font-smoothing: antialiased;*/\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n\n}\n\n.mky-fullsize{\n\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 1100;\n}\n\n.mky-classic{\n  bottom: 0;\n  box-shadow: rgb(176, 176, 176) 0px 0px 15px;\n  right: 10px;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-classic .mky-wrapper-in{\n  box-shadow: none;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n.mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner > div{\n\t\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n.mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  width: 100%;\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n  line-height: 25px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, .mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n.mky-tab i{\n  display: block;\n  margin: 0;\n}\n\n.mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n.mky-rightside-option{\n  left: 90%;\n  margin-top: 20px;\n  position: absolute;\n  top: 0;\n}\n\n.mky-rightside-option div{\n  cursor: pointer;\n}\n\n.mky-rightside-option i {\n  color: #b2b2b2;\n  font-size: 18px;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-content-aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid rgba(219,219,219,0.7);\n\n  display: flex;\n  flex-direction: column;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n  background-color: #eee;\n  border-bottom: 1px solid rgba(219,219,219,0.7);\n  display: flex;\n  height: 65px;\n  width: 100%;\n}\n\n.mky-session-header{\n  display: flex;\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-session-image{\n  width: 40px;\n  height: 40px;\n  margin: 12px 10px 0 20px;\n  display: inline-table;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n.mky-session-description{\n\twidth: calc(100% - 70px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 12px;\n  margin-right: 16px;\n  cursor: pointer;\n}\n\n.mky-header-exit .mky-icon-minimize{\n  color: #6e8191;\n  font-size: 20px;\n}\n\n.mky-header-exit .mky-icon-signout{\n  color: #F35E58;\n  font-size: 32px;\n  position: relative;\n  top: 4px;\n}\n\n.mky-session-name{\n    margin-top: 23px;\n    float: left;\n    display: flex;\n    white-space: nowrap;\n    width: calc(100% - 50px);\n    justify-content: space-between;\n    align-items: center;\n}\n\n.mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-typing{\n  font-style: italic;\n  color: #717171 !important;\n  font-weight: bold;\n}\n\n/* 3.2.- ASIDE: Connection Panel\n     ----------------------------- */\n\n.mky-connection-div{\n  width: 100%;\n  background: red;\n  color: white;\n  height: auto;\n  font-weight: bold;\n  -webkit-transition: max-height 2s ease, background-color 0.5s ease;\n  -moz-transition: max-height 2s ease, background-color 0.5s ease;\n  -o-transition: max-height 2s ease, background-color 0.5s ease;\n  transition: max-height 2s ease, background-color 0.5s ease;\n}\n\n.mky-connection-content{\n  margin: 0 auto;\n  padding: 12px 10px 10px 10px;\n}\n\n.mky-connection-content p{\n  margin: 0.2em 0 0 0;\n}\n\n.mky-connection-height{\n  max-height: 200px;\n}\n\n.mky-connection-hide{\n  max-height: 0px;\n}\n\n.mky-bold-text{\n    /*font-family: Verdana Pro W01 SemiBold;*/\n    font-family: helvetica;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n  position: relative;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #ededed;\n  background: #fbfbfb;\n}\n\n.mky-search-input > input, .mky-search-input > input:valid {\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n  background-repeat: no-repeat;\n  background-position: 5%;\n  background-size: 16px 16px;\n  border-radius: 10px;\n  border: 1px solid #EFF0F2;\n  font-size: 12px;\n  line-height: normal;\n  -webkit-appearance: none;\n  width: 100%;\n  padding: 7px 4px 7px 40px;\n  position: relative;\n  outline: 0;\n  text-align: left;\n  -webkit-font-smoothing: antialiased;\n  text-overflow: ellipsis;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  height: 32px;\n\n}\n\n.mky-search-input > input::-webkit-search-cancel-button{\n  position: absolute;\n  right: 10px;\n  top: 31%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-item{\n  background-color: #fff;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n.mky-content-conversation-list{\n  display: flex;\n  flex-direction: column;\n  overflow: auto;\n}\n\n.mky-conversation-list-header{\n  background-color: #fbfbfb;\n  border-bottom: solid #EAEAEA 1px;\n  color: black;\n  font-family: 'helvetica-light';\n  font-size: 14px;\n  font-weight: bold;\n  padding: 15px 10px 10px 20px;   \n  text-transform: uppercase;\n}\n\n.mky-not-pressed{\n  background-position: 100%;\n  background-size: 200%;\n}\n\n.mky-pressing{\n  background: linear-gradient(270deg, #fff 50%, #D8D8D8 50%);\n  transition: all 0.9s ease;\n  background-size: 200%;\n  background-position: 0%;\n}\n\n.mky-conversation-list {\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  overflow: auto;\n  background: #fff;\n  position: relative;\n  flex: 1;\n  flex-direction: column;\n  -webkit-box-flex: 1;\n}\n\n.mky-conversation-list::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-conversation-list::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-conversation-list::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-conversation-item{\n  width: 100%;\n  height: 58px;\n  position: relative;\n  border-bottom: none;\n  background-color: transparent;\n}\n\n.mky-conversation-item:hover{\n  background-color: #f9fbfd;\n  cursor: pointer;\n}\n\n.mky-conversation-item-content{\n  width: 100%;\n  height: 100%;\n}\n\n.mky-conversation-item .mky-message-status{\n  margin-left: 0px;\n  margin-right: 3px;\n}\n\n.mky-conversation-image{\n  height: 38px;\n  margin: 0px;\n  width: 38px;\n  padding: 10px 15px 10px 20px;\n  margin-top: -1px;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 90px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 10px;\n  margin-right: 0px;\n  margin-left: 0px;\n  padding-right: 8px;\n  padding-left: 8px;\n  padding-bottom: 4px;\n  border-bottom: 1px solid #EFEFEF;\n  box-sizing: content-box;\n  height: 43px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n  color: black;\n  font-family: 'helvetica-light';\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-name span{\n  font-family: helvetica;\n  font-size: 14px;\n  margin-top: 2px;\n  line-height: 16px;\n}\n\n.mky-conversation-time{\n  width: 65px;\n  float: right;\n  margin-left: 5px;\n  text-align: right;\n}\n\n.mky-conversation-time span{\n  color: #a5a5a5;\n  font-size: 11px;\n  position: relative;\n}\n\n.mky-conversation-state{\n  color: #a5a5a5;\n  display: flex;\n  width:80%;\n  font-family: 'helvetica-normal', helvetica;\n}\n\n.mky-conversation-state span{\n  margin-top: 4px;\n  line-height: 20px;\n}\n\n.mky-conversation-options{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n}\n\n.mky-conversation-delete{\n  opacity: 0;\n}\n\n.mky-conversation-delete i{\n  background: none;\n  border: none;\n  font-size: 10px;\n  margin-left: 10px;\n  color: #FC464E;\n  position: relative;\n  top: 5px;\n}\n\n.mky-conversation-item:hover .mky-conversation-delete{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    opacity: 1;\n    -webkit-transition: opacity 0.2s ease-in-out;\n    -moz-transition: opacity 0.2s ease-in-out;\n    -ms-transition: opacity 0.2s ease-in-out;\n    -o-transition: opacity 0.2s ease-in-out;\n    transition: opacity 0.2s ease-in-out;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-conversation-notification{\n  position: absolute;\n  right: 0px;\n  bottom: -3px;\n  display: inline-block;\n  vertical-align: top;\n  z-index: 1;\n  -webkit-font-smoothing: antialiased;\n  font-family: 'helvetica-normal';\n}\n\n.mky-conversation-item:hover .mky-conversation-notification{\n  right: 18px;\n  -webkit-transition: right 0.3s;\n  -moz-transition: right 0.3s;\n  -ms-transition: right 0.3s;\n  -o-transition: right 0.3s;\n  transition: right 0.3s;\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border: none;\n  border-radius: 20px;\n  background: #1982E8;\n  color: #fff;\n  font-size: 12px;\n  font-weight: bold;\n  padding: 5px 6px 2px 5px;\n  text-align: center;\n}\n\n.mky-notification-amount-1{\n  padding: 5px 5px 2px 6px;\n}\n\n.mky-notification-amount-2{\n  padding: 5px 6px 2px 6px;\n}\n\n.mky-conversation-item:hover .mky-message-read{\n  right: 18px;\n  -webkit-transition: right 0.3s;\n  -moz-transition: right 0.3s;\n  -ms-transition: right 0.3s;\n  -o-transition: right 0.3s;\n  transition: right 0.3s;\n}\n\n.mky-status-read .mky-message-read{\n  font-size: 15px;\n  margin-top: 5px;\n/*  right: 0px;\n  position: absolute;*/\n}\n\n/* Conversation item selected */\n\n.mky-conversation-selected{\n  background-color: #ededed;\n  border-top: 1px solid #ededed;\n  margin-top:-1px;\n}\n\n/* Conversation item unread */\n\n.mky-conversation-unread .mky-conversation-state span{\n  color: #000;\n  font-family: 'helvetica-light';\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n  height: 100%;\n  margin: 0;\n  vertical-align: top;\n  float: left;\n  position: relative;\n  background-color: #ffffff;\n  padding: 0;\n}\n\n.mky-content-window-only{\n  width: 100%;\n  border:none;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n  height: 100%;\n  float: left;\n}\n\n.mky-content-conversation-no-expand{\n  width: 65%;\n}\n\n.mky-content-conversation-expand{\n  width: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n.mky-session-name i{\n  color: #535353;\n  float: right;\n  font-size: 20px;\n  margin-right: 2px;\n  cursor: pointer;\n}\n\n.mky-edit-input{\n  border: none;\n  -webkit-box-shadow: none;\n  -moz-box-shadow: none;\n  box-shadow: none;\n  background: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  font-size: 16px;\n  float: left;\n  color: black;\n  margin: 0;\n  text-overflow: ellipsis;\n  width: calc(100% - 45px);\n}\n\n.mky-edit-input:focus{\n  outline-width: 0;\n  border: none !important;\n  box-shadow: none;\n  border-bottom: 1px solid #CECECE !important;\n}\n\n.mky-conversation-selected-header{\n    background: #eee;\n    position: relative;\n    z-index: 1;\n}\n\n.mky-conversation-selected-header div{\n  vertical-align: top;\n}\n\n.mky-conversation-back{\n  float: left;\n  margin: 21px -10px 0 12px;\n  width: auto;\n  cursor: pointer;\n}\n\n.mky-conversation-back i{\n\tcolor: #6e8191;\n    font-size: 24px;\n}\n\n.mky-conversation-selected-image{\n  cursor: pointer;\n  flex: none;\n  float: left;\n  height: 40px;\n  margin: 13px;\n  margin-left: 25px;\n  width: 40px;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n.mky-conversation-selected-description{\n  height: calc(100% - 18px);\n  flex-grow: 1;\n  float: left;\n  overflow: hidden;\n  padding-top: 18px;\n  position: relative;\n}\n\n.mky-conversation-selected-description span{\n  display: block;\n  text-align: left;\n  font-weigth: normal;\n  line-height: 16px;\n  cursor: pointer;\n}\n\n.mky-rightside .mky-conversation-selected-description{\n  width: calc(100% - 140px);\n}\n\n.mky-conversation-selected-name{\n  font-family: 'helvetica';\n  font-size: 14px;\n  color: #353535;\n}\n\n.mky-conversation-selected-status{\n  color: #a2a2a2;\n  font-size: 13px;\n  margin-top: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n}\n\n.mky-conversation-selected-header .mky-button-standard{\n  margin: 12px 20px;\n  background-color: #e53935;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-conversation-header-exit{\n  color: #6e8191;\n  cursor: pointer;\n  display: inline-table;\n  font-size: 20px;\n  margin: 12px 15px 0 8px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n.mky-not-connected{\n    width: 100%;\n    position: absolute;\n    top: 66px;\n    left: 0;\n    line-height: 40px;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    overflow: hidden;\n    text-align: center;\n    background-color: red;\n    -webkit-transition: all 0.5s ease;\n    -moz-transition: all 0.5s ease;\n    -o-transition: all 0.5s ease;\n    transition: all 0.5s ease;\n}\n\n.mky-not-connected span{\n    text-overflow: ellipsis;\n    overflow: hidden;\n    color : white;\n    font-weight: bold;\n}\n\n.mky-status-connecting{\n    color: black !important;\n    animation:mky-connecting 5s linear infinite;\n    -moz-animation:mky-connecting 5s linear infinite; /* Firefox */\n    -webkit-animation:mky-connecting 5s linear infinite; /* Safari and Chrome */\n    -o-animation:mky-connecting 5s linear infinite; /* Opera */\n\n}\n\n.mky-status-connecting span{\n    color: black !important;\n}\n\n@keyframes mky-connecting{\n    0% 100%  {background-color:yellow;}\n    50%  {background:#FFC107;}\n}\n\n.mky-reconnect-link{\n    color: white;\n    font-weight: bold;\n}\n\n.mky-reconnect-link:hover{\n    color: #83F4FF;\n    cursor: pointer;\n}\n\n.mky-panel-show{\n    position: absolute;\n    top: 66px;\n    left: 0;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    text-align: center;\n    width: calc(100% - 20px);\n    font-weight: bold;\n    padding: 0 10px;\n    background-color: red;\n    -webkit-transition: max-height 2s ease, background-color 0.5s ease;\n    -moz-transition: max-height 2s ease, background-color 0.5s ease;\n    -o-transition: max-height 2s ease, background-color 0.5s ease;\n    transition: max-height 2s ease, background-color 0.5s ease;\n}\n\n.mky-panel-show p{\n    margin: 0.7em 0.5em 0.5em 0.5em;\n}\n\n.mky-panel-height{\n    max-height: 100%;\n}\n\n.mky-panel-height-hide{\n    max-height: 0;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: calc(100% - 65px);\n  position: relative;\n  background: #eee;\n}\n\n.mky-chat-timeline-content{\n  background-color: #FAF8F5;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  width: 100%;\n  height: calc(100% - 71px);\n  position: relative;\n}\n\n#mky-chat-timeline {\n  flex-direction: column;\n  flex: 1px;\n  width: 100%;\n  position: relative;\n  overflow: auto;\n  overflow-x: hidden;\n  padding-bottom: 12px;\n}\n\n#mky-chat-timeline::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n#mky-chat-timeline::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n#mky-chat-timeline::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-chat-timeline-control{\n  cursor: pointer;\n  bottom: 10px;\n  position: absolute;\n  right: 10px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  background-color: white;\n  height: 40px;\n  width: 40px;\n  -webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n  -moz-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n  box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n}\n\n.mky-chat-timeline-control i{\n  height: 12px;\n  color: #999;\t\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 70px);\n    height: auto;\n    margin: 0px auto;\n    padding: 5px 0px 4px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n    margin: 10px 0px;\n}\n\n/* Loading Messages Animation */\n.mky-absolute-circle{\n    position: absolute !important;\n    bottom: 0;\n    left: calc(50% - 23px);\n    background: #F3F3F3;\n    border-radius: 50%;\n    border: solid 6px #F3F3F3;\n}\n\n.mky-loader-ring {\n  position: absolute;\n  top: calc(50% - 50px);\n  left: calc(50% - 50px);\n  width: 100px;\n  height: 100px;\n  z-index: 100000;\n}\n\n.mky-loader-ring .mky-circle {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.mky-loader-ring .mky-circle:before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 10%;\n  height: 10%;\n  background-color: #333;\n  border-radius: 100%;\n  -webkit-animation: mky-circleFadeDelay 1.2s infinite ease-in-out both;\n          animation: mky-circleFadeDelay 1.2s infinite ease-in-out both;\n}\n.mky-loader-ring .mky-circle2 {\n  -webkit-transform: rotate(30deg);\n      -ms-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.mky-loader-ring .mky-circle3 {\n  -webkit-transform: rotate(60deg);\n      -ms-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.mky-loader-ring .mky-circle4 {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.mky-loader-ring .mky-circle5 {\n  -webkit-transform: rotate(120deg);\n      -ms-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.mky-loader-ring .mky-circle6 {\n  -webkit-transform: rotate(150deg);\n      -ms-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.mky-loader-ring .mky-circle7 {\n  -webkit-transform: rotate(180deg);\n      -ms-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.mky-loader-ring .mky-circle8 {\n  -webkit-transform: rotate(210deg);\n      -ms-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.mky-loader-ring .mky-circle9 {\n  -webkit-transform: rotate(240deg);\n      -ms-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.mky-loader-ring .mky-circle10 {\n  -webkit-transform: rotate(270deg);\n      -ms-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.mky-loader-ring .mky-circle11 {\n  -webkit-transform: rotate(300deg);\n      -ms-transform: rotate(300deg);\n          transform: rotate(300deg);\n}\n.mky-loader-ring .mky-circle12 {\n  -webkit-transform: rotate(330deg);\n      -ms-transform: rotate(330deg);\n          transform: rotate(330deg);\n}\n.mky-loader-ring .mky-circle2:before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s;\n}\n.mky-loader-ring .mky-circle3:before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s;\n}\n.mky-loader-ring .mky-circle4:before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s;\n}\n.mky-loader-ring .mky-circle5:before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s;\n}\n.mky-loader-ring .mky-circle6:before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s;\n}\n.mky-loader-ring .mky-circle7:before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s;\n}\n.mky-loader-ring .mky-circle8:before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s;\n}\n.mky-loader-ring .mky-circle9:before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.mky-loader-ring .mky-circle10:before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.mky-loader-ring .mky-circle11:before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.mky-loader-ring .mky-circle12:before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n\n@-webkit-keyframes mky-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n@keyframes mky-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n/* System Bubble Panel */\n\n.mky-system-panel{\n  display: inline-table;\n  height: 20px;\n  margin: 10px auto;\n  position: relative;\n  width: calc(100% - 40px);\n  text-align: center;\n  background: none;\n  padding: 8px 20px 5px 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 13px;\n  color: #6a8d9e;\n  font-family: 'helvetica-light';\n}\n.mky-devider-dots{\n  border-top: 1px dotted #ccc;\n  position: relative;\n  top: 8px;\n  width: 85%;\n  max-width: 840px;\n  margin: 0 auto;\n}\n.mky-system-panel-date{\n  position: relative;\n  width: 130px;\n  margin: 0 auto;\n  background: #FAF8F5;\n}\n\n/* New Messages Panel */\n.mky-messages-panel {\n    display: inline-table;\n    height: 20px;\n    margin: 10px auto;\n    position: relative;\n    width: calc(100% - 40px);\n    text-align: center;\n    background: none;\n    padding: 8px 20px 5px 20px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    font-size: 13px;\n    color: #6a8d9e;\n    font-family: 'helvetica-normal';\n    border-top: grey;\n    -webkit-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);\n    -moz-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);\n    box-shadow: 0 -15px 15px -15px rgba(125, 125, 125, 0.75);\n}\n\n/* base bubble */\n\n.mky-bubble{\n  border-radius: 15px;\n  box-shadow: 1px 1px 4px -2px #ccc;\n  box-sizing: content-box;\n  line-height: 19px;\n  margin: 0 auto;\n  margin-top: 13px;\n  max-width: 60%;\n  min-width: 42px;\n  min-height: 16px;\n  padding: 12px 12px 9px 12px;\n  position: relative;\n  width: auto;\n  -moz-border-radius: 15px;\n  -moz-box-shadow: 1px 1px 4px -2px #ccc;\n  -webkit-border-radius: 15px;\n  -webkit-box-shadow: 1px 1px 4px -2px #ccc;\n  -webkit-font-smoothing: antialiased;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #2c74c6;\n    border-bottom-right-radius: 1px;\n    margin-top: 11px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: inherit;\n    text-decoration: underline;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #000;\n  \tmin-width: 112px;\n  \tbackground: #fff;\n  \tborder-bottom-left-radius: 1px;\n    border: 1px solid transparent;\n    padding-bottom: 8px;\n    margin-top: 13px;\n    box-shadow: 1px 1px 1px #a7a7a7;\n    -moz-box-shadow: 1px 1px 1px #a7a7a7;\n    -webkit-box-shadow: 1px 1px 1px #a7a7a7;\n    -o-box-shadow: 1px 1px 1px #a7a7a7;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #1e88e5;\n    text-decoration: underline;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #f2f2f2;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n    box-shadow: none;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n  background-position: 50%;\n  background-size: 100%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n  background-position: 50%;\n  background-size: 100%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-play-button-blue{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-play-button.png');\n  background-position: 50%;\n  background-size: 99%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-pause-button-blue{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-pause-button.png');\n  background-position: 50%;\n  background-size: 99%;\n  background-repeat: no-repeat;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #eee;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n\n\n.mky-bubble-file-out {\n  text-align: right;\n}\n\n.mky-bubble-file-in {\n  text-align: left;\n}\n\n/*contact buble*/\n.mky-bubble-contact{\n  background: #fff;\n  border: 1px solid #eee;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-contact-out {\n    text-align: right;\n}\n\n.mky-bubble-contact-in {\n    text-align: left;\n}\n\n.mky-contact-name{\n  margin-top: 8px;\n}\n\n.mky-contact-photo{\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n  width: 50px;\n  height: 50px;\n  position: relative;\n  margin-left: 3px;\n}\n\n.mky-contact-photo img{\n  height: 100%;\n  width: 100%;\n  border-radius: 50%;\n}\n\n.mky-contact-detail{\n  width: calc(100% - 68px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-contact-detail span{\n    font-size: 13px;\n    line-height: 15px;\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-content-contact{\n  text-align: left;\n}\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 12px;\n    position: absolute;\n    top: -12px;\n}\n\n.mky-message-detail span{\n    font-size: 11px;\n    color: #8c8c8c;\n    line-height: 12px;\n    position: relative;\n    top:-1px;\n    margin-right: 2px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 11px !important;\n    top: 1px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-message-option{\n  display: none;\n  height: 40px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  width: 40px;\n}\n\n.mky-bubble:hover .mky-message-option{\n  display: block;\n}\n\n.mky-bubble-out .mky-message-option{\n  background: #2c74c6; /* For browsers that do not support gradients */\n  background: -moz-linear-gradient(45deg, rgba(44, 116, 198,0) 0%, rgb(44, 116, 198) 99%); \n  background: -webkit-linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); \n  background: linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); \n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00096eff', endColorstr='#1e5799',GradientType=1 );\n  border-top-right-radius: 15px;\n}\n\n.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option, .mky-bubble-contact .mky-message-option{\n  background: #096EFF; /* For browsers that do not support gradients */\n  background: -webkit-linear-gradient(right top, #fff 50%, transparent); /* For Safari 5.1 to 6.0 */\n  background: -o-linear-gradient(bottom left, #fff 50%, transparent); /* For Opera 11.1 to 12.0 */\n  background: -moz-linear-gradient(bottom left, #fff 50%, transparent); /* For Firefox 3.6 to 15 */\n  background: linear-gradient(to bottom left, #fff 50%, transparent); /* Standard syntax */\n  border-top-right-radius: 15px;\n  border-bottom-right-radius: 15px;\n}\n\n.mky-bubble-image .mky-message-option{\n  background: none;\n}\n\n.mky-bubble-audio .mky-message-option{\n  background: none;\n}\n\n.mky-message-option-plus{\n  border-radius: 50%;\n  height: 15px;\n  position: absolute;\n  right: 8px;\n  top: 5px;\t\n  width: 15px;\n}\n\n.mky-bubble-out .mky-message-option-plus{\n  background-color: #fff\n}\n\n.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus, .mky-bubble-contact .mky-message-option-plus{\n  background-color: #000\n}\n\n.mky-message-option-plus i{\n  display: block;\n  font-size: 8px;\n  line-height: 5px;\n  position: absolute;\n  right: 3px;\n  top: 4px;\n}\n\n.mky-bubble-out .mky-message-option-plus i{\n  color: #096EFF\n}\n\n.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i, .mky-bubble-contact .mky-message-option-plus i{\n  color: #fff\n}\n\n.mky-bubble-out .mky-message-detail{\n  right: 0;\n  text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n  right: 0;\n  text-align: right;\n}\n\n.mky-button-message-unsend{\n  position: absolute;\n  color: blue;\n  font-size: 12px;\n  top: 1px;\n  font-weight: bold;\n  right: 6px;\n  z-index: 1;\n  width: 15px;\n  height: 15px;\n  opacity: 0;\n  cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #096EFF;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/* content text bubble */\n\n.mky-content-text{\n  font-size: 14px;\n  word-break: break-word\n}\n\n/* content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #2c74c6;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: 250px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n  height: 100%;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n  justify-content: center;\n}\n\n.mky-content-image-data img{\n  height: 250px;\n  width: auto;\n  cursor: pointer;\n\n  transform-origin: top left;\n  /* IE 10+, Firefox, etc. */\n  -webkit-transform-origin: top left;\n  /* Chrome */\n  -ms-transform-origin: top left;\n  /* IE 9 */\n}\n\n.mky-content-image-data-staic img{\n  height: auto;\n}\n\n/*Classes to rotate bubble */\n\n.mky-content-image-data.rotate90,\n.mky-content-image-data.rotate270 {\n  height: auto;\n  width: 250px;\n}\n\n.mky-content-image-data.rotate90 img {\n  transform: rotate(90deg) translateY(-100%);\n  -webkit-transform: rotate(90deg) translateY(-100%);\n  -ms-transform: rotate(90deg) translateY(-100%);\n}\n.mky-content-image-data.rotate180 img {\n  transform: rotate(180deg) translate(-100%, -100%);\n  -webkit-transform: rotate(180deg) translate(-100%, -100%);\n  -ms-transform: rotate(180deg) translateX(-100%, -100%);\n}\n.mky-content-image-data.rotate270 img {\n  transform: rotate(270deg) translateX(-100%);\n  -webkit-transform: rotate(270deg) translateX(-100%);\n  -ms-transform: rotate(270deg) translateX(-100%);\n}\n\n/*content file bubble */\n\n.mky-content-file{\n  text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 43px;\n  margin-top: 6px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-download{\n    margin-top: 6px;\n    background-repeat: no-repeat;\n    background-size: 100%;\n    vertical-align: top;\n    float: left;\n    width: 40px;\n    height: 40px;\n    position: relative;\n    margin-bottom: 3px;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-doc-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/doc-icon.png);\n}\n\n.mky-file-xls-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-ext-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ext-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n/*\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n*/\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 0;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.3.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  box-sizing: content-box;\n  height: auto;\n  margin: 0 auto;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n  display: table;\n  background: #FAF8F5;\n  width: 100%;\n  z-index: 0;\n}\n\n#mky-chat-inner-input{\n  background: #fff;\n  border: 1px solid rgba(219,219,219,0.7);\n  max-height: 70px;\n  height: auto;\n  border-radius: 8px;\n  -moz-border-radius: 8px;\n  width: calc(100% - 30px);\n  margin: 3px auto 10px;\n  -webkit-border-radius: 8px;\n}\n\n.mky-partialsize #mky-chat-inner-input{\n  width: calc(100% - 20px);\n}\n\n.mky-inner-chat-input{\n  align-items: center;\n  display: flex;\n  flex-direction: row;\n  height: 100%;\n  justify-content: center;\n  margin: 0 auto;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  /*border: 1px solid #E0E0E0;*/\n  width: 100%;\n  border: none;\n}\n\n.mky-partialsize .mky-textarea-input{\n  width: calc(100% - 110px);\n  margin-left: 0;\n  margin-right: 0;\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: 33px;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n}\n\n.mky-partialsize .mky-button-input{\n  top: 0px;\n}\n\n.mky-button-icon{\n  background-size: contain;\n  border: 0 none;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.mky-button-input .mky-icon-drawer{\n  background: none;\n  color: #0692df;\n  font-size: 32px;\n  width: auto;\n  height: auto;\n}\n\n.mky-button-input .mky-icon-trashcan{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n.mky-button-input .mky-icon-mic{\n  background: none;\n  color: #0692df;\n  font-size: 28px;\n  width: 28px;\n}\n\n.mky-button-input .mky-icon-send{\n  background: none;\n  color: #0692df;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n.tooltip{\n  visibility: hidden;\n  background-color: black;\n  color: #fff;\n  text-align: center;\n  border-radius: 6px;\n  padding: 5px 0;\n  /* Position the tooltip */\n  position: absolute;\n  z-index: 1;\n}\n\n.mky-button-input .tooltip{\n  font-size: 12px;\n  left: -190px;\n  line-height: 12px;\n  top: -24px;\n  width: 235px;\n}\n\n.mky-button-input:hover .mky-disabled .tooltip {\n    visibility: visible;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n.mky-button-input .mky-icon-trashcan:hover,\n.mky-button-input .mky-icon-mic:hover,\n.mky-button-input .mky-icon-send:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n.mky-textarea-input{\n  background: #fff;\n  border: none;\n  box-sizing: content-box;\n  color: #000;\n  height: auto;\n  line-height: 17px;\n  margin: 8px 5px 8px 5px;\n  padding: 8px 10px 6px 10px;\n  resize: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif !important;\n  top: initial;\n  max-height: 40px;\n  border-radius: 0;\n  border-left: 1px solid rgba(219,219,219,0.7);\n  -webkit-box-shadow: none;\n  -moz-box-shadow: none;\n  -webkit-border-radius: 0;\n  letter-spacing: 0px;\n  font-style: normal;\n  width: calc(100% - 114px);\n}\n\n.mky-textarea-input:focus{\n  border-left: 1px solid #ccc;\n  box-shadow: none;\n}\n\n.mky-chat-input-file .mky-textarea-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 111px);\n  height: 33px;\n  padding: 5px;\n  margin: 2px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  margin-top: 10px;\n  text-align: center;\n  width: 97%;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  color: transparent;\n  border: 1px solid;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat: no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n  position: relative;\n  top: -3px;\n  padding: 5px;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-signature-logo{\n    display: none;\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n    opacity: 0.4;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n  color: #42A5F5;\n  text-alignt-decoration-line: dotted;\n}\n\n.mky-signature-link img{\n  height: 15px;\n  margin-right: 5px;\n  margin-bottom: -3px;\n  opacity: 0.4;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 31px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #096EFF;\n  opacity: 0.8;\n  display: inline;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 350px;\n  bottom: 69px;\n  border: none;\n  border-radius: 0;\n  height: 85px;\n  color: #8a8a8a;\n  left: 0;\n  top: initial;\n  z-index: -1;\n  max-width: 880px;\n  margin-left: 10px;\n  -webkit-transition: all 0.4s ease-in;\n  -moz-transition: all 0.4s ease-in;\n  -ms-transition: all 0.4s ease-in;\n  -o-transition: all 0.4s ease-in;\n}\n\n.mky-menu-bubble-show{\n  opacity: 1;\n  -webkit-transform: none;\n  transform: none;\n}\n\n.mky-menu-bubble-hide{\n  opacity: 0;\n  -webkit-transform: translate3d(0, 100%, 0);\n  transform: translate3d(0, 100%, 0);\n  pointer-events: none;\n}\n\n.mky-menu-bubble.fadeInUp, .mky-menu-bubble.fadeOutDown{\n  -webkit-animation-duration: 0.4s;\n  -moz-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n}\n\n.mky-partialsize .mky-menu-bubble{\n  z-index: 0;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: left;\n  cursor: pointer;\n  width: 175px;\n  float: left;\n  opacity: 1;\n}\n\n.mky-menu-bubble-item i{\n  /*display: inline-block;*/\n}\n\n.mky-menu-bubble-item:first-child{\n  /*border-right: 1px solid #ccc;*/\n}\n\n.mky-menu-bubble-item:hover{\n  /*background: #F0f4fc;*/\n  /*color: #8a8a8a;*/\n  opacity: 0.9;\n  -webkit-transition: all 0.2s ease-in-out;\n  -moz-transition: all 0.2s ease-in-out;\n  -ms-transition: all 0.2s ease-in-out;\n  -o-transition: all 0.2s ease-in-out;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n.mky-bubble-circle-icon{\n  background: #FFFFFF;\n  /* width: 60px; */\n  /* height: 60px; */\n  border-radius: 50%;\n  display: inline-block;\n  text-align: center;\n  padding: 19px 19px 12px 19px;\n  box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -moz-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -webkit-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -o-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  margin: 7px;\n}\n.mky-bubble-title{\n  display: inline-block;\n  position: relative;\n  bottom: 10px;\n  padding: 11px 19px 8px 19px;\n  margin-left: -15px;\n  background: #1496E7;\n  color: #fff;\n  border-top-right-radius: 18px;\n  border-bottom-right-radius: 19px;\n  z-index: -1;\n  font-size: 14px;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n  padding-top: 6px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #0692df;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n  /* 3.4.- BANNER\n     ----------------------------- */\n\n.mky-banner-section{\n  width: 400px;\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.mky-banner-section img{\n  width: 100%;\n}\n\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  \n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  \n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  \n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n  /* 3.5.- ASIDE INFO\n     ----------------------------- */\n\n.mky-content-info{\n  height: 100%;\n}\n\n.mky-content-info-expand{\n  width: 100%;\n}\n\n.mky-content-info-no-expand{\n  border-left: 1px solid #E8E8E8;\n  float: left;\n  width: calc(35% - 1px);\n}\n\n.mky-info-header{\n  background: #eee;\n  position: relative;\n  z-index: 1;\n}\n\n.mky-info-header div{\n  vertical-align: top;\n}\n\n.mky-info-close{\n  float: left;\n  margin: 26px 12px 0 15px;\n  width: auto;\n  cursor: pointer;\n}\n\n.mky-info-close i{\n  color: #535353;\n  font-size: 12px;\n}\n\n.mky-info-header-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n.mky-info-header-title{\n  font-family: 'helvetica';\n  font-size: 16px;\n  color: #353535;\n  display: block;\n  text-align: left;\n  line-height: 16px;  \n  margin-top: 8px;\n}\n\n.mky-info-header-subtitle{\n  display: block;\n  text-align: left;\n  color: #a2a2a2;\n  line-height: 16px;  \n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n}\n\n.mky-info-container{\n    width: 100%;\n    height: calc(100% - 65px);\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    background-color: white;\n    overflow: auto;\n}\n\n.mky-info-container::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-info-container::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-info-container::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n  /* 3.5.1.- INFO: conversation\n     ----------------------------- */\n     \n.mky-info-conversation{\n  width: 100%;\n  height: 100%;\n  position: relative;\t\n}\n\n.mky-info-conversation-image{\n  flex: none;\n  width: 150px;\n  height: 150px;\n  margin: 25px auto 10px auto;\n}\n\n.mky-info-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  margin: 0 auto;\n}\n\n.mky-info-conversation-description{\n  flex: none;\n  margin: 8px auto;\n  border: 1px solid #EFEFEF;\n  border-radius: 10px;\n  width: 88%;\n}\n\n.mky-info-conversation-header{\n  border-bottom: 1px solid #EFEFEF;\n  flex: none;\n}\n\n.mky-info-conversation-data .mky-info-conversation-header{\n  border: none;\n}\n\n.mky-info-conversation-title{\n  color: #a5a5a5;\n  float: left;\n  font-family: 'helvetica-normal', helvetica;\n  font-size: 14px;\n  font-weight: 100;\n  line-height: 1;\n  margin: 0;\n  padding: 10px;\n  text-align: left;\n  width: calc(100% - 95px);\n}\n\n.mky-info-conversation-action{\n  display: flex;\n  width: 100%;\n}\n\ninput.mky-info-input{\n  background: none;\n  border: none;\n  box-shadow: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  font-size: 16px;\n  float: left;\n  color: black;\n  margin: 0 0 5px 10px;\n  padding: 1px;\n  text-overflow: ellipsis;\n  width: calc(100% - 45px);\n}\n\n.mky-info-input:focus{\n  outline-width: 0;\n  border: none !important;\n  box-shadow: none;\n  border-bottom: 1px solid #CECECE !important;\n}\n\n.mky-info-conversation-action i{\n  cursor: pointer;\n  float: right;\n  font-size: 16px;\n  margin-right: 8px;\n}\n\n.mky-info-conversation-action i:hover{\n  color : #0077C1;\n}\n\n.mky-info-conversation-container{\n  overflow: auto;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-info-conversation-members{\n  display: flex;\n  position: relative;\n  flex: 0 1 auto;\n  flex-direction: column;\n  min-height: 154px;\n}\n\n.mky-info-conversation-amount{\n  color: #8297a2;\n  float: right;\n  font-family: 'helvetica-light', helvetica;\n  font-size: 14px;\n  line-height: 17px;\n  margin: 10px;\n}\n\n.mky-info-conversation-list{\n  list-style: none;\n  margin: 0;\n  padding: 0px;\n}\n\nul.mky-info-conversation-list li.mky-info-conversation-member{\n  border: none;\n  box-sizing: content-box;\n  height: 48px;\n  width: 100%;\n  clear: both;\n  position: relative;\n  padding: 5px 0;\n  -webkit-box-sizing: content-box;\n}\n\n.mky-info-conversation-member:after {\n    content: '';\n    width: calc(100% - 60px);\n    height: 1px;\n    background: #EFEFEF;\n    position: absolute;\n    bottom: 0;\n    left: 60px;\n}\n\n.mky-info-conversation-member img{\n  box-sizing: content-box;\n  height: 36px;\n  width: 36px;\n  float: left;\n  border-radius: 50%;\n  padding: 5px;\n  margin-left: 10px;\n  -webkit-box-sizing: content-box;\n}\n\n.mky-info-member-description{\n  float: left;\n  overflow: hidden;\n  height: 35px;\n  padding: 8px 5px 0px 5px;\n  text-align: left;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  width: calc(100% - 70px);\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.mky-info-member-detail{\n  display: -webkit-box;\n  display: -webkit-flex; \n  display: -ms-flexbox;\n  display: flex;\n  font-family: helvetica;\n  font-size: 14px;\n  font-weight: 400;\n  -ms-flex-direction: row;\n  flex-direction: row; \n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  width: 100%;\n}\n\n.mky-info-member-name{\n  color: #000;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n  line-height: 18px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-info-member-rol{\n  color: #8ac34a;\n  flex: none;\n  line-height: 18px;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-info-member-status{\n  color: #a5a5a5;\n  font-family: 'helvetica';\n  font-size: 14px;\n  margin-top: 2px;\n}\n\n.mky-info-member-online{\n  color: #8ac34a;\n}\n\n.mky-info-member-actions{\n  position: absolute;\n  right: 12px;\n  top: 35px;\n  cursor: pointer;\n}\n\n.mky-info-member-actions i{\n  color: #b1b1b1;\n}\n\n.mky-info-button{\n  cursor: pointer;\n  display: flex;\n  margin: 8px auto;\n  height: 50px;\n  background: #ee5350;\n  border: none;\n  border-radius: 8px;\n  color: white;\n  font-weight: bold;\n  flex: none;\n  justify-content: center;\n  position: relative;\n  width: 88%;\n}\n\n.mky-info-button-text{\n  display: block;\n  font-family: 'helvetica-light';\n  font-size: 15px;\n  padding: 4px 4px 0 0;\n  text-shadow: 2px 2px #bd5353;\n  text-transform: uppercase;\n  text-align: center;\n  width: 100%\n}\n\n.mky-info-button i{\n  font-size: 28px;\n  position: absolute;\n  right: 10px;\n  top: 10px;\n  width: 28px;\n}\n\n.mky-info-actions{\n  animation-name: actionMenu;\n  animation-duration: 0.5s;\n  position: fixed;\n  max-height: 150px;\n  width: 200px;\n  z-index: 1000;\n  background-color: white;\n  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);\n  -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);\n  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);\n  border-radius: 3px;\n  max-width: 85%;\n  overflow: auto;\n}\n\n.mky-info-actions::-webkit-scrollbar { width: 0 !important }\n.mky-info-actions{ -ms-overflow-style: none; }\n.mky-info-actions{ overflow: -moz-scrollbars-none; }\n\n@keyframes actionMenu{\n    0%   {max-height: 0;}\n    100% {max-height: 150px;}\n}\n\n.mky-info-action{\n  color: #000;\n  cursor: pointer;\n  padding: 10px 20px;\n}\n\n.mky-info-action:hover{\n    background-color: #EEEEEE;\n}\n\n.mky-info-actions-back{\n    position: fixed;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n}\n\n.mky-content-info .mky-space{\n  padding-top: 10px;\n}\n\n/* 3.5.2.- INFO: messages\n     ----------------------------- */\n\n.mky-info-header-message{\n  width: calc(100% - 55px);\n  height: calc(100% - 18px);\n  float: left;\n  padding-top: 18px;\n}\n\n.mky-info-message-container{\n  flex: none;\n  margin: 25px 0;\n}\n\n.mky-message-option-item{\n  padding: 15px 20px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n\n.mky-message-option-item:hover{\n  background-color: #ededed;\n}\n\n.mky-message-info-desc{\n    float: left;\n    overflow: hidden;\n    height: 35px;\n    padding: 8px 5px 0px 5px;\n    text-align: left;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    width: calc(100% - 120px);\n    -webkit-box-sizing: content-box;\n    box-sizing: content-box;\n    max-width: 150px;\n}\n\n.mky-message-read-check{\n  font-size: 20px;\n  display: block;\n  width: 20px;\n  float: right;\n  margin: 1px;\n  padding: 12px 20px 0px 5px;\n}\n\n.mky-info-message-title{\n  font-family: 'helvetica';\n  font-size: 16px;\n  color: #353535;\n  display: block;\n  text-align: left;\n  line-height: 16px;  \n}\n\n.mky-info-message-subtitle{\n  display: block;\n  text-align: left;\n  color: #a2a2a2;\n  line-height: 16px;  \n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n  margin-top: 4px;\n}\n\n/* 3.6.- RECONNECT\n   ----------------------------- */\n   \n.mky-reconnect{\n  bottom: 0;\n  height: calc(100% - 65px);\n  position: absolute;\n  width: 100%;\n}\n\n.mky-reconnect-form{\n  bottom: 90px;\n  position: absolute;\n  width: 100%;\n}\n\n.mky-reconnect-form form{\n  text-align: center;\n}\n\n.mky-reconnect-description{\n  font-size: 12px;\n} \n  \n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button, .mky-button-modal{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-viewer-back-close {\n  position: absolute;\n  top: 36px;\n  width: 100%;\n  height: calc(100% - 36px);\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-viewer-image.rotate90 img {\n  transform: rotate(90deg);\n  -webkit-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  top:0;\n}\n.mky-viewer-image.rotate180 img {\n  transform: rotate(180deg);\n  -webkit-transform: rotate(180deg);\n  -ms-transform: rotate(180deg) ;\n  top:0;\n}\n.mky-viewer-image.rotate270 img {\n  transform: rotate(270deg);\n  -webkit-transform: rotate(270deg);\n  -ms-transform: rotate(270deg);\n  top:0;\n}\n\n/* 5.- POP UP\n   ----------------------------- */\n\n.mky-inner-modal{\n  max-width: 400px;\n  height: 200px;\n  background: white;\n  margin: auto;\n  top: 38%;\n  position: relative;\n  z-index: 200;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  width: 90%;\n}\n\n.mky-popup-message{\n  color: black;\n  height: 20%;\n  text-align: center;\n  padding-top: 45px;\n  margin: 0 5%;\n  position: relative;\n  width: 90%;\n}\n\n.mky-popup-buttons{\n  margin-top: 30px;\n  text-align: center;\n}\n\n.mky-popup-button{\n  cursor: pointer;\n  height: 25px;\n  width: auto;\n  margin: 0 10px;\n  background: white;\n  border-style: none;\n  color: #2196f3;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n  /* 5.1.- OUTSIDE DIVS\n    -------------------------------*/\n\n  .mky-out-message-options{\n    animation-name: actionMenu2;\n    animation-duration: 0.5s;\n    font-size: 14px;\n    font-family: helvetica-light, Helvetica, sans-serif;\n    position: fixed;\n    max-height: 200px;\n    max-width: 200px;\n    background-color: white;\n    -webkit-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    -moz-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    z-index: 2;\n    padding: 5px 0px;\n    border-radius: 3px;\n    overflow: auto;\n  }\n\n  .mky-out-options-back{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    z-index: 1;\n  }\n\n  @keyframes actionMenu2{\n      0%   {max-height: 0; max-width: 0;}\n      100% {max-height: 200px; max-width: 200px;}\n  }\n\n  .mky-out-message-options::-webkit-scrollbar { width: 0 !important }\n  .mky-out-message-options{ -ms-overflow-style: none; }\n\n\n\n/* 6.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n.mky-button-standard {\n  border: 0px;\n  border-radius: 2px;\n  color: white;\n  cursor: pointer;\n  height: 25px;\n  padding: 2px 10px 3px 10px;\n}\n\n.mky-button-standard:focus {\n  border: none !important;\n  box-shadow: none;\n  outline:0;\n}\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n.mky-wrapper-out.animated.pulse{\n  animation-duration: 0.5s;\n  animation-iteration-count: initial;\n  -webkit-animation-iteration-count: initial;\n  -moz-animation-iteration-count: initial;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n.mky-dflex-dcolumn{\n  display: flex;\n  flex-direction : column\n}\n\n/* 7.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 900px){\n\n  /* Disappear content conversation */\n  .mky-content-window-with .mky-content-conversation-no-expand{\n\tdisplay: none;\n  }\n  \n  /* Expand content info */\n  .mky-content-window-with .mky-content-info-no-expand{\n\twidth: 100%;\n  }\n  .mky-menu-bubble{\n    margin-left: 20px;\n  }\n}\n\n@media only screen and (max-width: 600px){\n\n  /* Disappear description user session */\n  .mky-no-expand .mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-content-aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-content-aside{\n    \tdisplay: none;\n\t}\n\t\n\t/* Input */\n\t.mky-textarea-input{\n\t  width: calc(100% - 109px);\n\t}\n\t\n\t.mky-record-area{\n\t  width: calc(100% - 106px);\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-content-aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  .mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n  .mky-signature{\n    margin-right: 9px;\n  }\n  .mky-conversation-selected-header .mky-signature{\n    font-size: 10px;\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/", ""]);
->>>>>>> Fix mobile view
+	exports.push([module.id, "\n/***\n\nFILE: chat.css\n\nTABLE OF CONTENTS\n\n0.- FONT\n  0.2.- FONTASTIC\n1.- CONTENT - wrappers\n2.- CONTENT CONNECTION - animation mky-spinner\n3.- CONTENT APP\n  3.1.- CONTENT OPTIONS\n  3.2.- ASIDE - header, search panel, search list, conversation list\n  3.3.- SECTION - header, chat timeline, preview, chat inputs\n  3.4.- BANNER -  banner\n  3.5.- ASIDE INFO\n    3.5.1 - INFO conversation\n    3.5.2 - INFO message\n  3.6.- RECONNECT\n4.- MODAL\n  4.1.- Image preview\n  4.2.- Location preview\n5.- POP UP\n6.- GLOBAL SETTINGS\n7.- MEDIA QUERIES\n\n***/\n\n/* 0.- FONT\n   ----------------------------- */\n\n@font-face {\n    font-family: 'helvetica-normal';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaNeueLTStd-Th.otf') format('opentype');\n}\n\n@font-face {\n    font-family: 'helvetica-light';\n    font-style: normal;\n    font-weight: normal;\n    src: local('helvetica-normal'), url('https://cdn.criptext.com/MonkeyUI/font/HelveticaLTStd-Light.otf') format('opentype');\n}\n\n@font-face {\n  font-family: 'Verdana Pro W01 SemiBold';\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472');\n  src: url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.eot?89861472#iefix') format('embedded-opentype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.woff?89861472') format('woff'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.ttf?89861472') format('truetype'),\n       url('https://cdn.criptext.com/MonkeyUI/font/Verdana Pro W01 SemiBold.svg?89861472#mky') format('svg');\n  font-weight: normal;\n  font-style: normal;\n}\n\n@charset \"UTF-8\";\n\n@font-face {\n  font-family: \"react-monkey-ui\";\n  src:url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot\");\n  src:url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot?#iefix\") format(\"embedded-opentype\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.woff\") format(\"woff\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.ttf\") format(\"truetype\"),\n    url(\"https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.svg#monkey\") format(\"svg\");\n  font-weight: normal;\n  font-style: normal;\n\n}\n\n  /* 0.1.- FONT: Fontastic\n     ----------------------------- */\n\n[data-icon]:before {\n  font-family: \"react-monkey-ui\" !important;\n  content: attr(data-icon);\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n[class^=\"mky-icon-\"]:before,\n[class*=\" mky-icon-\"]:before {\n  font-family: \"react-monkey-ui\" !important;\n  font-style: normal !important;\n  font-weight: normal !important;\n  font-variant: normal !important;\n  text-transform: none !important;\n  speak: none;\n  line-height: 1;\n  -webkit-font-smoothing: antialiased;\n  -moz-osx-font-smoothing: grayscale;\n}\n\n.mky-icon-arrow-down:before {\n  content: \"a\";\n}\n.mky-icon-arrow-up:before {\n  content: \"b\";\n}\n.mky-icon-close:before {\n  content: \"c\";\n}\n.mky-icon-minimize:before {\n  content: \"d\";\n}\n.mky-icon-check:before {\n  content: \"e\";\n}\n.mky-icon-drawer:before {\n  content: \"f\";\n}\n.mky-icon-pencil:before {\n  content: \"g\";\n}\n.mky-icon-mic:before {\n  content: \"h\";\n}\n.mky-icon-send:before {\n  content: \"i\";\n}\n.mky-icon-image:before {\n  content: \"j\";\n}\n.mky-icon-file:before {\n  content: \"k\";\n}\n.mky-icon-chat:before {\n  content: \"l\";\n}\n.mky-icon-download:before {\n  content: \"m\";\n}\n.mky-icon-signout:before {\n  content: \"n\";\n}\n.mky-icon-back:before {\n  content: \"o\";\n}\n.mky-icon-arrow-down-bold:before {\n  content: \"p\";\n}\n.mky-icon-add:before {\n  content: \"q\";\n}\n\n/* 1.- CONTENT\n   ----------------------------- */\n\n.mky-wrapper-out{\n  background: transparent;\n  border: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  width: 100%;\n  height: 100%;\n  position: fixed;\n  /*-webkit-font-smoothing: antialiased;*/\n  letter-spacing: 0.2px;\n}\n\n.mky-partialsize{\n\n}\n\n.mky-fullsize{\n\n}\n\n.mky-classic, .mky-rightside{\n  z-index: 1100;\n}\n\n.mky-classic{\n  bottom: 0;\n  box-shadow: rgb(176, 176, 176) 0px 0px 15px;\n  right: 10px;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n}\n\n.mky-rightside{\n  bottom: 0;\n  right: 0;\n}\n\n.mky-wrapper-in{\n  box-shadow: 0px 0px 15px #B0B0B0;\n  position: relative;\n  background: white;\n}\n\n.mky-classic .mky-wrapper-in{\n  box-shadow: none;\n}\n\n.mky-fullsize .mky-wrapper-in{\n  width: calc(100% - 40px);\n  height: calc(100% - 40px);\n  margin: 20px auto;\n}\n\n.mky-partialsize .mky-wrapper-in{\n  width: 100%;\n  height: 100%;\n  margin: 0 auto;\n}\n\n.mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{\n  height: calc(100% - 30px);\n}\n\n#mky-chat-login{\n    position: relative;\n    margin: 0 auto;\n    border: 1px solid transparent;\n    border-radius: 5px;\n    text-align: left;\n    font-size: 17px;\n    color: #333;\n    width: 90%;\n    height: calc(100% - 20px);\n    padding-top: 20px;\n}\n\n/* 2.- CONTENT CONNECTION\n   ----------------------------- */\n\n.mky-content-connection{\n  width: 100%;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  background: #fff;\n  position: absolute;\n  z-index: 10;\n}\n\n.mky-spinner > div{\n\t\n}\n\n.mky-spinner {\n  margin: 100px auto 0;\n  width: 70px;\n  text-align: center;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-spinner > div {\n  width: 18px;\n  height: 18px;\n  background-color: #333;\n\n  border-radius: 100%;\n  display: inline-block;\n  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n  animation: sk-bouncedelay 1.4s infinite ease-in-out both;\n}\n\n.mky-spinner .mky-bounce1 {\n  -webkit-animation-delay: -0.32s;\n  animation-delay: -0.32s;\n}\n\n.mky-spinner .mky-bounce2 {\n  -webkit-animation-delay: -0.16s;\n  animation-delay: -0.16s;\n}\n\n@-webkit-keyframes sk-bouncedelay {\n  0%, 80%, 100% { -webkit-transform: scale(0) }\n  40% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bouncedelay {\n  0%, 80%, 100% {\n    -webkit-transform: scale(0);\n    transform: scale(0);\n  } 40% {\n    -webkit-transform: scale(1.0);\n    transform: scale(1.0);\n  }\n}\n\n/* 3.- CONTENT APP\n   ----------------------------- */\n\n.mky-content-app{\n  width: 100%;\n  height: 100%;\n  background-color: #ffffff;\n}\n\n/* 3.1.- CONTENT OPTIONS\n   ----------------------------- */\n.mky-tab{\n  height: 30px;\n  top: 0px;\n  right: 0px;\n  z-index: 2;\n  background-color: #FBA920;\n  border-top-right-radius: 10px;\n  border-top-left-radius: 10px;\n  cursor: pointer;\n  text-align: center;\n  font-size: 17px;\n  width: 100%;\n}\n\n.mky-tab .mky-tablabel{\n  position: relative;\n  top: 5px;\n  line-height: 25px;\n}\n\n.mky-tab span{\n  color: #fff;\n}\n\n.mky-tab div, .mky-conversation-selected-header .mky-content-options div{\n  width: 20px;\n  height: 15px;\n  float: right;\n  background-repeat: no-repeat;\n  background-position:50%;\n  top: 50%;\n  position: relative;\n  -webkit-transform: translateY(-50%);\n  -moz-transform: translateY(-50%);\n  transform: translateY(-50%);\n}\n\n.mky-tab div{\n\tright: 10px;\n\tcolor: white;\n}\n\n.mky-tab i{\n  display: block;\n  margin: 0;\n}\n\n.mky-conversation-selected-header .mky-content-options{\n  display: block;\n  position: absolute;\n  width: 80px;\n  height: 25px;\n  right: 10px;\n  top: 5px;\n}\n\n#mky-w-max,\n#mky-w-close,\n#mky-w-min, #mky-w-min-in{\n  background-size: 10px;\n}\n\n#mky-w-max{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-max-white.png);\n}\n\n#mky-w-min{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-white.png);\n}\n\n#mky-w-close{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-close-gray.png);\n}\n\n#mky-w-min-in{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/w-min-gray.png);\n}\n\n#mky-w-max, #mky-w-min{\n  right: 10px;\n}\n\n.mky-button{\n  background-color: #FBA920;\n  border-radius: 50%;\n  margin-top: 12px;\n  text-align: center;\n  width: 48px;\n  height: 48px;\n  background-size: 48px 48px;\n  position: absolute;\n  bottom: 20px;\n  right: 20px;\n}\n\n.mky-button i{\n  color: white;\n  margin-top: 11px;\n  font-size: 24px;\n  display: block;\n}\n\n.mky-rightside-option{\n  left: 90%;\n  margin-top: 20px;\n  position: absolute;\n  top: 0;\n}\n\n.mky-rightside-option div{\n  cursor: pointer;\n}\n\n.mky-rightside-option i {\n  color: #b2b2b2;\n  font-size: 18px;\n}\n\n/* 3.2.- ASIDE\n   ----------------------------- */\n\n.mky-content-aside{\n  width: calc(28% - 1px);\n  height: 100%;\n  vertical-align: top;\n  margin: 0;\n  float: left;\n  border-right: 1px solid rgba(219,219,219,0.7);\n\n  display: flex;\n  flex-direction: column;\n/*   min-width: 240px; */\n}\n\n  /* 3.2.- ASIDE: Header\n     ----------------------------- */\n\n.mky-wrapper-out header{\n  background-color: #eee;\n  border-bottom: 1px solid rgba(219,219,219,0.7);\n  display: flex;\n  height: 65px;\n  width: 100%;\n}\n\n.mky-session-header{\n  display: flex;\n}\n\n#mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-expand-each-screen{\n\twidth: 100%;\n}\n\n.mky-session-image{\n  width: 40px;\n  height: 40px;\n  margin: 12px 10px 0 20px;\n  display: inline-table;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-session-image img{\n\twidth: 100%;\n\theight: 100%;\n\tborder-radius: 50%;\n}\n\n.mky-session-description{\n\twidth: calc(100% - 70px);\n\theight: 100%;\n\tdisplay: inline-table;\n\tvertical-align: top;\n\tfloat: left;\n}\n\n.mky-header-exit{\n  float: right;\n  margin-top: 12px;\n  margin-right: 16px;\n  cursor: pointer;\n}\n\n.mky-header-exit .mky-icon-minimize{\n  color: #6e8191;\n  font-size: 20px;\n}\n\n.mky-header-exit .mky-icon-signout{\n  color: #F35E58;\n  font-size: 32px;\n  position: relative;\n  top: 4px;\n}\n\n.mky-session-name{\n    margin-top: 23px;\n    float: left;\n    display: flex;\n    white-space: nowrap;\n    width: calc(100% - 50px);\n    justify-content: space-between;\n    align-items: center;\n}\n\n.mky-session-name span{\n  text-align: left;\n  font-size: 14px;\n  color: black;\n}\n\n.mky-ellipsify {\n  flex-grow: 1;\n  overflow: hidden;\n  position: relative;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-typing{\n  font-style: italic;\n  color: #717171 !important;\n  font-weight: bold;\n}\n\n/* 3.2.- ASIDE: Connection Panel\n     ----------------------------- */\n\n.mky-connection-div{\n  width: 100%;\n  background: red;\n  color: white;\n  height: auto;\n  font-weight: bold;\n  -webkit-transition: max-height 2s ease, background-color 0.5s ease;\n  -moz-transition: max-height 2s ease, background-color 0.5s ease;\n  -o-transition: max-height 2s ease, background-color 0.5s ease;\n  transition: max-height 2s ease, background-color 0.5s ease;\n}\n\n.mky-connection-content{\n  margin: 0 auto;\n  padding: 12px 10px 10px 10px;\n}\n\n.mky-connection-content p{\n  margin: 0.2em 0 0 0;\n}\n\n.mky-connection-height{\n  max-height: 200px;\n}\n\n.mky-connection-hide{\n  max-height: 0px;\n}\n\n.mky-bold-text{\n    /*font-family: Verdana Pro W01 SemiBold;*/\n    font-family: helvetica;\n}\n\n  /* 3.2.- ASIDE: Search Panel\n     ----------------------------- */\n\n.mky-session-conversations{\n\theight: calc(100% - 65px);\n  position: relative;\n\n  display: flex;\n  flex-direction: column;\n}\n\n.mky-search-input {\n  padding: 10px 18px;\n  height: 30px;\n  position: relative;\n  border-bottom: 1px solid #ededed;\n  background: #fbfbfb;\n}\n\n.mky-search-input > input, .mky-search-input > input:valid {\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n  background-repeat: no-repeat;\n  background-position: 5%;\n  background-size: 16px 16px;\n  border-radius: 10px;\n  border: 1px solid #EFF0F2;\n  font-size: 12px;\n  line-height: normal;\n  -webkit-appearance: none;\n  width: 100%;\n  padding: 7px 4px 7px 40px;\n  position: relative;\n  outline: 0;\n  text-align: left;\n  -webkit-font-smoothing: antialiased;\n  text-overflow: ellipsis;\n  box-sizing: border-box;\n  -moz-box-sizing: border-box;\n  -webkit-box-sizing: border-box;\n  height: 32px;\n\n}\n\n.mky-search-input > input::-webkit-search-cancel-button{\n  position: absolute;\n  right: 10px;\n  top: 31%;\n}\n\n.mky-search-input > input:focus {\n  outline: none;\n}\n\n#mky-search-panel{\n\twidth: 100%;\n\theight: 48px;\n\tbackground-color: #ffffff;\n\tborder-bottom: 1px #efefef solid;\n\ttext-align: center;\n\tposition: relative;\n}\n\n.mky-search-contacts-input{\n\twidth: calc(100% - 105px);\n\tmargin: 7px auto;\n\tpadding: 8px 30px 8px 40px;\n\tborder-radius: 10px;\n\tborder: 1px solid #EFF0F2;\n\tposition: relative;\n\toutline: 0;\n\ttext-align: left;\n\tfont-size: 12px;\n\tbackground-image: url(https://cdn.criptext.com/MonkeyUI/images/icon_search.png);\n\tbackground-repeat: no-repeat;\n\tbackground-position: 5%;\n}\n\n#mky-button-search-reset{\n\tposition: absolute;\n\tright: 23px;\n\ttop: 14px;\n\tborder-radius: 50%;\n\tborder: 1px solid #999;\n\tcolor: #999;\n\theight: 18px;\n\twidth: 18px;\n\tcursor: pointer;\n\tfont-size: 8px;\n}\n\n  /* 3.2.- ASIDE: Search List\n     ----------------------------- */\n\n#mky-search-list{\n\twidth: 100%;\n\theight: calc(100% - 116px);\n\tlist-style: none;\n\tmargin: 0;\n\tpadding: 0;\n\toverflow: auto;\n}\n\n.mky-search-by{\n  list-style: none;\n}\n\n.mky-search-by h4{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 10px 18px;\n  border-bottom: 1px solid #eee;\n  height: 28px;\n}\n\n#mky-search-list ul{\n  list-style: none;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-search-list .mky-conversation-item{\n  background-color: #fff;\n}\n\n.mky-search-items li{\n  width: 100%;\n  height: 65px;\n  position: relative;\n  border-bottom: 1px solid #fff;\n}\n\n.mky-search-items .mky-conversation-null{\n  height: 40px;\n}\n\n.mky-conversation-null div{\n  margin: 5px 0 0 20px;\n}\n\n  /* 3.2.- ASIDE: Conversation List\n     ----------------------------- */\n.mky-content-conversation-list{\n  display: flex;\n  flex-direction: column;\n  overflow: auto;\n}\n\n.mky-conversation-list-header{\n  background-color: #fbfbfb;\n  border-bottom: solid #EAEAEA 1px;\n  color: black;\n  font-family: 'helvetica-light';\n  font-size: 14px;\n  font-weight: bold;\n  padding: 15px 10px 10px 20px;   \n  text-transform: uppercase;\n}\n\n.mky-not-pressed{\n  background-position: 100%;\n  background-size: 200%;\n}\n\n.mky-pressing{\n  background: linear-gradient(270deg, #fff 50%, #D8D8D8 50%);\n  transition: all 0.9s ease;\n  background-size: 200%;\n  background-position: 0%;\n}\n\n.mky-conversation-list {\n  width: 100%;\n  margin: 0;\n  padding: 0;\n  list-style: none;\n  overflow: auto;\n  background: #fff;\n  position: relative;\n  flex: 1;\n  flex-direction: column;\n  -webkit-box-flex: 1;\n}\n\n.mky-conversation-list::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-conversation-list::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-conversation-list::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-conversation-item{\n  width: 100%;\n  height: 58px;\n  position: relative;\n  border-bottom: none;\n  background-color: transparent;\n}\n\n.mky-conversation-item:hover{\n  background-color: #f9fbfd;\n  cursor: pointer;\n}\n\n.mky-conversation-item-content{\n  width: 100%;\n  height: 100%;\n}\n\n.mky-conversation-item .mky-message-status{\n  margin-left: 0px;\n  margin-right: 3px;\n}\n\n.mky-conversation-image{\n  height: 38px;\n  margin: 0px;\n  width: 38px;\n  padding: 10px 15px 10px 20px;\n  margin-top: -1px;\n}\n\n.mky-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n}\n\n.mky-conversation-image, .mky-conversation-description{\n  display: inline-block;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-conversation-description{\n  width: calc(100% - 90px);\n  font-size: 14px;\n  text-align: left;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  padding-top: 10px;\n  margin-right: 0px;\n  margin-left: 0px;\n  padding-right: 8px;\n  padding-left: 8px;\n  padding-bottom: 4px;\n  border-bottom: 1px solid #EFEFEF;\n  box-sizing: content-box;\n  height: 43px;\n}\n\n.mky-conversation-title{\n\twidth: 99%;\n\tdisplay: flex;\n}\n\n.mky-conversation-title span{\n  color: black;\n  font-family: 'helvetica-light';\n}\n\n.mky-conversation-name{\n  width: calc(100% - 70px);\n  float: left;\n  text-align: left;\n  white-space: nowrap;\n  display: flex;\n}\n\n.mky-conversation-name span{\n  font-family: helvetica;\n  font-size: 14px;\n  margin-top: 2px;\n  line-height: 16px;\n}\n\n.mky-conversation-time{\n  width: 65px;\n  float: right;\n  margin-left: 5px;\n  text-align: right;\n}\n\n.mky-conversation-time span{\n  color: #a5a5a5;\n  font-size: 11px;\n  position: relative;\n}\n\n.mky-conversation-state{\n  color: #a5a5a5;\n  display: flex;\n  width:80%;\n  font-family: 'helvetica-normal', helvetica;\n}\n\n.mky-conversation-state span{\n  margin-top: 4px;\n  line-height: 20px;\n}\n\n.mky-conversation-options{\n  position: absolute;\n  right: 10px;\n  bottom: 10px;\n}\n\n.mky-conversation-delete{\n  opacity: 0;\n}\n\n.mky-conversation-delete i{\n  background: none;\n  border: none;\n  font-size: 10px;\n  margin-left: 10px;\n  color: #FC464E;\n  position: relative;\n  top: 5px;\n}\n\n.mky-conversation-item:hover .mky-conversation-delete{\n    min-width: 13px;\n    position: relative;\n    background-repeat: no-repeat;\n    background-size: contain;\n    z-index: 1000;\n    cursor: pointer;\n    float: right;\n    opacity: 1;\n    -webkit-transition: opacity 0.2s ease-in-out;\n    -moz-transition: opacity 0.2s ease-in-out;\n    -ms-transition: opacity 0.2s ease-in-out;\n    -o-transition: opacity 0.2s ease-in-out;\n    transition: opacity 0.2s ease-in-out;\n    display: inline-block;\n    vertical-align: top;\n}\n\n.mky-conversation-notification{\n  position: absolute;\n  right: 0px;\n  bottom: -3px;\n  display: inline-block;\n  vertical-align: top;\n  z-index: 1;\n  -webkit-font-smoothing: antialiased;\n  font-family: 'helvetica-normal';\n}\n\n.mky-conversation-item:hover .mky-conversation-notification{\n  right: 18px;\n  -webkit-transition: right 0.3s;\n  -moz-transition: right 0.3s;\n  -ms-transition: right 0.3s;\n  -o-transition: right 0.3s;\n  transition: right 0.3s;\n}\n\n.mky-notification-amount{\n  min-width: 10px;\n  border: none;\n  border-radius: 20px;\n  background: #1982E8;\n  color: #fff;\n  font-size: 12px;\n  font-weight: bold;\n  padding: 5px 6px 2px 5px;\n  text-align: center;\n}\n\n.mky-notification-amount-1{\n  padding: 5px 5px 2px 6px;\n}\n\n.mky-notification-amount-2{\n  padding: 5px 6px 2px 6px;\n}\n\n.mky-conversation-item:hover .mky-message-read{\n  right: 18px;\n  -webkit-transition: right 0.3s;\n  -moz-transition: right 0.3s;\n  -ms-transition: right 0.3s;\n  -o-transition: right 0.3s;\n  transition: right 0.3s;\n}\n\n.mky-status-read .mky-message-read{\n  font-size: 15px;\n  margin-top: 5px;\n/*  right: 0px;\n  position: absolute;*/\n}\n\n/* Conversation item selected */\n\n.mky-conversation-selected{\n  background-color: #ededed;\n  border-top: 1px solid #ededed;\n  margin-top:-1px;\n}\n\n/* Conversation item unread */\n\n.mky-conversation-unread .mky-conversation-state span{\n  color: #000;\n  font-family: 'helvetica-light';\n}\n\n\n/* 3.3.- SECTION\n   ----------------------------- */\n\n.mky-wrapper-out section{\n  height: 100%;\n  margin: 0;\n  vertical-align: top;\n  float: left;\n  position: relative;\n  background-color: #ffffff;\n  padding: 0;\n}\n\n.mky-content-window-only{\n  width: 100%;\n  border:none;\n}\n\n.mky-content-window-with{\n    width: 72%;\n}\n\n#mky-app-intro{\n    position: absolute;\n    width: 100%;\n    height: 100%;\n    background-image: url(https://cdn.criptext.com/MonkeyUI/images/logo-noChat.png);\n    background-color: #c1c1c1;\n    background-position: center;\n    background-repeat: no-repeat;\n    background-size: 50%;\n    top: 0;\n    z-index: 3;\n}\n\n.mky-disabled{\n    pointer-events: none;\n    opacity: 0.2;\n}\n\n#mky-conversation-disabled{\n    width: 100%;\n    height: 100%;\n    opacity: 0.2;\n    background: #CCC;\n    position: absolute;\n    z-index: 2;\n}\n\n.mky-content-conversation{\n  height: 100%;\n  float: left;\n}\n\n.mky-content-conversation-no-expand{\n  width: 65%;\n}\n\n.mky-content-conversation-expand{\n  width: 100%;\n}\n\n  /* 3.3.- SECTION: Header\n     ----------------------------- */\n\n.mky-session-name i{\n  color: #535353;\n  float: right;\n  font-size: 20px;\n  margin-right: 2px;\n  cursor: pointer;\n}\n\n.mky-edit-input{\n  border: none;\n  -webkit-box-shadow: none;\n  -moz-box-shadow: none;\n  box-shadow: none;\n  background: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  font-size: 16px;\n  float: left;\n  color: black;\n  margin: 0;\n  text-overflow: ellipsis;\n  width: calc(100% - 45px);\n}\n\n.mky-edit-input:focus{\n  outline-width: 0;\n  border: none !important;\n  box-shadow: none;\n  border-bottom: 1px solid #CECECE !important;\n}\n\n.mky-conversation-selected-header{\n    background: #eee;\n    position: relative;\n    z-index: 1;\n}\n\n.mky-conversation-selected-header div{\n  vertical-align: top;\n}\n\n.mky-conversation-back{\n  float: left;\n  margin: 21px -10px 0 12px;\n  width: auto;\n  cursor: pointer;\n}\n\n.mky-conversation-back i{\n\tcolor: #6e8191;\n    font-size: 24px;\n}\n\n.mky-conversation-selected-image{\n  cursor: pointer;\n  flex: none;\n  float: left;\n  height: 40px;\n  margin: 13px;\n  margin-left: 25px;\n  width: 40px;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-conversation-selected-image img{\n    width: 100%;\n    height: 100%;\n    border-radius: 50%;\n}\n\n.mky-conversation-selected-description{\n  height: calc(100% - 18px);\n  flex-grow: 1;\n  float: left;\n  overflow: hidden;\n  padding-top: 18px;\n  position: relative;\n}\n\n.mky-conversation-selected-description span{\n  display: block;\n  text-align: left;\n  font-weigth: normal;\n  line-height: 16px;\n  cursor: pointer;\n}\n\n.mky-rightside .mky-conversation-selected-description{\n  width: calc(100% - 140px);\n}\n\n.mky-conversation-selected-name{\n  font-family: 'helvetica';\n  font-size: 14px;\n  color: #353535;\n}\n\n.mky-conversation-selected-status{\n  color: #a2a2a2;\n  font-size: 13px;\n  margin-top: 4px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n}\n\n.mky-conversation-selected-header .mky-button-standard{\n  margin: 12px 20px;\n  background-color: #e53935;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-conversation-header-exit{\n  color: #6e8191;\n  cursor: pointer;\n  display: inline-table;\n  font-size: 20px;\n  margin: 12px 15px 0 8px;\n}\n\n#mky-conversation-selected-members{\n    font-size: 13px;\n}\n\n.mky-not-connected{\n    width: 100%;\n    position: absolute;\n    top: 66px;\n    left: 0;\n    line-height: 40px;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    overflow: hidden;\n    text-align: center;\n    background-color: red;\n    -webkit-transition: all 0.5s ease;\n    -moz-transition: all 0.5s ease;\n    -o-transition: all 0.5s ease;\n    transition: all 0.5s ease;\n}\n\n.mky-not-connected span{\n    text-overflow: ellipsis;\n    overflow: hidden;\n    color : white;\n    font-weight: bold;\n}\n\n.mky-status-connecting{\n    color: black !important;\n    animation:mky-connecting 5s linear infinite;\n    -moz-animation:mky-connecting 5s linear infinite; /* Firefox */\n    -webkit-animation:mky-connecting 5s linear infinite; /* Safari and Chrome */\n    -o-animation:mky-connecting 5s linear infinite; /* Opera */\n\n}\n\n.mky-status-connecting span{\n    color: black !important;\n}\n\n@keyframes mky-connecting{\n    0% 100%  {background-color:yellow;}\n    50%  {background:#FFC107;}\n}\n\n.mky-reconnect-link{\n    color: white;\n    font-weight: bold;\n}\n\n.mky-reconnect-link:hover{\n    color: #83F4FF;\n    cursor: pointer;\n}\n\n.mky-panel-show{\n    position: absolute;\n    top: 66px;\n    left: 0;\n    text-overflow: ellipsis;\n    overflow: hidden;\n    text-align: center;\n    width: calc(100% - 20px);\n    font-weight: bold;\n    padding: 0 10px;\n    background-color: red;\n    -webkit-transition: max-height 2s ease, background-color 0.5s ease;\n    -moz-transition: max-height 2s ease, background-color 0.5s ease;\n    -o-transition: max-height 2s ease, background-color 0.5s ease;\n    transition: max-height 2s ease, background-color 0.5s ease;\n}\n\n.mky-panel-show p{\n    margin: 0.7em 0.5em 0.5em 0.5em;\n}\n\n.mky-panel-height{\n    max-height: 100%;\n}\n\n.mky-panel-height-hide{\n    max-height: 0;\n}\n\n  /* 3.3.- SECTION: Chat timeline\n     ----------------------------- */\n.mky-chat-area{\n  display: flex;\n  flex-direction: column;\n  width: 100%;\n  height: calc(100% - 65px);\n  position: relative;\n  background: #eee;\n}\n\n.mky-chat-timeline-content{\n  background-color: #FAF8F5;\n  display: flex;\n  flex: 1;\n  flex-direction: column;\n  width: 100%;\n  height: calc(100% - 71px);\n  position: relative;\n}\n\n#mky-chat-timeline {\n  flex-direction: column;\n  flex: 1px;\n  width: 100%;\n  position: relative;\n  overflow: auto;\n  overflow-x: hidden;\n  padding-bottom: 12px;\n}\n\n#mky-chat-timeline::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n#mky-chat-timeline::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n#mky-chat-timeline::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-chat-timeline-control{\n  cursor: pointer;\n  bottom: 10px;\n  position: absolute;\n  right: 10px;\n  display: flex;\n  justify-content: center;\n  align-items: center;\n  border-radius: 50%;\n  background-color: white;\n  height: 40px;\n  width: 40px;\n  -webkit-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n  -moz-box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n  box-shadow: 0px 0px 4px 0px rgba(50, 50, 50, 0.44);\n}\n\n.mky-chat-timeline-control i{\n  height: 12px;\n  color: #999;\t\n}\n\n.mky-chat-timeline-conversation{\n    width: 100%;\n    height: 100%;\n    border-top: 1px solid transparent;\n}\n\n.mky-message-line{\n    box-sizing: content-box;\n    width: calc(100% - 70px);\n    height: auto;\n    margin: 0px auto;\n    padding: 5px 0px 4px 0px;\n    clear: both;\n    display: table;\n    max-width: 840px;\n}\n\n.mky-partialsize .mky-message-line{\n    width: calc(100% - 30px);\n    padding: 0 15px 0 15px;\n    margin: 10px 0px;\n}\n\n/* Loading Messages Animation */\n.mky-absolute-circle{\n    position: absolute !important;\n    bottom: 0;\n    left: calc(50% - 23px);\n    background: #F3F3F3;\n    border-radius: 50%;\n    border: solid 6px #F3F3F3;\n}\n\n.mky-loader-ring {\n  position: absolute;\n  top: calc(50% - 50px);\n  left: calc(50% - 50px);\n  width: 100px;\n  height: 100px;\n  z-index: 100000;\n}\n\n.mky-loader-ring .mky-circle {\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  left: 0;\n  top: 0;\n}\n\n.mky-loader-ring .mky-circle:before {\n  content: '';\n  display: block;\n  margin: 0 auto;\n  width: 10%;\n  height: 10%;\n  background-color: #333;\n  border-radius: 100%;\n  -webkit-animation: mky-circleFadeDelay 1.2s infinite ease-in-out both;\n          animation: mky-circleFadeDelay 1.2s infinite ease-in-out both;\n}\n.mky-loader-ring .mky-circle2 {\n  -webkit-transform: rotate(30deg);\n      -ms-transform: rotate(30deg);\n          transform: rotate(30deg);\n}\n.mky-loader-ring .mky-circle3 {\n  -webkit-transform: rotate(60deg);\n      -ms-transform: rotate(60deg);\n          transform: rotate(60deg);\n}\n.mky-loader-ring .mky-circle4 {\n  -webkit-transform: rotate(90deg);\n      -ms-transform: rotate(90deg);\n          transform: rotate(90deg);\n}\n.mky-loader-ring .mky-circle5 {\n  -webkit-transform: rotate(120deg);\n      -ms-transform: rotate(120deg);\n          transform: rotate(120deg);\n}\n.mky-loader-ring .mky-circle6 {\n  -webkit-transform: rotate(150deg);\n      -ms-transform: rotate(150deg);\n          transform: rotate(150deg);\n}\n.mky-loader-ring .mky-circle7 {\n  -webkit-transform: rotate(180deg);\n      -ms-transform: rotate(180deg);\n          transform: rotate(180deg);\n}\n.mky-loader-ring .mky-circle8 {\n  -webkit-transform: rotate(210deg);\n      -ms-transform: rotate(210deg);\n          transform: rotate(210deg);\n}\n.mky-loader-ring .mky-circle9 {\n  -webkit-transform: rotate(240deg);\n      -ms-transform: rotate(240deg);\n          transform: rotate(240deg);\n}\n.mky-loader-ring .mky-circle10 {\n  -webkit-transform: rotate(270deg);\n      -ms-transform: rotate(270deg);\n          transform: rotate(270deg);\n}\n.mky-loader-ring .mky-circle11 {\n  -webkit-transform: rotate(300deg);\n      -ms-transform: rotate(300deg);\n          transform: rotate(300deg);\n}\n.mky-loader-ring .mky-circle12 {\n  -webkit-transform: rotate(330deg);\n      -ms-transform: rotate(330deg);\n          transform: rotate(330deg);\n}\n.mky-loader-ring .mky-circle2:before {\n  -webkit-animation-delay: -1.1s;\n          animation-delay: -1.1s;\n}\n.mky-loader-ring .mky-circle3:before {\n  -webkit-animation-delay: -1s;\n          animation-delay: -1s;\n}\n.mky-loader-ring .mky-circle4:before {\n  -webkit-animation-delay: -0.9s;\n          animation-delay: -0.9s;\n}\n.mky-loader-ring .mky-circle5:before {\n  -webkit-animation-delay: -0.8s;\n          animation-delay: -0.8s;\n}\n.mky-loader-ring .mky-circle6:before {\n  -webkit-animation-delay: -0.7s;\n          animation-delay: -0.7s;\n}\n.mky-loader-ring .mky-circle7:before {\n  -webkit-animation-delay: -0.6s;\n          animation-delay: -0.6s;\n}\n.mky-loader-ring .mky-circle8:before {\n  -webkit-animation-delay: -0.5s;\n          animation-delay: -0.5s;\n}\n.mky-loader-ring .mky-circle9:before {\n  -webkit-animation-delay: -0.4s;\n          animation-delay: -0.4s;\n}\n.mky-loader-ring .mky-circle10:before {\n  -webkit-animation-delay: -0.3s;\n          animation-delay: -0.3s;\n}\n.mky-loader-ring .mky-circle11:before {\n  -webkit-animation-delay: -0.2s;\n          animation-delay: -0.2s;\n}\n.mky-loader-ring .mky-circle12:before {\n  -webkit-animation-delay: -0.1s;\n          animation-delay: -0.1s;\n}\n\n@-webkit-keyframes mky-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n@keyframes mky-circleFadeDelay {\n  0%, 39%, 100% { opacity: 0; }\n  40% { opacity: 1; }\n}\n\n/* System Bubble Panel */\n\n.mky-system-panel{\n  display: inline-table;\n  height: 20px;\n  margin: 10px auto;\n  position: relative;\n  width: calc(100% - 40px);\n  text-align: center;\n  background: none;\n  padding: 8px 20px 5px 20px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  font-size: 13px;\n  color: #6a8d9e;\n  font-family: 'helvetica-light';\n}\n.mky-devider-dots{\n  border-top: 1px dotted #ccc;\n  position: relative;\n  top: 8px;\n  width: 85%;\n  max-width: 840px;\n  margin: 0 auto;\n}\n.mky-system-panel-date{\n  position: relative;\n  width: 130px;\n  margin: 0 auto;\n  background: #FAF8F5;\n}\n\n/* New Messages Panel */\n.mky-messages-panel {\n    display: inline-table;\n    height: 20px;\n    margin: 10px auto;\n    position: relative;\n    width: calc(100% - 40px);\n    text-align: center;\n    background: none;\n    padding: 8px 20px 5px 20px;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    font-size: 13px;\n    color: #6a8d9e;\n    font-family: 'helvetica-normal';\n    border-top: grey;\n    -webkit-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);\n    -moz-box-shadow: 0px -8px 30px 0px rgba(125, 125, 125, 0.75);\n    box-shadow: 0 -15px 15px -15px rgba(125, 125, 125, 0.75);\n}\n\n/* base bubble */\n\n.mky-bubble{\n  border-radius: 15px;\n  box-shadow: 1px 1px 4px -2px #ccc;\n  box-sizing: content-box;\n  line-height: 19px;\n  margin: 0 auto;\n  margin-top: 13px;\n  max-width: 60%;\n  min-width: 42px;\n  min-height: 16px;\n  padding: 12px 12px 9px 12px;\n  position: relative;\n  width: auto;\n  -moz-border-radius: 15px;\n  -moz-box-shadow: 1px 1px 4px -2px #ccc;\n  -webkit-border-radius: 15px;\n  -webkit-box-shadow: 1px 1px 4px -2px #ccc;\n  -webkit-font-smoothing: antialiased;\n}\n\n.mky-bubble-out{\n  \tfloat: right;\n  \tbackground: #505;\n}\n\n.mky-bubble-in{\n  \tfloat: left;\n  \tbackground: #dde;\n}\n\n/* text bubble */\n\n.mky-bubble-text{\n  \ttext-align: left;\n  \tword-wrap: break-word;\n  \tvertical-align: top;\n  \twhite-space: pre-wrap;\n}\n\n.mky-bubble-text-out {\n    color: #fff;\n    min-width: 43px;\n    background: #2c74c6;\n    border-bottom-right-radius: 1px;\n    margin-top: 11px;\n}\n\n.mky-bubble-text-out a:link, .mky-bubble-text-out a:visited {\n  \tcolor: inherit;\n    text-decoration: underline;\n}\n\n.mky-bubble-text-in {\n  \tcolor: #000;\n  \tmin-width: 112px;\n  \tbackground: #fff;\n  \tborder-bottom-left-radius: 1px;\n    border: 1px solid transparent;\n    padding-bottom: 8px;\n    margin-top: 13px;\n    box-shadow: 1px 1px 1px #a7a7a7;\n    -moz-box-shadow: 1px 1px 1px #a7a7a7;\n    -webkit-box-shadow: 1px 1px 1px #a7a7a7;\n    -o-box-shadow: 1px 1px 1px #a7a7a7;\n}\n\n.mky-bubble-text-in a:link, .mky-bubble-text-in a:visited {\n  \tcolor: #1e88e5;\n    text-decoration: underline;\n}\n\n/* image bubble */\n\n.mky-bubble-image{\n  \twidth: auto;\n  \theight: auto;\n  \tmax-width: 260px;\n  \tpadding: 0;\n  \tbackground: #fff;\n  \tborder: 1px solid #f2f2f2;\n}\n\n.mky-bubble-image-out{\n}\n\n.mky-bubble-image-in{\n}\n\n/* audio bubble */\n\n.mky-bubble-audio{\n  \tmin-width: 61px;\n  \twidth: auto;\n  \tmin-height: 16px;\n  \tcolor: #808080;\n  \tpadding: 0px;\n  \tbackground: transparent;\n    box-shadow: none;\n}\n\n.mky-bubble-audio-out {\n}\n\n.mky-bubble-audio-in {\n}\n\n.mky-bubble-audio-play-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n\n.mky-bubble-audio-pause-button{\n  width: 60px;\n  background-position: 50%;\n  background-size: 100%;\n}\n\n.mky-bubble-audio-play-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-play-button.png');\n  background-position: 50%;\n  background-size: 100%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-pause-button-green{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/green-pause-button.png');\n  background-position: 50%;\n  background-size: 100%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-play-button-blue{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-play-button.png');\n  background-position: 50%;\n  background-size: 99%;\n  background-repeat: no-repeat;\n}\n\n.mky-bubble-audio-pause-button-blue{\n  background: url('https://cdn.criptext.com/MonkeyUI/images/blue-pause-button.png');\n  background-position: 50%;\n  background-size: 99%;\n  background-repeat: no-repeat;\n}\n\n/* file bubble */\n\n.mky-bubble-file{\n  background: #fff;\n  border: 1px solid #eee;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n\n\n.mky-bubble-file-out {\n  text-align: right;\n}\n\n.mky-bubble-file-in {\n  text-align: left;\n}\n\n/*contact buble*/\n.mky-bubble-contact{\n  background: #fff;\n  border: 1px solid #eee;\n  color: #606060;\n  max-width: 180px;\n  padding: 10px;\n  width: 200px;\n}\n\n.mky-bubble-contact-out {\n    text-align: right;\n}\n\n.mky-bubble-contact-in {\n    text-align: left;\n}\n\n.mky-contact-name{\n  margin-top: 8px;\n}\n\n.mky-contact-photo{\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n  width: 50px;\n  height: 50px;\n  position: relative;\n  margin-left: 3px;\n}\n\n.mky-contact-photo img{\n  height: 100%;\n  width: 100%;\n  border-radius: 50%;\n}\n\n.mky-contact-detail{\n  width: calc(100% - 68px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-contact-detail span{\n    font-size: 13px;\n    line-height: 15px;\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-content-contact{\n  text-align: left;\n}\n/* location bubble */\n\n.mky-bubble-location{\n    width: 85%;\n    height: auto;\n    max-width: 200px;\n    background: #fff;\n    border: 1px solid #bbb;\n    padding: 6px 10px 6px 10px;\n}\n\n.mky-bubble-location-out{\n  float: right;\n  /* background: #AB3939; */\n  background: #fff;\n  color: #606060;\n  border: 1px solid #bbb;\n}\n\n.mky-bubble-location-in{\n}\n\n/* general details bubble */\n\n.mky-message-detail{\n    width: 100%;\n    height: 12px;\n    position: absolute;\n    top: -12px;\n}\n\n.mky-message-detail span{\n    font-size: 11px;\n    color: #8c8c8c;\n    line-height: 12px;\n    position: relative;\n    top:-1px;\n    margin-right: 2px;\n}\n\n.mky-message-hour{\n    float: right;\n    font-size: 11px !important;\n    top: 1px !important;\n}\n\n.mky-message-user-name{\n    float: left;\n    width: calc(100% - 55px);\n    font-family: Verdana, Arial, Helvetica, sans-serif;\n    white-space: nowrap;\n    overflow: hidden;\n    text-overflow: ellipsis;\n    text-align: left;\n}\n\n.mky-message-option{\n  display: none;\n  height: 40px;\n  position: absolute;\n  right: 0;\n  top: 0;\n  width: 40px;\n}\n\n.mky-bubble:hover .mky-message-option{\n  display: block;\n}\n\n.mky-bubble-out .mky-message-option{\n  background: #2c74c6; /* For browsers that do not support gradients */\n  background: -moz-linear-gradient(45deg, rgba(44, 116, 198,0) 0%, rgb(44, 116, 198) 99%); \n  background: -webkit-linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); \n  background: linear-gradient(45deg, rgba(44, 116, 198,0) 0%,rgb(44, 116, 198) 99%); \n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00096eff', endColorstr='#1e5799',GradientType=1 );\n  border-top-right-radius: 15px;\n}\n\n.mky-bubble-in .mky-message-option, .mky-bubble-file .mky-message-option, .mky-bubble-contact .mky-message-option{\n  background: #096EFF; /* For browsers that do not support gradients */\n  background: -webkit-linear-gradient(right top, #fff 50%, transparent); /* For Safari 5.1 to 6.0 */\n  background: -o-linear-gradient(bottom left, #fff 50%, transparent); /* For Opera 11.1 to 12.0 */\n  background: -moz-linear-gradient(bottom left, #fff 50%, transparent); /* For Firefox 3.6 to 15 */\n  background: linear-gradient(to bottom left, #fff 50%, transparent); /* Standard syntax */\n  border-top-right-radius: 15px;\n  border-bottom-right-radius: 15px;\n}\n\n.mky-bubble-image .mky-message-option{\n  background: none;\n}\n\n.mky-bubble-audio .mky-message-option{\n  background: none;\n}\n\n.mky-message-option-plus{\n  border-radius: 50%;\n  height: 15px;\n  position: absolute;\n  right: 8px;\n  top: 5px;\t\n  width: 15px;\n}\n\n.mky-bubble-out .mky-message-option-plus{\n  background-color: #fff\n}\n\n.mky-bubble-in .mky-message-option-plus, .mky-bubble-file .mky-message-option-plus, .mky-bubble-audio .mky-message-option-plus, .mky-bubble-contact .mky-message-option-plus{\n  background-color: #000\n}\n\n.mky-message-option-plus i{\n  display: block;\n  font-size: 8px;\n  line-height: 5px;\n  position: absolute;\n  right: 3px;\n  top: 4px;\n}\n\n.mky-bubble-out .mky-message-option-plus i{\n  color: #096EFF\n}\n\n.mky-bubble-in .mky-message-option-plus i, .mky-bubble-file .mky-message-option-plus i, .mky-bubble-audio .mky-message-option-plus i, .mky-bubble-contact .mky-message-option-plus i{\n  color: #fff\n}\n\n.mky-bubble-out .mky-message-detail{\n  right: 0;\n  text-align: right;\n}\n\n.mky-bubble-in .mky-message-detail{\n  right: 0;\n  text-align: right;\n}\n\n.mky-button-message-unsend{\n  position: absolute;\n  color: blue;\n  font-size: 12px;\n  top: 1px;\n  font-weight: bold;\n  right: 6px;\n  z-index: 1;\n  width: 15px;\n  height: 15px;\n  opacity: 0;\n  cursor: pointer;\n}\n\n.mky-button-message-unsend:hover{\n  opacity: 1;\n}\n\n.mky-message-status{\n  font-size: 10px;\n  display: block;\n  width: 12px;\n  float: right;\n  margin: 1px;\n  margin-left: 5px;\n  margin-top: -1px;\n  margin-right: -1px;\n}\n\n.mky-message-status i{\n    float: right;\n}\n\n.mky-status-load {\n    font-size: 10px;\n    text-indent: -9999em;\n    width: 10px;\n    height: 10px;\n    border-radius: 5px;\n    background: #0178FF;\n    background: -moz-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -webkit-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -o-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: -ms-linear-gradient(left, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    background: linear-gradient(to right, #0178FF 10%, rgba(255, 255, 255, 0) 42%);\n    -webkit-animation: load3 1.4s infinite linear;\n    animation: load3 1.4s infinite linear;\n    -webkit-transform: translateZ(0);\n    -ms-transform: translateZ(0);\n    transform: translateZ(0);\n}\n\n.mky-status-load:before {\n  width: 5px;\n  height: 5px;\n  background: #0178FF;\n  border-radius: 10px 0 0 0;\n  position: absolute;\n  top: 0;\n  left: 0;\n  content: '';\n}\n\n.mky-status-load:after {\n  background: #fff;\n  width: 7px;\n  height: 7px;\n  border-radius: 5px;\n  content: '';\n  margin: auto;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n\n.mky-check{\n  font-size: 10px;\n  font-weight: bold;\n}\n\n.mky-status-sent{\n  color: #bbbbbb;\n}\n\n.mky-status-read{\n  color: #096EFF;\n}\n\n.mky-message-line .mky-bubble-private{\n  cursor: pointer;\n  color: #0178FF;\n}\n\n.mky-message-content-timer{\n  position: absolute;\n  right: 0;\n}\n\n.mky-message-content-timer i, .mky-message-timer{\n  font-size: 10px;\n  color: #8c8c8c;\n}\n\n/* content text bubble */\n\n.mky-content-text{\n  font-size: 14px;\n  word-break: break-word\n}\n\n/* content audio bubble */\n\n.mky-content-audio{\n\twidth: 100px;\n\theight: 112px;\n}\n\n.mky-content-audio-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n  top: 30px;\n  float: none;\n}\n\n.mky-double-bounce1, .mky-double-bounce2 {\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  background-color: #2c74c6;\n  opacity: 0.7;\n  position: absolute;\n  top: 0;\n  left: 0;\n\n  -webkit-animation: sk-bounce 2.0s infinite ease-in-out;\n  animation: sk-bounce 2.0s infinite ease-in-out;\n}\n\n.mky-double-bounce2 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n@-webkit-keyframes sk-bounce {\n  0%, 100% { -webkit-transform: scale(0.0) }\n  50% { -webkit-transform: scale(1.0) }\n}\n\n@keyframes sk-bounce {\n  0%, 100% {\n    transform: scale(0.0);\n    -webkit-transform: scale(0.0);\n  } 50% {\n    transform: scale(1.0);\n    -webkit-transform: scale(1.0);\n  }\n}\n\n.mky-content-audio-to-download{\n  height: 100%;\n  align-items: center;\n  display: flex;\n  position: relative;\n  border: 1px solid #bbb;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n}\n\n/*\n.mky-content-audio-to-download::before{\n  content: '';\n  opacity: 0.5;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/green-play-button.png);\n  background-size: 70%;\n  background-repeat: no-repeat;\n  background-position: center 25px;\n  position: absolute;\n  top: 0;\n  left: 0;\n  bottom: 0;\n  right: 0;\n}\n*/\n\n.mky-content-audio-to-download i{\n  margin: 0 auto;\n  color: #6e8191;\n}\n\n.mky-bubble-audio-out .mky-content-audio{\n\tfloat: right;\n}\n\n.mky-bubble-audio-in .mky-content-audio{\n\tfloat: left;\n}\n\n/*content image bubble */\n\n.mky-content-image{\n  height: 250px;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n}\n\n.mky-content-image-loading{\n  width: 40px;\n  height: 40px;\n  margin: 0 80px;\n  position: relative;\n}\n\n.mky-content-image-to-download{\n  margin: 0 auto;\n  text-align: center;\n  width: 200px;\n}\n\n.mky-content-image-to-download i{\n  color: #6e8191;\n}\n\n.mky-content-image-data {\n  height: 100%;\n  align-items: center;\n  display: flex;\n  -webkit-border-radius: 14px;\n  -moz-border-radius: 14px;\n  border-radius: 14px;\n  overflow: hidden;\n  justify-content: center;\n}\n\n.mky-content-image-data img{\n  height: 250px;\n  width: auto;\n  cursor: pointer;\n\n  transform-origin: top left;\n  /* IE 10+, Firefox, etc. */\n  -webkit-transform-origin: top left;\n  /* Chrome */\n  -ms-transform-origin: top left;\n  /* IE 9 */\n}\n\n.mky-content-image-data-staic img{\n  height: auto;\n}\n\n/*Classes to rotate bubble */\n\n.mky-content-image-data.rotate90,\n.mky-content-image-data.rotate270 {\n  height: auto;\n  width: 250px;\n}\n\n.mky-content-image-data.rotate90 img {\n  transform: rotate(90deg) translateY(-100%);\n  -webkit-transform: rotate(90deg) translateY(-100%);\n  -ms-transform: rotate(90deg) translateY(-100%);\n}\n.mky-content-image-data.rotate180 img {\n  transform: rotate(180deg) translate(-100%, -100%);\n  -webkit-transform: rotate(180deg) translate(-100%, -100%);\n  -ms-transform: rotate(180deg) translateX(-100%, -100%);\n}\n.mky-content-image-data.rotate270 img {\n  transform: rotate(270deg) translateX(-100%);\n  -webkit-transform: rotate(270deg) translateX(-100%);\n  -ms-transform: rotate(270deg) translateX(-100%);\n}\n\n/*content file bubble */\n\n.mky-content-file{\n  text-align: left;\n}\n\n.mky-content-file-loading{\n  width: 40px;\n  height: 40px;\n  margin: 5px auto;\n  position: relative;\n}\n\n.mky-content-file-to-download{\n  align-items: center;\n  display: flex;\n  height: 45px;\n  margin: 0 auto;\n  text-align: center;\n  height: 45px;\n}\n\n.mky-file-link{\n  width: 100%;\n  height: 100%;\n  float: left;\n}\n\n.mky-file-icon{\n  width: 38px;\n  height: 43px;\n  margin-top: 6px;\n  background-repeat: no-repeat;\n  background-size: 100%;\n  vertical-align: top;\n  float: left;\n}\n\n.mky-file-download{\n    margin-top: 6px;\n    background-repeat: no-repeat;\n    background-size: 100%;\n    vertical-align: top;\n    float: left;\n    width: 40px;\n    height: 40px;\n    position: relative;\n    margin-bottom: 3px;\n}\n\n.mky-file-pdf-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/pdf-icon.png);\n}\n\n.mky-file-doc-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/doc-icon.png);\n}\n\n.mky-file-xls-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/xls-icon.png);\n}\n\n.mky-file-ppt-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ppt-icon.png);\n}\n\n.mky-img-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n\n.mky-file-ext-icon{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/ext-icon.png);\n}\n\n.mky-file-detail{\n  width: calc(100% - 48px);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  float: right;\n  vertical-align: top;\n  color: #606060;\n}\n\n.mky-file-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-file-name{\n  margin-top: 10px;\n}\n\n.mky-file-size{\n  margin-top: 4px;\n}\n\n.mky-file-detail span{\n  font-size: 13px;\n  line-height: 15px;\n}\n\n.mky-file-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-icon-define{\n  width: 15px;\n  height: 15px;\n  margin-right: 10px;\n  display: inline-table;\n  background-repeat: no-repeat;\n  background-size: 100%;\n}\n\n/*\n.mky-icon-image{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/img-icon.png);\n}\n*/\n\n.mky-icon-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/audio-icon.png);\n}\n\n.mky-icon-file-define{\n  width: 15px;\n  height: 20px;\n  margin-right: 10px;\n  display: inline-table;\n}\n\n/*content location bubble */\n\n.mky-content-location{\n    text-align: left;\n}\n\n.mky-location-link{\n    width: 100%;\n    height: 100%;\n    float: left;\n}\n\n.mky-location-link img{\n    width: 100%;\n    min-width: 82px;\n}\n\n.mky-location-detail{\n  position: absolute;\n  width: calc(100% - 20px);\n  min-width: 82px;\n  height: 50%;\n  top: 25%;\n  background-color: rgba(212, 212, 212, 0.76);\n  overflow: hidden;\n  text-overflow: ellipsis;\n  color: #606060;\n  text-align: center;\n}\n\n.mky-location-detail div{\n  display: flex;\n  width: 100%;\n}\n\n.mky-location-name{\n  margin-top: 0px; */\n  height: 100%;\n}\n\n.mky-location-detail span{\n  font-size: 13px;\n  padding-top: calc(19% - 7px);\n}\n\n.mky-location-name span{\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n}\n\n.mky-message-code{\n  display: none;\n}\n\n.mky-bubble-audio-out .mky-status-load:after { /* to audio bubble */\n  background: #ffffff;\n}\n\n@-webkit-keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n@keyframes load3 {\n  0% {\n    -webkit-transform: rotate(0deg);\n    transform: rotate(0deg);\n  }\n  100% {\n    -webkit-transform: rotate(360deg);\n    transform: rotate(360deg);\n  }\n}\n\n.mky-bubble-image-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-private-in {\n  text-align: left;\n  margin: 0 auto;\n  color: #606060;\n  width: auto;\n  min-width: 112px;\n  min-height: 16px;\n  padding: 12px;\n  background: #f6f7f9;\n  -webkit-border-radius: 7px;\n  -moz-border-radius: 7px;\n  border-radius: 7px;\n  float: left;\n}\n\n.mky-bubble-audio-button{\n  position: absolute;\n  margin: 25px 22px 0 22px;\n  z-index: 0;\n  height: 60px;\n  display: none;\n}\n\n.mky-bubble-audio-button:hover{\n  cursor: pointer;\n}\n\n.mky-bubble-audio-timer{\n    text-align: center;\n    font-size: 12px;\n    top: -10px;\n}\n\n  /* 3.3.- SECTION: Preview\n     ----------------------------- */\n\n#mky-preview-image{\n  /*display: none;*/\n  width: 100%;\n  height: calc(100% - 136px);\n  background: #fff;\n  z-index: 9;\n  position: absolute;\n}\n\n.mky-preview-head{\n  position: relative;\n  color: #fff;\n  height: 35px;\n  background: #000;\n  vertical-align: top;\n}\n\n.mky-preview-head div{\n  margin: 10px 20px;\n}\n\n.mky-preview-title{\n  float: left;\n  top: 0;\n}\n\n.mky-preview-close{\n  float: right;\n  top: 0;\n  cursor: pointer;\n}\n\n.mky-preview-container{\n  position: relative;\n  height: calc(100% - 35px);\n  text-align: center;\n}\n\n#mky-preview-image-pic{\n  margin: 0 auto;\n  width: 100%;\n  height: auto;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n  /* 3.3.- SECTION: Chat inputs\n     ----------------------------- */\n\n#mky-chat-input{\n  box-sizing: content-box;\n  height: auto;\n  margin: 0 auto;\n  bottom: 0;\n  text-align: center;\n  line-height: 20px;\n  position: relative;\n  display: table;\n  background: #FAF8F5;\n  width: 100%;\n  z-index: 0;\n}\n\n#mky-chat-inner-input{\n  background: #fff;\n  border: 1px solid rgba(219,219,219,0.7);\n  max-height: 70px;\n  height: auto;\n  border-radius: 8px;\n  -moz-border-radius: 8px;\n  width: calc(100% - 30px);\n  margin: 3px auto 10px;\n  -webkit-border-radius: 8px;\n}\n\n.mky-partialsize #mky-chat-inner-input{\n  width: calc(100% - 20px);\n}\n\n.mky-inner-chat-input{\n  align-items: center;\n  display: flex;\n  flex-direction: row;\n  height: 100%;\n  justify-content: center;\n  margin: 0 auto;\n}\n\n.mky-fullsize #mky-chat-input{\n}\n\n.mky-partialsize #mky-chat-input{\n  /*border: 1px solid #E0E0E0;*/\n  width: 100%;\n  border: none;\n}\n\n.mky-partialsize .mky-textarea-input{\n  width: calc(100% - 110px);\n  margin-left: 0;\n  margin-right: 0;\n}\n\n#mky-divider-chat-input{\n  border: none;\n}\n\n.mky-partialsize #mky-divider-chat-input{\n  display: none;\n}\n\n.mky-chat-input-file #mky-divider-chat-input{\n  position: absolute;\n  bottom: 17px;\n  border-bottom: 1px solid #2979ff;\n  width: calc(100% - 60px);\n  left: 30px;\n}\n\n.mky-button-input{\n  width: 33px;\n  height: auto;\n  display: inline-table;\n  vertical-align: top;\n  position: relative;\n}\n\n.mky-partialsize .mky-button-input{\n  top: 0px;\n}\n\n.mky-button-icon{\n  background-size: contain;\n  border: 0 none;\n  cursor: pointer;\n  display: flex;\n  justify-content: center;\n  margin: 0;\n  padding: 0;\n  background-color: transparent;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.mky-button-input .mky-icon-drawer{\n  background: none;\n  color: #0692df;\n  font-size: 32px;\n  width: auto;\n  height: auto;\n}\n\n.mky-button-input .mky-icon-trashcan{\n  background: none;\n  color: red;\n  padding: 0px 0px;\n  font-size: 20px;\n}\n\n.mky-button-input .mky-icon-mic{\n  background: none;\n  color: #0692df;\n  font-size: 28px;\n  width: 28px;\n}\n\n.mky-button-input .mky-icon-send{\n  background: none;\n  color: #0692df;\n  padding: 0px 0px;\n  font-size: 20px;\n  cursor: pointer;\n}\n\n.tooltip{\n  visibility: hidden;\n  background-color: black;\n  color: #fff;\n  text-align: center;\n  border-radius: 6px;\n  padding: 5px 0;\n  /* Position the tooltip */\n  position: absolute;\n  z-index: 1;\n}\n\n.mky-button-input .tooltip{\n  font-size: 12px;\n  left: -190px;\n  line-height: 12px;\n  top: -24px;\n  width: 235px;\n}\n\n.mky-button-input:hover .mky-disabled .tooltip {\n    visibility: visible;\n}\n\n#mky-button-send-audio{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-blue.png);\n  height: 16px;\n}\n\n#mky-button-send-audio:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/send-hover.png);\n}\n\n.mky-button-input .mky-icon-trashcan:hover,\n.mky-button-input .mky-icon-mic:hover,\n.mky-button-input .mky-icon-send:hover{\n  background: none;\n}\n\n#mky-button-send-ephemeral{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-gray.png);\n  height: 18px;\n  margin-left: 10px;\n}\n\n#mky-button-send-ephemeral.enable_timer{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-blue.png);\n}\n\n#mky-button-send-ephemeral.enable_timer:hover{\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/timer-hover.png);\n}\n\n.mky-textarea-input{\n  background: #fff;\n  border: none;\n  box-sizing: content-box;\n  color: #000;\n  height: auto;\n  line-height: 17px;\n  margin: 8px 5px 8px 5px;\n  padding: 8px 10px 6px 10px;\n  resize: none;\n  outline: 0;\n  font-size: 14px;\n  position: relative;\n  font-family: Verdana, Arial, Helvetica, sans-serif !important;\n  top: initial;\n  max-height: 40px;\n  border-radius: 0;\n  border-left: 1px solid rgba(219,219,219,0.7);\n  -webkit-box-shadow: none;\n  -moz-box-shadow: none;\n  -webkit-border-radius: 0;\n  letter-spacing: 0px;\n  font-style: normal;\n  width: calc(100% - 114px);\n}\n\n.mky-textarea-input:focus{\n  border-left: 1px solid #ccc;\n  box-shadow: none;\n}\n\n.mky-chat-input-file .mky-textarea-input{\n  height: 20px;\n  padding-top: 5px;\n}\n\n.mky-textarea-input::-webkit-input-placeholder{\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input:-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input::-moz-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-textarea-input:-ms-input-placeholder {\n  color:    #ccc;\n  padding-top: 0px;\n  font-size: 15px;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  text-transform: initial;\n}\n\n.mky-record-area{\n  box-sizing: content-box;\n  width: calc(100% - 111px);\n  height: 33px;\n  padding: 5px;\n  margin: 2px 9px;\n  background: #ffffff;\n}\n\n.mky-appear{\n  display: inline-table;\n}\n\n.mky-disappear{\n  display: none;\n}\n\n.mky-record-preview-area{\n  float: left;\n  margin-top: 10px;\n  text-align: center;\n  width: 97%;\n}\n\n.mky-blink {\n  animation-name: parpadeo;\n  animation-duration: 1s;\n  animation-timing-function: linear;\n  animation-iteration-count: infinite;\n\n  -webkit-animation-name:parpadeo;\n  -webkit-animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n  -webkit-animation-iteration-count: infinite;\n}\n\n@-moz-keyframes parpadeo{\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n@-webkit-keyframes parpadeo {\n  0% { opacity: 1.0; }\n  50% { opacity: 0.0; }\n   100% { opacity: 1.0; }\n}\n\n@keyframes parpadeo {\n  0% { opacity: 1.0; }\n   50% { opacity: 0.0; }\n  100% { opacity: 1.0; }\n}\n\n#mky-button-action-record{\n  width: auto;\n  height: auto;\n  /*position: absolute;*/\n  /*float: left;*/\n  /*margin-left: 20px;*/\n  margin: 0 auto;\n  display: inline;\n}\n\n#mky-button-action-record button{\n  width: 13px;\n  height: 13px;\n  display: inline-block;\n  border: 0 none;\n  cursor: pointer;\n  background-size: 100%;\n  margin: 0;\n  padding: 0;\n}\n\n#mky-button-start-record{\n  color: transparent;\n  border: 1px solid;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/rec.png);\n  background-size: 10px 10px !important;\n  background-repeat: no-repeat;\n  background-position: 0% 50%;\n  background-color: transparent;\n  position: relative;\n  top: -3px;\n  padding: 5px;\n}\n\n#mky-time-recorder{\n  display: inline-table;\n  vertical-align: top;\n  width: 80px;\n  /*margin-top: 3px;*/\n  /*margin-left: 25px;*/\n  margin: 0 auto;\n}\n\n#mky-time-recorder span{\n  font-size: 24px;\n  color: #666;\n}\n\n.jFiler{\n  position: absolute;\n}\n\n.jFiler-items.jFiler-row{\n  display: none;\n}\n\n.mky-chat-drop-zone{\n  margin-left: -19px;\n  opacity: 0.1;\n  position: absolute;\n  bottom: 0;\n  position: fixed;\n  width: 100%;\n  height: 100%;\n  display: none;\n  z-index: 10;\n}\n\n.jFiler-input-dragDrop{\n  \tposition: absolute;\n    width: 99%;\n    height: calc(100% - 136px);\n    margin: 0;\n  \tz-index: 2;\n  \topacity: 0.8;\n  \tdisplay: none;\n    color: #97A1A8;\n    background: #fff;\n    border: 2px dashed #C8CBCE;\n    text-align: center;\n    padding: 0;\n    transform: scale(0.98);\n}\n\n.mky-partialsize .jFiler-input-dragDrop{\n\tleft: -2px;\n    transform: scale(0.965);\n}\n\n.jFiler-input-inner{\n\tposition: relative;\n\ttop: 50%;\n\ttransform:translateY(-50%);\n\t-moz-transform:translateY(-50%);\n\t-webkit-transform:translateY(-50%);\n}\n\n.mky-signature {\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n}\n\n.mky-signature-logo{\n    display: none;\n    width: calc(100% - 40px);\n    text-align: right;\n    color: #BCBCBC;\n    font-size: 11px;\n    position: absolute;\n    margin: 0 20px;\n    line-height: 12px;\n    bottom: 5px;\n    right: 0;\n    opacity: 0.4;\n}\n\n.mky-partialsize .mky-signature{\n\tbottom: 2px;\n}\n\n.mky-signature-link{\n  color: #42A5F5;\n  text-alignt-decoration-line: dotted;\n}\n\n.mky-signature-link img{\n  height: 15px;\n  margin-right: 5px;\n  margin-bottom: -3px;\n  opacity: 0.4;\n}\n\n#mky-menu-attach-icon,\n#mky-menu-attach-file{\n  font-size: 31px;\n  width: 100%;\n  text-align: center;\n  padding: 11px 0px 11px 0px;\n  margin: 0;\n  margin-top: 12px;\n  color: #096EFF;\n  opacity: 0.8;\n  display: inline;\n}\n\n#mky-menu-attach-icon:hover,\n#mky-menu-attach-file:hover{\n  opacity: 1;\n}\n\n#mky-menu-attach-icon span, #mky-menu-location-icon span{\n  font-family: helvetica;\n}\n\n/* input location */\n\n.testing-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon-0.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.testing-location:hover{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/target-icon.png);\n  background-size: 50%;\n  background-repeat: no-repeat;\n  background-position: center;\n}\n\n.quit-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  top: 80px;\n  margin-left: 15px;\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/trash-icon.png); */\n\tbackground-image: none;\n  background-size: 30%;\n  background-repeat: no-repeat;\n  background-position: center;\n   color: red;\n}\n\n.send-location{\n  height: 50px;\n  width: 50px;\n  background-color: white;\n  z-index: 3000;\n  position: absolute;\n  bottom: 50px;\n  right: 15px;\n  /* margin-left: 15px; */\n  cursor: pointer;\n  border-radius: 25px;\n/*   background-image: url(../images/send-icon.png); */\n\tbackground-image: none;\n  background-size: 60%;\n  background-repeat: no-repeat;\n  background-position: center;\n  color: #005FFF;\n}\n\n.send-location i,.quit-location i{\n  padding: 12px 10px;\n}\n\n.pin-location{\n  height: 50px;\n  width: 46px;\n  background-image: url(https://cdn.criptext.com/MonkeyUI/images/mapPin.png);\n  background-size: 100%;\n  background-repeat: no-repeat;\n  z-index: 3500;\n  position: relative;\n  margin-left: 15px;\n  cursor: pointer;\n  top: -50%;\n  margin-top: -38px;\n  left: 50%;\n  margin-left: -11px;\n  opacity: 0.5;\n}\n\n/* menu input */\n\n.mky-menu-bubble{\n  position: absolute;\n  width: 350px;\n  bottom: 69px;\n  border: none;\n  border-radius: 0;\n  height: 85px;\n  color: #8a8a8a;\n  left: 0;\n  top: initial;\n  z-index: -1;\n  max-width: 880px;\n  margin-left: 10px;\n  -webkit-transition: all 0.4s ease-in;\n  -moz-transition: all 0.4s ease-in;\n  -ms-transition: all 0.4s ease-in;\n  -o-transition: all 0.4s ease-in;\n}\n\n.mky-menu-bubble-show{\n  opacity: 1;\n  -webkit-transform: none;\n  transform: none;\n}\n\n.mky-menu-bubble-hide{\n  opacity: 0;\n  -webkit-transform: translate3d(0, 100%, 0);\n  transform: translate3d(0, 100%, 0);\n  pointer-events: none;\n}\n\n.mky-menu-bubble.fadeInUp, .mky-menu-bubble.fadeOutDown{\n  -webkit-animation-duration: 0.4s;\n  -moz-animation-duration: 0.4s;\n  animation-duration: 0.4s;\n}\n\n.mky-partialsize .mky-menu-bubble{\n  z-index: 0;\n}\n\n.mky-menu-bubble:before{\n  content: none;\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 40px;\n  top: 45px;\n  border: 10px solid;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble:after {\n  content: ' ';\n  position: absolute;\n  width: 0;\n  height: 0;\n  left: 38px;\n  top: 100px;\n  border-color: #292929 transparent transparent #292929;\n}\n\n.mky-menu-bubble-item{\n  display: inline-block;\n  height: 100%;\n  overflow: hidden;\n  text-align: left;\n  cursor: pointer;\n  width: 175px;\n  float: left;\n  opacity: 1;\n}\n\n.mky-menu-bubble-item i{\n  /*display: inline-block;*/\n}\n\n.mky-menu-bubble-item:first-child{\n  /*border-right: 1px solid #ccc;*/\n}\n\n.mky-menu-bubble-item:hover{\n  /*background: #F0f4fc;*/\n  /*color: #8a8a8a;*/\n  opacity: 0.9;\n  -webkit-transition: all 0.2s ease-in-out;\n  -moz-transition: all 0.2s ease-in-out;\n  -ms-transition: all 0.2s ease-in-out;\n  -o-transition: all 0.2s ease-in-out;\n}\n\n.mky-menu-bubble-item p{\n\tmargin: 12px auto;\n\twidth: 70%;\n\tfloat: left;\n}\n\n.mky-menu-bubble-item img{\n  height: 60%;\n  float: left;\n  top: 20%;\n  position: relative;\n}\n\n.mky-bubble-circle-icon{\n  background: #FFFFFF;\n  /* width: 60px; */\n  /* height: 60px; */\n  border-radius: 50%;\n  display: inline-block;\n  text-align: center;\n  padding: 19px 19px 12px 19px;\n  box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -moz-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -webkit-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  -o-box-shadow: 0px 0px 9px -1px #B7B7B7;\n  margin: 7px;\n}\n.mky-bubble-title{\n  display: inline-block;\n  position: relative;\n  bottom: 10px;\n  padding: 11px 19px 8px 19px;\n  margin-left: -15px;\n  background: #1496E7;\n  color: #fff;\n  border-top-right-radius: 18px;\n  border-bottom-right-radius: 19px;\n  z-index: -1;\n  font-size: 14px;\n}\n\n#mky-layer-menu{\n  position: fixed;\n  height: 100%;\n  top: 0px;\n  left: 0px;\n  width: 100%;\n  z-index: -1;\n}\n\n#map-id{\n  overflow: visible !important;\n}\n\n.hidden-div{\n  display: none !important;\n}\n\n.mky-spinner-input-audio {\n  margin: 0 auto;\n  width: 16px;\n  height: 25px;\n  text-align: center;\n  font-size: 10px;\n  padding-top: 6px;\n}\n\n.mky-spinner-input-audio > div {\n  background-color: #0692df;\n  height: 100%;\n  width: 3px;\n  display: inline-block;\n  margin: 0 1px 0 0;\n\n  -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;\n  animation: sk-stretchdelay 1.2s infinite ease-in-out;\n}\n\n.mky-spinner-input-audio .mky-rect2 {\n  -webkit-animation-delay: -1.1s;\n  animation-delay: -1.1s;\n}\n\n.mky-spinner-input-audio .mky-rect3 {\n  -webkit-animation-delay: -1.0s;\n  animation-delay: -1.0s;\n}\n\n.mky-spinner-input-audio .mky-rect4 {\n  -webkit-animation-delay: -0.9s;\n  animation-delay: -0.9s;\n}\n\n@-webkit-keyframes sk-stretchdelay {\n  0%, 40%, 100% { -webkit-transform: scaleY(0.4) }\n  20% { -webkit-transform: scaleY(1.0) }\n}\n\n@keyframes sk-stretchdelay {\n  0%, 40%, 100% {\n    transform: scaleY(0.4);\n    -webkit-transform: scaleY(0.4);\n  }  20% {\n    transform: scaleY(1.0);\n    -webkit-transform: scaleY(1.0);\n  }\n}\n\n  /* 3.4.- BANNER\n     ----------------------------- */\n\n.mky-banner-section{\n  width: 400px;\n  height: 100%;\n  display: inline-block;\n  vertical-align: top;\n}\n\n.mky-banner-section img{\n  width: 100%;\n}\n\n.mnk-converstion-divided{\n  width: calc(100% - 401px);\n  position: relative;\n  display: inline-block;\n}\n\naside.aside-divided{\n  width: calc(22% - 1px);\n}\n\n.mky-app-intro-divided{\n  display: inline-block;\n  position: relative !important;\n  width: calc(100% - 401px) !important;\n}\n\n.mky-content-window-with.content-window-with-divided{\n  width: 78%;\n}\n\n@media only screen and (max-width: 1135px){\n\n  .mky-banner-section{\n    width: 250px;\n  }\n  \n  .mnk-converstion-divided{\n    width: calc(100% - 251px);\n  }\n  \n  .mky-content-window-with.content-window-with-divided{\n    width: calc(100% - 241px);\n  }\n}\n@media only screen and (max-width: 740px){\n  .mky-banner-section{\n    display: none;\n  }\n  \n  .mnk-converstion-divided{\n    width: 100%;\n  }\n}\n\n  /* 3.5.- ASIDE INFO\n     ----------------------------- */\n\n.mky-content-info{\n  height: 100%;\n}\n\n.mky-content-info-expand{\n  width: 100%;\n}\n\n.mky-content-info-no-expand{\n  border-left: 1px solid #E8E8E8;\n  float: left;\n  width: calc(35% - 1px);\n}\n\n.mky-info-header{\n  background: #eee;\n  position: relative;\n  z-index: 1;\n}\n\n.mky-info-header div{\n  vertical-align: top;\n}\n\n.mky-info-close{\n  float: left;\n  margin: 26px 12px 0 15px;\n  width: auto;\n  cursor: pointer;\n}\n\n.mky-info-close i{\n  color: #535353;\n  font-size: 12px;\n}\n\n.mky-info-header-description{\n    width: calc(100% - 125px);\n    height: calc(100% - 18px);\n    float: left;\n    padding-top: 18px;\n}\n\n.mky-info-header-title{\n  font-family: 'helvetica';\n  font-size: 16px;\n  color: #353535;\n  display: block;\n  text-align: left;\n  line-height: 16px;  \n  margin-top: 8px;\n}\n\n.mky-info-header-subtitle{\n  display: block;\n  text-align: left;\n  color: #a2a2a2;\n  line-height: 16px;  \n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n}\n\n.mky-info-container{\n    width: 100%;\n    height: calc(100% - 65px);\n    position: relative;\n    display: flex;\n    flex-direction: column;\n    background-color: white;\n    overflow: auto;\n}\n\n.mky-info-container::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-info-container::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-info-container::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n  /* 3.5.1.- INFO: conversation\n     ----------------------------- */\n     \n.mky-info-conversation{\n  width: 100%;\n  height: 100%;\n  position: relative;\t\n}\n\n.mky-info-conversation-image{\n  flex: none;\n  width: 150px;\n  height: 150px;\n  margin: 25px auto 10px auto;\n}\n\n.mky-info-conversation-image img{\n  width: 100%;\n  height: 100%;\n  border-radius: 50%;\n  margin: 0 auto;\n}\n\n.mky-info-conversation-description{\n  flex: none;\n  margin: 8px auto;\n  border: 1px solid #EFEFEF;\n  border-radius: 10px;\n  width: 88%;\n}\n\n.mky-info-conversation-header{\n  border-bottom: 1px solid #EFEFEF;\n  flex: none;\n}\n\n.mky-info-conversation-data .mky-info-conversation-header{\n  border: none;\n}\n\n.mky-info-conversation-title{\n  color: #a5a5a5;\n  float: left;\n  font-family: 'helvetica-normal', helvetica;\n  font-size: 14px;\n  font-weight: 100;\n  line-height: 1;\n  margin: 0;\n  padding: 10px;\n  text-align: left;\n  width: calc(100% - 95px);\n}\n\n.mky-info-conversation-action{\n  display: flex;\n  width: 100%;\n}\n\ninput.mky-info-input{\n  background: none;\n  border: none;\n  box-shadow: none;\n  font-family: 'helvetica-light', Helvetica, sans-serif;\n  font-size: 16px;\n  float: left;\n  color: black;\n  margin: 0 0 5px 10px;\n  padding: 1px;\n  text-overflow: ellipsis;\n  width: calc(100% - 45px);\n}\n\n.mky-info-input:focus{\n  outline-width: 0;\n  border: none !important;\n  box-shadow: none;\n  border-bottom: 1px solid #CECECE !important;\n}\n\n.mky-info-conversation-action i{\n  cursor: pointer;\n  float: right;\n  font-size: 16px;\n  margin-right: 8px;\n}\n\n.mky-info-conversation-action i:hover{\n  color : #0077C1;\n}\n\n.mky-info-conversation-container{\n  overflow: auto;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar-track{\n  -webkit-box-shadow: inset 0 0 6px rgba(200,200,200,0.3);\n  background-color: #F5F5F5;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar{\n  width: 6px;\n  background-color: #F5F5F5;\n}\n\n.mky-info-conversation-container::-webkit-scrollbar-thumb{\n  background-color: #C5C5C5;\n}\n\n.mky-info-conversation-members{\n  display: flex;\n  position: relative;\n  flex: 0 1 auto;\n  flex-direction: column;\n  min-height: 154px;\n}\n\n.mky-info-conversation-amount{\n  color: #8297a2;\n  float: right;\n  font-family: 'helvetica-light', helvetica;\n  font-size: 14px;\n  line-height: 17px;\n  margin: 10px;\n}\n\n.mky-info-conversation-list{\n  list-style: none;\n  margin: 0;\n  padding: 0px;\n}\n\nul.mky-info-conversation-list li.mky-info-conversation-member{\n  border: none;\n  box-sizing: content-box;\n  height: 48px;\n  width: 100%;\n  clear: both;\n  position: relative;\n  padding: 5px 0;\n  -webkit-box-sizing: content-box;\n}\n\n.mky-info-conversation-member:after {\n    content: '';\n    width: calc(100% - 60px);\n    height: 1px;\n    background: #EFEFEF;\n    position: absolute;\n    bottom: 0;\n    left: 60px;\n}\n\n.mky-info-conversation-member img{\n  box-sizing: content-box;\n  height: 36px;\n  width: 36px;\n  float: left;\n  border-radius: 50%;\n  padding: 5px;\n  margin-left: 10px;\n  -webkit-box-sizing: content-box;\n}\n\n.mky-info-member-description{\n  float: left;\n  overflow: hidden;\n  height: 35px;\n  padding: 8px 5px 0px 5px;\n  text-align: left;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n  width: calc(100% - 70px);\n  -webkit-box-sizing: content-box;\n  box-sizing: content-box;\n}\n\n.mky-info-member-detail{\n  display: -webkit-box;\n  display: -webkit-flex; \n  display: -ms-flexbox;\n  display: flex;\n  font-family: helvetica;\n  font-size: 14px;\n  font-weight: 400;\n  -ms-flex-direction: row;\n  flex-direction: row; \n  -webkit-box-orient: horizontal;\n  -webkit-box-direction: normal;\n  -webkit-flex-direction: row;\n  -ms-flex-direction: row;\n  flex-direction: row;\n  width: 100%;\n}\n\n.mky-info-member-name{\n  color: #000;\n  -webkit-box-flex: 1;\n  -webkit-flex-grow: 1;\n  -ms-flex-positive: 1;\n  flex-grow: 1;\n  line-height: 18px;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  white-space: nowrap;\n}\n\n.mky-info-member-rol{\n  color: #8ac34a;\n  flex: none;\n  line-height: 18px;\n  -webkit-box-flex: 0;\n  -webkit-flex: none;\n  -ms-flex: none;\n}\n\n.mky-info-member-status{\n  color: #a5a5a5;\n  font-family: 'helvetica';\n  font-size: 14px;\n  margin-top: 2px;\n}\n\n.mky-info-member-online{\n  color: #8ac34a;\n}\n\n.mky-info-member-actions{\n  position: absolute;\n  right: 12px;\n  top: 35px;\n  cursor: pointer;\n}\n\n.mky-info-member-actions i{\n  color: #b1b1b1;\n}\n\n.mky-info-button{\n  cursor: pointer;\n  display: flex;\n  margin: 8px auto;\n  height: 50px;\n  background: #ee5350;\n  border: none;\n  border-radius: 8px;\n  color: white;\n  font-weight: bold;\n  flex: none;\n  justify-content: center;\n  position: relative;\n  width: 88%;\n}\n\n.mky-info-button-text{\n  display: block;\n  font-family: 'helvetica-light';\n  font-size: 15px;\n  padding: 4px 4px 0 0;\n  text-shadow: 2px 2px #bd5353;\n  text-transform: uppercase;\n  text-align: center;\n  width: 100%\n}\n\n.mky-info-button i{\n  font-size: 28px;\n  position: absolute;\n  right: 10px;\n  top: 10px;\n  width: 28px;\n}\n\n.mky-info-actions{\n  animation-name: actionMenu;\n  animation-duration: 0.5s;\n  position: fixed;\n  max-height: 150px;\n  width: 200px;\n  z-index: 1000;\n  background-color: white;\n  -webkit-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);\n  -moz-box-shadow: 0px 0px 30px 0px rgba(50, 50, 50, 0.75);\n  box-shadow: 0px 0px 10px 0px rgba(50, 50, 50, 0.75);\n  border-radius: 3px;\n  max-width: 85%;\n  overflow: auto;\n}\n\n.mky-info-actions::-webkit-scrollbar { width: 0 !important }\n.mky-info-actions{ -ms-overflow-style: none; }\n.mky-info-actions{ overflow: -moz-scrollbars-none; }\n\n@keyframes actionMenu{\n    0%   {max-height: 0;}\n    100% {max-height: 150px;}\n}\n\n.mky-info-action{\n  color: #000;\n  cursor: pointer;\n  padding: 10px 20px;\n}\n\n.mky-info-action:hover{\n    background-color: #EEEEEE;\n}\n\n.mky-info-actions-back{\n    position: fixed;\n    left: 0px;\n    top: 0px;\n    width: 100%;\n    height: 100%;\n    z-index: 2;\n}\n\n.mky-content-info .mky-space{\n  padding-top: 10px;\n}\n\n/* 3.5.2.- INFO: messages\n     ----------------------------- */\n\n.mky-info-header-message{\n  width: calc(100% - 55px);\n  height: calc(100% - 18px);\n  float: left;\n  padding-top: 18px;\n}\n\n.mky-info-message-container{\n  flex: none;\n  margin: 25px 0;\n}\n\n.mky-message-option-item{\n  padding: 15px 20px;\n  cursor: pointer;\n  white-space: nowrap;\n}\n\n.mky-message-option-item:hover{\n  background-color: #ededed;\n}\n\n.mky-message-info-desc{\n    float: left;\n    overflow: hidden;\n    height: 35px;\n    padding: 8px 5px 0px 5px;\n    text-align: left;\n    text-overflow: ellipsis;\n    white-space: nowrap;\n    width: calc(100% - 120px);\n    -webkit-box-sizing: content-box;\n    box-sizing: content-box;\n    max-width: 150px;\n}\n\n.mky-message-read-check{\n  font-size: 20px;\n  display: block;\n  width: 20px;\n  float: right;\n  margin: 1px;\n  padding: 12px 20px 0px 5px;\n}\n\n.mky-info-message-title{\n  font-family: 'helvetica';\n  font-size: 16px;\n  color: #353535;\n  display: block;\n  text-align: left;\n  line-height: 16px;  \n}\n\n.mky-info-message-subtitle{\n  display: block;\n  text-align: left;\n  color: #a2a2a2;\n  line-height: 16px;  \n  font-size: 12px;\n  white-space: nowrap;\n  overflow: hidden;\n  text-overflow: ellipsis;\n  width: 80%;\n  margin-top: 4px;\n}\n\n/* 3.6.- RECONNECT\n   ----------------------------- */\n   \n.mky-content-overlay{\n  bottom: 0;\n  height: calc(100% - 65px);\n  position: absolute;\n  width: 100%;\n}\n  \n/* 4.- MODAL\n   ----------------------------- */\n\n#mky-button-exit {\n    width: 30px;\n    height: 30px;\n    border-radius: 100px;\n    background: none;\n    margin: 3px 7px 3px 3px;\n    color: #fff;\n    border: none;\n    font-size: 16px;\n    right: 0px;\n    float: right;\n    position: absolute;\n    z-index: 6000;\n    background-color: black;\n    cursor: pointer;\n}\n\n.mky-viewer-image-container{\n  height: 100%;\n}\n\n.mky-viewer-content{\n  width: 100%;\n  height: 100%;\n  position: absolute;\n  top: 0;\n  background-color: rgba(0,0,0,0.8);\n  z-index: 1;\n}\n\n.mky-viewer-toolbar{\n  width: 100%;\n  height: 36px;\n  background-color: rgba(0,0,0,0.3);\n}\n\n.mky-viewer-toolbar button, .mky-button-modal{\n  display: inline-table;\n  float: right;\n  cursor: pointer;\n  border: 0 none;\n  color: #fff;\n  font-size: 13px;\n  margin-top: 5px;\n}\n\n.mky-viewer-back-close {\n  position: absolute;\n  top: 36px;\n  width: 100%;\n  height: calc(100% - 36px);\n}\n\n.mky-button-download{\n  width: 100px;\n  padding: 5px 0px 6px 5px;\n  background-color: #0b6dd4;\n  border-radius: 4px;\n  font-size: 15px;\n  text-align: center;\n  outline: none;\n  font-family: Verdana, Arial, Helvetica, sans-serif;\n  margin: 3px 5px;\n}\n\n.mky-button-download[title=\"Download\"]{\n  margin-right: 50px;\n}\n\n.mky-viewer-image{\n  text-align: center;\n  height: calc(100% - 40px);\n\n}\n\n.mky-viewer-timer .mky-message-timer{\n  font-size: 15px;\n  color: #fff;\n}\n\n.mky-brand-app{\n/*\n  background-image: url(../images/criptext_signature_white.png);\n  width: 140px;\n  height: 42px;\n  bottom: 15px;\n  right: 15px;\n  position: absolute;\n  background-size: 100%;\n*/\n}\n\n.mky-viewer-image img{\n  max-height: 680px;\n  max-width: 80%;\n  position: relative;\n  top: 50%;\n  transform: translateY(-50%);\n}\n\n.mky-viewer-image.rotate90 img {\n  transform: rotate(90deg);\n  -webkit-transform: rotate(90deg);\n  -ms-transform: rotate(90deg);\n  top:0;\n}\n.mky-viewer-image.rotate180 img {\n  transform: rotate(180deg);\n  -webkit-transform: rotate(180deg);\n  -ms-transform: rotate(180deg) ;\n  top:0;\n}\n.mky-viewer-image.rotate270 img {\n  transform: rotate(270deg);\n  -webkit-transform: rotate(270deg);\n  -ms-transform: rotate(270deg);\n  top:0;\n}\n\n/* 5.- POP UP\n   ----------------------------- */\n\n.mky-inner-modal{\n  max-width: 400px;\n  height: 200px;\n  background: white;\n  margin: auto;\n  top: 38%;\n  position: relative;\n  z-index: 200;\n  -webkit-border-radius: 5px;\n  -moz-border-radius: 5px;\n  border-radius: 5px;\n  width: 90%;\n}\n\n.mky-popup-message{\n  color: black;\n  height: 20%;\n  text-align: center;\n  padding-top: 45px;\n  margin: 0 5%;\n  position: relative;\n  width: 90%;\n}\n\n.mky-popup-buttons{\n  margin-top: 30px;\n  text-align: center;\n}\n\n.mky-popup-button{\n  cursor: pointer;\n  height: 25px;\n  width: auto;\n  margin: 0 10px;\n  background: white;\n  border-style: none;\n  color: #2196f3;\n  font-size: 12px;\n  font-weight: bold;\n}\n\n  /* 5.1.- OUTSIDE DIVS\n    -------------------------------*/\n\n  .mky-out-message-options{\n    animation-name: actionMenu2;\n    animation-duration: 0.5s;\n    font-size: 14px;\n    font-family: helvetica-light, Helvetica, sans-serif;\n    position: fixed;\n    max-height: 200px;\n    max-width: 200px;\n    background-color: white;\n    -webkit-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    -moz-box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    box-shadow: 0px 0px 11px 0px rgba(178, 178, 178, 0.39);\n    z-index: 2;\n    padding: 5px 0px;\n    border-radius: 3px;\n    overflow: auto;\n  }\n\n  .mky-out-options-back{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    z-index: 1;\n  }\n\n  @keyframes actionMenu2{\n      0%   {max-height: 0; max-width: 0;}\n      100% {max-height: 200px; max-width: 200px;}\n  }\n\n  .mky-out-message-options::-webkit-scrollbar { width: 0 !important }\n  .mky-out-message-options{ -ms-overflow-style: none; }\n\n\n\n/* 6.- GLOBAL SETTINGS\n   ----------------------------- */\n\n.mky-wrapper-out button:focus {\n  outline:0;\n}\n\ninput[type=text] {\n  -webkit-transition: all 0.15s ease-in-out;\n  -moz-transition: all 0.15s ease-in-out;\n  -ms-transition: all 0.15s ease-in-out;\n  -o-transition: all 0.15s ease-in-out;\n  outline: none;\n}\n\ninput:focus{\n  box-shadow: 0 0 5px rgba(81, 203, 238, 1);\n  border: 1px solid rgba(81, 203, 238, 1) !important;\n}\n\n.mky-wrapper-out audio{\n  width: 250px;\n}\n\n.mky-button-standard {\n  border: 0px;\n  border-radius: 2px;\n  color: white;\n  cursor: pointer;\n  height: 25px;\n  padding: 2px 10px 3px 10px;\n}\n\n.mky-button-standard:focus {\n  border: none !important;\n  box-shadow: none;\n  outline:0;\n}\n\n.preview-input{\n  position: relative;\n  height: auto;\n}\n\n.preview-actions{\n  border-bottom: 1px solid #035cf4;\n  width: 80%;\n  margin: 0 auto;\n  line-height: 0px;\n}\n\n#message-image-input{\n  height: 25px;\n  padding: 5px;\n  width: 88%;\n  margin: 0px;\n  margin-top: 10px;\n  border-radius: 10px;\n  resize: none;\n  border: 1px solid #fff;\n  outline: 0;\n  font-size: 15px;\n}\n\n/*OVERWRITING ANIMATION TIMES*/\n.animated.zoomIn,\n.animated.slideInLeft {\n  animation-duration: 0.3s;\n  animation-delay: 0s;\n}\n.animated.pulse{\n  animation-duration: 0.5s;\n}\n.mky-wrapper-out.animated.pulse{\n  animation-duration: 0.5s;\n  animation-iteration-count: initial;\n  -webkit-animation-iteration-count: initial;\n  -moz-animation-iteration-count: initial;\n}\n/*END ANIMATION TIMES*/\n\n.mky-generic-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n    background-color: rgba(0,0,0,0.5);\n    z-index: 100;\n}\n\n.mky-back-modal{\n    width: 100%;\n    height: 100%;\n    position: fixed;\n    top: 0;\n    left: 0;\n}\n\n.mky-dflex-dcolumn{\n  display: flex;\n  flex-direction : column\n}\n\n/* 7.- MEDIA QUERIES\n   ----------------------------- */\n\n  /* ----- Minimun Size On Web ----- */\n\n/*\n@media only screen and (max-width: 900px){\n  .mky-wrapper-out section{\n    width: calc(100% - 242px);\n  }\n  .mky-fullsize .mky-wrapper-in{\n    min-width: 400px;\n  }\n}\n*/\n\n@media only screen and (max-width: 900px){\n\n  /* Disappear content conversation */\n  .mky-content-window-with .mky-content-conversation-no-expand{\n\tdisplay: none;\n  }\n  \n  /* Expand content info */\n  .mky-content-window-with .mky-content-info-no-expand{\n\twidth: 100%;\n  }\n  .mky-menu-bubble{\n    margin-left: 20px;\n  }\n}\n\n@media only screen and (max-width: 600px){\n\n  /* Disappear description user session */\n  .mky-no-expand .mky-session-name{\n\t  display: none;\n  }\n}\n\n@media only screen and (max-width: 500px){\n  /* Expand width */\n  .mky-wrapper-in{\n    width: 100%;\n/*     min-width: 400px; */\n  }\n\n  /* strech search */\n  .mky-search-input{\n  \tpadding: 10px 5px;\n  }\n\n  /* Center image conversation*/\n  .mky-conversation-image{\n    display: inherit;\n    float: none;\n    margin: 8px auto;\n  }\n\n  /* Disappear description conversation */\n  .mky-conversation-description{\n    display: none;\n  }\n}\n\n@media only screen and (max-width: 300px) {\n  /* Disappear list conversation*/\n  .mky-content-window-with{\n    width: 100%;\n  }\n\n  .mky-content-aside{\n    display: none;\n  }\n}\n\n@media only screen and (max-height: 500px){\n  /* Expand height */\n  .mky-wrapper-in{\n    height: 100%;\n    margin: 0 auto;\n  }\n}\n\n  /* ----- Mobiles ----- */\n\n@media screen and (min-device-width: 320px) and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 1) {\n\t/* Expand screen */\n\t.mky-fullsize .mky-wrapper-in{\n    \twidth: 100%;\n\t\theight: 100%;\n\t\tmargin: 0 auto;\n\t}\n\n\t/* Disappear list conversation */\n\t.mky-content-window-with{\n    \twidth: 100%;\n\t}\n\n\t.mky-content-aside{\n    \tdisplay: none;\n\t}\n\t\n\t/* Input */\n\t.mky-textarea-input{\n\t  width: calc(100% - 109px);\n\t}\n\t\n\t.mky-record-area{\n\t  width: calc(100% - 106px);\n\t}\n\n\t/* Messages */\n\t.mky-bubble-text-out{\n\t    min-width: 47px;\n\t}\n\n\t/* Signature */\n\t.mky-signature{\n\t\ttop: 50px;\n\t\tz-index: 1;\n\t}\n}\n\n@media screen and (-webkit-min-device-pixel-ratio: 1) and (max-device-width: 640px) and (min-device-width: 320px){\n  .mky-content-aside{\n    display: block !important;\n    width: 100%;\n  }\n  .mky-conversation-description{\n    display: inline-block;\n  }\n  .mky-conversation-image{\n    margin: 0;\n    float: left;\n  }\n  .mky-message-line{\n      max-width: 100%;\n      word-break: break-all;\n  }\n  .mky-conversation-selected-description{\n    width: calc(100% - 165px);\n  }\n  .mky-signature{\n    margin-right: 9px;\n  }\n  .mky-conversation-selected-header .mky-signature{\n    font-size: 10px;\n  }\n}\n\n/* ----------- Non-Retina Screens ----------- */\n/*@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 1) {\n}*/\n\n/* ----------- Retina Screens ----------- */\n@media screen\n  and (min-device-width: 1200px)\n  and (max-device-width: 1600px)\n  and (-webkit-min-device-pixel-ratio: 2)\n  and (min-resolution: 192dpi) {\n}\n\n/*------------------------------\n  NEW DESIGN FOR \"HABLA\"\n------------------------------*/\n\n/*\n.mky-chat-inner-timeline, .mky-chat-inner-input{\n  max-width: 890px;\n  margin: 0 auto;\n}\n*/", ""]);
 
 	// exports
 
