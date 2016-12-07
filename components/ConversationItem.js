@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import Badge from './Badge.js'
 import { defineTime, defineTimeByToday } from '../utils/monkey-utils.js'
+import Lang from '../lang'
 
 class ConversationItem extends Component {
 	constructor(props, context) {
@@ -68,7 +69,7 @@ class ConversationItem extends Component {
 										? this.props.conversation.messages[this.props.conversation.lastMessage].preview
 										: '' }</span>
 									)
-									: <span className='mky-ellipsify'>Click to open conversation</span>
+									: <span className='mky-ellipsify'>{Lang[this.context.lang]['conversation.lastmessage.emptypreview']}</span>
 							}
 						</div>
 					</div>
@@ -141,7 +142,8 @@ class ConversationItem extends Component {
 }
 
 ConversationItem.contextTypes = {
-    userSession: React.PropTypes.object.isRequired
+    userSession: React.PropTypes.object.isRequired,
+    lang: React.PropTypes.string.isRequired
 }
 
 export default ConversationItem;
