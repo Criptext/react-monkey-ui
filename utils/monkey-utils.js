@@ -72,3 +72,53 @@ export const getExtention = (filename) => {
     extension = extension.toLowerCase();
     return extension;
 }
+
+export const getCombineColor = (rgb) => {
+	let colors = rgb.match(/[0-9]+/g);
+	let red = parseInt(colors[0], 10);
+	let green = parseInt(colors[1], 10);
+	let blue = parseInt(colors[2], 10);
+	
+	const uRed = red / 255
+	const uGreen = green / 255
+	const uBlue = blue / 255
+	const max = Math.max(uRed, uGreen, uBlue)
+	const min = Math.min(uRed, uGreen, uBlue)
+	let hue
+	let saturation
+	let lightness = (max + min) / 2
+	
+	if (max == min) {
+    	hue = 0
+    	saturation = 0
+	} else {
+    	const delta = max - min
+    	saturation = lightness > 0.5 ?
+    	delta / (2 - max - min) :
+    	delta / (max + min)
+    
+    	let tmpHue
+    	switch (max) {
+    		case uRed: tmpHue = (uGreen - uBlue) / delta + (uGreen < uBlue ? 6 : 0); break;
+    		case uGreen: tmpHue = (uBlue - uRed) / delta + 2; break;
+    		case uBlue: tmpHue = (uRed - uGreen) / delta + 4; break;
+    	}
+    	hue = (tmpHue / 6) * 360;
+		saturation = saturation * 100;
+		
+		let lightBackground = !!Math.round(
+            (
+                red + // red
+                green + // green
+                blue // blue
+            ) / 765 // 255 * 3, so that we avg, then normalise to 1
+        );
+        if (lightBackground) {
+            lightness = lightness - 0.3;
+        } else {
+	        lightness = lightness + 0.3;
+        }
+		lightness = lightness * 100;
+	}
+	return 'hsl('+hue+','+saturation+'%,'+lightness+'%)';
+}

@@ -10,10 +10,6 @@ class BubbleFile extends Component {
 		this.firstLoad = false;
 	}
 
-	componentWillMount() {
-
-	}
-
 	componentWillReceiveProps(nextProps){
 		if(!this.props.message.data && nextProps.message.data){
 			this.firstLoad = true;

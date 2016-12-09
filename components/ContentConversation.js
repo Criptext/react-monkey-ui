@@ -6,7 +6,7 @@ import Modal from './Modal.js'
 import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
 import ContentReconnect from './ContentReconnect'
-import { defineTime, defineTimeByToday, defineTimeByDay, isConversationGroup } from '../utils/monkey-utils.js'
+import { defineTime, defineTimeByDay, getCombineColor } from '../utils/monkey-utils.js'
 import Lang from '../lang'
 
 const Modal_ = Modal(ContentViewer);
@@ -44,7 +44,7 @@ class ContentConversation extends Component {
 	}
 
 	render() {
-
+		let styleHeader = this.defineStyles();
 		if(this.props.showAsideInfo){
 			if(this.props.compactView || this.props.viewType != 'fullscreen'){
 				this.classExpand = 'mky-disappear';
@@ -68,19 +68,19 @@ class ContentConversation extends Component {
 		
 		return (
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
-				<header className='mky-conversation-selected-header'>
+				<header className='mky-conversation-selected-header' style={styleHeader.header}>
 					{ this.props.compactView && this.props.haveConversations
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back'></i></div>
 						: null
 					}
 					<div className='mky-conversation-selected-image' onClick={this.handleToggleConversationHeader}><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-selected-description' onClick={this.handleToggleConversationHeader}>
-						<span className='mky-conversation-selected-name mky-ellipsify'>{this.props.conversationSelected.name}</span>
+						<span className='mky-conversation-selected-name mky-ellipsify' style={styleHeader.title}>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description != null
-							? <span className='mky-conversation-selected-status'>{this.props.conversationSelected.description}</span>
+							? <span className='mky-conversation-selected-status' style={styleHeader.subtitle}>{this.props.conversationSelected.description}</span>
 							: ( !this.props.conversationSelected.online
-								? <span className='mky-conversation-selected-status'> {Lang[this.context.lang]['status.lastseen'] +' ' + defineTimeByDay(this.props.conversationSelected.lastSeen)}</span>
-								: <span className='mky-conversation-selected-status'>{Lang[this.context.lang]['status.online']}</span>
+								? <span className='mky-conversation-selected-status' style={styleHeader.subtitle}> {Lang[this.context.lang]['status.lastseen'] +' ' + defineTimeByDay(this.props.conversationSelected.lastSeen)}</span>
+								: <span className='mky-conversation-selected-status' style={styleHeader.subtitle}>{Lang[this.context.lang]['status.online']}</span>
 							)
 						}
 					</div>
@@ -89,13 +89,13 @@ class ContentConversation extends Component {
 						: null
 					}
 					{ this.props.viewType == 'rightside'
-						? <div className='mky-conversation-header-exit' onClick={this.closeSide}><i className='icon mky-icon-minimize'></i></div>
+						? <div className='mky-conversation-header-exit' onClick={this.closeSide} style={styleHeader.title}><i className='icon mky-icon-minimize'></i></div>
 						: null
 					}
 					<div className='mky-signature'>
 						{ this.props.version
 							? <span><a className='mky-signature-link' target='_blank' href='http://criptext.com/'><img src='https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png'></img></a>{this.props.version}</span>
-							: <span>Powered by <a className='mky-signature-link' target='_blank' href='http://criptext.com/'>Criptext</a></span>
+							: <span style={styleHeader.title}>Powered by <a className='mky-signature-link' style={styleHeader.subtitle} target='_blank' href='http://criptext.com/'>Criptext</a></span>
 						}
 					</div>
 					
@@ -132,6 +132,26 @@ class ContentConversation extends Component {
 		)
 	}
 	
+	defineStyles() {
+		let style = {
+			header: {},
+			title: {},
+			subtitle: {}
+		};
+		if(this.context.styles){
+			if(this.context.styles.toggleColor){
+				style.header.background = this.context.styles.toggleColor;	
+				style.subtitle.color = getCombineColor(this.context.styles.toggleColor);
+				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
+			}
+			if(this.context.styles.tabTextColor){
+				style.title.color = this.context.styles.tabTextColor
+			}
+		}
+		
+		return style;
+	}
+
 	handleErrorAvatar() {
 		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
@@ -186,7 +206,8 @@ class ContentConversation extends Component {
 ContentConversation.contextTypes = {
 	bubblePreviews: React.PropTypes.object.isRequired,
 	options: React.PropTypes.object.isRequired,
-	lang: React.PropTypes.string.isRequired
+	lang: React.PropTypes.string.isRequired,
+	styles: React.PropTypes.object.isRequired
 }
 
 export default ContentConversation;

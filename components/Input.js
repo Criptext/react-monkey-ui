@@ -179,9 +179,6 @@ class Input extends Component {
 		this.focusTextarea();
 	}
 
-	componentDidUpdate() {
-	}
-
 	focusTextarea(){
         if( (this.props.connectionStatus == null || this.props.connectionStatus == 3) && this.state.showTextArea){
 			this.domNode = ReactDOM.findDOMNode(this.refs.textareaInput);
@@ -333,7 +330,7 @@ class Input extends Component {
     handleSendMessage(){
     	switch (this.typeMessageToSend) {
             case 0:
-     			let text = this.state.text.trim();
+    			let text = this.state.text.trim();
 				if(text){
 					this.textMessageInput(text);
 				}
@@ -342,7 +339,7 @@ class Input extends Component {
 					showAudioButton: true,
 					showSendButton: false
 				});
-     			break;
+    			break;
             case 1:
             	if (this.mediaRecorder) {
                     this.mediaRecorder.stop(); //detiene la grabacion del audio
