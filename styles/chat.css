@@ -386,13 +386,14 @@ TABLE OF CONTENTS
 .mky-button{
   background-color: #FBA920;
   border-radius: 50%;
+  bottom: 20px;
+  cursor: pointer;
   margin-top: 12px;
   text-align: center;
   width: 48px;
   height: 48px;
   background-size: 48px 48px;
   position: absolute;
-  bottom: 20px;
   right: 20px;
 }
 
@@ -3353,22 +3354,31 @@ aside.aside-divided{
 }
 
 .mky-info-close{
-  float: left;
-  margin: 26px 12px 0 15px;
-  width: auto;
+  color: #535353;
   cursor: pointer;
+  float: left;
+  margin: 21px 12px 0 15px;
+  width: auto;
 }
 
 .mky-info-close i{
-  color: #535353;
+  display: block;
   font-size: 12px;
 }
 
+.mky-info-close .mky-icon-close{
+  margin-top: 6px;
+}
+
+.mky-info-close .mky-icon-back{
+  font-size: 24px;
+}
+
 .mky-info-header-description{
-    width: calc(100% - 125px);
-    height: calc(100% - 18px);
-    float: left;
-    padding-top: 18px;
+  width: calc(100% - 125px);
+  height: calc(100% - 18px);
+  float: left;
+  padding-top: 18px;
 }
 
 .mky-info-header-title{

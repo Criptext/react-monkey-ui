@@ -35,12 +35,18 @@ class AsideConversationInfo extends Component {
 	}
 
 	render() {
+		let styleHeader = this.defineStyles();
     	return (
 			<div className='mky-info-conversation'>
-				<header className='mky-info-header'>
-					<div className='mky-info-close' onClick={ () => {this.props.toggleConversationHeader('conversation')} }><i className='icon mky-icon-close'></i></div>
+				<header className='mky-info-header' style={styleHeader.header}>
+					<div className='mky-info-close' style={styleHeader.title} onClick={ () => {this.props.toggleConversationHeader('conversation')} }>
+						{ this.props.compactView
+							? <i className='icon mky-icon-back'></i>
+							: <i className='icon mky-icon-close'></i>
+						}
+					</div>
 					<div className='mky-info-header-description'>
-						<span className='mky-info-header-title mky-ellipsify'>{this.objectInfo.title ? this.objectInfo.title : Lang[this.context.lang]['title.information']}</span>
+						<span className='mky-info-header-title mky-ellipsify' style={styleHeader.title}>{this.objectInfo.title ? this.objectInfo.title : Lang[this.context.lang]['title.information']}</span>
 						<span className='mky-info-header-subtitle'></span>
 					</div>
 				</header>
@@ -102,7 +108,25 @@ class AsideConversationInfo extends Component {
         	domNode.focus();
 		}
 	}
-
+	
+	defineStyles() {
+		let style = {
+			header: {},
+			title: {}
+		};
+		if(this.context.styles){
+			if(this.context.styles.toggleColor){
+				style.header.background = this.context.styles.toggleColor;	
+				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
+			}
+			if(this.context.styles.tabTextColor){
+				style.title.color = this.context.styles.tabTextColor
+			}
+		}
+		
+		return style;
+	}
+	
 	renderList(items, actions){
 		var itemList = [];
 
@@ -147,7 +171,8 @@ class AsideConversationInfo extends Component {
 }
 
 AsideConversationInfo.contextTypes = {
-    lang: React.PropTypes.string.isRequired
+    lang: React.PropTypes.string.isRequired,
+    styles: React.PropTypes.object.isRequired
 }
 
 export default AsideConversationInfo;

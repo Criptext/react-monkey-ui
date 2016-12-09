@@ -23,6 +23,7 @@ class ContentInfo extends Component {
 						case 'conversation': {
 							return (
 								<AsideConversationInfo toggleConversationHeader = {this.props.toggleConversationHeader}
+									compactView = {this.props.compactView}
 									conversationSelected = {this.props.conversationSelected}
 									getConversationInfo = {this.props.getConversationInfo}/>
 							)
@@ -30,6 +31,7 @@ class ContentInfo extends Component {
 						case 'message' : {
 							return (
 								<AsideMessageInfo toggleConversationHeader = {this.props.toggleConversationHeader}
+									compactView = {this.props.compactView}
 									messageSelectedInfo = {this.props.messageSelectedInfo}
 									dataDownloadRequest = {this.props.dataDownloadRequest}
 		    						getUser = {this.props.getUser}/>
