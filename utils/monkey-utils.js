@@ -122,3 +122,54 @@ export const getCombineColor = (rgb) => {
 	}
 	return 'hsl('+hue+','+saturation+'%,'+lightness+'%)';
 }
+
+export const getContrastColorObject = (rgb) => {
+	let colors = rgb.match(/[0-9]+/g);
+	let red = parseInt(colors[0], 10);
+	let green = parseInt(colors[1], 10);
+	let blue = parseInt(colors[2], 10);
+	
+	const uRed = red / 255
+	const uGreen = green / 255
+	const uBlue = blue / 255
+	const max = Math.max(uRed, uGreen, uBlue)
+	const min = Math.min(uRed, uGreen, uBlue)
+	let hue
+	let saturation
+	let lightness = (max + min) / 2
+	
+	let result = {};
+	if (max == min) {
+    	hue = 0
+    	saturation = 0
+	} else {
+    	const delta = max - min
+    	saturation = lightness > 0.5 ?
+    	delta / (2 - max - min) :
+    	delta / (max + min)
+    
+    	let tmpHue
+    	switch (max) {
+    		case uRed: tmpHue = (uGreen - uBlue) / delta + (uGreen < uBlue ? 6 : 0); break;
+    		case uGreen: tmpHue = (uBlue - uRed) / delta + 2; break;
+    		case uBlue: tmpHue = (uRed - uGreen) / delta + 4; break;
+    	}
+    	hue = (tmpHue / 6);
+		
+		let lightBackground = !!Math.round(
+            (
+                red + // red
+                green + // green
+                blue // blue
+            ) / 765 // 255 * 3, so that we avg, then normalise to 1
+        );
+        if (lightBackground) {
+			result.backgroundColor = 'rgba(140, 140, 140, 0.1)';
+			result.border = '1px rgba(140, 140, 140, 0.2) solid';
+        } else {
+			result.backgroundColor = 'rgba(250, 250, 250, 0.1)';
+			result.border = '1px rgba(250, 250, 250, 0.2) solid';
+        }
+	}
+	return result;
+}
