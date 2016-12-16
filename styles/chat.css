@@ -1166,12 +1166,20 @@ TABLE OF CONTENTS
   -ms-flex: none;
 }
 
-.mky-conversation-header-exit{
+.mky-conversation-header-options{
   color: #6e8191;
   cursor: pointer;
   display: inline-table;
   font-size: 20px;
   margin: 12px 15px 0 8px;
+}
+
+.mky-conversation-header-options div{
+  background: rgba(140, 140, 140, 0.1);
+  border: 1px rgba(140, 140, 140, 0.2) solid;
+  border-radius: 10px;
+  height: 20px;
+  width: 20px;
 }
 
 #mky-conversation-selected-members{
