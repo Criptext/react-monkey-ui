@@ -3990,15 +3990,16 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
 }
 
 .mky-popup-button{
+  color: #2196f3;
   cursor: pointer;
   height: 25px;
   width: auto;
   margin: 0 10px;
   background: white;
   border-style: none;
-  color: #2196f3;
   font-size: 12px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
   /* 5.1.- OUTSIDE DIVS
