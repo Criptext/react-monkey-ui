@@ -469,9 +469,8 @@ TABLE OF CONTENTS
 }
 
 .mky-session-image img{
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
+  border-radius: 50%;
+  width: 100%;
 }
 
 .mky-session-description{
@@ -710,7 +709,9 @@ TABLE OF CONTENTS
      ----------------------------- */
 .mky-content-conversation-list{
   display: flex;
+  display: -ms-flexbox;
   flex-direction: column;
+  -ms-flex-direction: row;
   overflow: auto;
 }
 
@@ -4141,7 +4142,9 @@ input:focus{
 
 .mky-dflex-dcolumn{
   display: flex;
-  flex-direction : column
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 /* 7.- MEDIA QUERIES
