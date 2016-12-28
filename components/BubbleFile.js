@@ -45,9 +45,24 @@ class BubbleFile extends Component {
 	componentDidUpdate(){
 		if(this.firstLoad){
 			this.firstLoad = false;
-			let link = ReactDOM.findDOMNode(this.refs.downloadLink);
-			if(link){
-				link.click();
+
+			var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+				ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+				ieEDGE = navigator.userAgent.match(/Edge/g),
+				ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
+
+			if (ie && ieVer<10) {
+				return console.log("No blobs on IE ver<10");
+			}else if(ieVer>-1){
+				let link = ReactDOM.findDOMNode(this.refs.downloadLink);
+				if(link){
+					window.navigator.msSaveBlob(this.props.message.data, this.props.message.filename);
+				}
+			}else{
+				let link = ReactDOM.findDOMNode(this.refs.downloadLink);
+				if(link){
+					link.click();
+				}
 			}
 		}
 	}
@@ -62,6 +77,21 @@ class BubbleFile extends Component {
 			if(!this.props.message.isDownloading){
 				this.props.dataDownloadRequest(this.props.message.mokMessage);
 			}
+			return
+		}
+
+		var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+				ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+				ieEDGE = navigator.userAgent.match(/Edge/g),
+				ieVer=(ie ? ie[1] : (ie11 ? 11 : (ieEDGE ? 12 : -1)));
+
+		if (ie && ieVer<10) {
+			console.log("No blobs on IE ver<10");
+			event.preventDefault();
+			return;
+		}else if(ieVer>-1){
+			event.preventDefault();
+			window.navigator.msSaveBlob(this.props.message.data, this.props.message.filename);
 		}
 	}
 
