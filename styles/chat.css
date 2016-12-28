@@ -469,9 +469,8 @@ TABLE OF CONTENTS
 }
 
 .mky-session-image img{
-	width: 100%;
-	height: 100%;
-	border-radius: 50%;
+  border-radius: 50%;
+  width: 100%;
 }
 
 .mky-session-description{
@@ -710,7 +709,9 @@ TABLE OF CONTENTS
      ----------------------------- */
 .mky-content-conversation-list{
   display: flex;
+  display: -ms-flexbox;
   flex-direction: column;
+  -ms-flex-direction: row;
   overflow: auto;
 }
 
@@ -1177,7 +1178,7 @@ TABLE OF CONTENTS
 .mky-conversation-header-options div{
   background: rgba(140, 140, 140, 0.1);
   border: 1px rgba(140, 140, 140, 0.2) solid;
-  border-radius: 10px;
+  border-radius: 50%;
   height: 20px;
   width: 20px;
 }
@@ -3990,15 +3991,16 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
 }
 
 .mky-popup-button{
+  color: #2196f3;
   cursor: pointer;
   height: 25px;
   width: auto;
   margin: 0 10px;
   background: white;
   border-style: none;
-  color: #2196f3;
   font-size: 12px;
   font-weight: bold;
+  text-transform: uppercase;
 }
 
   /* 5.1.- OUTSIDE DIVS
@@ -4140,7 +4142,9 @@ input:focus{
 
 .mky-dflex-dcolumn{
   display: flex;
-  flex-direction : column
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
 }
 
 /* 7.- MEDIA QUERIES
