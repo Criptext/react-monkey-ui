@@ -1178,7 +1178,7 @@ TABLE OF CONTENTS
 .mky-conversation-header-options div{
   background: rgba(140, 140, 140, 0.1);
   border: 1px rgba(140, 140, 140, 0.2) solid;
-  border-radius: 10px;
+  border-radius: 50%;
   height: 20px;
   width: 20px;
 }
