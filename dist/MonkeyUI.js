@@ -39902,7 +39902,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "bentley",
 	  "berlin",
 	  "best",
-	  "bestbuy",
 	  "bet",
 	  "bf",
 	  "bg",
@@ -40474,8 +40473,6 @@ return /******/ (function(modules) { // webpackBootstrap
 	  "lotte",
 	  "lotto",
 	  "love",
-	  "lpl",
-	  "lplfinancial",
 	  "lr",
 	  "ls",
 	  "lt",
@@ -42265,9 +42262,24 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function componentDidUpdate() {
 				if (this.firstLoad) {
 					this.firstLoad = false;
-					var link = _reactDom2.default.findDOMNode(this.refs.downloadLink);
-					if (link) {
-						link.click();
+
+					var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+					    ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+					    ieEDGE = navigator.userAgent.match(/Edge/g),
+					    ieVer = ie ? ie[1] : ie11 ? 11 : ieEDGE ? 12 : -1;
+
+					if (ie && ieVer < 10) {
+						return console.log("No blobs on IE ver<10");
+					} else if (ieVer > -1) {
+						var link = _reactDom2.default.findDOMNode(this.refs.downloadLink);
+						if (link) {
+							window.navigator.msSaveBlob(this.props.message.data, this.props.message.filename);
+						}
+					} else {
+						var _link = _reactDom2.default.findDOMNode(this.refs.downloadLink);
+						if (_link) {
+							_link.click();
+						}
 					}
 				}
 			}
@@ -42284,6 +42296,21 @@ return /******/ (function(modules) { // webpackBootstrap
 					if (!this.props.message.isDownloading) {
 						this.props.dataDownloadRequest(this.props.message.mokMessage);
 					}
+					return;
+				}
+
+				var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+				    ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+				    ieEDGE = navigator.userAgent.match(/Edge/g),
+				    ieVer = ie ? ie[1] : ie11 ? 11 : ieEDGE ? 12 : -1;
+
+				if (ie && ieVer < 10) {
+					console.log("No blobs on IE ver<10");
+					event.preventDefault();
+					return;
+				} else if (ieVer > -1) {
+					event.preventDefault();
+					window.navigator.msSaveBlob(this.props.message.data, this.props.message.filename);
 				}
 			}
 		}, {
@@ -53319,20 +53346,20 @@ return /******/ (function(modules) { // webpackBootstrap
 	        if (message.type === "ready" && window.File && window.FileList && window.FileReader) {} else if (message.type == "stdout") {
 	          // console.log(message.data);
 	        } else if (message.type == "stderr") {} else if (message.type == "done") {
-	            var code = message.data.code;
-	            var outFileNames = Object.keys(message.data.outputFiles);
+	          var code = message.data.code;
+	          var outFileNames = Object.keys(message.data.outputFiles);
 
-	            if (code == 0 && outFileNames.length) {
+	          if (code == 0 && outFileNames.length) {
 
-	              var outFileName = outFileNames[0];
-	              var outFileBuffer = message.data.outputFiles[outFileName];
-	              var mp3Blob = new Blob([outFileBuffer]);
-	              // var src = window.URL.createObjectURL(mp3Blob);
-	              that.readData(mp3Blob);
-	            } else {
-	              /*Error*/
-	            }
+	            var outFileName = outFileNames[0];
+	            var outFileBuffer = message.data.outputFiles[outFileName];
+	            var mp3Blob = new Blob([outFileBuffer]);
+	            // var src = window.URL.createObjectURL(mp3Blob);
+	            that.readData(mp3Blob);
+	          } else {
+	            /*Error*/
 	          }
+	        }
 	      };
 	      return ffmpegWorker;
 	    }
@@ -58136,6 +58163,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.state = {
 				imageOrientation: ''
 			};
+
+			_this.downloadImage = _this.downloadImage.bind(_this);
 			return _this;
 		}
 
@@ -58201,7 +58230,7 @@ return /******/ (function(modules) { // webpackBootstrap
 						{ className: 'mky-viewer-toolbar' },
 						_react2.default.createElement(
 							'a',
-							{ href: this.props.message.data, download: this.props.message.filename },
+							{ href: this.props.message.data, onClick: this.downloadImage, download: this.props.message.filename },
 							_react2.default.createElement(
 								'div',
 								{ className: 'mky-button-download mky-button-modal', title: 'Download' },
@@ -58213,17 +58242,52 @@ return /******/ (function(modules) { // webpackBootstrap
 						'div',
 						{ id: 'file_viewer_image', className: "mky-viewer-image " + this.state.imageOrientation },
 						_react2.default.createElement('div', { className: 'mky-viewer-back-close', onClick: this.props.onClose }),
-						_react2.default.createElement('img', { id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize })
+						_react2.default.createElement('img', { ref: 'image', id: 'viewer-img', src: this.props.message.data, onLoad: this.handleResize })
 					)
 				);
 			}
 		}, {
 			key: 'rotateBase64Image90Degree',
 			value: function rotateBase64Image90Degree(base64data) {}
+		}, {
+			key: 'downloadImage',
+			value: function downloadImage(event) {
+				var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),
+				    ie11 = navigator.userAgent.match(/Trident\/7.0/) && navigator.userAgent.match(/rv:11/),
+				    ieEDGE = navigator.userAgent.match(/Edge/g),
+				    ieVer = ie ? ie[1] : ie11 ? 11 : ieEDGE ? 12 : -1;
+
+				if (ie && ieVer < 10 || ieVer > -1) {
+					var blob = base64toBlob(this.props.message.data.split(";base64,")[1], this.props.message.mimetype);
+					window.navigator.msSaveBlob(blob, this.props.message.filename);
+					event.preventDefault();
+				}
+			}
 		}]);
 
 		return ContentViewer;
 	}(_react.Component);
+
+	function base64toBlob(base64Data, contentType) {
+		contentType = contentType || '';
+		var sliceSize = 1024;
+		var byteCharacters = atob(base64Data);
+		var bytesLength = byteCharacters.length;
+		var slicesCount = Math.ceil(bytesLength / sliceSize);
+		var byteArrays = new Array(slicesCount);
+
+		for (var sliceIndex = 0; sliceIndex < slicesCount; ++sliceIndex) {
+			var begin = sliceIndex * sliceSize;
+			var end = Math.min(begin + sliceSize, bytesLength);
+
+			var bytes = new Array(end - begin);
+			for (var offset = begin, i = 0; offset < end; ++i, ++offset) {
+				bytes[i] = byteCharacters[offset].charCodeAt(0);
+			}
+			byteArrays[sliceIndex] = new Uint8Array(bytes);
+		}
+		return new Blob(byteArrays, { type: contentType });
+	}
 
 	exports.default = ContentViewer;
 
