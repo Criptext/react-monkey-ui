@@ -40,7 +40,6 @@ class Input extends Component {
             showAudioArea: false,
             showAudioButton: true,
             showSendButton: false
-            
 		}
 		this.handleOnKeyDownTextArea = this.handleOnKeyDownTextArea.bind(this);
 		this.textMessageInput = this.textMessageInput.bind(this);

@@ -5,12 +5,12 @@ import ReactDOM from 'react-dom'
 class ContentAside extends Component {
 	constructor(props, context) {
 		super(props, context);
-		this.classContent = this.props.compactView ? 'mky-expand-each-screen' : 'mky-no-expand';
-		this.classContentt = this.props.showBanner ? 'aside-divided' : '';
+		this.classContent = props.compactView ? 'mky-expand-each-screen' : 'mky-no-expand';
+		this.classContentt = props.showBanner ? 'aside-divided' : '';
 		this.state = {
 			editingUsername: false, 
-			username: this.context.userSession.name,
-			urlAvatar: this.context.userSession.urlAvatar ? this.context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			username: context.userSession.name,
+			urlAvatar: context.userSession.urlAvatar ? context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);

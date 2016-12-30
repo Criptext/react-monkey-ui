@@ -11,9 +11,9 @@ class ContentWindow extends Component {
 			showAsideInfo: false,
 			typeAsideInfo: ''
 		}
-		this.classExpand = this.props.compactView ? 'mky-expand-each-screen' : 'mky-content-window-with';
+		this.classExpand = props.compactView ? 'mky-expand-each-screen' : 'mky-content-window-with';
 		this.classStateWindow = '';
-		this.classWithBanner = this.props.showBanner && !this.props.compactView ? 'content-window-with-divided' : '';
+		this.classWithBanner = props.showBanner && !props.compactView ? 'content-window-with-divided' : '';
 		this.toggleConversationHeader = this.toggleConversationHeader.bind(this);
 	}
 

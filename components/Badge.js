@@ -3,9 +3,9 @@ import React, { Component } from 'react'
 class Badge extends React.Component {
 	constructor(props) {
 		super(props);
-    this.state = {
-      numbreClass : ''
-    }
+	    this.state = {
+	      numbreClass : ''
+	    }
 	}
   componentWillMount(){
 
@@ -30,7 +30,5 @@ class Badge extends React.Component {
     )
 	}
 }
-
-
 
 export default Badge;

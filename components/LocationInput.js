@@ -9,7 +9,7 @@ export default class LocationInput extends Component {
 			opacity: 0,
 			lat: 0,
 			lng: 0,
-			address: ""
+			address: ''
 		}
 	}
 
