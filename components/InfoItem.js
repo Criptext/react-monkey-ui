@@ -11,7 +11,7 @@ class InfoItem extends Component {
 			actionIndex: null,
 			bottom: 0,
 			right: 0,
-			urlAvatar: this.props.item.avatar ? this.props.item.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			urlAvatar: props.item.avatar ? props.item.avatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.toggleActions = this.toggleActions.bind(this);
 		this.renderActions = this.renderActions.bind(this);

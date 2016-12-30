@@ -10,9 +10,9 @@ class BubbleImage extends Component {
 		this.downloadData = this.downloadData.bind(this);
 		this.defineImageDataStyle = this.defineImageDataStyle.bind(this);
 		this.state = {
-			imageHeightAuto : '',
-			imageOrientation : '',
-			loaded : false,
+			imageHeightAuto: '',
+			imageOrientation: '',
+			loaded: false,
 		}
 	}
 

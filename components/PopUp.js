@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
+import Lang from '../lang'
 
 const PopUp = Component => class extends Component {
-	constructor(props){
-		super(props);
+	constructor(props, context){
+		super(props, context);
 	}
 
 	render() {
@@ -12,13 +13,17 @@ const PopUp = Component => class extends Component {
 					<div className='mky-popup-message'>{this.props.popUpMessage}</div>
 					<div className='mky-popup-buttons'>
 						<Component {...this.props}/>
-						<button className='mky-popup-button' onClick={this.props.togglePopup}>CANCEL</button>
+						<button className='mky-popup-button' onClick={this.props.togglePopup}>{Lang[this.context.lang]['button.cancel.text']}</button>
 					</div>
 					
 				</div>
 			</div>
 		)
 	}
+}
+
+PopUp.contextTypes = {
+    lang: React.PropTypes.string.isRequired
 }
 
 export default PopUp;

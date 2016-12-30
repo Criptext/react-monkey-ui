@@ -17,11 +17,11 @@ class ContentConversation extends Component {
 		this.state = {
 			showLocationInput: false,
 			messageSelected: undefined,
-			urlAvatar: this.props.conversationSelected.urlAvatar ? this.props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			urlAvatar: props.conversationSelected.urlAvatar ? props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		this.classExpand = '' ;
 		this.classStateChat = '';
-		this.conversationBannerClass= this.props.showBanner && !this.props.compactView ? 'mnk-converstion-divided' : ''
+		this.conversationBannerClass = props.showBanner && !props.compactView ? 'mnk-converstion-divided' : ''
 		
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);

@@ -7,8 +7,8 @@ class ConversationItem extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			unreadMessages: this.props.conversation.unreadMessageCounter > 0 ? true : false,
-			urlAvatar: this.props.conversation.urlAvatar ? this.props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
+			unreadMessages: props.conversation.unreadMessageCounter > 0 ? true : false,
+			urlAvatar: props.conversation.urlAvatar ? props.conversation.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
 			pressClass: 'mky-not-pressed'
 		}
 		this.openConversation = this.openConversation.bind(this);

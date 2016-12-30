@@ -190,7 +190,7 @@ TABLE OF CONTENTS
 }
 
 .mky-wrapper-in{
-  box-shadow: 0px 0px 15px #B0B0B0;
+  box-shadow: 0px 0px 15px #404040;
   position: relative;
   background: white;
 }
@@ -213,6 +213,11 @@ TABLE OF CONTENTS
 
 .mky-sidebar .mky-wrapper-in, .mky-classic .mky-wrapper-in{
   height: calc(100% - 30px);
+}
+
+/* in-out rightside animation */
+.mky-rightside, .mky-wrapper-in{
+  transition: all 0.5s ease-in;
 }
 
 #mky-chat-login{
@@ -442,9 +447,11 @@ TABLE OF CONTENTS
 .mky-wrapper-out header{
   background-color: #eee;
   border-bottom: 1px solid rgba(219,219,219,0.7);
+  box-sizing: content-box;
   display: flex;
   height: 65px;
   width: 100%;
+  -webkit-box-sizing: content-box;
 }
 
 .mky-session-header{
@@ -452,20 +459,21 @@ TABLE OF CONTENTS
 }
 
 #mky-expand-each-screen{
-	width: 100%;
+  width: 100%;
 }
 
 .mky-expand-each-screen{
-	width: 100%;
+  border: none;
+  width: 100%;
 }
 
 .mky-session-image{
-  width: 40px;
+  display: inline-table;
   height: 40px;
   margin: 12px 10px 0 20px;
-  display: inline-table;
   vertical-align: top;
   float: left;
+  width: 40px;
 }
 
 .mky-session-image img{
@@ -571,10 +579,9 @@ TABLE OF CONTENTS
      ----------------------------- */
 
 .mky-session-conversations{
-	height: calc(100% - 65px);
-  position: relative;
-
   display: flex;
+  height: calc(100% - 65px);
+  position: relative;
   flex-direction: column;
 }
 
@@ -594,6 +601,7 @@ TABLE OF CONTENTS
   border-radius: 10px;
   border: 1px solid #EFF0F2;
   font-size: 12px;
+  height: 32px;
   line-height: normal;
   -webkit-appearance: none;
   width: 100%;
@@ -606,8 +614,6 @@ TABLE OF CONTENTS
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
-  height: 32px;
-
 }
 
 .mky-search-input > input::-webkit-search-cancel-button{
@@ -1088,7 +1094,9 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-selected-header div{
+  box-sizing: content-box;
   vertical-align: top;
+  -webkit-box-sizing: content-box;
 }
 
 .mky-conversation-back{
@@ -1509,6 +1517,7 @@ TABLE OF CONTENTS
 /* System Bubble Panel */
 
 .mky-system-panel{
+  box-sizing: content-box;
   display: inline-table;
   height: 20px;
   margin: 10px auto;
@@ -1523,6 +1532,7 @@ TABLE OF CONTENTS
   font-size: 13px;
   color: #6a8d9e;
   font-family: 'helvetica-light';
+  -webkit-box-sizing: content-box;
 }
 .mky-devider-dots{
   border-top: 1px dotted #ccc;

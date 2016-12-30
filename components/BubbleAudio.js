@@ -11,10 +11,10 @@ var $bubblePlayer;
 class BubbleAudio extends Component {
 	constructor(props) {
 		super(props);
-		this.messageId = (this.props.message.id[0] == '-' ? (this.props.message.datetimeCreation) : this.props.message.id);
+		this.messageId = (props.message.id[0] == '-' ? (props.message.datetimeCreation) : props.message.id);
 		this.state = {
-			minutes: ('0' + parseInt(this.props.message.length/60)).slice(-2),
-			seconds: ('0' + this.props.message.length%60).slice(-2)
+			minutes: ('0' + parseInt(props.message.length/60)).slice(-2),
+			seconds: ('0' + props.message.length%60).slice(-2)
 		}
 		this.isLoaded = false;
 		this.downloadData = this.downloadData.bind(this);
@@ -23,7 +23,7 @@ class BubbleAudio extends Component {
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.updateAnimationBuble = this.updateAnimationBuble.bind(this);
-		this.radioColor = this.props.styles.bubbleColorOut || '#2c74c6';
+		this.radioColor = props.styles.bubbleColorOut || '#2c74c6';
 	}
 	
 	componentWillMount() {	

@@ -10,6 +10,7 @@ import BubbleFile from './BubbleFile.js'
 import BubbleAudio from './BubbleAudio.js'
 
 import ContentViewer from './ContentViewer.js'
+import Lang from '../lang'
 
 import MyForm from './MyForm.js'
 import PopUp from './PopUp.js'
@@ -44,7 +45,7 @@ class MonkeyUI extends Component {
 			conversation: {},
 			contentStyle: undefined,
 			classTabIcon: 'mky-icon-arrow-up',
-			showConversations: this.props.showConversations,
+			showConversations: props.showConversations,
 			showBanner: false,
 			wrapperInClass: '',
 			showPopUp: false,
@@ -66,7 +67,7 @@ class MonkeyUI extends Component {
 		this.classContent;
 		this.expandWindow = false;
 		this.handleShowAside = this.handleShowAside.bind(this);
-		this.haveConversations = this.props.showConversations;
+		this.haveConversations = props.showConversations;
 		this.togglePopup = this.togglePopup.bind(this);
 		this.handleNotifyTyping = this.handleNotifyTyping.bind(this);
 		this.formOptions = this.formOptions.bind(this);
@@ -281,7 +282,7 @@ class MonkeyUI extends Component {
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 						}
 						{ this.state.showPopUp
-							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {'Are you sure you want to Log Out?'} userSessionLogout={this.handleUserSessionLogout} />
+							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {Lang[this.props.lang]['ask.logout']} userSessionLogout={this.handleUserSessionLogout} />
 							: null
 						}
 					</div>

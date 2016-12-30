@@ -6,10 +6,10 @@ var $ = require('jquery');
 class ContentViewer extends Component {
 	constructor(props){
 		super(props);
-		this.handleResize=this.handleResize.bind(this);
+		this.handleResize = this.handleResize.bind(this);
 		this.rotateBase64Image90Degree = this.rotateBase64Image90Degree.bind(this);
 		this.state = {
-			imageOrientation : ''
+			imageOrientation: ''
 		}
 
 		this.downloadImage = this.downloadImage.bind(this)
