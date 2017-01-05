@@ -70,7 +70,7 @@ class ContentConversation extends Component {
 	    	<div className={'mky-content-conversation ' + this.conversationBannerClass + ' ' + this.classExpand}>
 				<header className='mky-conversation-selected-header' style={styleHeader.header}>
 					{ this.props.compactView && this.props.haveConversations
-						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back'></i></div>
+						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back' style={styleHeader.title}></i></div>
 						: null
 					}
 					<div className='mky-conversation-selected-image' onClick={this.handleToggleConversationHeader}><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>

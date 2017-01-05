@@ -206,7 +206,7 @@ class MonkeyUI extends Component {
 	                        </div>
 						)
 						: ( this.props.view.type === 'rightside'
-							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-chat'></i></div>
+							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-criptext'></i></div>
 							: null
 						)
 					}

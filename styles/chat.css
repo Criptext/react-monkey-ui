@@ -104,9 +104,6 @@ TABLE OF CONTENTS
 .mky-icon-arrow-up:before {
   content: "\62";
 }
-.mky-icon-close:before {
-  content: "\63";
-}
 .mky-icon-minimize:before {
   content: "\64";
 }
@@ -148,6 +145,15 @@ TABLE OF CONTENTS
 }
 .mky-icon-add:before {
   content: "\71";
+}
+.mky-icon-close:before {
+  content: "\63";
+}
+.mky-icon-criptext:before {
+  content: "\72";
+}
+.mky-icon-trashcan:before {
+  content: "\73";
 }
 
 /* 1.- CONTENT
@@ -1181,6 +1187,10 @@ TABLE OF CONTENTS
   display: inline-table;
   font-size: 20px;
   margin: 12px 15px 0 8px;
+}
+
+.mky-rightside .mky-session-name{
+  width: calc(100% - 45px);
 }
 
 .mky-conversation-header-options div{
@@ -2575,9 +2585,6 @@ TABLE OF CONTENTS
 }
 
 .mky-partialsize #mky-chat-input{
-  /*border: 1px solid #E0E0E0;*/
-  width: 100%;
-  border: none;
 }
 
 .mky-partialsize .mky-textarea-input{

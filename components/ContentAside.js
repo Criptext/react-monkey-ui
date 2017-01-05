@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
-import ConversationListsContainer from './ConversationListsContainer.js';
 import ReactDOM from 'react-dom'
+import ConversationListsContainer from './ConversationListsContainer.js';
+import { getContrastColorObject } from '../utils/monkey-utils.js'
 
 class ContentAside extends Component {
 	constructor(props, context) {
@@ -23,9 +24,10 @@ class ContentAside extends Component {
 	}
 
 	render() {
+		let styleHeader = this.defineStyles();
     	return (
 			<aside id={this.classContent} className={ 'mky-content-aside ' + this.classContentt} >
-				<header className='mky-session-header'>
+				<header className='mky-session-header' style={styleHeader.header}>
 					<div className='mky-session-image'>
 						<img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/>
 					</div>
@@ -38,11 +40,15 @@ class ContentAside extends Component {
 									onKeyDown={this.handleUsernameKeyDown}
 									onBlur={this.handleUsernameBlur}
 									type='text'
-									disabled={this.state.editingUsername ? false : true}/>
+									disabled={this.state.editingUsername ? false : true}
+									style={styleHeader.title}/>
 							{!this.props.usernameEdit || this.state.editingUsername ? null : <i className='icon mky-icon-pencil' onClick={this.toogleEditUsername}></i>}
 						</div>
 						{ this.props.viewType == 'rightside'
-							? <div className='mky-header-exit' onClick={this.closeSide}><i className='icon mky-icon-minimize'></i></div>
+							? ( <div className='mky-conversation-header-options' onClick={this.closeSide} style={styleHeader.title}>
+									<div style={styleHeader.optionButton}><i className='icon mky-icon-minimize'></i></div>
+								</div>
+							)
 							: <div className='mky-header-exit' onClick={this.logout}><i className="icon mky-icon-signout"></i></div>
 						}
 					</div>
@@ -71,7 +77,27 @@ class ContentAside extends Component {
         	domNode.focus();
 		}
 	}
-
+	
+	defineStyles() {
+		let style = {
+			header: {},
+			title: {},
+			optionButton: {}
+		};
+		if(this.context.styles){
+			if(this.context.styles.toggleColor){
+				style.header.background = this.context.styles.toggleColor;	
+				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
+				style.optionButton = getContrastColorObject(this.context.styles.toggleColor);
+			}
+			if(this.context.styles.tabTextColor){
+				style.title.color = this.context.styles.tabTextColor
+			}
+		}
+		
+		return style;
+	}
+	
 	logout() {
 		this.props.togglePopup();
 	}
@@ -99,7 +125,7 @@ class ContentAside extends Component {
 
 	handleUsernameChange(event) {
         this.setState({
-			username : event.target.value,
+			username: event.target.value,
 		});
 	}
 
@@ -107,21 +133,22 @@ class ContentAside extends Component {
 		if(event.keyCode === 13 && !event.shiftKey) {
 			this.props.usernameEdit(this.state.username);
 			this.setState({
-				editingUsername : false
+				editingUsername: false
 			});
 		}
 	}
 
 	handleUsernameBlur(event){
 		this.setState({
-			username : this.context.userSession.name,
-			editingUsername : false
+			username: this.context.userSession.name,
+			editingUsername: false
 		});
 	}
 }
 
 ContentAside.contextTypes = {
-    userSession: React.PropTypes.object.isRequired
+    userSession: React.PropTypes.object.isRequired,
+    styles: React.PropTypes.object.isRequired
 }
 
 export default ContentAside;
