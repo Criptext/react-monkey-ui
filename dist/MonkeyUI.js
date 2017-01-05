@@ -793,6 +793,13 @@ return /******/ (function(modules) { // webpackBootstrap
 		}
 
 		_createClass(ContentAside, [{
+			key: 'componentWillReceiveProps',
+			value: function componentWillReceiveProps(nextProps, nextContext) {
+				if (nextContext.userSession.urlAvatar != this.state.urlAvatar) {
+					this.setState({ urlAvatar: nextContext.userSession.urlAvatar });
+				}
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				var styleHeader = this.defineStyles();

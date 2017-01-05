@@ -22,7 +22,13 @@ class ContentAside extends Component {
 		this.handleUsernameChange = this.handleUsernameChange.bind(this);
 		this.handleUsernameBlur = this.handleUsernameBlur.bind(this);
 	}
-
+	
+	componentWillReceiveProps(nextProps, nextContext) {
+    	if(nextContext.userSession.urlAvatar != this.state.urlAvatar){
+	    	this.setState({urlAvatar: nextContext.userSession.urlAvatar});
+    	}
+	}
+  
 	render() {
 		let styleHeader = this.defineStyles();
     	return (
