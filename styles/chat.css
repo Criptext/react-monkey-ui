@@ -436,6 +436,9 @@ TABLE OF CONTENTS
 
 .mky-content-aside{
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   width: calc(28% - 1px);
   height: 100%;
   vertical-align: top;
@@ -443,6 +446,7 @@ TABLE OF CONTENTS
   float: left;
   border-right: 1px solid rgba(219,219,219,0.7);
   flex-direction: column;
+  -ms-flex-direction: column;
 /*   min-width: 240px; */
 }
 
@@ -454,6 +458,9 @@ TABLE OF CONTENTS
   border-bottom: 1px solid rgba(219,219,219,0.7);
   box-sizing: content-box;
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   height: 65px;
   width: 100%;
   -webkit-box-sizing: content-box;
@@ -4169,8 +4176,12 @@ input:focus{
 
 .mky-dflex-dcolumn{
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   flex-direction: column;
   height: 100%;
+  -ms-flex-direction: column;
   width: 100%;
 }
 
