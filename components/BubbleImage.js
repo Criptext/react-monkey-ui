@@ -22,16 +22,16 @@ class BubbleImage extends Component {
         }
 	}
 
-	componentWillReceiveProps(nextProps){
+	componentWillReceiveProps(nextProps, nextState){
 
-		if (nextProps.message.data != null && this.state.imageHeightAuto.length==0 && !this.state.loaded) {
+		if (nextProps.message.data != null && !nextState.imageHeightAuto && !nextState.loaded) {
 
 			let imageObject = new Image();
 			var that = this;
 
 			imageObject.onload = function(){
 				if (imageObject.height < 250) {
-					that.setState({ imageHeightAuto : 'mky-content-image-data-staic'});
+					that.setState({ imageHeightAuto: 'mky-content-image-data-staic'});
 				}
 				EXIF.getData(imageObject, function() {
 					let orientation = EXIF.getTag(this, "Orientation");
