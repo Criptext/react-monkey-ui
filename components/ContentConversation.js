@@ -17,9 +17,10 @@ class ContentConversation extends Component {
 		this.state = {
 			showLocationInput: false,
 			messageSelected: undefined,
-			urlAvatar: props.conversationSelected.urlAvatar ? props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			urlAvatar: props.conversationSelected.urlAvatar ? props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
+			classEndChatButton: ''
 		}
-		this.classExpand = '' ;
+		this.classExpand = '';
 		this.classStateChat = '';
 		this.conversationBannerClass = props.showBanner && !props.compactView ? 'mnk-converstion-divided' : ''
 		
@@ -38,7 +39,8 @@ class ContentConversation extends Component {
 			this.setState({
 				showLocationInput: false,
 				messageSelected: undefined,
-				urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+				urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
+				classEndChatButton: ''
 			});
 		}
 	}
@@ -85,7 +87,7 @@ class ContentConversation extends Component {
 						}
 					</div>
 					{ this.context.options.conversation.onEnd
-						? <input className='mky-button-standard' type='submit' value={Lang[this.context.lang]['button.endchat.text']} id='mky-end-chat' onClick={this.handleEndConversation}></input>
+						? <input className={'mky-button-standard '+this.state.classEndChatButton} type='submit' value={Lang[this.context.lang]['button.endchat.text']} id='mky-end-chat' onClick={this.handleEndConversation}></input>
 						: null
 					}
 					{ this.props.viewType == 'rightside'
@@ -205,6 +207,7 @@ class ContentConversation extends Component {
 	
 	handleEndConversation() {
 		this.context.options.conversation.onEnd(this.props.conversationSelected);
+		this.setState({classEndChatButton: 'mky-disabled'});
 	}
 }
 
