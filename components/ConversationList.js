@@ -4,6 +4,7 @@ import SearchInput, {createFilter} from 'react-search-input'
 import ReactDOM from 'react-dom'
 import DeleteConversation from './DeleteConversation.js'
 import AsidePanel from './AsidePanel.js'
+import Lang from '../lang'
 import { isConversationGroup } from './../utils/monkey-utils.js'
 
 const KEYS_TO_FILTERS = ['name']
@@ -55,8 +56,16 @@ class ConversationList extends Component {
 	}
 
 	render() {
-
-		const conversationNameFiltered = this.state.conversationArray.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
+		let search;
+		if (this.props.searchTerm.indexOf(' ') >= 0){
+			search = this.state.conversationArray.filter(function(item) {
+				    	return (item.name.indexOf(this.props.searchTerm) >= 0);
+					}.bind(this));
+		}else{
+			search = this.state.conversationArray.filter(createFilter(this.props.searchTerm, KEYS_TO_FILTERS));
+		}
+		const conversationNameFiltered = search;
+		
     	return (
     		<div className='mky-content-conversation-list'>
     			{ this.state.isDeleting
@@ -68,18 +77,23 @@ class ConversationList extends Component {
 	    		}
 				
 				<ul ref='conversationList' className='mky-conversation-list'>
-					{ conversationNameFiltered.map( (conversation, index) => {
-		    			return (
-							<ConversationItem isMobile={this.props.isMobile}
-								index={index}
-								deleteConversation={this.handleAskDeleteConversation}
-								key={conversation.id}
-								conversation={conversation}
-								conversationIdSelected={this.conversationIdSelected}
-								selected={this.isSelected(conversation.id)}
-								deleteOption={this.deleteOption}/>
-						)
-					})}
+					{ conversationNameFiltered.length > 0
+						? conversationNameFiltered.map( (conversation, index) => {
+				    			return (
+									<ConversationItem isMobile={this.props.isMobile}
+										index={index}
+										deleteConversation={this.handleAskDeleteConversation}
+										key={conversation.id}
+										conversation={conversation}
+										conversationIdSelected={this.conversationIdSelected}
+										selected={this.isSelected(conversation.id)}
+										deleteOption={this.deleteOption}/>
+								)
+							})
+						: <li className='mky-conversation-item-empty'>
+							<div><span>{Lang[this.context.lang]['conversation.item.empty']}</span></div>
+						</li>
+						}
 				</ul>
 
     			{ this.props.isLoadingConversations ? <Loading customLoader={this.props.customLoader} /> : null}
@@ -125,8 +139,8 @@ class ConversationList extends Component {
 		return result;
 	}
 
-  	createArray(conversations) {
-  		let conversationarray = [];
+	createArray(conversations) {
+		let conversationarray = [];
 		for(var x in conversations){
 		  conversationarray.push(conversations[x]);
 		}
@@ -141,20 +155,19 @@ class ConversationList extends Component {
 			}
 		}
 
-		
 		return conversationarray;
-  	}
+	}
 
-  	/*scrollToFirstChildWhenItsNecessary() {
+	/*scrollToFirstChildWhenItsNecessary() {
 		if(this.scrollToLoad && !this.isLoading && this.domNode!=null && this.domNode.children.length > 0
 			&& this.isSelected(this.state.conversationArray[0].id)){
 			this.domNode.firstChild.scrollIntoView();
 		}
-  	}*/
+	}*/
 
-  	// PopUp methods
+	// PopUp methods
 
-  	handleAskDeleteConversation(conversation, index, active) {
+	handleAskDeleteConversation(conversation, index, active) {
 		this.setState({
 			deletingConversation: conversation,
 			deletingIndex: index,
@@ -209,10 +222,11 @@ class ConversationList extends Component {
 			this.scrollToLoad = true;
 		}
 	}
-
+	
 }
 
 ConversationList.contextTypes = {
+	lang: React.PropTypes.string.isRequired,
     options: React.PropTypes.object.isRequired
 }
 
