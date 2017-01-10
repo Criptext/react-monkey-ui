@@ -254,7 +254,9 @@ return /******/ (function(modules) { // webpackBootstrap
 								onExitGroup: undefined,
 								onDelete: undefined
 							},
-							onEnd: undefined
+							onEnd: undefined,
+							emptyConversationsMessage: undefined,
+							emptyAlternateConversationsMessage: undefined
 						};
 					} else if (!this.props.options.conversation.optionsToDelete) {
 						this.props.options.conversation.optionsToDelete = {
@@ -337,9 +339,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				} else if (!this.props.conversation && nextProps.conversation) {
 					if (this.state.compactView) {
 						this.setState({ showConversations: false }); //escondiendo el aside(list conversation) solo cuando esta en compact view
-						if (this.state.wrapperInClass === 'mky-disappear' && this.props.view.type === 'rightside') {
-							this.toggleSide();
-						}
+						/*
+	     				if(this.state.wrapperInClass === 'mky-disappear' && this.props.view.type === 'rightside'){
+	     					this.toggleSide();
+	     				}
+	     */
 					}
 				}
 			}
@@ -542,7 +546,6 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.lastNotifyTime = new Date();
 
 					if (this.firstNotifyTime == 0 || this.lastNotifyTime.getTime() - this.firstNotifyTime.getTime() > 1000) {
-
 						this.firstNotifyTime = this.lastNotifyTime;
 						this.props.onNotifyTyping(this.props.conversation.id, isTyping);
 					}
@@ -705,7 +708,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				},
 				header1: "Conversation List 1",
 				header2: "Conversation List 2",
-				onEnd: undefined
+				onEnd: undefined,
+				emptyConversationsMessage: undefined,
+				emptyAlternateConversationsMessage: undefined
 			},
 			message: {
 				optionsToIncoming: undefined,
@@ -21716,7 +21721,7 @@ return /******/ (function(modules) { // webpackBootstrap
 					_react2.default.createElement(
 						'ul',
 						{ ref: 'conversationList', className: 'mky-conversation-list' },
-						conversationNameFiltered.length > 0 ? conversationNameFiltered.map(function (conversation, index) {
+						this.state.conversationArray.length > 0 ? conversationNameFiltered.length > 0 ? conversationNameFiltered.map(function (conversation, index) {
 							return _react2.default.createElement(_ConversationItem2.default, { isMobile: _this2.props.isMobile,
 								index: index,
 								deleteConversation: _this2.handleAskDeleteConversation,
@@ -21734,7 +21739,19 @@ return /******/ (function(modules) { // webpackBootstrap
 								_react2.default.createElement(
 									'span',
 									null,
-									_lang2.default[this.context.lang]['conversation.item.empty']
+									_lang2.default[this.context.lang]['conversation.item.search.empty']
+								)
+							)
+						) : _react2.default.createElement(
+							'li',
+							{ className: 'mky-conversation-item-empty' },
+							_react2.default.createElement(
+								'div',
+								null,
+								_react2.default.createElement(
+									'span',
+									null,
+									!this.props.alternativeList && this.context.options.conversation.emptyConversationsMessage ? this.context.options.conversation.emptyConversationsMessage : this.props.alternativeList && this.context.options.conversation.emptyAlternateConversationsMessage ? this.context.options.conversation.emptyAlternateConversationsMessage : _lang2.default[this.context.lang]['conversation.item.empty']
 								)
 							)
 						)
@@ -36476,7 +36493,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			"input.search.placeholder": "Search for existing conversation",
 			"input.textarea.placeholder": "Write a secure message",
 			"conversation.lastmessage.emptypreview": "Click to open conversation",
-			"conversation.item.empty": "Your search returned no results. Please check your spealling and try again.",
+			"conversation.item.search.empty": "Your search returned no results. Please check your spelling and try again.",
+			"conversation.item.empty": "Your list conversation is empty.",
 			"status.lastseen": "Last seen",
 			"status.online": "Online",
 			"text.at": "at",
@@ -36500,7 +36518,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			"input.search.placeholder": "Buscar conversaciones existentes",
 			"input.textarea.placeholder": "Escribe un mensaje seguro",
 			"conversation.lastmessage.emptypreview": "Click para abrir conversación",
-			"conversation.item.empty": "Tu búsqueda no dió resultados. Por favor revisa e inténtalo de nuevo.",
+			"conversation.item.search.empty": "Tu búsqueda no dió resultados. Por favor revisa e inténtalo de nuevo.",
+			"conversation.item.empty": "Tu lista de conversaciones está vacía.",
 			"status.lastseen": "Última vez visto",
 			"status.online": "En línea",
 			"text.at": "a las",
@@ -37927,7 +37946,8 @@ return /******/ (function(modules) { // webpackBootstrap
 			_this.state = {
 				showLocationInput: false,
 				messageSelected: undefined,
-				urlAvatar: props.conversationSelected.urlAvatar ? props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+				urlAvatar: props.conversationSelected.urlAvatar ? props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
+				classEndChatButton: ''
 			};
 			_this.classExpand = '';
 			_this.classStateChat = '';
@@ -37951,7 +37971,8 @@ return /******/ (function(modules) { // webpackBootstrap
 					this.setState({
 						showLocationInput: false,
 						messageSelected: undefined,
-						urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+						urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
+						classEndChatButton: ''
 					});
 				}
 			}
@@ -38019,7 +38040,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								_lang2.default[this.context.lang]['status.online']
 							)
 						),
-						this.context.options.conversation.onEnd ? _react2.default.createElement('input', { className: 'mky-button-standard', type: 'submit', value: _lang2.default[this.context.lang]['button.endchat.text'], id: 'mky-end-chat', onClick: this.handleEndConversation }) : null,
+						this.context.options.conversation.onEnd ? _react2.default.createElement('input', { className: 'mky-button-standard ' + this.state.classEndChatButton, type: 'submit', value: _lang2.default[this.context.lang]['button.endchat.text'], id: 'mky-end-chat', onClick: this.handleEndConversation }) : null,
 						this.props.viewType == 'rightside' ? _react2.default.createElement(
 							'div',
 							{ className: 'mky-conversation-header-options', onClick: this.closeSide, style: styleHeader.title },
@@ -38162,6 +38183,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			key: 'handleEndConversation',
 			value: function handleEndConversation() {
 				this.context.options.conversation.onEnd(this.props.conversationSelected);
+				this.setState({ classEndChatButton: 'mky-disabled' });
 			}
 		}]);
 
