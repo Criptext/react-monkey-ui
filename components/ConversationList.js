@@ -75,10 +75,10 @@ class ConversationList extends Component {
 	    				isGroupConversation={this.conversationToDeleteIsGroup} />
 	    			: null 
 	    		}
-				
 				<ul ref='conversationList' className='mky-conversation-list'>
-					{ conversationNameFiltered.length > 0
-						? conversationNameFiltered.map( (conversation, index) => {
+					{ this.state.conversationArray.length > 0
+						? ( conversationNameFiltered.length > 0
+							? conversationNameFiltered.map( (conversation, index) => {
 				    			return (
 									<ConversationItem isMobile={this.props.isMobile}
 										index={index}
@@ -90,10 +90,22 @@ class ConversationList extends Component {
 										deleteOption={this.deleteOption}/>
 								)
 							})
+							: <li className='mky-conversation-item-empty'>
+								<div><span>{Lang[this.context.lang]['conversation.item.search.empty']}</span></div>
+							</li>
+						)
 						: <li className='mky-conversation-item-empty'>
-							<div><span>{Lang[this.context.lang]['conversation.item.empty']}</span></div>
+							<div><span>
+							{ !this.props.alternativeList && this.context.options.conversation.emptyConversationsMessage
+								? this.context.options.conversation.emptyConversationsMessage
+								: ( this.props.alternativeList && this.context.options.conversation.emptyAlternateConversationsMessage
+									? this.context.options.conversation.emptyAlternateConversationsMessage
+									: Lang[this.context.lang]['conversation.item.empty']
+								)
+							}
+							</span></div>
 						</li>
-						}
+					}
 				</ul>
 
     			{ this.props.isLoadingConversations ? <Loading customLoader={this.props.customLoader} /> : null}

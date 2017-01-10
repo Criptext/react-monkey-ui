@@ -105,7 +105,9 @@ class MonkeyUI extends Component {
 						onExitGroup: undefined,
 						onDelete: undefined
 					},
-					onEnd: undefined
+					onEnd: undefined,
+					emptyConversationsMessage: undefined,
+					emptyAlternateConversationsMessage: undefined
 				}
 			}else if(!this.props.options.conversation.optionsToDelete){
 				this.props.options.conversation.optionsToDelete = {
@@ -119,8 +121,7 @@ class MonkeyUI extends Component {
 					optionsToIncoming: undefined,
 					optionsToOutgoing: undefined
 				}
-			}
-				
+			}	
 		}
 		
 		return this.props.options	
@@ -187,9 +188,11 @@ class MonkeyUI extends Component {
 		}else if(!this.props.conversation && nextProps.conversation) {
 			if (this.state.compactView) {
 				this.setState({showConversations: false}); //escondiendo el aside(list conversation) solo cuando esta en compact view
+/*
 				if(this.state.wrapperInClass === 'mky-disappear' && this.props.view.type === 'rightside'){
 					this.toggleSide();
 				}
+*/
 			}
 		}
 	}
@@ -371,8 +374,7 @@ class MonkeyUI extends Component {
 
 			this.lastNotifyTime = new Date();
 
-			if(this.firstNotifyTime == 0 || this.lastNotifyTime.getTime() - this.firstNotifyTime.getTime()	  > 1000){
-
+			if(this.firstNotifyTime == 0 || this.lastNotifyTime.getTime() - this.firstNotifyTime.getTime() > 1000){
 				this.firstNotifyTime = this.lastNotifyTime;
 				this.props.onNotifyTyping(this.props.conversation.id, isTyping);
 			}
@@ -524,7 +526,9 @@ MonkeyUI.defaultProps = {
 			},
 			header1: "Conversation List 1",
 			header2: "Conversation List 2",
-			onEnd: undefined
+			onEnd: undefined,
+			emptyConversationsMessage: undefined,
+			emptyAlternateConversationsMessage: undefined
 		},
 		message: {
 			optionsToIncoming: undefined,
