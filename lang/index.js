@@ -13,7 +13,7 @@ export default {
 	"input.search.placeholder": "Search for existing conversation",
 	"input.textarea.placeholder": "Write a secure message",
 	"conversation.lastmessage.emptypreview": "Click to open conversation",
-	"conversation.item.search.empty": "Your search returned no results. Please check your spealling and try again.",
+	"conversation.item.search.empty": "Your search returned no results. Please check your spelling and try again.",
 	"conversation.item.empty": "Your list conversation is empty.",
 	"status.lastseen": "Last seen",
 	"status.online": "Online",
