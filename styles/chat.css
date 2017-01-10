@@ -740,7 +740,7 @@ TABLE OF CONTENTS
   background-color: #fbfbfb;
   border-bottom: solid #EAEAEA 1px;
   color: black;
-  font-family: 'helvetica-light';
+  font-family: 'helvetica-light', sans-serif;
   font-size: 14px;
   font-weight: bold;
   padding: 15px 10px 10px 20px;   
@@ -858,7 +858,7 @@ TABLE OF CONTENTS
 
 .mky-conversation-title span{
   color: black;
-  font-family: 'helvetica-light';
+  font-family: 'helvetica-light', sans-serif;
 }
 
 .mky-conversation-name{
@@ -1012,6 +1012,14 @@ TABLE OF CONTENTS
   font-family: 'helvetica-light';
 }
 
+/* Conversation item empty */
+.mky-conversation-item-empty div{
+  margin: 15px;
+}
+
+.mky-conversation-item-empty span{
+  font-size: 14px;
+}
 
 /* 3.3.- SECTION
    ----------------------------- */
@@ -3601,6 +3609,7 @@ input.mky-info-input{
   flex: 0 1 auto;
   flex-direction: column;
   min-height: 154px;
+  -ms-flex-direction: column;
 }
 
 .mky-info-conversation-amount{
