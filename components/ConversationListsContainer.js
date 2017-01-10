@@ -95,8 +95,8 @@ class ConversationListsContainer extends Component {
 }
 
 ConversationListsContainer.contextTypes = {
-    options: React.PropTypes.object.isRequired,
-    lang: React.PropTypes.string.isRequired
+	lang: React.PropTypes.string.isRequired,
+    options: React.PropTypes.object.isRequired
 }
 
 const Loading = (props) => <div className='mky-loader-ring'>

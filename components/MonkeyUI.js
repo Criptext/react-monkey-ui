@@ -100,6 +100,7 @@ class MonkeyUI extends Component {
 			if(!this.props.options.conversation){
 				this.props.options.conversation = {
 					onSort: undefined,
+					onSecondSort: undefined,
 					optionsToDelete: {
 						onExitGroup: undefined,
 						onDelete: undefined
@@ -516,6 +517,7 @@ MonkeyUI.defaultProps = {
 	options: {
 		conversation: {
 			onSort: undefined,
+			onSecondSort: undefined,
 			optionsToDelete: {
 				onExitGroup: undefined,
 				onDelete: undefined

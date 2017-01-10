@@ -436,6 +436,9 @@ TABLE OF CONTENTS
 
 .mky-content-aside{
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   width: calc(28% - 1px);
   height: 100%;
   vertical-align: top;
@@ -443,6 +446,7 @@ TABLE OF CONTENTS
   float: left;
   border-right: 1px solid rgba(219,219,219,0.7);
   flex-direction: column;
+  -ms-flex-direction: column;
 /*   min-width: 240px; */
 }
 
@@ -454,6 +458,9 @@ TABLE OF CONTENTS
   border-bottom: 1px solid rgba(219,219,219,0.7);
   box-sizing: content-box;
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   height: 65px;
   width: 100%;
   -webkit-box-sizing: content-box;
@@ -733,7 +740,7 @@ TABLE OF CONTENTS
   background-color: #fbfbfb;
   border-bottom: solid #EAEAEA 1px;
   color: black;
-  font-family: 'helvetica-light';
+  font-family: 'helvetica-light', sans-serif;
   font-size: 14px;
   font-weight: bold;
   padding: 15px 10px 10px 20px;   
@@ -841,21 +848,26 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-title{
-	width: 99%;
-	display: flex;
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flexbox;
+  display: -o-flex;
+  display: flex;
+  width: 99%;
 }
 
 .mky-conversation-title span{
   color: black;
-  font-family: 'helvetica-light';
+  font-family: 'helvetica-light', sans-serif;
 }
 
 .mky-conversation-name{
-  width: calc(100% - 70px);
   float: left;
   text-align: left;
   white-space: nowrap;
   display: flex;
+  overflow: hidden;
+  width: calc(100% - 70px);
 }
 
 .mky-conversation-name span{
@@ -881,8 +893,9 @@ TABLE OF CONTENTS
 .mky-conversation-state{
   color: #a5a5a5;
   display: flex;
-  width:80%;
   font-family: 'helvetica-normal', helvetica;
+  overflow: hidden;
+  width:80%;
 }
 
 .mky-conversation-state span{
@@ -999,6 +1012,14 @@ TABLE OF CONTENTS
   font-family: 'helvetica-light';
 }
 
+/* Conversation item empty */
+.mky-conversation-item-empty div{
+  margin: 15px;
+}
+
+.mky-conversation-item-empty span{
+  font-size: 14px;
+}
 
 /* 3.3.- SECTION
    ----------------------------- */
@@ -1142,6 +1163,7 @@ TABLE OF CONTENTS
   height: calc(100% - 18px);
   flex-grow: 1;
   float: left;
+  -ms-flex-positive: 1;
   overflow: hidden;
   padding-top: 18px;
   position: relative;
@@ -1341,10 +1363,11 @@ TABLE OF CONTENTS
   align-items: center;
   bottom: 10px;
   cursor: pointer;
+  display: flex;
   -ms-justify-content: center;
   position: absolute;
   right: 10px;
-  display: flex;
+  text-align: center;
   justify-content: center;
   border-radius: 50%;
   background-color: white;
@@ -2986,6 +3009,7 @@ TABLE OF CONTENTS
   margin-right: 5px;
   margin-bottom: -3px;
   opacity: 0.4;
+  width: 18px;
 }
 
 #mky-menu-attach-icon,
@@ -3440,13 +3464,14 @@ aside.aside-divided{
 }
 
 .mky-info-container{
-    width: 100%;
-    height: calc(100% - 65px);
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
-    overflow: auto;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 65px);
+  overflow: auto;
+  position: relative;
+  text-align: center;
+  width: 100%;
 }
 
 .mky-info-container::-webkit-scrollbar-track{
@@ -3518,6 +3543,9 @@ aside.aside-divided{
 
 .mky-info-conversation-action{
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   width: 100%;
 }
 
@@ -3555,6 +3583,7 @@ input.mky-info-input{
 
 .mky-info-conversation-container{
   overflow: auto;
+  width: 100%;
 }
 
 .mky-info-conversation-container::-webkit-scrollbar-track{
@@ -3573,10 +3602,14 @@ input.mky-info-input{
 
 .mky-info-conversation-members{
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   position: relative;
   flex: 0 1 auto;
   flex-direction: column;
   min-height: 154px;
+  -ms-flex-direction: column;
 }
 
 .mky-info-conversation-amount{
@@ -4169,8 +4202,12 @@ input:focus{
 
 .mky-dflex-dcolumn{
   display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
   flex-direction: column;
-  height: 100%;
+  height: calc(100% - 51px);
+  -ms-flex-direction: column;
   width: 100%;
 }
 
