@@ -286,7 +286,7 @@ class MonkeyUI extends Component {
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
 						}
 						{ this.state.showPopUp
-							? <LogOut_ togglePopup = {this.togglePopup} popUpMessage = {Lang[this.props.lang]['ask.logout']} userSessionLogout={this.handleUserSessionLogout} />
+							? <LogOut_ togglePopup={this.togglePopup} popUpMessage={Lang[this.props.lang]['ask.logout']} userSessionLogout={this.handleUserSessionLogout} lang={this.props.lang}/>
 							: null
 						}
 					</div>
