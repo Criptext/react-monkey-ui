@@ -10,8 +10,8 @@ class ContentAside extends Component {
 		this.classContentt = props.showBanner ? 'aside-divided' : '';
 		this.state = {
 			editingUsername: false, 
-			username: context.userSession.name,
-			urlAvatar: context.userSession.urlAvatar ? context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			username: props.userSession.name,
+			urlAvatar: props.userSession.urlAvatar ? props.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
 		
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
@@ -24,8 +24,8 @@ class ContentAside extends Component {
 	}
 	
 	componentWillReceiveProps(nextProps, nextContext) {
-    	if(nextContext.userSession.urlAvatar != this.state.urlAvatar){
-	    	this.setState({urlAvatar: nextContext.userSession.urlAvatar});
+    	if(nextProps.userSession.urlAvatar != this.state.urlAvatar){
+	    	this.setState({urlAvatar: nextProps.userSession.urlAvatar});
     	}
 	}
   
@@ -41,7 +41,7 @@ class ContentAside extends Component {
 						<div className='mky-session-name'>
 							<input ref='usernameChange'
 									className='mky-ellipsify mky-edit-input'
-									value={this.state.editingUsername ? this.state.username : this.context.userSession.name}
+									value={this.state.editingUsername ? this.state.username : this.props.userSession.name}
 									onChange={this.handleUsernameChange}
 									onKeyDown={this.handleUsernameKeyDown}
 									onBlur={this.handleUsernameBlur}
@@ -119,7 +119,7 @@ class ContentAside extends Component {
 	toogleEditUsername(){
 		if(!this.state.editingUsername){
 			this.setState({
-				username : this.context.userSession.name
+				username : this.props.userSession.name
 			});
 		}
 		this.setState({
@@ -146,14 +146,13 @@ class ContentAside extends Component {
 
 	handleUsernameBlur(event){
 		this.setState({
-			username: this.context.userSession.name,
+			username: this.props.userSession.name,
 			editingUsername: false
 		});
 	}
 }
 
 ContentAside.contextTypes = {
-    userSession: React.PropTypes.object.isRequired,
     styles: React.PropTypes.object.isRequired
 }
 

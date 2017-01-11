@@ -253,7 +253,8 @@ class MonkeyUI extends Component {
                     					customLoader = {this.props.customLoader}
                     					usernameEdit = {this.props.onUserSessionEdit}
                     					scrollTop = {this.listTopScroll}
-                    					searchUpdated = {this.props.searchUpdated}/>
+                    					searchUpdated = {this.props.searchUpdated}
+                    					userSession = {this.props.userSession}/>
 									: null
 								}
 								<ContentWindow ref='contentWindow'

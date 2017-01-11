@@ -210,9 +210,9 @@ class Input extends Component {
 		this.typeMessageToSend = 0;
 
 		if(event.keyCode === 13 && !event.shiftKey) {
-			 if ($('#mky-chat-input').attr('style') != undefined) {
-			 	$('#mky-chat-input').attr('style','');
-			 }
+			if ($('#mky-chat-input').attr('style') != undefined) {
+				$('#mky-chat-input').attr('style','');
+			}
 
 			event.preventDefault()
 			let text = this.state.text.trim();

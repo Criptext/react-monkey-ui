@@ -444,7 +444,7 @@ return /******/ (function(modules) { // webpackBootstrap
 									messageSelectedInfo: this.props.messageLoadInfo,
 									overlayView: this.props.overlayView })
 							) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
-							this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: _lang2.default[this.props.lang]['ask.logout'], userSessionLogout: this.handleUserSessionLogout }) : null
+							this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: _lang2.default[this.props.lang]['ask.logout'], userSessionLogout: this.handleUserSessionLogout, lang: this.props.lang }) : null
 						),
 						this.props.view.type === 'rightside' && !this.props.userSession ? _react2.default.createElement(
 							'div',
@@ -61563,10 +61563,10 @@ return /******/ (function(modules) { // webpackBootstrap
 		return function (_Component) {
 			_inherits(_class, _Component);
 
-			function _class(props, context) {
+			function _class(props) {
 				_classCallCheck(this, _class);
 
-				return _possibleConstructorReturn(this, Object.getPrototypeOf(_class).call(this, props, context));
+				return _possibleConstructorReturn(this, Object.getPrototypeOf(_class).call(this, props));
 			}
 
 			_createClass(_class, [{
@@ -61590,7 +61590,7 @@ return /******/ (function(modules) { // webpackBootstrap
 								_react2.default.createElement(
 									'button',
 									{ className: 'mky-popup-button', onClick: this.props.togglePopup },
-									_lang2.default[this.context.lang]['button.cancel.text']
+									_lang2.default[this.props.lang]['button.cancel.text']
 								)
 							)
 						)
@@ -61600,10 +61600,6 @@ return /******/ (function(modules) { // webpackBootstrap
 
 			return _class;
 		}(Component);
-	};
-
-	PopUp.contextTypes = {
-		lang: _react2.default.PropTypes.string.isRequired
 	};
 
 	exports.default = PopUp;
