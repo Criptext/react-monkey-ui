@@ -367,6 +367,7 @@ class MonkeyUI extends Component {
 				contentStyle: style,
 				wrapperInClass: 'mky-disappear'
 			});
+			this.props.onChatClosed();
 		}
 	}
 
