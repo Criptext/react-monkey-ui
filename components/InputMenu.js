@@ -8,7 +8,7 @@ class InputMenu extends React.Component {
 
 	render() {
 		let animationClass = this.props.visible ? 'mky-menu-bubble-show' : 'mky-menu-bubble-hide';
-		let menuClass = this.props.visible ? '' : 'mky-disabled';
+		let menuClass = this.props.visible ? '' : 'mky-disappear';
 		return (
 			<div id='mky-menu-bubble' className={'mky-menu-bubble '+animationClass}>
 				{/*<div className='menu-bubble-item' onClick={this.props.enableGeoInput}><i id='mky-menu-location-icon' className='demo-icon mky-location'>&#xe815;</i><p>Send Location</p></div>*/}
