@@ -10,10 +10,9 @@ class ContentAside extends Component {
 		this.classContentt = props.showBanner ? 'aside-divided' : '';
 		this.state = {
 			editingUsername: false, 
-			username: props.userSession.name,
+			username: props.userSession.name ? props.userSession.name : 'Operador',
 			urlAvatar: props.userSession.urlAvatar ? props.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
-		
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 		this.logout = this.logout.bind(this);
 		this.closeSide = this.closeSide.bind(this);
@@ -23,9 +22,13 @@ class ContentAside extends Component {
 		this.handleUsernameBlur = this.handleUsernameBlur.bind(this);
 	}
 	
-	componentWillReceiveProps(nextProps, nextContext) {
-    	if(nextProps.userSession.urlAvatar != this.state.urlAvatar){
+	componentWillReceiveProps(nextProps) {
+    	if(nextProps.userSession.urlAvatar != undefined){
 	    	this.setState({urlAvatar: nextProps.userSession.urlAvatar});
+    	}
+    	
+    	if(nextProps.userSession.name != undefined){
+	    	this.setState({username: nextProps.userSession.name});
     	}
 	}
   
@@ -123,7 +126,7 @@ class ContentAside extends Component {
 			});
 		}
 		this.setState({
-			editingUsername : !this.state.editingUsername
+			editingUsername: !this.state.editingUsername
 		});
 		var domNode = ReactDOM.findDOMNode(this.refs.usernameChange);
         domNode.focus();
