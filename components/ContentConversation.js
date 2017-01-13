@@ -22,7 +22,7 @@ class ContentConversation extends Component {
 		}
 		this.classExpand = '';
 		this.classStateChat = '';
-		this.conversationBannerClass = props.showBanner && !props.compactView ? 'mnk-converstion-divided' : ''
+		this.conversationBannerClass = props.showBanner && !props.compactView ? 'mnk-converstion-divided' : '';
 		
 		this.handleMessageSelected = this.handleMessageSelected.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
@@ -75,7 +75,7 @@ class ContentConversation extends Component {
 						? <div className='mky-conversation-back' onClick={this.showAside}><i className='icon mky-icon-back' style={styleHeader.title}></i></div>
 						: null
 					}
-					<div className='mky-conversation-selected-image' onClick={this.handleToggleConversationHeader}><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
+					<div className={'mky-conversation-selected-image '+this.defineClassOnlineStatus()} onClick={this.handleToggleConversationHeader}><img src={this.state.urlAvatar} onError={this.handleErrorAvatar}/></div>
 					<div className='mky-conversation-selected-description' onClick={this.handleToggleConversationHeader}>
 						<span className='mky-conversation-selected-name mky-ellipsify' style={styleHeader.title}>{this.props.conversationSelected.name}</span>
 						{ this.props.conversationSelected.description != null
@@ -100,7 +100,7 @@ class ContentConversation extends Component {
 					<div className='mky-signature'>
 						{ this.props.version
 							? <span><a className='mky-signature-link' target='_blank' href='http://criptext.com/'><img src='https://cdn.criptext.com/MonkeyUI/images/black-criptext-icon.png'></img></a>{this.props.version}</span>
-							: <span style={styleHeader.title}>Powered by <a className='mky-signature-link' style={styleHeader.subtitle} target='_blank' href='http://criptext.com/'>Criptext</a></span>
+							: <span style={styleHeader.title}>Powered by: <a className='mky-signature-link' style={styleHeader.subtitle} target='_blank' href='http://criptext.com/'>Criptext Inc.</a></span>
 						}
 					</div>
 					
@@ -158,7 +158,17 @@ class ContentConversation extends Component {
 		
 		return style;
 	}
-
+	
+	defineClassOnlineStatus() {
+		let result;
+		if(this.props.conversationSelected.online){
+			result = 'mky-connection-status-online';
+		}else{
+			result = 'mky-connection-status-offline';
+		}
+		return result;
+	}
+	
 	handleErrorAvatar() {
 		this.setState({urlAvatar: 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'});
 	}
