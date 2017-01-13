@@ -1141,16 +1141,25 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-selected-image{
+  border-radius: 50%;
   cursor: pointer;
   flex: none;
   float: left;
   height: 40px;
-  margin: 13px;
+  margin: 12px;
   margin-left: 25px;
   width: 40px;
   -webkit-box-flex: 0;
   -webkit-flex: none;
   -ms-flex: none;
+}
+
+.mky-connection-status-online{
+  border: #48c217 1px solid;
+}
+
+.mky-connection-status-offline{
+  border: red 1px solid;
 }
 
 .mky-conversation-selected-image img{
@@ -1194,7 +1203,7 @@ TABLE OF CONTENTS
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: 80%;
+  width: 100%;
 }
 
 .mky-conversation-selected-header .mky-button-standard{
@@ -1210,7 +1219,7 @@ TABLE OF CONTENTS
   cursor: pointer;
   display: inline-table;
   font-size: 20px;
-  margin: 12px 15px 0 8px;
+  margin: 12px 15px 0 35px;
 }
 
 .mky-rightside .mky-session-name{
@@ -2997,11 +3006,14 @@ TABLE OF CONTENTS
 
 .mky-partialsize .mky-signature{
 	bottom: 2px;
+	font-size: 10px;
+	margin-right: 15px;
+	width: 62px;
 }
 
 .mky-signature-link{
   color: #42A5F5;
-  text-alignt-decoration-line: dotted;
+  text-decoration: none;
 }
 
 .mky-signature-link img{
