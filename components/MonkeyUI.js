@@ -121,6 +121,12 @@ class MonkeyUI extends Component {
 					optionsToIncoming: undefined,
 					optionsToOutgoing: undefined
 				}
+			}
+			
+			if(!this.props.options.input){
+				this.props.options.input = {
+					textPlaceholder: undefined
+				}
 			}	
 		}
 		
@@ -535,6 +541,9 @@ MonkeyUI.defaultProps = {
 		message: {
 			optionsToIncoming: undefined,
 			optionsToOutgoing: undefined
+		},
+		input: {
+			textPlaceholder: undefined
 		}
 	},
 	lang: 'en',

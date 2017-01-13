@@ -119,7 +119,7 @@ class Input extends Component {
 							? ( <Textarea ref='textareaInput'
 									className='mky-textarea-input'
 									value={this.state.text}
-									placeholder={Lang[this.context.lang]['input.textarea.placeholder']}
+									placeholder={ this.context.options.input.textPlaceholder ? this.context.options.input.textPlaceholder : Lang[this.context.lang]['input.textarea.placeholder']}
 									onKeyDown={this.handleOnKeyDownTextArea}
 									onChange={this.handleOnChangeTextArea}>
 								</Textarea> )
@@ -583,6 +583,7 @@ class Input extends Component {
 }
 
 Input.contextTypes = {
+	options: React.PropTypes.object.isRequired,
     styles: React.PropTypes.object.isRequired,
     lang: React.PropTypes.string.isRequired
 }

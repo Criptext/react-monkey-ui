@@ -949,7 +949,7 @@ TABLE OF CONTENTS
   vertical-align: top;
   z-index: 1;
   -webkit-font-smoothing: antialiased;
-  font-family: 'helvetica-normal';
+  font-family: 'helvetica-normal', sans-serif;
 }
 
 .mky-conversation-item:hover .mky-conversation-notification{
@@ -1009,7 +1009,7 @@ TABLE OF CONTENTS
 
 .mky-conversation-unread .mky-conversation-state span{
   color: #000;
-  font-family: 'helvetica-light';
+  font-family: 'helvetica-light', sans-serif;
 }
 
 /* Conversation item empty */
