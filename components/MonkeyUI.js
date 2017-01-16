@@ -58,6 +58,7 @@ class MonkeyUI extends Component {
 		this.firstNotifyTime = 0;
 		this.notifyTimeout = null;
 		this.listTopScroll = 0;
+		this.exitButton = false;
 		this.toggleTab = this.toggleTab.bind(this);
 		this.toggleSide = this.toggleSide.bind(this);
 		this.handleLoginSession = this.handleLoginSession.bind(this);
@@ -169,13 +170,22 @@ class MonkeyUI extends Component {
 			this.expandWindow = true;
 		}
 
-	    if (this.props.view.type === 'rightside') {
+	    if(this.props.view.type === 'rightside') {
 	    	this.setState({
 		    	showConversations: this.props.showConversations,
 		    	compactView: true,
 		    	contentStyle: style,
 		    	wrapperInClass: 'mky-disappear'
 		    });
+	    }
+	    
+	    if(this.props.view.type === 'embedded') {
+		    this.setState({
+		    	showConversations: this.props.showConversations,
+		    	compactView: true,
+		    	contentStyle: style
+		    });
+		    this.exitButton = this.props.view.data.exitButton;
 	    }
 	}
 
@@ -201,8 +211,12 @@ class MonkeyUI extends Component {
 */
 			}
 		}
+		
+		if(this.props.view.type === 'embedded' && nextProps.chatOpened) {
+			this.toggleSide();
+		}
 	}
-
+	
 	render() {
 		const Form_ = ContentLogin(this.props.form);
 		const LogOut_ = PopUp(ContentLogOut);
@@ -211,8 +225,8 @@ class MonkeyUI extends Component {
 				<div className={'mky-wrapper-out '+this.classContent + ' animated pulse'} style={this.state.contentStyle}>
 					{ this.props.view.type === 'classic'
 						? ( <div className='mky-tab' style={this.defineToggleStyle()} onClick={this.toggleTab}>
-	                            <span className='mky-tablabel' style={this.defineTabTextColor()}> {this.defineTabText()} </span>
-	                            <div><i className={'icon '+this.state.classTabIcon} style={this.defineTabTextColor()}></i></div>
+	                            <span className='mky-tablabel' style={this.defineTitleTextColor()}> {this.defineToggleText()} </span>
+	                            <div><i className={'icon '+this.state.classTabIcon} style={this.defineTitleTextColor()}></i></div>
 	                        </div>
 						)
 						: ( this.props.view.type === 'rightside'
@@ -287,7 +301,8 @@ class MonkeyUI extends Component {
         							getConversationInfo = {this.props.onConversationLoadInfo}
         							showOptionList = {this.handleShowOptionList}
         							messageSelectedInfo = {this.props.messageLoadInfo}
-        							overlayView = {this.props.overlayView}/>
+        							overlayView = {this.props.overlayView}
+        							exitButton = {this.exitButton}/>
 							</div>
 							)
 							: <Form_ handleLoginSession={this.handleLoginSession} styles={this.props.styles}/>
@@ -441,16 +456,16 @@ class MonkeyUI extends Component {
 			return {};
 	}
 
-	defineTabTextColor() {
-		if(this.props.styles != null && this.props.styles.tabTextColor != null){
-			return {color: this.props.styles.tabTextColor};
+	defineTitleTextColor() {
+		if(this.props.styles != null && this.props.styles.titleTextColor != null){
+			return {color: this.props.styles.titleTextColor};
 		}else
 			return {};
 	}
 
-	defineTabText() {
-		if(this.props.styles != null && this.props.styles.tabText != null){
-			return this.props.styles.tabText;
+	defineToggleText() {
+		if(this.props.styles != null && this.props.styles.toggleText != null){
+			return this.props.styles.toggleText;
 		}else
 			return 'Want to know more?';
 	}

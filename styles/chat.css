@@ -211,6 +211,11 @@ TABLE OF CONTENTS
   margin: 20px auto;
 }
 
+.mky-embedded .mky-wrapper-in{
+  box-shadow: none;
+  transition: none;
+}
+
 .mky-partialsize .mky-wrapper-in{
   width: 100%;
   height: 100%;
@@ -1186,7 +1191,7 @@ TABLE OF CONTENTS
   cursor: pointer;
 }
 
-.mky-rightside .mky-conversation-selected-description{
+.mky-partialsize .mky-conversation-selected-description{
   width: calc(100% - 140px);
 }
 
@@ -1218,8 +1223,19 @@ TABLE OF CONTENTS
   color: #6e8191;
   cursor: pointer;
   display: inline-table;
-  font-size: 20px;
   margin: 12px 15px 0 35px;
+}
+
+.mky-embedded .mky-conversation-header-options{
+  margin: 10px 2px 0 48px;
+}
+
+.mky-conversation-header-options i{
+  font-size: 20px;
+}
+
+.mky-embedded .mky-conversation-header-options i{
+  font-size: 12px;
 }
 
 .mky-rightside .mky-session-name{
@@ -1232,6 +1248,11 @@ TABLE OF CONTENTS
   border-radius: 50%;
   height: 20px;
   width: 20px;
+}
+
+.mky-embedded .mky-conversation-header-options div{
+  background: none;
+  border: none;
 }
 
 #mky-conversation-selected-members{
@@ -4117,7 +4138,7 @@ ul.mky-info-conversation-list li.mky-info-conversation-member{
    ----------------------------- */
 
 .mky-wrapper-out button:focus {
-  outline:0;
+  outline: 0;
 }
 
 input[type=text] {
