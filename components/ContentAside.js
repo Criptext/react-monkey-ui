@@ -10,10 +10,9 @@ class ContentAside extends Component {
 		this.classContentt = props.showBanner ? 'aside-divided' : '';
 		this.state = {
 			editingUsername: false, 
-			username: context.userSession.name,
-			urlAvatar: context.userSession.urlAvatar ? context.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
+			username: props.userSession.name ? props.userSession.name : 'Operador',
+			urlAvatar: props.userSession.urlAvatar ? props.userSession.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png'
 		}
-		
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
 		this.logout = this.logout.bind(this);
 		this.closeSide = this.closeSide.bind(this);
@@ -23,9 +22,13 @@ class ContentAside extends Component {
 		this.handleUsernameBlur = this.handleUsernameBlur.bind(this);
 	}
 	
-	componentWillReceiveProps(nextProps, nextContext) {
-    	if(nextContext.userSession.urlAvatar != this.state.urlAvatar){
-	    	this.setState({urlAvatar: nextContext.userSession.urlAvatar});
+	componentWillReceiveProps(nextProps) {
+    	if(nextProps.userSession.urlAvatar != undefined){
+	    	this.setState({urlAvatar: nextProps.userSession.urlAvatar});
+    	}
+    	
+    	if(nextProps.userSession.name != undefined){
+	    	this.setState({username: nextProps.userSession.name});
     	}
 	}
   
@@ -41,7 +44,7 @@ class ContentAside extends Component {
 						<div className='mky-session-name'>
 							<input ref='usernameChange'
 									className='mky-ellipsify mky-edit-input'
-									value={this.state.editingUsername ? this.state.username : this.context.userSession.name}
+									value={this.state.editingUsername ? this.state.username : this.props.userSession.name}
 									onChange={this.handleUsernameChange}
 									onKeyDown={this.handleUsernameKeyDown}
 									onBlur={this.handleUsernameBlur}
@@ -96,8 +99,8 @@ class ContentAside extends Component {
 				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
 				style.optionButton = getContrastColorObject(this.context.styles.toggleColor);
 			}
-			if(this.context.styles.tabTextColor){
-				style.title.color = this.context.styles.tabTextColor
+			if(this.context.styles.titleTextColor){
+				style.title.color = this.context.styles.titleTextColor
 			}
 		}
 		
@@ -119,11 +122,11 @@ class ContentAside extends Component {
 	toogleEditUsername(){
 		if(!this.state.editingUsername){
 			this.setState({
-				username : this.context.userSession.name
+				username : this.props.userSession.name
 			});
 		}
 		this.setState({
-			editingUsername : !this.state.editingUsername
+			editingUsername: !this.state.editingUsername
 		});
 		var domNode = ReactDOM.findDOMNode(this.refs.usernameChange);
         domNode.focus();
@@ -146,14 +149,13 @@ class ContentAside extends Component {
 
 	handleUsernameBlur(event){
 		this.setState({
-			username: this.context.userSession.name,
+			username: this.props.userSession.name,
 			editingUsername: false
 		});
 	}
 }
 
 ContentAside.contextTypes = {
-    userSession: React.PropTypes.object.isRequired,
     styles: React.PropTypes.object.isRequired
 }
 

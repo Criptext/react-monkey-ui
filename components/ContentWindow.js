@@ -69,7 +69,8 @@ class ContentWindow extends Component {
 		    		haveConversations = {this.props.haveConversations}
 		    		version = {this.props.version}
 		    		showOptionList = {this.props.showOptionList}
-		    		overlayView = {this.props.overlayView}/>
+		    		overlayView = {this.props.overlayView}
+		    		exitButton = {this.props.exitButton}/>
 		    	: <ContentIntro isMobile = {this.props.compactView} showBanner = {this.props.showBanner}/>
 	    	}
 	    	{ this.state.showAsideInfo
