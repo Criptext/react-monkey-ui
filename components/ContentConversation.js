@@ -153,9 +153,11 @@ class ContentConversation extends Component {
 		if(this.context.styles){
 			if(this.context.styles.toggleColor){
 				style.header.background = this.context.styles.toggleColor;	
-				style.subtitle.color = this.context.styles.subtitleTextColor;
 				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
 				style.optionButton = getContrastColorObject(this.context.styles.toggleColor);
+			}
+			if(this.context.styles.subtitleTextColor){
+				style.subtitle.color = this.context.styles.subtitleTextColor;
 			}
 			if(this.context.styles.titleTextColor){
 				style.title.color = this.context.styles.titleTextColor
