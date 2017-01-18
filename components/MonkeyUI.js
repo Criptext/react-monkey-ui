@@ -213,7 +213,9 @@ class MonkeyUI extends Component {
 		}
 		
 		if(this.props.view.type === 'embedded' && nextProps.chatOpened) {
-			this.toggleSide();
+			if(this.state.contentStyle.width === 0){
+				this.toggleSide();
+			}
 		}
 	}
 	
