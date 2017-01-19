@@ -316,7 +316,7 @@ class MonkeyUI extends Component {
 					</div>
 					{ this.props.view.type === 'rightside' && !this.props.userSession
 						? ( <div className='mky-rightside-option'>
-								<div onClick={this.toggleSide}><i className='icon mky-icon-minimize'></i></div>
+								<div onClick={this.toggleSide}><i className='icon mky-icon-close'></i></div>
 							</div>
 						)
 						: null

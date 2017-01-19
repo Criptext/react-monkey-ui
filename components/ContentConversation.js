@@ -6,7 +6,7 @@ import Modal from './Modal.js'
 import Panel from './Panel.js'
 import ContentViewer from './ContentViewer.js'
 import ContentReconnect from './ContentReconnect'
-import { defineTime, defineTimeByDay, getCombineColor, getContrastColorObject } from '../utils/monkey-utils.js'
+import { defineTime, defineTimeByDay, getCombineColor} from '../utils/monkey-utils.js'
 import Lang from '../lang'
 
 const Modal_ = Modal(ContentViewer);
@@ -92,7 +92,7 @@ class ContentConversation extends Component {
 					}
 					{ this.props.viewType == 'rightside'
 						? ( <div className='mky-conversation-header-options' onClick={this.closeSide} style={styleHeader.title}>
-								<div style={styleHeader.optionButton}><i className='icon mky-icon-minimize'></i></div>
+								<div><i className='icon mky-icon-close'></i></div>
 							</div>
 						)
 						: ( this.props.viewType == 'embedded' && this.props.exitButton
@@ -147,21 +147,19 @@ class ContentConversation extends Component {
 		let style = {
 			header: {},
 			title: {},
-			subtitle: {},
-			optionButton: {}
+			subtitle: {}
 		};
 		if(this.context.styles){
 			if(this.context.styles.toggleColor){
 				style.header.background = this.context.styles.toggleColor;	
 				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
-				style.optionButton = getContrastColorObject(this.context.styles.toggleColor);
 				style.subtitle.color = getCombineColor(this.context.styles.toggleColor);
 			}
 			if(this.context.styles.subtitleTextColor){
 				style.subtitle.color = this.context.styles.subtitleTextColor;
 			}
-			if(this.context.styles.tabTextColor){
-				style.title.color = this.context.styles.tabTextColor
+			if(this.context.styles.tabTextColor || this.context.styles.titleTextColor){
+				style.title.color = this.context.styles.tabTextColor || this.context.styles.titleTextColor
 			}
 		}
 		

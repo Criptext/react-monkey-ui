@@ -421,7 +421,7 @@ TABLE OF CONTENTS
 }
 
 .mky-rightside-option{
-  left: 90%;
+  left: 92%;
   margin-top: 20px;
   position: absolute;
   top: 0;
@@ -433,7 +433,7 @@ TABLE OF CONTENTS
 
 .mky-rightside-option i {
   color: #b2b2b2;
-  font-size: 18px;
+  font-size: 11px;
 }
 
 /* 3.2.- ASIDE
@@ -499,11 +499,14 @@ TABLE OF CONTENTS
 }
 
 .mky-session-description{
-	width: calc(100% - 70px);
-	height: 100%;
-	display: inline-table;
-	vertical-align: top;
-	float: left;
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex; 
+  display: -ms-flexbox;
+  width: calc(100% - 70px);
+  height: 100%;
+  vertical-align: top;
+  float: left;
 }
 
 .mky-header-exit{
@@ -526,13 +529,14 @@ TABLE OF CONTENTS
 }
 
 .mky-session-name{
-    margin-top: 23px;
-    float: left;
-    display: flex;
-    white-space: nowrap;
-    width: calc(100% - 50px);
-    justify-content: space-between;
-    align-items: center;
+  align-items: center;
+  display: flex;
+  flex-grow: 1;
+  float: left;
+  justify-content: space-between;
+  margin-top: 10px;
+  white-space: nowrap;
+  width: calc(100% - 50px);
 }
 
 .mky-session-name span{
@@ -1223,7 +1227,7 @@ TABLE OF CONTENTS
   color: #6e8191;
   cursor: pointer;
   display: inline-table;
-  margin: 12px 15px 0 35px;
+  margin: 10px 12px 0 38px;
 }
 
 .mky-embedded .mky-conversation-header-options{
@@ -1231,7 +1235,7 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-header-options i{
-  font-size: 20px;
+  font-size: 11px;
 }
 
 .mky-embedded .mky-conversation-header-options i{
@@ -1243,10 +1247,11 @@ TABLE OF CONTENTS
 }
 
 .mky-conversation-header-options div{
-  background: rgba(140, 140, 140, 0.1);
-  border: 1px rgba(140, 140, 140, 0.2) solid;
+  align-items: center;
   border-radius: 50%;
+  display: flex;
   height: 20px;
+  justify-content: center;
   width: 20px;
 }
 

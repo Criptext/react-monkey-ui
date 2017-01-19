@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
 import ConversationListsContainer from './ConversationListsContainer.js';
-import { getContrastColorObject } from '../utils/monkey-utils.js'
 
 class ContentAside extends Component {
 	constructor(props, context) {
@@ -55,7 +54,7 @@ class ContentAside extends Component {
 						</div>
 						{ this.props.viewType == 'rightside'
 							? ( <div className='mky-conversation-header-options' onClick={this.closeSide} style={styleHeader.title}>
-									<div style={styleHeader.optionButton}><i className='icon mky-icon-minimize'></i></div>
+									<div><i className='icon mky-icon-close'></i></div>
 								</div>
 							)
 							: <div className='mky-header-exit' onClick={this.logout}><i className="icon mky-icon-signout"></i></div>
@@ -90,17 +89,15 @@ class ContentAside extends Component {
 	defineStyles() {
 		let style = {
 			header: {},
-			title: {},
-			optionButton: {}
+			title: {}
 		};
 		if(this.context.styles){
 			if(this.context.styles.toggleColor){
 				style.header.background = this.context.styles.toggleColor;	
 				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
-				style.optionButton = getContrastColorObject(this.context.styles.toggleColor);
 			}
-			if(this.context.styles.titleTextColor){
-				style.title.color = this.context.styles.titleTextColor
+			if(this.context.styles.tabTextColor || this.context.styles.titleTextColor){
+				style.title.color = this.context.styles.tabTextColor || this.context.styles.titleTextColor
 			}
 		}
 		
