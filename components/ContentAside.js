@@ -96,8 +96,8 @@ class ContentAside extends Component {
 				style.header.background = this.context.styles.toggleColor;	
 				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
 			}
-			if(this.context.styles.tabTextColor){
-				style.title.color = this.context.styles.tabTextColor
+			if(this.context.styles.tabTextColor || this.context.styles.titleTextColor){
+				style.title.color = this.context.styles.tabTextColor || this.context.styles.titleTextColor
 			}
 		}
 		

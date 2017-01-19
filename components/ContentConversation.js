@@ -158,8 +158,8 @@ class ContentConversation extends Component {
 			if(this.context.styles.subtitleTextColor){
 				style.subtitle.color = this.context.styles.subtitleTextColor;
 			}
-			if(this.context.styles.tabTextColor){
-				style.title.color = this.context.styles.tabTextColor
+			if(this.context.styles.tabTextColor || this.context.styles.titleTextColor){
+				style.title.color = this.context.styles.tabTextColor || this.context.styles.titleTextColor
 			}
 		}
 		
