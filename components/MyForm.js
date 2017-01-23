@@ -52,15 +52,15 @@ class MyForm extends Component {
 	}
 
 	defineLogo() {
-		if(this.props.styles != null && this.props.styles.logo != null){
-			return this.props.styles.logo
+		if(this.props.styles != null && (this.props.styles.logo != null || this.props.styles.formLogo != null)){
+			return this.props.styles.logo || this.props.styles.formLogo
 		}
 		return 'https://cdn.criptext.com/MonkeyUI/images/monkey_widget_logo.png';
 	}
 
 	defineLoginTitle(){
-		if(this.props.styles && this.props.styles.loginTitle){
-			return this.props.styles.loginTitle;
+		if(this.props.styles && (this.props.styles.loginTitle || this.props.styles.formTitle)){
+			return this.props.styles.loginTitle || this.props.styles.formTitle;
 		}
 		return 'Welcome to our secure live-chat';
 	}

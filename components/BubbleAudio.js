@@ -23,7 +23,7 @@ class BubbleAudio extends Component {
 		this.pauseAudioBubble = this.pauseAudioBubble.bind(this);
 		this.pauseAllAudio = this.pauseAllAudio.bind(this);
 		this.updateAnimationBuble = this.updateAnimationBuble.bind(this);
-		this.radioColor = props.styles.bubbleColorOut || '#2c74c6';
+		this.radioColor = props.styles.bubbleColorOut || (props.styles.bubbleOutBackgroundColor || '#2c74c6');
 	}
 	
 	componentWillMount() {	

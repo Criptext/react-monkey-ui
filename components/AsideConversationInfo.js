@@ -115,12 +115,12 @@ class AsideConversationInfo extends Component {
 			title: {}
 		};
 		if(this.context.styles){
-			if(this.context.styles.toggleColor){
-				style.header.background = this.context.styles.toggleColor;	
-				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
+			if(this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor){
+				style.header.background = this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor;	
+				style.header.borderBottom = '1px solid ' + (this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor);
 			}
-			if(this.context.styles.titleTextColor){
-				style.title.color = this.context.styles.titleTextColor
+			if(this.context.styles.titleTextColor || this.context.styles.toggleFontColor){
+				style.title.color = this.context.styles.titleTextColor || this.context.styles.toggleFontColor;
 			}
 		}
 		
