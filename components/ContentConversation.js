@@ -150,16 +150,16 @@ class ContentConversation extends Component {
 			subtitle: {}
 		};
 		if(this.context.styles){
-			if(this.context.styles.toggleColor){
-				style.header.background = this.context.styles.toggleColor;	
-				style.header.borderBottom = '1px solid ' + this.context.styles.toggleColor;
-				style.subtitle.color = getCombineColor(this.context.styles.toggleColor);
+			if(this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor){
+				style.header.background = this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor;	
+				style.header.borderBottom = '1px solid ' + (this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor);
+				style.subtitle.color = getCombineColor(this.context.styles.toggleColor || this.context.styles.toggleBackgroundColor);
 			}
-			if(this.context.styles.subtitleTextColor){
-				style.subtitle.color = this.context.styles.subtitleTextColor;
+			if(this.context.styles.subtitleTextColor || this.context.styles.chatSubtitleFontColor){
+				style.subtitle.color = this.context.styles.subtitleTextColor || this.context.styles.chatSubtitleFontColor;
 			}
-			if(this.context.styles.tabTextColor || this.context.styles.titleTextColor){
-				style.title.color = this.context.styles.tabTextColor || this.context.styles.titleTextColor
+			if(this.context.styles.tabTextColor || this.context.styles.titleTextColor || this.context.styles.toggleFontColor){
+				style.title.color = this.context.styles.tabTextColor || (this.context.styles.titleTextColor || this.context.styles.toggleFontColor);
 			}
 		}
 		

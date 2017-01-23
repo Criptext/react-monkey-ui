@@ -88,18 +88,18 @@ const Bubble = Component => class extends Component {
 		let style = {};
 		if(this.props.layerClass == 'text' && this.props.styles != null){
 			if(this.props.userSessionId === this.props.message.senderId){
-				if(this.props.styles.bubbleColorOut){
-					style.background = this.props.styles.bubbleColorOut;
+				if(this.props.styles.bubbleColorOut || this.props.styles.bubbleOutBackgroundColor){
+					style.background = this.props.styles.bubbleColorOut || this.props.styles.bubbleOutBackgroundColor;
 				}
-				if(this.props.styles.bubbleTextColorOut){
-					style.color = this.props.styles.bubbleTextColorOut;
+				if(this.props.styles.bubbleTextColorOut || this.props.styles.bubbleOutFontColor){
+					style.color = this.props.styles.bubbleTextColorOut || this.props.styles.bubbleOutFontColor;
 				}
 			}else{
-				if(this.props.styles.bubbleColorIn){
-					style.background = this.props.styles.bubbleColorIn;
+				if(this.props.styles.bubbleColorIn || this.props.styles.bubbleInBackgroundColor){
+					style.background = this.props.styles.bubbleColorIn || this.props.styles.bubbleInBackgroundColor;
 				}
-				if(this.props.styles.bubbleTextColorIn){
-					style.color = this.props.styles.bubbleTextColorIn;
+				if(this.props.styles.bubbleTextColorIn || this.props.styles.bubbleInFontColor){
+					style.color = this.props.styles.bubbleTextColorIn || this.props.styles.bubbleInFontColor;
 				}
 			}
 		}

@@ -232,7 +232,7 @@ class MonkeyUI extends Component {
 	                        </div>
 						)
 						: ( this.props.view.type === 'rightside'
-							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-criptext'></i></div>
+							? <div className='mky-button' style={this.defineToggleStyle()} onClick={this.toggleSide}><i className='icon mky-icon-criptext' style={this.defineTitleTextColor()}></i></div>
 							: null
 						)
 					}
@@ -390,7 +390,9 @@ class MonkeyUI extends Component {
 				contentStyle: style,
 				wrapperInClass: 'mky-disappear'
 			});
-			this.props.onChatClosed();
+			if(this.props.onChatClosed){
+				this.props.onChatClosed();
+			}
 		}
 	}
 
@@ -452,22 +454,22 @@ class MonkeyUI extends Component {
 	}
 
 	defineToggleStyle(){
-		if(this.props.styles != null && this.props.styles.toggleColor != null){
-			return {background: this.props.styles.toggleColor};
+		if(this.props.styles != null && (this.props.styles.toggleColor != null || this.props.styles.toggleBackgroundColor != null)){
+			return {background: this.props.styles.toggleColor || this.props.styles.toggleBackgroundColor};
 		}else
 			return {};
 	}
 
 	defineTitleTextColor() {
-		if(this.props.styles != null && this.props.styles.titleTextColor != null){
-			return {color: this.props.styles.titleTextColor};
+		if(this.props.styles != null && (this.props.styles.tabTextColor != null || this.props.styles.titleTextColor != null || this.props.styles.toggleFontColor)){
+			return {color: this.props.styles.tabTextColor || (this.props.styles.titleTextColor || this.props.styles.toggleFontColor)};
 		}else
 			return {};
 	}
 
 	defineToggleText() {
-		if(this.props.styles != null && this.props.styles.toggleText != null){
-			return this.props.styles.toggleText;
+		if(this.props.styles != null && (this.props.styles.toggleText != null || this.props.styles.toggleTitleText != null)){
+			return this.props.styles.toggleText || this.props.styles.toggleTitleText;
 		}else
 			return 'Want to know more?';
 	}
