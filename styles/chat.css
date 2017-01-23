@@ -59,11 +59,11 @@ TABLE OF CONTENTS
 
 @font-face {
   font-family: "react-monkey-ui";
-  src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot");
-  src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.eot?#iefix") format("embedded-opentype"),
-    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.woff") format("woff"),
-    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.ttf") format("truetype"),
-    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui.svg#monkey") format("svg");
+  src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui2.eot");
+  src:url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui2.eot?#iefix") format("embedded-opentype"),
+    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui2.woff") format("woff"),
+    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui2.ttf") format("truetype"),
+    url("https://cdn.criptext.com/MonkeyUI/font/react-monkey-ui2.svg#monkey") format("svg");
   font-weight: normal;
   font-style: normal;
 
@@ -116,17 +116,8 @@ TABLE OF CONTENTS
 .mky-icon-pencil:before {
   content: "\67";
 }
-.mky-icon-mic:before {
-  content: "\68";
-}
 .mky-icon-send:before {
   content: "\69";
-}
-.mky-icon-image:before {
-  content: "\6a";
-}
-.mky-icon-file:before {
-  content: "\6b";
 }
 .mky-icon-chat:before {
   content: "\6c";
@@ -154,6 +145,15 @@ TABLE OF CONTENTS
 }
 .mky-icon-trashcan:before {
   content: "\73";
+}
+.mky-icon-file:before {
+  content: "\68";
+}
+.mky-icon-image:before {
+  content: "\6a";
+}
+.mky-icon-mic:before {
+  content: "\6b";
 }
 
 /* 1.- CONTENT
@@ -2655,12 +2655,6 @@ TABLE OF CONTENTS
 .mky-partialsize #mky-chat-input{
 }
 
-.mky-partialsize .mky-textarea-input{
-  width: calc(100% - 110px);
-  margin-left: 0;
-  margin-right: 0;
-}
-
 #mky-divider-chat-input{
   border: none;
 }
@@ -2702,34 +2696,32 @@ TABLE OF CONTENTS
   background-position: center;
 }
 
-.mky-button-input .mky-icon-drawer{
+.mky-button-input i{
   background: none;
   color: #0692df;
-  font-size: 32px;
-  width: auto;
+  cursor: pointer;
+  font-size: 20px;
   height: auto;
+  width: auto;
 }
 
 .mky-button-input .mky-icon-trashcan{
-  background: none;
   color: red;
   padding: 0px 0px;
-  font-size: 20px;
 }
 
 .mky-button-input .mky-icon-mic{
-  background: none;
-  color: #0692df;
-  font-size: 28px;
-  width: 28px;
+  font-size: 23px;
+  height: 23px;
 }
 
 .mky-button-input .mky-icon-send{
-  background: none;
-  color: #0692df;
+  height: 23px;
   padding: 0px 0px;
-  font-size: 20px;
-  cursor: pointer;
+}
+
+.mky-button-input-div{
+  border-left: 1px dotted #ccc;
 }
 
 .tooltip{
@@ -2793,8 +2785,9 @@ TABLE OF CONTENTS
   font-size: 14px;
   font-style: normal;
   height: auto;
+  letter-spacing: 0px;
   line-height: 17px;
-  margin: 8px 5px 8px 5px;
+  margin: 8px 0px 8px 0px;
 /*   min-height: 17px;  */
   padding: 8px 10px 6px 10px;
   resize: none;
@@ -2804,16 +2797,12 @@ TABLE OF CONTENTS
   top: initial;
   max-height: 40px;
   border-radius: 0;
-  border-left: 1px solid rgba(219,219,219,0.7);
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   -webkit-border-radius: 0;
-  letter-spacing: 0px;
-  width: calc(100% - 114px);
 }
 
 .mky-textarea-input:focus{
-  border-left: 1px solid #ccc;
   box-shadow: none;
 }
 
@@ -2852,6 +2841,14 @@ TABLE OF CONTENTS
   font-size: 15px;
   font-family: Verdana, Arial, Helvetica, sans-serif;
   text-transform: initial;
+}
+
+.mky-textarea-input-expand{
+  width: calc(100% - 58px);
+}
+
+.mky-textarea-input-collapse{
+  width: calc(100% - 125px);
 }
 
 .mky-record-area{

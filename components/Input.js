@@ -32,6 +32,7 @@ class Input extends Component {
 			minutes: '00',
 			seconds: '00',
 			text: '',
+			textareaSize: 'mky-textarea-input-collapse',
             menuVisibility: 0,
             creatingAudio: false,
             showAttachButton: true,
@@ -97,27 +98,32 @@ class Input extends Component {
     	return ( 
     		<div id='mky-chat-input' className={(this.props.connectionStatus == null || this.props.connectionStatus == 3) ? '' : 'mky-disabled'} >
 				<div id='mky-chat-inner-input'>
-					<InputMenu toggleVisibility={this.handleMenuVisibility}
+					{ /*
+<InputMenu toggleVisibility={this.handleMenuVisibility}
 						visible={this.state.menuVisibility}
 						enableGeoInput={this.props.enableGeoInput}
 						handleAttach={this.handleAttach}
 						handleAttachFile={this.handleAttachFile}
-						colorButton={styleInput.inputRightButton}/>
+						colorButton={styleInput.inputButton}/>
+*/
+					}
 					<div className='mky-inner-chat-input'>
 						<div id='mky-divider-chat-input'></div>
-						<div className='mky-button-input'>
-							{ this.state.showAttachButton
-								? <i className='mky-button-icon icon mky-icon-drawer' style={styleInput.inputLeftButton} onClick={this.handleMenuVisibility}></i>
+						
+							{ /*
+this.state.showAttachButton
+								? <div className='mky-button-input'><i className='mky-button-icon icon mky-icon-drawer' style={styleInput.inputButton} onClick={this.handleMenuVisibility}></i></div>
 								: null
+*/
 							}
 							{ this.state.showCancelAudioButton
-								? <i className='mky-button-icon icon mky-icon-trashcan' onClick={this.handleCancelAudio}></i>
+								? <div className='mky-button-input'><i className='mky-button-icon icon mky-icon-trashcan' onClick={this.handleCancelAudio}></i></div>
 								: null
 							}
-						</div>
+						
 						{ this.state.showTextArea
 							? ( <Textarea ref='textareaInput'
-									className='mky-textarea-input'
+									className={'mky-textarea-input '+this.state.textareaSize}
 									value={this.state.text}
 									placeholder={ this.context.options.input.textPlaceholder ? this.context.options.input.textPlaceholder : Lang[this.context.lang]['input.textarea.placeholder']}
 									onKeyDown={this.handleOnKeyDownTextArea}
@@ -138,7 +144,15 @@ class Input extends Component {
 								</div> )
 							: null
 						}
-						<div className='mky-button-input'>
+						{ this.state.showAttachButton
+							? <div className='mky-button-input'><i className='mky-button-icon icon mky-icon-image' onClick={this.handleAttach} style={styleInput.inputButton}></i></div>
+							: null
+						}
+						{ this.state.showAttachButton
+							? <div className='mky-button-input'><i className='mky-button-icon icon mky-icon-file' onClick={this.handleAttachFile} style={styleInput.inputButton}></i></div>
+							: null
+						}
+						<div className='mky-button-input mky-button-input-div'>
 							{ this.state.showAudioButton
 								? ( this.state.creatingAudio
 									? ( <div className='mky-spinner-input-audio'>
@@ -148,7 +162,7 @@ class Input extends Component {
 			    							<div className='mky-rect4'></div>
 			    						</div> )
 									: ( <i className={'mky-button-icon icon mky-icon-mic'+' '+this.state.classAudioButtonAvailable}
-											style={styleInput.inputRightButton}
+											style={styleInput.inputButton}
 											onClick={this.handleRecordAudio}>
 											<span className='tooltip'>{Lang[this.context.lang]['button.recordaudio.tooltip']}</span>
 										</i> )
@@ -156,7 +170,7 @@ class Input extends Component {
 								: null
 							}
 							{ this.state.showSendButton
-								? <i className='mky-button-icon icon mky-icon-send' style={styleInput.inputRightButton} onClick={this.handleSendMessage}></i>
+								? <i className='mky-button-icon icon mky-icon-send' style={styleInput.inputButton} onClick={this.handleSendMessage}></i>
 								: null
 							}
 						</div>
@@ -187,15 +201,11 @@ class Input extends Component {
 
 	defineStyles() {
 		let style = {
-			inputLeftButton: {},
-			inputRightButton: {}
+			inputButton: {}
 		};
 		if(this.context.styles){
-			if(this.context.styles.inputLeftButtonColor){
-				style.inputLeftButton.color = this.context.styles.inputLeftButtonColor
-			}
-			if(this.context.styles.inputRightButtonColor){
-				style.inputRightButton.color = this.context.styles.inputRightButtonColor
+			if(this.context.styles.inputButtonColor){
+				style.inputButton.color = this.context.styles.inputButtonColor
 			}
 		}
 
@@ -222,7 +232,9 @@ class Input extends Component {
 			this.setState({
 				text: '',
 				showAudioButton: true,
-				showSendButton: false
+				showSendButton: false,
+				showAttachButton: true,
+				textareaSize: 'mky-textarea-input-collapse'
 			});
             this.props.handleNotifyTyping(false);
 		}else if(event.keyCode === 8){
@@ -237,12 +249,16 @@ class Input extends Component {
         if(event.target.value.length == 0){
         	this.setState({
 				showAudioButton: true,
-				showSendButton: false
+				showSendButton: false,
+				showAttachButton: true,
+				textareaSize: 'mky-textarea-input-collapse'
 			});
         }else{
     		this.setState({
 				showAudioButton: false,
-				showSendButton: true
+				showSendButton: true,
+				showAttachButton: false,
+				textareaSize: 'mky-textarea-input-expand'
 			});
         }
 		this.setState({text: event.target.value});
