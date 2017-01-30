@@ -467,7 +467,7 @@ return /******/ (function(modules) { // webpackBootstrap
 									messageSelectedInfo: this.props.messageLoadInfo,
 									overlayView: this.props.overlayView,
 									exitButton: this.exitButton })
-							) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles }),
+							) : _react2.default.createElement(Form_, { handleLoginSession: this.handleLoginSession, styles: this.props.styles, custom: this.props.chatExtraData }),
 							this.state.showPopUp ? _react2.default.createElement(LogOut_, { togglePopup: this.togglePopup, popUpMessage: _lang2.default[this.props.lang]['ask.logout'], userSessionLogout: this.handleUserSessionLogout, lang: this.props.lang }) : null
 						),
 						this.props.view.type === 'rightside' && !this.props.userSession ? _react2.default.createElement(
@@ -38438,7 +38438,9 @@ return /******/ (function(modules) { // webpackBootstrap
 				this.domNode.addEventListener('scroll', this.handleScroll);
 				var amountMessages = Object.keys(this.props.conversationSelected.messages).length;
 				if ((amountMessages === 1 || amountMessages > 0 && amountMessages < 10) && !this.props.conversationSelected.loading) {
-					this.getMoreMessages();
+					this.getMoreMessages(true);
+				} else if (this.props.conversationSelected.lastMessage == null || typeof this.props.conversationSelected.lastMessage == 'undefined') {
+					this.getMoreMessages(false);
 				}
 				if (this.orderedConversations.length > 0) {
 					this.domNode.lastChild.scrollIntoView();
@@ -38449,7 +38451,7 @@ return /******/ (function(modules) { // webpackBootstrap
 			value: function componentDidUpdate() {
 				var amountMessages = Object.keys(this.props.conversationSelected.messages).length;
 				if ((amountMessages === 1 || amountMessages > 0 && amountMessages < 10) && !this.props.conversationSelected.loading && this.firstLoad) {
-					this.getMoreMessages();
+					this.getMoreMessages(true);
 				}
 				this.firstLoad = false;
 
@@ -38587,7 +38589,7 @@ return /******/ (function(modules) { // webpackBootstrap
 				if (this.domNode.scrollTop === 0 && this.scrollTop != 0) {
 					this.scrollHeight = this.domNode.scrollHeight;
 					if (!this.props.conversationSelected.loading) {
-						this.getMoreMessages();
+						this.getMoreMessages(true);
 					}
 				}
 				this.scrollTop = this.domNode.scrollTop;
@@ -38633,8 +38635,12 @@ return /******/ (function(modules) { // webpackBootstrap
 			}
 		}, {
 			key: 'getMoreMessages',
-			value: function getMoreMessages() {
-				this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation / 1000);
+			value: function getMoreMessages(hasLastMessage) {
+				if (hasLastMessage) {
+					this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation);
+				} else {
+					this.props.loadMessages(this.props.conversationSelected.id, null);
+				}
 			}
 		}]);
 
@@ -62159,16 +62165,16 @@ return /******/ (function(modules) { // webpackBootstrap
 		}, {
 			key: 'defineLogo',
 			value: function defineLogo() {
-				if (this.props.styles != null && (this.props.styles.logo != null || this.props.styles.formLogo != null)) {
-					return this.props.styles.logo || this.props.styles.formLogo;
+				if (this.props.styles != null && (this.props.styles.logo != null || this.props.custom.formLogo != null)) {
+					return this.props.styles.logo || this.props.custom.formLogo;
 				}
 				return 'https://cdn.criptext.com/MonkeyUI/images/monkey_widget_logo.png';
 			}
 		}, {
 			key: 'defineLoginTitle',
 			value: function defineLoginTitle() {
-				if (this.props.styles && (this.props.styles.loginTitle || this.props.styles.formTitle)) {
-					return this.props.styles.loginTitle || this.props.styles.formTitle;
+				if (this.props.styles && (this.props.styles.loginTitle || this.props.custom.formTitle)) {
+					return this.props.styles.loginTitle || this.props.custom.formTitle;
 				}
 				return 'Welcome to our secure live-chat';
 			}
