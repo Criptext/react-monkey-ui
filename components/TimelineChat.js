@@ -134,7 +134,9 @@ class TimelineChat extends Component {
 	    this.domNode.addEventListener('scroll', this.handleScroll);
 	    let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
 	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading ){
-			this.getMoreMessages();
+			this.getMoreMessages(true);
+		}else if (this.props.conversationSelected.lastMessage == null || typeof this.props.conversationSelected.lastMessage == 'undefined') {
+			this.getMoreMessages(false);
 		}
 		if(this.orderedConversations.length > 0){
 			this.domNode.lastChild.scrollIntoView();
@@ -145,7 +147,7 @@ class TimelineChat extends Component {
 	componentDidUpdate() {
 		let amountMessages = Object.keys(this.props.conversationSelected.messages).length;
 	    if( (amountMessages === 1 || (amountMessages > 0 && amountMessages < 10)) && !this.props.conversationSelected.loading && this.firstLoad){
-			this.getMoreMessages();
+			this.getMoreMessages(true);
 		}
 		this.firstLoad = false;
 
@@ -279,7 +281,7 @@ class TimelineChat extends Component {
 		if(this.domNode.scrollTop === 0 && this.scrollTop != 0 ){
 			this.scrollHeight = this.domNode.scrollHeight;
 			if(!this.props.conversationSelected.loading){
-				this.getMoreMessages();
+				this.getMoreMessages(true);
 			}
 		}
 		this.scrollTop = this.domNode.scrollTop;
@@ -320,8 +322,12 @@ class TimelineChat extends Component {
 	    return arr;
 	}
 
-	getMoreMessages() {
-		this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation/1000);
+	getMoreMessages(hasLastMessage) {
+		if(hasLastMessage) {
+			this.props.loadMessages(this.props.conversationSelected.id, this.props.conversationSelected.messages[this.orderedConversations[0].key].datetimeCreation);
+		}else{
+			this.props.loadMessages(this.props.conversationSelected.id, null);
+		}
 	}
 }
 
