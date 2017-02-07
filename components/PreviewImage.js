@@ -3,7 +3,7 @@ var EXIF = require('exif-js/exif.js');
 require('jquery-knob/dist/jquery.knob.min.js');
 var $ = require('jquery');
 
-class ContentViewer extends Component {
+class PreviewImage extends Component {
 	constructor(props){
 		super(props);
 		this.handleResize = this.handleResize.bind(this);
@@ -16,37 +16,35 @@ class ContentViewer extends Component {
 	}
 
 	componentDidMount() {
-   		window.addEventListener('resize', this.handleResize);
+		window.addEventListener('resize', this.handleResize);
 
-			if (this.props.message.data != null && this.state.imageOrientation.length==0 ) {
+		if (this.props.message.data != null && this.state.imageOrientation.length==0 ) {
+			let imageObject = new Image();
+			var that = this;
 
-				let imageObject = new Image();
-				var that = this;
-
-				imageObject.onload = function(){
-					EXIF.getData(imageObject, function() {
-						let orientation = EXIF.getTag(this, "Orientation");
-						if (orientation != undefined) {
-							console.log('did mount');
-							switch (orientation) {
-								case 3:
-									that.setState({ imageOrientation : 'rotate180'});
-									break;
-								case 8:
-									that.setState({ imageOrientation : 'rotate270'});
-									break;
-								case 6:
-									that.setState({ imageOrientation : 'rotate90'});
-									break;
-								default:
-							}
-
+			imageObject.onload = function(){
+				EXIF.getData(imageObject, function() {
+					let orientation = EXIF.getTag(this, "Orientation");
+					if (orientation != undefined) {
+						console.log('did mount');
+						switch (orientation) {
+							case 3:
+								that.setState({ imageOrientation: 'rotate180'});
+								break;
+							case 8:
+								that.setState({ imageOrientation: 'rotate270'});
+								break;
+							case 6:
+								that.setState({ imageOrientation: 'rotate90'});
+								break;
+							default:
 						}
-					});
-				};
 
-				imageObject.src = this.props.message.data;
-			}
+					}
+				});
+			};
+			imageObject.src = this.props.message.data;
+		}
 	}
 
 
@@ -54,8 +52,8 @@ class ContentViewer extends Component {
 		var height_ = $('#file_viewer_image').parent().height() - 40;
 		var width_ = $('#file_viewer_image').parent().width() - 40;
 		$('#viewer-img').css({
-				'max-height': height_+'px',
-				'max-width': width_+'px'
+			'max-height': height_+'px',
+			'max-width': width_+'px'
 		});
 	}
 
@@ -114,4 +112,4 @@ function base64toBlob(base64Data, contentType) {
     return new Blob(byteArrays, { type: contentType });
 }
 
-export default ContentViewer;
+export default PreviewImage;

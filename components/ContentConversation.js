@@ -2,21 +2,22 @@ import React, { Component } from 'react'
 import TimelineChat from './TimelineChat.js'
 import Input from './Input.js'
 // import LocationInput from './LocationInput.js'
-import Modal from './Modal.js'
+import Preview from './Preview.js'
 import Panel from './Panel.js'
-import ContentViewer from './ContentViewer.js'
 import ContentReconnect from './ContentReconnect'
 import { defineTime, defineTimeByDay, getCombineColor} from '../utils/monkey-utils.js'
 import Lang from '../lang'
 
-const Modal_ = Modal(ContentViewer);
+import PreviewImage from './PreviewImage.js'
+
+const PreviewImage_ = Preview(PreviewImage);
 
 class ContentConversation extends Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
 			showLocationInput: false,
-			messageSelected: undefined,
+			messageToShowPreview: undefined,
 			urlAvatar: props.conversationSelected.urlAvatar ? props.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
 			classEndChatButton: ''
 		}
@@ -24,7 +25,7 @@ class ContentConversation extends Component {
 		this.classStateChat = '';
 		this.conversationBannerClass = props.showBanner && !props.compactView ? 'mnk-converstion-divided' : '';
 		
-		this.handleMessageSelected = this.handleMessageSelected.bind(this);
+		this.handleShowPreviewMessage = this.handleShowPreviewMessage.bind(this);
 		this.handleCloseModal = this.handleCloseModal.bind(this);
 		this.showAside = this.showAside.bind(this);
 		this.handleErrorAvatar = this.handleErrorAvatar.bind(this);
@@ -38,7 +39,7 @@ class ContentConversation extends Component {
 		if(this.props.conversationSelected.id != nextProps.conversationSelected.id){
 			this.setState({
 				showLocationInput: false,
-				messageSelected: undefined,
+				messageToShowPreview: undefined,
 				urlAvatar: nextProps.conversationSelected.urlAvatar ? nextProps.conversationSelected.urlAvatar : 'https://cdn.criptext.com/MonkeyUI/images/userdefault.png',
 				classEndChatButton: ''
 			});
@@ -55,11 +56,6 @@ class ContentConversation extends Component {
 			}
 		}else{
 			this.classExpand = 'mky-content-conversation-expand';
-		}
-
-		var modalComponent = null;
-		if(this.state.messageSelected){
-			modalComponent = <Modal_ message={this.state.messageSelected} closeModal={this.handleCloseModal}/>
 		}
 		
 		if(this.props.overlayView){
@@ -119,12 +115,15 @@ class ContentConversation extends Component {
 							<TimelineChat customLoader={this.props.customLoader}
 								loadMessages={this.props.loadMessages}
 								conversationSelected={this.props.conversationSelected}
-								messageSelected={this.handleMessageSelected}
+								onShowPreviewMessage={this.handleShowPreviewMessage}
 								onClickMessage={this.props.onClickMessage}
 								dataDownloadRequest={this.props.dataDownloadRequest}
 								getUser={this.props.getUser}
 								showOptionList = {this.props.showOptionList}/>
-							{ modalComponent }
+							{ this.state.messageToShowPreview
+								? <PreviewImage_ message={this.state.messageToShowPreview} closeModal={this.handleCloseModal}/>
+								: null
+							}
 							<Input connectionStatus={this.props.connectionStatus}
 								conversationSelected={this.props.conversationSelected}
 								handleNotifyTyping={this.props.handleNotifyTyping}
@@ -195,12 +194,12 @@ class ContentConversation extends Component {
 		this.props.toggleConversationHeader('conversation');
 	}
 
-	handleMessageSelected(message) {
-		this.setState({messageSelected:message});
+	handleShowPreviewMessage(message) {
+		this.setState({messageToShowPreview: message});
 	}
 
 	handleCloseModal() {
-		this.setState({messageSelected: undefined});
+		this.setState({messageToShowPreview: undefined});
 	}
 
 	showAside() {
