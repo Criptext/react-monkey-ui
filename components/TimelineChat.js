@@ -8,12 +8,14 @@ import BubbleImage from './BubbleImage.js';
 import BubbleFile from './BubbleFile.js';
 import BubbleAudio from './BubbleAudio.js';
 import BubbleContact from './BubbleContact.js';
+import BubbleImageLink from './BubbleImageLink';
 
 const BubbleText_ = Bubble(BubbleText);
 const BubbleImage_ = Bubble(BubbleImage);
 const BubbleFile_ = Bubble(BubbleFile);
 const BubbleAudio_ = Bubble(BubbleAudio);
 const BubbleContact_ = Bubble(BubbleContact);
+const BubbleImageLink_ = Bubble(BubbleImageLink);
 
 class TimelineChat extends Component {
 
@@ -243,6 +245,19 @@ class TimelineChat extends Component {
 									userSessionId={this.context.userSession.id}
 									layerClass={message.bubbleType}
 									onShowPreviewMessage={this.props.onShowPreviewMessage}
+									onClickMessage={this.props.onClickMessage}
+									dataDownloadRequest={this.props.dataDownloadRequest}
+									getUser={this.props.getUser}
+									styles={this.context.styles}
+									showOptions={this.context.options.message}
+									showOptionList = {this.props.showOptionList}/>)
+				break;
+			case 'imagelink':
+				messagesArray.push(<BubbleImageLink_ key={message.id}
+									message={message}
+									userSessionId={this.context.userSession.id}
+									layerClass={message.bubbleType}
+									messageSelected={this.props.messageSelected}
 									onClickMessage={this.props.onClickMessage}
 									dataDownloadRequest={this.props.dataDownloadRequest}
 									getUser={this.props.getUser}

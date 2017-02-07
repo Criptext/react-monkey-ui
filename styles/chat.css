@@ -1737,6 +1737,18 @@ TABLE OF CONTENTS
 .mky-bubble-image-in{
 }
 
+/* image bubble */
+
+.mky-bubble-imagelink{
+  background: #fff;
+  border: 1px solid #f2f2f2;
+  height: auto;
+  max-width: 260px;
+  min-width: 68px;
+  padding: 0;
+  width: auto;
+}
+
 /* audio bubble */
 
 .mky-bubble-audio{
@@ -2294,6 +2306,18 @@ TABLE OF CONTENTS
   transform: rotate(270deg) translateX(-100%);
   -webkit-transform: rotate(270deg) translateX(-100%);
   -ms-transform: rotate(270deg) translateX(-100%);
+}
+
+/*content image link bubble */
+
+.mky-content-imagelink{
+  height: 250px;
+  align-items: center;
+  display: flex;
+  -webkit-border-radius: 14px;
+  -moz-border-radius: 14px;
+  border-radius: 14px;
+  overflow: hidden;
 }
 
 /*content file bubble */

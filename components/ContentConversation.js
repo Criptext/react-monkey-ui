@@ -121,7 +121,15 @@ class ContentConversation extends Component {
 								getUser={this.props.getUser}
 								showOptionList = {this.props.showOptionList}/>
 							{ this.state.messageToShowPreview
-								? <PreviewImage_ message={this.state.messageToShowPreview} closeModal={this.handleCloseModal}/>
+								? ( (() => {
+							        switch (this.state.messageToShowPreview.bubbleType) {
+							            case 'image':
+							                return <PreviewImage_ message={this.state.messageToShowPreview} closeModal={this.handleCloseModal}/>
+							            default :
+							                null
+							        }
+							    })()
+								)
 								: null
 							}
 							<Input connectionStatus={this.props.connectionStatus}
