@@ -1722,12 +1722,13 @@ TABLE OF CONTENTS
 /* image bubble */
 
 .mky-bubble-image{
-  	width: auto;
-  	height: auto;
-  	max-width: 260px;
-  	padding: 0;
-  	background: #fff;
-  	border: 1px solid #f2f2f2;
+  background: #fff;
+  border: 1px solid #f2f2f2;
+  height: auto;
+  max-width: 260px;
+  min-width: 68px;
+  padding: 0;
+  width: auto;
 }
 
 .mky-bubble-image-out{
@@ -2267,7 +2268,7 @@ TABLE OF CONTENTS
   /* IE 9 */
 }
 
-.mky-content-image-data-staic img{
+.mky-content-image-data-static img{
   height: auto;
 }
 
