@@ -6,7 +6,7 @@ class BubbleImage extends Component {
 	constructor(props) {
 		super(props);
 		this.eventBubble = this.eventBubble.bind(this);
-		this.openImage = this.openImage.bind(this);
+		this.handleShowPreviewMessage = this.handleShowPreviewMessage.bind(this);
 		this.downloadData = this.downloadData.bind(this);
 		this.defineImageDataStyle = this.defineImageDataStyle.bind(this);
 		this.state = {
@@ -31,10 +31,10 @@ class BubbleImage extends Component {
 
 			imageObject.onload = function(){
 				if (imageObject.height < 250) {
-					that.setState({ imageHeightAuto: 'mky-content-image-data-staic'});
+					that.setState({ imageHeightAuto: 'mky-content-image-data-static'});
 				}
 				EXIF.getData(imageObject, function() {
-					let orientation = EXIF.getTag(this, "Orientation");
+					let orientation = EXIF.getTag(this, 'Orientation');
 					if (orientation != undefined) {
 						switch (orientation) {
 							case 3:
@@ -62,7 +62,7 @@ class BubbleImage extends Component {
 			<div className='mky-content-image'>
 				{ this.props.message.data
 					? ( <div className={'mky-content-image-data ' +this.state.imageHeightAuto + ' '+this.state.imageOrientation}>
-							<img src={this.props.message.data} onClick={this.openImage} ></img>
+							<img src={this.props.message.data} onClick={this.handleShowPreviewMessage} ></img>
 						</div>
 					)
 					: ( this.props.message.isDownloading
@@ -88,8 +88,8 @@ class BubbleImage extends Component {
 		return style;
 	}
 
-	openImage() {
-		this.props.messageSelected(this.props.message);
+	handleShowPreviewMessage() {
+		this.props.onShowPreviewMessage(this.props.message);
 	}
 
 	eventBubble() {

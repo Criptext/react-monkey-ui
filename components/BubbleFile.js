@@ -77,7 +77,7 @@ class BubbleFile extends Component {
 			if(!this.props.message.isDownloading){
 				this.props.dataDownloadRequest(this.props.message.mokMessage);
 			}
-			return
+			return;
 		}
 
 		var ie = navigator.userAgent.match(/MSIE\s([\d.]+)/),

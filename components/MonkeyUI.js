@@ -9,7 +9,7 @@ import BubbleImage from './BubbleImage.js'
 import BubbleFile from './BubbleFile.js'
 import BubbleAudio from './BubbleAudio.js'
 
-import ContentViewer from './ContentViewer.js'
+// import PreviewImage from './PreviewImage.js'
 import Lang from '../lang'
 
 import MyForm from './MyForm.js'
@@ -87,7 +87,7 @@ class MonkeyUI extends Component {
 			    audio: Bubble(BubbleAudio)
 		    },
 		    bubblePreviews: {
-			    image: ContentViewer
+			    //image: PreviewImage
 		    },
 		    styles: this.props.styles != null ? this.props.styles : {},
 		    options: this.formOptions(),

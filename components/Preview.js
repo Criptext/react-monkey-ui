@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-const Modal = Component => class extends Component {
+const Preview = Component => class extends Component {
 	constructor(props){
 		super(props);
 		this.close = this.close.bind(this);
@@ -20,4 +20,4 @@ const Modal = Component => class extends Component {
 	}
 }
 
-export default Modal;
+export default Preview;
